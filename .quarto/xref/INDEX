@@ -1,0 +1,50 @@
+{
+  "notes.qmd": {
+    "notes.html": "b31b20b2"
+  },
+  "posts/proj/welcome/index.qmd": {
+    "index.html": "7fe673da"
+  },
+  "posts/blog/2020-09-10-taiwan-edu/index.qmd": {
+    "index.html": "67d1d41d"
+  },
+  "posts/blog/2022-09-12-fridge/index.qmd": {
+    "index.html": "f5d82c2a"
+  },
+  "posts/blog/2022-09-10-on-failure/index.qmd": {
+    "index.html": "84d700f6"
+  },
+  "posts/blog/2022-03-10-dsra/index.qmd": {
+    "index.html": "f14887ce"
+  },
+  "posts/blog/2022-09-11-museum/index.qmd": {
+    "index.html": "1fc97c9d"
+  },
+  "posts/blog/2022-06-10-persistence/index.qmd": {
+    "index.html": "986b4067"
+  },
+  "posts/notes/foreign policy/2023-03-24-OBM.qmd": {
+    "2023-03-24-OBM.html": "26ff65d5"
+  },
+  "posts/notes/foreign policy/2023-03-10-RAM.qmd": {
+    "2023-03-10-RAM.html": "4aef7419"
+  },
+  "posts/notes/R/2023-05-14-first-R.qmd": {
+    "2023-05-14-first-R.html": "7c7272af"
+  },
+  "posts/notes/julia/2023-05-22-Rnd.qmd": {
+    "2023-05-22-Rnd.html": "fc1a6910"
+  },
+  "projects.qmd": {
+    "projects.html": "fe8503a1"
+  },
+  "index.qmd": {
+    "index.html": "0d27c308"
+  },
+  "about.qmd": {
+    "about.html": "dfd30176"
+  },
+  "blog.qmd": {
+    "blog.html": "80f45eb5"
+  }
+}

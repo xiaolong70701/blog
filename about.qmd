@@ -1,0 +1,18 @@
+---
+title: "About Me"
+image: profile.jpg
+about:
+  template: jolla
+  links:
+    - icon: github
+      text: github
+      href: https://github.com/xiaolong70701
+    - icon: facebook
+      text: facebook
+      href: https://www.facebook.com/yueswater/
+    - icon: instagram
+      text: instagram
+      href: https://www.instagram.com/yues_19_water/
+---
+
+Hello! I'm Anthony Sung, a student who majors in political science at National Taiwan University. I have a passion for exploring politics and economics, as well as utilizing computational methods to analyze social phenomena. In my free time, you'll often find me listening to music, singing, and diving into programming projects.

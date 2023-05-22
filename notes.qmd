@@ -1,0 +1,12 @@
+---
+title: "Notes"
+listing:
+  - id: notes
+    contents: "notes/**/*.qmd"
+    sort: "date desc"
+    filter-ui: true
+    sort-ui: true
+---
+
+:::{#notes}
+:::

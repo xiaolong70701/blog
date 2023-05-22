@@ -1,0 +1,60 @@
+project:
+  type: website
+  resources: 
+    - "assets/challenges_images/"
+    - "assets/images/"
+    - "assets/fonts/"
+    - "assets/scripts/"
+    - ".htaccess"
+website:
+  title: "Yueswater Blog"
+  description: "A personal blog on the exploration of open data and other adventures."
+  navbar:
+    left: 
+      - text: "blog"
+        href: blog.html
+      - text: "notes"
+        href: notes.html
+      - text: "projects"
+        href: projects.html
+    right:
+      - text: "about"
+        href: about.html
+      - icon: github
+        href: https://github.com/xiaolong70701
+      - icon: facebook
+        href: https://www.facebook.com/yueswater/
+      - icon: instagram
+        href: https://www.instagram.com/yues_19_water/
+  site-url: https://yueswater.blog
+  twitter-card: true
+  open-graph: true
+  favicon: assets/images/logo_favicon.png
+  image: assets/images/logo_dynamic_hero.png
+  cookie-consent: 
+    policy-url: datenschutz.html
+  page-footer: 
+    left: Anthony Sung {{< fa regular copyright >}} 2022 made with [quarto](https://quarto.org)
+    right: 
+      - icon: github
+        href: https://github.com/xiaolong70701
+      - icon: facebook
+        href: https://www.facebook.com/yueswater/
+      - icon: instagram
+        href: https://www.instagram.com/yues_19_water/
+  comments: 
+    giscus:
+      repo: xiaolong70701/quarto-blog
+highlight-style: arrow
+format:
+  html:
+    theme: 
+      light: [litera, jollydata.scss]
+      dark: [superhero, jollydata.scss]
+    code-link: true
+    code-fold: true
+    code-tools: 
+      toggle: true
+      source: false
+    
+

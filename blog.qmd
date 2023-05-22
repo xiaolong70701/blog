@@ -1,0 +1,12 @@
+---
+title: "Blog"
+listing:
+  - id: blog
+    contents: "blog/**/*.qmd"
+    sort: "date desc"
+    filter-ui: true
+    sort-ui: true
+---
+
+:::{#blog}
+:::
