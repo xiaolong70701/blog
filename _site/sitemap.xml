@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://yueswater.blog/notes.html</loc>
-    <lastmod>2023-05-24T09:45:54.586Z</lastmod>
+    <lastmod>2023-05-24T13:04:18.550Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/proj/welcome/index.html</loc>
@@ -34,7 +34,7 @@
   </url>
   <url>
     <loc>https://yueswater.blog/posts/notes/SNA/2023-05-24-network-effect/index.html</loc>
-    <lastmod>2023-05-24T09:46:03.756Z</lastmod>
+    <lastmod>2023-05-24T12:09:42.372Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/notes/foreign policy/2023-03-24-OBM.html</loc>
@@ -71,5 +71,9 @@
   <url>
     <loc>https://yueswater.blog/blog.html</loc>
     <lastmod>2023-05-24T09:46:13.569Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/posts/notes/SNA/2023-05-24-power-laws/index.html</loc>
+    <lastmod>2023-05-24T13:04:16.957Z</lastmod>
   </url>
 </urlset>
