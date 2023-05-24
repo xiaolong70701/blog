@@ -193,16 +193,53 @@ cookieconsent.run({
 
 
 
-<p>Consider the following case: a potential consumer takes into account both his intrinsic interest and the number of other consumers of the good. Each person makes an individual choice with reservation price. Let <span class="math inline">\(r(x)\)</span> denote the reservation price of consumer <span class="math inline">\(x\)</span> and we will assume that this function <span class="math inline">\(r(\cdot)\)</span> is continuous.</p>
-<p>Suppose that the market price for a unit of the good is <span class="math inline">\(p\)</span>: everyone who wants to buy the good can buy it at price <span class="math inline">\(p\)</span>, and no units are offered for sale at a price above or below <span class="math inline">\(p\)</span>. This means that all consumers between <span class="math inline">\(0\)</span> and <span class="math inline">\(x\)</span> buy the product, and all consumers above <span class="math inline">\(x\)</span> don’t | so an <span class="math inline">\(x\)</span> fraction of the population buys the product.</p>
+<p>Here is a brief review of the theory of information cascade. There are two main ways that affect how an individual makes decisions:</p>
+<ul>
+<li>Information effect: only care about the process that influences individual decision-making</li>
+<li>Direct benefit effect or network effect: care both the process that influences individual decision-making and benefits after the decisions</li>
+</ul>
+<section id="the-economy-without-network-effects" class="level2">
+<h2 class="anchored" data-anchor-id="the-economy-without-network-effects">The Economy without Network Effects</h2>
+<p>Consider a big market of a specific good, where there are numerous consumers and producers. Each one of them has a little ability to influence how the market works.</p>
+<p>Let <span class="math inline">\(x\)</span> be a fraction of the population, where <span class="math inline">\(x \in \mathbb{R}\)</span> and <span class="math inline">\(x \in [0, 1]\)</span>. Suppose each consumer wants at most one unit of the good; each consumer has a personal intrinsic interest in obtaining the good that can vary from one consumer to another. Here we employ the idea of reservation price to quantify their intrinsic interests.</p>
+<section id="reservation-price" class="level3">
+<h3 class="anchored" data-anchor-id="reservation-price">Reservation Price</h3>
+<p>We use <span class="math inline">\(r(x)\)</span> to denote the reservation price of consumer <span class="math inline">\(x\)</span> and we will assume that this function <span class="math inline">\(r(\cdot)\)</span> is continuous. <span class="math inline">\(r(x)\)</span> has the following assumptions:</p>
+<ul>
+<li><span class="math inline">\(r(x)\)</span> is strictly decreasing, which means there is no same price in terms of each consumer.</li>
+<li><span class="math inline">\(r(x_i) &gt; r(x_j),\; \forall i &lt; j\)</span>.</li>
+<li><span class="math inline">\(r(\cdot)^{-1}\)</span> is called demand function.</li>
+</ul>
 <p><img src="fig1.png" class="img-fluid"></p>
-<p>Suppose that this good can be produced at a constant cost of <span class="math inline">\(p^*\)</span> per unit. In aggregate, the producers will be willing to supply any amount of the good at a price of <span class="math inline">\(p^*\)</span> per unit, and none of the good at any price below <span class="math inline">\(p^*\)</span>. Moreover the assumption of a large number of potential producers who can create new copies of the good at a constant cost of <span class="math inline">\(p^*\)</span> implies that the price cannot remain above <span class="math inline">\(p^*\)</span>, since any profit to a producer would be driven to zero by competition from other producers. Thus, we can assume a market price of <span class="math inline">\(p^*\)</span>. We assume that</p>
-<p><span class="math display">\[
-r(1) &lt; p^* &lt; r(0)
-\]</span> Since <span class="math inline">\(p^*\)</span> is between the highest and lowest reservation prices, we can find a unique <span class="math inline">\(x^*\)</span> between 0 and 1 so that <span class="math inline">\(r(x^*) = p^*\)</span>. We call <span class="math inline">\(x^*\)</span> the equilibrium quantity of the good, given the reservation prices and the cost <span class="math inline">\(p^*\)</span>. When copies of a good can be produced at a constant cost <span class="math inline">\(p^*\)</span> per unit, the equilibrium quantity consumed will be the number <span class="math inline">\(x^*\)</span> for which <span class="math inline">\(r(x^*) = p^*\)</span>.</p>
+</section>
+<section id="product-price-and-cost" class="level3">
+<h3 class="anchored" data-anchor-id="product-price-and-cost">Product Price and Cost</h3>
+<p>Now we shift our focus to the price of the product. Let <span class="math inline">\(p\)</span> be the price of the product. Intuitively, consumer <span class="math inline">\(x\)</span> would buy one if <span class="math inline">\(r(x) &gt; p\)</span>. If <span class="math inline">\(p &gt; r(0)\)</span>, there would not be any consumers buying the product; if <span class="math inline">\(p &lt; r(1)\)</span>, all the consumers would buy the product. That is,</p>
+<p>Let’s suppose that this good can be produced at a constant cost of <span class="math inline">\(p^*\)</span> per unit. In aggregate, the producers will be willing to supply any amount of the good at a price of <span class="math inline">\(p^*\)</span> per unit, and none of the good at any price below <span class="math inline">\(p^*\)</span>.</p>
+</section>
+<section id="equilibrium-quantity-and-social-optimal" class="level3">
+<h3 class="anchored" data-anchor-id="equilibrium-quantity-and-social-optimal">Equilibrium Quantity and Social Optimal</h3>
+<p>If there exist a <span class="math inline">\(x^*\)</span> such that <span class="math inline">\(r(x^*) = p^*\)</span>, then we call this <span class="math inline">\(x^*\)</span> equilibrium quantity.</p>
 <p><img src="fig2.png" class="img-fluid"></p>
+<p>If society were going to produce enough of the good to give it to an <span class="math inline">\(x\)</span> fraction of the population, then social welfare would be maximized by giving it to all consumers between <span class="math inline">\(0\)</span> and <span class="math inline">\(x\)</span>, since they correspond to the <span class="math inline">\(x\)</span> fraction of the population that values the good the most.</p>
+<p>The welfare of each consumer can be represented as <span class="math inline">\(w(x)\)</span>, where</p>
+<p><span class="math display">\[
+w(x) =
+\begin{cases}
+r(x) - p,&amp; \; x\text{ buy the product; }\\
+0, &amp;\; x\text{ does't buy the product.}
+\end{cases}
+\]</span> Therefore, the social welfare can be calculated by <span class="math display">\[
+S = \int_0^1 w(x)dx.
+\]</span> Hence our target is to maximise the social welfare, i.e.,</p>
+<p><span class="math display">\[
+\max S = \max \int_0^1 w(x)dx.
+\]</span> ## The Economy with Network Effects</p>
+<p>Based on the previous settings, now suppose there is a <span class="math inline">\(z\)</span> fraction of population using the product, which give them benefit with <span class="math inline">\(f(z)\)</span>, and <span class="math inline">\(z\)</span> is known. The reservation price of consumer <span class="math inline">\(x\)</span> is equal to <span class="math inline">\(r(x)f(z)\)</span>, where <span class="math inline">\(r(x)\)</span> as before is the intrinsic interest of consumer <span class="math inline">\(x\)</span> in the good, and <span class="math inline">\(f(z)\)</span> measures the benefit to each consumer from having a <span class="math inline">\(z\)</span> fraction of the population use the good. Note that <span class="math inline">\(f(\cdot)\)</span> is increasing in <span class="math inline">\(z\)</span>, which controls how much more valuable a product is when more people are using it.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
