@@ -46,5 +46,20 @@
   },
   "blog.qmd": {
     "blog.html": "80f45eb5"
+  },
+  "posts/notes/julia/2023-05-23-RNG.qmd": {
+    "2023-05-23-RNG.html": "87e8fa31"
+  },
+  "posts/notes/julia/2023-05-23-inv.qmd": {
+    "2023-05-23-inv.html": "75596c7d"
+  },
+  "Untitled.ipynb": {
+    "Untitled.html": "dd14aa13"
+  },
+  "posts/notes/SNA/2023-05-24-network-effect.qmd": {
+    "2023-05-24-network-effect.html": "82318c02"
+  },
+  "posts/notes/SNA/2023-05-24-network-effect/index.qmd": {
+    "index.html": "d926cf1e"
   }
 }

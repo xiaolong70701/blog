@@ -42,12 +42,47 @@ myrng3 = StableRNG(1234);
 "Global" means it is visible (hence accessible) throughout the program, unless shadowed.
 
 ```{julia}
+using Random
+
 Random.seed!(1234)   # use julia's default RNG
 Random.seed!(myrng1) # use myrng1 as RNG
-Random.seed!(myrng2) # use myrng1 as RNG
-Random.seed!(myrng3) # use myrng1 as RNG
 Random.seed!(MersenneTwister(1234)) |> display
 Random.seed!(myrng1, 5678) # overwrite the seed of myrng1
 ```
 
-ddd
+Now that we have set up our RNG, we can apply it to generate some random numbers using `rand()`.
+
+```{julia}
+using Random
+
+Random.seed!(1234)
+
+a1 = rand(4)
+a2 = rand(4, 1)
+a3 = rand(4, 2)
+a4 = randn(4, 3)
+
+@show a1
+@show a2
+@show a3
+@show a4
+```
+
+Note that we can recognise RNG as a stopwatch. When the programme has finished generating some random numbers, the stopwatch will stop and reset. Hence you can check the result if you put another RNG before `a1` and see whether the result would be the same as what `a1` was.[^1]
+
+[^1]: The answer is no, obviously. Therefore, that's the reason why we need to put `Random.seed!(1234)` in our script.
+
+You might think what is the difference between `a1` and `a2`. We can use `size()` and `typeof()` to check.
+
+```{julia}
+@show a1
+@show a2
+
+# See the dim of a1 and a2
+@show size(a1)
+@show size(a2)
+
+# Check the type of a1 and a2
+@show typeof(a1)
+@show typeof(a2)
+```

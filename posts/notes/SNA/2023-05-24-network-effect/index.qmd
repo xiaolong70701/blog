@@ -1,0 +1,19 @@
+---
+title: "Network Effect"
+date: "2023-05-24"
+categories: [SNA]
+---
+
+Consider the following case: a potential consumer takes into account both his intrinsic interest and the number of other consumers of the good. Each person makes an individual choice with reservation price. Let $r(x)$ denote the reservation price of consumer $x$ and we will assume that this function $r(\cdot)$ is continuous.
+
+Suppose that the market price for a unit of the good is $p$: everyone who wants to buy the good can buy it at price $p$, and no units are offered for sale at a price above or below $p$. This means that all consumers between $0$ and $x$ buy the product, and all consumers above $x$ don't \| so an $x$ fraction of the population buys the product.
+
+![](fig1.png)
+
+Suppose that this good can be produced at a constant cost of $p^*$ per unit. In aggregate, the producers will be willing to supply any amount of the good at a price of $p^*$ per unit, and none of the good at any price below $p^*$. Moreover the assumption of a large number of potential producers who can create new copies of the good at a constant cost of $p^*$ implies that the price cannot remain above $p^*$, since any profit to a producer would be driven to zero by competition from other producers. Thus, we can assume a market price of $p^*$. We assume that
+
+$$
+r(1) < p^* < r(0)
+$$ Since $p^*$ is between the highest and lowest reservation prices, we can find a unique $x^*$ between 0 and 1 so that $r(x^*) = p^*$. We call $x^*$ the equilibrium quantity of the good, given the reservation prices and the cost $p^*$. When copies of a good can be produced at a constant cost $p^*$ per unit, the equilibrium quantity consumed will be the number $x^*$ for which $r(x^*) = p^*$.
+
+![](fig2.png)

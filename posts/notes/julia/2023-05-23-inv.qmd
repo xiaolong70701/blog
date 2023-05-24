@@ -1,0 +1,96 @@
+---
+title: "Inverse Transform Sampling"
+date: "2023-05-22"
+categories: [Julia, programming language, numerical analysis]
+format:
+  html: 
+    code-fold: false
+---
+
+Julia provides `rand()` and `randn()` to generate random values from uniform distribution and normal distribution, respectively. In this section, we will focus on the inverse transform sampling method.
+
+## Prelimaries
+
+### Cumulative Distribution Function (CDF)
+
+The CDF of a random varaible $X$ returns the probability of $X$ being smaller than or equal to some value $x$, i.e.,
+
+$$
+\operatorname{Pr}(X \leq x) = F_X(x).
+$$
+
+Sometimes we use $F(x)$ instead of $F_X(x)$ for simplicity. For instance, given $X \sim N(0,1)$, then $F(-1.645) = 0.05$ means that the probability falls below $x = 1.645$ is about $0.05$.
+
+### Qunatile Function
+
+Sometimes quantile function is referred to the inverse CDF. A quantile function can be defined as $$
+F^{-1}(a) = \inf \{x :F(x) \geq \alpha\},\; 0 < \alpha < 1.
+$$
+
+It reads: $F^{-1}(\alpha)$ returns the value of $x$ which is the smallest ("$\inf$") value of all the possible $x$ that makes the $x$'s CDF (i.e., $F(x)$) greater than or equal to $\alpha$.
+
+In the case of a normally distributed random variable, we often use $\Phi()$ to denote the CDF.
+
+-   $\Phi(x)$: The cumulative distribution function of $X$ at the value of $x$ ($X=x$).
+    -   $\Phi(x)=\alpha$: The cumulative distribution of $X$ at the value of $x$ is $\alpha$.
+    -   e.g., $\Phi(-1.64) = 0.05$: The cumulative distribution of $X$ at the value of $X=-1.64$ is $0.05$.
+-   $\Phi^{-1}(\alpha)$: The quantile function of $X$ at CDF=$\alpha$.
+    -   $\Phi^{-1}(\alpha) = x$: The (normal) random variable's value at the variable's $\alpha$-quantile is $x$.
+    -   e.g., $\Phi^{-1}(0.05)=-1.64$: The normal random variable's 5% quantile is $-1.64$.
+
+### Probability Density Function (PDF)
+
+Given $F_X(x)$ being the CDF of a continuous random variable $X$ with the domain $-\infty \leq X \leq \infty$, the corresponding PDF is often denoted as $f_X(x)$ and defined by
+
+$$
+\begin{aligned}
+F_X(x) = \int_{-\infty}^x f_X(u) du.
+\end{aligned}
+$$
+
+The graph of the PDF is a continuous versions of a histogram. It is sometimes called probability distribution functions; not entirely wrong but should be avoided. The returned value is the probability density or simply density, which is not a measure of probability:
+
+-   $\phi(X=-1.64) = 0.10396$ is the "probability density" of $X$ at $X=-1.64$, which is not the "probability" of $X$ at $X=-1.64$. For a continuous random variable, the probability of $X=-1.64$ is $0$.
+
+-   Instead, for a continuous random variable the probability is measured on a range, and the PDF could be used to measure the probability at the range.
+
+    -   The probability of $X$ in the range of $-1.6 \leq x \leq -1.5$ is $$
+        \begin{aligned}  
+        \int_{-1.6}^{-1.5} f_X(u)du &= \int_{-\infty}^{-1.5} f_X(u)du  - \int_{-\infty}^{-1.6} f_X(u)du\\ 
+        &= \Phi(-1.5) - \Phi(-1.6).
+        \end{aligned}
+        $$
+    -   Essentially, it is the size of the area under the PDF curve.
+    -   Since $X=-1.64$ is a point, and the size of this point's "area" under the PDF is $0$, so the probability of $X=-1.64$ is $0$.
+
+Note that, often, when we mention distribution of a random variable $X$, we refer to its CDF rather than PDF.
+
+Here we can use the package of `Distributions` to show some calculation and ideas of CDF, quantile functon and PDF.
+
+```{julia}
+using Distributions
+
+dist1 = Normal(0,1)
+
+# probability density
+@show pdf(dist1, -1.64)
+
+# cumulative distribution
+@show cdf(dist1, -1.64)
+
+# quantile function
+@show quantile(dist1, 0.05)
+
+# probability in the range (-1.641, -1.639)
+@show cdf(dist1, -1.639) - cdf(dist1, -1.641)
+```
+
+```{julia}
+using Plotly, WebIO
+
+trace = scatter(x = [1, 2, 3, 4], y = [10, 15, 13, 17], mode = "markers")
+data = [trace]
+layout = Layout(title = "Scatter Plot Example", xaxis_title = "X", yaxis_title = "Y")
+plot(data, layout)
+```
+
