@@ -1,0 +1,43 @@
+---
+title: "第一個 LaTeX 程式（包含安裝教學）"
+date: "2023-05-24"
+categories: [LaTeX, programming language]
+---
+
+$\LaTeX$ 是一個基於 $\TeX$ 的排版系統，由美國電腦科學家 Leslie Lamport開發，遵循呈現與內容分離的設計理念，讓使用者能夠在撰文時致力於寫作，而非同時兼顧版面與內文[^1]。Word 與 $\LaTeX$ 最大的不同之處在於，Word 最強大的功能「所得即所見」是勝過後者的優勢，初學者可以無師自通，後者則是需要學習指令，Word 的這個特點就完全贏過後者。然而，$\LaTeX$ 的特點即是「呈現與內容分離」，使用者可以專注於撰文，而不用同時注意內文與版面。因此，許多 $\LaTeX$  的使用者仍會透過Word先進行「前端設計」，再交由 $\LaTeX$ 進行版面設定與產出。這個系列的內容係參考自李果正的[《大家來學$\LaTeX$》](https://jupiter.math.nctu.edu.tw/~smchang/latex/latex123.pdf)與吳聰敏老師的[《cw$\TeX$ 排版系統》](https://www.math.sinica.edu.tw/www/tex/cxbook3.pdf)。
+
+[^1]:"Latex." Wikipedia, Wikimedia Foundation, 12 June 2021, [zh.wikipedia.org/zh-tw/LaTeX](zh.wikipedia.org/zh-tw/LaTeX).
+
+## 編輯及編譯系統安裝
+
+$\LaTeX$ 有許多不同種類的編譯與編輯器組合，本文將以作者最常見的組合 MiKTeX 搭配 TeXStudio 介紹。當然如果有特別的偏好也無妨，只要能夠編輯即可。
+
+
+### MikTeX 安裝
+
+首先點擊[這裡]()進入 MiKTeX 官網。
+
+![](fig1.png)
+
+接著點擊 `Download` 按鈕， 進入頁面後根據電腦的作業系統選擇安裝檔。
+
+![](fig2.png)
+
+下載並安裝後便可以進行更新。
+
+![](fig3.png)
+按下之後即可更新 MiKTeX。更新完畢後點選左側的 `Updates` 按鈕進入更新區，依序按下 `Check for updates` 以及 `Update now` 後即完成。
+
+![](fig4.png)
+
+### 安裝 TeXStudio
+
+請點擊[這裡](https://www.texstudio.org/)進入 TeXStudio 官網後，按下下載按鈕即可安裝。安裝完成後基本上就可以開始編譯了。
+
+![](fig5.png)
+如果要更改編譯器，請到依照以下步驟更改。
+
+- macOS 系統：點選左上角 `TeXStudio` $\rightarrow$ 點選 `Preferences` $\rightarrow$ 點選 `Build` $\rightarrow$ 將 Default Compiler 改為你想要的編譯器。
+- macOS 系統：點選左上角 `TeXStudio` $\rightarrow$ 點選 `Options` $\rightarrow$ 點選 `Build` $\rightarrow$ 將 Default Compiler 改為你想要的編譯器。
+
+以上就是安裝 MiKTeX 與 TeXStudio 的過程。

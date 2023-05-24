@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2023-05-24">
 
-<title>Yueswater Blog - Notes</title>
+<title>Yueswater Blog - 第一個 LaTeX 程式（包含安裝教學）</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,29 +24,27 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./assets/images/logo_favicon.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/cookie-consent/cookie-consent.js"></script>
-<link href="site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/images/logo_favicon.png" rel="icon" type="image/png">
+<script src="../../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -65,35 +64,6 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-notes .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-notes'] = new List('listing-notes', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
 <script type="text/javascript" charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
@@ -115,9 +85,11 @@ cookieconsent.run({
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Yueswater Blog - Notes">
+<meta property="og:title" content="Yueswater Blog - 第一個 LaTeX 程式（包含安裝教學）">
+<meta property="og:description" content="">
 <meta property="og:site-name" content="Yueswater Blog">
-<meta name="twitter:title" content="Yueswater Blog - Notes">
+<meta name="twitter:title" content="Yueswater Blog - 第一個 LaTeX 程式（包含安裝教學）">
+<meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -128,7 +100,7 @@ cookieconsent.run({
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Yueswater Blog</span>
     </a>
   </div>
@@ -139,21 +111,21 @@ cookieconsent.run({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html" rel="" target="">
+    <a class="nav-link" href="../../../blog.html" rel="" target="">
  <span class="menu-text">blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./notes.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="../../../notes.html" rel="" target="">
  <span class="menu-text">notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./projects.html" rel="" target="">
+    <a class="nav-link" href="../../../projects.html" rel="" target="">
  <span class="menu-text">projects</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
+    <a class="nav-link" href="../../../about.html" rel="" target="">
  <span class="menu-text">about</span></a>
   </li>  
   <li class="nav-item compact">
@@ -180,267 +152,63 @@ cookieconsent.run({
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">第一個 LaTeX 程式（包含安裝教學）</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">LaTeX</div>
+                <div class="quarto-category">programming language</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">May 24, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Notes</h1>
-</div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
-<div id="listing-notes" class="quarto-listing quarto-listing-container-default">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-notes-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-notes'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-title" data-direction="asc">
-          Title
-        </option>
-         <option value="listing-date-sort" data-direction="asc">
-          Date - Oldest
-        </option>
-         <option value="listing-date-sort" data-direction="desc">
-          Date - Newest
-        </option>
-         <option value="listing-author" data-direction="asc">
-          Author
-        </option>
-     </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="SNA" data-listing-date-sort="1684857600000" data-listing-file-modified-sort="1684924856114" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
-<div class="thumbnail">
-<p><a href="./posts/notes/SNA/2023-05-24-network-effect/index.html"> <p class="card-img-top"><img src="posts/notes/SNA/2023-05-24-network-effect/fig1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/notes/SNA/2023-05-24-network-effect/index.html">
-<h3 class="no-anchor listing-title">
-Network Effect
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-Here is a brief review of the theory of information cascade. There are two main ways that affect how an individual makes decisions:
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/notes/SNA/2023-05-24-network-effect/index.html">
-<div class="listing-date">
-May 24, 2023
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="SNA" data-listing-date-sort="1684857600000" data-listing-file-modified-sort="1684933448113" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
-<div class="thumbnail">
-<p><a href="./posts/notes/SNA/2023-05-24-power-laws/index.html"> <p class="card-img-top"><img src="posts/notes/SNA/2023-05-24-power-laws/fig1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/notes/SNA/2023-05-24-power-laws/index.html">
-<h3 class="no-anchor listing-title">
-Power Laws and Rich-Get-Richer Phenomena
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-We’ve seen that behavior is correlated across a population, and it can lead to…
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/notes/SNA/2023-05-24-power-laws/index.html">
-<div class="listing-date">
-May 24, 2023
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="LaTeX,programming language" data-listing-date-sort="1684857600000" data-listing-file-modified-sort="1684936220145" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/notes/latex/2023-05-24-latex-installation.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
-</div>
-<div class="body">
-<a href="./posts/notes/latex/2023-05-24-latex-installation.html">
-<h3 class="no-anchor listing-title">
-第一個 LaTeX 程式（包含安裝教學）
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-<span class="math inline">\(\LaTeX\)</span> 是一個基於 <span class="math inline">\(\TeX\)</span> 的排版系統，由美國電腦科學家 Leslie Lamport開發，遵循呈現與內容分離的設計理念，讓使用者能夠在撰文時致力於寫作，而非同時兼顧版面與內文<sup>1</sup>。Word 與 <span class="math inline">\(\LaTeX\)</span> 最大的不同之處在於，Word…<span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/notes/latex/2023-05-24-latex-installation.html">
-<div class="listing-date">
-May 24, 2023
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="Julia,programming language,numerical analysis" data-listing-date-sort="1684684800000" data-listing-file-modified-sort="1684747840108" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<div class="thumbnail">
-<p><a href="./posts/notes/julia/2023-05-23-RNG.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
-</div>
-<div class="body">
-<a href="./posts/notes/julia/2023-05-23-RNG.html">
-<h3 class="no-anchor listing-title">
-Random Numbers and Random Number Generator
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-In social sciences, there are numerous cases of whether we need to use and generate random numbers, or draw random values from distributions.
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/notes/julia/2023-05-23-RNG.html">
-<div class="listing-date">
-May 22, 2023
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="Julia,programming language,numerical analysis" data-listing-date-sort="1684684800000" data-listing-file-modified-sort="1684748764819" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
-<div class="thumbnail">
-<p><a href="./posts/notes/julia/2023-05-23-inv.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
-</div>
-<div class="body">
-<a href="./posts/notes/julia/2023-05-23-inv.html">
-<h3 class="no-anchor listing-title">
-Inverse Transform Sampling
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-Julia provides <code>rand()</code> and <code>randn()</code> to generate random…
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/notes/julia/2023-05-23-inv.html">
-<div class="listing-date">
-May 22, 2023
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="R,programming language" data-listing-date-sort="1683993600000" data-listing-file-modified-sort="1684738930026" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/notes/R/2023-05-14-first-R.html"> <p class="card-img-top"><img src="https://i.imgur.com/iRD88ri.jpg"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/notes/R/2023-05-14-first-R.html">
-<h3 class="no-anchor listing-title">
-第一個 R 語言程式
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-R is a programming language for statistical computing and graphics supported by the R Core Team and the R Foundation for Statistical Computing. Created by statisticians Ross…<sup></sup>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/notes/R/2023-05-14-first-R.html">
-<div class="listing-date">
-May 14, 2023
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="polisci,foreign policy" data-listing-date-sort="1679587200000" data-listing-file-modified-sort="1684738930026" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/notes/foreign policy/2023-03-24-OBM.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
-</div>
-<div class="body">
-<a href="./posts/notes/foreign policy/2023-03-24-OBM.html">
-<h3 class="no-anchor listing-title">
-組織性行為模型(Organizational Behavior Model, OBM)
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-OBM 認為組織內部的決策制定乃至執行是被分割的，而非單一行為者強調決策制定和執行，尤其是執行環節的重要性。可以發現 RAM 較不注重政策執行的環節，但同 OBM 一樣重視政策制定。
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/notes/foreign policy/2023-03-24-OBM.html">
-<div class="listing-date">
-Mar 24, 2023
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-categories="polisci,foreign policy" data-listing-date-sort="1678377600000" data-listing-file-modified-sort="1684738930026" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<div class="thumbnail">
-<p><a href="./posts/notes/foreign policy/2023-03-10-RAM.html"> <p class="card-img-top"><img src="posts/notes/foreign policy/fig1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/notes/foreign policy/2023-03-10-RAM.html">
-<h3 class="no-anchor listing-title">
-理性行為者模型(Rational Actor Model, RAM)
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-不同的學者對於政策(policy)有不同的定義，但基本上外交政策的概念可以被描述為：
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/notes/foreign policy/2023-03-10-RAM.html">
-<div class="listing-date">
-Mar 10, 2023
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
-</main> <!-- /main -->
+<p><span class="math inline">\(\LaTeX\)</span> 是一個基於 <span class="math inline">\(\TeX\)</span> 的排版系統，由美國電腦科學家 Leslie Lamport開發，遵循呈現與內容分離的設計理念，讓使用者能夠在撰文時致力於寫作，而非同時兼顧版面與內文<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。Word 與 <span class="math inline">\(\LaTeX\)</span> 最大的不同之處在於，Word 最強大的功能「所得即所見」是勝過後者的優勢，初學者可以無師自通，後者則是需要學習指令，Word 的這個特點就完全贏過後者。然而，<span class="math inline">\(\LaTeX\)</span> 的特點即是「呈現與內容分離」，使用者可以專注於撰文，而不用同時注意內文與版面。因此，許多 <span class="math inline">\(\LaTeX\)</span> 的使用者仍會透過Word先進行「前端設計」，再交由 <span class="math inline">\(\LaTeX\)</span> 進行版面設定與產出。這個系列的內容係參考自李果正的<a href="https://jupiter.math.nctu.edu.tw/~smchang/latex/latex123.pdf">《大家來學<span class="math inline">\(\LaTeX\)</span>》</a>與吳聰敏老師的<a href="https://www.math.sinica.edu.tw/www/tex/cxbook3.pdf">《cw<span class="math inline">\(\TeX\)</span> 排版系統》</a>。</p>
+<section id="編輯及編譯系統安裝" class="level2">
+<h2 class="anchored" data-anchor-id="編輯及編譯系統安裝">編輯及編譯系統安裝</h2>
+<p><span class="math inline">\(\LaTeX\)</span> 有許多不同種類的編譯與編輯器組合，本文將以作者最常見的組合 MikTeX 搭配 TeXStudio 介紹。當然如果有特別的偏好也無妨，只要能夠編輯即可。</p>
+<div class="spoiler">
+<p>ddd</p>
+</div>
+<section id="miktex-安裝" class="level3">
+<h3 class="anchored" data-anchor-id="miktex-安裝">MikTeX 安裝</h3>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>“Latex.” Wikipedia, Wikimedia Foundation, 12 June 2021, <a href="zh.wikipedia.org/zh-tw/LaTeX">zh.wikipedia.org/zh-tw/LaTeX</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
