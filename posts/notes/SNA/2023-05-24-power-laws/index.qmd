@@ -1,0 +1,7 @@
+---
+title: "Power Laws and Rich-Get-Richer Phenomena"
+date: "2023-05-24"
+categories: [SNA]
+---
+
+Test
