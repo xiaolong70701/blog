@@ -148,7 +148,7 @@ $$
 - When the curve $g(z)$ is above the straight line, there is an upward pressure.
 - When the curve $g(z)$ is below the straight line, there is a downward pressure.
 
-Furthermore, we can consider the case of whether participating the network or not, which is a better case of illustrating the dynamic behaviour. Suppose $z$ would change with time, and the time is discrete, i.e., $t = 1,2, \cdots, T$. That is, $z_t=g(z_{t-1})$, because $g$ is a function that maps intended buyers to actual buyers, and the actual buyers at time $t=t-1$ will be the intended buyers at time $t=t$.
+Furthermore, we can consider the case of whether participating the network or not, which is a better case of illustrating the dynamic behaviour. Suppose $z$ would change with time, and the time is discrete, i.e., $t = 1,2, \cdots, T$. That is, $z_t=g(z_{t-1})$, because $g$ is a function that maps intended buyers to actual buyers, and the actual buyers at time $t=t-1$ will be the intended buyers at time $t=t$. Hence we can have the following graph to depict the dynamic behaviours. 
 
 ![](fig5.png)
 
