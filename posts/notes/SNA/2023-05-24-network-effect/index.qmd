@@ -126,7 +126,6 @@ In general, we can define a function $g(\cdot)$ that gives the outcome $\hat{z}$
 
 $$
 g(\hat{z}) = 
-
 \begin{cases}
 r^{-1}\left(\frac{p^*}{f(z)}\right),& \; \frac{p^*}{f(z)} \geq r(0)\\
 0, &\; \text{o.w.}
@@ -136,7 +135,6 @@ Continue the example. Suppose $r(x) = 1 - x$, and $f(z) = z$. Then $r^{-1}(x) = 
 
 $$
 g(\hat{z}) = 
-
 \begin{cases}
 1 - \frac{p^*}{z},& \; \text{if } z \geq p^* \\
 0, &\; \text{o.w.}
