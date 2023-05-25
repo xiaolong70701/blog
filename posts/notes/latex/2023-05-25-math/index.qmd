@@ -283,14 +283,14 @@ $$
 :::info
 **小試身手**
 請用`TeX`復刻以下的圖片。[^1]
+
 ![](https://i.imgur.com/sCufibA.png)
-:::spoiler 查看參考答案
+參考答案
 ```tex
 $$
 \int_{\mathcal{C}} f(\mathbf{r}) d s=\int_a^b f(\mathbf{r}(t))\left|\mathbf{r}^{\prime}(t)\right| dt
 $$
 ```
-:::
 
 ## 數學字體的設定
 
