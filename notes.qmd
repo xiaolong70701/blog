@@ -6,6 +6,7 @@ listing:
     sort: "date desc"
     filter-ui: true
     sort-ui: true
+    fields: [image, date, title, subtitle, categories, author, reading-time, description]
 ---
 
 :::{#notes}

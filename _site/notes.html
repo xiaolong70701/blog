@@ -75,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-image','listing-date','listing-title','listing-subtitle','listing-categories','listing-author','listing-reading-time','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
       searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
     };
@@ -243,6 +243,19 @@ R Markdown 與 TeX
 <div class="listing-subtitle">
 
 </div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
+R
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Markdown'); return false;">
+Markdown
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('programming language'); return false;">
+programming language
+</div>
+</div>
+<a href="./posts/notes/R/2023-05-26-r-and-tex/index.html">
 <div class="listing-description">
 排版一直以來是一個很麻煩的事情，無論是新聞、雜誌，乃至於學術文章，要將文章清楚、俐落且富有美感的呈現出來是需要功夫的；此外，要透過何種方式進行排版，也成為了諸多想學習排版或是已經成為排版的人而言心中曾經冒出的疑問。對此，這篇文章將會透過 R Markdown 的方式，結合些許的 <span class="math inline">\(\TeX\)</span> 語法，將個人的排版經歷與方法分享給大家。
 </div>
@@ -252,6 +265,9 @@ R Markdown 與 TeX
 <a href="./posts/notes/R/2023-05-26-r-and-tex/index.html">
 <div class="listing-date">
 May 26, 2023
+</div>
+<div class="listing-reading-time">
+4 min
 </div>
 </a>
 </div>
@@ -268,6 +284,16 @@ May 26, 2023
 <div class="listing-subtitle">
 
 </div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('LaTeX'); return false;">
+LaTeX
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('programming language'); return false;">
+programming language
+</div>
+</div>
+<a href="./posts/notes/latex/2023-05-26-bm/index.html">
 <div class="listing-description">
 為何使用 <span class="math inline">\(\LaTeX\)</span> 進行簡報製作呢，使用 <span class="math inline">\(\LaTeX\)</span> 製作簡報，個人認為大致有以下優點，首先是學術性強大，包含版面、顯示方式等，都能夠讓讀者或閱聽人看到沈穩的簡報內容與外觀，從而能夠專注聽講。另一個優點則是輸出的內容可以跨平台使用，因其產生的檔案類型為<code>.pdf</code>檔，故能夠避免使用<code>.pptx</code>時字體在其他電腦未安裝而無法顯示的窘境。不過…<span class="math inline"></span>
 </div>
@@ -277,6 +303,9 @@ May 26, 2023
 <a href="./posts/notes/latex/2023-05-26-bm/index.html">
 <div class="listing-date">
 May 26, 2023
+</div>
+<div class="listing-reading-time">
+2 min
 </div>
 </a>
 </div>
@@ -293,6 +322,16 @@ LaTeX 書本、文件章節編排與架構
 <div class="listing-subtitle">
 
 </div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('LaTeX'); return false;">
+LaTeX
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('programming language'); return false;">
+programming language
+</div>
+</div>
+<a href="./posts/notes/latex/2023-05-26-structure/index.html">
 <div class="listing-description">
 一本書籍或學術文章的基本架構大概可以切分成以下幾個元素
 </div>
@@ -302,6 +341,9 @@ LaTeX 書本、文件章節編排與架構
 <a href="./posts/notes/latex/2023-05-26-structure/index.html">
 <div class="listing-date">
 May 26, 2023
+</div>
+<div class="listing-reading-time">
+2 min
 </div>
 </a>
 </div>
@@ -318,6 +360,16 @@ LaTeX 中表格與圖片的處理
 <div class="listing-subtitle">
 
 </div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('LaTeX'); return false;">
+LaTeX
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('programming language'); return false;">
+programming language
+</div>
+</div>
+<a href="./posts/notes/latex/2023-05-26-table-and-figure/index.html">
 <div class="listing-description">
 
 在學習 <span class="math inline">\(\LaTeX\)</span> 的過程中，表格的處理通常是最為棘手的，主要原因在於 <span class="math inline">\(\LaTeX\)</span> 係透過抽象與邏輯的方式繪製表格。網路上有針對 <span class="math inline">\(\LaTeX\)</span> 的表格編輯器，不過仍要先了解表格的大架構，便能在沒有編輯器的情況下製作表格，亦不會摸不著頭緒。
@@ -328,6 +380,9 @@ LaTeX 中表格與圖片的處理
 <a href="./posts/notes/latex/2023-05-26-table-and-figure/index.html">
 <div class="listing-date">
 May 26, 2023
+</div>
+<div class="listing-reading-time">
+4 min
 </div>
 </a>
 </div>
@@ -344,6 +399,13 @@ Network Effect
 <div class="listing-subtitle">
 
 </div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SNA'); return false;">
+SNA
+</div>
+</div>
+<a href="./posts/notes/SNA/2023-05-24-network-effect/index.html">
 <div class="listing-description">
 Here is a brief review of the theory of information cascade. There are two main ways that affect how an individual makes decisions:
 </div>
@@ -353,6 +415,9 @@ Here is a brief review of the theory of information cascade. There are two main 
 <a href="./posts/notes/SNA/2023-05-24-network-effect/index.html">
 <div class="listing-date">
 May 24, 2023
+</div>
+<div class="listing-reading-time">
+7 min
 </div>
 </a>
 </div>
@@ -369,6 +434,13 @@ Power Laws and Rich-Get-Richer Phenomena
 <div class="listing-subtitle">
 
 </div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SNA'); return false;">
+SNA
+</div>
+</div>
+<a href="./posts/notes/SNA/2023-05-24-power-laws/index.html">
 <div class="listing-description">
 We’ve seen that behavior is correlated across a population, and it can lead to…
 </div>
@@ -378,6 +450,9 @@ We’ve seen that behavior is correlated across a population, and it can lead to
 <a href="./posts/notes/SNA/2023-05-24-power-laws/index.html">
 <div class="listing-date">
 May 24, 2023
+</div>
+<div class="listing-reading-time">
+5 min
 </div>
 </a>
 </div>
@@ -394,6 +469,16 @@ May 24, 2023
 <div class="listing-subtitle">
 
 </div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('LaTeX'); return false;">
+LaTeX
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('programming language'); return false;">
+programming language
+</div>
+</div>
+<a href="./posts/notes/latex/2023-05-24-latex-installation/index.html">
 <div class="listing-description">
 <span class="math inline">\(\LaTeX\)</span> 是一個基於 <span class="math inline">\(\TeX\)</span> 的排版系統，由美國電腦科學家 Leslie Lamport開發，遵循呈現與內容分離的設計理念，讓使用者能夠在撰文時致力於寫作，而非同時兼顧版面與內文<sup>1</sup>。Word 與 <span class="math inline">\(\LaTeX\)</span> 最大的不同之處在於，Word…<span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span>
 </div>
@@ -404,10 +489,13 @@ May 24, 2023
 <div class="listing-date">
 May 24, 2023
 </div>
+<div class="listing-reading-time">
+3 min
+</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="LaTeX,programming language" data-listing-date-sort="1684857600000" data-listing-file-modified-sort="1685040524818" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
+<div class="quarto-post image-right" data-index="7" data-categories="LaTeX,programming language" data-listing-date-sort="1684857600000" data-listing-file-modified-sort="1685040632392" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
 <div class="thumbnail">
 <p><a href="./posts/notes/latex/2023-05-25-math/index.html"> <p class="card-img-top"><img src="https://i.imgur.com/sCufibA.png"  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -419,6 +507,16 @@ LaTeX 數學排版
 <div class="listing-subtitle">
 
 </div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('LaTeX'); return false;">
+LaTeX
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('programming language'); return false;">
+programming language
+</div>
+</div>
+<a href="./posts/notes/latex/2023-05-25-math/index.html">
 <div class="listing-description">
 為何要學數學排版，主要原因在於當我們使用 Word 排版時常常會達不到意想的效果，且 Word 內建的 <span class="math inline">\(\LaTeX\)</span> 不太友善；由於 <span class="math inline">\(\LaTeX\)</span> 是針對專業數學所設計的排版軟體，因此透過 <span class="math inline">\(\TeX\)</span> 具有的數學排版系統能夠達到最佳效果。
 </div>
@@ -428,6 +526,9 @@ LaTeX 數學排版
 <a href="./posts/notes/latex/2023-05-25-math/index.html">
 <div class="listing-date">
 May 24, 2023
+</div>
+<div class="listing-reading-time">
+6 min
 </div>
 </a>
 </div>
@@ -444,6 +545,19 @@ Random Numbers and Random Number Generator
 <div class="listing-subtitle">
 
 </div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Julia'); return false;">
+Julia
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('programming language'); return false;">
+programming language
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('numerical analysis'); return false;">
+numerical analysis
+</div>
+</div>
+<a href="./posts/notes/julia/2023-05-23-RNG.html">
 <div class="listing-description">
 In social sciences, there are numerous cases of whether we need to use and generate random numbers, or draw random values from distributions.
 </div>
@@ -453,6 +567,9 @@ In social sciences, there are numerous cases of whether we need to use and gener
 <a href="./posts/notes/julia/2023-05-23-RNG.html">
 <div class="listing-date">
 May 22, 2023
+</div>
+<div class="listing-reading-time">
+2 min
 </div>
 </a>
 </div>
@@ -469,6 +586,19 @@ Inverse Transform Sampling
 <div class="listing-subtitle">
 
 </div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Julia'); return false;">
+Julia
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('programming language'); return false;">
+programming language
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('numerical analysis'); return false;">
+numerical analysis
+</div>
+</div>
+<a href="./posts/notes/julia/2023-05-23-inv.html">
 <div class="listing-description">
 Julia provides <code>rand()</code> and <code>randn()</code> to generate random…
 </div>
@@ -478,6 +608,9 @@ Julia provides <code>rand()</code> and <code>randn()</code> to generate random�
 <a href="./posts/notes/julia/2023-05-23-inv.html">
 <div class="listing-date">
 May 22, 2023
+</div>
+<div class="listing-reading-time">
+4 min
 </div>
 </a>
 </div>
@@ -494,6 +627,16 @@ May 22, 2023
 <div class="listing-subtitle">
 
 </div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
+R
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('programming language'); return false;">
+programming language
+</div>
+</div>
+<a href="./posts/notes/R/2023-05-14-first-R/index.html">
 <div class="listing-description">
 R is a programming language for statistical computing and graphics supported by the R Core Team and the R Foundation for Statistical Computing. Created by statisticians Ross…<sup></sup>
 </div>
@@ -503,6 +646,9 @@ R is a programming language for statistical computing and graphics supported by 
 <a href="./posts/notes/R/2023-05-14-first-R/index.html">
 <div class="listing-date">
 May 14, 2023
+</div>
+<div class="listing-reading-time">
+1 min
 </div>
 </a>
 </div>
@@ -519,6 +665,16 @@ May 14, 2023
 <div class="listing-subtitle">
 
 </div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('polisci'); return false;">
+polisci
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('foreign policy'); return false;">
+foreign policy
+</div>
+</div>
+<a href="./posts/notes/foreign policy/2023-03-24-OBM.html">
 <div class="listing-description">
 OBM 認為組織內部的決策制定乃至執行是被分割的，而非單一行為者強調決策制定和執行，尤其是執行環節的重要性。可以發現 RAM 較不注重政策執行的環節，但同 OBM 一樣重視政策制定。
 </div>
@@ -528,6 +684,9 @@ OBM 認為組織內部的決策制定乃至執行是被分割的，而非單一�
 <a href="./posts/notes/foreign policy/2023-03-24-OBM.html">
 <div class="listing-date">
 Mar 24, 2023
+</div>
+<div class="listing-reading-time">
+1 min
 </div>
 </a>
 </div>
@@ -544,6 +703,16 @@ Mar 24, 2023
 <div class="listing-subtitle">
 
 </div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('polisci'); return false;">
+polisci
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('foreign policy'); return false;">
+foreign policy
+</div>
+</div>
+<a href="./posts/notes/foreign policy/2023-03-10-RAM.html">
 <div class="listing-description">
 不同的學者對於政策(policy)有不同的定義，但基本上外交政策的概念可以被描述為：
 </div>
@@ -553,6 +722,9 @@ Mar 24, 2023
 <a href="./posts/notes/foreign policy/2023-03-10-RAM.html">
 <div class="listing-date">
 Mar 10, 2023
+</div>
+<div class="listing-reading-time">
+2 min
 </div>
 </a>
 </div>
