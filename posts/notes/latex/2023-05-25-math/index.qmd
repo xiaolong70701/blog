@@ -1,0 +1,308 @@
+---
+title: "LaTeX 數學排版"
+date: "2023-05-24"
+categories: [LaTeX, programming language]
+---
+
+為何要學數學排版，主要原因在於當我們使用 Word 排版時常常會達不到意想的效果，且 Word 內建的 $\LaTeX$ 不太友善；由於 $\LaTeX$ 是針對專業數學所設計的排版軟體，因此透過 $\TeX$ 具有的數學排版系統能夠達到最佳效果。
+
+## 數學排版的起手式
+
+在使用之前，我們必須使用`amsmath`與`amssymb`這兩個套件，才能夠使用一些特殊的數學指令。$\LaTeX$ 中，進入數學模式的方式有兩種，第一種是行內的數學模式，即`$(數學指令)$`；另一種方式為在文件內置中、類似於方程式的模式，方式為
+```{tex}
+$$
+(數學指令)
+$$
+```
+或
+```{tex}
+\[
+(數學指令)
+\]
+```
+
+以下會針對常用的符號與指令進行簡略的介紹，關於更多的指令請參閱[這份文件](https://www.cmor-faculty.rice.edu/~heinken/latex/symbols.pdf)。
+
+### 希臘字母
+
+
+| 字母 | 指令 |  字母   | 指令 |
+| -------- | -------- | --- | -------- |
+| $\alpha A$     | `\alpha A`     |  $\nu N$   | `\nu N`     |
+| $\beta B$     | `\beta B`     |  $\xi \Xi$   | `\xi \Xi`     |
+| $\gamma \Gamma$     | `\gamma \Gamma`     |   $o O$  | `o O`     |
+| $\delta \Delta$     | `\delta \Delta`     |   $\pi \Pi$  | `\pi \Pi`     |
+| $\epsilon \varepsilon E$     | `\epsilon \varepsilon E`     |  $\rho \varrho P$   | `\rho \varrho P`     |
+| $\zeta Z$     | `\zeta Z`     |  $\sigma \Sigma$   | `\sigma \Sigma`     |
+| $\eta H$     | `\eta H`     |  $\tau T$   | `\tau T`     |
+| $\theta \vartheta \Theta$     | `\theta \vartheta \Theta`     |   $\upsilon \Upsilon$  | `\upsilon \Upsilon`     |
+| $\iota I$     | `\iota I`     |   $\phi \varphi \Phi$  | `\phi \varphi \Phi`     |
+| $\kappa K$     | `\kappa K`     |   $\chi X$  | `\chi X`     |
+| $\lambda \Lambda$     | `\lambda \Lambda`     |   $\psi \Psi$  | `\psi \Psi`     |
+| $\mu M$     | `\mu M`     |   $\omega \Omega$  | `\omega \Omega`     |
+
+
+### 特殊形式
+
+所謂特殊形式，以統計學而言，一般來說母體平均值我們念作 bar $X$，寫法就是在 $X$ 上面畫上一槓；或是樣本估計值我們念作 hat $x，寫法則是在 $x$ 上面畫上一個倒 v,但是要如何呈現呢？
+
+| 語法 | 效果 | 語法  | 效果  | 語法| 效果|
+|---|---|---|---|---|---|
+| `\bar{x}` | $\bar{x}$ | `\acute{\eta}`  | $\acute{\eta}$  | `\check{a}`| $\check{a}$|
+| `\grave{\eta}` | $\grave{\eta}$ | `\breve{a}`  | $\breve{a}$  | `\ddot{y}`| $\ddot{y}$|
+| `\dot{x}` | $\dot{x}$ | `\hat{x}`  | $\hat{x}$  | `\tilde{\theta}`| $\tilde{\theta}$ |
+| `\vec{a}` | $\vec{a}$ | `\overline{x}`  | $\overline{x}$  | | |
+
+
+### 運算符號
+
+| 語法 | 效果 | 語法  | 效果  | 語法| 效果|
+|---|---|---|---|---|---|
+| `+` | $+$ | `\pm`  | $\pm$  | `\geq`| $\geq$|
+| `-` | $-$ | `\mp`  | $\mp$  | `\leq`| $\leq$|
+| `*` 或 `\times` | $*$ 或 $\times$ | `\cdot`  | $\cdot$  | `\prec`| $\prec$ |
+| `/` | $/$ | `\cdots`  | $\cdots$  | `\succ` | $\succ$ |
+
+### 示例：一元二次方程式的公式解
+
+我們利用一元二次方程式的公式解來做說明，作為台灣的學生，能夠朗朗上口地背誦出「**2a分之負b正負根號b平方減4ac**」想必不是一件困難的事，那麼要如何用 $\LaTeX$ 表達呢？
+
+$$
+x = \frac{-b\pm\sqrt{b^2 - 4ac}}{2a}
+$$
+
+分數的部分我們使用`\frac{}{}`來表示，第一個括號裡面放分子，第二個括號裡面放分母。正負我們用`\pm`，根號用`\sqrt{}`。程式碼如下：
+```{latex}
+x = \frac{-b\pm\sqrt{b^{2} - 4ac}}{2a}
+```
+
+基本上只要你能夠想得到的數學方程式、公式都可以用 $\LaTeX$ 表達。
+
+$$
+f(x)=\lim _{\Delta h \rightarrow 0} \frac{f(x)-f(x-\Delta h)}{\Delta h}
+$$
+
+$$
+\int_{-2}^2 x \sin ^4(x)=0
+$$
+
+## 實例演練
+
+以下我們就透過一些簡單的例子來練習在 $\LaTeX$ 中如何表達這些數學符號與公式。
+
+
+### 數學式編號
+
+而我們也可以使用`equation`環境，將數學公式進行編號，例如
+$$
+\begin{equation}
+E = mc^2
+\end{equation}
+$$
+
+```{tex}
+\begin{equation}
+E = mc^{2}
+\end{equation}
+```
+
+### 數學式對齊
+
+利用`align`與`align*`這兩個環境，可將數學公式對齊。前者係帶有編號的模式，後者則無，在使用上必須注意。
+$$
+\begin{align*} 
+2x - 5y &=  8 \\ 
+3x + 9y &=  -12
+\end{align*}
+$$
+
+程式碼如下：
+```{tex}
+\begin{align*} 
+2x - 5y &=  8 \\ 
+3x + 9y &=  -12
+\end{align*}
+```
+注意到`&`必須放在欲對齊之處。或是來看另一個例子：
+$$
+\begin{align*}
+x&=y           &  w &=z              &  a&=b+c\\
+2x&=-y         &  3w&=\frac{1}{2}z   &  a&=b\\
+-4 + 5x&=2+y   &  w+2&=-1+w          &  ab&=cb
+\end{align*}
+$$
+
+```{tex}
+\begin{align*}
+x&=y           &  w &=z              &  a&=b+c\\
+2x&=-y         &  3w&=\frac{1}{2}z   &  a&=b\\
+-4 + 5x&=2+y   &  w+2&=-1+w          &  ab&=cb
+\end{align*}
+```
+
+### 矩陣
+
+
+$$
+\begin{matrix}
+1 & 2 & 3\\
+a & b & c
+\end{matrix}
+\begin{pmatrix}
+1 & 2 & 3\\
+a & b & c
+\end{pmatrix}
+\begin{bmatrix}
+1 & 2 & 3\\
+a & b & c
+\end{bmatrix}
+\begin{Bmatrix}
+1 & 2 & 3\\
+a & b & c
+\end{Bmatrix}
+\begin{vmatrix}
+1 & 2 & 3\\
+a & b & c
+\end{vmatrix}
+\begin{Vmatrix}
+1 & 2 & 3\\
+a & b & c
+\end{Vmatrix}
+$$
+程式碼參考：
+
+```{tex}
+\begin{matrix}
+1 & 2 & 3\\
+a & b & c
+\end{matrix}
+
+\begin{pmatrix}
+1 & 2 & 3\\
+a & b & c
+\end{pmatrix}
+
+\begin{bmatrix}
+1 & 2 & 3\\
+a & b & c
+\end{bmatrix}
+
+\begin{Bmatrix}
+1 & 2 & 3\\
+a & b & c
+\end{Bmatrix}
+
+\begin{vmatrix}
+1 & 2 & 3\\
+a & b & c
+\end{vmatrix}
+
+\begin{Vmatrix}
+1 & 2 & 3\\
+a & b & c
+\end{Vmatrix}
+```
+如果想要在行內顯示矩陣，例如$\big(\begin{smallmatrix}
+  a & b\\
+  c & d
+\end{smallmatrix}\big)$，可以使用
+```{tex}
+$\big(\begin{smallmatrix}
+  a & b\\
+  c & d
+\end{smallmatrix}\big)$ 
+```
+
+### 聯立方程式
+
+假設我們有一個公正的六面骰子，擲到每個面的機率均為$\frac{1}{6}$，因此可以令該骰子為 $X$，其機率質量函數(probability  mass function, PMF)可以寫成： 
+
+$$
+f(x) = 
+\begin{cases}
+\frac{1}{6}, \quad \text{if }x=1\\
+\frac{1}{6}, \quad \text{if }x=2\\
+\frac{1}{6}, \quad \text{if }x=3\\
+\frac{1}{6}, \quad \text{if }x=4\\
+\frac{1}{6}, \quad \text{if }x=5\\
+\frac{1}{6}, \quad \text{if }x=6\\
+\end{cases}
+$$
+
+程式碼為
+```{tex}
+f(x) = 
+\begin{cases}
+\frac{1}{6}, \quad \text{if }x=1\\
+\frac{1}{6}, \quad \text{if }x=2\\
+\frac{1}{6}, \quad \text{if }x=3\\
+\frac{1}{6}, \quad \text{if }x=4\\
+\frac{1}{6}, \quad \text{if }x=5\\
+\frac{1}{6}, \quad \text{if }x=6\\
+\end{cases}
+```
+
+其中`\quad`為空格，在 $\LaTeX$ 中有以下幾種方式可以產生空格
+
+
+
+| 指令 | 距離 |指令 | 距離 |
+| -------- | -------- |-------- | -------- |
+| ` `     | 一般的空格     | `\endspace`| 0.5em |
+| `\,`     | 小|`\quad` | 1em |
+| `\!`     | 負     |`\qquad` | 2em |
+| `\:`     | 中     |`hspace{(數字)em}`| 自行調整em寬度 |
+| `\;`     | 大     |`hfill` | 補滿空間 |
+
+
+### 括號
+
+括號的使用方式如下表所示：
+
+
+
+| 類型 | 語法 | 效果 | 類型 | 語法 | 效果 |
+| -------- | -------- | -------- | -------- | -------- | -------- |
+| 圓括號     | `(x+y)`     | $(x+y)$     | 角括號  | `\langle x+y \langle` | $\langle x+y \rangle$ |
+| 方括號     | `[x+y]`     | $[x+y]$      | pipe  | `\|x+y\|` | $\| x+y \|$  |
+| 花括號     | `\{x+y\}`     | $\{x+y\}$      | 雙 pipe  | `\|\|x+y\|\|` | $\|\|x+y\|\|$  |
+
+例如國際貿易理論中參考物理學的貿易引力模型：
+$$
+X_{i j}=K \frac{\left(Y_i\right)^a\left(Y_j\right)^b}{\left(1+e D_{i j}\right)^f}
+$$
+程式碼如下：
+
+```{tex}
+$$
+X_{i j}=K \frac{\left(Y_i\right)^a\left(Y_j\right)^b}{\left(1+e D_{i j}\right)^f}
+$$
+```
+
+
+:::info
+**小試身手**
+請用`TeX`復刻以下的圖片。[^1]
+![](https://i.imgur.com/sCufibA.png)
+:::spoiler 查看參考答案
+```{tex}
+$$
+\int_{\mathcal{C}} f(\mathbf{r}) d s=\int_a^b f(\mathbf{r}(t))\left|\mathbf{r}^{\prime}(t)\right| dt
+$$
+```
+:::
+
+## 數學字體的設定
+
+我們常常看到很多學術論文使用的字體會像是這樣：
+
+![](https://i.imgur.com/9Bo3hNZ.png)
+
+我們稱之為 [Oldstyle Figures](https://www.fonts.com/content/learning/fontology/level-3/numbers/oldstyle-figures)。這邊我以個人最常使用的字體`Linux Libertine O`為例，首先在前言區我們要加上`\usepackage{mathspec}`才可以將數學字體分開設定，接著就可以仿造我們設定中文字體的步驟，將該字體設定在無論數學模式或是一般的文字模式都可以顯示為 Oldstyle：
+```{tex}
+\setmainfont[Mapping=tex-text]{Linux Libertine O}
+\setmathfont(Digits,Greek,Latin)[Numbers=OldStyle]{Linux Libertine O}
+```
+
+
+[^1]:參考自[Line Integral](https://en.wikipedia.org/wiki/Line_integral)

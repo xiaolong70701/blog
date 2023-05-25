@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2023-05-24">
 
-<title>Yueswater Blog - Network Effect</title>
+<title>Yueswater Blog - LaTeX 數學排版</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -85,17 +85,13 @@ cookieconsent.run({
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Yueswater Blog - Network Effect">
+<meta property="og:title" content="Yueswater Blog - LaTeX 數學排版">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://yueswater.blog/posts/notes/SNA/2023-05-24-network-effect/fig1.png">
+<meta property="og:image" content="https://i.imgur.com/sCufibA.png">
 <meta property="og:site-name" content="Yueswater Blog">
-<meta property="og:image:height" content="674">
-<meta property="og:image:width" content="1012">
-<meta name="twitter:title" content="Yueswater Blog - Network Effect">
+<meta name="twitter:title" content="Yueswater Blog - LaTeX 數學排版">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://yueswater.blog/posts/notes/SNA/2023-05-24-network-effect/fig1.png">
-<meta name="twitter:image-height" content="674">
-<meta name="twitter:image-width" content="1012">
+<meta name="twitter:image" content="https://i.imgur.com/sCufibA.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -161,9 +157,10 @@ cookieconsent.run({
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Network Effect</h1>
+      <h1 class="title">LaTeX 數學排版</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">SNA</div>
+                <div class="quarto-category">LaTeX</div>
+                <div class="quarto-category">programming language</div>
               </div>
                   </div>
   </div>
@@ -193,116 +190,495 @@ cookieconsent.run({
 
 
 
-<p>Here is a brief review of the theory of information cascade. There are two main ways that affect how an individual makes decisions:</p>
-<ul>
-<li>Information effect: only care about the process that influences individual decision-making</li>
-<li>Direct benefit effect or network effect: care both the process that influences individual decision-making and benefits after the decisions</li>
-</ul>
-<section id="the-economy-without-network-effects" class="level2">
-<h2 class="anchored" data-anchor-id="the-economy-without-network-effects">The Economy without Network Effects</h2>
-<p>Consider a big market of a specific good, where there are numerous consumers and producers. Each one of them has a little ability to influence how the market works.</p>
-<p>Let <span class="math inline">\(x\)</span> be a fraction of the population, where <span class="math inline">\(x \in \mathbb{R}\)</span> and <span class="math inline">\(x \in [0, 1]\)</span>. Suppose each consumer wants at most one unit of the good; each consumer has a personal intrinsic interest in obtaining the good that can vary from one consumer to another. Here we employ the idea of reservation price to quantify their intrinsic interests.</p>
-<section id="reservation-price" class="level3">
-<h3 class="anchored" data-anchor-id="reservation-price">Reservation Price</h3>
-<p>We use <span class="math inline">\(r(x)\)</span> to denote the reservation price of consumer <span class="math inline">\(x\)</span> and we will assume that this function <span class="math inline">\(r(\cdot)\)</span> is continuous. <span class="math inline">\(r(x)\)</span> has the following assumptions:</p>
-<ul>
-<li><span class="math inline">\(r(x)\)</span> is strictly decreasing, which means there is no same price in terms of each consumer.</li>
-<li><span class="math inline">\(r(x_i) &gt; r(x_j),\; \forall i &lt; j\)</span>.</li>
-<li><span class="math inline">\(r(\cdot)^{-1}\)</span> is called demand function.</li>
-</ul>
-<p><img src="fig1.png" class="img-fluid"></p>
+<p>為何要學數學排版，主要原因在於當我們使用 Word 排版時常常會達不到意想的效果，且 Word 內建的 <span class="math inline">\(\LaTeX\)</span> 不太友善；由於 <span class="math inline">\(\LaTeX\)</span> 是針對專業數學所設計的排版軟體，因此透過 <span class="math inline">\(\TeX\)</span> 具有的數學排版系統能夠達到最佳效果。</p>
+<section id="數學排版的起手式" class="level2">
+<h2 class="anchored" data-anchor-id="數學排版的起手式">數學排版的起手式</h2>
+<p>在使用之前，我們必須使用<code>amsmath</code>與<code>amssymb</code>這兩個套件，才能夠使用一些特殊的數學指令。<span class="math inline">\(\LaTeX\)</span> 中，進入數學模式的方式有兩種，第一種是行內的數學模式，即<code>$(數學指令)$</code>；另一種方式為在文件內置中、類似於方程式的模式，方式為</p>
+<pre class="{tex}"><code>$$
+(數學指令)
+$$</code></pre>
+<p>或</p>
+<pre class="{tex}"><code>\[
+(數學指令)
+\]</code></pre>
+<p>以下會針對常用的符號與指令進行簡略的介紹，關於更多的指令請參閱<a href="https://www.cmor-faculty.rice.edu/~heinken/latex/symbols.pdf">這份文件</a>。</p>
+<section id="希臘字母" class="level3">
+<h3 class="anchored" data-anchor-id="希臘字母">希臘字母</h3>
+<table class="table">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 29%">
+<col style="width: 11%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>字母</th>
+<th>指令</th>
+<th>字母</th>
+<th>指令</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\alpha A\)</span></td>
+<td><code>\alpha A</code></td>
+<td><span class="math inline">\(\nu N\)</span></td>
+<td><code>\nu N</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\beta B\)</span></td>
+<td><code>\beta B</code></td>
+<td><span class="math inline">\(\xi \Xi\)</span></td>
+<td><code>\xi \Xi</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\gamma \Gamma\)</span></td>
+<td><code>\gamma \Gamma</code></td>
+<td><span class="math inline">\(o O\)</span></td>
+<td><code>o O</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\delta \Delta\)</span></td>
+<td><code>\delta \Delta</code></td>
+<td><span class="math inline">\(\pi \Pi\)</span></td>
+<td><code>\pi \Pi</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\epsilon \varepsilon E\)</span></td>
+<td><code>\epsilon \varepsilon E</code></td>
+<td><span class="math inline">\(\rho \varrho P\)</span></td>
+<td><code>\rho \varrho P</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\zeta Z\)</span></td>
+<td><code>\zeta Z</code></td>
+<td><span class="math inline">\(\sigma \Sigma\)</span></td>
+<td><code>\sigma \Sigma</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\eta H\)</span></td>
+<td><code>\eta H</code></td>
+<td><span class="math inline">\(\tau T\)</span></td>
+<td><code>\tau T</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\theta \vartheta \Theta\)</span></td>
+<td><code>\theta \vartheta \Theta</code></td>
+<td><span class="math inline">\(\upsilon \Upsilon\)</span></td>
+<td><code>\upsilon \Upsilon</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\iota I\)</span></td>
+<td><code>\iota I</code></td>
+<td><span class="math inline">\(\phi \varphi \Phi\)</span></td>
+<td><code>\phi \varphi \Phi</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\kappa K\)</span></td>
+<td><code>\kappa K</code></td>
+<td><span class="math inline">\(\chi X\)</span></td>
+<td><code>\chi X</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\lambda \Lambda\)</span></td>
+<td><code>\lambda \Lambda</code></td>
+<td><span class="math inline">\(\psi \Psi\)</span></td>
+<td><code>\psi \Psi</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mu M\)</span></td>
+<td><code>\mu M</code></td>
+<td><span class="math inline">\(\omega \Omega\)</span></td>
+<td><code>\omega \Omega</code></td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="product-price-and-cost" class="level3">
-<h3 class="anchored" data-anchor-id="product-price-and-cost">Product Price and Cost</h3>
-<p>Now we shift our focus to the price of the product. Let <span class="math inline">\(p\)</span> be the price of the product. Intuitively, consumer <span class="math inline">\(x\)</span> would buy one if <span class="math inline">\(r(x) &gt; p\)</span>. If <span class="math inline">\(p &gt; r(0)\)</span>, there would not be any consumers buying the product; if <span class="math inline">\(p &lt; r(1)\)</span>, all the consumers would buy the product. That is,</p>
-<p>Let’s suppose that this good can be produced at a constant cost of <span class="math inline">\(p^*\)</span> per unit. In aggregate, the producers will be willing to supply any amount of the good at a price of <span class="math inline">\(p^*\)</span> per unit, and none of the good at any price below <span class="math inline">\(p^*\)</span>.</p>
+<section id="特殊形式" class="level3">
+<h3 class="anchored" data-anchor-id="特殊形式">特殊形式</h3>
+<p>所謂特殊形式，以統計學而言，一般來說母體平均值我們念作 bar <span class="math inline">\(X\)</span>，寫法就是在 <span class="math inline">\(X\)</span> 上面畫上一槓；或是樣本估計值我們念作 hat $x，寫法則是在 <span class="math inline">\(x\)</span> 上面畫上一個倒 v,但是要如何呈現呢？</p>
+<table class="table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>語法</th>
+<th>效果</th>
+<th>語法</th>
+<th>效果</th>
+<th>語法</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\bar{x}</code></td>
+<td><span class="math inline">\(\bar{x}\)</span></td>
+<td><code>\acute{\eta}</code></td>
+<td><span class="math inline">\(\acute{\eta}\)</span></td>
+<td><code>\check{a}</code></td>
+<td><span class="math inline">\(\check{a}\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\grave{\eta}</code></td>
+<td><span class="math inline">\(\grave{\eta}\)</span></td>
+<td><code>\breve{a}</code></td>
+<td><span class="math inline">\(\breve{a}\)</span></td>
+<td><code>\ddot{y}</code></td>
+<td><span class="math inline">\(\ddot{y}\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\dot{x}</code></td>
+<td><span class="math inline">\(\dot{x}\)</span></td>
+<td><code>\hat{x}</code></td>
+<td><span class="math inline">\(\hat{x}\)</span></td>
+<td><code>\tilde{\theta}</code></td>
+<td><span class="math inline">\(\tilde{\theta}\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\vec{a}</code></td>
+<td><span class="math inline">\(\vec{a}\)</span></td>
+<td><code>\overline{x}</code></td>
+<td><span class="math inline">\(\overline{x}\)</span></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="equilibrium-quantity-and-social-optimal" class="level3">
-<h3 class="anchored" data-anchor-id="equilibrium-quantity-and-social-optimal">Equilibrium Quantity and Social Optimal</h3>
-<p>If there exist a <span class="math inline">\(x^*\)</span> such that <span class="math inline">\(r(x^*) = p^*\)</span>, then we call this <span class="math inline">\(x^*\)</span> equilibrium quantity.</p>
-<p><img src="fig2.png" class="img-fluid"></p>
-<p>If society were going to produce enough of the good to give it to an <span class="math inline">\(x\)</span> fraction of the population, then social welfare would be maximized by giving it to all consumers between <span class="math inline">\(0\)</span> and <span class="math inline">\(x\)</span>, since they correspond to the <span class="math inline">\(x\)</span> fraction of the population that values the good the most.</p>
-<p>The welfare of each consumer can be represented as <span class="math inline">\(w(x)\)</span>, where</p>
+<section id="運算符號" class="level3">
+<h3 class="anchored" data-anchor-id="運算符號">運算符號</h3>
+<table class="table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>語法</th>
+<th>效果</th>
+<th>語法</th>
+<th>效果</th>
+<th>語法</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>+</code></td>
+<td><span class="math inline">\(+\)</span></td>
+<td><code>\pm</code></td>
+<td><span class="math inline">\(\pm\)</span></td>
+<td><code>\geq</code></td>
+<td><span class="math inline">\(\geq\)</span></td>
+</tr>
+<tr class="even">
+<td><code>-</code></td>
+<td><span class="math inline">\(-\)</span></td>
+<td><code>\mp</code></td>
+<td><span class="math inline">\(\mp\)</span></td>
+<td><code>\leq</code></td>
+<td><span class="math inline">\(\leq\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>*</code> 或 <code>\times</code></td>
+<td><span class="math inline">\(*\)</span> 或 <span class="math inline">\(\times\)</span></td>
+<td><code>\cdot</code></td>
+<td><span class="math inline">\(\cdot\)</span></td>
+<td><code>\prec</code></td>
+<td><span class="math inline">\(\prec\)</span></td>
+</tr>
+<tr class="even">
+<td><code>/</code></td>
+<td><span class="math inline">\(/\)</span></td>
+<td><code>\cdots</code></td>
+<td><span class="math inline">\(\cdots\)</span></td>
+<td><code>\succ</code></td>
+<td><span class="math inline">\(\succ\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="示例一元二次方程式的公式解" class="level3">
+<h3 class="anchored" data-anchor-id="示例一元二次方程式的公式解">示例：一元二次方程式的公式解</h3>
+<p>我們利用一元二次方程式的公式解來做說明，作為台灣的學生，能夠朗朗上口地背誦出「<strong>2a分之負b正負根號b平方減4ac</strong>」想必不是一件困難的事，那麼要如何用 <span class="math inline">\(\LaTeX\)</span> 表達呢？</p>
 <p><span class="math display">\[
-w(x) =
-\begin{cases}
-r(x) - p,&amp; \; x\text{ buy the product; }\\
-0, &amp;\; x\text{ does't buy the product.}
-\end{cases}
-\]</span> Therefore, the social welfare can be calculated by <span class="math display">\[
-S = \int_0^1 w(x)dx.
-\]</span> Hence our target is to maximise the social welfare, i.e.,</p>
-<p><span class="math display">\[
-\max S = \max \int_0^1 w(x)dx.
-\]</span> ## The Economy with Network Effects</p>
-<p>Based on the previous settings, now suppose there is a <span class="math inline">\(z\)</span> fraction of population using the product, which give them benefit with <span class="math inline">\(f(z)\)</span>, and <span class="math inline">\(z\)</span> is known. The reservation price of consumer <span class="math inline">\(x\)</span> is equal to <span class="math inline">\(r(x)f(z)\)</span>, where <span class="math inline">\(r(x)\)</span> as before is the intrinsic interest of consumer <span class="math inline">\(x\)</span> in the good, and <span class="math inline">\(f(z)\)</span> measures the benefit to each consumer from having a <span class="math inline">\(z\)</span> fraction of the population use the good. Note that <span class="math inline">\(f(\cdot)\)</span> is increasing in <span class="math inline">\(z\)</span>, which controls how much more valuable a product is when more people are using it.</p>
-<p>We will assume that <span class="math inline">\(f(0) = 0\)</span>: if no one has purchased the good no one is willing to pay anything for the good. We will also assume that f is a continuous function. Finally, to make the discussion a bit simpler, we will assume that <span class="math inline">\(r(1) = 0\)</span>. Suppose that the price of the good is <span class="math inline">\(p^*\)</span>, and that consumer <span class="math inline">\(x\)</span> expects a <span class="math inline">\(z\)</span> fraction of the population will use the good. Then <span class="math inline">\(x\)</span> will want to purchase provided that</p>
-<p><span class="math display">\[
-r (x)f (z) &gt; p^*.
-\]</span> ### Self-fulfilling Expectations Equilibrium</p>
-<p>If everyone expects that a <span class="math inline">\(z\)</span> fraction of the population will purchase the product, then this expectation is in turn fulfilled by people’s behaviour. Consider a value of <span class="math inline">\(z\)</span> strictly between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>. If exactly a <span class="math inline">\(z\)</span> fraction of the population purchases the good, which set of individuals does this correspond to?</p>
-<p>The set of purchasers will be precisely the set of consumers between <span class="math inline">\(0\)</span> and <span class="math inline">\(z\)</span>. In order for exactly this set of consumers, and no one else, to purchase the good, we must have</p>
-<p><span class="math display">\[
-p^* = r (z)f (z)
+x = \frac{-b\pm\sqrt{b^2 - 4ac}}{2a}
 \]</span></p>
-<p>If the price <span class="math inline">\(p^* &gt; 0\)</span> together with the quantity z (strictly between 0 and 1) form a self-fulfilling expectations equilibrium, then <span class="math inline">\(p^* = r (z)f (z)\)</span>.</p>
-<p>Consider an example in which <span class="math inline">\(r(x) = 1 - z\)</span> and <span class="math inline">\(f(z) = z\)</span>, then <span class="math inline">\(r(z)f(z) = z(1-z)\)</span>.</p>
-<p><img src="fig3.png" class="img-fluid"></p>
-<p>To find the maximumn of the reservation price, we then take the first derivative of the above equation:</p>
+<p>分數的部分我們使用<code>\frac{}{}</code>來表示，第一個括號裡面放分子，第二個括號裡面放分母。正負我們用<code>\pm</code>，根號用<code>\sqrt{}</code>。程式碼如下：</p>
+<pre class="{latex}"><code>x = \frac{-b\pm\sqrt{b^{2} - 4ac}}{2a}</code></pre>
+<p>基本上只要你能夠想得到的數學方程式、公式都可以用 <span class="math inline">\(\LaTeX\)</span> 表達。</p>
 <p><span class="math display">\[
-\frac{\partial p^*}{\partial z} = 1 - 2z \overset{*}{=} 0 \Rightarrow z = \frac{1}{2}.
+f(x)=\lim _{\Delta h \rightarrow 0} \frac{f(x)-f(x-\Delta h)}{\Delta h}
 \]</span></p>
-<p>Hence, the maximum reservation price is <span class="math inline">\(\frac{1}{4}\)</span>, occurring at <span class="math inline">\(z = \frac{1}{2}\)</span>.</p>
-<ul>
-<li><p>If <span class="math inline">\(p^* &gt; \frac{1}{4}\)</span> , then there is no solution to <span class="math inline">\(p^* =r(z)f(z) = z(1-z)\)</span>, and so the only equilibrium is when <span class="math inline">\(z = 0\)</span>. This corresponds to a good that is simply too expensive, and so the only equilibrium is when everyone expects it not to be used.</p></li>
-<li><p>When <span class="math inline">\(0 &lt; p^* &lt; \frac{1}{4}\)</span>, there are two solutions to <span class="math inline">\(p^* = z(1-z)\)</span>, name these z0 and z00. Thus there are three possible equilibria in this case: when <span class="math inline">\(z\)</span> is equal to any of 0, <span class="math inline">\(z'\)</span>, or <span class="math inline">\(z''\)</span>. For each of these three values of <span class="math inline">\(z\)</span>, if people expect exactly a <span class="math inline">\(z\)</span> fraction of the population to buy the good, then precisely the top <span class="math inline">\(z\)</span> fraction of the population will do so.</p></li>
-</ul>
-</section>
-<section id="analysis-of-the-equilibriums" class="level3">
-<h3 class="anchored" data-anchor-id="analysis-of-the-equilibriums">Analysis of the Equilibriums</h3>
-<p>Suppose <span class="math inline">\(z\)</span> is not <span class="math inline">\(0\)</span>, <span class="math inline">\(z'\)</span> or <span class="math inline">\(z''\)</span>, then</p>
-<ul>
-<li>if <span class="math inline">\(0 &lt; z &lt; z'\)</span>, then <span class="math inline">\(z\)</span> would move to <span class="math inline">\(0\)</span> (decreasing)</li>
-<li>if <span class="math inline">\(z' &lt; z &lt; z''\)</span>, then <span class="math inline">\(z\)</span> would move to <span class="math inline">\(z''\)</span> (increasing)</li>
-<li>if <span class="math inline">\(z &gt; z'\)</span>, then <span class="math inline">\(z\)</span> would move to <span class="math inline">\(z''\)</span> (decreasing)</li>
-</ul>
-<p>The analysis above show that <span class="math inline">\(z''\)</span> has a strong stability property. Thus, <span class="math inline">\(z'\)</span> is not just an unstable equilibrium; it is really a critical point, or a tipping point, in the success of the good. The value <span class="math inline">\(z'\)</span> is the hump the firm must get over in order to succeed.</p>
-<p>The high equilibrium <span class="math inline">\(z''\)</span> would move right, so if the firm is able to get past the critical point, the eventual size of its user population <span class="math inline">\(z''\)</span> would be even larger.</p>
-</section>
-<section id="a-dynamic-view-of-the-market" class="level3">
-<h3 class="anchored" data-anchor-id="a-dynamic-view-of-the-market">A Dynamic View of the Market</h3>
-<p>f everyone believes a z fraction of the population will use the product, then consumer x | based on this belief | will want to purchase if <span class="math inline">\(r(x)f(z) &gt; p^*\)</span>.</p>
-<p>If anyone at all wants to purchase, the set of people who will purchase will be between 0 and ^z, where ^z solves the equation <span class="math inline">\(r(\hat{z})f(z) = p^*\)</span>. Then we have <span class="math display">\[
-\hat{z} = r^{-1}\left(\frac{p^*}{f(z)}\right).
-\]</span> We can only use this equation when there is in fact a value of <span class="math inline">\(\hat{z}\)</span> that solves the equation above. Otherwise, the outcome is simply that no one purchases.</p>
-<p>In general, we can define a function <span class="math inline">\(g(\cdot)\)</span> that gives the outcome <span class="math inline">\(\hat{z}\)</span> in terms of the shared expectation <span class="math inline">\(z\)</span> as follows. When the shared expectation is <span class="math inline">\(z \geq 0\)</span>, the outcome is <span class="math inline">\(\hat{z} = g(z)\)</span>, where</p>
 <p><span class="math display">\[
-g(\hat{z}) =
-\begin{cases}
-r^{-1}\left(\frac{p^*}{f(z)}\right),&amp; \; \frac{p^*}{f(z)} \geq r(0)\\
-0, &amp;\; \text{o.w.}
-\end{cases}
-\]</span> Continue the example. Suppose <span class="math inline">\(r(x) = 1 - x\)</span>, and <span class="math inline">\(f(z) = z\)</span>. Then <span class="math inline">\(r^{-1}(x) = 1 - x\)</span>, and <span class="math inline">\(z(0) = 1\)</span>, and so the condition <span class="math inline">\(\frac{p^*}{f(z)} \leq r(0)\)</span> reduces to <span class="math inline">\(z \geq p^*\)</span>. Thus,</p>
+\int_{-2}^2 x \sin ^4(x)=0
+\]</span></p>
+</section>
+</section>
+<section id="實例演練" class="level2">
+<h2 class="anchored" data-anchor-id="實例演練">實例演練</h2>
+<p>以下我們就透過一些簡單的例子來練習在 <span class="math inline">\(\LaTeX\)</span> 中如何表達這些數學符號與公式。</p>
+<section id="數學式編號" class="level3">
+<h3 class="anchored" data-anchor-id="數學式編號">數學式編號</h3>
+<p>而我們也可以使用<code>equation</code>環境，將數學公式進行編號，例如 <span class="math display">\[
+\begin{equation}
+E = mc^2
+\end{equation}
+\]</span></p>
+<pre class="{tex}"><code>\begin{equation}
+E = mc^{2}
+\end{equation}</code></pre>
+</section>
+<section id="數學式對齊" class="level3">
+<h3 class="anchored" data-anchor-id="數學式對齊">數學式對齊</h3>
+<p>利用<code>align</code>與<code>align*</code>這兩個環境，可將數學公式對齊。前者係帶有編號的模式，後者則無，在使用上必須注意。 <span class="math display">\[
+\begin{align*}
+2x - 5y &amp;=  8 \\
+3x + 9y &amp;=  -12
+\end{align*}
+\]</span></p>
+<p>程式碼如下：</p>
+<pre class="{tex}"><code>\begin{align*} 
+2x - 5y &amp;=  8 \\ 
+3x + 9y &amp;=  -12
+\end{align*}</code></pre>
+<p>注意到<code>&amp;</code>必須放在欲對齊之處。或是來看另一個例子： <span class="math display">\[
+\begin{align*}
+x&amp;=y           &amp;  w &amp;=z              &amp;  a&amp;=b+c\\
+2x&amp;=-y         &amp;  3w&amp;=\frac{1}{2}z   &amp;  a&amp;=b\\
+-4 + 5x&amp;=2+y   &amp;  w+2&amp;=-1+w          &amp;  ab&amp;=cb
+\end{align*}
+\]</span></p>
+<pre class="{tex}"><code>\begin{align*}
+x&amp;=y           &amp;  w &amp;=z              &amp;  a&amp;=b+c\\
+2x&amp;=-y         &amp;  3w&amp;=\frac{1}{2}z   &amp;  a&amp;=b\\
+-4 + 5x&amp;=2+y   &amp;  w+2&amp;=-1+w          &amp;  ab&amp;=cb
+\end{align*}</code></pre>
+</section>
+<section id="矩陣" class="level3">
+<h3 class="anchored" data-anchor-id="矩陣">矩陣</h3>
 <p><span class="math display">\[
-g(\hat{z}) =
+\begin{matrix}
+1 &amp; 2 &amp; 3\\
+a &amp; b &amp; c
+\end{matrix}
+\begin{pmatrix}
+1 &amp; 2 &amp; 3\\
+a &amp; b &amp; c
+\end{pmatrix}
+\begin{bmatrix}
+1 &amp; 2 &amp; 3\\
+a &amp; b &amp; c
+\end{bmatrix}
+\begin{Bmatrix}
+1 &amp; 2 &amp; 3\\
+a &amp; b &amp; c
+\end{Bmatrix}
+\begin{vmatrix}
+1 &amp; 2 &amp; 3\\
+a &amp; b &amp; c
+\end{vmatrix}
+\begin{Vmatrix}
+1 &amp; 2 &amp; 3\\
+a &amp; b &amp; c
+\end{Vmatrix}
+\]</span> 程式碼參考：</p>
+<pre class="{tex}"><code>\begin{matrix}
+1 &amp; 2 &amp; 3\\
+a &amp; b &amp; c
+\end{matrix}
+
+\begin{pmatrix}
+1 &amp; 2 &amp; 3\\
+a &amp; b &amp; c
+\end{pmatrix}
+
+\begin{bmatrix}
+1 &amp; 2 &amp; 3\\
+a &amp; b &amp; c
+\end{bmatrix}
+
+\begin{Bmatrix}
+1 &amp; 2 &amp; 3\\
+a &amp; b &amp; c
+\end{Bmatrix}
+
+\begin{vmatrix}
+1 &amp; 2 &amp; 3\\
+a &amp; b &amp; c
+\end{vmatrix}
+
+\begin{Vmatrix}
+1 &amp; 2 &amp; 3\\
+a &amp; b &amp; c
+\end{Vmatrix}</code></pre>
+<p>如果想要在行內顯示矩陣，例如<span class="math inline">\(\big(\begin{smallmatrix}  a &amp; b\\  c &amp; d \end{smallmatrix}\big)\)</span>，可以使用</p>
+<pre class="{tex}"><code>$\big(\begin{smallmatrix}
+  a &amp; b\\
+  c &amp; d
+\end{smallmatrix}\big)$ </code></pre>
+</section>
+<section id="聯立方程式" class="level3">
+<h3 class="anchored" data-anchor-id="聯立方程式">聯立方程式</h3>
+<p>假設我們有一個公正的六面骰子，擲到每個面的機率均為<span class="math inline">\(\frac{1}{6}\)</span>，因此可以令該骰子為 <span class="math inline">\(X\)</span>，其機率質量函數(probability mass function, PMF)可以寫成：</p>
+<p><span class="math display">\[
+f(x) =
 \begin{cases}
-1 - \frac{p^*}{z},&amp; \; \text{if } z \geq p^* \\
-0, &amp;\; \text{o.w.}
+\frac{1}{6}, \quad \text{if }x=1\\
+\frac{1}{6}, \quad \text{if }x=2\\
+\frac{1}{6}, \quad \text{if }x=3\\
+\frac{1}{6}, \quad \text{if }x=4\\
+\frac{1}{6}, \quad \text{if }x=5\\
+\frac{1}{6}, \quad \text{if }x=6\\
 \end{cases}
 \]</span></p>
-<p><img src="fig4.png" class="img-fluid"></p>
-<ul>
-<li>When the curve <span class="math inline">\(g(z)\)</span> is above the straight line, there is an upward pressure.</li>
-<li>When the curve <span class="math inline">\(g(z)\)</span> is below the straight line, there is a downward pressure.</li>
-</ul>
-<p>Furthermore, we can consider the case of whether participating the network or not, which is a better case of illustrating the dynamic behaviour. Suppose <span class="math inline">\(z\)</span> would change with time, and the time is discrete, i.e., <span class="math inline">\(t = 1,2, \cdots, T\)</span>. That is, <span class="math inline">\(z_t=g(z_{t-1})\)</span>, because <span class="math inline">\(g\)</span> is a function that maps intended buyers to actual buyers, and the actual buyers at time <span class="math inline">\(t=t-1\)</span> will be the intended buyers at time <span class="math inline">\(t=t\)</span>. Hence we can have the following graph to depict the dynamic behaviours.</p>
-<p><img src="fig5.png" class="img-fluid"></p>
+<p>程式碼為</p>
+<pre class="{tex}"><code>f(x) = 
+\begin{cases}
+\frac{1}{6}, \quad \text{if }x=1\\
+\frac{1}{6}, \quad \text{if }x=2\\
+\frac{1}{6}, \quad \text{if }x=3\\
+\frac{1}{6}, \quad \text{if }x=4\\
+\frac{1}{6}, \quad \text{if }x=5\\
+\frac{1}{6}, \quad \text{if }x=6\\
+\end{cases}</code></pre>
+<p>其中<code>\quad</code>為空格，在 <span class="math inline">\(\LaTeX\)</span> 中有以下幾種方式可以產生空格</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>指令</th>
+<th>距離</th>
+<th>指令</th>
+<th>距離</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code></code></td>
+<td>一般的空格</td>
+<td><code>\endspace</code></td>
+<td>0.5em</td>
+</tr>
+<tr class="even">
+<td><code>\,</code></td>
+<td>小</td>
+<td><code>\quad</code></td>
+<td>1em</td>
+</tr>
+<tr class="odd">
+<td><code>\!</code></td>
+<td>負</td>
+<td><code>\qquad</code></td>
+<td>2em</td>
+</tr>
+<tr class="even">
+<td><code>\:</code></td>
+<td>中</td>
+<td><code>hspace{(數字)em}</code></td>
+<td>自行調整em寬度</td>
+</tr>
+<tr class="odd">
+<td><code>\;</code></td>
+<td>大</td>
+<td><code>hfill</code></td>
+<td>補滿空間</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="括號" class="level3">
+<h3 class="anchored" data-anchor-id="括號">括號</h3>
+<p>括號的使用方式如下表所示：</p>
+<table class="table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>類型</th>
+<th>語法</th>
+<th>效果</th>
+<th>類型</th>
+<th>語法</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>圓括號</td>
+<td><code>(x+y)</code></td>
+<td><span class="math inline">\((x+y)\)</span></td>
+<td>角括號</td>
+<td><code>\langle x+y \langle</code></td>
+<td><span class="math inline">\(\langle x+y \rangle\)</span></td>
+</tr>
+<tr class="even">
+<td>方括號</td>
+<td><code>[x+y]</code></td>
+<td><span class="math inline">\([x+y]\)</span></td>
+<td>pipe</td>
+<td><code>\|x+y\|</code></td>
+<td><span class="math inline">\(\| x+y \|\)</span></td>
+</tr>
+<tr class="odd">
+<td>花括號</td>
+<td><code>\{x+y\}</code></td>
+<td><span class="math inline">\(\{x+y\}\)</span></td>
+<td>雙 pipe</td>
+<td><code>\|\|x+y\|\|</code></td>
+<td><span class="math inline">\(\|\|x+y\|\|\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>例如國際貿易理論中參考物理學的貿易引力模型： <span class="math display">\[
+X_{i j}=K \frac{\left(Y_i\right)^a\left(Y_j\right)^b}{\left(1+e D_{i j}\right)^f}
+\]</span> 程式碼如下：</p>
+<pre class="{tex}"><code>$$
+X_{i j}=K \frac{\left(Y_i\right)^a\left(Y_j\right)^b}{\left(1+e D_{i j}\right)^f}
+$$</code></pre>
+<div class="info">
+<p><strong>小試身手</strong> 請用<code>TeX</code>復刻以下的圖片。<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <img src="https://i.imgur.com/sCufibA.png" class="img-fluid"> :::spoiler 查看參考答案</p>
+<pre class="{tex}"><code>$$
+\int_{\mathcal{C}} f(\mathbf{r}) d s=\int_a^b f(\mathbf{r}(t))\left|\mathbf{r}^{\prime}(t)\right| dt
+$$</code></pre>
+</div>
+</section>
+</section>
+<section id="數學字體的設定" class="level2">
+<h2 class="anchored" data-anchor-id="數學字體的設定">數學字體的設定</h2>
+<p>我們常常看到很多學術論文使用的字體會像是這樣：</p>
+<p><img src="https://i.imgur.com/9Bo3hNZ.png" class="img-fluid"></p>
+<p>我們稱之為 <a href="https://www.fonts.com/content/learning/fontology/level-3/numbers/oldstyle-figures">Oldstyle Figures</a>。這邊我以個人最常使用的字體<code>Linux Libertine O</code>為例，首先在前言區我們要加上<code>\usepackage{mathspec}</code>才可以將數學字體分開設定，接著就可以仿造我們設定中文字體的步驟，將該字體設定在無論數學模式或是一般的文字模式都可以顯示為 Oldstyle：</p>
+<pre class="{tex}"><code>\setmainfont[Mapping=tex-text]{Linux Libertine O}
+\setmathfont(Digits,Greek,Latin)[Numbers=OldStyle]{Linux Libertine O}</code></pre>
 
 
 </section>
-</section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>參考自<a href="https://en.wikipedia.org/wiki/Line_integral">Line Integral</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
