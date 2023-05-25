@@ -4,7 +4,7 @@
     "href": "notes.html",
     "title": "Notes",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nNetwork Effect\n\n\n\n\n\n\n\n\n\n\n\n\nMay 24, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPower Laws and Rich-Get-Richer Phenomena\n\n\n\n\n\n\n\n\n\n\n\n\nMay 24, 2023\n\n\n\n\n\n\n  \n\n\n\n\n第一個 LaTeX 程式（包含安裝教學）\n\n\n\n\n\n\n\n\n\n\n\n\nMay 24, 2023\n\n\n\n\n\n\n  \n\n\n\n\nLaTeX 數學排版\n\n\n\n\n\n\n\n\n\n\n\n\nMay 24, 2023\n\n\n\n\n\n\n  \n\n\n\n\nRandom Numbers and Random Number Generator\n\n\n\n\n\n\n\n\n\n\n\n\nMay 22, 2023\n\n\n\n\n\n\n  \n\n\n\n\nInverse Transform Sampling\n\n\n\n\n\n\n\n\n\n\n\n\nMay 22, 2023\n\n\n\n\n\n\n  \n\n\n\n\n第一個 R 語言程式\n\n\n\n\n\n\n\n\n\n\n\n\nMay 14, 2023\n\n\n\n\n\n\n  \n\n\n\n\n組織性行為模型(Organizational Behavior Model, OBM)\n\n\n\n\n\n\n\n\n\n\n\n\nMar 24, 2023\n\n\n\n\n\n\n  \n\n\n\n\n理性行為者模型(Rational Actor Model, RAM)\n\n\n\n\n\n\n\n\n\n\n\n\nMar 10, 2023\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nR Markdown 與 TeX\n\n\n\n\n\n\n\n\n\n\n\n\nMay 26, 2023\n\n\n\n\n\n\n  \n\n\n\n\n用 LaTeX 製作簡報\n\n\n\n\n\n\n\n\n\n\n\n\nMay 26, 2023\n\n\n\n\n\n\n  \n\n\n\n\nLaTeX 書本、文件章節編排與架構\n\n\n\n\n\n\n\n\n\n\n\n\nMay 26, 2023\n\n\n\n\n\n\n  \n\n\n\n\nLaTeX 中表格與圖片的處理\n\n\n\n\n\n\n\n\n\n\n\n\n\nMay 26, 2023\n\n\n\n\n\n\n  \n\n\n\n\nNetwork Effect\n\n\n\n\n\n\n\n\n\n\n\n\nMay 24, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPower Laws and Rich-Get-Richer Phenomena\n\n\n\n\n\n\n\n\n\n\n\n\nMay 24, 2023\n\n\n\n\n\n\n  \n\n\n\n\n第一個 LaTeX 程式（包含安裝教學）\n\n\n\n\n\n\n\n\n\n\n\n\nMay 24, 2023\n\n\n\n\n\n\n  \n\n\n\n\nLaTeX 數學排版\n\n\n\n\n\n\n\n\n\n\n\n\nMay 24, 2023\n\n\n\n\n\n\n  \n\n\n\n\nRandom Numbers and Random Number Generator\n\n\n\n\n\n\n\n\n\n\n\n\nMay 22, 2023\n\n\n\n\n\n\n  \n\n\n\n\nInverse Transform Sampling\n\n\n\n\n\n\n\n\n\n\n\n\nMay 22, 2023\n\n\n\n\n\n\n  \n\n\n\n\n第一個 R 語言程式\n\n\n\n\n\n\n\n\n\n\n\n\nMay 14, 2023\n\n\n\n\n\n\n  \n\n\n\n\n組織性行為模型(Organizational Behavior Model, OBM)\n\n\n\n\n\n\n\n\n\n\n\n\nMar 24, 2023\n\n\n\n\n\n\n  \n\n\n\n\n理性行為者模型(Rational Actor Model, RAM)\n\n\n\n\n\n\n\n\n\n\n\n\nMar 10, 2023\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/proj/welcome/index.html",
@@ -126,6 +126,13 @@
     "text": "編輯及編譯系統安裝\n\\(\\LaTeX\\) 有許多不同種類的編譯與編輯器組合，本文將以作者最常見的組合 MiKTeX 搭配 TeXStudio 介紹。當然如果有特別的偏好也無妨，只要能夠編輯即可。\n\nMikTeX 安裝\n首先點擊這裡進入 MiKTeX 官網。\n\n接著點擊 Download 按鈕， 進入頁面後根據電腦的作業系統選擇安裝檔。\n\n下載並安裝後便可以進行更新。\n 按下之後即可更新 MiKTeX。更新完畢後點選左側的 Updates 按鈕進入更新區，依序按下 Check for updates 以及 Update now 後即完成。\n\n\n\n安裝 TeXStudio\n請點擊這裡進入 TeXStudio 官網後，按下下載按鈕即可安裝。安裝完成後基本上就可以開始編譯了。\n 如果要更改編譯器，請到依照以下步驟更改。\n\nmacOS 系統：點選左上角 TeXStudio \\(\\rightarrow\\) 點選 Preferences \\(\\rightarrow\\) 點選 Build \\(\\rightarrow\\) 將 Default Compiler 改為你想要的編譯器。\nmacOS 系統：點選左上角 TeXStudio \\(\\rightarrow\\) 點選 Options \\(\\rightarrow\\) 點選 Build \\(\\rightarrow\\) 將 Default Compiler 改為你想要的編譯器。\n\n以上就是安裝 MiKTeX 與 TeXStudio 的過程。"
   },
   {
+    "objectID": "posts/notes/latex/2023-05-24-latex-installation/index.html#語法概說",
+    "href": "posts/notes/latex/2023-05-24-latex-installation/index.html#語法概說",
+    "title": "第一個 LaTeX 程式（包含安裝教學）",
+    "section": "語法概說",
+    "text": "語法概說\n進到 \\(\\LaTeX\\) 之後，我們就可以在編輯頁面中輸入以下的指令(command)。\n\\documentclass[12pt]{article}\n\\title{My First Document}\n\\author{Author}\n\\date{}\n\n\\begin{document}\n\\maketitle\n\n\\end{document}\n我們就可以看到以下的畫面。\n\n在看這篇文章的你一定會好奇這幾行程式碼是什麼意思。那你肯定來對地方了！接下來我就要來一一解析這幾行程式碼背後的意義。\n\n設定文稿結構與基礎格式\n\\documentclass[12pt]{article}\n首先，\\documentclass 代表我們要去設定這份文檔的基礎格式。而在 \\(\\LaTeX\\) 裡，如果我們要輸入 \\(\\LaTeX\\) 的指令，就必須要在前方加上 \\（反斜線）。\\(\\LaTeX\\) 常見的排版專用符號大致可以用下面的表格呈現：\n\n\n\n符號\n功能\n\n\n\n\n\\\n下排版命令\n\n\n%\n註解\n\n\n#\n定義巨集\n\n\n~\n產生空白\n\n\n$\n進入/離開數學模式\n\n\n^\n數學模式中的上標字\n\n\n_\n數學模式中的下標字\n\n\n&\n分隔符號\n\n\n\n\n選擇參數與必要參數\n後面的 [12pt] 則是設定字體的大小，方括號（我們稱為選擇變數）裡面不只可以設定字級，也可以設定紙張大小，比如 [12pt, a4paper]。最後的 {article} 稱為必要參數，也就是說，前面的選擇參數可以不打任何東西，但花括號裡頭一定要放上內容。我們必須注意幾件事情：\n\n不同於Word，\\(\\LaTeX\\) 文稿中，空一個與多個英文空白的意思是一樣 的，\\(\\LaTeX\\) 會認作一個空白。\n按下Enter 鍵不代表換行，換行必須要使用雙斜線（\\\\，Windows 用戶可以同時按下 Ctrl 與 Enter 鍵），或是以 \\newline、 \\linebreak 進行換行。\n\n\n\n使用指令\n\\(\\LaTeX\\) 的指令是從反斜線後第一個字母開始，到第一個非字母符號為止 （包含空白、標點符號及數字）。因此：\nThis is my first \\LaTeX typesetting example.\n這樣的話，由於空白屬於指令的一部分，故會印出：\nThis is my first \\(\\LaTeX\\)typesetting example.\n因此若要避免上述情況，就必須使用以下三種方法：\n\nThis is my first {\\LaTeX} typesetting example.\nThis is my first \\LaTeX{} typesetting example.\nThis is my first \\LaTeX\\ typesetting example.\n\n正確的輸出應該為：\nThis is my first \\(\\LaTeX\\) typesetting example.\n\n\n使用註解\n註解符號(%) 可以放在一行的任何地方，% 的文字會被 \\(\\LaTeX\\) 忽略。因此如果放在一行的最尾端，那麼 \\(\\LaTeX\\) 會自動插入的字間空白也將會被忽略。\n\n\n\n開啟環境\n\\(\\LaTeX\\) 有一種巨集結構，稱為環境(environment)，主要是讓作用範圍能 擴大至較大的範圍。所有的環境都起於\\begin{環境名稱}，止於 \\end{環境名稱}。這兩個指令之間的文稿都會被作用，而且，環境之內還可以套用其他不同的環境。\\(\\LaTeX\\) 文稿的內文，就是包在一個\n\\begin{環境名稱}\n ...\n\\end{環境名稱}\n這個 document 環境當中。以下就是所有 \\(\\LaTeX\\) 必須具備的文稿大結構：\n\\documentclass[]{}\n%這裡是preamble 區\n\\begin{document}\n ...\n\\end{document}\n\n\n前言區(preamble)\n這裡可以引用巨集(macro)，而且會影響整篇文稿的指令，例如一些事先 定義好的指令，想在整篇文稿中使用，就可以置放在 preamble 區。例如：\n\\documentclass[12pt]{article}\n\\usepackage\n\\begin{document}\nThe text will be \\textcolor{blue}{blue}.\n\\end{document}\n\n\n\n章節標題設定\n在 \\(\\LaTeX\\) 的文稿裡頭，章節標題的形成都是由同樣的指令來控制的，這樣有一個好處，臨時插入章節標題及其內文時，我們不必去理會標題編號及目錄的問題，也不必去理會要用什麼字型、及字型大小要多大，\\(\\LaTeX\\) 會自動計算處理，字型大小也會和內文使用的字型大小互相配合調整，使用者就專心在內文構思、寫作即可。以下由列表來瞭解整個章節結構：\n\n\n\n深度編號\n指令\n作用及注意事項\n\n\n\n\n-1\npart{}\n部\n\n\n0\nchapter{}\n章，在 article 沒有章\n\n\n1\nsection{}\n節\n\n\n2\nsubsection{}\n小節\n\n\n3\nsubsubsection{}\n次小節\n\n\n4\nparagraph{}\n段落\n\n\n5\nsubparagraph{}\n次段落\n\n\n\n上面程式碼可以在這裡下載。"
+  },
+  {
     "objectID": "posts/notes/latex/2023-05-24-latex-installation/index.html#第一份-latex-文件",
     "href": "posts/notes/latex/2023-05-24-latex-installation/index.html#第一份-latex-文件",
     "title": "第一個 LaTeX 程式（包含安裝教學）",
@@ -138,6 +145,104 @@
     "title": "第一個 LaTeX 程式（包含安裝教學）",
     "section": "Footnotes",
     "text": "Footnotes\n\n\n“Latex.” Wikipedia, Wikimedia Foundation, 12 June 2021, zh.wikipedia.org/zh-tw/LaTeX.↩︎"
+  },
+  {
+    "objectID": "posts/notes/latex/2023-05-26-bm/index.html",
+    "href": "posts/notes/latex/2023-05-26-bm/index.html",
+    "title": "用 LaTeX 製作簡報",
+    "section": "",
+    "text": "為何使用 \\(\\LaTeX\\) 進行簡報製作呢，使用 \\(\\LaTeX\\) 製作簡報，個人認為大致有以下優點，首先是學術性強大，包含版面、顯示方式等，都能夠讓讀者或閱聽人看到沈穩的簡報內容與外觀，從而能夠專注聽講。另一個優點則是輸出的內容可以跨平台使用，因其產生的檔案類型為.pdf檔，故能夠避免使用.pptx時字體在其他電腦未安裝而無法顯示的窘境。不過缺點大概就是 coding 很麻煩！使用 \\(\\LaTeX\\) 做出來的簡報我們稱為 beamer（以下我們也這樣稱呼），可以先來看一個簡單的例子：\n可以看到我們是以frame這個環境產生簡報的一個頁面。接著我們就針對 beamer 的細節進行更細緻的討論。"
+  },
+  {
+    "objectID": "posts/notes/latex/2023-05-26-bm/index.html#幀frame",
+    "href": "posts/notes/latex/2023-05-26-bm/index.html#幀frame",
+    "title": "用 LaTeX 製作簡報",
+    "section": "幀(frame)",
+    "text": "幀(frame)\n如同上面提到的，frame環境是產生 beamer 頁面的關鍵。frame環境的設定如下：\n\\begin{frame}[頁面設定]\n\\frametitle{頁面標題}\n\\framesubtitle{頁面副標題}\n頁面內容\n\\end{frame}\n\n加入頁面標題時必須使用\\frametitle{}，而[頁面設定]的部分則留到後面幾個小節再討論。\n\n標題頁\n如果想要顯示標題頁，可以在前言區先加入標題資訊\n\\title[About Beamer] %optional\n{About the Beamer class in presentation making}\n\n\\subtitle{A short story}\n\n\\author[Anthony, Ben] % (optional)\n{Anthony\\inst{1} \\and Ben\\inst{2}}\n\n\\institute[NTU] % (optional)\n{\n  \\inst{1}%\n  Department of Political Science\\\\\n  National Taiwan University\n  \\and\n  \\inst{2}%\n  Department of Economics\\\\\n  National Taiwan University\n}\n\n\\date[2021] % (optional)\n{Very Large Conference, April 2021}\n接著在frame環境內加上\\titlepage：\n\\begin{frame}\n\\titlepage\n\\end{frame}\n結果就會是：\n\n或是可以使用\\frame{\\titlepage}，更加簡潔有力。如果想要在標題頁加上 logo，則使用\\logo{\\includegraphics{logo 檔案}}。\n\n\n目錄頁\n通常來說，在一份演講簡報中都會含有目錄頁，目的是為了讓觀眾能夠先快速地掌握本次演講的重點，從而能夠在之後的演講中抓到其想要了解的重要資訊。加入目錄頁的方式跟標題頁十分相似，只要改為\\tableofcontents即可。\n\\begin{frame}\n\\tableofcontents\n\\end{frame}\n當然，如果你直接將上面的程式碼放到你的.tex檔案裡面是不會跑出東西的，我們在使用目錄頁的時候必須確認已經加入\\section、\\subsection等資訊。"
+  },
+  {
+    "objectID": "posts/notes/latex/2023-05-26-bm/index.html#簡報內容的細節",
+    "href": "posts/notes/latex/2023-05-26-bm/index.html#簡報內容的細節",
+    "title": "用 LaTeX 製作簡報",
+    "section": "簡報內容的細節",
+    "text": "簡報內容的細節\n在了解完如何產生一個又一個的簡報頁面後，接下來我們要針對簡報內部的內容進行討論。\n\n列點與條列\n假設演講者想要將其所欲說明的資訊以列點的方式呈現，我們有以下兩種工具。首先是無序的列點，其結果只會是一個個的幾何圖案，我們使用itemize環境來達到此目的：\n\\begin{itemize}\n\\item The first item\n\\item The second item\n\\item The third item\n\\item The fourth item\n\\end{itemize}\n\n如果想要改為原點，則在\\item後面加上[$\\bullet$]，就會變成以下的形式：\n\\begin{itemize}\n\\item[$\\bullet$] Circle\n\\item Triangle\n\\end{itemize}\n\n另一個方法則是有序列點，方法為使用enumerate環境，即\n\\begin{enumerate}\n\\item The first item\n\\item The second item\n\\item The third item\n\\item The fourth item\n\\end{enumerate}\n\n\n\n分欄\n作為簡報者，當然會想要簡報越能簡短的報告出越詳細的內容越好，因此常會在圖片、文字旁邊加上註解、說明文字，又或是進行比較。此時就需要使用columns環境：\n\\begin{columns}\n\\begin{column}{寬度（小數點）\\textwidth}\n文字/圖片\n\\end{colimn}\n\\begin{column}{寬度（小數點）\\textwidth}\n文字/圖片\n\\end{colimn}\n\\end{columns}\n\n\n\n區塊\n區塊可以將一般文字與想要強調的文字、公式等區分開，這個目的具有強調、警示的作用，能夠讓觀眾看到此張投影片的重點。例如我們想要將正弦半角公式放到投影片中，可以這麼做：\n\nbeamer 也有提供底下的幾個環境：\n\nblock 普通環境\ntheorem 定理環境\nlemma 引理環境\nproof 證明環境\ncorollary 推論環境\nexample 示例環境\nalertblock 警示環境\n\n\n\nbeamer 顏色與主題\n為了讓簡報看起來不單調，可以使用 beamer 中的主題功能，為簡報頁面增添色彩，我們使用\\usetheme{主題}改變 beamer 的主題，並以\\usecolortheme{顏色主題}改變 beamer 整體的顏色配置。關於更多的顏色配置與主題，可以參考 Another Beamer Theme。"
+  },
+  {
+    "objectID": "posts/notes/latex/2023-05-26-bm/index.html#overlay-的控制",
+    "href": "posts/notes/latex/2023-05-26-bm/index.html#overlay-的控制",
+    "title": "用 LaTeX 製作簡報",
+    "section": "Overlay 的控制",
+    "text": "Overlay 的控制\n在.pptx中，我們可以透過加上動畫來將演講中的某些內容以動態的方式呈現。在 beamer 中我們雖然沒有精緻的動畫可呈現，但我們可以透過類似讓內容一個一個跑出來的概念達到這個目的。\n\npause 的用法\n最基本的 overlay 就是用\\pause來做暫停，使用方法如下：\n\\begin{frame}\n內容 1\n\\pause\n內容 2\n\\pause\n內容 3\n\\end{frame}\n輸出成.pdf檔後就會產生三張投影片。同樣的，在列點的環境中我們也能使用這樣的功能：\n\\begin{frame}\n    \\begin{enumerate}\n        \\item Content 1\n        \\pause\n        \\item Content 2\n        \\pause\n        \\item Content 3\n    \\end{enumerate}\n\\end{frame}\n\n區塊功能也可以使用，這部分就留給讀者自己去嘗試。\n\n\n顯示程式碼\n許多資工系或是會遇到需要報告程式碼的使用者，在一般的 PowerPoint 輸入程式碼後，程式碼的字體、排版不會太美觀，而 beamer 便提供了此功能（一般文件也可以使用）。在 beamer 要引用程式碼請使用verbatim或listings套件。不過, 在使用可以顯示的投影片前，必需使用fragile的設定：\n\\begin{frame}[fragile]\n\n\\end{frame}\n接著我們就可以在投影片中加入程式碼：\n\\begin{frame}[fragile]\n\\begin{lstlisting}\n# 程式碼\n\\end{lstlisting}\n\\end{frame}\n如果想要在文中顯示程式碼，可以使用\\path{指令}或是\\verb|指令|。\n\n\n按鈕與指定頁面\n若要如 PowerPoint 一般，能夠跳到指定頁面，首先要將某頁投影片貼上標籤，即：\n\\begin{frame}[label=here]\n\n\\end{frame}\n接著就可以製作按鈕：\n\\hyperlink{here}{\\beamerbutton{按鈕文字}}"
+  },
+  {
+    "objectID": "posts/notes/latex/2023-05-26-structure/index.html",
+    "href": "posts/notes/latex/2023-05-26-structure/index.html",
+    "title": "LaTeX 書本、文件章節編排與架構",
+    "section": "",
+    "text": "一本書籍或學術文章的基本架構大概可以切分成以下幾個元素\n其中註解、段落與本文的設定在前幾篇已經提過，因此以下我們就會針對其他幾個議題進行討論。"
+  },
+  {
+    "objectID": "posts/notes/latex/2023-05-26-structure/index.html#封面",
+    "href": "posts/notes/latex/2023-05-26-structure/index.html#封面",
+    "title": "LaTeX 書本、文件章節編排與架構",
+    "section": "封面",
+    "text": "封面\n基本上封面就是之前學過的方式，輸入\\title、\\author、\\date 等資訊，即可生成封面。假設我們想要引用網路上已經做好的.pdf檔案作為封面怎麼辦呢？我們可以透過在LaTeX 中表格與圖片的處理學到引入.pdf檔案的技巧，將外部.pdf檔案加入文件中顯示。"
+  },
+  {
+    "objectID": "posts/notes/latex/2023-05-26-structure/index.html#版面設定",
+    "href": "posts/notes/latex/2023-05-26-structure/index.html#版面設定",
+    "title": "LaTeX 書本、文件章節編排與架構",
+    "section": "版面設定",
+    "text": "版面設定\n我們可以透過一些套件，讓我們的文件變得更加易讀、美觀。以下我們將會分別介紹邊界設定與標頭(header)的設定：\n\n邊界設定\n在 Word 中，我們可以進行版面設定，即設定上、下、左、右邊界，\\(\\LaTeX\\) 也有提供相同的功能。首先我們可在前言區加上下面這行：\n\\usepackage[margin = 1cm]{geometry}\n代表我們將四個邊界均設定為1cm。如果想要將四個邊界都有不同寬度的話，則使用下面的程式碼：\n\\usepackage[left=2cm, right=2cm, top=1cm, bottom=1cm]{geometry}\n代表左右各為2cm、上下各為1cm。以下圖片參考自geometry套件的說明文件，其清楚地說明了此套件的設定指令：\n\n吳聰敏老師在《cw\\(\\TeX\\) 3 使用手冊》中整理了geometry的設定指令：\n\n\n\n\n\n\n\n指令\n作用\n\n\n\n\nnohead\n等於headheight=0pt,headsep=0pt。\n\n\nnofoot\n等於footskip=0pt。\n\n\nhscale\n可列印區域之寬度與紙張寬度之比率,例如hscale=0.8。\n\n\nmarginparwidth\n邊註(marginal notes)之寬度。\n\n\nmarginparsep\n正文方塊與邊註之間距。\n\n\nwidth\n等於textwidth+ marginparsep+ marginparwidth。\n\n\ntwoside\n奇數頁(右頁)之列印區域會稍靠左, 雙數頁(左頁)之列印區域則稍靠右;參見下一指令。\n\n\nasymmetric\n有些書籍之單雙頁採用相同之版面, 此時可以asymmetric選項排版。\n\n\nhoffset\n同\\hoffset指令。\n\n\nvoffset\n同\\voffset指令。\n\n\n\n\n\n\n\n\n\n標頭設定\n所謂標頭，可以先參考fancyhdr官方文件所提供的說明圖：\n\n你可以在標頭上面加上跟這篇文件有關的資訊，例如假設我今天要做一篇課堂筆記，我就可以在上面加註課程名稱、授課者、章節名稱等資訊。我們可以在前言區加上usepackage{fancyhdr}，接著可以設定如下的內容：\n\\pagestyle{fancy}\n\\fancyhf{}\n\\lhead{\\normalsize 文字 \\\\ 文字}\n\\rhead{\\normalsize 文字 \\\\ 文字}\n\\cfoot{\\footnotesize \\thepage}\n當然你也可以自己調整字體大小，如果想要清除頁首的設定的話，可以使用\\fancyhead{}，清除頁尾則用\\fancyfoot{}。\n\n\n\n指令\n作用\n\n\n\n\n\\lhead{}\n頁首左邊的文字\n\n\n\\chead{}\n頁首中間的文字\n\n\n\\rhead{}\n頁首右邊的文字\n\n\n\\lfoot{}\n頁尾左邊的文字\n\n\n\\cfoot{}\n第幾頁\n\n\n\\rfoot{}\n頁尾右邊的文字\n\n\n\n此外，我們也可以對於奇數頁(odd page)、偶數頁(even page)進行不同的設定：\n\\fancyhead[RO,LE]{} % 頁首：奇數頁右邊、偶數頁左邊\n\\fancyfoot[LE,RO]{第~\\thepage~頁}      % 頁碼置於偶數頁左邊及奇數頁右邊\n\\fancyfoot[LO,CE]{} % 奇數頁左及偶數頁中\n\\fancyfoot[CO,RE]{} % 奇數頁中及偶數頁右\n\\renewcommand{\\headrulewidth}{0.4pt} % 設定頁首分隔線為寬度是 0.4 pt 的水平線\n\\renewcommand{\\footrulewidth}{0.4pt} % 設定頁首分隔線為寬度是 0.4 pt 的水平線\n這邊我做了一個課堂筆記的模板，有興趣的人可以下載使用。"
+  },
+  {
+    "objectID": "posts/notes/latex/2023-05-26-structure/index.html#目錄",
+    "href": "posts/notes/latex/2023-05-26-structure/index.html#目錄",
+    "title": "LaTeX 書本、文件章節編排與架構",
+    "section": "目錄",
+    "text": "目錄\n最簡單的作法，就是在本文開頭加上\\tableofcontents 指令即可。而在 \\(\\LaTeX\\) 文稿中\n\n\\tableofcontents 可以排版一般的章節目錄\n\\listoffigures 指令可以排版圖目錄\n\\listoftables 指令則可排版表目錄\n\n預設情況，目錄的名稱會是：Contents、List of Figueres 及 List of Tables。若要改成中文形式，必須使用 \\renewcommand 這個指令重新定義：\n\\renewcommand\\contentsname{目~錄~}\n\\renewcommand\\listfigurename{圖~目~錄}\n\\renewcommand\\listtablename{表~目~錄}\n假設章節指令使用了星號，或是圖表目錄沒有使用\\caption指令這是指沒有編入目錄，但想自行加進去的情形。\n\\addcontentsline{toc}{章節名}{標題}\n\\addcontentsline{lof}{figure}{標題}\n\\addcontentsline{lot}{table}{標題}"
+  },
+  {
+    "objectID": "posts/notes/latex/2023-05-26-structure/index.html#交互參照與超連結",
+    "href": "posts/notes/latex/2023-05-26-structure/index.html#交互參照與超連結",
+    "title": "LaTeX 書本、文件章節編排與架構",
+    "section": "交互參照與超連結",
+    "text": "交互參照與超連結\n在LaTeX 中表格與圖片的處理中我們已經提過交互參照的概念，在這邊我們就以較短的篇幅進行討論。首先，在想要參照的表格或圖片中加入\\label{參照標籤}，接著在文內使用\\ref{參照標籤}便可以引用；如果想要引用欲參照表格或圖片的頁數，則使用\\pageref{參照標籤}。注意到以下幾點：\n\n有參照的文稿一定要編譯兩次才能正常顯示\n能編號的章節、圖表、列舉項目、數學式、定理才能參照，雖然其不一定要編號\n圖表的參照\\label一定要在\\caption之後，不能在前。\n\n如果我們想要將交互參照或是超連結加上醒目提示，我們就要使用hyperref這個套件，接著在前言區加上以下程式碼進行超連結設定：\n\\hypersetup{\ncolorlinks = true,\nlinkcolor = 顏色,\nfilecolor = 顏色,\nurlcolor = 顏色,\n}"
+  },
+  {
+    "objectID": "posts/notes/latex/2023-05-26-structure/index.html#參考文獻",
+    "href": "posts/notes/latex/2023-05-26-structure/index.html#參考文獻",
+    "title": "LaTeX 書本、文件章節編排與架構",
+    "section": "參考文獻",
+    "text": "參考文獻\n我們製作參考文獻的方式有兩種，首先來介紹第一種，透過thebibliography環境，再加上\\bibitem[標記]{鍵值}即可產生參考文獻。\n\\begin{thebibliography}{99} % 編號最寬為兩個字母寬\n\\bibitem[標記一]{鍵值一} 參考資料一\n\\bibitem[標記二]{鍵值二} 參考資料二\n...\n\\end{thebibliography}\n我們引用的時候是使用\\cite{鍵值}這個指令，他會顯示參考資料中的編號值，且以方括號括起來，鍵值可以想像成是鑰匙(key)，藉由這把特定的鑰匙可以將參考資料「提領」出來。當然，thebibliography環境所產生的預設參考文獻標題是英文，若要改成中文，使用\\renewcommand即可：\n\\renewcommand\\refname{參~考~資~料} % article\n\\renewcommand\\bibname{參~考~文~獻} % report/book\n第二種方式則是在.tex的根目錄下建立.bib檔。\\(\\text{Bib}\\TeX\\) 本身提供一個外部的bibtex工具程式，在 \\(\\LaTeX\\) 編譯過文稿後，再利用bibtex編譯一次文稿，最後再使用 \\(\\LaTeX\\) 重編譯過。使用bibtex的方式如下，我們在\\end{document}前插入：\n\\bibliographystyle{IEEEtran} %指定 style 檔\n\\bibliography{檔案名稱.bib} % .bib 文件\n並按照上述步驟進行即可產生參考文獻。產生.bib檔的方式可以參考下面的圖片步驟說明。首先我們可以前往Google 學術搜尋，接著查詢要引用的文獻，在這裡我以 D. Acemoglu 的 “Why Nations Fail” 為例：\n\n找到文章後，點擊「引用」，就可以看到以下的畫面：\n\n接著點擊BibTeX後，在新分頁就能得到以下的程式碼：\n@article{acemoglu2015nations,\n  title={Why nations fail?},\n  author={Acemoglu, Daron},\n  journal={The Pakistan Development Review},\n  volume={54},\n  number={4},\n  pages={301--312},\n  year={2015},\n  publisher={JSTOR}\n}"
+  },
+  {
+    "objectID": "posts/notes/latex/2023-05-26-structure/index.html#附錄",
+    "href": "posts/notes/latex/2023-05-26-structure/index.html#附錄",
+    "title": "LaTeX 書本、文件章節編排與架構",
+    "section": "附錄",
+    "text": "附錄\n排版附錄使用的是\\appendix指令，這個指令以後和正常一般編輯即可。附錄預設標題是英文，若要將其改成中文，承襲更改目錄、參考文獻的方式即可：\n\\renewcommand\\appendixname{附~錄}\n注意到 article 類別的文稿並不印出Appendix字樣，因此也就沒有appendixname進行更改。"
+  },
+  {
+    "objectID": "posts/notes/latex/2023-05-26-table-and-figure/index.html",
+    "href": "posts/notes/latex/2023-05-26-table-and-figure/index.html",
+    "title": "LaTeX 中表格與圖片的處理",
+    "section": "",
+    "text": "在學習 \\(\\LaTeX\\) 的過程中，表格的處理通常是最為棘手的，主要原因在於 \\(\\LaTeX\\) 係透過抽象與邏輯的方式繪製表格。網路上有針對 \\(\\LaTeX\\) 的表格編輯器，不過仍要先了解表格的大架構，便能在沒有編輯器的情況下製作表格，亦不會摸不著頭緒。"
+  },
+  {
+    "objectID": "posts/notes/latex/2023-05-26-table-and-figure/index.html#製作表格",
+    "href": "posts/notes/latex/2023-05-26-table-and-figure/index.html#製作表格",
+    "title": "LaTeX 中表格與圖片的處理",
+    "section": "製作表格",
+    "text": "製作表格\n在 \\(\\LaTeX\\) 中的表格環境有很多，其中最常使用的是tabbing、table、tabular、tabularx、array，這些環境各有其使用的目的、優點與缺點，以下就來一一介紹。不過，首先我們要認知到一件事，\\(\\LaTeX\\) 在編譯過程中，會將表格視為一個 box 處理，也就是跨頁、長表格這些功能在某些時候是十分惱人的，必須透過一些方式調整，不過當然也有例外。\n\ntabbing 環境\ntabbing 環境就是上述提到的例外，\\(\\LaTeX\\) 不會將其視為 box 處理，因此換頁、拆分是可行的。在 tabbing 環境中，第一列(row)是以\\=進行欄位的區隔，之後的列則是以\\&gt;區隔，且在切換到下一列之前，以//進行換行（最後一列可選擇不加）。\n\\begin{tabbing}\n    column1 \\= column2 \\= column3 \\\\\n    item1 \\&gt; item2 \\&gt; item3 \\\\\n    itemA \\&gt; itemB \\&gt; itemC\n\\end{tabbing}\n結果如下圖左所示。\n\n\n\n我們也可以用以下方式調整欄位寬度：\n\\begin{tabbing}\n    xxxxxxxxxx\\=xxxxxxxxxx\\=xxxxxxxxxx \\kill\n    column1 \\&gt; column2 \\&gt; column3 \\\\\n    item1 \\&gt; item2 \\&gt; item3 \\\\\n    itemA \\&gt; itemB \\&gt; itemC\n\\end{tabbing}\n結果如上圖右所示，其中\\kill代表不顯示該列。\n\n\ntabular 環境\ntabular 環境是在 \\(\\LaTeX\\) 中最常使用的表格環境，因其可以繪製行與列的分隔線。首先我們可以先大致瀏覽 tabular 的架構。\n\\begin{tabular}[c]{lll}\n    \\hline\n    column1 & column2 & column3 \\\\\n    \\hline\n    item1 & item2 & item3 \\\\\n    itemA & itemB & itemC \\\\\n    \\hline\n\\end{tabular}\n\n表格框架設定\n其中[c]代表置中，在使用 tabular 環境時，\\(\\LaTeX\\) 會將其視為字母進行處理，也可以將其換成[h]與[b]，前者代表 top，使表格頂端與文字對齊，後者則是指 bottom，即表格底部與文字對齊。{lll}代表的是表格中的文字是置左（使用l）、置中（使用c）或置右（使用r）呈現，且注意到l、c、r的個數必須要與欄位數相同。\n\n\n\n\n\n表格分隔線設定\n接著看到\\hline，其代表的是列與列之間的分隔線，且除第一列之外，在使用hline之前都必須加上換行符號//。而如果想要繪製欄與欄之間的分隔線，則在剛剛設定表格文字的地方加上|，如上圖右所示，程式碼則參考下方。\n\\begin{tabular}[c]{|l|l|l|}\n    \\hline\n    column1 & column2 & column3 \\\\\n    \\hline\n    item1 & item2 & item3 \\\\\n    \\hline\n    itemA & itemB & itemC \\\\\n    \\hline\n\\end{tabular}\n\n\n關於欄位調整\n其他更多有關欄位調整的方式，請參考下方表格：\n\n\n\n\n\n\n\n\n\n語法\n功能\n語法\n功能\n\n\n\n\np{寬度}\n文字折行\n\\arrayrulewidth=單位長度\n調整表格線條粗細\n\n\n@{文字、符號或指令}\n該欄文字套用指令\n\\tabcolsep=單位長度\n調整兩欄位的左右間距\n\n\n\\multicolumn{欄數}{位置}{文字}\n跨欄排版\n\\doublerulesep=單位長度\n調整雙線間距\n\n\n\\cline{a-b}\n部份欄位的橫線\n\\arraystretch\n調整表格上下行距\n\n\n\n可以參考李果正學長在《大家來學 Latex》中的例子：\n\\begin{tabular}{@{\\sf }lll@{}}\n\\hline\n& \\multicolumn{2}{c}{\\bf Specific Heats} \\\\\n\\cline{2-3}\n& $c$ (J/kg$\\cdot$K) & $C$ (J/mol$\\cdot$K) \\\\\n\\hline\nAluminum & 900 & 24.3 \\\\\nCopper & 385 & 24.4 \\\\\nGold & 130 & 25.6 \\\\\nSteel/Iron & 450 & 25.0 \\\\\nLead & 130 & 26.8 \\\\\nMercury & 140 & 28.0 \\\\\nWater & 4190 & 75.4 \\\\\nIce ($-$10 \\textcelsius) & 2100 & 38 \\\\\n\\hline\n\\end{tabular}\n\n\n\narray 環境\n使用array環境前必須引用array套件。array 環境與 tabular 是相似的。\n\n\ntabularx 環境\n其是調整tabular*環境的新功能，使用前需引用tabularx套件。我們可以透過《大家來學 Latex》中的例子看出區別：\n\\documentclass{article}\n\\usepackage{tabularx}\n\\parindent=0pt\n\\renewcommand{\\arraystretch}{1.2}\n\\begin{document}\n\\centering\n\\section*{\\texttt{tabular*} environment}\n\\begin{tabular*}{8cm}{lll}\n\\hline\nStart & End & Character Block Name \\\\\n\\hline\n3400 & 4DB5 & CJK Unified Ideographs Extension A \\\\\n4E00 & 9FFF & CJK Unified Ideographs \\\\\n\\hline\n\\end{tabular*}\n\n\\section*{\\textsf{tabularx} package}\n\\begin{tabularx}{8cm}{llX} % 8cm 減去前兩個欄位寬度後，剩下的通通給\n\\hline % 第三欄位使用，文字超出的部份會自動折行\nStart & End & Character Block Name \\\\\n\\hline\n3400 & 4DB5 & CJK Unified Ideographs Extension A \\\\\n4E00 & 9FFF & CJK Unified Ideographs \\\\\n\\hline\n\\end{tabularx}\n\\end{document}\n\n可以看到使用 tabularx 後，超出的部分會自動折行。\n\n\nbooktabs 套件\n除了透過\\arraryrulewidth調整表格線條粗細之外，我們也可以使用booktabs這個套件繪製線條，且更加方便與直觀。\n\n\n\n指令\n功能\n\n\n\n\n\\toprule[線條粗細]\n表格頂端橫線\n\n\n\\midrule[線條粗細]\n表格內橫線\n\n\n\\bottomrule[線條粗細]\n表格底部橫線\n\n\n\\cmidrule\n指令某欄位畫橫線，取代\\cline\n\n\n\n透過 booktabs 套件我們就可以製作學術論文上時常看到的三線表(three-line table/three-part table)。我們也可以直接使用threeparttable套件來製作三線表：\n\n\\documentclass{article}\n\\usepackage{threeparttable,booktabs}\n\n\\begin{document}\n\n\\begin{table}[htp]\n\\centering % no center environment\n\\begin{threeparttable}\n\\caption{Students' Health Info.\\tnote{1}}\n\\label{tb:listbridges}\n\\begin{tabular}{llll}\n\\toprule\n\\textbf{Name} & \\textbf{Height (cm)} & \\textbf{Weight} & \\textbf{Age} \\\\\n\\midrule\nChalie & 183 & 72 & 22 \\\\\n\\bottomrule\n\\end{tabular}\n\n\\begin{tablenotes}\\footnotesize\n\\item[1] A dummy threeparttable.\n\\end{tablenotes}\n\\end{threeparttable}\n\\end{table}\n\n\\end{document}\n\n\n註解、引用與表格標題\n我們如果想要在表格中加入註解有兩種方式。第一種是直接在表格內要加入註解的文字後加上\\footnote，但是這樣會讓註解跑到文件的底端，所以我們可以以第二種方式加入註解，利用threeparttable搭配tnote{}指令與tablenotes環境加入註解，範例可參考上一小節三線表的例子。接著談談引用的部分，如果想要在文章內引用表格，我們可以用\\label{tab:表格名字}的方式，先為表格製作標籤，方便之後我們透過\\ref{}引用。此外，透過\\caption{表格名稱}，我們可以將表格的名稱顯示於表格上方或下方。本小節的範例如下：\n\\documentclass{article}\n\\usepackage{booktabs}\n\\begin{document}\n\n\\begin{table}\n    \\centering\n    \\caption{Table 1}\n    \\label{tab:table1}\n    \\begin{tabular}{cc}\n        \\toprule\n        column 1 & column 2\\\\\n        \\midrule\n        text 1 & text 2   \\\\ \n        \\bottomrule\n    \\end{tabular}\n\\end{table}\n\nRefer to \\ref{tab:table1}.\n\n\\end{document}\n結果如下圖所示：\n\n\n\n浮動環境\n通常，在 \\(\\LaTeX\\) 的浮動環境下，圖表通常會置放在一頁的頂端或都是底部，正常是不置放在一頁中間的位置，除非強迫指定，有放不下的情形時，就會讓他佔一整頁。因此，\\(\\LaTeX\\) 就得把前後位置經過整體的計算後再來決定圖表應該置放在什麼地方，這就是所謂的浮動環境。使用浮動環境前，我們要先引用float套件，接著用table環境包裹起來，如：\n\\begin{table}\n\\begin{table}[置放位置選項]\n\\caption{表格的標題}\n\\begin{tabular}{表格參數}\n表格內容\n\\end{tabular}\n\\end{table}\n置放位置選項如下：\n\n\n\n\n\n\n\n\n\n位置選項\n作用\n位置選項\n作用\n\n\n\n\nh\n置於下指令處位置\np\n單獨佔一頁，此頁沒有內文的部份\n\n\nt\n置於一頁的頂端\n\\suppressfloats[位置]\n制浮動物件置放於本頁的某處，會出現在次頁\n\n\nb\n置於本頁底部，如空間不夠會置於次頁\n!\n置於以上選頁之前，會更強烈要求達到此選項的作用，但對p則無作用\n\n\n\n或是直接使用float套件，在置放位置選項上以[H]表示，代表置於此處不隨著文字移動。"
+  },
+  {
+    "objectID": "posts/notes/latex/2023-05-26-table-and-figure/index.html#插入圖片",
+    "href": "posts/notes/latex/2023-05-26-table-and-figure/index.html#插入圖片",
+    "title": "LaTeX 中表格與圖片的處理",
+    "section": "插入圖片",
+    "text": "插入圖片\n不曉得大家是否遇過下列這種情況：在看論文或是自己撰寫論文時，圖片的解析度通常都不夠高，或是圖片會難以放置在正確的位置上甚至隨意跑動。首先，我們可以先就圖片解析度這件事進行討論，如果我們使用的圖片是點陣圖類型的圖檔，例如.bmp、.jpg、.png和TIFF，就會像下方上圖所示，圖片邊緣是鋸齒狀的，當讀者放大後便會是一個個的點。但如果圖片是向量圖，例如.svg、eps或pdf，圖片的邊緣是平滑的，放大後不會看到鋸齒狀的結構。因此在 \\(\\LaTeX\\) 中，我們可以多加使用向量圖的解析度，將圖片放置於文件中。\n\n另外，針對圖片無法在文件中放置於正確的位置上，我們可以使用表格也同樣使用到的浮動環境來解決這個問題。我們就先來看如何在 \\(\\LaTeX\\) 中插入圖片吧。\n\n插入圖片的基礎\n首先，我們要進入figure環境之前，要引用graphicx套件，並使用\\includegraphics[]{}插入圖片。\n\\begin{figure}[H]\n\\centering\n\\includegraphics[width=縮放比例\\textwidth]{圖片名稱}\n\\caption{Figure 1}\n\\label{Fig.1}\n\\end{figure}\n注意到，圖片必須與.tex檔案放在同一個資料夾底下，或是以絕對路徑表示之，又或是在前言區加上\\graphicpath{{./圖片資料夾/}}，直接指定圖片的資料夾路徑。此外，includegraphics僅支援png、.tiff、.jpg、.pdf的檔案類型。\n\n插入 pdf 格式圖片\n假設今天我們的.pdf檔案有許多頁，但是只想要將某特定頁面顯示在文件上，我們可以使用pdfpages套件，接著在文稿內加上\\includepdf{}，接著參考下面的方式：\n\\begin{figure}[H]\n\\centering\n\\includepdf[pages={特定頁數}]{檔案名稱.pdf} \n\\caption{Figure 1}\n\\label{Fig.1}\n\\end{figure}\n注意到特定頁數之區隔必須以英文的逗號,進行分隔。\n\n\n\n插入 eps 格式圖片\n首先我們先引用epstopdf套件，接著將.eps檔案放在與.tex檔案同個路徑下，並參考以下程式碼：\n\\begin{figure}[H]\n\\centering\n\\includegraphics[height=高度,width=寬度]{檔案名稱.eps}\n\\caption{Figure 1}\n\\label{Fig.1}\n\\end{figure}\n\n\n插入 svg 格式圖片\n首先我們先引用svg套件，接著將.svg檔案放在與.tex檔案同個路徑下，並參考以下程式碼：\n\\begin{figure}[H]\n\\centering\n\\includesvg{檔案名稱}\n\\caption{Figure 1}\n\\label{Fig.1}\n\\end{figure}\n\n\n文繞圖\n如果我們希望將圖片周圍環繞文字，我們使用wrapfig這個套件，並以wrapfigure環境插入圖片，即可達成文繞圖的目的。\n%% 右圖\n\\begin{wrapfigure}{r}{0.25\\textwidth}\n    \\centering\n    \\includegraphics[width=0.25\\textwidth]{mesh}\n\\end{wrapfigure}\n\n%% 左圖\n\\begin{wrapfigure}{r}{0.25\\textwidth}\n    \\centering\n    \\includegraphics[width=0.25\\textwidth]{mesh}\n\\end{wrapfigure}"
   },
   {
     "objectID": "posts/notes/latex/2023-05-25-math/index.html",
@@ -245,32 +350,60 @@
     "text": "Footnotes\n\n\n通常來說，孤立(isoloation)一詞在後方多會加上介系詞 “from”，代表「孤立於…」，而英國光榮孤立政策的對象為彼時的「歐洲大陸(European Continent)」。除非歐陸出現一個國力強大，威脅到英國國土的政治實權，否則作為懸掛在北大西洋的英國不會主動介入歐洲列強鬥爭，其為一種無固定型態之結盟。↩︎\n新自由主義者認為，國家主要尋求的是物質性的政策選項，而建構主義者則指出，國家追求的為理念性的政策選項。↩︎\n一般國家，尤其是自認為霸權的美國，若在戰爭時面臨軍力崩潰，出現大量傷亡時，將會增加大量軍力以進行報復。因此人質效應帶來的是戰爭之前「嚇阻」(deter)的效果，而非戰爭時的政策工具。↩︎\n射程約1100英哩，能威脅到美國東南部。↩︎\n射程約2200英哩。↩︎"
   },
   {
-    "objectID": "posts/notes/R/2023-05-14-first-R.html",
-    "href": "posts/notes/R/2023-05-14-first-R.html",
+    "objectID": "posts/notes/R/2023-05-14-first-R/index.html",
+    "href": "posts/notes/R/2023-05-14-first-R/index.html",
     "title": "第一個 R 語言程式",
     "section": "",
     "text": "R is a programming language for statistical computing and graphics supported by the R Core Team and the R Foundation for Statistical Computing. Created by statisticians Ross Ihaka and Robert Gentleman, R is used among data miners and statisticians for data analysis and developing statistical software. Users have created packages to augment the functions of the R language.1\n對於許多學習社會科學的人而言，R 語言是一門再基礎不過的程式語言了。誠如維基百科上面所言，R 本身就是一套統計軟體，個人使用過 SPSS 與其他著名的統計軟體後，發現 R 最好用。一方面除了它語言邏輯十分簡潔，套件的多樣性如 python 一般，有一個專屬於 R 的社群，集結了許多大神的作品，十分推薦剛入門程式語言的人學。"
   },
   {
-    "objectID": "posts/notes/R/2023-05-14-first-R.html#安裝-r-與-r-studio",
-    "href": "posts/notes/R/2023-05-14-first-R.html#安裝-r-與-r-studio",
+    "objectID": "posts/notes/R/2023-05-14-first-R/index.html#安裝-r-與-r-studio",
+    "href": "posts/notes/R/2023-05-14-first-R/index.html#安裝-r-與-r-studio",
     "title": "第一個 R 語言程式",
     "section": "安裝 R 與 R Studio",
     "text": "安裝 R 與 R Studio\n首先我們可以先到臺大資工系的鏡像網站上根據使用者所使用的系統下載相對應的 R。\n\n下載完畢並安裝完成後，接著到 R Studio 官網下載 R Studio。除非你有需要使用更高階的功能，否則我們就當一個免費仔就好，勇敢地點下 Free 底下的 Download！\n\n接著就可以打開 R Studio 開始學習R語言囉！如果單看文字仍不了解的話可以參考以下的影片。\n\nWindows 系統 \nMacOS 系統"
   },
   {
-    "objectID": "posts/notes/R/2023-05-14-first-R.html#撰寫你的第一支-r-語言",
-    "href": "posts/notes/R/2023-05-14-first-R.html#撰寫你的第一支-r-語言",
+    "objectID": "posts/notes/R/2023-05-14-first-R/index.html#撰寫你的第一支-r-語言",
+    "href": "posts/notes/R/2023-05-14-first-R/index.html#撰寫你的第一支-r-語言",
     "title": "第一個 R 語言程式",
     "section": "撰寫你的第一支 R 語言",
-    "text": "撰寫你的第一支 R 語言\n這篇我們不會講述太多複雜的東西，只會提到如何使用介面。筆者的系統是 macOS，如果你是其他系統，其實操作上大同小異，只是有些地方需要特別注意，例如路徑。\n\n新增檔案\n進入 R Studio 的介面後，點擊左上角的 file 後，接著依序按下 New File、R Script，即可新增檔案，當然你也可以使用快捷鍵 ⌘+Shift+N。\n\n\n使用者介面\nR studio 的介面可以分為四個區塊，對應到下圖中的每個數字：\n\nWorkspace：新增檔案後才會出現\nConsole：執行程式碼的地方，在 Workspace 選取程式碼後按下快捷鍵即可執行。\nEnvironment、History：前者為記錄變數名稱、狀態的地方，後者為執行程式碼的紀錄。\nFiles、Plots、Packages、Help、Viewer：這個區塊很好理解，就不多作介紹。\n\n\n\n撰寫程式碼\n撰寫程式碼有兩種方式，第一種是在 Workspace 寫。比如我們可以打上以下程式碼：\n\n\nCode\nprint(\"Hello World!\")\n\n\n[1] \"Hello World!\"\n\n\n就會跑出"
+    "text": "撰寫你的第一支 R 語言\n這篇我們不會講述太多複雜的東西，只會提到如何使用介面。筆者的系統是 macOS，如果你是其他系統，其實操作上大同小異，只是有些地方需要特別注意，例如路徑。\n\n新增檔案\n進入 R Studio 的介面後，點擊左上角的 file 後，接著依序按下 New File、R Script，即可新增檔案，當然你也可以使用快捷鍵 ⌘+Shift+N。\n\n\n使用者介面\nR studio 的介面可以分為四個區塊，對應到下圖中的每個數字：\n\nWorkspace：新增檔案後才會出現\nConsole：執行程式碼的地方，在 Workspace 選取程式碼後按下快捷鍵即可執行。\nEnvironment、History：前者為記錄變數名稱、狀態的地方，後者為執行程式碼的紀錄。\nFiles、Plots、Packages、Help、Viewer：這個區塊很好理解，就不多作介紹。\n\n\n\n撰寫程式碼\n撰寫程式碼有兩種方式，第一種是在 Workspace 寫。比如我們可以打上以下程式碼：\n\nprint(\"Hello World!\")\n\n[1] \"Hello World!\"\n\n\n就會跑出 Hello World!\n寫完程式碼之後記得儲存檔案！這個步驟真的很重要，建議每五分鐘就儲存一次。2"
   },
   {
-    "objectID": "posts/notes/R/2023-05-14-first-R.html#footnotes",
-    "href": "posts/notes/R/2023-05-14-first-R.html#footnotes",
+    "objectID": "posts/notes/R/2023-05-14-first-R/index.html#footnotes",
+    "href": "posts/notes/R/2023-05-14-first-R/index.html#footnotes",
     "title": "第一個 R 語言程式",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\n節錄自維基百科。↩︎"
+    "text": "Footnotes\n\n\n節錄自維基百科。↩︎\n筆者有慘痛的經驗，之前打了近 500 行程式碼，結果因為資料量太大導致電腦過熱當機，重啟後東西全部不見。之後就養成了每打完一個小段落就儲存的習慣，共勉之。↩︎"
+  },
+  {
+    "objectID": "posts/notes/R/2023-05-26-r-and-tex/index.html",
+    "href": "posts/notes/R/2023-05-26-r-and-tex/index.html",
+    "title": "R Markdown 與 TeX",
+    "section": "",
+    "text": "排版一直以來是一個很麻煩的事情，無論是新聞、雜誌，乃至於學術文章，要將文章清楚、俐落且富有美感的呈現出來是需要功夫的；此外，要透過何種方式進行排版，也成為了諸多想學習排版或是已經成為排版的人而言心中曾經冒出的疑問。對此，這篇文章將會透過 R Markdown 的方式，結合些許的 \\(\\TeX\\) 語法，將個人的排版經歷與方法分享給大家。"
+  },
+  {
+    "objectID": "posts/notes/R/2023-05-26-r-and-tex/index.html#在-r-語言中新增-markdown-檔案",
+    "href": "posts/notes/R/2023-05-26-r-and-tex/index.html#在-r-語言中新增-markdown-檔案",
+    "title": "R Markdown 與 TeX",
+    "section": "在 R 語言中新增 Markdown 檔案",
+    "text": "在 R 語言中新增 Markdown 檔案\n我們在此預設讀者的電腦中均已安裝 R 語言與 R Studio。\n\n安裝所需套件與基本設定\n我們需要執行以下兩行指令安裝rmarkdown與knitr，這是兩個使用 R Markdown 的重要套件。\ninstall.packages(\"rmarkdown\")\ninstall.packages(\"knitr\")\n安裝完畢後，在 R Studio 的使用介面中，可以依照以下方式新增 R Markdown 檔案：File\\(\\rightarrow\\)New File\\(\\rightarrow\\)R Markdown，如下圖所示。\n\n接著就會看到以下的畫面：\n\n我們可以在Title、Author與Date欄位上打上標題、作者名字與編輯日期。設定完成後，我們可以選擇輸出格式，在這篇文章中我們以.PDF檔案作為範例，確認後按下OK即可進入下一步。\n\n\n介面介紹\n點擊OK後我們可以看到一份 R Markdown 的編輯畫面。\n\n首先 1 至 5 行代表的是文章的基本設定，包含標題、作者名字、編輯日期，以及之後會使用到的一些\\(\\TeX\\) 語法設定的地方，稱為前言區(preamble)。接著，我們可以看到這幾行程式碼：\n{r setup, include=FALSE}\nknitr::opts_chunk$set(echo = TRUE)\n這幾行代表的意思如下，inclue=FALSE即是不將程式區塊包含於輸出的文件中，echo=TRUE則是要求程式碼要含在文件輸出。而我們可以在編輯區看到好幾個程式區塊，加入方式有兩種，第一種就是直接輸入```，並於其後加入{r}或是{python}。第二種方法則是點擊工作列上方的增加程式區塊符號，選擇需要顯示的程式語言即可。\n\n關於 Markdown 語法的相關內容，請參考MarkDown語法大全。"
+  },
+  {
+    "objectID": "posts/notes/R/2023-05-26-r-and-tex/index.html#tex-語法設定",
+    "href": "posts/notes/R/2023-05-26-r-and-tex/index.html#tex-語法設定",
+    "title": "R Markdown 與 TeX",
+    "section": "TeX 語法設定",
+    "text": "TeX 語法設定\n進行\\(\\TeX\\) 語法有兩個目的。如果有聽過 \\(\\TeX\\) 的人應該知道 \\(\\TeX\\) 是用於進行數學排版的語言，而 \\(\\TeX\\) 可以應用在 R Markdown 中，讓文件變得更簡潔、漂亮。另一方面，由於有些文件必須以中文呈現，因此必須透過 \\(\\TeX\\) 語法的相關設定，才能顯示中文於文件中。\n\n數學排版\n有鑒於本篇文章並非 \\(\\TeX\\) 語法教學，故不會著重許多細節，還煩請見諒。如果要進入數學模式，我們有兩種顯示方式，一種是行內(inline)顯示，即數學符號顯示於文字與文字之間，方法為打上$$，接著在裡面加入 \\(\\TeX\\) 語法；另一個則是建立一個數學區塊，我們可以在文件中打上以下程式碼，便可以產生一個數學區塊。\n$$\n\n$$\n以下我們針對常用的 \\(\\TeX\\) 語法整理為表格，供使用者參考。如果想要了解更多 \\(\\TeX\\) 語法的指令，可以參考這份文件。\n\n\n\n\n\n\n\n語法\n結果\n\n\n\n\n$x=y$\n\\(x=y\\)\n\n\n$x+y$\n\\(x+y\\)\n\n\n$x-y$\n\\(x-y\\)\n\n\n$x*y$\n\\(x*y\\)\n\n\n$x/y$\n\\(x/y\\)\n\n\n$x \\times y$\n\\(x \\times y\\)\n\n\n$x &gt; y$\n\\(x &gt; y\\)\n\n\n$x &lt; y$\n\\(x &lt; y\\)\n\n\n$x \\geq y$\n\\(x \\geq y\\)\n\n\n$x \\leq y$\n\\(x \\leq y\\)\n\n\n$x^n$\n\\(x^n\\)\n\n\n$x_i$\n\\(x_i\\)\n\n\n$\\hat{x}$\n\\(\\hat{x}\\)\n\n\n$\\overline{x}$\n\\(\\overline{x}\\)\n\n\n$\\tilde{x}$\n\\(\\tilde{x}\\)\n\n\n$\\frac{d}{dx}$\n\\(\\frac{d}{dx}\\)\n\n\n$\\frac{\\partial }{\\partial x}$\n\\(\\frac{\\partial }{\\partial x}\\)\n\n\n$\\int^{a}_{b}$\n\\(\\int^{a}_{b}\\)\n\n\n$\\sum^{n}_{i=1}$\n\\(\\sum^{n}_{i=1}\\)\n\n\n$x_{1} + x_{2} + \\cdots + x_{n}$\n\\(x_{1} + x_{2} + \\cdots + x_{n}\\)\n\n\n$x_{1}, x_{2}, \\cdots, x_{n}$\n\\(x_{1}, x_{2}, \\cdots, x_{n}\\)\n\n\n$\\mid x \\mid$\n\\(\\mid x \\mid\\)\n\n\n$x \\in \\mathbb{R}$\n\\(x \\in \\mathbb{R}\\)\n\n\n$A \\subset B$\n\\(A \\subset B\\)\n\n\n$A \\subseteq B$\n\\(A \\subseteq B\\)\n\n\n$A \\cup B$\n\\(A \\cup B\\)\n\n\n$A \\cap B$\n\\(A \\cap B\\)\n\n\n$\\sin$\n\\(\\sin\\)\n\n\n$\\max$\n\\(\\max\\)\n\n\n$\\log$\n\\(\\log\\)\n\n\n$\\exp$\n\\(\\exp\\)\n\n\n$\\{X_{i}\\}^{n}_{i=1} \\sim \\operatorname{N}(\\mu, \\sigma^2)$\n\\(\\{X_{i}\\}^{n}_{i=1} \\sim \\operatorname{N}(\\mu, \\sigma^2)\\)\n\n\n${n \\choose x}$\n\\({n \\choose x}\\)\n\n\n$\\lim_{x \\to \\infty} f(x)$\n\\(\\lim_{x \\to \\infty} f(x)\\)\n\n\n\n更多關於數學排版的技巧請參考LaTeX 數學排版。\n\n\n中文字體設定\n讀者可以先從這份文件的Github下載main.Rmd這份檔案。下載完畢後開啟，可以看到在前言區中，多了好幾行程式碼，以下我們來一一介紹。\n---\ntitle: \\hei{標題}\ndate: 2022-10-15\nauthor: 作者名字\noutput:\n  pdf_document:\n    latex_engine: xelatex\n    includes:\n      in_header: \"preamble.tex\"\n---\npdf_document後面的latex_engine代表我們指定要使用哪種 \\(\\TeX\\) 的編譯系統，由於我們要顯示中文，因此就必須使用xelatex。接著可以看到以下幾行：\nincludes:\n      in_header: \"preamble.tex\"\n我們可以在 Markdown 的前言區加上in_header: \"preamble.tex\"，代表我們將preamble.tex這個.tex檔加入進來。這個檔案裡的內容如下：\n% Font Setting\n\\usepackage{xeCJK}\n\\usepackage{fontspec}\n\\setmainfont[Numbers = OldStyle]{LinLibertine_R.otf} % Set the main font of the document \n\\setCJKmainfont[AutoFakeBold={2.5},AutoFakeSlant={0.6}]{cwTeXQMing-Medium}\n\\setCJKfamilyfont{kai}{cwTeX Q Kai}\n\\newcommand{\\kai}[1]{{\\CJKfamily{kai}#1}}\n\\setCJKfamilyfont{yuan}{cwTeX Q Yuan Medium} \n\\newcommand{\\yuan}[1]{{\\CJKfamily{yuan}#1}}\n\\setCJKfamilyfont{hei}{cwTeX Q Hei}\n\\newcommand{\\hei}[1]{{\\CJKfamily{hei}#1}}\n\n% Title Setting\n\\usepackage{titlesec} % Custom section title style\n\\titleformat{\\section}{\\normalfont\\Large\\yuan}{\\thesection}{1em}{}\n\\titleformat{\\subsection}{\\normalfont\\large\\yuan}{\\thesubsection}{1em}{}\n\\titleformat{\\subsubsection}{\\normalsize\\yuan}{\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}\\quad}{0em}{}\n這幾行是設定字體的，\\usepackage{xeCJK}這行必須加入，否則剛剛使用的latex_engine: xelatex就沒有用了，\\usepackage{fontspec}則是將中、英字體分開設定。後面的\\setmainfont與setCJKmainfont顧名思義就是設定主要字體與主要「中文」字體，可以看到設定字體前我們加上了[Numbers = OldStyle]，代表將字體設定成 OldStyle 的格式，顯示結果如下：\n\n接下來看到以下兩行：\n  - \\setCJKfamilyfont{kai}{cwTeX Q Kai}\n  - \\newcommand{\\kai}[1]{{\\CJKfamily{kai}#1}}\n第一行代表我們在中文字體家族中設定一個名為cwTeX Q Kai的字體，接著新建一個指定叫做\\kai，方便我們日後如果要更改文字的字型，可以使用\\kai{想要更改的文字}進行更換。最後，必須注意，這些字體都必須是已經安裝在讀者端的電腦上，如果想要下載由吳聰敏老師開發的cwTeX系列字體，可以參考這篇文章。而後面的\\usepackage{titlesec}則是設定不同深度的標題之格式，包含字體、大小、標題開頭數字之計算方式。\n\n\n排版成果\n\n\n\n技巧提點\n假設文件中需要安裝某些套件，但又不想讓這些套件跑出來的結果出現在輸出的文件中，我們可以在 chunk 上面進行設定。如果想要設定這份文件的檔案路徑，可以這麼做：\n\n\nknitr::opts_chunk$set(echo = TRUE)\nsetwd(\"你的路徑\")\n\n\n若想要關閉系統提示，則在設定區{}中加上message = FALSE即可，例如：\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(haven)\nlibrary(tidyverse)\n:::"
+  },
+  {
+    "objectID": "posts/notes/R/2023-05-26-r-and-tex/index.html#小結",
+    "href": "posts/notes/R/2023-05-26-r-and-tex/index.html#小結",
+    "title": "R Markdown 與 TeX",
+    "section": "小結",
+    "text": "小結\n排版是需要學習與時間培養的，作者本人也是透過做中學、學中做的方式慢慢建立排版的直覺。因此，學習在每份文件都使用排版軟體排版吧！如果喜歡這篇文章的話也別忘了分享給需要的朋友喔。"
   },
   {
     "objectID": "posts/notes/julia/2023-05-23-RNG.html",

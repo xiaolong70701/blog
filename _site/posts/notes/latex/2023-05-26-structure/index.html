@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-05-14">
+<meta name="dcterms.date" content="2023-05-26">
 
-<title>Yueswater Blog - 第一個 R 語言程式</title>
+<title>Yueswater Blog - LaTeX 書本、文件章節編排與架構</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,27 +58,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<link href="../../../assets/images/logo_favicon.png" rel="icon" type="image/png">
-<script src="../../../site_libs/cookie-consent/cookie-consent.js"></script>
-<link href="../../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
-<script src="../../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../">
+<link href="../../../../assets/images/logo_favicon.png" rel="icon" type="image/png">
+<script src="../../../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -116,14 +116,16 @@ cookieconsent.run({
 </script> 
   
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Yueswater Blog - 第一個 R 語言程式">
+<meta property="og:title" content="Yueswater Blog - LaTeX 書本、文件章節編排與架構">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://i.imgur.com/iRD88ri.jpg">
+<meta property="og:image" content="https://i.imgur.com/2PiNxCC.png">
 <meta property="og:site-name" content="Yueswater Blog">
-<meta name="twitter:title" content="Yueswater Blog - 第一個 R 語言程式">
+<meta name="twitter:title" content="Yueswater Blog - LaTeX 書本、文件章節編排與架構">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://i.imgur.com/iRD88ri.jpg">
+<meta name="twitter:image" content="https://i.imgur.com/2PiNxCC.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -134,7 +136,7 @@ cookieconsent.run({
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../../../index.html">
+    <a class="navbar-brand" href="../../../../index.html">
     <span class="navbar-title">Yueswater Blog</span>
     </a>
   </div>
@@ -145,21 +147,21 @@ cookieconsent.run({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../blog.html" rel="" target="">
+    <a class="nav-link" href="../../../../blog.html" rel="" target="">
  <span class="menu-text">blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../notes.html" rel="" target="">
+    <a class="nav-link" href="../../../../notes.html" rel="" target="">
  <span class="menu-text">notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../projects.html" rel="" target="">
+    <a class="nav-link" href="../../../../projects.html" rel="" target="">
  <span class="menu-text">projects</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../about.html" rel="" target="">
+    <a class="nav-link" href="../../../../about.html" rel="" target="">
  <span class="menu-text">about</span></a>
   </li>  
   <li class="nav-item compact">
@@ -189,9 +191,9 @@ cookieconsent.run({
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <div class="quarto-title-block"><div><h1 class="title">第一個 R 語言程式</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
+      <h1 class="title">LaTeX 書本、文件章節編排與架構</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">R</div>
+                <div class="quarto-category">LaTeX</div>
                 <div class="quarto-category">programming language</div>
               </div>
                   </div>
@@ -204,7 +206,7 @@ cookieconsent.run({
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">May 14, 2023</p>
+        <p class="date">May 26, 2023</p>
       </div>
     </div>
     
@@ -222,64 +224,220 @@ cookieconsent.run({
 
 
 
-<blockquote class="blockquote">
-<p>R is a programming language for statistical computing and graphics supported by the R Core Team and the R Foundation for Statistical Computing. Created by statisticians Ross Ihaka and Robert Gentleman, R is used among data miners and statisticians for data analysis and developing statistical software. Users have created packages to augment the functions of the R language.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-</blockquote>
-<p>對於許多學習社會科學的人而言，R 語言是一門再基礎不過的程式語言了。誠如維基百科上面所言，R 本身就是一套統計軟體，個人使用過 SPSS 與其他著名的統計軟體後，發現 R 最好用。一方面除了它語言邏輯十分簡潔，套件的多樣性如 python 一般，有一個專屬於 R 的社群，集結了許多大神的作品，十分推薦剛入門程式語言的人學。</p>
-<section id="安裝-r-與-r-studio" class="level2">
-<h2 class="anchored" data-anchor-id="安裝-r-與-r-studio">安裝 R 與 R Studio</h2>
-<p>首先我們可以先到<a href="http://cran.csie.ntu.edu.tw/">臺大資工系的鏡像網站</a>上根據使用者所使用的系統下載相對應的 R。</p>
-<p><img src="https://i.imgur.com/iRD88ri.jpg" class="img-fluid"></p>
-<p>下載完畢並安裝完成後，接著到 <a href="https://www.rstudio.com/products/rstudio/download/">R Studio 官網</a>下載 R Studio。除非你有需要使用更高階的功能，否則我們就當一個免費仔就好，勇敢地點下 Free 底下的 Download！</p>
-<p><img src="https://i.imgur.com/9oNfbYF.jpg" class="img-fluid"></p>
-<p>接著就可以打開 R Studio 開始學習<code>R</code>語言囉！如果單看文字仍不了解的話可以參考以下的影片。</p>
+<p>一本書籍或學術文章的基本架構大概可以切分成以下幾個元素</p>
 <ul>
-<li><p>Windows 系統 <iframe width="750" height="640" src="https://www.youtube.com/embed/TFGYlKvQEQ4" title="How to download and install R and RStudio" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></p></li>
-<li><p>MacOS 系統 <iframe width="750" height="640" src="https://www.youtube.com/embed/JqV-USGR6AA" title="How to install R and RStudio on Mac in 4 minutes (August 2021)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></p></li>
+<li>封面</li>
+<li>目錄</li>
+<li>段落、本文</li>
+<li>註解</li>
+<li>參考文獻</li>
+<li>附錄</li>
+<li>交互參照</li>
 </ul>
+<p>其中註解、段落與本文的設定在前幾篇已經提過，因此以下我們就會針對其他幾個議題進行討論。</p>
+<section id="封面" class="level2">
+<h2 class="anchored" data-anchor-id="封面">封面</h2>
+<p>基本上封面就是之前學過的方式，輸入<code>\title</code>、<code>\author</code>、<code>\date</code> 等資訊，即可生成封面。假設我們想要引用網路上已經做好的<code>.pdf</code>檔案作為封面怎麼辦呢？我們可以透過在<a href="../../../../posts/notes/latex/2023-05-26-table-and-figure/index.html">LaTeX 中表格與圖片的處理</a>學到引入<code>.pdf</code>檔案的技巧，將外部<code>.pdf</code>檔案加入文件中顯示。</p>
 </section>
-<section id="撰寫你的第一支-r-語言" class="level2">
-<h2 class="anchored" data-anchor-id="撰寫你的第一支-r-語言">撰寫你的第一支 R 語言</h2>
-<p>這篇我們不會講述太多複雜的東西，只會提到如何使用介面。筆者的系統是 macOS，如果你是其他系統，其實操作上大同小異，只是有些地方需要特別注意，例如路徑。</p>
-<section id="新增檔案" class="level3">
-<h3 class="anchored" data-anchor-id="新增檔案">新增檔案</h3>
-<p>進入 R Studio 的介面後，點擊左上角的 <code>file</code> 後，接著依序按下 <code>New File</code>、<code>R Script</code>，即可新增檔案，當然你也可以使用快捷鍵 <code>⌘+Shift+N</code>。</p>
+<section id="版面設定" class="level2">
+<h2 class="anchored" data-anchor-id="版面設定">版面設定</h2>
+<p>我們可以透過一些套件，讓我們的文件變得更加易讀、美觀。以下我們將會分別介紹邊界設定與標頭(header)的設定：</p>
+<section id="邊界設定" class="level3">
+<h3 class="anchored" data-anchor-id="邊界設定">邊界設定</h3>
+<p>在 Word 中，我們可以進行版面設定，即設定上、下、左、右邊界，<span class="math inline">\(\LaTeX\)</span> 也有提供相同的功能。首先我們可在前言區加上下面這行：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>[margin = 1cm]{<span class="ex">geometry</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>代表我們將四個邊界均設定為<code>1cm</code>。如果想要將四個邊界都有不同寬度的話，則使用下面的程式碼：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>[left=2cm, right=2cm, top=1cm, bottom=1cm]{<span class="ex">geometry</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>代表左右各為<code>2cm</code>、上下各為<code>1cm</code>。以下圖片參考自<a href="https://ctan.org/pkg/geometry?lang=en"><code>geometry</code>套件的說明文件</a>，其清楚地說明了此套件的設定指令：</p>
+<p><img src="https://i.imgur.com/2PiNxCC.png" class="img-fluid"></p>
+<p>吳聰敏老師在<a href="http://homepage.ntu.edu.tw/~ntut019/cwtex/cxbook3.pdf">《cw<span class="math inline">\(\TeX\)</span> 3 使用手冊》</a>中整理了<code>geometry</code>的設定指令：</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>指令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>nohead</code></td>
+<td>等於<code>headheight=0pt,headsep=0pt</code>。</td>
+</tr>
+<tr class="even">
+<td><code>nofoot</code></td>
+<td>等於<code>footskip=0pt</code>。</td>
+</tr>
+<tr class="odd">
+<td><code>hscale</code></td>
+<td>可列印區域之寬度與紙張寬度之比率,例如<code>hscale=0.8</code>。</td>
+</tr>
+<tr class="even">
+<td><code>marginparwidth</code></td>
+<td>邊註(marginal notes)之寬度。</td>
+</tr>
+<tr class="odd">
+<td><code>marginparsep</code></td>
+<td>正文方塊與邊註之間距。</td>
+</tr>
+<tr class="even">
+<td><code>width</code></td>
+<td>等於<code>textwidth+ marginparsep+ marginparwidth</code>。</td>
+</tr>
+<tr class="odd">
+<td><code>twoside</code></td>
+<td>奇數頁(右頁)之列印區域會稍靠左, 雙數頁(左頁)之列印區域則稍靠右;參見下一指令。</td>
+</tr>
+<tr class="even">
+<td><code>asymmetric</code></td>
+<td>有些書籍之單雙頁採用相同之版面, 此時可以asymmetric選項排版。</td>
+</tr>
+<tr class="odd">
+<td><code>hoffset</code></td>
+<td>同<code>\hoffset</code>指令。</td>
+</tr>
+<tr class="even">
+<td><code>voffset</code></td>
+<td>同<code>\voffset</code>指令。</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="使用者介面" class="level3">
-<h3 class="anchored" data-anchor-id="使用者介面">使用者介面</h3>
-<p>R studio 的介面可以分為四個區塊，對應到下圖中的每個數字：</p>
-<ol type="1">
-<li>Workspace：新增檔案後才會出現</li>
-<li>Console：執行程式碼的地方，在 Workspace 選取程式碼後按下快捷鍵即可執行。</li>
-<li>Environment、History：前者為記錄變數名稱、狀態的地方，後者為執行程式碼的紀錄。</li>
-<li>Files、Plots、Packages、Help、Viewer：這個區塊很好理解，就不多作介紹。</li>
-</ol>
+<section id="標頭設定" class="level3">
+<h3 class="anchored" data-anchor-id="標頭設定">標頭設定</h3>
+<p>所謂標頭，可以先參考<code>fancyhdr</code><a href="https://ctan.org/pkg/fancyhdr?lang=en">官方文件</a>所提供的說明圖：</p>
+<p><img src="https://i.imgur.com/bMSmQ8a.png" class="img-fluid"></p>
+<p>你可以在標頭上面加上跟這篇文件有關的資訊，例如假設我今天要做一篇課堂筆記，我就可以在上面加註課程名稱、授課者、章節名稱等資訊。我們可以在前言區加上<code>usepackage{fancyhdr}</code>，接著可以設定如下的內容：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\pagestyle</span>{fancy}</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\fancyhf</span>{}</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\lhead</span>{<span class="fu">\normalsize</span> 文字 <span class="fu">\\</span> 文字}</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">\rhead</span>{<span class="fu">\normalsize</span> 文字 <span class="fu">\\</span> 文字}</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">\cfoot</span>{<span class="fu">\footnotesize</span> <span class="fu">\thepage</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>當然你也可以自己調整字體大小，如果想要清除頁首的設定的話，可以使用<code>\fancyhead{}</code>，清除頁尾則用<code>\fancyfoot{}</code>。</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>指令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\lhead{}</code></td>
+<td>頁首左邊的文字</td>
+</tr>
+<tr class="even">
+<td><code>\chead{}</code></td>
+<td>頁首中間的文字</td>
+</tr>
+<tr class="odd">
+<td><code>\rhead{}</code></td>
+<td>頁首右邊的文字</td>
+</tr>
+<tr class="even">
+<td><code>\lfoot{}</code></td>
+<td>頁尾左邊的文字</td>
+</tr>
+<tr class="odd">
+<td><code>\cfoot{}</code></td>
+<td>第幾頁</td>
+</tr>
+<tr class="even">
+<td><code>\rfoot{}</code></td>
+<td>頁尾右邊的文字</td>
+</tr>
+</tbody>
+</table>
+<p>此外，我們也可以對於奇數頁(odd page)、偶數頁(even page)進行不同的設定：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\fancyhead</span>[RO,LE]{} <span class="co">% 頁首：奇數頁右邊、偶數頁左邊</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\fancyfoot</span>[LE,RO]{第~<span class="fu">\thepage</span>~頁}      <span class="co">% 頁碼置於偶數頁左邊及奇數頁右邊</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\fancyfoot</span>[LO,CE]{} <span class="co">% 奇數頁左及偶數頁中</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">\fancyfoot</span>[CO,RE]{} <span class="co">% 奇數頁中及偶數頁右</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewcommand</span>{<span class="ex">\headrulewidth</span>}{0.4pt} <span class="co">% 設定頁首分隔線為寬度是 0.4 pt 的水平線</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewcommand</span>{<span class="ex">\footrulewidth</span>}{0.4pt} <span class="co">% 設定頁首分隔線為寬度是 0.4 pt 的水平線</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>這邊我做了一個課堂筆記的<a href="https://github.com/xiaolong70701/note-template">模板</a>，有興趣的人可以下載使用。</p>
 </section>
-<section id="撰寫程式碼" class="level3">
-<h3 class="anchored" data-anchor-id="撰寫程式碼">撰寫程式碼</h3>
-<p>撰寫程式碼有兩種方式，第一種是在 Workspace 寫。比如我們可以打上以下程式碼：</p>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Hello World!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Hello World!"</code></pre>
-</div>
-</div>
-<p>就會跑出</p>
+</section>
+<section id="目錄" class="level2">
+<h2 class="anchored" data-anchor-id="目錄">目錄</h2>
+<p>最簡單的作法，就是在本文開頭加上<code>\tableofcontents</code> 指令即可。而在 <span class="math inline">\(\LaTeX\)</span> 文稿中</p>
+<ul>
+<li><code>\tableofcontents</code> 可以排版一般的章節目錄</li>
+<li><code>\listoffigures</code> 指令可以排版圖目錄</li>
+<li><code>\listoftables</code> 指令則可排版表目錄</li>
+</ul>
+<p>預設情況，目錄的名稱會是：Contents、List of Figueres 及 List of Tables。若要改成中文形式，必須使用 <code>\renewcommand</code> 這個指令重新定義：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewcommand\contentsname</span>{目~錄~}</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewcommand\listfigurename</span>{圖~目~錄}</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewcommand\listtablename</span>{表~目~錄}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>假設章節指令使用了星號，或是圖表目錄沒有使用<code>\caption</code>指令這是指沒有編入目錄，但想自行加進去的情形。</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\addcontentsline</span>{toc}{章節名}{標題}</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\addcontentsline</span>{lof}{figure}{標題}</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\addcontentsline</span>{lot}{table}{標題}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="交互參照與超連結" class="level2">
+<h2 class="anchored" data-anchor-id="交互參照與超連結">交互參照與超連結</h2>
+<p>在<a href="../../../../posts/notes/latex/2023-05-26-table-and-figure/index.html">LaTeX 中表格與圖片的處理</a>中我們已經提過交互參照的概念，在這邊我們就以較短的篇幅進行討論。首先，在想要參照的表格或圖片中加入<code>\label{參照標籤}</code>，接著在文內使用<code>\ref{參照標籤}</code>便可以引用；如果想要引用欲參照表格或圖片的頁數，則使用<code>\pageref{參照標籤}</code>。注意到以下幾點：</p>
+<ul>
+<li>有參照的文稿一定要編譯兩次才能正常顯示</li>
+<li>能編號的章節、圖表、列舉項目、數學式、定理才能參照，雖然其不一定要編號</li>
+<li>圖表的參照<code>\label</code>一定要在<code>\caption</code>之後，不能在前。</li>
+</ul>
+<p>如果我們想要將交互參照或是超連結加上醒目提示，我們就要使用<code>hyperref</code>這個套件，接著在前言區加上以下程式碼進行超連結設定：</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\hypersetup</span>{</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>colorlinks = true,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>linkcolor = 顏色,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>filecolor = 顏色,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>urlcolor = 顏色,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="參考文獻" class="level2">
+<h2 class="anchored" data-anchor-id="參考文獻">參考文獻</h2>
+<p>我們製作參考文獻的方式有兩種，首先來介紹第一種，透過<code>thebibliography</code>環境，再加上<code>\bibitem[標記]{鍵值}</code>即可產生參考文獻。</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">thebibliography</span>}{99} <span class="co">% 編號最寬為兩個字母寬</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\bibitem</span>[標記一]{鍵值一} 參考資料一</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\bibitem</span>[標記二]{鍵值二} 參考資料二</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">thebibliography</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>我們引用的時候是使用<code>\cite{鍵值}</code>這個指令，他會顯示參考資料中的編號值，且以方括號括起來，鍵值可以想像成是鑰匙(key)，藉由這把特定的鑰匙可以將參考資料「提領」出來。當然，<code>thebibliography</code>環境所產生的預設參考文獻標題是英文，若要改成中文，使用<code>\renewcommand</code>即可：</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewcommand\refname</span>{參~考~資~料} <span class="co">% article</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewcommand\bibname</span>{參~考~文~獻} <span class="co">% report/book</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>第二種方式則是在<code>.tex</code>的根目錄下建立<code>.bib</code>檔。<span class="math inline">\(\text{Bib}\TeX\)</span> 本身提供一個外部的<code>bibtex</code>工具程式，在 <span class="math inline">\(\LaTeX\)</span> 編譯過文稿後，再利用<code>bibtex</code>編譯一次文稿，最後再使用 <span class="math inline">\(\LaTeX\)</span> 重編譯過。使用<code>bibtex</code>的方式如下，我們在<code>\end{document}</code>前插入：</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\bibliographystyle</span>{<span class="ex">IEEEtran</span>} <span class="co">%指定 style 檔</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\bibliography</span>{<span class="ex">檔案名稱.bib</span>} <span class="co">% .bib 文件</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>並按照上述步驟進行即可產生參考文獻。產生<code>.bib</code>檔的方式可以參考下面的圖片步驟說明。首先我們可以前往<a href="https://scholar.google.com/">Google 學術搜尋</a>，接著查詢要引用的文獻，在這裡我以 D. Acemoglu 的 “<em>Why Nations Fail</em>” 為例：</p>
+<p><img src="https://i.imgur.com/K971HaE.png" class="img-fluid"></p>
+<p>找到文章後，點擊「引用」，就可以看到以下的畫面：</p>
+<p><img src="https://i.imgur.com/Sbubj60.png" class="img-fluid"></p>
+<p>接著點擊<code>BibTeX</code>後，在新分頁就能得到以下的程式碼：</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>@article{acemoglu2015nations,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  title={Why nations fail?},</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  author={Acemoglu, Daron},</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  journal={The Pakistan Development Review},</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  volume={54},</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  number={4},</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  pages={301--312},</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  year={2015},</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  publisher={JSTOR}</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="附錄" class="level2">
+<h2 class="anchored" data-anchor-id="附錄">附錄</h2>
+<p>排版附錄使用的是<code>\appendix</code>指令，這個指令以後和正常一般編輯即可。附錄預設標題是英文，若要將其改成中文，承襲更改目錄、參考文獻的方式即可：</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewcommand\appendixname</span>{附~錄}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>注意到 article 類別的文稿並不印出<code>Appendix</code>字樣，因此也就沒有<code>appendixname</code>進行更改。</p>
 
 
 </section>
-</section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>節錄自<a href="https://en.wikipedia.org/wiki/R_(programming_language)">維基百科</a>。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

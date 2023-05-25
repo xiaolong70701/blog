@@ -1,0 +1,342 @@
+---
+title: "LaTeX 中表格與圖片的處理"
+date: "2023-05-26"
+categories: [LaTeX, programming language]
+---
+
+在學習 $\LaTeX$ 的過程中，表格的處理通常是最為棘手的，主要原因在於 $\LaTeX$ 係透過抽象與邏輯的方式繪製表格。網路上有針對 $\LaTeX$ 的表格編輯器，不過仍要先了解表格的大架構，便能在沒有編輯器的情況下製作表格，亦不會摸不著頭緒。
+
+
+## 製作表格
+
+在 $\LaTeX$ 中的表格環境有很多，其中最常使用的是`tabbing`、`table`、`tabular`、`tabularx`、`array`，這些環境各有其使用的目的、優點與缺點，以下就來一一介紹。不過，首先我們要認知到一件事，$\LaTeX$ 在編譯過程中，會將表格視為一個 box 處理，也就是跨頁、長表格這些功能在某些時候是十分惱人的，必須透過一些方式調整，不過當然也有例外。
+
+### tabbing 環境
+
+tabbing 環境就是上述提到的例外，$\LaTeX$ 不會將其視為 box 處理，因此換頁、拆分是可行的。在 tabbing 環境中，第一列(row)是以`\=`進行欄位的區隔，之後的列則是以`\>`區隔，且在切換到下一列之前，以`//`進行換行（最後一列可選擇不加）。
+
+```tex
+\begin{tabbing}
+    column1 \= column2 \= column3 \\
+    item1 \> item2 \> item3 \\
+    itemA \> itemB \> itemC
+\end{tabbing}
+```
+
+結果如下圖左所示。
+
+<figure class="third">
+    <img src="https://i.imgur.com/cW62Tjq.png" width="250"/><img src="https://i.imgur.com/6JON2nl.png" width="315"/>
+</figure>
+
+我們也可以用以下方式調整欄位寬度：
+
+```tex
+\begin{tabbing}
+    xxxxxxxxxx\=xxxxxxxxxx\=xxxxxxxxxx \kill
+    column1 \> column2 \> column3 \\
+    item1 \> item2 \> item3 \\
+    itemA \> itemB \> itemC
+\end{tabbing}
+```
+
+結果如上圖右所示，其中`\kill`代表不顯示該列。
+
+### tabular 環境
+
+tabular 環境是在 $\LaTeX$ 中最常使用的表格環境，因其可以繪製行與列的分隔線。首先我們可以先大致瀏覽 tabular 的架構。
+
+```tex
+\begin{tabular}[c]{lll}
+    \hline
+    column1 & column2 & column3 \\
+    \hline
+    item1 & item2 & item3 \\
+    itemA & itemB & itemC \\
+    \hline
+\end{tabular}
+```
+
+#### 表格框架設定
+
+其中`[c]`代表置中，在使用 tabular 環境時，$\LaTeX$ 會將其視為字母進行處理，也可以將其換成`[h]`與`[b]`，前者代表 top，使表格頂端與文字對齊，後者則是指 bottom，即表格底部與文字對齊。`{lll}`代表的是表格中的文字是置左（使用`l`）、置中（使用`c`）或置右（使用`r`）呈現，且注意到`l`、`c`、`r`的個數必須要與欄位數相同。
+
+<figure class="third">
+    <img src="https://i.imgur.com/qkhymkj.png" width="315"/><img src="https://i.imgur.com/l9eCH6I.png" width="305"/>
+</figure>
+
+
+#### 表格分隔線設定
+
+接著看到`\hline`，其代表的是列與列之間的分隔線，且除第一列之外，在使用`hline`之前都必須加上換行符號`//`。而如果想要繪製欄與欄之間的分隔線，則在剛剛設定表格文字的地方加上`|`，如上圖右所示，程式碼則參考下方。
+
+```tex
+\begin{tabular}[c]{|l|l|l|}
+    \hline
+    column1 & column2 & column3 \\
+    \hline
+    item1 & item2 & item3 \\
+    \hline
+    itemA & itemB & itemC \\
+    \hline
+\end{tabular}
+```
+
+#### 關於欄位調整
+
+其他更多有關欄位調整的方式，請參考下方表格：
+
+
+
+| 語法 | 功能 | 語法 | 功能 |
+| -------- | -------- | -------- | -------- |
+| `p{寬度}`     | 文字折行     | `\arrayrulewidth=單位長度`     | 調整表格線條粗細 |
+| `@{文字、符號或指令}`     | 該欄文字套用指令     | `\tabcolsep=單位長度`     | 調整兩欄位的左右間距 |
+| `\multicolumn{欄數}{位置}{文字}`     | 跨欄排版     | `\doublerulesep=單位長度`     | 調整雙線間距 |
+| `\cline{a-b}`     | 部份欄位的橫線     | `\arraystretch`     |調整表格上下行距  |
+
+
+可以參考李果正學長在《大家來學 Latex》中的例子：
+
+```tex
+\begin{tabular}{@{\sf }lll@{}}
+\hline
+& \multicolumn{2}{c}{\bf Specific Heats} \\
+\cline{2-3}
+& $c$ (J/kg$\cdot$K) & $C$ (J/mol$\cdot$K) \\
+\hline
+Aluminum & 900 & 24.3 \\
+Copper & 385 & 24.4 \\
+Gold & 130 & 25.6 \\
+Steel/Iron & 450 & 25.0 \\
+Lead & 130 & 26.8 \\
+Mercury & 140 & 28.0 \\
+Water & 4190 & 75.4 \\
+Ice ($-$10 \textcelsius) & 2100 & 38 \\
+\hline
+\end{tabular}
+```
+
+### array 環境
+
+使用`array`環境前必須引用`array`套件。array 環境與 tabular 是相似的。
+
+### tabularx 環境
+
+其是調整`tabular*`環境的新功能，使用前需引用`tabularx`套件。我們可以透過《大家來學 Latex》中的例子看出區別：
+
+```tex
+\documentclass{article}
+\usepackage{tabularx}
+\parindent=0pt
+\renewcommand{\arraystretch}{1.2}
+\begin{document}
+\centering
+\section*{\texttt{tabular*} environment}
+\begin{tabular*}{8cm}{lll}
+\hline
+Start & End & Character Block Name \\
+\hline
+3400 & 4DB5 & CJK Unified Ideographs Extension A \\
+4E00 & 9FFF & CJK Unified Ideographs \\
+\hline
+\end{tabular*}
+
+\section*{\textsf{tabularx} package}
+\begin{tabularx}{8cm}{llX} % 8cm 減去前兩個欄位寬度後，剩下的通通給
+\hline % 第三欄位使用，文字超出的部份會自動折行
+Start & End & Character Block Name \\
+\hline
+3400 & 4DB5 & CJK Unified Ideographs Extension A \\
+4E00 & 9FFF & CJK Unified Ideographs \\
+\hline
+\end{tabularx}
+\end{document}
+```
+
+![](https://i.imgur.com/Y5tbTjK.png)
+
+可以看到使用 tabularx 後，超出的部分會自動折行。
+
+### booktabs 套件
+
+除了透過`\arraryrulewidth`調整表格線條粗細之外，我們也可以使用`booktabs`這個套件繪製線條，且更加方便與直觀。
+
+|指令 | 功能 |
+|---|---|
+|`\toprule[線條粗細]` | 表格頂端橫線 |
+|`\midrule[線條粗細]` | 表格內橫線 |
+|`\bottomrule[線條粗細]` | 表格底部橫線 |
+|`\cmidrule` | 指令某欄位畫橫線，取代`\cline` |
+
+透過 booktabs 套件我們就可以製作學術論文上時常看到的三線表(three-line table/three-part table)。我們也可以直接使用`threeparttable`套件來製作三線表：
+
+![](https://i.imgur.com/9CUCmJE.png)
+
+
+```tex
+\documentclass{article}
+\usepackage{threeparttable,booktabs}
+
+\begin{document}
+
+\begin{table}[htp]
+\centering % no center environment
+\begin{threeparttable}
+\caption{Students' Health Info.\tnote{1}}
+\label{tb:listbridges}
+\begin{tabular}{llll}
+\toprule
+\textbf{Name} & \textbf{Height (cm)} & \textbf{Weight} & \textbf{Age} \\
+\midrule
+Chalie & 183 & 72 & 22 \\
+\bottomrule
+\end{tabular}
+
+\begin{tablenotes}\footnotesize
+\item[1] A dummy threeparttable.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\end{document}
+```
+
+### 註解、引用與表格標題
+
+我們如果想要在表格中加入註解有兩種方式。第一種是直接在表格內要加入註解的文字後加上`\footnote`，但是這樣會讓註解跑到文件的底端，所以我們可以以第二種方式加入註解，利用`threeparttable`搭配`tnote{}`指令與`tablenotes`環境加入註解，範例可參考上一小節三線表的例子。接著談談引用的部分，如果想要在文章內引用表格，我們可以用`\label{tab:表格名字}`的方式，先為表格製作標籤，方便之後我們透過`\ref{}`引用。此外，透過`\caption{表格名稱}`，我們可以將表格的名稱顯示於表格上方或下方。本小節的範例如下：
+
+```tex
+\documentclass{article}
+\usepackage{booktabs}
+\begin{document}
+
+\begin{table}
+    \centering
+    \caption{Table 1}
+    \label{tab:table1}
+    \begin{tabular}{cc}
+        \toprule
+        column 1 & column 2\\
+        \midrule
+        text 1 & text 2   \\ 
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Refer to \ref{tab:table1}.
+
+\end{document}
+```
+
+結果如下圖所示：
+
+![](https://i.imgur.com/8itstTq.png)
+
+
+### 浮動環境
+
+通常，在 $\LaTeX$ 的浮動環境下，圖表通常會置放在一頁的頂端或都是底部，正常是不置放在一頁中間的位置，除非強迫指定，有放不下的情形時，就會讓他佔一整頁。因此，$\LaTeX$ 就得把前後位置經過整體的計算後再來決定圖表應該置放在什麼地方，這就是所謂的浮動環境。使用浮動環境前，我們要先引用`float`套件，接著用`table`環境包裹起來，如：
+
+```tex
+\begin{table}
+\begin{table}[置放位置選項]
+\caption{表格的標題}
+\begin{tabular}{表格參數}
+表格內容
+\end{tabular}
+\end{table}
+```
+
+置放位置選項如下：
+
+
+
+| 位置選項 | 作用 | 位置選項 | 作用 |
+| -------- | -------- | -------- | -------- |
+| `h`     | 置於下指令處位置     | `p`     | 單獨佔一頁，此頁沒有內文的部份     |
+| `t`     | 置於一頁的頂端     | `\suppressfloats[位置]`     | 制浮動物件置放於本頁的某處，會出現在次頁     |
+| `b`     | 置於本頁底部，如空間不夠會置於次頁     | `!`     | 置於以上選頁之前，會更強烈要求達到此選項的作用，但對`p`則無作用     |
+
+或是直接使用`float`套件，在置放位置選項上以`[H]`表示，代表置於此處不隨著文字移動。
+ 
+
+## 插入圖片
+
+不曉得大家是否遇過下列這種情況：在看論文或是自己撰寫論文時，圖片的解析度通常都不夠高，或是圖片會難以放置在正確的位置上甚至隨意跑動。首先，我們可以先就圖片解析度這件事進行討論，如果我們使用的圖片是點陣圖類型的圖檔，例如`.bmp`、`.jpg`、`.png`和`TIFF`，就會像下方上圖所示，圖片邊緣是鋸齒狀的，當讀者放大後便會是一個個的點。但如果圖片是向量圖，例如`.svg`、`eps`或`pdf`，圖片的邊緣是平滑的，放大後不會看到鋸齒狀的結構。因此在 $\LaTeX$ 中，我們可以多加使用向量圖的解析度，將圖片放置於文件中。
+
+![](https://i.imgur.com/ZGTDJoQ.png)
+
+另外，針對圖片無法在文件中放置於正確的位置上，我們可以使用表格也同樣使用到的浮動環境來解決這個問題。我們就先來看如何在 $\LaTeX$ 中插入圖片吧。
+
+### 插入圖片的基礎
+
+首先，我們要進入`figure`環境之前，要引用`graphicx`套件，並使用`\includegraphics[]{}`插入圖片。
+
+```tex
+\begin{figure}[H]
+\centering
+\includegraphics[width=縮放比例\textwidth]{圖片名稱}
+\caption{Figure 1}
+\label{Fig.1}
+\end{figure}
+```
+
+注意到，圖片必須與`.tex`檔案放在同一個資料夾底下，或是以絕對路徑表示之，又或是在前言區加上`\graphicpath{{./圖片資料夾/}}`，直接指定圖片的資料夾路徑。此外，`includegraphics`僅支援`png`、`.tiff`、`.jpg`、`.pdf`的檔案類型。
+
+#### 插入 pdf 格式圖片
+
+假設今天我們的`.pdf`檔案有許多頁，但是只想要將某特定頁面顯示在文件上，我們可以使用`pdfpages`套件，接著在文稿內加上`\includepdf{}`，接著參考下面的方式：
+
+```tex
+\begin{figure}[H]
+\centering
+\includepdf[pages={特定頁數}]{檔案名稱.pdf} 
+\caption{Figure 1}
+\label{Fig.1}
+\end{figure}
+```
+
+注意到特定頁數之區隔必須以英文的逗號`,`進行分隔。
+
+### 插入 eps 格式圖片
+
+首先我們先引用`epstopdf`套件，接著將`.eps`檔案放在與`.tex`檔案同個路徑下，並參考以下程式碼：
+```tex
+\begin{figure}[H]
+\centering
+\includegraphics[height=高度,width=寬度]{檔案名稱.eps}
+\caption{Figure 1}
+\label{Fig.1}
+\end{figure}
+```
+
+### 插入 svg 格式圖片
+
+首先我們先引用`svg`套件，接著將`.svg`檔案放在與`.tex`檔案同個路徑下，並參考以下程式碼：
+```tex
+\begin{figure}[H]
+\centering
+\includesvg{檔案名稱}
+\caption{Figure 1}
+\label{Fig.1}
+\end{figure}
+```
+
+### 文繞圖
+
+如果我們希望將圖片周圍環繞文字，我們使用`wrapfig`這個套件，並以`wrapfigure`環境插入圖片，即可達成文繞圖的目的。
+
+```tex
+%% 右圖
+\begin{wrapfigure}{r}{0.25\textwidth}
+    \centering
+    \includegraphics[width=0.25\textwidth]{mesh}
+\end{wrapfigure}
+
+%% 左圖
+\begin{wrapfigure}{r}{0.25\textwidth}
+    \centering
+    \includegraphics[width=0.25\textwidth]{mesh}
+\end{wrapfigure}
+```

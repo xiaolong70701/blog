@@ -253,21 +253,185 @@ cookieconsent.run({
 <p>以上就是安裝 MiKTeX 與 TeXStudio 的過程。</p>
 </section>
 </section>
+<section id="語法概說" class="level2">
+<h2 class="anchored" data-anchor-id="語法概說">語法概說</h2>
+<p>進到 <span class="math inline">\(\LaTeX\)</span> 之後，我們就可以在編輯頁面中輸入以下的指令(command)。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>[12pt]{<span class="ex">article</span>}</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\title</span>{My First Document}</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\author</span>{Author}</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">\date</span>{}</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">\maketitle</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>我們就可以看到以下的畫面。</p>
+<p><img src="https://i.imgur.com/kJmeLxD.png" class="img-fluid"></p>
+<p>在看這篇文章的你一定會好奇這幾行程式碼是什麼意思。那你肯定來對地方了！接下來我就要來一一解析這幾行程式碼背後的意義。</p>
+<section id="設定文稿結構與基礎格式" class="level3">
+<h3 class="anchored" data-anchor-id="設定文稿結構與基礎格式">設定文稿結構與基礎格式</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>[12pt]{<span class="ex">article</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>首先，<code>\documentclass</code> 代表我們要去設定這份文檔的基礎格式。而在 <span class="math inline">\(\LaTeX\)</span> 裡，如果我們要輸入 <span class="math inline">\(\LaTeX\)</span> 的指令，就必須要在前方加上 <code>\</code>（反斜線）。<span class="math inline">\(\LaTeX\)</span> 常見的排版專用符號大致可以用下面的表格呈現：</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>符號</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\</code></td>
+<td>下排版命令</td>
+</tr>
+<tr class="even">
+<td><code>%</code></td>
+<td>註解</td>
+</tr>
+<tr class="odd">
+<td><code>#</code></td>
+<td>定義巨集</td>
+</tr>
+<tr class="even">
+<td><code>~</code></td>
+<td>產生空白</td>
+</tr>
+<tr class="odd">
+<td><code>$</code></td>
+<td>進入/離開數學模式</td>
+</tr>
+<tr class="even">
+<td><code>^</code></td>
+<td>數學模式中的上標字</td>
+</tr>
+<tr class="odd">
+<td><code>_</code></td>
+<td>數學模式中的下標字</td>
+</tr>
+<tr class="even">
+<td><code>&amp;</code></td>
+<td>分隔符號</td>
+</tr>
+</tbody>
+</table>
+<section id="選擇參數與必要參數" class="level4">
+<h4 class="anchored" data-anchor-id="選擇參數與必要參數">選擇參數與必要參數</h4>
+<p>後面的 <code>[12pt]</code> 則是設定字體的大小，方括號（我們稱為<strong>選擇變數</strong>）裡面不只可以設定字級，也可以設定紙張大小，比如 <code>[12pt, a4paper]</code>。最後的 <code>{article}</code> 稱為<strong>必要參數</strong>，也就是說，前面的選擇參數可以不打任何東西，但花括號裡頭一定要放上內容。我們必須注意幾件事情：</p>
+<ul>
+<li>不同於Word，<span class="math inline">\(\LaTeX\)</span> 文稿中，空一個與多個英文空白的意思是一樣 的，<span class="math inline">\(\LaTeX\)</span> 會認作一個空白。</li>
+<li>按下Enter 鍵不代表換行，換行必須要使用雙斜線（<code>\\</code>，Windows 用戶可以同時按下 <code>Ctrl</code> 與 <code>Enter</code> 鍵），或是以 <code>\newline</code>、 <code>\linebreak</code> 進行換行。</li>
+</ul>
+</section>
+<section id="使用指令" class="level4">
+<h4 class="anchored" data-anchor-id="使用指令">使用指令</h4>
+<p><span class="math inline">\(\LaTeX\)</span> 的指令是從反斜線後第一個字母開始，到第一個非字母符號為止 （包含空白、標點符號及數字）。因此：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>This is my first <span class="fu">\LaTeX</span> typesetting example.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>這樣的話，由於空白屬於指令的一部分，故會印出：</p>
+<p>This is my first <span class="math inline">\(\LaTeX\)</span>typesetting example.</p>
+<p>因此若要避免上述情況，就必須使用以下三種方法：</p>
+<ol type="1">
+<li><code>This is my first {\LaTeX} typesetting example.</code></li>
+<li><code>This is my first \LaTeX{} typesetting example.</code></li>
+<li><code>This is my first \LaTeX\ typesetting example.</code></li>
+</ol>
+<p>正確的輸出應該為：</p>
+<p>This is my first <span class="math inline">\(\LaTeX\)</span> typesetting example.</p>
+</section>
+<section id="使用註解" class="level4">
+<h4 class="anchored" data-anchor-id="使用註解">使用註解</h4>
+<p>註解符號(<code>%</code>) 可以放在一行的任何地方，<code>%</code> 的文字會被 <span class="math inline">\(\LaTeX\)</span> 忽略。因此如果放在一行的最尾端，那麼 <span class="math inline">\(\LaTeX\)</span> 會自動插入的字間空白也將會被忽略。</p>
+</section>
+</section>
+<section id="開啟環境" class="level3">
+<h3 class="anchored" data-anchor-id="開啟環境">開啟環境</h3>
+<p><span class="math inline">\(\LaTeX\)</span> 有一種巨集結構，稱為環境(environment)，主要是讓作用範圍能 擴大至較大的範圍。所有的環境都起於<code>\begin{環境名稱}</code>，止於 <code>\end{環境名稱}</code>。這兩個指令之間的文稿都會被作用，而且，環境之內還可以套用其他不同的環境。<span class="math inline">\(\LaTeX\)</span> 文稿的內文，就是包在一個</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="er">環</span>境名稱}</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a> ...</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="er">環</span>境名稱}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>這個 document 環境當中。以下就是所有 <span class="math inline">\(\LaTeX\)</span> 必須具備的文稿大結構：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>[]{}</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">%這裡是preamble 區</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a> ...</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="前言區preamble" class="level3">
+<h3 class="anchored" data-anchor-id="前言區preamble">前言區(preamble)</h3>
+<p>這裡可以引用巨集(macro)，而且會影響整篇文稿的指令，例如一些事先 定義好的指令，想在整篇文稿中使用，就可以置放在 preamble 區。例如：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>[12pt]{<span class="ex">article</span>}</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>The text will be <span class="fu">\textcolor</span>{blue}{blue}.</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="https://i.imgur.com/GcndXpx.png" class="img-fluid"></p>
+</section>
+<section id="章節標題設定" class="level3">
+<h3 class="anchored" data-anchor-id="章節標題設定">章節標題設定</h3>
+<p>在 <span class="math inline">\(\LaTeX\)</span> 的文稿裡頭，章節標題的形成都是由同樣的指令來控制的，這樣有一個好處，臨時插入章節標題及其內文時，我們不必去理會標題編號及目錄的問題，也不必去理會要用什麼字型、及字型大小要多大，<span class="math inline">\(\LaTeX\)</span> 會自動計算處理，字型大小也會和內文使用的字型大小互相配合調整，使用者就專心在內文構思、寫作即可。以下由列表來瞭解整個章節結構：</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>深度編號</th>
+<th>指令</th>
+<th>作用及注意事項</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>-1</td>
+<td><code>part{}</code></td>
+<td>部</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td><code>chapter{}</code></td>
+<td>章，在 article 沒有章</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td><code>section{}</code></td>
+<td>節</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td><code>subsection{}</code></td>
+<td>小節</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><code>subsubsection{}</code></td>
+<td>次小節</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><code>paragraph{}</code></td>
+<td>段落</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td><code>subparagraph{}</code></td>
+<td>次段落</td>
+</tr>
+</tbody>
+</table>
+<p>上面程式碼可以在<a href="https://drive.google.com/file/d/17VCrSfvPtdstBdfau1ZEHwO2fjispekh/view?usp=sharing">這裡下載</a>。</p>
+</section>
+</section>
 <section id="第一份-latex-文件" class="level2">
 <h2 class="anchored" data-anchor-id="第一份-latex-文件">第一份 <span class="math inline">\(\LaTeX\)</span> 文件</h2>
 <section id="簡單實例操作" class="level3">
 <h3 class="anchored" data-anchor-id="簡單實例操作">簡單實例操作</h3>
 <p>先來試試看，這裡先使用 report 類別文稿，因為 article 類別文稿是沒有chapter 的</p>
-<pre class="{tex}"><code>\documentclass{report}
-\begin{document}
-This is my first {\LaTeX} typesetting example.\\
-This is my first \LaTeX{} typesetting example.\\
-This is my first \LaTeX\ typesetting example.\\
-I am Mr. Edward G.J. Lee, G.J. is a abbreviation of my name.\\
-I am Mr.\ Edward G.J. Lee, G.J. is a abbreviation of my name.\\
-Please see Appendix A. We will be there soon.\\
-Please see Appendix A\null. We will be there soon.
-\end{document}</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>{<span class="ex">report</span>}</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>This is my first {<span class="fu">\LaTeX</span>} typesetting example.<span class="fu">\\</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>This is my first <span class="fu">\LaTeX</span>{} typesetting example.<span class="fu">\\</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>This is my first <span class="fu">\LaTeX\ </span>typesetting example.<span class="fu">\\</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>I am Mr. Edward G.J. Lee, G.J. is a abbreviation of my name.<span class="fu">\\</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>I am Mr.<span class="fu">\ </span>Edward G.J. Lee, G.J. is a abbreviation of my name.<span class="fu">\\</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>Please see Appendix A. We will be there soon.<span class="fu">\\</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>Please see Appendix A<span class="fu">\null</span>. We will be there soon.</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>排版結果如下：</p>
 <p><img src="https://i.imgur.com/nf1YHHL.jpg" class="img-fluid"></p>
 <section id="關於縮排" class="level4">
@@ -285,19 +449,19 @@ Please see Appendix A\null. We will be there soon.
 <section id="加入標題頁資訊" class="level4">
 <h4 class="anchored" data-anchor-id="加入標題頁資訊">加入標題頁資訊</h4>
 <p>這是指內頁的第一頁，我也不知道這個中文專有名詞是什麼，在 <span class="math inline">\(\LaTeX\)</span> 裡頭，我們就稱為 title page。在 <span class="math inline">\(\LaTeX\)</span> 的標準格式裡，他包括了標題(title)、作者名字(author)、日期(date) 及感謝詞(thanks)。</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>{<span class="ex">report</span>}</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\title</span>{Report File}</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\author</span>{Noname<span class="fu">\thanks</span>{Thanks to the readers.}}</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">\date</span>{<span class="fu">\today</span>}</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">\maketitle</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>This is the first sentence in my <span class="fu">\LaTeX\ </span>file.</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="kw">\chapter</span>{First Chapter}</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="kw">\section</span>{Section}</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>...</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>{<span class="ex">report</span>}</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\title</span>{Report File}</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\author</span>{Noname<span class="fu">\thanks</span>{Thanks to the readers.}}</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">\date</span>{<span class="fu">\today</span>}</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">\maketitle</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>This is the first sentence in my <span class="fu">\LaTeX\ </span>file.</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="kw">\chapter</span>{First Chapter}</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="kw">\section</span>{Section}</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>加入標題頁資訊後，必須在<code>\begin{document}</code>與<code>\end{document}</code>之間加入<code>\maketitle</code>，才能將剛剛的資訊在文件中顯示。</p>
 </section>
 <section id="加入目錄" class="level4">
@@ -307,9 +471,9 @@ Please see Appendix A\null. We will be there soon.
 <section id="加入摘要" class="level4">
 <h4 class="anchored" data-anchor-id="加入摘要">加入摘要</h4>
 <p>如果要加入的話，可使用 abstract 環境，即</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">abstract</span>}</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">abstract</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">abstract</span>}</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">abstract</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>在這個環境中的文章，左右會縮排。要注意的是，只有 article/report 類別才有 abstract，book 類別不能使用這個環境。report 類別的摘要自成一頁，不編頁碼，且不會編入目錄中，這和一般的論文格式可能會不一樣，使用時請注意。article 的類別則仍然是和本文相連的，會出現在文章標題之後。</p>
 </section>
 <section id="加入註解" class="level4">
@@ -319,21 +483,21 @@ Please see Appendix A\null. We will be there soon.
 <li>腳註：只要在要加入腳註的後面加上<code>\footnote{}</code>即可。</li>
 <li>邊註：如果要使用邊註，首先必須在前言區引用<code>marginnote</code>這個套件，接著便可以在文件中加入邊註。</li>
 </ul>
-<pre class="{tex}"><code>\documentclass[a4paper,twoside,english]{article}
-\title{Test}
-\author{Noname}
-\usepackage{lipsum}
-\usepackage{marginnote}
-\makeatother
-
-\begin{document}
-\maketitle
-\section{Margin notes}
-
-\marginnote{First margin note.}[0cm]
-\marginnote{Second margin note.}[3cm]
-\lipsum[1-2]\footnote{Footnote is right here.}
-\end{document}</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>[a4paper,twoside,english]{<span class="ex">article</span>}</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\title</span>{Test}</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\author</span>{Noname}</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">lipsum</span>}</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">marginnote</span>}</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">\makeatother</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="fu">\maketitle</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="kw">\section</span>{Margin notes}</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="fu">\marginnote</span>{First margin note.}[0cm]</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="fu">\marginnote</span>{Second margin note.}[3cm]</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="fu">\lipsum</span>[1-2]<span class="fu">\footnote</span>{Footnote is right here.}</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="字體大小與字形的調整" class="level3">
@@ -426,13 +590,13 @@ Please see Appendix A\null. We will be there soon.
 </tbody>
 </table>
 <p>另一個方式則是使用<code>{\fontsize{字級}{行基線間距}\selectfont Hello}</code></p>
-<pre class="{tex}"><code>\documentclass[12pt]{article}
-\usepackage{anyfontsize}
-\makeatother
-
-\begin{document}
-{\fontsize{150}{60}\selectfont Hello}{\fontsize{15}{6}\selectfont Hello}
-\end{document}</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>[12pt]{<span class="ex">article</span>}</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">anyfontsize</span>}</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\makeatother</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>{<span class="fu">\fontsize</span>{150}{60}<span class="fu">\selectfont</span> Hello}{<span class="fu">\fontsize</span>{15}{6}<span class="fu">\selectfont</span> Hello}</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="使用中文" class="level3">
@@ -441,39 +605,39 @@ Please see Appendix A\null. We will be there soon.
 <section id="不支援-utf-8" class="level4">
 <h4 class="anchored" data-anchor-id="不支援-utf-8">不支援 UTF-8</h4>
 <p>在不支援 UTF-8 的情況下，我們要引用<code>CJKutf8</code>套件，並參考以下程式碼：</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>[12pt]{<span class="ex">article</span>}</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">CJKutf8</span>}</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">CJK*</span>}{UTF8}{中文字體}</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\section</span>{大綱}</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>這裡是大綱，也可輸入英文<span class="fu">\\</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>You can also type english here.</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="kw">\section</span>{先備知識}</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>這裡是先備知識</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">CJK*</span>}</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>[12pt]{<span class="ex">article</span>}</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">CJKutf8</span>}</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">CJK*</span>}{UTF8}{中文字體}</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\section</span>{大綱}</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>這裡是大綱，也可輸入英文<span class="fu">\\</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>You can also type english here.</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="kw">\section</span>{先備知識}</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>這裡是先備知識</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">CJK*</span>}</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="支援-utf-8" class="level4">
 <h4 class="anchored" data-anchor-id="支援-utf-8">支援 UTF-8</h4>
 <p>如果在 xeLaTeX 或 LuaLaTeX 的環境下，我們則使用<code>xeCJK</code>這個套件，並參考以下程式碼：</p>
-<pre class="{tex}"><code>\documentclass[12pt]{article}
-\usepackage{xeCJK}
-\setCJKmainfont{標楷體}
-\begin{document}
-\section{第一章}
-認識\LaTeX\
-\section{第二章}
-了解如何使用中文排版
-\end{document}</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>[12pt]{<span class="ex">article</span>}</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">xeCJK</span>}</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\setCJKmainfont</span>{標楷體}</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\section</span>{第一章}</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>認識<span class="fu">\LaTeX\</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="kw">\section</span>{第二章}</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>了解如何使用中文排版</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>前面展示了如何使用引用中文的巨集套件。不過，在撰文時可能會需要使用不同字體，比如標題規定要使用標楷體，內文要使用新細明體，<span class="math inline">\(\LaTeX\)</span> 可以針對電腦已安裝的字體搜尋其路徑，最後進行編譯。</p>
-<pre class="{tex}"><code>\documentclass[12pt]{article}
-\usepackage{xeCJK}
-\setCJKmainfont{標楷體}
-\setCJKfamilyfont{QHei}{cwTeXQHei-Bold} %宣告抓取該字體
-\newcommand*{\QH}{\CJKfamily{QHei}} %設定該字體命令
-\begin{document}
-...
-\end{document}</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>[12pt]{<span class="ex">article</span>}</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">xeCJK</span>}</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\setCJKmainfont</span>{標楷體}</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">\setCJKfamilyfont</span>{QHei}{cwTeXQHei-Bold} <span class="co">%宣告抓取該字體</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">\newcommand*</span>{<span class="ex">\QH</span>}{<span class="fu">\CJKfamily</span>{QHei}} <span class="co">%設定該字體命令</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>最後，必須注意，這些字體都必須是已經安裝在讀者端的電腦上，如果想要下載由吳聰敏老師開發的<code>cwTeX</code>系列字體，可以參考<a href="https://github.com/l10n-tw/cwtex-q-fonts">這篇文章</a>。</p>
 
 

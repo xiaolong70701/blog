@@ -2,13 +2,17 @@
   {
     "listing": "/notes.html",
     "items": [
+      "/posts/notes/R/2023-05-26-r-and-tex/index.html",
+      "/posts/notes/latex/2023-05-26-bm/index.html",
+      "/posts/notes/latex/2023-05-26-structure/index.html",
+      "/posts/notes/latex/2023-05-26-table-and-figure/index.html",
       "/posts/notes/SNA/2023-05-24-network-effect/index.html",
       "/posts/notes/SNA/2023-05-24-power-laws/index.html",
       "/posts/notes/latex/2023-05-24-latex-installation/index.html",
       "/posts/notes/latex/2023-05-25-math/index.html",
       "/posts/notes/julia/2023-05-23-RNG.html",
       "/posts/notes/julia/2023-05-23-inv.html",
-      "/posts/notes/R/2023-05-14-first-R.html",
+      "/posts/notes/R/2023-05-14-first-R/index.html",
       "/posts/notes/foreign policy/2023-03-24-OBM.html",
       "/posts/notes/foreign policy/2023-03-10-RAM.html"
     ]

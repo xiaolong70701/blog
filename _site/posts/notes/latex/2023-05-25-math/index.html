@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -194,13 +228,13 @@ cookieconsent.run({
 <section id="數學排版的起手式" class="level2">
 <h2 class="anchored" data-anchor-id="數學排版的起手式">數學排版的起手式</h2>
 <p>在使用之前，我們必須使用<code>amsmath</code>與<code>amssymb</code>這兩個套件，才能夠使用一些特殊的數學指令。<span class="math inline">\(\LaTeX\)</span> 中，進入數學模式的方式有兩種，第一種是行內的數學模式，即<code>$(數學指令)$</code>；另一種方式為在文件內置中、類似於方程式的模式，方式為</p>
-<pre class="{tex}"><code>$$
-(數學指令)
-$$</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ss">$$</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ss">(數學指令)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ss">$$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>或</p>
-<pre class="{tex}"><code>\[
-(數學指令)
-\]</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ss">\[</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ss">(數學指令)</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ss">\]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>以下會針對常用的符號與指令進行簡略的介紹，關於更多的指令請參閱<a href="https://www.cmor-faculty.rice.edu/~heinken/latex/symbols.pdf">這份文件</a>。</p>
 <section id="希臘字母" class="level3">
 <h3 class="anchored" data-anchor-id="希臘字母">希臘字母</h3>
@@ -437,9 +471,9 @@ f(x)=\lim _{\Delta h \rightarrow 0} \frac{f(x)-f(x-\Delta h)}{\Delta h}
 E = mc^2
 \end{equation}
 \]</span></p>
-<pre class="{tex}"><code>\begin{equation}
-E = mc^{2}
-\end{equation}</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">equation</span>}</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ss">E = mc^{2}</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">equation</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="數學式對齊" class="level3">
 <h3 class="anchored" data-anchor-id="數學式對齊">數學式對齊</h3>
@@ -450,10 +484,10 @@ E = mc^{2}
 \end{align*}
 \]</span></p>
 <p>程式碼如下：</p>
-<pre class="{tex}"><code>\begin{align*} 
-2x - 5y &amp;=  8 \\ 
-3x + 9y &amp;=  -12
-\end{align*}</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">align*</span>}<span class="ss"> </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ss">2x - 5y &amp;=  8 </span><span class="sc">\\</span><span class="ss"> </span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ss">3x + 9y &amp;=  -12</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">align*</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>注意到<code>&amp;</code>必須放在欲對齊之處。或是來看另一個例子： <span class="math display">\[
 \begin{align*}
 x&amp;=y           &amp;  w &amp;=z              &amp;  a&amp;=b+c\\
@@ -461,11 +495,11 @@ x&amp;=y           &amp;  w &amp;=z              &amp;  a&amp;=b+c\\
 -4 + 5x&amp;=2+y   &amp;  w+2&amp;=-1+w          &amp;  ab&amp;=cb
 \end{align*}
 \]</span></p>
-<pre class="{tex}"><code>\begin{align*}
-x&amp;=y           &amp;  w &amp;=z              &amp;  a&amp;=b+c\\
-2x&amp;=-y         &amp;  3w&amp;=\frac{1}{2}z   &amp;  a&amp;=b\\
--4 + 5x&amp;=2+y   &amp;  w+2&amp;=-1+w          &amp;  ab&amp;=cb
-\end{align*}</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">align*</span>}</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ss">x&amp;=y           &amp;  w &amp;=z              &amp;  a&amp;=b+c</span><span class="sc">\\</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ss">2x&amp;=-y         &amp;  3w&amp;=</span><span class="sc">\frac</span><span class="ss">{1}{2}z   &amp;  a&amp;=b</span><span class="sc">\\</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ss">-4 + 5x&amp;=2+y   &amp;  w+2&amp;=-1+w          &amp;  ab&amp;=cb</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">align*</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="矩陣" class="level3">
 <h3 class="anchored" data-anchor-id="矩陣">矩陣</h3>
@@ -495,40 +529,40 @@ a &amp; b &amp; c
 a &amp; b &amp; c
 \end{Vmatrix}
 \]</span> 程式碼參考：</p>
-<pre class="{tex}"><code>\begin{matrix}
-1 &amp; 2 &amp; 3\\
-a &amp; b &amp; c
-\end{matrix}
-
-\begin{pmatrix}
-1 &amp; 2 &amp; 3\\
-a &amp; b &amp; c
-\end{pmatrix}
-
-\begin{bmatrix}
-1 &amp; 2 &amp; 3\\
-a &amp; b &amp; c
-\end{bmatrix}
-
-\begin{Bmatrix}
-1 &amp; 2 &amp; 3\\
-a &amp; b &amp; c
-\end{Bmatrix}
-
-\begin{vmatrix}
-1 &amp; 2 &amp; 3\\
-a &amp; b &amp; c
-\end{vmatrix}
-
-\begin{Vmatrix}
-1 &amp; 2 &amp; 3\\
-a &amp; b &amp; c
-\end{Vmatrix}</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">matrix</span>}</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>1 &amp; 2 &amp; 3<span class="fu">\\</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>a &amp; b &amp; c</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">matrix</span>}</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">pmatrix</span>}</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="ss">1 &amp; 2 &amp; 3</span><span class="sc">\\</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="ss">a &amp; b &amp; c</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">pmatrix</span>}</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">bmatrix</span>}</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="ss">1 &amp; 2 &amp; 3</span><span class="sc">\\</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="ss">a &amp; b &amp; c</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">bmatrix</span>}</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">Bmatrix</span>}</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="ss">1 &amp; 2 &amp; 3</span><span class="sc">\\</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="ss">a &amp; b &amp; c</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">Bmatrix</span>}</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">vmatrix</span>}</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="ss">1 &amp; 2 &amp; 3</span><span class="sc">\\</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="ss">a &amp; b &amp; c</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">vmatrix</span>}</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">Vmatrix</span>}</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="ss">1 &amp; 2 &amp; 3</span><span class="sc">\\</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="ss">a &amp; b &amp; c</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">Vmatrix</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>如果想要在行內顯示矩陣，例如<span class="math inline">\(\big(\begin{smallmatrix}  a &amp; b\\  c &amp; d \end{smallmatrix}\big)\)</span>，可以使用</p>
-<pre class="{tex}"><code>$\big(\begin{smallmatrix}
-  a &amp; b\\
-  c &amp; d
-\end{smallmatrix}\big)$ </code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ss">$</span><span class="sc">\big</span><span class="ss">(</span><span class="kw">\begin</span>{<span class="ex">smallmatrix</span>}</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ss">  a &amp; b</span><span class="sc">\\</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ss">  c &amp; d</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">smallmatrix</span>}<span class="sc">\big</span><span class="ss">)$</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="聯立方程式" class="level3">
 <h3 class="anchored" data-anchor-id="聯立方程式">聯立方程式</h3>
@@ -545,15 +579,15 @@ f(x) =
 \end{cases}
 \]</span></p>
 <p>程式碼為</p>
-<pre class="{tex}"><code>f(x) = 
-\begin{cases}
-\frac{1}{6}, \quad \text{if }x=1\\
-\frac{1}{6}, \quad \text{if }x=2\\
-\frac{1}{6}, \quad \text{if }x=3\\
-\frac{1}{6}, \quad \text{if }x=4\\
-\frac{1}{6}, \quad \text{if }x=5\\
-\frac{1}{6}, \quad \text{if }x=6\\
-\end{cases}</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>f(x) = </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">cases</span>}</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="sc">\frac</span><span class="ss">{1}{6}, </span><span class="sc">\quad</span><span class="ss"> </span><span class="sc">\text</span>{if }<span class="ss">x=1</span><span class="sc">\\</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="sc">\frac</span><span class="ss">{1}{6}, </span><span class="sc">\quad</span><span class="ss"> </span><span class="sc">\text</span>{if }<span class="ss">x=2</span><span class="sc">\\</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="sc">\frac</span><span class="ss">{1}{6}, </span><span class="sc">\quad</span><span class="ss"> </span><span class="sc">\text</span>{if }<span class="ss">x=3</span><span class="sc">\\</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="sc">\frac</span><span class="ss">{1}{6}, </span><span class="sc">\quad</span><span class="ss"> </span><span class="sc">\text</span>{if }<span class="ss">x=4</span><span class="sc">\\</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="sc">\frac</span><span class="ss">{1}{6}, </span><span class="sc">\quad</span><span class="ss"> </span><span class="sc">\text</span>{if }<span class="ss">x=5</span><span class="sc">\\</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="sc">\frac</span><span class="ss">{1}{6}, </span><span class="sc">\quad</span><span class="ss"> </span><span class="sc">\text</span>{if }<span class="ss">x=6</span><span class="sc">\\</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">cases</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>其中<code>\quad</code>為空格，在 <span class="math inline">\(\LaTeX\)</span> 中有以下幾種方式可以產生空格</p>
 <table class="table">
 <thead>
@@ -650,14 +684,14 @@ f(x) =
 <p>例如國際貿易理論中參考物理學的貿易引力模型： <span class="math display">\[
 X_{i j}=K \frac{\left(Y_i\right)^a\left(Y_j\right)^b}{\left(1+e D_{i j}\right)^f}
 \]</span> 程式碼如下：</p>
-<pre class="{tex}"><code>$$
-X_{i j}=K \frac{\left(Y_i\right)^a\left(Y_j\right)^b}{\left(1+e D_{i j}\right)^f}
-$$</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ss">$$</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ss">X_{i j}=K </span><span class="sc">\frac</span><span class="ss">{</span><span class="sc">\left</span><span class="ss">(Y_i</span><span class="sc">\right</span><span class="ss">)^a</span><span class="sc">\left</span><span class="ss">(Y_j</span><span class="sc">\right</span><span class="ss">)^b}{</span><span class="sc">\left</span><span class="ss">(1+e D_{i j}</span><span class="sc">\right</span><span class="ss">)^f}</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ss">$$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="info">
 <p><strong>小試身手</strong> 請用<code>TeX</code>復刻以下的圖片。<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <img src="https://i.imgur.com/sCufibA.png" class="img-fluid"> :::spoiler 查看參考答案</p>
-<pre class="{tex}"><code>$$
-\int_{\mathcal{C}} f(\mathbf{r}) d s=\int_a^b f(\mathbf{r}(t))\left|\mathbf{r}^{\prime}(t)\right| dt
-$$</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ss">$$</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="sc">\int</span><span class="ss">_{</span><span class="sc">\mathcal</span><span class="ss">{C}} f(</span><span class="sc">\mathbf</span><span class="ss">{r}) d s=</span><span class="sc">\int</span><span class="ss">_a^b f(</span><span class="sc">\mathbf</span><span class="ss">{r}(t))</span><span class="sc">\left</span><span class="ss">|</span><span class="sc">\mathbf</span><span class="ss">{r}^{</span><span class="sc">\prime</span><span class="ss">}(t)</span><span class="sc">\right</span><span class="ss">| dt</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ss">$$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -666,8 +700,8 @@ $$</code></pre>
 <p>我們常常看到很多學術論文使用的字體會像是這樣：</p>
 <p><img src="https://i.imgur.com/9Bo3hNZ.png" class="img-fluid"></p>
 <p>我們稱之為 <a href="https://www.fonts.com/content/learning/fontology/level-3/numbers/oldstyle-figures">Oldstyle Figures</a>。這邊我以個人最常使用的字體<code>Linux Libertine O</code>為例，首先在前言區我們要加上<code>\usepackage{mathspec}</code>才可以將數學字體分開設定，接著就可以仿造我們設定中文字體的步驟，將該字體設定在無論數學模式或是一般的文字模式都可以顯示為 Oldstyle：</p>
-<pre class="{tex}"><code>\setmainfont[Mapping=tex-text]{Linux Libertine O}
-\setmathfont(Digits,Greek,Latin)[Numbers=OldStyle]{Linux Libertine O}</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\setmainfont</span>[Mapping=tex-text]{Linux Libertine O}</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\setmathfont</span>(Digits,Greek,Latin)[Numbers=OldStyle]{Linux Libertine O}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

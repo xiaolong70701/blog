@@ -93,4 +93,3 @@ data = [trace]
 layout = Layout(title = "Scatter Plot Example", xaxis_title = "X", yaxis_title = "Y")
 plot(data, layout)
 ```
-

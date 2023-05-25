@@ -1,0 +1,194 @@
+---
+title: "LaTeX 書本、文件章節編排與架構"
+date: "2023-05-26"
+categories: [LaTeX, programming language]
+---
+一本書籍或學術文章的基本架構大概可以切分成以下幾個元素
+
+* 封面
+* 目錄
+* 段落、本文
+* 註解
+* 參考文獻
+* 附錄
+* 交互參照
+
+其中註解、段落與本文的設定在前幾篇已經提過，因此以下我們就會針對其他幾個議題進行討論。
+
+## 封面
+
+基本上封面就是之前學過的方式，輸入`\title`、`\author`、`\date` 等資訊，即可生成封面。假設我們想要引用網路上已經做好的`.pdf`檔案作為封面怎麼辦呢？我們可以透過在[LaTeX 中表格與圖片的處理](/posts/notes/latex/2023-05-26-table-and-figure/index.html)學到引入`.pdf`檔案的技巧，將外部`.pdf`檔案加入文件中顯示。
+
+## 版面設定
+
+我們可以透過一些套件，讓我們的文件變得更加易讀、美觀。以下我們將會分別介紹邊界設定與標頭(header)的設定：
+
+### 邊界設定
+在 Word 中，我們可以進行版面設定，即設定上、下、左、右邊界，$\LaTeX$ 也有提供相同的功能。首先我們可在前言區加上下面這行：
+```tex
+\usepackage[margin = 1cm]{geometry}
+```
+
+代表我們將四個邊界均設定為`1cm`。如果想要將四個邊界都有不同寬度的話，則使用下面的程式碼：
+```tex
+\usepackage[left=2cm, right=2cm, top=1cm, bottom=1cm]{geometry}
+```
+
+代表左右各為`2cm`、上下各為`1cm`。以下圖片參考自[`geometry`套件的說明文件](https://ctan.org/pkg/geometry?lang=en)，其清楚地說明了此套件的設定指令：
+
+![](https://i.imgur.com/2PiNxCC.png)
+
+
+吳聰敏老師在[《cw$\TeX$ 3 使用手冊》](http://homepage.ntu.edu.tw/~ntut019/cwtex/cxbook3.pdf)中整理了`geometry`的設定指令：
+
+|指令|作用|
+|---|---|
+| `nohead` | 等於`headheight=0pt,headsep=0pt`。| 
+| `nofoot` | 等於`footskip=0pt`。| 
+| `hscale` | 可列印區域之寬度與紙張寬度之比率,例如`hscale=0.8`。| 
+| `marginparwidth` | 邊註(marginal notes)之寬度。| 
+| `marginparsep`|  正文方塊與邊註之間距。| 
+| `width` | 等於`textwidth+ marginparsep+ marginparwidth`。| 
+| `twoside` | 奇數頁(右頁)之列印區域會稍靠左, 雙數頁(左頁)之列印區域則稍靠右;參見下一指令。| 
+| `asymmetric` | 有些書籍之單雙頁採用相同之版面, 此時可以asymmetric選項排版。| 
+| `hoffset`|  同`\hoffset`指令。| 
+| `voffset`|  同`\voffset`指令。
+| 
+
+### 標頭設定
+
+所謂標頭，可以先參考`fancyhdr`[官方文件](https://ctan.org/pkg/fancyhdr?lang=en)所提供的說明圖：
+
+![](https://i.imgur.com/bMSmQ8a.png)
+
+你可以在標頭上面加上跟這篇文件有關的資訊，例如假設我今天要做一篇課堂筆記，我就可以在上面加註課程名稱、授課者、章節名稱等資訊。我們可以在前言區加上`usepackage{fancyhdr}`，接著可以設定如下的內容：
+
+```tex
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\normalsize 文字 \\ 文字}
+\rhead{\normalsize 文字 \\ 文字}
+\cfoot{\footnotesize \thepage}
+```
+
+當然你也可以自己調整字體大小，如果想要清除頁首的設定的話，可以使用`\fancyhead{}`，清除頁尾則用`\fancyfoot{}`。
+
+|指令|作用|
+|---|---|
+| `\lhead{}` | 頁首左邊的文字| 
+|`\chead{}` | 頁首中間的文字| 
+|`\rhead{}` | 頁首右邊的文字| 
+|`\lfoot{}` | 頁尾左邊的文字| 
+|`\cfoot{}` | 第幾頁| 
+|`\rfoot{}` | 頁尾右邊的文字| 
+
+此外，我們也可以對於奇數頁(odd page)、偶數頁(even page)進行不同的設定：
+
+```tex
+\fancyhead[RO,LE]{} % 頁首：奇數頁右邊、偶數頁左邊
+\fancyfoot[LE,RO]{第~\thepage~頁}      % 頁碼置於偶數頁左邊及奇數頁右邊
+\fancyfoot[LO,CE]{} % 奇數頁左及偶數頁中
+\fancyfoot[CO,RE]{} % 奇數頁中及偶數頁右
+\renewcommand{\headrulewidth}{0.4pt} % 設定頁首分隔線為寬度是 0.4 pt 的水平線
+\renewcommand{\footrulewidth}{0.4pt} % 設定頁首分隔線為寬度是 0.4 pt 的水平線
+```
+
+這邊我做了一個課堂筆記的[模板](https://github.com/xiaolong70701/note-template)，有興趣的人可以下載使用。
+
+
+## 目錄
+
+最簡單的作法，就是在本文開頭加上`\tableofcontents` 指令即可。而在 $\LaTeX$ 文稿中
+
+* `\tableofcontents` 可以排版一般的章節目錄
+* `\listoffigures` 指令可以排版圖目錄
+* `\listoftables` 指令則可排版表目錄
+
+預設情況，目錄的名稱會是：Contents、List of Figueres 及 List of
+Tables。若要改成中文形式，必須使用 `\renewcommand` 這個指令重新定義：
+
+```tex
+\renewcommand\contentsname{目~錄~}
+\renewcommand\listfigurename{圖~目~錄}
+\renewcommand\listtablename{表~目~錄}
+```
+
+假設章節指令使用了星號，或是圖表目錄沒有使用`\caption`指令這是指沒有編入目錄，但想自行加進去的情形。
+
+```tex
+\addcontentsline{toc}{章節名}{標題}
+\addcontentsline{lof}{figure}{標題}
+\addcontentsline{lot}{table}{標題}
+```
+
+## 交互參照與超連結
+
+在[LaTeX 中表格與圖片的處理](/posts/notes/latex/2023-05-26-table-and-figure/index.html)中我們已經提過交互參照的概念，在這邊我們就以較短的篇幅進行討論。首先，在想要參照的表格或圖片中加入`\label{參照標籤}`，接著在文內使用`\ref{參照標籤}`便可以引用；如果想要引用欲參照表格或圖片的頁數，則使用`\pageref{參照標籤}`。注意到以下幾點：
+
+- 有參照的文稿一定要編譯兩次才能正常顯示
+- 能編號的章節、圖表、列舉項目、數學式、定理才能參照，雖然其不一定要編號
+- 圖表的參照`\label`一定要在`\caption`之後，不能在前。
+
+如果我們想要將交互參照或是超連結加上醒目提示，我們就要使用`hyperref`這個套件，接著在前言區加上以下程式碼進行超連結設定：
+```tex
+\hypersetup{
+colorlinks = true,
+linkcolor = 顏色,
+filecolor = 顏色,
+urlcolor = 顏色,
+}
+```
+
+## 參考文獻
+
+我們製作參考文獻的方式有兩種，首先來介紹第一種，透過`thebibliography`環境，再加上`\bibitem[標記]{鍵值}`即可產生參考文獻。
+
+```tex
+\begin{thebibliography}{99} % 編號最寬為兩個字母寬
+\bibitem[標記一]{鍵值一} 參考資料一
+\bibitem[標記二]{鍵值二} 參考資料二
+...
+\end{thebibliography}
+```
+我們引用的時候是使用`\cite{鍵值}`這個指令，他會顯示參考資料中的編號值，且以方括號括起來，鍵值可以想像成是鑰匙(key)，藉由這把特定的鑰匙可以將參考資料「提領」出來。當然，`thebibliography`環境所產生的預設參考文獻標題是英文，若要改成中文，使用`\renewcommand`即可：
+
+```tex
+\renewcommand\refname{參~考~資~料} % article
+\renewcommand\bibname{參~考~文~獻} % report/book
+```
+
+第二種方式則是在`.tex`的根目錄下建立`.bib`檔。$\text{Bib}\TeX$ 本身提供一個外部的`bibtex`工具程式，在 $\LaTeX$ 編譯過文稿後，再利用`bibtex`編譯一次文稿，最後再使用 $\LaTeX$ 重編譯過。使用`bibtex`的方式如下，我們在`\end{document}`前插入：
+```tex
+\bibliographystyle{IEEEtran} %指定 style 檔
+\bibliography{檔案名稱.bib} % .bib 文件
+```
+並按照上述步驟進行即可產生參考文獻。產生`.bib`檔的方式可以參考下面的圖片步驟說明。首先我們可以前往[Google 學術搜尋](https://scholar.google.com/)，接著查詢要引用的文獻，在這裡我以 D. Acemoglu 的 "*Why Nations Fail*" 為例：
+
+![](https://i.imgur.com/K971HaE.png)
+
+找到文章後，點擊「引用」，就可以看到以下的畫面：
+
+![](https://i.imgur.com/Sbubj60.png)
+
+接著點擊`BibTeX`後，在新分頁就能得到以下的程式碼：
+
+```tex
+@article{acemoglu2015nations,
+  title={Why nations fail?},
+  author={Acemoglu, Daron},
+  journal={The Pakistan Development Review},
+  volume={54},
+  number={4},
+  pages={301--312},
+  year={2015},
+  publisher={JSTOR}
+}
+```
+
+## 附錄
+
+排版附錄使用的是`\appendix`指令，這個指令以後和正常一般編輯即可。附錄預設標題是英文，若要將其改成中文，承襲更改目錄、參考文獻的方式即可：
+```tex
+\renewcommand\appendixname{附~錄}
+```
+注意到 article 類別的文稿並不印出`Appendix`字樣，因此也就沒有`appendixname`進行更改。
