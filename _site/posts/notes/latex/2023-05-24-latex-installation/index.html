@@ -21,30 +21,64 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<link href="../../../assets/images/logo_favicon.png" rel="icon" type="image/png">
-<script src="../../../site_libs/cookie-consent/cookie-consent.js"></script>
-<link href="../../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
-<script src="../../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../">
+<link href="../../../../assets/images/logo_favicon.png" rel="icon" type="image/png">
+<script src="../../../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -87,10 +121,16 @@ cookieconsent.run({
 
 <meta property="og:title" content="Yueswater Blog - 第一個 LaTeX 程式（包含安裝教學）">
 <meta property="og:description" content="">
+<meta property="og:image" content="https://yueswater.blog/posts/notes/latex/2023-05-24-latex-installation/fig1.png">
 <meta property="og:site-name" content="Yueswater Blog">
+<meta property="og:image:height" content="1244">
+<meta property="og:image:width" content="2870">
 <meta name="twitter:title" content="Yueswater Blog - 第一個 LaTeX 程式（包含安裝教學）">
 <meta name="twitter:description" content="">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yueswater.blog/posts/notes/latex/2023-05-24-latex-installation/fig1.png">
+<meta name="twitter:image-height" content="1244">
+<meta name="twitter:image-width" content="2870">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed fullcontent">
@@ -100,7 +140,7 @@ cookieconsent.run({
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../../../index.html">
+    <a class="navbar-brand" href="../../../../index.html">
     <span class="navbar-title">Yueswater Blog</span>
     </a>
   </div>
@@ -111,21 +151,21 @@ cookieconsent.run({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../blog.html" rel="" target="">
+    <a class="nav-link" href="../../../../blog.html" rel="" target="">
  <span class="menu-text">blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../notes.html" rel="" target="">
+    <a class="nav-link" href="../../../../notes.html" rel="" target="">
  <span class="menu-text">notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../projects.html" rel="" target="">
+    <a class="nav-link" href="../../../../projects.html" rel="" target="">
  <span class="menu-text">projects</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../about.html" rel="" target="">
+    <a class="nav-link" href="../../../../about.html" rel="" target="">
  <span class="menu-text">about</span></a>
   </li>  
   <li class="nav-item compact">
@@ -191,14 +231,253 @@ cookieconsent.run({
 <p><span class="math inline">\(\LaTeX\)</span> 是一個基於 <span class="math inline">\(\TeX\)</span> 的排版系統，由美國電腦科學家 Leslie Lamport開發，遵循呈現與內容分離的設計理念，讓使用者能夠在撰文時致力於寫作，而非同時兼顧版面與內文<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。Word 與 <span class="math inline">\(\LaTeX\)</span> 最大的不同之處在於，Word 最強大的功能「所得即所見」是勝過後者的優勢，初學者可以無師自通，後者則是需要學習指令，Word 的這個特點就完全贏過後者。然而，<span class="math inline">\(\LaTeX\)</span> 的特點即是「呈現與內容分離」，使用者可以專注於撰文，而不用同時注意內文與版面。因此，許多 <span class="math inline">\(\LaTeX\)</span> 的使用者仍會透過Word先進行「前端設計」，再交由 <span class="math inline">\(\LaTeX\)</span> 進行版面設定與產出。這個系列的內容係參考自李果正的<a href="https://jupiter.math.nctu.edu.tw/~smchang/latex/latex123.pdf">《大家來學<span class="math inline">\(\LaTeX\)</span>》</a>與吳聰敏老師的<a href="https://www.math.sinica.edu.tw/www/tex/cxbook3.pdf">《cw<span class="math inline">\(\TeX\)</span> 排版系統》</a>。</p>
 <section id="編輯及編譯系統安裝" class="level2">
 <h2 class="anchored" data-anchor-id="編輯及編譯系統安裝">編輯及編譯系統安裝</h2>
-<p><span class="math inline">\(\LaTeX\)</span> 有許多不同種類的編譯與編輯器組合，本文將以作者最常見的組合 MikTeX 搭配 TeXStudio 介紹。當然如果有特別的偏好也無妨，只要能夠編輯即可。</p>
-<div class="spoiler">
-<p>ddd</p>
-</div>
+<p><span class="math inline">\(\LaTeX\)</span> 有許多不同種類的編譯與編輯器組合，本文將以作者最常見的組合 MiKTeX 搭配 TeXStudio 介紹。當然如果有特別的偏好也無妨，只要能夠編輯即可。</p>
 <section id="miktex-安裝" class="level3">
 <h3 class="anchored" data-anchor-id="miktex-安裝">MikTeX 安裝</h3>
+<p>首先點擊<a href="">這裡</a>進入 MiKTeX 官網。</p>
+<p><img src="fig1.png" class="img-fluid"></p>
+<p>接著點擊 <code>Download</code> 按鈕， 進入頁面後根據電腦的作業系統選擇安裝檔。</p>
+<p><img src="fig2.png" class="img-fluid"></p>
+<p>下載並安裝後便可以進行更新。</p>
+<p><img src="fig3.png" class="img-fluid"> 按下之後即可更新 MiKTeX。更新完畢後點選左側的 <code>Updates</code> 按鈕進入更新區，依序按下 <code>Check for updates</code> 以及 <code>Update now</code> 後即完成。</p>
+<p><img src="fig4.png" class="img-fluid"></p>
+</section>
+<section id="安裝-texstudio" class="level3">
+<h3 class="anchored" data-anchor-id="安裝-texstudio">安裝 TeXStudio</h3>
+<p>請點擊<a href="https://www.texstudio.org/">這裡</a>進入 TeXStudio 官網後，按下下載按鈕即可安裝。安裝完成後基本上就可以開始編譯了。</p>
+<p><img src="fig5.png" class="img-fluid"> 如果要更改編譯器，請到依照以下步驟更改。</p>
+<ul>
+<li>macOS 系統：點選左上角 <code>TeXStudio</code> <span class="math inline">\(\rightarrow\)</span> 點選 <code>Preferences</code> <span class="math inline">\(\rightarrow\)</span> 點選 <code>Build</code> <span class="math inline">\(\rightarrow\)</span> 將 Default Compiler 改為你想要的編譯器。</li>
+<li>macOS 系統：點選左上角 <code>TeXStudio</code> <span class="math inline">\(\rightarrow\)</span> 點選 <code>Options</code> <span class="math inline">\(\rightarrow\)</span> 點選 <code>Build</code> <span class="math inline">\(\rightarrow\)</span> 將 Default Compiler 改為你想要的編譯器。</li>
+</ul>
+<p>以上就是安裝 MiKTeX 與 TeXStudio 的過程。</p>
+</section>
+</section>
+<section id="第一份-latex-文件" class="level2">
+<h2 class="anchored" data-anchor-id="第一份-latex-文件">第一份 <span class="math inline">\(\LaTeX\)</span> 文件</h2>
+<section id="簡單實例操作" class="level3">
+<h3 class="anchored" data-anchor-id="簡單實例操作">簡單實例操作</h3>
+<p>先來試試看，這裡先使用 report 類別文稿，因為 article 類別文稿是沒有chapter 的</p>
+<pre class="{tex}"><code>\documentclass{report}
+\begin{document}
+This is my first {\LaTeX} typesetting example.\\
+This is my first \LaTeX{} typesetting example.\\
+This is my first \LaTeX\ typesetting example.\\
+I am Mr. Edward G.J. Lee, G.J. is a abbreviation of my name.\\
+I am Mr.\ Edward G.J. Lee, G.J. is a abbreviation of my name.\\
+Please see Appendix A. We will be there soon.\\
+Please see Appendix A\null. We will be there soon.
+\end{document}</code></pre>
+<p>排版結果如下：</p>
+<p><img src="https://i.imgur.com/nf1YHHL.jpg" class="img-fluid"></p>
+<section id="關於縮排" class="level4">
+<h4 class="anchored" data-anchor-id="關於縮排">關於縮排</h4>
+<p>我們可以看到第一行縮排了，因為沒有分章節便將換行前的內容做為引言，故會縮排。要解決問題有兩種方法：</p>
+<ul>
+<li>第一行加入<code>\noindent</code>來指示 <span class="math inline">\(\LaTeX\)</span> 不要縮排。但這種作法仍僅限於下指令之處，其他該縮排的地方仍會縮排。</li>
+<li>在 preamble 區加入<code>\parindent=0pt</code>，表示讓全文的縮排為0pt，當然這就表示全文都不要縮排了。</li>
+</ul>
+</section>
+<section id="加入章節標題" class="level4">
+<h4 class="anchored" data-anchor-id="加入章節標題">加入章節標題</h4>
+<p>在 <span class="math inline">\(\LaTeX\)</span> 中加入章節標題可以不用理會字體大小，只需下指令即可。以下仍用 report 類別說明。注意到，<span class="math inline">\(\LaTeX\)</span> 對於章節標題的預設數字都是阿拉伯數字，若要自行改成中文標題，可以在大括號前加上星號(<code>*</code>)，就可以自行替換了，例如<code>\section{}</code>、<code>\section*{}</code>。</p>
+</section>
+<section id="加入標題頁資訊" class="level4">
+<h4 class="anchored" data-anchor-id="加入標題頁資訊">加入標題頁資訊</h4>
+<p>這是指內頁的第一頁，我也不知道這個中文專有名詞是什麼，在 <span class="math inline">\(\LaTeX\)</span> 裡頭，我們就稱為 title page。在 <span class="math inline">\(\LaTeX\)</span> 的標準格式裡，他包括了標題(title)、作者名字(author)、日期(date) 及感謝詞(thanks)。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>{<span class="ex">report</span>}</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\title</span>{Report File}</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\author</span>{Noname<span class="fu">\thanks</span>{Thanks to the readers.}}</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">\date</span>{<span class="fu">\today</span>}</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">\maketitle</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>This is the first sentence in my <span class="fu">\LaTeX\ </span>file.</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="kw">\chapter</span>{First Chapter}</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="kw">\section</span>{Section}</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>加入標題頁資訊後，必須在<code>\begin{document}</code>與<code>\end{document}</code>之間加入<code>\maketitle</code>，才能將剛剛的資訊在文件中顯示。</p>
+</section>
+<section id="加入目錄" class="level4">
+<h4 class="anchored" data-anchor-id="加入目錄">加入目錄</h4>
+<p>加入目錄(Table of Contents) 對 <span class="math inline">\(\LaTeX\)</span> 而言，更是輕而易舉的事情，只要在本文開頭加個<code>\tableofcontents</code>指令就成了。</p>
+</section>
+<section id="加入摘要" class="level4">
+<h4 class="anchored" data-anchor-id="加入摘要">加入摘要</h4>
+<p>如果要加入的話，可使用 abstract 環境，即</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">abstract</span>}</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">abstract</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>在這個環境中的文章，左右會縮排。要注意的是，只有 article/report 類別才有 abstract，book 類別不能使用這個環境。report 類別的摘要自成一頁，不編頁碼，且不會編入目錄中，這和一般的論文格式可能會不一樣，使用時請注意。article 的類別則仍然是和本文相連的，會出現在文章標題之後。</p>
+</section>
+<section id="加入註解" class="level4">
+<h4 class="anchored" data-anchor-id="加入註解">加入註解</h4>
+<p>在 <span class="math inline">\(\LaTeX\)</span> 裡頭，註解可有兩種方式，一種是<strong>腳註(footnote)</strong>，一種是<strong>邊註(marginal note)</strong>。通常 <span class="math inline">\(\LaTeX\)</span> 的腳註預設是由阿拉伯數字在編號，置於頁底部。在沒有部(part)的情形下，report/book 類別，編號每章會從頭起算，article 類別則會連續，而且會使用<code>footnotesize</code>的字體印出。邊註則不編號，字體是正常大小。</p>
+<ul>
+<li>腳註：只要在要加入腳註的後面加上<code>\footnote{}</code>即可。</li>
+<li>邊註：如果要使用邊註，首先必須在前言區引用<code>marginnote</code>這個套件，接著便可以在文件中加入邊註。</li>
+</ul>
+<pre class="{tex}"><code>\documentclass[a4paper,twoside,english]{article}
+\title{Test}
+\author{Noname}
+\usepackage{lipsum}
+\usepackage{marginnote}
+\makeatother
+
+\begin{document}
+\maketitle
+\section{Margin notes}
+
+\marginnote{First margin note.}[0cm]
+\marginnote{Second margin note.}[3cm]
+\lipsum[1-2]\footnote{Footnote is right here.}
+\end{document}</code></pre>
+</section>
+</section>
+<section id="字體大小與字形的調整" class="level3">
+<h3 class="anchored" data-anchor-id="字體大小與字形的調整">字體大小與字形的調整</h3>
+<p>假設我們在文稿內想要將某些文字放大，有以下兩種方式：使用 <span class="math inline">\(\LaTeX\)</span> 中預設調整字體大小的方式；另一種則是使用<code>\selectfont{}</code>將文字有彈性地調整至使用者想要的大小。不過，在討論字體大小調整之前，我們先來看一些簡單的設定，也就是如何將文字變成粗體、斜體、粗斜體</p>
+<section id="字形的調整" class="level4">
+<h4 class="anchored" data-anchor-id="字形的調整">字形的調整</h4>
+<table class="table">
+<thead>
+<tr class="header">
+<th>指令</th>
+<th>結果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\textit{italic}</code></td>
+<td><span class="math inline">\(\textit{italic}\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\textbf{boldface}</code></td>
+<td><strong>boldface</strong></td>
+</tr>
+<tr class="odd">
+<td><code>\textsf{sans serif}</code></td>
+<td><span class="math inline">\(\textsf{sans serif}\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\textrm{roman}</code></td>
+<td><span class="math inline">\(\textrm{roman}\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\texttt{typewriter}</code></td>
+<td><span class="math inline">\(\texttt{typewriter}\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="字體大小" class="level4">
+<h4 class="anchored" data-anchor-id="字體大小">字體大小</h4>
+<p>系統預設調整字體大小的方式可以參考下列表格，右邊是對應的字級：</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>指令</th>
+<th>實際大小</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\tiny</code></td>
+<td>5pt</td>
+</tr>
+<tr class="even">
+<td><code>\scriptsize</code></td>
+<td>7pt</td>
+</tr>
+<tr class="odd">
+<td><code>\footnotesize</code></td>
+<td>8pt</td>
+</tr>
+<tr class="even">
+<td><code>\small</code></td>
+<td>9pt</td>
+</tr>
+<tr class="odd">
+<td><code>\normalsize</code></td>
+<td>10pt</td>
+</tr>
+<tr class="even">
+<td><code>\large</code></td>
+<td>12pt</td>
+</tr>
+<tr class="odd">
+<td><code>\Large</code></td>
+<td>14.4pt</td>
+</tr>
+<tr class="even">
+<td><code>\LARGE</code></td>
+<td>17.28pt</td>
+</tr>
+<tr class="odd">
+<td><code>\huge</code></td>
+<td>20.74pt</td>
+</tr>
+<tr class="even">
+<td><code>\Huge</code></td>
+<td>24.88pt</td>
+</tr>
+</tbody>
+</table>
+<p>另一個方式則是使用<code>{\fontsize{字級}{行基線間距}\selectfont Hello}</code></p>
+<pre class="{tex}"><code>\documentclass[12pt]{article}
+\usepackage{anyfontsize}
+\makeatother
+
+\begin{document}
+{\fontsize{150}{60}\selectfont Hello}{\fontsize{15}{6}\selectfont Hello}
+\end{document}</code></pre>
+</section>
+</section>
+<section id="使用中文" class="level3">
+<h3 class="anchored" data-anchor-id="使用中文">使用中文</h3>
+<p><span class="math inline">\(\TeX\)</span> 的開發者 Knuth 教授當初並未料想到會有中文使用者欲進行排版，因此若我們想要在文件中顯示中文，則必須向 <span class="math inline">\(\LaTeX\)</span> 宣告中文套件，才能在文稿內使用中文。注意到 <span class="math inline">\(\TeX\)</span> 的編輯系統<code>pdfLaTeX</code>、<code>XeLaTeX</code>與<code>LuaLaTeX</code>在支援中文字體上有不一樣的程度：<code>pdfLaTeX</code> 是完全不支援；後兩者則是支援<code>UTF-8</code>。以下就分別以支援與不支援<code>UTF-8</code>的情況做說明。</p>
+<section id="不支援-utf-8" class="level4">
+<h4 class="anchored" data-anchor-id="不支援-utf-8">不支援 UTF-8</h4>
+<p>在不支援 UTF-8 的情況下，我們要引用<code>CJKutf8</code>套件，並參考以下程式碼：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>[12pt]{<span class="ex">article</span>}</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">CJKutf8</span>}</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">CJK*</span>}{UTF8}{中文字體}</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\section</span>{大綱}</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>這裡是大綱，也可輸入英文<span class="fu">\\</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>You can also type english here.</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="kw">\section</span>{先備知識}</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>這裡是先備知識</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">CJK*</span>}</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="支援-utf-8" class="level4">
+<h4 class="anchored" data-anchor-id="支援-utf-8">支援 UTF-8</h4>
+<p>如果在 xeLaTeX 或 LuaLaTeX 的環境下，我們則使用<code>xeCJK</code>這個套件，並參考以下程式碼：</p>
+<pre class="{tex}"><code>\documentclass[12pt]{article}
+\usepackage{xeCJK}
+\setCJKmainfont{標楷體}
+\begin{document}
+\section{第一章}
+認識\LaTeX\
+\section{第二章}
+了解如何使用中文排版
+\end{document}</code></pre>
+<p>前面展示了如何使用引用中文的巨集套件。不過，在撰文時可能會需要使用不同字體，比如標題規定要使用標楷體，內文要使用新細明體，<span class="math inline">\(\LaTeX\)</span> 可以針對電腦已安裝的字體搜尋其路徑，最後進行編譯。</p>
+<pre class="{tex}"><code>\documentclass[12pt]{article}
+\usepackage{xeCJK}
+\setCJKmainfont{標楷體}
+\setCJKfamilyfont{QHei}{cwTeXQHei-Bold} %宣告抓取該字體
+\newcommand*{\QH}{\CJKfamily{QHei}} %設定該字體命令
+\begin{document}
+...
+\end{document}</code></pre>
+<p>最後，必須注意，這些字體都必須是已經安裝在讀者端的電腦上，如果想要下載由吳聰敏老師開發的<code>cwTeX</code>系列字體，可以參考<a href="https://github.com/l10n-tw/cwtex-q-fonts">這篇文章</a>。</p>
 
 
+</section>
 </section>
 </section>
 
