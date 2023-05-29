@@ -77,7 +77,7 @@ ul.task-list li input[type="checkbox"] {
     const options = {
       valueNames: ['listing-image','listing-date','listing-title','listing-subtitle','listing-categories','listing-author','listing-reading-time','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -204,7 +204,7 @@ cookieconsent.run({
 
 </header>
 
-<div id="listing-notes" class="quarto-listing quarto-listing-container-default">
+<div id="listing-notes" class="quarto-listing quarto-listing-container-grid">
 <div class="listing-actions-group">
    <div class="input-group input-group-sm quarto-listing-sort">
      <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
@@ -230,20 +230,49 @@ cookieconsent.run({
       <input type="text" class="search form-control" placeholder="Filter">
     </div>
 </div>
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="R,Markdown,programming language" data-listing-date-sort="1685030400000" data-listing-file-modified-sort="1685040375937" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
-<div class="thumbnail">
-<p><a href="./posts/notes/R/2023-05-26-r-and-tex/index.html"> <p class="card-img-top"><img src="https://i.imgur.com/vviV4xh.jpg"  class="thumbnail-image card-img"/></p> </a></p>
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="SNA" data-listing-date-sort="1685289600000" data-listing-file-modified-sort="1685355714572" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<a href="./posts/notes/SNA/2023-05-24-network-effect/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Diffusion_of_ideas.svg/1200px-Diffusion_of_ideas.svg.png" alt="Diffusion of ideas.svg" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Cascading Behavior in Networks
+</h5>
+<div class="listing-reading-time card-text text-muted">
+2 min
 </div>
-<div class="body">
-<a href="./posts/notes/R/2023-05-26-r-and-tex/index.html">
-<h3 class="no-anchor listing-title">
-R Markdown 與 TeX
-</h3>
-<div class="listing-subtitle">
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SNA'); return false;">
+SNA
+</div>
+</div>
+<div class="card-text listing-description">
+In this section, we will discuss the phenomenon of diffusion of innovation in social network. Innovation is a change of the way things are done, which can be taken by many…
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
 
 </div>
+<div class="listing-date">
+May 29, 2023
+</div>
+</div>
+</div>
+</div>
 </a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="R,Markdown,programming language" data-listing-date-sort="1685030400000" data-listing-file-modified-sort="1685040375937" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
+<a href="./posts/notes/R/2023-05-26-r-and-tex/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="https://i.imgur.com/vviV4xh.jpg" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+R Markdown 與 TeX
+</h5>
+<div class="listing-reading-time card-text text-muted">
+4 min
+</div>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
@@ -255,36 +284,32 @@ Markdown
 programming language
 </div>
 </div>
-<a href="./posts/notes/R/2023-05-26-r-and-tex/index.html">
-<div class="listing-description">
+<div class="card-text listing-description">
 排版一直以來是一個很麻煩的事情，無論是新聞、雜誌，乃至於學術文章，要將文章清楚、俐落且富有美感的呈現出來是需要功夫的；此外，要透過何種方式進行排版，也成為了諸多想學習排版或是已經成為排版的人而言心中曾經冒出的疑問。對此，這篇文章將會透過 R Markdown 的方式，結合些許的 <span class="math inline">\(\TeX\)</span> 語法，將個人的排版經歷與方法分享給大家。
 </div>
-</a>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
 </div>
-<div class="metadata">
-<a href="./posts/notes/R/2023-05-26-r-and-tex/index.html">
 <div class="listing-date">
 May 26, 2023
 </div>
-<div class="listing-reading-time">
-4 min
+</div>
+</div>
 </div>
 </a>
 </div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="LaTeX,programming language" data-listing-date-sort="1685030400000" data-listing-file-modified-sort="1685039724023" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<div class="thumbnail">
-<p><a href="./posts/notes/latex/2023-05-26-bm/index.html"> <p class="card-img-top"><img src="https://i.imgur.com/cQoZAl6.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/notes/latex/2023-05-26-bm/index.html">
-<h3 class="no-anchor listing-title">
+<div class="g-col-1" data-index="2" data-categories="LaTeX,programming language" data-listing-date-sort="1685030400000" data-listing-file-modified-sort="1685039724023" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<a href="./posts/notes/latex/2023-05-26-bm/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="https://i.imgur.com/cQoZAl6.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
 用 LaTeX 製作簡報
-</h3>
-<div class="listing-subtitle">
-
+</h5>
+<div class="listing-reading-time card-text text-muted">
+2 min
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('LaTeX'); return false;">
 LaTeX
@@ -293,36 +318,32 @@ LaTeX
 programming language
 </div>
 </div>
-<a href="./posts/notes/latex/2023-05-26-bm/index.html">
-<div class="listing-description">
+<div class="card-text listing-description">
 為何使用 <span class="math inline">\(\LaTeX\)</span> 進行簡報製作呢，使用 <span class="math inline">\(\LaTeX\)</span> 製作簡報，個人認為大致有以下優點，首先是學術性強大，包含版面、顯示方式等，都能夠讓讀者或閱聽人看到沈穩的簡報內容與外觀，從而能夠專注聽講。另一個優點則是輸出的內容可以跨平台使用，因其產生的檔案類型為<code>.pdf</code>檔，故能夠避免使用<code>.pptx</code>時字體在其他電腦未安裝而無法顯示的窘境。不過…<span class="math inline"></span>
 </div>
-</a>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
 </div>
-<div class="metadata">
-<a href="./posts/notes/latex/2023-05-26-bm/index.html">
 <div class="listing-date">
 May 26, 2023
 </div>
-<div class="listing-reading-time">
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="3" data-categories="LaTeX,programming language" data-listing-date-sort="1685030400000" data-listing-file-modified-sort="1685039574414" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<a href="./posts/notes/latex/2023-05-26-structure/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="https://i.imgur.com/2PiNxCC.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+LaTeX 書本、文件章節編排與架構
+</h5>
+<div class="listing-reading-time card-text text-muted">
 2 min
 </div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="LaTeX,programming language" data-listing-date-sort="1685030400000" data-listing-file-modified-sort="1685039574414" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<div class="thumbnail">
-<p><a href="./posts/notes/latex/2023-05-26-structure/index.html"> <p class="card-img-top"><img src="https://i.imgur.com/2PiNxCC.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/notes/latex/2023-05-26-structure/index.html">
-<h3 class="no-anchor listing-title">
-LaTeX 書本、文件章節編排與架構
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('LaTeX'); return false;">
 LaTeX
@@ -331,36 +352,33 @@ LaTeX
 programming language
 </div>
 </div>
-<a href="./posts/notes/latex/2023-05-26-structure/index.html">
-<div class="listing-description">
+<div class="card-text listing-description">
 一本書籍或學術文章的基本架構大概可以切分成以下幾個元素
 </div>
-</a>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
 </div>
-<div class="metadata">
-<a href="./posts/notes/latex/2023-05-26-structure/index.html">
 <div class="listing-date">
 May 26, 2023
 </div>
-<div class="listing-reading-time">
-2 min
+</div>
+</div>
 </div>
 </a>
 </div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="LaTeX,programming language" data-listing-date-sort="1685030400000" data-listing-file-modified-sort="1685039135322" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
-<div class="thumbnail">
-<p><a href="./posts/notes/latex/2023-05-26-table-and-figure/index.html"> <p class="card-img-top"><img src="https://i.imgur.com/cW62Tjq.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/notes/latex/2023-05-26-table-and-figure/index.html">
-<h3 class="no-anchor listing-title">
-LaTeX 中表格與圖片的處理
-</h3>
-<div class="listing-subtitle">
+<div class="g-col-1" data-index="4" data-categories="LaTeX,programming language" data-listing-date-sort="1685030400000" data-listing-file-modified-sort="1685039135322" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
+<a href="./posts/notes/latex/2023-05-26-table-and-figure/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
 
+<p class="card-img-top"><img src="https://i.imgur.com/cW62Tjq.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+LaTeX 中表格與圖片的處理
+</h5>
+<div class="listing-reading-time card-text text-muted">
+4 min
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('LaTeX'); return false;">
 LaTeX
@@ -369,145 +387,95 @@ LaTeX
 programming language
 </div>
 </div>
-<a href="./posts/notes/latex/2023-05-26-table-and-figure/index.html">
-<div class="listing-description">
+<div class="card-text listing-description">
 
 在學習 <span class="math inline">\(\LaTeX\)</span> 的過程中，表格的處理通常是最為棘手的，主要原因在於 <span class="math inline">\(\LaTeX\)</span> 係透過抽象與邏輯的方式繪製表格。網路上有針對 <span class="math inline">\(\LaTeX\)</span> 的表格編輯器，不過仍要先了解表格的大架構，便能在沒有編輯器的情況下製作表格，亦不會摸不著頭緒。
 </div>
-</a>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
 </div>
-<div class="metadata">
-<a href="./posts/notes/latex/2023-05-26-table-and-figure/index.html">
 <div class="listing-date">
 May 26, 2023
 </div>
-<div class="listing-reading-time">
-4 min
+</div>
+</div>
 </div>
 </a>
 </div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="SNA" data-listing-date-sort="1684857600000" data-listing-file-modified-sort="1684992246982" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
-<div class="thumbnail">
-<p><a href="./posts/notes/SNA/2023-05-24-network-effect/index.html"> <p class="card-img-top"><img src="posts/notes/SNA/2023-05-24-network-effect/fig1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/notes/SNA/2023-05-24-network-effect/index.html">
-<h3 class="no-anchor listing-title">
-Network Effect
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SNA'); return false;">
-SNA
-</div>
-</div>
-<a href="./posts/notes/SNA/2023-05-24-network-effect/index.html">
-<div class="listing-description">
-Here is a brief review of the theory of information cascade. There are two main ways that affect how an individual makes decisions:
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/notes/SNA/2023-05-24-network-effect/index.html">
-<div class="listing-date">
-May 24, 2023
-</div>
-<div class="listing-reading-time">
-7 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="SNA" data-listing-date-sort="1684857600000" data-listing-file-modified-sort="1684933448113" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
-<div class="thumbnail">
-<p><a href="./posts/notes/SNA/2023-05-24-power-laws/index.html"> <p class="card-img-top"><img src="posts/notes/SNA/2023-05-24-power-laws/fig1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/notes/SNA/2023-05-24-power-laws/index.html">
-<h3 class="no-anchor listing-title">
+<div class="g-col-1" data-index="5" data-categories="SNA" data-listing-date-sort="1684857600000" data-listing-file-modified-sort="1684933448113" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
+<a href="./posts/notes/SNA/2023-05-24-power-laws/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="posts/notes/SNA/2023-05-24-power-laws/fig1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
 Power Laws and Rich-Get-Richer Phenomena
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SNA'); return false;">
-SNA
-</div>
-</div>
-<a href="./posts/notes/SNA/2023-05-24-power-laws/index.html">
-<div class="listing-description">
-We’ve seen that behavior is correlated across a population, and it can lead to…
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/notes/SNA/2023-05-24-power-laws/index.html">
-<div class="listing-date">
-May 24, 2023
-</div>
-<div class="listing-reading-time">
+</h5>
+<div class="listing-reading-time card-text text-muted">
 5 min
 </div>
-</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SNA'); return false;">
+SNA
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="LaTeX,programming language" data-listing-date-sort="1684857600000" data-listing-file-modified-sort="1685040259296" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
-<div class="thumbnail">
-<p><a href="./posts/notes/latex/2023-05-24-latex-installation/index.html"> <p class="card-img-top"><img src="posts/notes/latex/2023-05-24-latex-installation/fig1.png"  class="thumbnail-image card-img"/></p> </a></p>
+<div class="card-text listing-description">
+We’ve seen that behavior is correlated across a population, and it can lead to…
 </div>
-<div class="body">
-<a href="./posts/notes/latex/2023-05-24-latex-installation/index.html">
-<h3 class="no-anchor listing-title">
-第一個 LaTeX 程式（包含安裝教學）
-</h3>
-<div class="listing-subtitle">
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
 
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('LaTeX'); return false;">
-LaTeX
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('programming language'); return false;">
-programming language
-</div>
-</div>
-<a href="./posts/notes/latex/2023-05-24-latex-installation/index.html">
-<div class="listing-description">
-<span class="math inline">\(\LaTeX\)</span> 是一個基於 <span class="math inline">\(\TeX\)</span> 的排版系統，由美國電腦科學家 Leslie Lamport開發，遵循呈現與內容分離的設計理念，讓使用者能夠在撰文時致力於寫作，而非同時兼顧版面與內文<sup>1</sup>。Word 與 <span class="math inline">\(\LaTeX\)</span> 最大的不同之處在於，Word…<span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/notes/latex/2023-05-24-latex-installation/index.html">
 <div class="listing-date">
 May 24, 2023
 </div>
-<div class="listing-reading-time">
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="6" data-categories="SNA" data-listing-date-sort="1684857600000" data-listing-file-modified-sort="1685353536818" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
+<a href="./posts/notes/SNA/2023-05-29-cascading-info/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="posts/notes/SNA/2023-05-29-cascading-info/fig1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Power Laws and Rich-Get-Richer Phenomena
+</h5>
+<div class="listing-reading-time card-text text-muted">
+5 min
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('SNA'); return false;">
+SNA
+</div>
+</div>
+<div class="card-text listing-description">
+We’ve seen that behavior is correlated across a population, and it can lead to…
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+May 24, 2023
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="7" data-categories="LaTeX,programming language" data-listing-date-sort="1684857600000" data-listing-file-modified-sort="1685040259296" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
+<a href="./posts/notes/latex/2023-05-24-latex-installation/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="posts/notes/latex/2023-05-24-latex-installation/fig1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+第一個 LaTeX 程式（包含安裝教學）
+</h5>
+<div class="listing-reading-time card-text text-muted">
 3 min
 </div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-categories="LaTeX,programming language" data-listing-date-sort="1684857600000" data-listing-file-modified-sort="1685040632392" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
-<div class="thumbnail">
-<p><a href="./posts/notes/latex/2023-05-25-math/index.html"> <p class="card-img-top"><img src="https://i.imgur.com/sCufibA.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/notes/latex/2023-05-25-math/index.html">
-<h3 class="no-anchor listing-title">
-LaTeX 數學排版
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('LaTeX'); return false;">
 LaTeX
@@ -516,77 +484,66 @@ LaTeX
 programming language
 </div>
 </div>
-<a href="./posts/notes/latex/2023-05-25-math/index.html">
-<div class="listing-description">
-為何要學數學排版，主要原因在於當我們使用 Word 排版時常常會達不到意想的效果，且 Word 內建的 <span class="math inline">\(\LaTeX\)</span> 不太友善；由於 <span class="math inline">\(\LaTeX\)</span> 是針對專業數學所設計的排版軟體，因此透過 <span class="math inline">\(\TeX\)</span> 具有的數學排版系統能夠達到最佳效果。
+<div class="card-text listing-description">
+<span class="math inline">\(\LaTeX\)</span> 是一個基於 <span class="math inline">\(\TeX\)</span> 的排版系統，由美國電腦科學家 Leslie Lamport開發，遵循呈現與內容分離的設計理念，讓使用者能夠在撰文時致力於寫作，而非同時兼顧版面與內文<sup>1</sup>。Word 與 <span class="math inline">\(\LaTeX\)</span> 最大的不同之處在於，Word…<span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span>
 </div>
-</a>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
 </div>
-<div class="metadata">
-<a href="./posts/notes/latex/2023-05-25-math/index.html">
 <div class="listing-date">
 May 24, 2023
 </div>
-<div class="listing-reading-time">
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="8" data-categories="LaTeX,programming language" data-listing-date-sort="1684857600000" data-listing-file-modified-sort="1685040632392" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
+<a href="./posts/notes/latex/2023-05-25-math/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="https://i.imgur.com/sCufibA.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+LaTeX 數學排版
+</h5>
+<div class="listing-reading-time card-text text-muted">
 6 min
 </div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="8" data-categories="Julia,programming language,numerical analysis" data-listing-date-sort="1684684800000" data-listing-file-modified-sort="1684747840108" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<div class="thumbnail">
-<p><a href="./posts/notes/julia/2023-05-23-RNG.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
-</div>
-<div class="body">
-<a href="./posts/notes/julia/2023-05-23-RNG.html">
-<h3 class="no-anchor listing-title">
-Random Numbers and Random Number Generator
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Julia'); return false;">
-Julia
+<div class="listing-category" onclick="window.quartoListingCategory('LaTeX'); return false;">
+LaTeX
 </div>
 <div class="listing-category" onclick="window.quartoListingCategory('programming language'); return false;">
 programming language
 </div>
-<div class="listing-category" onclick="window.quartoListingCategory('numerical analysis'); return false;">
-numerical analysis
+</div>
+<div class="card-text listing-description">
+為何要學數學排版，主要原因在於當我們使用 Word 排版時常常會達不到意想的效果，且 Word 內建的 <span class="math inline">\(\LaTeX\)</span> 不太友善；由於 <span class="math inline">\(\LaTeX\)</span> 是針對專業數學所設計的排版軟體，因此透過 <span class="math inline">\(\TeX\)</span> 具有的數學排版系統能夠達到最佳效果。
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+May 24, 2023
 </div>
 </div>
-<a href="./posts/notes/julia/2023-05-23-RNG.html">
-<div class="listing-description">
-In social sciences, there are numerous cases of whether we need to use and generate random numbers, or draw random values from distributions.
+</div>
 </div>
 </a>
 </div>
-<div class="metadata">
-<a href="./posts/notes/julia/2023-05-23-RNG.html">
-<div class="listing-date">
-May 22, 2023
-</div>
-<div class="listing-reading-time">
+<div class="g-col-1" data-index="9" data-categories="Julia,programming language,numerical analysis" data-listing-date-sort="1684684800000" data-listing-file-modified-sort="1684747840108" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<a href="./posts/notes/julia/2023-05-23-RNG.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Random Numbers and Random Number Generator
+</h5>
+<div class="listing-reading-time card-text text-muted">
 2 min
 </div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="9" data-categories="Julia,programming language,numerical analysis" data-listing-date-sort="1684684800000" data-listing-file-modified-sort="1685040241167" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
-<div class="thumbnail">
-<p><a href="./posts/notes/julia/2023-05-23-inv.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
-</div>
-<div class="body">
-<a href="./posts/notes/julia/2023-05-23-inv.html">
-<h3 class="no-anchor listing-title">
-Inverse Transform Sampling
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Julia'); return false;">
 Julia
@@ -598,36 +555,69 @@ programming language
 numerical analysis
 </div>
 </div>
-<a href="./posts/notes/julia/2023-05-23-inv.html">
-<div class="listing-description">
-Julia provides <code>rand()</code> and <code>randn()</code> to generate random…
+<div class="card-text listing-description">
+In social sciences, there are numerous cases of whether we need to use and generate random numbers, or draw random values from distributions.
 </div>
-</a>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
 </div>
-<div class="metadata">
-<a href="./posts/notes/julia/2023-05-23-inv.html">
 <div class="listing-date">
 May 22, 2023
 </div>
-<div class="listing-reading-time">
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="10" data-categories="Julia,programming language,numerical analysis" data-listing-date-sort="1684684800000" data-listing-file-modified-sort="1685040241167" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
+<a href="./posts/notes/julia/2023-05-23-inv.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Inverse Transform Sampling
+</h5>
+<div class="listing-reading-time card-text text-muted">
 4 min
 </div>
-</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Julia'); return false;">
+Julia
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('programming language'); return false;">
+programming language
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('numerical analysis'); return false;">
+numerical analysis
 </div>
 </div>
-<div class="quarto-post image-right" data-index="10" data-categories="R,programming language" data-listing-date-sort="1683993600000" data-listing-file-modified-sort="1685040249858" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/notes/R/2023-05-14-first-R/index.html"> <p class="card-img-top"><img src="https://i.imgur.com/iRD88ri.jpg"  class="thumbnail-image card-img"/></p> </a></p>
+<div class="card-text listing-description">
+Julia provides <code>rand()</code> and <code>randn()</code> to generate random…
 </div>
-<div class="body">
-<a href="./posts/notes/R/2023-05-14-first-R/index.html">
-<h3 class="no-anchor listing-title">
-第一個 R 語言程式
-</h3>
-<div class="listing-subtitle">
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
 
 </div>
+<div class="listing-date">
+May 22, 2023
+</div>
+</div>
+</div>
+</div>
 </a>
+</div>
+<div class="g-col-1" data-index="11" data-categories="R,programming language" data-listing-date-sort="1683993600000" data-listing-file-modified-sort="1685040249858" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<a href="./posts/notes/R/2023-05-14-first-R/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="https://i.imgur.com/iRD88ri.jpg" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+第一個 R 語言程式
+</h5>
+<div class="listing-reading-time card-text text-muted">
+1 min
+</div>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
@@ -636,36 +626,32 @@ R
 programming language
 </div>
 </div>
-<a href="./posts/notes/R/2023-05-14-first-R/index.html">
-<div class="listing-description">
+<div class="card-text listing-description">
 R is a programming language for statistical computing and graphics supported by the R Core Team and the R Foundation for Statistical Computing. Created by statisticians Ross…<sup></sup>
 </div>
-</a>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
 </div>
-<div class="metadata">
-<a href="./posts/notes/R/2023-05-14-first-R/index.html">
 <div class="listing-date">
 May 14, 2023
 </div>
-<div class="listing-reading-time">
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="12" data-categories="polisci,foreign policy" data-listing-date-sort="1679587200000" data-listing-file-modified-sort="1684738930026" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<a href="./posts/notes/foreign policy/2023-03-24-OBM.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+組織性行為模型(Organizational Behavior Model, OBM)
+</h5>
+<div class="listing-reading-time card-text text-muted">
 1 min
 </div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="11" data-categories="polisci,foreign policy" data-listing-date-sort="1679587200000" data-listing-file-modified-sort="1684738930026" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/notes/foreign policy/2023-03-24-OBM.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
-</div>
-<div class="body">
-<a href="./posts/notes/foreign policy/2023-03-24-OBM.html">
-<h3 class="no-anchor listing-title">
-組織性行為模型(Organizational Behavior Model, OBM)
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('polisci'); return false;">
 polisci
@@ -674,36 +660,32 @@ polisci
 foreign policy
 </div>
 </div>
-<a href="./posts/notes/foreign policy/2023-03-24-OBM.html">
-<div class="listing-description">
+<div class="card-text listing-description">
 OBM 認為組織內部的決策制定乃至執行是被分割的，而非單一行為者強調決策制定和執行，尤其是執行環節的重要性。可以發現 RAM 較不注重政策執行的環節，但同 OBM 一樣重視政策制定。
 </div>
-</a>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
 </div>
-<div class="metadata">
-<a href="./posts/notes/foreign policy/2023-03-24-OBM.html">
 <div class="listing-date">
 Mar 24, 2023
 </div>
-<div class="listing-reading-time">
-1 min
+</div>
+</div>
 </div>
 </a>
 </div>
-</div>
-<div class="quarto-post image-right" data-index="12" data-categories="polisci,foreign policy" data-listing-date-sort="1678377600000" data-listing-file-modified-sort="1684738930026" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<div class="thumbnail">
-<p><a href="./posts/notes/foreign policy/2023-03-10-RAM.html"> <p class="card-img-top"><img src="posts/notes/foreign policy/fig1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/notes/foreign policy/2023-03-10-RAM.html">
-<h3 class="no-anchor listing-title">
+<div class="g-col-1" data-index="13" data-categories="polisci,foreign policy" data-listing-date-sort="1678377600000" data-listing-file-modified-sort="1684738930026" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<a href="./posts/notes/foreign policy/2023-03-10-RAM.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="posts/notes/foreign policy/fig1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
 理性行為者模型(Rational Actor Model, RAM)
-</h3>
-<div class="listing-subtitle">
-
+</h5>
+<div class="listing-reading-time card-text text-muted">
+2 min
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('polisci'); return false;">
 polisci
@@ -712,22 +694,20 @@ polisci
 foreign policy
 </div>
 </div>
-<a href="./posts/notes/foreign policy/2023-03-10-RAM.html">
-<div class="listing-description">
+<div class="card-text listing-description">
 不同的學者對於政策(policy)有不同的定義，但基本上外交政策的概念可以被描述為：
 </div>
-</a>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
 </div>
-<div class="metadata">
-<a href="./posts/notes/foreign policy/2023-03-10-RAM.html">
 <div class="listing-date">
 Mar 10, 2023
 </div>
-<div class="listing-reading-time">
-2 min
+</div>
+</div>
 </div>
 </a>
-</div>
 </div>
 </div>
 <div class="listing-no-matching d-none">
