@@ -2,118 +2,122 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://yueswater.blog/notes.html</loc>
-    <lastmod>2023-06-02T07:26:01.293Z</lastmod>
+    <lastmod>2023-06-02T12:39:20.442Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/proj/welcome/index.html</loc>
-    <lastmod>2023-06-02T06:06:47.045Z</lastmod>
+    <lastmod>2023-06-02T12:39:21.454Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/blog/2020-09-10-taiwan-edu/index.html</loc>
-    <lastmod>2023-06-02T06:06:48.004Z</lastmod>
+    <lastmod>2023-06-02T12:39:22.398Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/blog/2022-09-12-fridge/index.html</loc>
-    <lastmod>2023-06-02T06:06:49.145Z</lastmod>
+    <lastmod>2023-06-02T12:39:23.301Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/blog/2022-09-10-on-failure/index.html</loc>
-    <lastmod>2023-06-02T06:06:50.214Z</lastmod>
+    <lastmod>2023-06-02T12:39:24.204Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/blog/2022-03-10-dsra/index.html</loc>
-    <lastmod>2023-06-02T06:06:51.208Z</lastmod>
+    <lastmod>2023-06-02T12:39:25.237Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/blog/2022-09-11-museum/index.html</loc>
-    <lastmod>2023-06-02T06:06:52.144Z</lastmod>
+    <lastmod>2023-06-02T12:39:27.129Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/blog/2022-06-10-persistence/index.html</loc>
-    <lastmod>2023-06-02T06:06:53.271Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yueswater.blog/posts/notes/SNA/2023-05-29-cascading-info/index.html</loc>
-    <lastmod>2023-06-02T06:06:55.032Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yueswater.blog/posts/notes/SNA/2023-06-01-evo-game/index.html</loc>
-    <lastmod>2023-06-02T06:48:53.573Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yueswater.blog/posts/notes/SNA/2023-05-24-power-laws/index.html</loc>
-    <lastmod>2023-06-02T06:06:57.431Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yueswater.blog/posts/notes/SNA/2023-05-24-network-effect/index.html</loc>
-    <lastmod>2023-06-02T06:06:58.368Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yueswater.blog/posts/notes/latex/2023-05-24-latex-installation/index.html</loc>
-    <lastmod>2023-06-02T06:06:59.806Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yueswater.blog/posts/notes/latex/2023-05-26-bm/index.html</loc>
-    <lastmod>2023-06-02T06:07:00.978Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yueswater.blog/posts/notes/latex/2023-05-26-structure/index.html</loc>
-    <lastmod>2023-06-02T06:07:02.481Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yueswater.blog/posts/notes/latex/2023-05-26-table-and-figure/index.html</loc>
-    <lastmod>2023-06-02T06:07:03.946Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yueswater.blog/posts/notes/latex/2023-05-25-math/index.html</loc>
-    <lastmod>2023-06-02T06:07:05.537Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yueswater.blog/posts/notes/foreign policy/2023-03-24-OBM.html</loc>
-    <lastmod>2023-06-02T06:07:06.468Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yueswater.blog/posts/notes/foreign policy/2023-03-10-RAM.html</loc>
-    <lastmod>2023-06-02T06:07:07.584Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yueswater.blog/posts/notes/R/2023-05-14-first-R/index.html</loc>
-    <lastmod>2023-06-02T06:07:09.213Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yueswater.blog/posts/notes/R/2023-05-26-r-and-tex/index.html</loc>
-    <lastmod>2023-06-02T06:07:10.876Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yueswater.blog/posts/notes/julia/2023-05-23-RNG.html</loc>
-    <lastmod>2023-06-02T06:07:12.118Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yueswater.blog/posts/notes/julia/2023-05-23-inv.html</loc>
-    <lastmod>2023-06-02T06:07:13.382Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yueswater.blog/projects.html</loc>
-    <lastmod>2023-06-02T06:07:14.366Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yueswater.blog/index.html</loc>
-    <lastmod>2023-06-02T06:07:14.680Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yueswater.blog/about.html</loc>
-    <lastmod>2023-06-02T06:07:15.741Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yueswater.blog/blog.html</loc>
-    <lastmod>2023-06-02T06:07:16.896Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yueswater.blog/posts/notes/SNA/2023-06-02-baress-paradox/index.html</loc>
-    <lastmod>2023-06-02T06:53:22.067Z</lastmod>
+    <lastmod>2023-06-02T12:39:27.987Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/notes/SNA/2023-06-02-braess-paradox/index.html</loc>
-    <lastmod>2023-06-02T07:49:47.488Z</lastmod>
+    <lastmod>2023-06-02T12:39:28.897Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/posts/notes/SNA/2023-06-02-auction/index.html</loc>
+    <lastmod>2023-06-02T13:45:09.893Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/posts/notes/SNA/2023-05-29-cascading-info/index.html</loc>
+    <lastmod>2023-06-02T12:39:31.627Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/posts/notes/SNA/2023-06-01-evo-game/index.html</loc>
+    <lastmod>2023-06-02T12:39:32.718Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/posts/notes/SNA/2023-05-24-power-laws/index.html</loc>
+    <lastmod>2023-06-02T12:39:34.287Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/posts/notes/SNA/2023-05-24-network-effect/index.html</loc>
+    <lastmod>2023-06-02T12:39:35.374Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/posts/notes/latex/2023-05-24-latex-installation/index.html</loc>
+    <lastmod>2023-06-02T12:39:36.987Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/posts/notes/latex/2023-05-26-bm/index.html</loc>
+    <lastmod>2023-06-02T12:39:38.352Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/posts/notes/latex/2023-05-26-structure/index.html</loc>
+    <lastmod>2023-06-02T12:39:39.695Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/posts/notes/latex/2023-05-26-table-and-figure/index.html</loc>
+    <lastmod>2023-06-02T12:39:40.899Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/posts/notes/latex/2023-05-25-math/index.html</loc>
+    <lastmod>2023-06-02T12:39:42.755Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/posts/notes/foreign policy/2023-06-02-GPM/index.html</loc>
+    <lastmod>2023-06-02T12:39:44.021Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/posts/notes/foreign policy/2023-03-24-OBM/index.html</loc>
+    <lastmod>2023-06-02T12:39:44.931Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/posts/notes/foreign policy/2023-03-10-RAM/index.html</loc>
+    <lastmod>2023-06-02T12:39:45.931Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/posts/notes/R/2023-05-14-first-R/index.html</loc>
+    <lastmod>2023-06-02T12:39:47.483Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/posts/notes/R/2023-05-26-r-and-tex/index.html</loc>
+    <lastmod>2023-06-02T12:39:49.059Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/posts/notes/julia/2023-05-23-RNG.html</loc>
+    <lastmod>2023-06-02T12:39:50.195Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/posts/notes/julia/2023-05-23-inv.html</loc>
+    <lastmod>2023-06-02T12:39:51.454Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/projects.html</loc>
+    <lastmod>2023-06-02T12:39:52.412Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/index.html</loc>
+    <lastmod>2023-06-02T12:39:52.726Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/about.html</loc>
+    <lastmod>2023-06-02T12:39:53.892Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/blog.html</loc>
+    <lastmod>2023-06-02T12:39:54.943Z</lastmod>
   </url>
 </urlset>

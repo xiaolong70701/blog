@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2023-06-02">
 
-<title>Yueswater Blog - 使用賽局建模網絡流量</title>
+<title>Yueswater Blog - 政府政治模型(Government Politics Model, GPM)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -85,18 +85,12 @@ cookieconsent.run({
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Yueswater Blog - 使用賽局建模網絡流量">
+<meta property="og:title" content="Yueswater Blog - 政府政治模型(Government Politics Model, GPM)">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://yueswater.blog/posts/notes/SNA/2023-06-02-baress-paradox/fig1.png">
 <meta property="og:site-name" content="Yueswater Blog">
-<meta property="og:image:height" content="568">
-<meta property="og:image:width" content="876">
-<meta name="twitter:title" content="Yueswater Blog - 使用賽局建模網絡流量">
+<meta name="twitter:title" content="Yueswater Blog - 政府政治模型(Government Politics Model, GPM)">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://yueswater.blog/posts/notes/SNA/2023-06-02-baress-paradox/fig1.png">
-<meta name="twitter:image-height" content="568">
-<meta name="twitter:image-width" content="876">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-fixed fullcontent">
@@ -161,9 +155,10 @@ cookieconsent.run({
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">使用賽局建模網絡流量</h1>
+      <h1 class="title">政府政治模型(Government Politics Model, GPM)</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">SNA</div>
+                <div class="quarto-category">polisci</div>
+                <div class="quarto-category">foreign policy</div>
               </div>
                   </div>
   </div>
@@ -193,14 +188,83 @@ cookieconsent.run({
 
 
 
-<p>假設在一個國家內有兩個重要的城市，設為 <span class="math inline">\(A\)</span> 城與 <span class="math inline">\(B\)</span> 城，這兩個城市是該國的金融重鎮，每天都有許多人與車在這兩個城市之間往來。現在假設這個國家的所有駕駛都是要從 <span class="math inline">\(A\)</span> 城前往 <span class="math inline">\(B\)</span> 城，途中有兩條路可以選，一個是經過 <span class="math inline">\(C\)</span> 城，另一個則是經過 <span class="math inline">\(D\)</span> 城。以下是這個國家的交通流量網絡圖，每條邊都有一個指定的行駛時間(以分鐘計算)，該時間取決於該邊線上的交通量。</p>
-<p align="center">
-<img src="fig1.png" alt="" width="" height="250">
-</p>
-<p>假設總共有 <span class="math inline">\(4000\)</span> 輛車要通過，其中通過 <span class="math inline">\(AC\)</span> 與 <span class="math inline">\(DB\)</span> 路線的時間皆為 <span class="math inline">\(x / 100\)</span>，因此若全部的車輛被平均分配走上下的路，總時間為 <span class="math inline">\(4000/100 + 45 = 65\)</span> 分鐘。</p>
-<p>我們所描述的交通模型實際上是一個賽局，其中行為者對應到駕駛，每個行為者的可能策略包括從 <span class="math inline">\(A\)</span> 到 <span class="math inline">\(B\)</span> 的可能路線。每個行為者的報酬是其行車時間的負值（我們使用負值是因為較長的行車時間是不好的）。這個賽局可以有任意數量的行為者，每個行為者可以有任意數量的可用策略，每個行為者的回報取決於所有行為者所選擇的策略。Nash equilibrium 仍然是一組策略，每個行為者對應一個策略，使得每個行為者的策略對於其他所有行為者都是最佳回應。</p>
+<p>政府政治模型有別於 RAM 與 OBM，雖其與 RAM 一樣重視政策制定而非執行的環節，但認為大部分外交決策的主要行為者並非單一行為者，而是包含來自不同政府部門的代表，或再加上政府以外的行為者，共同進行決策。一般來說，越是傾向權力分立制衡的政體，越有可能是適合以此種模式分析其實際決策過程。此外，GPM 認為經由此種過程產生的決策，<strong>未必完全反映在國家利益層是成本最小、效益最大的選項</strong>，而是<strong>不同政府部門間互動</strong>的結果。</p>
+<p>政府中的每個人都是核心競爭賽局的參與者之一，此賽局即是政治。政府的行為因此得以依照 GPM 加以理解，非組織性的產出，而是議價賽局(bargaining game)的結果，眾多行為者都被視為是參與者，結果透過相互競爭偏好的互動而形成與消解。</p>
+<section id="gpm-的基本概念" class="level2">
+<h2 class="anchored" data-anchor-id="gpm-的基本概念">GPM 的基本概念</h2>
+<section id="行為者" class="level3">
+<h3 class="anchored" data-anchor-id="行為者">行為者</h3>
+<p>主要是參與決策當中來自不同官僚部門的代表，分為四種主要類型：</p>
+<ol type="1">
+<li>首腦(chiefs)：指總統與部級的主管，包含總統、國務卿、國防部長 <span class="math inline">\(\cdots\)</span>。</li>
+<li>幕僚(staffs)：指首腦所直接指揮的幕僚</li>
+<li>部眾(indians)：合議共治的群體，指各行政部門政務官與高階常任文官。</li>
+<li>ad hoc players：臨時或隨機性參與者，如遊說團體、媒體、重要國會議員等。</li>
+</ol>
+</section>
+<section id="決策過程的本質" class="level3">
+<h3 class="anchored" data-anchor-id="決策過程的本質">決策過程的本質</h3>
+<p>是由以上不同行為者所参奥的一場賽局或議價賽局，決策的產出反映了賽局的結果。</p>
+</section>
+<section id="不同行為者之間的差異" class="level3">
+<h3 class="anchored" data-anchor-id="不同行為者之間的差異">不同行為者之間的差異</h3>
+<p>1.目標與利益：各自代表其本身官僚部門的組織目標或利益。 2.影響力、權力賽局的不同参與者，由於以下幾種條件的不同，使其在 能影響、改變他人行為選择的強弱程度也不同一組織中制度性高低、擁有資訊量的性質和多寡、個人的知識與能力、在特定議政策聯盟的籌碼和能力，包括溝通和說服的能力。</p>
+</section>
+<section id="行動管道action-channel" class="level3">
+<h3 class="anchored" data-anchor-id="行動管道action-channel">行動管道(action channel)</h3>
+<p>指將參與者的目標與影響力,帶到決策環節的一套制度化規則和程序，例如特定議題通常纳入的特定參與者型態、議事和決策的程序、相關的規範、部門間雙邊或多邊協商的既定模式。</p>
+</section>
+<section id="決策的規則decision-rules" class="level3">
+<h3 class="anchored" data-anchor-id="決策的規則decision-rules">決策的規則(decision rules)</h3>
+<p>當持有不同偏好、目標，影響力不同的多個行為者共同進行決策時，如何生最後的政策退項？</p>
+<p>1.共識決：即一票否決制 2.首長制：参與者各自表達其偏好與發挥影響力後,由首長裁示。 3.投票表决：相對多數決·絕對多數決・多數的意見，有時未必經由正式 的投票表決程序來影響決策結果，也有可能透過結合為多數的聯盟(coalition)而使其能說服,強制、議價的能力增加，影響其他參與者的行為。</p>
+<p>這裡要提到一個定理：<strong>Arrow 不可能定理(Arrow’s Theorem of Impossibility)</strong>。該定理稱，持有不同偏好的個人，可能無法經由民主投票的多數決規則，來產出符合大多數人的集體偏好。</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>行為者</th>
+<th>選項排序</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(A\)</span></td>
+<td><span class="math inline">\(a&gt;b&gt;c\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(B\)</span></td>
+<td><span class="math inline">\(b&gt;c&gt;a\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(C\)</span></td>
+<td><span class="math inline">\(c&gt;a&gt;b\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>其中行為者 <span class="math inline">\(A\)</span>，其喜歡 <span class="math inline">\(a\)</span> 的程度多於 <span class="math inline">\(b\)</span>；行為者 <span class="math inline">\(B\)</span>，其喜歡 <span class="math inline">\(b\)</span> 的程度多於 <span class="math inline">\(c\)</span>；行為者 <span class="math inline">\(A\)</span>，其喜歡 <span class="math inline">\(c\)</span> 的程度多於 <span class="math inline">\(a\)</span>。由於行為者的偏好具有遞移性(transitivity)，既然<span class="math inline">\(c\)</span> 多於 <span class="math inline">\(a\)</span> ，但在 <span class="math inline">\(b\)</span> 多於 <span class="math inline">\(c\)</span> 的前提下，<span class="math inline">\(a\)</span> 又大於 <span class="math inline">\(b\)</span>，明顯出現矛盾，無法找到符合多數決的決策。</p>
+<p>多數人一同決策時，意見往往是最重要的，民主政治的基本前提是決策必須符合多數人偏好。然而，Arrow 發現在某些特定條件下，例如行為者偏好之遞移性，將使得民主政治無法實現，無法找到符合多數決的決策。</p>
+<p>因此，程序上的安排就顯得極為重要，議案提出的順序對於結果就有決定性的影響。議程設定(agenda setting)在多數表決時係十分關鍵，就算在相同偏好下，也會得到不同的結果，因此程序委員會扮演掌握議案生殺大權的重要角色，影響何種結果最後會勝出。</p>
+<p>此定理指出，偏好的排序將會受到扭曲，或某些成員的偏好將凌駕於其他人的偏好上。</p>
+<blockquote class="blockquote">
+<p>勿將個人特質賦予團體之上。個人是理性的，團體則否，因為團體可能甚至沒有可傳遞的順序偏好。</p>
+</blockquote>
+</section>
+<section id="議題的塑造項alternatives" class="level3">
+<h3 class="anchored" data-anchor-id="議題的塑造項alternatives">議題的塑造項(alternatives)</h3>
+<p>一個政策嫩題往往涉及或影響多種不同的杜會償值或規範，當某種價值或規範被特別強調放大時,往往有利於某些官僚部門的影響力擴大，不利於其他部門。之所以有利，還是因為影響力的大小涉及到需要用有顯性或隱性的聽眾(audience)。因此，媒體往往透過議題塑造，帶來重大影響。</p>
+<p>議題的塑造(framing)係指特定的價值層面被塑造時，會出現特別的聽眾，如一般民意支持者、議員的支持，因此行為者便需要思考如何運用媒體凸顯某一個議題的某項特質。</p>
+</section>
+<section id="合力resultant" class="level3">
+<h3 class="anchored" data-anchor-id="合力resultant">合力(resultant)</h3>
+<p>決策的結果是一個由不同參與者產生的合力。例如很多國家都在發展武力，拜登用政府投入資金的力量去發展人工智慧，這是川普沒有的，川普只是禁止華為但並未投入特別資金在科技發展上。</p>
+</section>
+<section id="團體迷思groupthink" class="level3">
+<h3 class="anchored" data-anchor-id="團體迷思groupthink">團體迷思(Groupthink)</h3>
+<p>若團體中有一兩個人意見較為強烈，大家便會屈從少數一兩個人表達的意見而形成一言堂，儘管大家都有意見，但不願表達。最常見的狀況是在外交決策上，因為制度性權力的因素，從而導致此問題，例如 JFK 在 ExCom 的議題上。</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
