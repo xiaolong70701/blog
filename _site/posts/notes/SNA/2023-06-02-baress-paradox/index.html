@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-06-01">
+<meta name="dcterms.date" content="2023-06-02">
 
-<title>Yueswater Blog - 演化賽局</title>
+<title>Yueswater Blog - 使用賽局建模網絡流量</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -85,17 +85,17 @@ cookieconsent.run({
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Yueswater Blog - 演化賽局">
+<meta property="og:title" content="Yueswater Blog - 使用賽局建模網絡流量">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://yueswater.blog/posts/notes/SNA/2023-06-01-evo-game/fig1.png">
+<meta property="og:image" content="https://yueswater.blog/posts/notes/SNA/2023-06-02-baress-paradox/fig1.png">
 <meta property="og:site-name" content="Yueswater Blog">
-<meta property="og:image:height" content="875">
-<meta property="og:image:width" content="2589">
-<meta name="twitter:title" content="Yueswater Blog - 演化賽局">
+<meta property="og:image:height" content="568">
+<meta property="og:image:width" content="876">
+<meta name="twitter:title" content="Yueswater Blog - 使用賽局建模網絡流量">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://yueswater.blog/posts/notes/SNA/2023-06-01-evo-game/fig1.png">
-<meta name="twitter:image-height" content="875">
-<meta name="twitter:image-width" content="2589">
+<meta name="twitter:image" content="https://yueswater.blog/posts/notes/SNA/2023-06-02-baress-paradox/fig1.png">
+<meta name="twitter:image-height" content="568">
+<meta name="twitter:image-width" content="876">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -161,7 +161,7 @@ cookieconsent.run({
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">演化賽局</h1>
+      <h1 class="title">使用賽局建模網絡流量</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">SNA</div>
               </div>
@@ -175,7 +175,7 @@ cookieconsent.run({
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">June 1, 2023</p>
+        <p class="date">June 2, 2023</p>
       </div>
     </div>
     
@@ -193,156 +193,16 @@ cookieconsent.run({
 
 
 
-<p>在一般的賽局理論，我們討論的是賽局中的行為者如何互動，以及最後所得出之策略。然而，演化賽局理論著重的是一個策略是否能夠「長久穩定」，或者説一個策略之配適度(fitness)。言下之意，若在一個群體當中存在兩種策略 <span class="math inline">\(X\)</span> 與 <span class="math inline">\(Y\)</span>，群體中的行為者使用的主要策略為 <span class="math inline">\(X\)</span>，亦即使用 <span class="math inline">\(Y\)</span> 的比例佔少數，且採用 <span class="math inline">\(X\)</span> 的行為者能適應的更好，未被使用 <span class="math inline">\(Y\)</span> 的行為者侵吞，那麼就稱 <span class="math inline">\(X\)</span> 為一個演化穩定策略(evolutionarily stable strategy)。<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<section id="體型大是一種優勢嗎" class="level2">
-<h2 class="anchored" data-anchor-id="體型大是一種優勢嗎">體型大是一種優勢嗎？</h2>
-<p>通常昆蟲界裡體型較大者將容易存活，直觀來說體型大的昆蟲較不容易被該物種的天敵吃掉，以及能夠比體型較小者更容易獲取食物，但相對的其所需消耗的能量也會比較大。</p>
-<p>假設有兩種性質相似的昆蟲 <span class="math inline">\(A\)</span> 與 <span class="math inline">\(B\)</span>，這兩種昆蟲都有兩種策略 <span class="math inline">\(\text{Large}\)</span> 與 <span class="math inline">\(\text{Small}\)</span>，也就是體型大與體型小。其中一種昆蟲在掠食時突然遇到另一種昆蟲，凝視對方一會後便開始爭奪食物，一名昆蟲學家在旁觀察後記錄下來，畫出以下的掠奪食物之收益矩陣：</p>
-<p><span class="math display">\[
-\begin{array}
-&amp; &amp; &amp; &amp; \text{Beetle 2} \\
-\hline
-&amp; &amp; \text{Small} &amp; \text{Large} &amp; \\
-\hline
-&amp; \text{Small} &amp; (5,5) &amp; (1,8)\\
-\text{Beetle 1} &amp; \text{Large} &amp; (8,1) &amp; (3,3)\\
-\hline
-\end{array}
-\]</span></p>
-<p>在判定哪個策略為演化穩定之前，我們要先定義一些概念。</p>
-<blockquote class="blockquote">
-<p><em>We say that a strategy <span class="math inline">\(T\)</span> invades a strategy <span class="math inline">\(S\)</span> at level <span class="math inline">\(x\)</span>, for some small positive number <span class="math inline">\(x\)</span>, i.e., <span class="math inline">\(x \in \mathbb{R}^{+}\)</span>. If an <span class="math inline">\(x\)</span> fraction of the underlying population uses <span class="math inline">\(T\)</span> and a <span class="math inline">\(1 − x\)</span> fraction of the underlying population uses <span class="math inline">\(S\)</span></em>.</p>
-</blockquote>
-<p>因此我們知道策略侵吞(invade)的意義。又，</p>
-<blockquote class="blockquote">
-<p><em>We say that a strategy <span class="math inline">\(S\)</span> is evolutionarily stable if there is a (small) positive number <span class="math inline">\(y\)</span> such that when any other strategy <span class="math inline">\(T\)</span> invades <span class="math inline">\(S\)</span> at any level <span class="math inline">\(x &lt; y\)</span>, the fitness of an organism playing <span class="math inline">\(S\)</span> is strictly greater than the fitness of an organism playing <span class="math inline">\(T\)</span>.</em></p>
-</blockquote>
-<p>因此接下來我們可以針對上面的報酬矩陣進行「是否為演化穩定」的判斷。</p>
-<section id="檢驗是否為演化穩定" class="level3">
-<h3 class="anchored" data-anchor-id="檢驗是否為演化穩定">檢驗是否為演化穩定</h3>
-<p>首先我們針對 <span class="math inline">\(\text{Small}\)</span> 的策略進行分析。假設 <span class="math inline">\(\text{Beetle 2}\)</span> 的群體中，存在一個很小的 <span class="math inline">\(x \in \mathbb{R}^{+}\)</span>，有 <span class="math inline">\(x\)</span> 比例採用 <span class="math inline">\(\text{Small}\)</span>，另有 <span class="math inline">\(1 - x\)</span> 比例採用 <span class="math inline">\(\text{Large}\)</span>。對於 <span class="math inline">\(\text{Beetle 1}\)</span> 的群體而言，</p>
-<p><span class="math display">\[
-\begin{aligned}
-&amp; \mathbb{E}(\text{Small}) = 5(1 − x) + 1 · x = 5 − 4x\\
-&amp; \mathbb{E}(\text{Large}) = 8(1 − x) + 3 · x = 8 − 5x.
-\end{aligned}
-\]</span> 因為 <span class="math inline">\(x\)</span> 為比例，且 <span class="math inline">\(0 \leq x \leq 1\)</span>，故 <span class="math inline">\(\mathbb{E}(\text{Small})\)</span> 不可能大於 <span class="math inline">\(\mathbb{E}(\text{Large})\)</span>，因此 <span class="math inline">\(\text{Small}\)</span> 不為演化穩定。</p>
-<p>另一方面，我們也可以針對 <span class="math inline">\(\text{Large}\)</span> 的策略進行分析。現在假設 <span class="math inline">\(\text{Beetle 1}\)</span> 群體中，存在一個很小的 <span class="math inline">\(x \in \mathbb{R}^{+}\)</span>，有 <span class="math inline">\(x\)</span> 比例採用 <span class="math inline">\(\text{Small}\)</span>，另有 <span class="math inline">\(1 - x\)</span> 比例採用 <span class="math inline">\(\text{Large}\)</span>。對於 <span class="math inline">\(\text{Beetle 2}\)</span> 的群體而言，</p>
-<p><span class="math display">\[
-\begin{aligned}
-&amp; \mathbb{E}(\text{Large}) = 3(1 − x) + 8 · x = 3 + 5x\\
-&amp; \mathbb{E}(\text{Small}) = (1 − x) + 5 · x = 1 + 4x.
-\end{aligned}
-\]</span> 同理，因 <span class="math inline">\(x\)</span> 為比例，<span class="math inline">\(\mathbb{E}(\text{Large})\)</span> 必然大於 <span class="math inline">\(\mathbb{E}(\text{Small})\)</span>，因此 <span class="math inline">\(\text{Large}\)</span> 為演化穩定。</p>
-</section>
-<section id="演化穩定策略推廣" class="level3">
-<h3 class="anchored" data-anchor-id="演化穩定策略推廣">演化穩定策略推廣</h3>
-<p>假設我們今天將上面的矩陣代數化，並將其變為對稱矩陣(symmetric game)，我們也可以進行以下的分析。</p>
-<p><span class="math display">\[
-\begin{array}
-&amp; &amp; &amp; &amp; \text{Organism 2} \\
-\hline
-&amp; &amp; \text{S} &amp; \text{T} &amp; \\
-\hline
-&amp; \text{S} &amp; (a,a) &amp; (b,c)\\
-\text{Organism 1} &amp; \text{T} &amp; (c,b) &amp; (d,d)\\
-\hline
-\end{array}
-\]</span> 我們可以利用上述的方法進行分析。<span class="math inline">\(\text{Organism}\)</span> 採用 <span class="math inline">\(S\)</span> 策略的預期報酬(expected payoff)為 <span class="math display">\[
-a(1 − x) + bx
-\]</span> 採用 <span class="math inline">\(T\)</span> 策略的預期報酬(expected payoff)為 <span class="math display">\[
-c(1 − x) + dx
-\]</span> 因此，若對於所有足夠小的 <span class="math inline">\(x &gt; 0\)</span> 且 <span class="math inline">\(x \in \mathbb{R}^{+}\)</span>，如果以下不等式成立，則稱 <span class="math inline">\(S\)</span> 為演化穩定策略： <span class="math display">\[
-a(1 − x) + bx &gt; c(1 − x) + dx.
-\]</span></p>
-<p>我們可歸納出以下條件：在一個存在兩行為者與兩策略的賽局中，若以下兩條件其中之一成立，則稱策略 <span class="math inline">\(S\)</span> 為演化穩定策略：</p>
-<p>(i). <span class="math inline">\(a &gt; c\)</span>；</p>
-<p>(ii). <span class="math inline">\(a = c\)</span> 且 <span class="math inline">\(b &gt; d\)</span></p>
-<p>回到一般的賽局理論，若我們稱 <span class="math inline">\((S, S)\)</span> 為 Nash equilibrium，則必滿足 <span class="math display">\[
-a \geq c
-\]</span> 的條件，這與演化穩定策略的判斷條件是相同的。因此可以得出以下結論：</p>
-<blockquote class="blockquote">
-<p>If strategy <span class="math inline">\(S\)</span> is evolutionarily stable, then <span class="math inline">\((S,S)\)</span> is a Nash equilibrium.</p>
-</blockquote>
-<p><img src="fig1.png" class="img-fluid"></p>
-</section>
-</section>
-<section id="混合策略與演化穩定策略" class="level2">
-<h2 class="anchored" data-anchor-id="混合策略與演化穩定策略">混合策略與演化穩定策略</h2>
-<p>考慮以下的鷹鴿賽局：</p>
-<p><span class="math display">\[
-\begin{array}
-&amp; &amp; &amp; &amp; \text{Animal 2} \\
-\hline
-&amp; &amp; \text{D} &amp; \text{H} &amp; \\
-\hline
-&amp; \text{D} &amp; (3,3) &amp; (1,5)\\
-\text{Animal 1} &amp; \text{H} &amp; (5,1) &amp; (0,0)\\
-\hline
-\end{array}
-\]</span> 經過計算可以發現 <span class="math inline">\(D\)</span> 與 <span class="math inline">\(H\)</span> 均不是最佳反應(best response)，且兩個都非演化穩定策略，但此賽局存在混合策略。事實上，混合策略與演化穩定策略的概念是相似的：</p>
-<ol type="1">
-<li>每個個體都可能天生就設定好要採取純策略，但人口中的一部分可能採取一種策略，而其他部分則採取另一種策略。</li>
-<li>每個個體也可能天生就設定好要採取特定的混合策略，也就是說，基因上的配置使得它們以特定的機率從某些選項中隨機選擇。</li>
-</ol>
-<section id="演化穩定混合策略" class="level3">
-<h3 class="anchored" data-anchor-id="演化穩定混合策略">演化穩定混合策略</h3>
-<p>讓我們重新回到對稱矩陣的例子：</p>
-<p><span class="math display">\[
-\begin{array}
-&amp; &amp; &amp; &amp; \text{Organism 2} \\
-\hline
-&amp; &amp; \text{S} &amp; \text{T} &amp; \\
-\hline
-&amp; \text{S} &amp; (a,a) &amp; (b,c)\\
-\text{Organism 1} &amp; \text{T} &amp; (c,b) &amp; (d,d)\\
-\hline
-\end{array}
-\]</span> 假設 <span class="math inline">\(\text{Organism 1}\)</span> 採用 <span class="math inline">\(S\)</span> 策略的機率為 <span class="math inline">\(p\)</span>，<span class="math inline">\(\text{Organism 2}\)</span> 為 <span class="math inline">\(q\)</span>，則 <span class="math inline">\(\text{Organism 1}\)</span> 的預期報酬為 <span class="math display">\[
-V(p, q) = pqa + p(1 − q)b + (1 − p)qc + (1 − p)(1 − q)d.
-\]</span></p>
-<p>在此，我們給予演化穩定混合策略一個精確的定義：</p>
-<blockquote class="blockquote">
-<p>In the General Symmetric Game, <span class="math inline">\(p\)</span> is an evolutionarily stable mixed strategy if there is a (small) positive number <span class="math inline">\(y\)</span> such that when any other mixed strategy <span class="math inline">\(q\)</span> invades <span class="math inline">\(p\)</span> at any level <span class="math inline">\(x &lt; y\)</span>, the fitness of an organism playing <span class="math inline">\(p\)</span> is strictly greater than the fitness of an organism playing <span class="math inline">\(q\)</span>.</p>
-</blockquote>
-<p>因此，若 <span class="math inline">\(p\)</span> 要是演化穩定混合策略，其必滿足：對於某些 <span class="math inline">\(y\)</span> 與任何 <span class="math inline">\(x &lt; y\)</span>，下列不等式必成立：</p>
-<p><span class="math display">\[
-(1 − x)V(p, p) + xV (p, q) &gt; (1 − x)V(q, p) + xV (q, q), \;\;\; \forall q \neq p
-\]</span> 若 <span class="math inline">\(p\)</span> 為演化穩定混合策略，則</p>
-<p><span class="math display">\[
-V(p, p) \geq V(q, p)
-\]</span> 因此 <span class="math inline">\(p\)</span> 對其自身而言是最佳反應。</p>
-</section>
-<section id="例子鷹鴿賽局" class="level3">
-<h3 class="anchored" data-anchor-id="例子鷹鴿賽局">例子：鷹鴿賽局</h3>
-<p>承上的鷹鴿賽局，若假設 <span class="math inline">\(\text{Animal}\)</span> 採用 <span class="math inline">\(D\)</span> 的機率為 <span class="math inline">\(p\)</span>，經過簡單計算可以得到 <span class="math inline">\(p = 1/3\)</span>。接下來我們要檢驗上述的不等式是否成立。由於 <span class="math inline">\((p，p)\)</span> 是同時使用兩種純策略的混合 Nash equilibrium，我們剛剛論證了對於所有的混合策略 <span class="math inline">\(q\)</span>，當與策略 <span class="math inline">\(p\)</span> 對峙時，它們都有相同的報酬。因此，我們有 <span class="math display">\[
-V(p, p) = V(q, p), \;\; \forall q.
-\]</span></p>
-<p>將此條件代入上述的不等式，經過移項整理可得 <span class="math display">\[
-V(p, q) &gt; V(q, q).
-\]</span></p>
-<p>由於 <span class="math inline">\((p，p)\)</span> 是一個混合均衡，<span class="math inline">\(p\)</span> 本身不能成為嚴格的最佳回應，因為所有其他混合策略對抗它的效果都一樣好。因此，為了使策略 <span class="math inline">\(p\)</span> 在進化中保持穩定，它必須對於每個其他混合策略 <span class="math inline">\(q\)</span> 都是一個嚴格更佳的回應，而 <span class="math inline">\(q\)</span> 對於自身而言則不是。這將使得當 <span class="math inline">\(q\)</span> 策略侵入時，策略 <span class="math inline">\(p\)</span> 的適應度更高。我們將 <span class="math inline">\(p = 1/3\)</span> 代入，可得到</p>
-<p><span class="math display">\[
-V(p, q) = 1/3 · q · 3 + 1/3 · (1 − q) · 1 + 2/3 · q · 5 = 4q + 1/3
-\]</span> 而</p>
-<p><span class="math display">\[
-V(q, q) = q2 · 3 + q(1 − q) · 1 + (1 − q) · q · 5 = 6q − 3q^2.
-\]</span> 因此</p>
-<p><span class="math display">\[
-V(p, q) − V(q, q) = 3q^2 − 2q + 1/3 = \frac{1}{3}(3q − 1)^2.
-\]</span> 我們已經證明了當 <span class="math inline">\(q \neq p\)</span> 時，<span class="math inline">\(V(p, q) &gt; V(q, q)\)</span>，因此可以得出結論，策略 <span class="math inline">\(p\)</span> 確實是一種進化穩定的混合策略。</p>
+<p>假設在一個國家內有兩個重要的城市，設為 <span class="math inline">\(A\)</span> 城與 <span class="math inline">\(B\)</span> 城，這兩個城市是該國的金融重鎮，每天都有許多人與車在這兩個城市之間往來。現在假設這個國家的所有駕駛都是要從 <span class="math inline">\(A\)</span> 城前往 <span class="math inline">\(B\)</span> 城，途中有兩條路可以選，一個是經過 <span class="math inline">\(C\)</span> 城，另一個則是經過 <span class="math inline">\(D\)</span> 城。以下是這個國家的交通流量網絡圖，每條邊都有一個指定的行駛時間(以分鐘計算)，該時間取決於該邊線上的交通量。</p>
+<p align="center">
+<img src="fig1.png" alt="" width="" height="250">
+</p>
+<p>假設總共有 <span class="math inline">\(4000\)</span> 輛車要通過，其中通過 <span class="math inline">\(AC\)</span> 與 <span class="math inline">\(DB\)</span> 路線的時間皆為 <span class="math inline">\(x / 100\)</span>，因此若全部的車輛被平均分配走上下的路，總時間為 <span class="math inline">\(4000/100 + 45 = 65\)</span> 分鐘。</p>
+<p>我們所描述的交通模型實際上是一個賽局，其中行為者對應到駕駛，每個行為者的可能策略包括從 <span class="math inline">\(A\)</span> 到 <span class="math inline">\(B\)</span> 的可能路線。每個行為者的報酬是其行車時間的負值（我們使用負值是因為較長的行車時間是不好的）。這個賽局可以有任意數量的行為者，每個行為者可以有任意數量的可用策略，每個行為者的回報取決於所有行為者所選擇的策略。Nash equilibrium 仍然是一組策略，每個行為者對應一個策略，使得每個行為者的策略對於其他所有行為者都是最佳回應。</p>
 
 
-</section>
-</section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>這篇筆記參考自 Blog topics: Game Theory and Strategy — Liao W.C. (n.d.). Blog Topics: Game Theory and Strategy — Liao W.C. <a href="https://liaowc.github.io/blog/topics/game-theory-and-strategy/">https://liaowc.github.io/blog/topics/game-theory-and-strategy/</a>。在文章的結尾提到了有關於演化賽局理論與學歷的問題，個人覺得對於重視學歷的臺灣人而言，一直都是一個值得深思的問題，歡迎大家寄信或是在底下留言區討論。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

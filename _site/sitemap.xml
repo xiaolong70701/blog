@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://yueswater.blog/notes.html</loc>
-    <lastmod>2023-06-02T06:07:53.466Z</lastmod>
+    <lastmod>2023-06-02T07:26:01.293Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/proj/welcome/index.html</loc>
@@ -38,7 +38,7 @@
   </url>
   <url>
     <loc>https://yueswater.blog/posts/notes/SNA/2023-06-01-evo-game/index.html</loc>
-    <lastmod>2023-06-02T06:16:46.847Z</lastmod>
+    <lastmod>2023-06-02T06:48:53.573Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/notes/SNA/2023-05-24-power-laws/index.html</loc>
@@ -107,5 +107,13 @@
   <url>
     <loc>https://yueswater.blog/blog.html</loc>
     <lastmod>2023-06-02T06:07:16.896Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/posts/notes/SNA/2023-06-02-baress-paradox/index.html</loc>
+    <lastmod>2023-06-02T06:53:22.067Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/posts/notes/SNA/2023-06-02-braess-paradox/index.html</loc>
+    <lastmod>2023-06-02T07:48:18.394Z</lastmod>
   </url>
 </urlset>
