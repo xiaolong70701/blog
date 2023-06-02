@@ -280,7 +280,33 @@ a \geq c
 \text{Animal 1} &amp; \text{H} &amp; (5,1) &amp; (0,0)\\
 \hline
 \end{array}
-\]</span> 經過計算可以發現 <span class="math inline">\(D\)</span> 與 <span class="math inline">\(H\)</span> 均不是最佳反應(best response)，且兩個都非演化穩定策略。</p>
+\]</span> 經過計算可以發現 <span class="math inline">\(D\)</span> 與 <span class="math inline">\(H\)</span> 均不是最佳反應(best response)，且兩個都非演化穩定策略，但此賽局存在混合策略。事實上，混合策略與演化穩定策略的概念是相似的：</p>
+<ol type="1">
+<li>每個個體都可能天生就設定好要採取純策略，但人口中的一部分可能採取一種策略，而其他部分則採取另一種策略。</li>
+<li>每個個體也可能天生就設定好要採取特定的混合策略，也就是說，基因上的配置使得它們以特定的機率從某些選項中隨機選擇。</li>
+</ol>
+<p>讓我們重新回到對稱矩陣的例子：</p>
+<p><span class="math display">\[
+\begin{array}
+&amp; &amp; &amp; &amp; \text{Organism 2} \\
+\hline
+&amp; &amp; \text{S} &amp; \text{T} &amp; \\
+\hline
+&amp; \text{S} &amp; (a,a) &amp; (b,c)\\
+\text{Organism 1} &amp; \text{T} &amp; (c,b) &amp; (d,d)\\
+\hline
+\end{array}
+\]</span> 假設 <span class="math inline">\(\text{Organism 1}\)</span> 採用 <span class="math inline">\(S\)</span> 策略的機率為 <span class="math inline">\(p\)</span>，<span class="math inline">\(\text{Organism 2}\)</span> 為 <span class="math inline">\(q\)</span>，則 <span class="math inline">\(\text{Organism 1}\)</span> 的預期報酬為 <span class="math display">\[
+V(p, q) = pqa + p(1 − q)b + (1 − p)qc + (1 − p)(1 − q)d.
+\]</span></p>
+<p>在此，我們給予演化穩定混合策略一個精確的定義：</p>
+<blockquote class="blockquote">
+<p>In the General Symmetric Game, <span class="math inline">\(p\)</span> is an evolutionarily stable mixed strategy if there is a (small) positive number <span class="math inline">\(y\)</span> such that when any other mixed strategy <span class="math inline">\(q\)</span> invades <span class="math inline">\(p\)</span> at any level <span class="math inline">\(x &lt; y\)</span>, the fitness of an organism playing <span class="math inline">\(p\)</span> is strictly greater than the fitness of an organism playing <span class="math inline">\(q\)</span>.</p>
+</blockquote>
+<p>因此，若 <span class="math inline">\(p\)</span> 要是演化穩定混合策略，其必滿足：對於某些 <span class="math inline">\(y\)</span> 與任何 <span class="math inline">\(x &lt; y\)</span>，下列不等式必成立：</p>
+<p><span class="math display">\[
+(1 − x)V(p, p) + xV (p, q) &gt; (1 − x)V(q, p) + xV (q, q), \;\;\; \forall q \neq p
+\]</span></p>
 
 
 </section>

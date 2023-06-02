@@ -2,7 +2,6 @@
 title: "Notes"
 listing:
   - id: notes
-    type: grid
     contents: "notes/**/*.qmd"
     sort: "date desc"
     filter-ui: true

@@ -118,6 +118,72 @@ $$
 \hline
 \end{array}
 $$
-經過計算可以發現 $D$ 與 $H$ 均不是最佳反應(best response)，且兩個都非演化穩定策略。
+經過計算可以發現 $D$ 與 $H$ 均不是最佳反應(best response)，且兩個都非演化穩定策略，但此賽局存在混合策略。事實上，混合策略與演化穩定策略的概念是相似的：
 
+1. 每個個體都可能天生就設定好要採取純策略，但人口中的一部分可能採取一種策略，而其他部分則採取另一種策略。
+2. 每個個體也可能天生就設定好要採取特定的混合策略，也就是說，基因上的配置使得它們以特定的機率從某些選項中隨機選擇。
 
+### 演化穩定混合策略
+
+讓我們重新回到對稱矩陣的例子：
+
+$$
+\begin{array}
+& & & & \text{Organism 2} \\
+\hline
+& & \text{S} & \text{T} & \\
+\hline
+& \text{S} & (a,a) & (b,c)\\
+\text{Organism 1} & \text{T} & (c,b) & (d,d)\\
+\hline
+\end{array}
+$$
+假設 $\text{Organism 1}$ 採用 $S$ 策略的機率為 $p$，$\text{Organism 2}$ 為 $q$，則 $\text{Organism 1}$ 的預期報酬為
+$$
+V(p, q) = pqa + p(1 − q)b + (1 − p)qc + (1 − p)(1 − q)d.
+$$
+
+在此，我們給予演化穩定混合策略一個精確的定義：
+
+> In the General Symmetric Game, $p$ is an evolutionarily stable mixed strategy if there is a (small) positive number $y$ such that when any other mixed strategy $q$ invades $p$ at any level $x < y$, the fitness of an organism playing $p$ is strictly greater than the fitness of an organism playing $q$.
+
+因此，若 $p$ 要是演化穩定混合策略，其必滿足：對於某些 $y$ 與任何 $x < y$，下列不等式必成立：
+
+$$
+(1 − x)V(p, p) + xV (p, q) > (1 − x)V(q, p) + xV (q, q), \;\;\; \forall q \neq p
+$$
+若 $p$ 為演化穩定混合策略，則
+
+$$
+V(p, p) \geq V(q, p)
+$$
+因此 $p$ 對其自身而言是最佳反應。
+
+### 例子：鷹鴿賽局
+
+承上的鷹鴿賽局，若假設 $\text{Animal}$ 採用 $D$ 的機率為 $p$，經過簡單計算可以得到 $p = 1/3$。接下來我們要檢驗上述的不等式是否成立。由於 $(p，p)$ 是同時使用兩種純策略的混合 Nash equilibrium，我們剛剛論證了對於所有的混合策略 $q$，當與策略 $p$ 對峙時，它們都有相同的報酬。因此，我們有
+$$
+V(p, p) = V(q, p), \;\; \forall q.
+$$
+
+將此條件代入上述的不等式，經過移項整理可得
+$$
+V(p, q) > V(q, q).
+$$
+
+由於 $(p，p)$ 是一個混合均衡，$p$ 本身不能成為嚴格的最佳回應，因為所有其他混合策略對抗它的效果都一樣好。因此，為了使策略 $p$ 在進化中保持穩定，它必須對於每個其他混合策略 $q$ 都是一個嚴格更佳的回應，而 $q$ 對於自身而言則不是。這將使得當 $q$ 策略侵入時，策略 $p$ 的適應度更高。我們將 $p = 1/3$ 代入，可得到
+
+$$
+V(p, q) = 1/3 · q · 3 + 1/3 · (1 − q) · 1 + 2/3 · q · 5 = 4q + 1/3
+$$
+而
+
+$$
+V(q, q) = q2 · 3 + q(1 − q) · 1 + (1 − q) · q · 5 = 6q − 3q^2.
+$$
+因此
+
+$$
+V(p, q) − V(q, q) = 3q^2 − 2q + 1/3 = \frac{1}{3}(3q − 1)^2.
+$$
+我們已經證明了當 $q \neq p$ 時，$V(p, q) > V(q, q)$，因此可以得出結論，策略 $p$ 確實是一種進化穩定的混合策略。
