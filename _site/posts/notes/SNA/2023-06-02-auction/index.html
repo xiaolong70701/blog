@@ -270,7 +270,28 @@ v_i - b_j &lt; 0
 <section id="first-price-sealed-bid-auctions" class="level2">
 <h2 class="anchored" data-anchor-id="first-price-sealed-bid-auctions">First-price sealed-bid auctions</h2>
 <p>不同於 Second-price sealed-bid auction，First-price sealed-bid auction 的策略為壓低標價。</p>
-<p><strong>《證》</strong>以下我們假設競標者 <span class="math inline">\(i\)</span> 的價值 <span class="math inline">\(v_i\)</span> <span class="math inline">\(i.i.d.\)</span> 服從 <span class="math inline">\(U(0,1)\)</span>，因此其標價為 <span class="math inline">\(b_i:[0,1]\to[0,1]\)</span>。</p>
+<p><strong>《證》</strong>以下我們假設競標者 <span class="math inline">\(i\)</span> 的價值 <span class="math inline">\(i.i.d.\)</span> 服從 <span class="math inline">\(U(0,1)\)</span>，即 <span class="math inline">\(v_i \overset{i.i.d.}{\sim} U(0,1)\)</span>，因此其標價為 <span class="math inline">\(b_i:[0,1]\to[0,1]\)</span>。其 CDF 為</p>
+<p><span class="math display">\[
+\begin{aligned}
+F_{n-1}(b) = \mathbb{P}(b_i \leq b) &amp;= \mathbb{P}(\underset{j \neq i}{\max} v_j \leq b)\\
+&amp;= \prod_{j \neq i} \mathbb{P}(v_{j} \leq b) \\
+&amp;= b^{n-1}
+\end{aligned}
+\]</span> 故 PDF 為</p>
+<p><span class="math display">\[
+\frac{\partial F_{n-1}}{\partial b} = (n-1)b^{n-2}.
+\]</span></p>
+<p>競標者 <span class="math inline">\(i\)</span> 的預期報酬為</p>
+<p><span class="math display">\[
+\begin{split}
+\begin{aligned}
+\mathbb{E}(b_{i} | b_{i} &lt; v_{i}) &amp;= \frac{\int_{0}^{v_{i}} b_{i}{f}_{n-1}(b_{i})db_{i}}{\int_{0}^{v_{i}} {f}_{n-1}(b_{i})db_{i}} \\
+&amp;= \frac{\int_{0}^{v_{i}}(n-1)b_{i}^{n-1}db_{i}}{\int_{0}^{v_{i}}(n-1)b_{i}^{n-2}db_{i}} \\
+&amp;= \frac{n-1}{n}b_{i}\bigg{|}_{0}^{v_{i}} \\
+&amp;= \frac{n-1}{n}v_{i}
+\end{aligned}
+\end{split}
+\]</span></p>
 
 
 </section>

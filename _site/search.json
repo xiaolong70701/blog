@@ -599,6 +599,6 @@
     "href": "posts/notes/SNA/2023-06-02-auction/index.html#first-price-sealed-bid-auctions",
     "title": "社群網絡中的拍賣理論",
     "section": "First-price sealed-bid auctions",
-    "text": "First-price sealed-bid auctions\n不同於 Second-price sealed-bid auction，First-price sealed-bid auction 的策略為壓低標價。\n《證》以下我們假設競標者 \\(i\\) 的價值 \\(v_i\\) \\(i.i.d.\\) 服從 \\(U(0,1)\\)，因此其標價為 \\(b_i:[0,1]\\to[0,1]\\)。"
+    "text": "First-price sealed-bid auctions\n不同於 Second-price sealed-bid auction，First-price sealed-bid auction 的策略為壓低標價。\n《證》以下我們假設競標者 \\(i\\) 的價值 \\(i.i.d.\\) 服從 \\(U(0,1)\\)，即 \\(v_i \\overset{i.i.d.}{\\sim} U(0,1)\\)，因此其標價為 \\(b_i:[0,1]\\to[0,1]\\)。其 CDF 為\n\\[\n\\begin{aligned}\nF_{n-1}(b) = \\mathbb{P}(b_i \\leq b) &= \\mathbb{P}(\\underset{j \\neq i}{\\max} v_j \\leq b)\\\\\n&= \\prod_{j \\neq i} \\mathbb{P}(v_{j} \\leq b) \\\\\n&= b^{n-1}\n\\end{aligned}\n\\] 故 PDF 為\n\\[\n\\frac{\\partial F_{n-1}}{\\partial b} = (n-1)b^{n-2}.\n\\]\n競標者 \\(i\\) 的預期報酬為\n\\[\n\\begin{split}\n\\begin{aligned}\n\\mathbb{E}(b_{i} | b_{i} &lt; v_{i}) &= \\frac{\\int_{0}^{v_{i}} b_{i}{f}_{n-1}(b_{i})db_{i}}{\\int_{0}^{v_{i}} {f}_{n-1}(b_{i})db_{i}} \\\\\n&= \\frac{\\int_{0}^{v_{i}}(n-1)b_{i}^{n-1}db_{i}}{\\int_{0}^{v_{i}}(n-1)b_{i}^{n-2}db_{i}} \\\\\n&= \\frac{n-1}{n}b_{i}\\bigg{|}_{0}^{v_{i}} \\\\\n&= \\frac{n-1}{n}v_{i}\n\\end{aligned}\n\\end{split}\n\\]"
   }
 ]
