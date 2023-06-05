@@ -87,10 +87,16 @@ cookieconsent.run({
 
 <meta property="og:title" content="Yueswater Blog - 網路中的資訊傳遞(Cascading Behavior in Networks)">
 <meta property="og:description" content="">
+<meta property="og:image" content="https://yueswater.blog/posts/notes/SNA/2023-06-05-cascading-info/fig1.png">
 <meta property="og:site-name" content="Yueswater Blog">
+<meta property="og:image:height" content="794">
+<meta property="og:image:width" content="1036">
 <meta name="twitter:title" content="Yueswater Blog - 網路中的資訊傳遞(Cascading Behavior in Networks)">
 <meta name="twitter:description" content="">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yueswater.blog/posts/notes/SNA/2023-06-05-cascading-info/fig1.png">
+<meta name="twitter:image-height" content="794">
+<meta name="twitter:image-width" content="1036">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed fullcontent">
@@ -205,6 +211,8 @@ cookieconsent.run({
 <li>符合社會習慣：如果鄰居的行為符合社會的習慣和規範，人們更容易接受並模仿。</li>
 </ul>
 <p>總之，人們模仿鄰居的行為可以通過獲取信息或直接獲得好處來解釋。這種模仿行為受到覆雜性、可觀察性、可試用性和符合社會習慣的影響。了解這些原因可以幫助我們更好地理解人們在社群網絡中的行為和決策模式。</p>
+<section id="模型設定" class="level3">
+<h3 class="anchored" data-anchor-id="模型設定">模型設定</h3>
 <p>在一個社群網絡中，我們將研究每個節點在兩種可能的行為（記為 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span>）之間做出選擇的情況。 - 如果節點 <span class="math inline">\(v\)</span> 和 <span class="math inline">\(w\)</span> 之間存在一條邊，那麽他們有動機讓他們的行為相匹配。 - 我們使用一個遊戲來表示這一點，其中 <span class="math inline">\(v\)</span> 和 <span class="math inline">\(w\)</span> 是玩家，<span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span> 是可能的策略。</p>
 <p><span class="math display">\[
 \begin{array}
@@ -223,8 +231,81 @@ cookieconsent.run({
 <li>如果它們都採用行為 <span class="math inline">\(B\)</span>，則它們各自獲得 <span class="math inline">\(b &gt; 0\)</span> 的報酬；以及</li>
 <li>如果它們採用相反的行為，則它們各自獲得 <span class="math inline">\(0\)</span> 的報酬。</li>
 </ul>
+<p>每個節點 <span class="math inline">\(v\)</span> 與其鄰居之間都在進行這個遊戲的一次回合，並且它的報酬是在每條邊上進行的遊戲中的報酬之和。因此，<span class="math inline">\(v\)</span> 的策略選擇將基於其所有鄰居共同做出的選擇。</p>
+<p>對於節點 <span class="math inline">\(v\)</span> 而言，它所面臨的基本問題如下：假設它的一些鄰居選擇了 <span class="math inline">\(A\)</span>，而另一些選擇了 <span class="math inline">\(B\)</span>，為了最大化其報酬，<span class="math inline">\(v\)</span>應該怎麽做？假設 <span class="math inline">\(v\)</span> 的鄰居中有 <span class="math inline">\(p\)</span> 比例選擇了 <span class="math inline">\(A\)</span>，而有 <span class="math inline">\((1 - p)\)</span> 比例選擇了 <span class="math inline">\(B\)</span>；也就是說，如果 <span class="math inline">\(v\)</span> 有 <span class="math inline">\(d\)</span> 個鄰居，則 <span class="math inline">\(pd\)</span> 選擇了 <span class="math inline">\(A\)</span>，而 <span class="math inline">\((1 - p)d\)</span> 選擇了 <span class="math inline">\(B\)</span>。因此，如果 <span class="math inline">\(v\)</span> 選擇 <span class="math inline">\(A\)</span>，則它的報酬為 <span class="math inline">\(pda\)</span>；如果選擇 <span class="math inline">\(B\)</span>，則報酬為 <span class="math inline">\((1 - p)db\)</span>。因此，如果</p>
+<p><span class="math display">\[
+pda \geq (1 − p)db
+\]</span> 移項整理後得</p>
+<p><span class="math display">\[
+p \geq \frac{b}{a+b}.
+\]</span></p>
+<p align="center">
+<img src="fig1.png" alt="" width="" height="300">
+</p>
+<p>我們定義 <span class="math inline">\(q = \frac{b}{a+b}\)</span>，上述方程表明如果至少有 <span class="math inline">\(q = \frac{b}{a+b}\)</span> 的鄰居遵循行為 <span class="math inline">\(A\)</span>，那麽節點 <span class="math inline">\(v\)</span> 也應該遵循，故我們可以將 <span class="math inline">\(q\)</span> 視為採用 <span class="math inline">\(A\)</span> 的門檻(threshold)。</p>
+<ul>
+<li>當 <span class="math inline">\(q\)</span> 很小時，<span class="math inline">\(A\)</span> 是更具吸引力的行為，只需要一小部分鄰居採用 <span class="math inline">\(A\)</span>，節點 <span class="math inline">\(v\)</span> 也會選擇 <span class="math inline">\(A\)</span>。</li>
+<li>如果 <span class="math inline">\(q\)</span> 很大，情況相反：<span class="math inline">\(B\)</span> 是有吸引力的行為，節點 <span class="math inline">\(v\)</span> 需要很多朋友採用 <span class="math inline">\(A\)</span> 才會轉為 <span class="math inline">\(A\)</span>。</li>
+</ul>
+<p>每個節點根據其鄰居的行為進行最佳決策。</p>
+</section>
+<section id="實例" class="level3">
+<h3 class="anchored" data-anchor-id="實例">實例</h3>
+<p>從 <span class="math inline">\(v\)</span> 和 <span class="math inline">\(w\)</span> 作為最初的採用者開始，假設 <span class="math inline">\(a = 3\)</span> 和 <span class="math inline">\(b = 2\)</span>，新的行為 <span class="math inline">\(A\)</span> 在兩個步驟中傳播到所有節點。在給定步驟中採用 <span class="math inline">\(A\)</span> 的節點以深色邊框繪制；採用 <span class="math inline">\(B\)</span> 的節點以淺色邊框繪制。經過簡單的計算與分析，可得到以下結果：</p>
+<p align="center">
+<img src="fig2.png" alt="" width="" height="300">
+</p>
+<p>根據上述的假設，我們今天考慮更大一點的網絡圖，並設定最初採用者為節點 7 與 8，則同樣經過計算，我們可得到以下結果：</p>
+<p align="center">
+<img src="fig3.png" alt="" width="" height="500">
+</p>
+</section>
+<section id="小結" class="level3">
+<h3 class="anchored" data-anchor-id="小結">小結</h3>
+<p>如果不是所有人都變成 <span class="math inline">\(A\)</span>（完全傳遞），可能的原因有以下幾點：</p>
+<ol type="1">
+<li><p>社群內部連結緊密：如果社群內部的連接比外部連接更緊密，新思想很難在這種緊密的社群中傳播。這可能是因為人們更多地受到社交影響，傾向於與自己的緊密聯系的人持相同的觀點和行為。</p></li>
+<li><p>不同年齡層和生活習慣：現實生活中，不同年齡層和生活習慣的人群可能形成了不同的社群，他們之間的交流和信息傳播受到限制。這會導致新思想無法跨越這些社群的邊界傳播。</p></li>
+<li><p>繼續傳播的策略：如果沒有有效的傳播策略，即使一些節點開始採用A，但新思想可能無法繼續傳播給其他節點。這可能是因為沒有足夠的激勵或機制來鼓勵其他節點采納新思想。</p></li>
+</ol>
+<p>要促使更多節點採用 <span class="math inline">\(A\)</span>，可以考慮以下方法：</p>
+<ul>
+<li><p>提高 <span class="math inline">\(A\)</span> 的品質：如果 <span class="math inline">\(A\)</span> 具有更高的品質和吸引力，即使在緊密連結的社群中，<span class="math inline">\(q\)</span> 的門檻也會降低。通過改進 <span class="math inline">\(A\)</span> 的特點和優勢，吸引更多人採用 <span class="math inline">\(A\)</span>。</p></li>
+<li><p>在緊密連結的社群中引入轉變：在社群內部選擇一些節點進行轉變，讓他們成為新思想的先驅者。他們可以通過積極的態度和行為影響其他節點，推動新思想的傳播。</p></li>
+</ul>
+<ol start="3" type="1">
+<li>研究節點轉變的策略：進一步研究和探索哪些節點最有可能轉變，以及如何選擇這些節點。可以考慮節點的影響力、社交地位、意見領袖等因素，制定有針對性的轉變策略。</li>
+</ol>
+<p>通過以上措施，可以增加 <span class="math inline">\(A\)</span> 的採用率，並嘗試解決如何選擇節點進行轉變的新問題。</p>
+</section>
+</section>
+<section id="網絡內的緊密社群" class="level2">
+<h2 class="anchored" data-anchor-id="網絡內的緊密社群">網絡內的緊密社群</h2>
+<p>我們的具體目標是將前面的例子中直觀明顯的事實形式化，即當新行為試圖進入網絡內部的緊密社群時，新行為的傳播可能會停滯不前。同質性通常會阻礙傳播，因為它使得創新很難從密集連接的社群外部到達。同質性指的是人們傾向於與自己具有相似特征、興趣和背景的人建立聯系和交流。當一個新的行為或觀念與社群內部的主流行為或觀念不一致時，由於同質性的存在，社群成員可能更加抵制接受新的行為或觀念，從而阻礙了傳播的發生。</p>
+<p>這種現象在社群網絡中經常發生，它可以解釋為何一些創新和新思想無法輕易進入緊密社群中。社群內的人們傾向於受到自己社群成員的影響和認同，並與他們分享類似的價值觀和行為模式。因此，當一個新的行為或觀念與社群內部的主流行為或觀念相衝突時，它面臨著更大的阻力和抵制。</p>
+<p>這個現象提醒我們在設計傳播策略時要考慮到社群的同質性。如果我們希望將新的行為或觀念傳播到一個緊密社群中，我們可能需要采取特定的策略，例如尋找社群內的意見領袖或關鍵人物來推廣和引領新行為的接受，或者設計與社群價值觀相吻合的傳播信息，以減輕同質性帶來的阻力。</p>
+<section id="緊密社群cluster" class="level3">
+<h3 class="anchored" data-anchor-id="緊密社群cluster">緊密社群(Cluster)</h3>
+<p>一個密度為 <span class="math inline">\(p\)</span> 的緊密社群，是指一個節點集合，其中每個節點至少有 <span class="math inline">\(p\)</span> 的比例的鄰居也在這個集合中。在網絡中可以同時存在多個不同規模的緊密社群。</p>
+<p>緊密社群的缺點如下：</p>
+<ul>
+<li><span class="math inline">\(p=1\)</span> 的定義不準確，因為如果所有的節點都在一個緊密社群中，也會滿足 <span class="math inline">\(p=1\)</span> 的定義。</li>
+<li>即使兩個 <span class="math inline">\(p\)</span> 緊密社群沒有直接連接，但它們在一起也滿足定義。</li>
+</ul>
+</section>
+<section id="剩餘網絡remaining-network" class="level3">
+<h3 class="anchored" data-anchor-id="剩餘網絡remaining-network">剩餘網絡(remaining network)</h3>
+<p>指的是不包含初始節點的節點集合。如果初始節點採用行為 <span class="math inline">\(A\)</span>，並且轉變門檻為門檻 <span class="math inline">\(q\)</span>，則如果剩餘網絡包含一個密度為 <span class="math inline">\(1-q\)</span> 的緊密社群，那麽就不會發生完全傳遞(complete cascade)。如果不會發生完全傳遞，則剩餘網絡一定包含一個密度為 <span class="math inline">\(1-q\)</span> 的緊密社群。 即 <span class="math inline">\(1-q\)</span> 等價於完全傳遞。</p>
+<p><strong>命題 1</strong>：如果剩餘網絡包含一個密度為 <span class="math inline">\(1-q\)</span> 的緊密社群，那麽就不會發生完全傳遞。</p>
+<p><strong>《證》</strong>利用反證法。假設有一個大於 <span class="math inline">\(1-q\)</span> 的緊密社群，並且其中有一個節點 <span class="math inline">\(v\)</span> 是第一個變成 <span class="math inline">\(A\)</span> 的節點。由於在大於 <span class="math inline">\(1-q\)</span> 的緊密社群中，所以外面最多也只有小於 <span class="math inline">\(q\)</span> 的比例的節點，因此最多只有小於 <span class="math inline">\(q\)</span> 的比例的節點採用 <span class="math inline">\(A\)</span>。因此，<span class="math inline">\(v\)</span> 不可能轉變成採用 <span class="math inline">\(A\)</span>。</p>
+<p><strong>命題 2</strong>：如果不會發生完全傳遞，則剩餘網絡一定包含一個密度為 <span class="math inline">\(1-q\)</span> 的緊密社群。</p>
+<p><strong>《證》</strong><span class="math inline">\(1-q\)</span> 的緊密社群是完全傳遞的唯一阻礙。假設 <span class="math inline">\(S\)</span> 是最後依然不轉變的緊密社群，要證明沒有轉變的 <span class="math inline">\(S\)</span> 的密度比 <span class="math inline">\(1-q\)</span> 大。假設 <span class="math inline">\(w\)</span> 在 <span class="math inline">\(S\)</span> 中且不會轉變，因為其鄰居最多只有小於 <span class="math inline">\(q\)</span> 的比例會採用 <span class="math inline">\(A\)</span>，並且它們都在 <span class="math inline">\(S\)</span> 中。因此，根據定義，<span class="math inline">\(S\)</span> 就是密度為 <span class="math inline">\(1-q\)</span> 的緊密社群。</p>
+<p align="center">
+<img src="fig4.png" alt="" width="" height="350">
+</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

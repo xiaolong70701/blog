@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://yueswater.blog/notes.html</loc>
-    <lastmod>2023-06-05T13:51:45.019Z</lastmod>
+    <lastmod>2023-06-05T15:30:46.685Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/proj/welcome/index.html</loc>
@@ -42,7 +42,7 @@
   </url>
   <url>
     <loc>https://yueswater.blog/posts/notes/SNA/2023-05-29-cascading-info/index.html</loc>
-    <lastmod>2023-06-05T11:22:13.767Z</lastmod>
+    <lastmod>2023-06-05T14:56:20.134Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/notes/SNA/2023-06-01-evo-game/index.html</loc>
@@ -127,5 +127,9 @@
   <url>
     <loc>https://yueswater.blog/posts/notes/SNA/2023-06-05-info-cascade/index.html</loc>
     <lastmod>2023-06-05T13:51:42.678Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/posts/notes/SNA/2023-06-05-cascading-info/index.html</loc>
+    <lastmod>2023-06-05T15:30:44.797Z</lastmod>
   </url>
 </urlset>
