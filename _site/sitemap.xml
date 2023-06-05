@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://yueswater.blog/notes.html</loc>
-    <lastmod>2023-06-04T16:16:36.757Z</lastmod>
+    <lastmod>2023-06-04T16:29:56.706Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/proj/welcome/index.html</loc>
@@ -119,5 +119,9 @@
   <url>
     <loc>https://yueswater.blog/blog.html</loc>
     <lastmod>2023-06-04T06:43:20.229Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/posts/notes/foreign policy/2023-06-04-Crisis/index.html</loc>
+    <lastmod>2023-06-05T07:13:05.746Z</lastmod>
   </url>
 </urlset>
