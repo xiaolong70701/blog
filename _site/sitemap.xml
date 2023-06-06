@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://yueswater.blog/notes.html</loc>
-    <lastmod>2023-06-06T06:53:28.556Z</lastmod>
+    <lastmod>2023-06-06T08:42:40.834Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/proj/welcome/index.html</loc>
@@ -38,7 +38,7 @@
   </url>
   <url>
     <loc>https://yueswater.blog/posts/notes/SNA/2023-06-05-info-cascade/index.html</loc>
-    <lastmod>2023-06-06T06:53:39.318Z</lastmod>
+    <lastmod>2023-06-06T07:30:03.467Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/notes/SNA/2023-06-05-cascading-info/index.html</loc>
@@ -127,5 +127,9 @@
   <url>
     <loc>https://yueswater.blog/blog.html</loc>
     <lastmod>2023-06-06T06:54:14.520Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/posts/notes/SNA/2023-06-06-small-world/index.html</loc>
+    <lastmod>2023-06-06T08:42:38.838Z</lastmod>
   </url>
 </urlset>

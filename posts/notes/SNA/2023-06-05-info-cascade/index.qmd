@@ -72,7 +72,7 @@ $$
 令事件 $Y$ 表示計程車是黃色的，事件 $W$ 表示證人聲稱計程車是黃色的。我們需要計算的是在事件 $W$ 發生的條件下，事件 $Y$ 發生的機率，即 $\mathbb{P}(Y|W)$。根據貝氏定理：
 
 $$
-\mathbb{P}(Y|W) = \frac{ \mathbb{P}(W|Y) * \mathbb{P}(Y) }{\mathbb{P}(W)}/
+\mathbb{P}(Y|W) = \frac{ \mathbb{P}(W|Y) \cdot \mathbb{P}(Y) }{\mathbb{P}(W)}
 $$
 
 根據上述的假設：
