@@ -36,7 +36,9 @@ Milgram 最著名的實驗之一就是六度分隔理論。在這個實驗中，
 
 假設我們每個人都認識超過 $100$ 個朋友。每個朋友除了你之外至少還有 $100$ 個朋友，理論上你可能與 $100 \times 100 = 10,000$ 個人相差兩步。考慮到這些人的 $100$ 個朋友，理論上我們可能與 $100\times 100 \times 1000 = 1,000,000$ 個人相差三步。可以得見每一步都以 $100$ 的幂次增長，即 $100^n$。
 
-## Watts-Strogatz 模型
+## Watts-Strogatz 模型[^1]
+
+[^1]:Watts–Strogatz model - Wikipedia. (2018, May 18). Watts–Strogatz Model - Wikipedia. [https://en.wikipedia.org/wiki/Watts-Strogatz_model](https://en.wikipedia.org/wiki/Watts-Strogatz_model)
 
 Watts-Strogatz 模型基於以下兩個重要概念：「規則網絡」和「隨機重連」。
 
