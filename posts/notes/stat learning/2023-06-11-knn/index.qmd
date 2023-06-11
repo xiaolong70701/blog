@@ -1,0 +1,189 @@
+---
+title: "K Nearest Neighbor"
+date: "2023-06-11"
+categories: [statistical learning, python, programming language]
+format:
+  html: 
+    code-fold: false
+---
+
+KNN 是根據資料彼此之間的距離進行分類，距離哪一種類別最近，就被歸類至該類別，可以說是一個**近朱者赤，近墨者黑**的模型。
+
+
+## KNN 的基本概念與相關計算方式
+
+其基本概念如下，給定一組資料 $(y_i, x_i)$，其中 $i \in \mathbb{R}$，而 $y_i$ 是一個表示結果的連續數值資料，$x_i$ 則是特徵資料(feature vector)，且資料長度為 $m$，可以表示為：
+
+$$
+\begin{bmatrix}
+x_{i,1}\\
+x_{i,2}\\
+\vdots\\
+x_{i,m}\\
+\end{bmatrix}
+$$
+
+當我們在預測 $\mathbf{Y}$ 的時候，對於一個需要預測的輸入向量 $\mathbf{X}$，我們只需要在訓練資料集中尋找 $k$ 個與向量 $\mathbf{X}$ 最近的向量的集合，然後把 $\mathbf{X}$ 的類別預測為這 $k$ 個樣本中類別數最多的那一類，
+
+$$
+f(x) = \frac{1}{k}\sum_{x_i \in N_i}y_i
+$$
+
+計算距離的方式有以下幾種，最常見的就是歐氏距離(Euclidian distance)與曼哈頓距離(Manhattan distance)。歐氏距離的計算方式如下
+
+$$
+D_E = ||x_i - x_j|| = \sqrt{\sum^m_{q=1}(x_{i,q} - x_{j,q})^2}
+$$
+
+通常我們都將歐氏距離稱為 L2 norm。而曼哈頓距離則為：
+
+$$
+D_L = \mid\mid x_i - x_j\mid\mid_1 = \sum^m_{q=1}|x_{i,q} - x_{j,q}|
+$$
+
+
+### 例子：以身高及年紀預測體重
+
+| ID | weight | height | age |
+|----|--------|--------|-----|
+| 0  | 77     | 152.0  | 45  |
+| 1  | 47     | 155.3  | 26  |
+| 2  | 55     | 170.2  | 30  |
+| 3  | 59     | 179.4  | 34  |
+| 4  | 72     | 145.8  | 40  |
+| 5  | 60     | 176.3  | 36  |
+| 6  | 40     | 161.1  | 19  |
+| 7  | 60     | 173.3  | 28  |
+| 8  | 45     | 167.2  | 23  |
+| 9  | 58     | 170.5  | 32  |
+
+假設給定上面的表格，也就是訓練資料(training data)，其中 `weight` 即是 $y_i$，而 `height` 與 `age` 則為 $x_i$，
+
+![](https://i.imgur.com/Ch9R81F.png)
+
+
+我們現在要預測身高 170.6，年紀為 38 歲的人之體重，即給定 `[170.5, 38]`，假設選取 $k = 3$，接著向外畫出同心圓，就會選取到 `ID = 9, 5, 2` 的資料，接著將其體重選取起來取平均，得到 $(58+60+55)/3 \approx 57.7$。
+
+![](https://i.imgur.com/S42mU9r.png)
+
+上圖為 $k=1$ 與 $k=9$ 的情況，左圖顯示在 $k=1$ 之下，KNN 的圖形會呈現如梯田的樣貌，原因是因為在原本的點周圍的鄰居，除非移動到某個特定的位置，否則這個點的鄰居仍會是他；而 $k = 9$之下，預測的平面會變得平滑，稍微變化一下只會有一個鄰居變動，平均後的變異也不會那麼大。
+
+![](https://i.imgur.com/uQuoQ0V.png)
+
+### 模型訓練與量測模型預測的表現程度
+
+一般來說我們拿到資料之後會將其打亂，進行隨機排列(random permutation)，並將打亂後的資料區分為佔樣本 $90\%$ 的訓練集(training set)與佔樣本 $10\%$ 的測試集(testing set)。訓練集更可以細分為佔樣本 $80\%$ 的子訓練集(subtraining set)與佔樣本 $10\%$ 的調整集(tuning set)，目的是為了避免資料的浪費。
+
+![](https://i.imgur.com/LqLZGUm.png)
+
+將資料區分完後，我們會利用子訓練集與調整集去尋找超參數(hyperparameters)，算出調整誤差(tuning error)後得出最適的 $k^*$，並將 $k$ 固定為 $k^*$，將子訓練集與調整集合併最後進行預測。那麼要如何衡量模型預測的表現程度呢？我們有以下幾種方式：
+
+- 均方誤(mean squared error): $\text{MSE} = \frac{1}{n}\sum(y_i - \hat{y_i})^2$
+- 根均方誤(root mean squared error): $\sqrt{\text{MSE}}$
+- 平均絕對誤差(mean absolute error): $\text{MAE} = \frac{1}{n}\sum|y_i - \hat{y_i}|$
+
+<center>
+    <img src="https://i.imgur.com/DK58j5o.png">
+    <br>
+    <div style="color:orange; border-bottom: px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 0px;">線性模型(OLS)</div>
+</center>
+
+<center>
+    <img src="https://i.imgur.com/9YjKgM8.png">
+    <br>
+    <div style="color:orange; border-bottom: px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 0px;">非線性模型</div>
+</center>
+
+<center>
+    <img src="https://i.imgur.com/t6woXdy.png">
+    <br>
+    <div style="color:orange; border-bottom: px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 0px;">極端非線性模型</div>
+</center>
+
+#### KNN 的缺點之一：高維度的噪音干擾
+
+若真實的資料為線性模型，利用 KNN 表現可能較差；若真實的資料為非線性模型，KNN 的表現通常會較線性模型還要來的好。另外，當資料量越大，KNN 的表現會越好。不過必須注意，當 KNN 在高維度時，其表現不會比較好。
+
+![](https://i.imgur.com/vwSkqgh.png)
+
+如果運用 OLS，可以看到當樣本越多，MSE 便會上升，但 KNN 則是在越高維度之下，噪音程度(noise level)也會隨之上升，其表現會變得更糟糕。因為在高維度之下，假設我們選定一個最適的特徵，其他噪音都會干擾模型找到最佳的訓練資料。
+
+#### KNN 的缺點之二：高維度之下運算速度過慢
+
+使用 KNN 的時候，每一筆測試資料都要支持訓練資料，找出最接近的 $k$ 個資料，用 $k$ 個資料的平均進行預測，因此進行一次訓練的時間複雜度(time complexity)即為訓練資料的維度 $O(N)$。而解決這個問題的方式有很多中，其中最常見的為 **Ball-tree** 與 **K-D tree**，其可以將時間複雜度降至 $O(\log N)$
+
+#### 超參數的調整
+
+超參數無法透過程式進行訓練，必須以人工的方式設定，而為了有效率地進行調整，便會將資料分為子訓練集、調整集與測試集。接著我們就要人工選取 $k$，而在這些 $k$ 當中要注意到兩個問題：何謂好的 $k$？以及何謂極端的 $k$？極端值可能有 $k = 1$ 或 $k = n/2$，好的猜測則因資料不同而定，一種方式可能是運用等比級數產生 $k$。
+
+![](https://i.imgur.com/d3sE0HN.png)
+
+接著對於剛剛選擇的每個 $k$，配合子訓練集進行訓練，算出 $\text{RMSE}$ 並繪圖，會得到上圖的結果。
+
+### 練習：`sklearn` 鳶尾花(`iris`)資料集[^1]
+
+```python
+## import needed packages
+import numpy as np
+import pandas as pd
+
+## import sklearn module
+from sklearn.model_selection import cross_val_score, train_test_split 
+from sklearn import datasets
+from sklearn.neighbors import KNeighborsClassifier
+
+## import iris data
+iris = datasets.load_iris()
+iris_data = iris.data
+iris_target = iris.target
+
+## find optimal k
+k_value_range = range(3, 30)
+
+## create a score list for each k
+k_value_scores = []
+
+for k in k_value_range:
+    knn_model = KNeighborsClassifier(n_neighbors = k, weights='uniform', algorithm='auto', leaf_size=30, p=2, metric='minkowski', metric_params=None, n_jobs=1)
+    accuracy = cross_val_score(knn_model, iris_data, iris_target, cv=10, scoring="accuracy")
+    print("k value: "+ str(k) +" Accuracy: "+ str(accuracy.mean()))
+    k_value_scores.append(accuracy.mean())
+    
+## visualization
+plt.rcParams.update({
+    "text.usetex": True,
+    "font.family": "sans-serif",
+    "font.sans-serif": ["Helvetica"]})
+# for Palatino and other serif fonts use:
+plt.rcParams.update({
+    "text.usetex": True,
+    "font.family": "serif",
+    "font.serif": ["Palatino"],
+})
+# It's also possible to use the reduced notation by directly setting font.family:
+plt.rcParams.update({
+  "text.usetex": True,
+  "font.family": "Helvetica"
+})
+
+plt.figure(dpi=600)
+plt.plot(k_value_range, k_value_scores,marker = 'o')
+plt.title('Find optimal ' + r'$k$')
+plt.xlabel('k value')
+plt.ylabel('Accuracy')
+plt.show()
+```
+
+
+![](https://i.imgur.com/2zpCvBb.png)
+
+[^1]:此為作者參考[Machine Learning-交叉驗證(Cross Validation)-找到KNN中適合的K值-Scikit Learn一步一步實作教學](https://github.com/chwang12341/Machine-Learning/tree/master/Cross-Validation)的練習

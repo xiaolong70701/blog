@@ -2,27 +2,16 @@
   {
     "listing": "/notes.html",
     "items": [
-      "/posts/notes/SNA/2023-06-06-small-world/index.html",
-      "/posts/notes/SNA/2023-06-05-info-cascade/index.html",
-      "/posts/notes/foreign policy/2023-06-04-Crisis/index.html",
-      "/posts/notes/SNA/2023-06-02-auction/index.html",
-      "/posts/notes/SNA/2023-06-02-braess-paradox/index.html",
-      "/posts/notes/SNA/2023-06-05-cascading-info/index.html",
-      "/posts/notes/foreign policy/2023-06-02-GPM/index.html",
-      "/posts/notes/SNA/2023-06-01-evo-game/index.html",
-      "/posts/notes/SNA/2023-05-24-network-effect/index.html",
+      "/posts/notes/stat learning/2023-06-11-knn/index.html",
       "/posts/notes/R/2023-05-26-r-and-tex/index.html",
       "/posts/notes/latex/2023-05-26-bm/index.html",
       "/posts/notes/latex/2023-05-26-structure/index.html",
       "/posts/notes/latex/2023-05-26-table-and-figure/index.html",
-      "/posts/notes/SNA/2023-05-24-power-laws/index.html",
       "/posts/notes/latex/2023-05-24-latex-installation/index.html",
       "/posts/notes/latex/2023-05-25-math/index.html",
       "/posts/notes/julia/2023-05-23-RNG.html",
       "/posts/notes/julia/2023-05-23-inv.html",
-      "/posts/notes/R/2023-05-14-first-R/index.html",
-      "/posts/notes/foreign policy/2023-03-24-OBM/index.html",
-      "/posts/notes/foreign policy/2023-03-10-RAM/index.html"
+      "/posts/notes/R/2023-05-14-first-R/index.html"
     ]
   },
   {
