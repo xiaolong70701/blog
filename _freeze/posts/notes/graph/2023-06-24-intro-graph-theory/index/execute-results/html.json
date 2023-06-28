@@ -1,0 +1,14 @@
+{
+  "hash": "9c37a5009bd0d6884881154e846835d9",
+  "result": {
+    "markdown": "---\ntitle: \"Introduction to Graph Theory\"\ndate: \"2023-06-24\"\ncategories: [graph theory]\nformat:\n  html: \n    code-fold: false\n---\n\n\n\n\nA *graph* is a way of specifying relationships among a collection of items. A graph consists of a set of objects, called *vertices*, or sometimes we call it nodes in general, with certain pairs of these objects connected by links called *edges*. We use $G$ to denote any graph we want to discuss, or specifically, $G = (V,E)$, where $V$ represents vertices of a graph and $E$ edges, which is an ordered pair.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nvar = readline()\n```\n\n```{.r .cell-code}\nprint(var)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"\"\n```\n:::\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

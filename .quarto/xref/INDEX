@@ -127,5 +127,20 @@
   },
   "posts/notes/stat learning/2023-06-11-knn/index.qmd": {
     "index.html": "233d92df"
+  },
+  "posts/notes/stat learning/2023-06-11-linear-model/index.qmd": {
+    "index.html": "ef399bf4"
+  },
+  "archive/stat learning/2023-06-11-knn/index.qmd": {
+    "index.html": "16b63ab7"
+  },
+  "archive/stat learning/2023-06-11-linear-model/index.qmd": {
+    "index.html": "5569daa6"
+  },
+  "posts/notes/graph/2023-06-24-intro-graph-theory/index.qmd": {
+    "index.html": "414b42ba"
+  },
+  "posts/notes/stats/2023-06-28-random-variables/index.qmd": {
+    "index.html": "f8b9ef90"
   }
 }

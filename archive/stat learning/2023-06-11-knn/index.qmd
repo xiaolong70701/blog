@@ -29,13 +29,13 @@ $$
 f(x) = \frac{1}{k}\sum_{x_i \in N_i}y_i
 $$
 
-計算距離的方式有以下幾種，最常見的就是歐氏距離(Euclidian distance)與曼哈頓距離(Manhattan distance)。歐氏距離的計算方式如下
+計算距離的方式有以下幾種，最常見的就是歐氏距離(Euclidean distance)與曼哈頓距離(Manhattan distance)。歐氏距離的計算方式如下
 
 $$
 D_E = ||x_i - x_j|| = \sqrt{\sum^m_{q=1}(x_{i,q} - x_{j,q})^2}
 $$
 
-通常我們都將歐氏距離稱為 L2 norm。而曼哈頓距離則為：
+通常我們都將歐氏距離稱為 $\mathcal{l}^2$-norm。而曼哈頓距離則為：
 
 $$
 D_L = \mid\mid x_i - x_j\mid\mid_1 = \sum^m_{q=1}|x_{i,q} - x_{j,q}|
@@ -74,7 +74,9 @@ $$
 
 一般來說我們拿到資料之後會將其打亂，進行隨機排列(random permutation)，並將打亂後的資料區分為佔樣本 $90\%$ 的訓練集(training set)與佔樣本 $10\%$ 的測試集(testing set)。訓練集更可以細分為佔樣本 $80\%$ 的子訓練集(subtraining set)與佔樣本 $10\%$ 的調整集(tuning set)，目的是為了避免資料的浪費。
 
-![](https://i.imgur.com/LqLZGUm.png)
+<center>
+  <img src="https://i.imgur.com/LqLZGUm.png">
+</center>
 
 將資料區分完後，我們會利用子訓練集與調整集去尋找超參數(hyperparameters)，算出調整誤差(tuning error)後得出最適的 $k^*$，並將 $k$ 固定為 $k^*$，將子訓練集與調整集合併最後進行預測。那麼要如何衡量模型預測的表現程度呢？我們有以下幾種方式：
 
@@ -124,8 +126,9 @@ $$
 #### 超參數的調整
 
 超參數無法透過程式進行訓練，必須以人工的方式設定，而為了有效率地進行調整，便會將資料分為子訓練集、調整集與測試集。接著我們就要人工選取 $k$，而在這些 $k$ 當中要注意到兩個問題：何謂好的 $k$？以及何謂極端的 $k$？極端值可能有 $k = 1$ 或 $k = n/2$，好的猜測則因資料不同而定，一種方式可能是運用等比級數產生 $k$。
-
-![](https://i.imgur.com/d3sE0HN.png)
+<center>
+  <img src="https://i.imgur.com/d3sE0HN.png">
+</center>
 
 接著對於剛剛選擇的每個 $k$，配合子訓練集進行訓練，算出 $\text{RMSE}$ 並繪圖，會得到上圖的結果。
 

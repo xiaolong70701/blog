@@ -1,0 +1,169 @@
+---
+title: "線性迴歸模型(Linear Regression Model)"
+date: "2023-06-11"
+categories: [statistical learning, python, programming language]
+format:
+  html: 
+    code-fold: false
+---
+
+線性迴歸模型的基本結構可以表示如下：
+$$
+y_i = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_n x_n + \epsilon_i
+$$
+我們稱其為母體迴歸線(population line)。等號左邊的 $Y_i$ 代表我們要預測的參數，等號右邊的 $x_i$ 則是特徵值，而 $\epsilon$ 雖在統計學上稱做誤差項(error term)，但在深度學習的領域裡我們稱之為噪音項(noise term)，或稱作白噪音(white noise)。而特徵值的係數(coefficient)則是用來描述在其他特徵值不變的情況下，當某特徵值上升一單位的時候，平均而言如何影響我們預測的參數。
+
+<center>
+  <img src="https://i.imgur.com/6nJjbGx.png" height="250">
+</center>
+
+而我們在預測時最常用的方法是最小化誤差平方和(residual sum of square)，
+$$
+\text{MSE} = \frac{1}{n}\sum^n_{i=1}(y_i - \hat{y_i})^2 = \frac{1}{n}\sum^n_{i=1}(y_i - \hat{\beta_0} - \hat{\beta_1}x_1 - \cdots -\hat{\beta_n}x_n )^2
+$$
+其中 $\hat{Y_i}$ 稱為預測值(prediction value)，而此方法幾何上的意義為找到一個平面或超平面(hyper plane)，並讓這些誤差總和最小。根據我們從資料中抽樣、訓練後所得出來的方程式，稱為最小平方迴歸線(least squared line)，可以寫成：
+
+$$
+y_i = \hat{\beta}_0 + \hat{\beta}_1 x_1 + \hat{\beta}_2 x_2 + \cdots + \hat{\beta}_n x_n + \epsilon_i
+$$
+若訓練良好，$\hat{\beta}$ 應要與真實參數(true parameter) $\beta$ 很接近。如果不夠靠近，除了模型設定的問題之外，另一種可能是因為抽樣所導致的誤差，又或是不同訓練集而有不同的變異。
+
+
+那我們應該如何知道模型是否被訓練的良好呢？我們可以透過配適值(fitting value)來量測。我們定義 $R^2$ 為配適值，其計算方式如下：
+$$
+R^2 = 1 - \frac{\text{SSR}}{\sum^n_{i=1}(y_i - \overline{y})^2}
+$$
+注意到 $R^2$ 必定介於 $0$ 到 $1$ 之間，若為 $0$ 代表沒有變異可以解釋模型，為 $1$ 則代表完全配適。
+
+<center>
+  <img src="https://i.imgur.com/xFqsh8k.png" height="250">
+</center>
+
+執行迴歸之後，我們可以透過假設檢定(hypothesis testing)檢測某個特徵值是否能夠良好解釋模型。最常見的假設檢定為
+$$
+\begin{aligned}
+H_0:& \beta_i = 0\\
+H_1:& \beta_i \neq 0
+\end{aligned}
+$$
+
+## 迴歸模型的基本架構
+
+假設我們有 $n$ 筆訓練資料 $(x_i, y_i)$，其中 $x_i$ 稱為特徵值，為一個向量(vector)，$y_i$ 為結果，為一個純量(scalar)，其中 $x_i \in \mathbb{R}^p$，$y_i \in \mathbb{R}$，一般來說我們假設 $n > p$，則模型可以寫作：
+$$
+y_i = \beta_0 + \sum^p_{j=1}x_{i,j}\beta_j + \epsilon_i
+$$
+其中 $\mathbb{E}(\epsilon_i) = 0$，且 $\operatorname{var}(\epsilon_i) = \sigma^2$。
+
+### 最小化誤差項平方和
+
+誠如上述所言，我們目的是要極小化誤差項平方總和，因此目標函數可以寫成
+$$
+\text{SSR}(\beta_0, \beta_1 \cdots \beta_p) = \sum^n_{i=1}(y_i - \beta_0 - \sum^p_{j=1}x_{i,j}\beta_j)^2
+$$
+我們也可以利用矩陣(matrix)的形式呈現：
+$$
+\mathbf{y} = 
+\begin{bmatrix}
+y_1\\
+y_2\\
+\vdots\\
+y_n
+\end{bmatrix},
+\quad
+\mathbf{x} = 
+\begin{bmatrix}
+x_1^{\top}\\
+x_2^{\top}\\
+\vdots\\
+x_n^{\top}
+\end{bmatrix},
+\quad
+\pmb{\beta} = 
+\begin{bmatrix}
+\beta_0\\
+\beta_1\\
+\beta_2\\
+\vdots\\
+\beta_p
+\end{bmatrix}
+$$
+其中
+$$
+x_i^{\top} = [1 \; x_{i,1} \; x_{i,2} \cdots \; x_{i,p}]
+$$
+使得預測值為
+$$
+x_i^{\top}\beta = \beta_0 + x_{i,1}\beta_1 + x_{i,2}\beta_2 + \cdots + x_{i,p}\beta_p
+$$
+誤差項為
+$$
+e_i = y_i - x_i^{\top}\beta
+$$
+因此誤差平方和可以寫成
+$$
+\begin{aligned}
+\text{SSR}(\pmb{\beta}) =& \sum^n_{i=1}(y_i -  x_i^{\top}\beta)^2 = \sum^n_{i=1}e_i^2 = e^{\top}e\\
+=& (\mathbf{Y} - \mathbf{x}\pmb{\beta})^{\top}(\mathbf{Y} - \mathbf{x}\pmb{\beta})\\
+=& \mathbf{Y}^{\top}\mathbf{Y}-2\mathbf{Y}^{\top}\mathbf{x}\pmb{\beta}+\pmb{\beta}^{\top}\mathbf{x}^{\top}\mathbf{x}\pmb{\beta}
+\end{aligned}
+$$
+
+### $\pmb{\beta}$ 的估計
+
+已經得出目標函數，即誤差平方和，我們就可以進行最小化。
+$$
+\min_{\pmb{\beta}} \; \text{SSR}(\pmb{\beta}) \Rightarrow \frac{\partial \;\text{SSR}(\pmb{\beta})}{\partial \pmb{\beta}} = 0
+$$
+因此可以求得
+$$
+\frac{\partial \;\text{SSR}(\pmb{\beta})}{\partial \pmb{\beta}} =0-2 \mathbf{x}^{\mathrm{T}} \mathbf{y}+2 \mathbf{x}^{\mathrm{T}} \mathbf{x} \pmb{\beta} \overset{*}{=} 0
+$$
+故
+$$
+\hat{\pmb{\beta}} = (\mathbf{x}^{\top}\mathbf{x})^{-1}\mathbf{x}^{\top}\mathbf{y}
+$$
+正交投影在幾何上的意義可以用下圖呈現：
+
+<center>
+  <img src="https://i.imgur.com/Sz8dKpO.png" height="250">
+</center>
+
+但在實際處理資料上，$\mathbf{x}$ 的部分通常較為複雜，原因是有可能會產生線性重合(Multi-collinearity)的問題，處理方法包含 QR 分解與正則化。
+
+### $\pmb{\beta}$ 的共變數矩陣
+
+從統計的觀點而言，$\hat{\pmb{\beta}}$ 是一個由隨機變數組成的矩陣，因此我們可以計算其共變數。
+$$
+\begin{aligned}
+&\operatorname{var}(\hat{\pmb{\beta}})=\operatorname{var}\left[\left(\mathbf{x}^T \mathbf{x}\right)^{-1} \mathbf{x}^T \mathbf{Y}\right] \\
+&=\operatorname{var}\left[\left(\mathbf{x}^T \mathbf{x}\right)^{-1} \mathbf{x}^T(\mathbf{x} \pmb{\beta}+\epsilon)\right] \\
+&=\operatorname{var}\left[\pmb{\beta}+\left(\mathbf{x}^T \mathbf{x}\right)^{-1} \mathbf{x}^T \epsilon\right] \\
+&=\operatorname{var}\left[\left(\mathbf{x}^T \mathbf{x}\right)^{-1} \mathbf{x}^T \epsilon\right]=\left(\mathbf{x}^T \mathbf{x}\right)^{-1} \mathbf{x}^T \operatorname{var}(\epsilon) \mathbf{x}\left(\mathbf{x}^T \mathbf{x}\right)^{-1} \\
+&=\left(\mathbf{x}^T \mathbf{x}\right)^{-1} \mathbf{x}^T \sigma^2 \mathbb{I} \mathbf{x}\left(\mathbf{x}^T \mathbf{x}\right)^{-1} \\
+&=\left(\mathbf{x}^T \mathbf{x}\right)^{-1} \sigma^2
+\end{aligned}
+$$
+
+### t 檢定
+
+從上述的推導可以得知
+$$
+\pmb{\hat{\beta}} \sim \mathbf{N}\left(\pmb{\beta}, \left(\mathbf{x}^T \mathbf{x}\right)^{-1} \sigma^2\right)
+$$
+若虛無假設與對立假設設定如下，
+$$
+\begin{aligned}
+H_0:& \beta_i = 0\\
+H_1:& \beta_i \neq 0
+\end{aligned}
+$$
+則其 $t$ 統計量為
+$$
+\phi = \frac{\hat{\pmb{\beta}}_i - 0}{\sqrt{\hat{\pmb{\Sigma}_{ii}}}} \sim t(n-p-1)
+$$
+
+## 實例：廣告
+
+## 附錄
+

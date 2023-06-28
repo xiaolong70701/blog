@@ -11,13 +11,17 @@ categories: [LaTeX, programming language]
 \title{Sample title}
 \author{Anonymous}
 \institute{Overleaf}
-\date{2021}
+\date{2023}
+
 \begin{document}
-\frame{\titlepage}
-\begin {frame}
-\frametitle{Sample frame title}
+
+\maketitle
+
+\begin{frame}{Sample frame title}
+
 This is some text in the first frame.
-\end {frame}
+\end{frame}
+
 \end{document}
 ```
 
