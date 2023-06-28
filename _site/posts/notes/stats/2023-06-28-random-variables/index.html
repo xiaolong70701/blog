@@ -227,8 +227,8 @@ cookieconsent.run({
 
 
 
-<section id="rnadom-variables" class="level2">
-<h2 class="anchored" data-anchor-id="rnadom-variables">Rnadom Variables</h2>
+<section id="random-variables" class="level2">
+<h2 class="anchored" data-anchor-id="random-variables">Random Variables</h2>
 <p><span class="math inline">\(\textbf{Definition 1:}\)</span> A random variable is a function <span class="math inline">\(X\)</span> which assigns to each element <span class="math inline">\(s \in S\)</span> one and only one number <span class="math inline">\(X(s) = x\)</span>, where <span class="math inline">\(x \in S_{x} \subseteq \mathbb{R}\)</span>, i.e., <span class="math display">\[
 X: S \longrightarrow S_{x} \subseteq \mathbb{R}
 \]</span> Random variables help us to view the collected data as an <em>outcome</em> of a random experiment, which is a procedure whose outcome is unknown to the experimenter before it takes place.</p>
@@ -255,9 +255,9 @@ S_{Y} = \{1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, 16, 18, 20, 24, 25, 30, 36\}.
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] 4 1 5 5 1 4 5 6 1 1 2 1 2 5 3 3 1 2 4 4 4 5 5 4 4 5 1 4 1 3 6 1 2 3 1 3 6
- [38] 4 1 2 6 1 1 2 2 5 2 6 2 6 1 3 3 4 3 1 6 6 5 2 2 4 3 3 5 4 6 3 2 4 5 2 1 1
- [75] 4 5 6 5 6 4 6 2 4 6 5 4 3 6 3 5 1 1 4 2 6 3 3 2 2 3</code></pre>
+<pre><code>  [1] 1 6 2 3 5 6 1 5 2 3 1 4 4 1 6 2 3 4 4 6 2 6 1 1 1 4 6 5 5 1 5 4 4 2 4 4 1
+ [38] 3 6 6 5 1 4 2 5 3 4 2 4 2 4 5 1 2 1 1 1 5 6 3 2 4 4 2 5 5 6 2 2 6 2 4 4 4
+ [75] 2 4 1 6 3 1 3 2 2 1 4 5 1 3 4 2 6 6 2 5 6 6 1 4 2 6</code></pre>
 </div>
 </div>
 <p>Using <code>table</code> function we can see the probabilty of each outcome when tossing a dice.</p>
@@ -266,12 +266,12 @@ S_{Y} = \{1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, 16, 18, 20, 24, 25, 30, 36\}.
 <div class="cell-output cell-output-stdout">
 <pre><code>d
    1    2    3    4    5    6 
-0.19 0.17 0.16 0.18 0.15 0.15 </code></pre>
+0.19 0.20 0.09 0.22 0.13 0.17 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">table</span>(d) <span class="sc">/</span> <span class="dv">100</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a title</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">"Probability Mass Function (pmf)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">"Probability Mass Function (PMF)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -283,7 +283,7 @@ S_{Y} = \{1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, 16, 18, 20, 24, 25, 30, 36\}.
 <div class="cell-output cell-output-stdout">
 <pre><code>d
        1        2        3        4        5        6 
-0.166647 0.165685 0.166508 0.166696 0.167178 0.167286 </code></pre>
+0.166902 0.166538 0.166102 0.166783 0.166922 0.166753 </code></pre>
 </div>
 </div>
 <p>Note that we can use the support of to categorize random variable. For a discrete random variable, its support must be a discrete set, while for a continuous random variable, its support is an interval of values.</p>
@@ -301,7 +301,7 @@ f(x) =
 <li><span class="math inline">\(\sum_{x \in \operatorname{supp}(X)} f(x) = 1\)</span></li>
 <li><span class="math inline">\(\mathbb{P}(X \in A) = \sum_{x \in A}f(x)\)</span>, where <span class="math inline">\(A \in \operatorname{supp}(X)\)</span></li>
 </ul>
-<p>then we say <span class="math inline">\(f(x)\)</span> is a <em>probability mass function</em> (pmf).</p>
+<p>then we say <span class="math inline">\(f(x)\)</span> is a <em>probability mass function</em> (PMF).</p>
 <p><span class="math inline">\(\textbf{Definition 3:}\)</span> We say a function <span class="math inline">\(F(x)\)</span> is a <em>cumulative distribution function</em> (CDF) if for any <span class="math inline">\(x \in \mathbb{R}\)</span>, <span class="math inline">\(F(x): \mathbb{R} \mapsto [0, 1]\)</span>, which satisfies <span class="math display">\[
 F(x) = \mathbb{P}(X \leq x) = \sum_{x_{i} \in x}f(x)
 \]</span> Here are some properties of discrete cumulative distribution function:</p>
@@ -388,6 +388,160 @@ f(x) = \frac{\partial F(x)}{\partial x}, \quad F(x) = \int^{x}_{-\infty}f(u)du.
 <li><span class="math inline">\(\lim_{x \to -\infty}F(x) = 0\)</span>, and <span class="math inline">\(\lim_{x \to \infty}F(x) = 1\)</span></li>
 <li><span class="math inline">\(\mathbb{P}(X \geq x) = \mathbb{P}(X &gt; x) = 1- \mathbb{P}(X \leq x) = 1- F(x)\)</span></li>
 </ol>
+</section>
+</section>
+<section id="moments-of-random-variables" class="level2">
+<h2 class="anchored" data-anchor-id="moments-of-random-variables">Moments of Random Variables</h2>
+<p>In this section, we will talk about moment of random variables. Learning about moments of random variables is valuable for two main reasons:</p>
+<ol type="1">
+<li><p>Characterizing Distributions: Moments provide a way to quantitatively describe the properties of probability distributions. They capture essential features such as the central tendency, variability, skewness, and kurtosis of a random variable’s distribution. Understanding moments allows us to compare and contrast different distributions and gain insights into their shapes and characteristics.</p></li>
+<li><p>Statistical Analysis: Moments play a crucial role in statistical analysis. They provide important summary statistics that can be used for inference, hypothesis testing, and parameter estimation. Moments can help estimate population parameters, assess the goodness of fit, and determine the stability and convergence of statistical models.</p></li>
+</ol>
+<section id="important-moments-in-statistical-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="important-moments-in-statistical-analysis">Important Moments in Statistical Analysis</h3>
+<p><span class="math inline">\(\textbf{Theorem 1:}\)</span> Let <span class="math inline">\(X\)</span> be a random variable and let <span class="math inline">\(Y = g(X)\)</span> be a function of this random variable.</p>
+<ol type="1">
+<li>If <span class="math inline">\(X\)</span> is a discrete random variable, then <span class="math display">\[
+\mathbb{E}[g(X)] = \sum_{x}g(x)f(x)
+\]</span></li>
+<li>If <span class="math inline">\(X\)</span> is a continuous random variable, then <span class="math display">\[
+\mathbb{E}[g(X)] = \int_{x}g(x)f(x)dx
+\]</span> Note that <span class="math inline">\(\mathbb{E}[g(X) + h(X)] = \mathbb{E}[g(X)] + \mathbb{E}[h(X)]\)</span>.</li>
+</ol>
+<p><span class="math inline">\(\textbf{Definition 5:}\)</span> The expected value or expectation of a discrete random variable is denoted as <span class="math inline">\(\mu = \mathbb{E}(X)\)</span> and is calculated by summing the product of each possible value <span class="math inline">\(x\)</span> of the variable and its corresponding probability <span class="math inline">\(f(x)\)</span>: <span class="math display">\[
+\mu = \mathbb{E}(X) = \sum_{x}xf(x),
+\]</span> For continuous random variables, the expected value <span class="math inline">\(\mu = \mathbb{E}(X)\)</span> is obtained through integration. It involves multiplying each value <span class="math inline">\(x\)</span> of the variable by its probability density function <span class="math inline">\(f(x)\)</span> and integrating over the entire range of possible values:</p>
+<p><span class="math display">\[
+\mu = \mathbb{E}(X) = \int_{x}xf(x)dx.
+\]</span></p>
+<p><span class="math inline">\(\textbf{Definition 6:}\)</span> The variance of a random variable measures the average squared deviation from its expected value. For a discrete random variable <span class="math inline">\(X\)</span>, the variance is defined as:</p>
+<p><span class="math display">\[
+\operatorname{var}(X) = \mathbb{E}\left[(X-\mu)^2\right] = \sum_{x}\left[x-\mathbb{E}(X)\right]^2f(x),
+\]</span></p>
+<p>Similarly, for a continuous random variable <span class="math inline">\(X\)</span>, the variance is defined as:</p>
+<p><span class="math display">\[
+\operatorname{var}(X) = \mathbb{E}\left[(X-\mu)^2\right] = \int_{x}\left[(X-\mathbb{E}(X)\right]^2f(x)dx,
+\]</span> We often use the following way to calculate the variance.</p>
+<p><span class="math inline">\(\textbf{Property 1:}\)</span></p>
+<p><span class="math display">\[
+\operatorname{var}(X) = \mathbb{E}\{[X - \mathbb{E}(X)]^2\} = \mathbb{E}(X^2) - [\mathbb{E}(X)]^2
+\]</span> <span class="math inline">\(\textit{proof }\)</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+\operatorname{var}(X) &amp;= \mathbb{E}[(X - \mu)^2] = \mathbb{E}(X^2 + \mu^2 - 2X\mu) \\
+&amp;= \mathbb{E}(X^2) - 2\mu^2 + \mu^2 = \mathbb{E}(X^2) - \mu^2 = \mathbb{E}(X^2) - [\mathbb{E}(X)]^2
+\end{aligned}
+\]</span></p>
+<p>Notice that the expectation or variance may not exist. For example (Linton, 2017), let <span class="math inline">\(X\)</span> be a random variable whose PMF is defined as <span class="math display">\[
+f(x) =
+\begin{cases}
+  \frac{1}{2|x|(|x|+1)}, \; &amp; \text{if } x = \pm 1, \pm 2, \pm 3, \cdots\\
+  0, \; &amp; \text{otherwise}.
+\end{cases}
+\]</span> Then we have <span class="math display">\[
+\sum_{x=-1}^{-\infty}\frac{1}{2|x|(|x|+1)} = -\infty \;\text{ and } \; \sum_{x=1}^{\infty}\frac{1}{2|x|(|x|+1)} = \infty,
+\]</span> hence <span class="math inline">\(\mathbb{E}(X)\)</span> does not exist. In terms of the existence of variance, let’s consider a random variable <span class="math inline">\(X\)</span> defined as follows: <span class="math display">\[
+X = \begin{cases}
+1, &amp; p= \frac{1}{2}, \\
+-1, &amp; p= \frac{1}{2}.
+\end{cases}
+\]</span></p>
+<p>To calculate the variance, we need to determine the expected value <span class="math inline">\(\mathbb{E}(X)\)</span>. However, in this case, the expected value does not exist because the random variable <span class="math inline">\(X\)</span> does not have a well-defined mean.</p>
+<p>The variance is given by <span class="math inline">\(\operatorname{var}(X) = \mathbb{E}[(X-\mu)^2]\)</span>, where <span class="math inline">\(\mu = \mathbb{E}(X)\)</span>. Since <span class="math inline">\(\mathbb{E}(X)\)</span> is undefined for this random variable, the variance does not exist.</p>
+<p>Let’s discuss the properties of the expectations and variances.</p>
+<p><span class="math inline">\(\textbf{Theorem 2:}\)</span> Let <span class="math inline">\(c\)</span> be a constant, then</p>
+<ol type="1">
+<li><span class="math inline">\(\mathbb{E}(c) = c\)</span></li>
+<li><span class="math inline">\(\mathbb{E}[\mathbb{E}(X)] = \mathbb{E}(X)\)</span></li>
+<li><span class="math inline">\(\operatorname{var}(c) = 0\)</span></li>
+<li><span class="math inline">\(\mathbb{E}[X - \mathbb{E}(X)] = \mathbb{E}(X) - \mathbb{E}[\mathbb{E}(X)] = 0\)</span></li>
+<li><span class="math inline">\(\mathbb{E}(aX + b) = a\mathbb{E}(X) + b\)</span></li>
+<li><span class="math inline">\(\operatorname{var}(aX + b) = a^x \operatorname{var}(X)\)</span></li>
+<li><span class="math inline">\(\arg\underset{c}{\min}\mathbb{E}[(X - c)^2] \Rightarrow c = \mathbb{E}(X)\)</span></li>
+</ol>
+<p><span class="math inline">\(\textit{proof }\)</span></p>
+<p>For simplicity, in the following proof will we use discrete random case to show.</p>
+<ol type="1">
+<li><p><span class="math display">\[
+\mathbb{E}(c) = \sum_{x}cf(x) = c\underbrace{\sum_{x}f(x)}_{=1} = c.
+\]</span></p></li>
+<li><p>Since <span class="math inline">\(\mathbb{E}(X)\)</span> is a constant, using the proof shown above, we have <span class="math display">\[
+\mathbb{E}[\mathbb{E}(X)] = \mathbb{E}(X)
+\]</span></p></li>
+<li><p><span class="math display">\[
+\operatorname{var}(c) = \mathbb{E}\{[c - \mathbb{E}(c)]^2\} = \mathbb{E}(0) = 0
+\]</span></p></li>
+<li><p><span class="math display">\[
+\mathbb{E}[X - \mathbb{E}(X)] = \mathbb{E}(X - \mu) = \mathbb{E}(X) - \mathbb{E}(\mu) = \mathbb{E}(X) - \mu = 0,
+\]</span> where <span class="math inline">\(\mu = \mathbb{E}(X)\)</span>.</p></li>
+<li><p><span class="math display">\[
+\begin{aligned}
+\mathbb{E}(aX + b) &amp;= \sum_{x}(ax+b)f(x) = \sum_{x}af(x) + \sum_{x} b f(x)\\
+&amp;= a \underbrace{\sum_{x}xf(x)}_{=\mu} + b \underbrace{\sum_{x}f(x)}_{=1}= a\mathbb{E}(X) + b
+\end{aligned}
+\]</span> Indeed, we can see <span class="math inline">\(aX + b\)</span> as a function of <span class="math inline">\(X\)</span>, and use <span class="math inline">\(\textbf{Theorem 1}\)</span> to prove.</p></li>
+<li><p><span class="math display">\[
+\begin{aligned}
+\operatorname{var}(aX + b) &amp;= \mathbb{E}\{[aX + b - \mathbb{E}(aX + b)]^2\} = \mathbb{E}\{[aX + b - (a\mu + b)]^2\}\\
+&amp;= \mathbb{E}\{[a(X - \mu)^2]\} = \mathbb{E}[a^2(X - \mu)^2] = a^2 \underbrace{\mathbb{E}[(X - \mu)^2]}_{= \operatorname{var}(X)} = a^x \operatorname{var}(X)
+\end{aligned}
+\]</span></p></li>
+<li><p><span class="math display">\[
+\begin{aligned}
+\mathbb{E}[(X - c)^2] &amp;= \mathbb{E}[(X - \mu + \mu - c)^2] \\
+&amp;= \mathbb{E}[(X - \mu)^2 + (\mu - c)^2 + 2(X - \mu)(\mu - c)]\\
+&amp;= \underbrace{\mathbb{E}[(X - \mu)^2]}_{= \operatorname{var}(X)} + \underbrace{\mathbb{E}[(\mu - c)^2]}_{(\mu - c)^2} + 2 \underbrace{\mathbb{E}[(X - \mu)(\mu - c)]}_{= 0}\\
+&amp;=\operatorname{var}(X) + (\mu - c)^2
+\end{aligned}
+\]</span> Now let <span class="math inline">\(Q = (\mu - c)^2\)</span> be a target function, by first order condition, we have <span class="math display">\[
+\frac{\partial Q}{\partial c} = - 2(\mu - c) \overset{*}{=}0 \Rightarrow c = \mu = \mathbb{E}(X) 1
+\]</span></p></li>
+</ol>
+</section>
+<section id="moment-generating-function-mgf" class="level3">
+<h3 class="anchored" data-anchor-id="moment-generating-function-mgf">Moment Generating Function (MGF)</h3>
+<p>The moment generating function (MGF) is a powerful tool in probability theory and statistics that provides a way to uniquely characterize the probability distribution of a random variable. The MGF allows us to derive moments of a random variable and provides a convenient method for analyzing its properties.</p>
+<p><span class="math inline">\(\textbf{Definition 7:}\)</span> If <span class="math inline">\(X\)</span> is a discrete/continuous with pmd/pdf <span class="math inline">\(f(x)\)</span>. Given <span class="math inline">\(h &gt; 0\)</span> and <span class="math inline">\(t \in (-h, h)\)</span>, if <span class="math display">\[
+M_{X}(t) = \mathbb{E}(e^{tX}) =
+\begin{cases}
+\sum_{x}e^{tx}f(x) = \sum_{x}e^{tx}\mathbb{P}(X = x) \qquad &amp;\text{(discrete)}\\
+\int_{x}e^{tx}f(x)dx \qquad &amp;\text{(continuous)}
+\end{cases}
+\]</span> and <span class="math inline">\(M_{X}(t)\)</span> exists and is finite, then we say <span class="math inline">\(M_{X}(t)\)</span> a moment generating function. Note that there are two main functions of MGF:</p>
+<ol type="1">
+<li><p>Moments: By taking derivatives of the MGF with respect to <span class="math inline">\(t\)</span>, we can obtain the moments of the random variable. Specifically, the <span class="math inline">\(n\)</span>-th derivative of the MGF evaluated at <span class="math inline">\(t=0\)</span> gives the <span class="math inline">\(n\)</span>-th moment of <span class="math inline">\(X\)</span>.</p></li>
+<li><p>Uniqueness: If two random variables have the same MGF within a certain range of <span class="math inline">\(t\)</span>, they have the same probability distribution. This property allows us to identify and compare probability distributions based on their MGFs.</p></li>
+</ol>
+<p><span class="math inline">\(\textbf{Property 2:}\)</span></p>
+<p><span class="math display">\[
+\mathbb{E}(X^{k}) = M_{X}^{(k)}(t)\Big|_{t = 0}
+\]</span> <span class="math inline">\(\textit{proof }\)</span></p>
+<p>To prove the relationship <span class="math inline">\(\mathbb{E}(X^{k}) = M_{X}^{(k)}(t)\Big|_{t = 0}\)</span>, we need to use the Taylor series expansion of the moment-generating function (MGF) <span class="math inline">\(M_{X}(t)\)</span>.</p>
+<p>Since the Maclaurin series of <span class="math inline">\(e^{y}\)</span> at <span class="math inline">\(y = 0\)</span> is <span class="math display">\[
+e^{y} = 1 + y + \frac{y^2}{2!} + \frac{y^3}{3!} + \cdots
+\]</span> Let <span class="math inline">\(y = tX\)</span>, we have <span class="math display">\[
+e^{tX} = 1 + tX + \frac{(tX)^2}{2!} + \frac{(tX)^3}{3!} + \cdots
+\]</span> Take expected value of both sides, we obtain <span class="math display">\[
+\mathbb{E}(e^{tX}) = \Big[1 + tX + \frac{(tX)^2}{2!} + \frac{(tX)^3}{3!} + \cdots\Big] = 1 + t\mathbb{E}(X)+ \frac{t^2}{2!}\mathbb{E}(X^2) + \frac{t^3}{3!}\mathbb{E}(X^3) + \cdots
+\]</span> By taking the <span class="math inline">\(k\)</span>-th derivative with respect to <span class="math inline">\(t\)</span> on both sides of the equation, we obtain <span class="math display">\[
+M_{X}^{(k)}(t) = \mathbb{E}(X^{k}) + t\mathbb{E}(X^{k+1}) + \frac{t^2}{2!}\mathbb{E}(X^{k+2}) + \cdots
+\]</span> We substitute <span class="math inline">\(t = 0\)</span> into the equation we get <span class="math inline">\(\mathbb{E}(X^{k})\)</span>.</p>
+<p><span class="math inline">\(\textbf{Theorem 3:}\)</span> Given the MGF of <span class="math inline">\(X\)</span> is <span class="math inline">\(M_{X}(t)\)</span>. Suppose <span class="math inline">\(Y = aX + b\)</span>, then <span class="math display">\[
+M_{Y}(t) = M_{aX + b}(t) = e^{bt}M_{X}(at)
+\]</span> <span class="math inline">\(\textit{proof }\)</span> <span class="math display">\[
+\begin{aligned}
+M_{Y}(t) &amp;= \mathbb{E}(e^{tY}) = \mathbb{E}[e^{t(aX + b)}]\\
+&amp;= \mathbb{E}(e^{bt}e^{atX}) = e^{bt}\mathbb{E}[e^{(at)X}] = e^{bt}M_{X}(at)
+\end{aligned}
+\]</span> <span class="math inline">\(\textbf{Theorem 4:}\)</span> Suppose that <span class="math inline">\(X_{1},\cdots, X_{n}\)</span> are <span class="math inline">\(n\)</span> independent random variables; and for <span class="math inline">\(i = 1, \cdots , n\)</span>, let <span class="math inline">\(\psi_{i}\)</span> denote the MGF of <span class="math inline">\(X_{i}\)</span>. Let <span class="math inline">\(Y = X_{1} + \cdots + X_{n}\)</span>, and let the MGF of <span class="math inline">\(Y\)</span> be denoted by <span class="math inline">\(\psi\)</span>. Then for every value of <span class="math inline">\(t\)</span> such that <span class="math inline">\(\psi_{i}(t)\)</span> is finite for <span class="math inline">\(i = 1, \cdots , n\)</span>, <span class="math display">\[
+\psi(t) = \prod^{n}_{i=1}\psi_{i}(t).
+\]</span> <span class="math inline">\(\textit{proof }\)</span> By definition, <span class="math display">\[
+\psi(t) = \mathbb{E}(e^{tY}) = \mathbb{E}[e^{t(X_{1} + \cdots + X_{n})}] = \mathbb{E}\left(\prod^{n}_{i=1}e^{tX_{i}}\right)
+\]</span> Since the random variables <span class="math inline">\(X_{1},\cdots, X_{n}\)</span> are independent, <span class="math display">\[
+\mathbb{E}\left(\prod^{n}_{i=1}e^{tX_{i}}\right) = \prod^{n}_{i=1}\mathbb{E}(e^{tX_{i}})
+\]</span> Hence, <span class="math display">\[
+\psi(t) = \prod^{n}_{i=1}\psi_{i}(t).
+\]</span></p>
 
 
 </section>
