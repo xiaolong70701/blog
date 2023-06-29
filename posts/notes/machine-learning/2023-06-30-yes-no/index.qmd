@@ -94,16 +94,15 @@ y_pred[y_all< 0] = -1
 
 acc = sum(y_pred == group)/length(group)
 ```
+
 ```{r, echo=FALSE, fig.align='center'}
 par(pty="s",
-    mar = c(0.4, 0.4, 0.4, 0.4))
-plot(g_x, g_y, type='n', xlab='X', ylab='Y')
+    mar = c(5,1,1,1))
+plot(g_x, g_y, type='n', xlab="X", ylab="Y")
 points(g1_x, g1_y, col='red')
 points(g2_x, g2_y, col='blue')
 abline(a = -1.0*w0/w2, b = -1.0*w1/w2, col='gray', lwd=3, lty=2)
 ```
-
-
 
 
 
