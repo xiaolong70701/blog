@@ -1,0 +1,136 @@
+---
+title: "機器學習：感知器演算法(Perceptron Learning Algorithm, PLA)"
+date: "2023-06-30"
+categories: [statistics, machine learning]
+format:
+  html: 
+    code-fold: false
+---
+
+## 基本概念
+
+上一章我們談到銀行發卡的例子。基於這個例子，我們要來介紹感知器演算法。假設我們已經搜集到所有銀行客戶的資料，我們便可以建立一個 $d$ 維度的向量 $\mathbf{x} = (x_{1}, x_{2}, \cdots, x_{d})$，並計算其*加權分數(weighted score)*。則 
+$$
+\begin{aligned}
+\text{approve if }&\; \sum^{d}_{i=1}w_{i}x_{i}> \text{threshold}\\
+\text{deny if }&\; \sum^{d}_{i=1}w_{i}x_{i}< \text{threshold}
+\end{aligned}
+$$
+
+其中 $x_{i}$ 為每個維度的數據，$w_{i}$ 為每個維度的重要性，亦即如果我們認為負債總額相當重要，則其權重就會相較其他維度更多。
+
+接下來我們需要電腦告訴我們是否應該發卡。我們定義發卡是好的(good)，記為 $+1$；反之，若拒絕發卡則為不好的(bad)，記為 $-1$，剛好在門檻上記為 $0$（我們在此將其視為不重要，因此忽略它），即電腦應輸出 
+$$
+\mathcal{Y} = \{+1, -1\}
+$$
+因此我們可以得到一個線性方程式 $h \in \mathcal{H}$，表達如下：
+$$
+h(\mathbf{x}) = \operatorname{sign}\Biggl(\Biggl(\sum^{d}_{i=1}w_{i}x_{i}\Biggr)- \text{threshold}\Biggl)
+$$
+為了簡化，我們引進維度 $0$，並考慮以下改寫的方程式：
+$$
+h(\mathbf{x}) = \operatorname{sign}\Biggl(\Biggl(\sum^{d}_{i=1}w_{i}x_{i}\Biggr)+ \underbrace{(-\text{threshold})}_{w_{0}} \cdot \underbrace{(+1)}_{w_{0}}\Biggl)
+$$
+因此我們可以將維度 $0$ 收納進前方的加總符號，使其從 $0$ 開始累加，最後改寫為矩陣的形式：
+$$
+\operatorname{sign}\Biggl(\sum^{d}_{i=0}w_{i}x_{i}\Biggr) = \operatorname{sign}(\mathbf{w}^{\top}\mathbf{x})
+$$
+```{r, include=FALSE}
+N = 10 # total number of data points each group
+x_offset = 0.5 # group seperation on x axis
+y_offset = 0.5 # group seperation on y axis
+
+g1_x = runif(N, min = 0, max = 1)
+g1_y = runif(N, min = 0, max = 1)
+
+g2_x = runif(N, min = 0+x_offset, max = 1+x_offset)
+g2_y = runif(N, min = 0+y_offset, max = 1+y_offset)
+
+g_x = c(g1_x, g2_x)
+g_y = c(g1_y, g2_y)
+group = c(rep(-1,N), rep(1,N))
+
+w0 = 0.1 # initial weitht
+w1 = 0.2 # initial weight
+w2 = 0.3 # initial weitht
+
+M = 15            # number of epochs to run
+eta = 0.005       # learning rate
+th = 0.9          # threshold to stop
+verbose = F   # whether detailed weight update info is printed
+
+for (i in 1:M){
+  ## We reshuffle the order of the datapoint for each epoch.
+  index = 1:(2*N)
+  index = sample(index)
+  
+  for (j in index){
+    y_j = w0 + w1*g_x[j] + w2*g_y[j]
+    if (y_j >= 0){
+      pred_j = 1
+    }else{
+      pred_j = -1}
+    
+    w0 = w0 + eta*(group[j] - pred_j)*1.0
+    w1 = w1 + eta*(group[j] - pred_j)*g_x[j]
+    w2 = w2 + eta*(group[j] - pred_j)*g_y[j]
+  }  
+  y_all = w0 + w1*g_x + w2*g_y
+  y_pred = y_all
+  y_pred[y_all >= 0] = 1
+  y_pred[y_all< 0] = -1
+  
+  acc = sum(y_pred == group)/length(group)
+  if (acc >= th){
+    break
+  }
+}     
+
+y_all = w0 + w1*g_x + w2*g_y
+
+y_pred = y_all
+y_pred[y_all >= 0] = 1
+y_pred[y_all< 0] = -1
+
+acc = sum(y_pred == group)/length(group)
+```
+```{r, echo=FALSE, fig.align='center'}
+par(pty="s",
+    mar = c(0.4, 0.4, 0.4, 0.4))
+plot(g_x, g_y, type='n', xlab='X', ylab='Y')
+points(g1_x, g1_y, col='red')
+points(g2_x, g2_y, col='blue')
+abline(a = -1.0*w0/w2, b = -1.0*w1/w2, col='gray', lwd=3, lty=2)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

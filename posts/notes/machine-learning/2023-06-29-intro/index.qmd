@@ -1,7 +1,7 @@
 ---
-title: "Introduction to Machine Learning"
+title: "機器學習簡介"
 date: "2023-06-28"
-categories: [statistics]
+categories: [statistics, machine learning]
 format:
   html: 
     code-fold: false

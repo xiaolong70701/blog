@@ -2,9 +2,6 @@
   "listingMap": {
     "notes.qmd": [
       "notes/**/*.qmd"
-    ],
-    "blog.qmd": [
-      "blog/**/*.qmd"
     ]
   }
 }
