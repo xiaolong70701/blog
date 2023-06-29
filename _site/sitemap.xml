@@ -2,98 +2,102 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://yueswater.blog/notes.html</loc>
-    <lastmod>2023-06-28T17:42:36.790Z</lastmod>
+    <lastmod>2023-06-29T16:19:56.722Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/proj/welcome/index.html</loc>
-    <lastmod>2023-06-28T09:44:09.101Z</lastmod>
+    <lastmod>2023-06-29T15:20:51.604Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/blog/2020-09-10-taiwan-edu/index.html</loc>
-    <lastmod>2023-06-28T09:44:10.158Z</lastmod>
+    <lastmod>2023-06-29T15:20:52.657Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/blog/2022-09-12-fridge/index.html</loc>
-    <lastmod>2023-06-28T09:44:11.675Z</lastmod>
+    <lastmod>2023-06-29T15:20:53.866Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/blog/2022-09-10-on-failure/index.html</loc>
-    <lastmod>2023-06-28T09:44:12.797Z</lastmod>
+    <lastmod>2023-06-29T15:20:54.813Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/blog/2022-03-10-dsra/index.html</loc>
-    <lastmod>2023-06-28T09:44:13.980Z</lastmod>
+    <lastmod>2023-06-29T15:20:55.766Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/blog/2022-09-11-museum/index.html</loc>
-    <lastmod>2023-06-28T09:44:15.099Z</lastmod>
+    <lastmod>2023-06-29T15:20:56.783Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/blog/2022-06-10-persistence/index.html</loc>
-    <lastmod>2023-06-28T09:44:16.120Z</lastmod>
+    <lastmod>2023-06-29T15:20:57.802Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/notes/latex/2023-05-24-latex-installation/index.html</loc>
-    <lastmod>2023-06-28T09:44:17.863Z</lastmod>
+    <lastmod>2023-06-29T15:20:59.243Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/notes/latex/2023-05-26-bm/index.html</loc>
-    <lastmod>2023-06-28T09:44:19.381Z</lastmod>
+    <lastmod>2023-06-29T15:21:00.382Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/notes/latex/2023-05-26-structure/index.html</loc>
-    <lastmod>2023-06-28T09:44:20.952Z</lastmod>
+    <lastmod>2023-06-29T15:21:01.681Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/notes/latex/2023-05-26-table-and-figure/index.html</loc>
-    <lastmod>2023-06-28T09:44:22.630Z</lastmod>
+    <lastmod>2023-06-29T15:21:02.933Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/notes/latex/2023-05-25-math/index.html</loc>
-    <lastmod>2023-06-28T09:44:24.627Z</lastmod>
+    <lastmod>2023-06-29T15:21:04.407Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/notes/R/2023-05-14-first-R/index.html</loc>
-    <lastmod>2023-06-28T09:44:26.631Z</lastmod>
+    <lastmod>2023-06-29T15:21:06.012Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/notes/R/2023-05-26-r-and-tex/index.html</loc>
-    <lastmod>2023-06-28T09:44:29.234Z</lastmod>
+    <lastmod>2023-06-29T15:21:07.647Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/notes/julia/2023-05-23-RNG.html</loc>
-    <lastmod>2023-06-28T09:44:30.544Z</lastmod>
+    <lastmod>2023-06-29T15:21:08.837Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/notes/julia/2023-05-23-inv.html</loc>
-    <lastmod>2023-06-28T09:44:31.944Z</lastmod>
+    <lastmod>2023-06-29T15:21:10.069Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yueswater.blog/posts/notes/machine-learning/2023-06-29-intro/index.html</loc>
+    <lastmod>2023-06-29T16:19:55.174Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/posts/notes/stats/2023-06-28-random-variables/index.html</loc>
-    <lastmod>2023-06-28T17:42:34.294Z</lastmod>
+    <lastmod>2023-06-29T15:21:12.814Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/archive/stat learning/2023-06-11-knn/index.html</loc>
-    <lastmod>2023-06-28T09:44:35.219Z</lastmod>
+    <lastmod>2023-06-29T15:21:13.907Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/archive/stat learning/2023-06-11-linear-model/index.html</loc>
-    <lastmod>2023-06-28T09:44:36.410Z</lastmod>
+    <lastmod>2023-06-29T15:21:14.898Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/projects.html</loc>
-    <lastmod>2023-06-28T09:44:37.463Z</lastmod>
+    <lastmod>2023-06-29T15:21:15.821Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/index.html</loc>
-    <lastmod>2023-06-28T09:44:37.947Z</lastmod>
+    <lastmod>2023-06-29T15:21:16.129Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/about.html</loc>
-    <lastmod>2023-06-28T09:44:39.057Z</lastmod>
+    <lastmod>2023-06-29T15:21:17.371Z</lastmod>
   </url>
   <url>
     <loc>https://yueswater.blog/blog.html</loc>
-    <lastmod>2023-06-28T09:44:40.409Z</lastmod>
+    <lastmod>2023-06-29T15:21:20.580Z</lastmod>
   </url>
 </urlset>

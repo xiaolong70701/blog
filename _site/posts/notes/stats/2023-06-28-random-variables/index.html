@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2023-06-28">
 
-<title>Yueswater Blog - Random Variables</title>
+<title>Yueswater Blog - Univariate Random Variables and its Properties</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -119,13 +119,13 @@ cookieconsent.run({
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Yueswater Blog - Random Variables">
+<meta property="og:title" content="Yueswater Blog - Univariate Random Variables and its Properties">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://yueswater.blog/posts/notes/stats/2023-06-28-random-variables/index_files/figure-html/unnamed-chunk-2-1.png">
 <meta property="og:site-name" content="Yueswater Blog">
 <meta property="og:image:height" content="960">
 <meta property="og:image:width" content="1344">
-<meta name="twitter:title" content="Yueswater Blog - Random Variables">
+<meta name="twitter:title" content="Yueswater Blog - Univariate Random Variables and its Properties">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://yueswater.blog/posts/notes/stats/2023-06-28-random-variables/index_files/figure-html/unnamed-chunk-2-1.png">
 <meta name="twitter:image-height" content="960">
@@ -195,7 +195,7 @@ cookieconsent.run({
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Random Variables</h1>
+      <h1 class="title">Univariate Random Variables and its Properties</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">statistics</div>
               </div>
@@ -255,9 +255,9 @@ S_{Y} = \{1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, 16, 18, 20, 24, 25, 30, 36\}.
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] 1 6 2 3 5 6 1 5 2 3 1 4 4 1 6 2 3 4 4 6 2 6 1 1 1 4 6 5 5 1 5 4 4 2 4 4 1
- [38] 3 6 6 5 1 4 2 5 3 4 2 4 2 4 5 1 2 1 1 1 5 6 3 2 4 4 2 5 5 6 2 2 6 2 4 4 4
- [75] 2 4 1 6 3 1 3 2 2 1 4 5 1 3 4 2 6 6 2 5 6 6 1 4 2 6</code></pre>
+<pre><code>  [1] 3 3 1 3 6 1 2 5 1 2 6 3 5 6 4 3 2 3 6 6 3 1 5 3 6 4 1 1 6 4 5 2 3 4 1 1 4
+ [38] 3 4 3 3 3 2 3 3 1 5 4 5 2 4 2 1 3 2 5 6 2 5 4 2 6 5 5 3 5 5 1 5 1 3 6 4 6
+ [75] 6 4 2 1 2 5 3 5 5 3 5 4 2 6 4 2 6 3 1 3 3 6 6 6 3 5</code></pre>
 </div>
 </div>
 <p>Using <code>table</code> function we can see the probabilty of each outcome when tossing a dice.</p>
@@ -266,12 +266,14 @@ S_{Y} = \{1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, 16, 18, 20, 24, 25, 30, 36\}.
 <div class="cell-output cell-output-stdout">
 <pre><code>d
    1    2    3    4    5    6 
-0.19 0.20 0.09 0.22 0.13 0.17 </code></pre>
+0.14 0.14 0.24 0.13 0.18 0.17 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">table</span>(d) <span class="sc">/</span> <span class="dv">100</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a title</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">"Probability Mass Function (PMF)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">table</span>(d) <span class="sc">/</span> <span class="dv">100</span>,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Outcome of Dice"</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Probability of the Outcome"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a title</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">"Probability Mass Function (PMF)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -283,7 +285,7 @@ S_{Y} = \{1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, 16, 18, 20, 24, 25, 30, 36\}.
 <div class="cell-output cell-output-stdout">
 <pre><code>d
        1        2        3        4        5        6 
-0.166902 0.166538 0.166102 0.166783 0.166922 0.166753 </code></pre>
+0.166783 0.167123 0.167112 0.166086 0.166281 0.166615 </code></pre>
 </div>
 </div>
 <p>Note that we can use the support of to categorize random variable. For a discrete random variable, its support must be a discrete set, while for a continuous random variable, its support is an interval of values.</p>
@@ -541,6 +543,60 @@ M_{Y}(t) &amp;= \mathbb{E}(e^{tY}) = \mathbb{E}[e^{t(aX + b)}]\\
 \mathbb{E}\left(\prod^{n}_{i=1}e^{tX_{i}}\right) = \prod^{n}_{i=1}\mathbb{E}(e^{tX_{i}})
 \]</span> Hence, <span class="math display">\[
 \psi(t) = \prod^{n}_{i=1}\psi_{i}(t).
+\]</span> ## Transformation of Random Variables</p>
+<p>First, we will discuss discrete random variable.</p>
+<p><span class="math inline">\(\textbf{Property 3:}\)</span> Given a discrete random variable <span class="math inline">\(X\)</span> with PMF <span class="math inline">\(f(x)\)</span>. If <span class="math inline">\(Y = g(X)\)</span>, then <span class="math display">\[
+f_{Y}(y) = \mathbb{P}(Y = y) = \mathbb{P}[g(X) = y] = \sum_{\{x|g(x) = y\}}f_{X}(x)
+\]</span> For example, suppose a random variable with PMF: <span class="math display">\[
+f(x) =
+\begin{cases}
+\frac{1}{2}, \;&amp;x = 0\\
+\frac{1}{4}, \;&amp;x = 1\\
+\frac{1}{8}, \;&amp;x = 2\\
+\frac{1}{8}, \;&amp;x = 3\\
+0,\;&amp;\text{otherwise.}
+\end{cases}
+\]</span> Let <span class="math inline">\(Y = (X+1)^2\)</span>. Then the PMF of <span class="math inline">\(Y\)</span> is <span class="math display">\[
+f(y) =
+\begin{cases}
+\frac{1}{2}, \;&amp;y = 1\\
+\frac{1}{4}, \;&amp;y = 4\\
+\frac{1}{8}, \;&amp;y = 9\\
+\frac{1}{8}, \;&amp;y = 16\\
+0,\;&amp;\text{otherwise.}
+\end{cases}
+\]</span> Therefore, <span class="math display">\[
+\begin{aligned}
+\mathbb{E}(Y) &amp;= \sum_{Y}y f(y) = \frac{37}{8}\\
+\mathbb{E}(Y^2) &amp;= \sum_{Y}y^2 f(y) = \frac{373}{8}\\
+\operatorname{var}(Y) &amp;= \mathbb{E}(Y^2) - [\mathbb{E}(Y)]^2 = \frac{1615}{64}
+\end{aligned}
+\]</span></p>
+<p>Now we will discuss continuous random variable.</p>
+<p><span class="math inline">\(\textbf{Property 4:}\)</span> If the PDF of <span class="math inline">\(X\)</span> is <span class="math inline">\(f_{X}(x)\)</span>, and <span class="math inline">\(Y = g(X)\)</span> is an injective function under <span class="math inline">\(\operatorname{supp}(X)\)</span>, i.e., <span class="math inline">\(g'(x) \neq, \forall x\)</span>, then <span class="math inline">\(X = g^{-1}(Y)\)</span>. Let the PDF of <span class="math inline">\(Y\)</span> be <span class="math inline">\(f_{Y}(y)\)</span>, then <span class="math display">\[
+f_{Y}(y) = f_{X}[g^{-1}(y)]\Bigg|\frac{\partial g^{-1}(y)}{\partial y}\Bigg|,
+\]</span></p>
+<p>where <span class="math inline">\(\Bigg|\frac{\partial g^{-1}(y)}{\partial y}\Bigg|\)</span> can be abbreviated as <span class="math inline">\(|J|\)</span>, called the Jacobian.</p>
+<p><span class="math inline">\(\textit{proof }\)</span></p>
+<p>In the following proof, we will discuss by two cases.</p>
+<ol type="1">
+<li>Suppose <span class="math inline">\(g(\cdot)\)</span> is a strict increasing function. Let <span class="math inline">\(w(x) = g^{-1}(x)\)</span>, then <span class="math inline">\(g'(x) &gt; 0\)</span> and <span class="math inline">\(w'(x) &gt; 0\)</span>. Also <span class="math inline">\(g(x) \leq y\)</span> must imply <span class="math inline">\(x \leq g^{-1}(y)\)</span>.</li>
+</ol>
+<p>By the definition of CDF, we have <span class="math display">\[
+F_{Y}(y) = \mathbb{P}(Y \leq y) = \mathbb{P}[g(X) \leq y] = \mathbb{P}[X \leq g^{-1}(y)] = F_{X}[g^{-1}(y)]
+\]</span> Take the derivative of the CDF, then we can obatin the PDF: <span class="math display">\[
+\begin{aligned}
+f_{Y}(y) &amp;= \frac{\partial F_{Y}(y)}{\partial y} = F'_{X}[g^{-1}(y)]\frac{\partial g^{-1}(y)}{\partial y}\\
+&amp;= f_{X}[g^{-1}(y)] \times \bigg[\frac{\partial g^{-1}(y)}{\partial y}\bigg] = f_{X}[g^{-1}(y)] \times \Bigg|\frac{\partial g^{-1}(y)}{\partial y}\Bigg|
+\end{aligned}
+\]</span> 2. Suppose <span class="math inline">\(g(\cdot)\)</span> is a strict decreasing function. Let <span class="math inline">\(w(x) = g^{-1}(x)\)</span>, then <span class="math inline">\(g'(x) &lt; 0\)</span> and <span class="math inline">\(w'(x) &lt; 0\)</span>. Also <span class="math inline">\(g(x) \leq y\)</span> must imply <span class="math inline">\(x \geq g^{-1}(y)\)</span>.</p>
+<p>By the definition of CDF, we have <span class="math display">\[
+F_{Y}(y) = \mathbb{P}(Y \leq y) = \mathbb{P}[g(X) \leq y] = \mathbb{P}[X \geq g^{-1}(y)] = 1 - F_{X}[g^{-1}(y)]
+\]</span> Take the derivative of the CDF, then we can obatin the PDF: <span class="math display">\[
+\begin{aligned}
+f_{Y}(y) &amp;= \frac{\partial F_{Y}(y)}{\partial y} = -F'_{X}[g^{-1}(y)]\frac{\partial g^{-1}(y)}{\partial y}\\
+&amp;= f_{X}[g^{-1}(y)] \times \bigg[-\frac{\partial g^{-1}(y)}{\partial y}\bigg] = f_{X}[g^{-1}(y)] \times \Bigg|\frac{\partial g^{-1}(y)}{\partial y}\Bigg|
+\end{aligned}
 \]</span></p>
 
 

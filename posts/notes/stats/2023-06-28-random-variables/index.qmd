@@ -1,5 +1,5 @@
 ---
-title: "Random Variables"
+title: "Univariate Random Variables and its Properties"
 date: "2023-06-28"
 categories: [statistics]
 format:
@@ -52,7 +52,9 @@ Using `table` function we can see the probabilty of each outcome when tossing a 
 
 ```{r}
 table(d) / 100
-plot(table(d) / 100)
+plot(table(d) / 100,
+     xlab = "Outcome of Dice",
+     ylab = "Probability of the Outcome")
 
 # Add a title
 title("Probability Mass Function (PMF)")
@@ -395,5 +397,82 @@ Hence,
 $$
 \psi(t) = \prod^{n}_{i=1}\psi_{i}(t).
 $$
+## Transformation of Random Variables
 
+First, we will discuss discrete random variable.
+
+$\textbf{Property 3:}$ Given a discrete random variable $X$ with PMF $f(x)$. If $Y = g(X)$, then
+$$
+f_{Y}(y) = \mathbb{P}(Y = y) = \mathbb{P}[g(X) = y] = \sum_{\{x|g(x) = y\}}f_{X}(x)
+$$
+For example, suppose a random variable with PMF:
+$$
+f(x) = 
+\begin{cases}
+\frac{1}{2}, \;&x = 0\\
+\frac{1}{4}, \;&x = 1\\
+\frac{1}{8}, \;&x = 2\\
+\frac{1}{8}, \;&x = 3\\
+0,\;&\text{otherwise.}
+\end{cases}
+$$
+Let $Y = (X+1)^2$. Then the PMF of $Y$ is
+$$
+f(y) = 
+\begin{cases}
+\frac{1}{2}, \;&y = 1\\
+\frac{1}{4}, \;&y = 4\\
+\frac{1}{8}, \;&y = 9\\
+\frac{1}{8}, \;&y = 16\\
+0,\;&\text{otherwise.}
+\end{cases}
+$$
+Therefore,
+$$
+\begin{aligned}
+\mathbb{E}(Y) &= \sum_{Y}y f(y) = \frac{37}{8}\\
+\mathbb{E}(Y^2) &= \sum_{Y}y^2 f(y) = \frac{373}{8}\\
+\operatorname{var}(Y) &= \mathbb{E}(Y^2) - [\mathbb{E}(Y)]^2 = \frac{1615}{64}
+\end{aligned}
+$$
+
+Now we will discuss continuous random variable. 
+
+$\textbf{Property 4:}$ If the PDF of $X$ is $f_{X}(x)$, and $Y = g(X)$ is an injective function under $\operatorname{supp}(X)$, i.e., $g'(x) \neq, \forall x$, then $X = g^{-1}(Y)$. Let the PDF of $Y$ be $f_{Y}(y)$, then
+$$
+f_{Y}(y) = f_{X}[g^{-1}(y)]\Bigg|\frac{\partial g^{-1}(y)}{\partial y}\Bigg|,
+$$
+
+where $\Bigg|\frac{\partial g^{-1}(y)}{\partial y}\Bigg|$ can be abbreviated as $|J|$, called the Jacobian.
+
+$\textit{proof }$
+
+In the following proof, we will discuss by two cases.
+
+1. Suppose $g(\cdot)$ is a strict increasing function. Let $w(x) = g^{-1}(x)$, then $g'(x) > 0$ and $w'(x) > 0$. Also $g(x) \leq y$ must imply $x \leq g^{-1}(y)$.
+
+By the definition of CDF, we have
+$$
+F_{Y}(y) = \mathbb{P}(Y \leq y) = \mathbb{P}[g(X) \leq y] = \mathbb{P}[X \leq g^{-1}(y)] = F_{X}[g^{-1}(y)]
+$$
+Take the derivative of the CDF, then we can obatin the PDF:
+$$
+\begin{aligned}
+f_{Y}(y) &= \frac{\partial F_{Y}(y)}{\partial y} = F'_{X}[g^{-1}(y)]\frac{\partial g^{-1}(y)}{\partial y}\\
+&= f_{X}[g^{-1}(y)] \times \bigg[\frac{\partial g^{-1}(y)}{\partial y}\bigg] = f_{X}[g^{-1}(y)] \times \Bigg|\frac{\partial g^{-1}(y)}{\partial y}\Bigg|
+\end{aligned}
+$$
+2. Suppose $g(\cdot)$ is a strict decreasing function. Let $w(x) = g^{-1}(x)$, then $g'(x) < 0$ and $w'(x) < 0$. Also $g(x) \leq y$ must imply $x \geq g^{-1}(y)$.
+
+By the definition of CDF, we have
+$$
+F_{Y}(y) = \mathbb{P}(Y \leq y) = \mathbb{P}[g(X) \leq y] = \mathbb{P}[X \geq g^{-1}(y)] = 1 - F_{X}[g^{-1}(y)]
+$$
+Take the derivative of the CDF, then we can obatin the PDF:
+$$
+\begin{aligned}
+f_{Y}(y) &= \frac{\partial F_{Y}(y)}{\partial y} = -F'_{X}[g^{-1}(y)]\frac{\partial g^{-1}(y)}{\partial y}\\
+&= f_{X}[g^{-1}(y)] \times \bigg[-\frac{\partial g^{-1}(y)}{\partial y}\bigg] = f_{X}[g^{-1}(y)] \times \Bigg|\frac{\partial g^{-1}(y)}{\partial y}\Bigg|
+\end{aligned}
+$$
 
