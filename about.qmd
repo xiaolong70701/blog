@@ -1,8 +1,8 @@
 ---
 title: "About Me"
-image: profile.jpg
+image: profile.png
 about:
-  template: jolla
+  template: trestles
   links:
     - icon: github
       text: github
@@ -16,3 +16,6 @@ about:
 ---
 
 Hello! I'm Anthony Sung, a student who majors in political science at National Taiwan University. I have a passion for exploring politics and economics, as well as utilizing computational methods to analyze social phenomena. In my free time, you'll often find me listening to music, singing, and diving into programming projects.
+
+
+Please download my [cv](./anthony_cv.pdf).
