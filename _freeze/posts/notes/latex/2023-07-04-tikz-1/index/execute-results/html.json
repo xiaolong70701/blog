@@ -1,0 +1,11 @@
+{
+  "hash": "722e278345c9bb7bd5cfdb53bad328d4",
+  "result": {
+    "markdown": "---\ntitle: \"LaTeX 中的繪圖套件：TikZ I\"\ndate: \"2023-07-04\"\ncategories: [LaTeX, programming language]\n---\n\nTikZ是 LaTeX 中一個功能強大的圖形繪製套件，透過此套件可以創建圖形，包括流程圖、樹狀圖、網絡圖、函數圖、幾何圖形等。除了靜態圖形繪制，TikZ 還支持動態圖形和動畫，利用TikZ的動畫功能，通過逐幀地改變圖形元素的屬性和位置來創建互動式和動態的圖形效果。\n\n在這篇文章中，我會先介紹 TikZ 的一些基本指令與觀念。下一篇文章則會著重於討論 TikZ 如何繪製經濟學與數學領域的圖形。\n\n## 開始使用 TikZ\n\n與一般引用套件的方式一樣，在前言區打上 `\\usepackage{tikz}` 即可使用之。若需要進行一些計算工具，則使用 `\\usetikzlibrary{calc}`。引用套件完畢後，在文件開始後，必須透過以下方式開啟繪製圖形的環境：\n\n\n```{tex}\n\\usepackage{tikz}\n\n\\begin{document}\n\n\\begin{tikzpicture}\n...\n\\end{tikzpicture}\n\n\\end{document}\n```\n\n\n注意到在 TikZ 環境下的不同：**每一行程式碼結尾必須使用分號（;）**，代表這段指令結束了，否則會編譯錯誤（類似C/C++/C#）。TikZ 之基本語法為`\\draw[option]...`，其中 `\\draw` 是對電腦下一個「繪圖」指令，`[option]`則是控制選項，可留白，而最後的 `...` 則是操作命令，即宣告電腦幾何或是代數上的指令。使用者可以在前言區設定 TikZ 的樣式（全域），當然也可以在文稿區設定（區域）。\n\n\n```{tex}\n...\n\\tikzset{\nBline/.style ={color = blue, line width =2pt}\n}\n\\begin{document}\n...\n\\begin{tikzpicture}\n\\draw[Bline] (0,0) -- (9,0);\n\\end{tikzpicture}\n...\n\\end{document}\n```\n\n\n編譯結果如下：\n\n![](https://i.imgur.com/HsUGY2S.png)\n\n## 基本圖形\n\n接下來我們先著重在簡單的幾何圖形上，包含直線、封閉圖形，以及製作網格。\n\n### 直線與封閉圖形\n\n在 TikZ 中如果我們想要繪製直線，我們可以使用下方指令：\n\n\n```{tex}\n\\begin{figure}[H]\n\t\t\\centering\n\t\t\\begin{tikzpicture}\t\n\t\t\t\\draw (0,0) -- (10, 0);\n\t\t\\end{tikzpicture}\n\\end{figure}\n```\n\n\n我們就可以畫出在平面空間上連接 $A(0,0)$ 與 $B(10, 0)$ 兩點的直線[^1]。注意到我們經常會將 TikZ 的圖片環境用 `figure` 環境包住，目的是為了能夠將製作出的圖形置中、對齊，但礙於篇幅，以下的程式碼將不會有 `figure`，但必須注意這是一個實用的技巧，對於排版美觀程度有很大的幫助。\n\n[^1]:若想要更改直線的顏色，則可以在 `\\draw` 後方加上 `[color = 顏色]` 即可。在使用顏色之前，我們要使用 `xcolor` 這個套件，因此必須在前言區加上 `usepackage{xcolor}`。當然也可以自定義顏色。\n\n### 圓形、橢圓與弧\n\n我們都知道，形成一個除了圓、橢圓之外的封閉圖形至少需要三條線，在 TikZ 中亦是如此，我們可以連接四個點以形成三條直線，從而製作出一個三角形。\n\n![](fig1.png){fig-align=\"center\" width=35%}\n\n### 曲線\n\n### 網格\n\n## 圖形控制\n\n### 線條調整\n\n### 圖形變換\n\n## 示意圖\n\n### 節點\n\n### 流程圖\n\n### 繪製函數圖形\n\n\n\n<div class=\"likecoin-embed likecoin-button\">\n  <div></div>\n  <iframe scrolling=\"no\" frameborder=\"0\" src=\"https://button.like.co/in/embed/xiaolong70701/button?referrer=hackmd.io\"></iframe>\n</div>\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
