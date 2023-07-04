@@ -11,7 +11,7 @@ An economy consists of consumers with *preferences* and *endowments*, firms with
 
 ## Consumption Set
 
-Let $X$ denote a consumer's consumption set, and $x, y \in X$ denote potential consumption bundles. We can write $x = (x_{1}, x_{2}, \cdots, x_{n})$, where $n$ is the number of goods and $x_{k}$ denotes teh quantity of good $k$ in the consumer's consumption bundle. Also, we may use subscript $i$ to index each consumer $i$'s consumption set $X_{i}$ and bundle $x_{i} = (x_{i1}, x_{i2}, \cdots, x_{in})$. But here we drop the index $i$ for simplicity. Here we should note that, even though we have mentioned "goods" in the previous text, each good can also represent a location, time, state of the world, etc.
+Let $X$ denote a consumer's consumption set, and $x, y \in X$ denote potential consumption bundles. We can write $x = (x_{1}, x_{2}, \cdots, x_{n})$, where $n$ is the number of goods and $x_{k}$ denotes the quantity of good $k$ in the consumer's consumption bundle. Also, we may use subscript $i$ to index each consumer $i$'s consumption set $X_{i}$ and bundle $x_{i} = (x_{i1}, x_{i2}, \cdots, x_{in})$. But here we drop the index $i$ for simplicity. Here we should note that, even though we have mentioned "goods" in the previous text, each good can also represent a location, time, state of the world, etc.
 
 ### Consumer Preferences
 
@@ -38,10 +38,11 @@ $$
 
 The function is unique only up to an order-preserving transformation.
 
-$\textbf{Theorem 1.1}$ Any preference relation that can be represented by a continuous utility function is rational. To be more specific, only rational preferences relations can be represented by a utility
-function; conversely, if $X$ is finite, any rational preference relation can be represented by a utility function.
+$\textbf{Theorem 1.1}$ Any preference relation that can be represented by a continuous utility function is rational. To be more specific, only rational preferences relations can be represented by a utility function; conversely, if $X$ is finite, any rational preference relation can be represented by a utility function.
 
 $\textit{proof.}$ Since $\mathbb{R}$ is an ordered field, we follows from completeness, transitivity and continuity of $\geq$ on $\mathbb{R}$ then we know that a continuous utility function is rational.
+
+<!--Lexicographic preference is an counterexample of $\textbf{Theorem 1.1}$. The preference relation $\succsim_{L}$ on $[0, 1] \times [0, 1]$, which is induced from the relations $x \succsim y$ if $x_{k} \geq y_{k},  \; \forall k = 1, 2$, does not have a utility representation.-->
 
 Here are some common utility functions corresponding to the diagram below:
 

@@ -76,9 +76,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-image','listing-date','listing-title','listing-subtitle','listing-categories','listing-author','listing-reading-time','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-image','listing-date','listing-title','listing-subtitle','listing-categories','listing-author','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -122,7 +122,7 @@ cookieconsent.run({
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -184,7 +184,9 @@ cookieconsent.run({
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(12)</span></div><div class="category" data-category="Julia">Julia <span class="quarto-category-count">(2)</span></div><div class="category" data-category="LaTeX">LaTeX <span class="quarto-category-count">(5)</span></div><div class="category" data-category="Markdown">Markdown <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(2)</span></div><div class="category" data-category="microeconomics">microeconomics <span class="quarto-category-count">(2)</span></div><div class="category" data-category="numerical analysis">numerical analysis <span class="quarto-category-count">(2)</span></div><div class="category" data-category="programming language">programming language <span class="quarto-category-count">(9)</span></div><div class="category" data-category="statistics">statistics <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -232,7 +234,38 @@ cookieconsent.run({
     </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="microeconomics" data-listing-date-sort="1688400000000" data-listing-file-modified-sort="1688466691800" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10">
+<div class="quarto-post image-right" data-index="0" data-categories="microeconomics" data-listing-date-sort="1688486400000" data-listing-file-modified-sort="1688501605350" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
+<div class="thumbnail">
+<p><a href="./posts/notes/micro/2023-07-05-income-and-substitution-effects/index.html"> <p class="card-img-top"><img src="posts/notes/micro/2023-07-05-income-and-substitution-effects/fig1.png"  class="thumbnail-image card-img"/></p> </a></p>
+</div>
+<div class="body">
+<a href="./posts/notes/micro/2023-07-05-income-and-substitution-effects/index.html">
+<h3 class="no-anchor listing-title">
+Income and Substitution Effects
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('microeconomics'); return false;">
+microeconomics
+</div>
+</div>
+<a href="./posts/notes/micro/2023-07-05-income-and-substitution-effects/index.html"> </a>
+</div>
+<div class="metadata">
+<a href="./posts/notes/micro/2023-07-05-income-and-substitution-effects/index.html">
+<div class="listing-date">
+Jul 5, 2023
+</div>
+<div class="listing-reading-time">
+3 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="microeconomics" data-listing-date-sort="1688400000000" data-listing-file-modified-sort="1688496500345" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10">
 <div class="thumbnail">
 <p><a href="./posts/notes/micro/2023-07-04-consumer-choice/index.html"> <p class="card-img-top"><img src="posts/notes/micro/2023-07-04-consumer-choice/fig6.png"  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -250,11 +283,7 @@ Consumer Choice
 microeconomics
 </div>
 </div>
-<a href="./posts/notes/micro/2023-07-04-consumer-choice/index.html">
-<div class="listing-description">
-An economy consists of consumers with <em>preferences</em> and <em>endowments</em>, firms with <em>technology</em>. However, in an economy, all these resources are limited, which yields the agents in an…<em></em><em></em><em></em><em></em><em></em>
-</div>
-</a>
+<a href="./posts/notes/micro/2023-07-04-consumer-choice/index.html"> </a>
 </div>
 <div class="metadata">
 <a href="./posts/notes/micro/2023-07-04-consumer-choice/index.html">
@@ -267,86 +296,7 @@ Jul 4, 2023
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="statistics,machine learning" data-listing-date-sort="1688054400000" data-listing-file-modified-sort="1688119416092" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
-<div class="thumbnail">
-<p><a href="./posts/notes/machine-learning/2023-06-30-yes-no/index.html"> <p class="card-img-top"><img src="posts/notes/machine-learning/2023-06-30-yes-no/index_files/figure-html/unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/notes/machine-learning/2023-06-30-yes-no/index.html">
-<h3 class="no-anchor listing-title">
-機器學習：感知器演算法(Perceptron Learning Algorithm, PLA)
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('statistics'); return false;">
-statistics
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('machine learning'); return false;">
-machine learning
-</div>
-</div>
-<a href="./posts/notes/machine-learning/2023-06-30-yes-no/index.html">
-<div class="listing-description">
-上一章我們談到銀行發卡的例子。基於這個例子，我們要來介紹感知器演算法。假設我們已經搜集到所有銀行客戶的資料，我們便可以建立一個 <span class="math inline">\(d\)</span> 維度的向量 <span class="math inline">\(\mathbf{x} = (x_{1}, x_{2}, \cdots, x_{d})\)</span>，並計算其<em>加權分數(weighted score)</em>。則 <span class="math display">\[
-\begin{aligned}
-\text{approve if }&amp;\; \sum^{d}_{i=1}w_{i}x_{i}&gt; \text{threshold}\\
-\text{deny if }&amp;\; \sum^{d}_{i=1}w_{i}x_{i}&lt;…</span>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/notes/machine-learning/2023-06-30-yes-no/index.html">
-<div class="listing-date">
-Jun 30, 2023
-</div>
-<div class="listing-reading-time">
-3 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="statistics,machine learning" data-listing-date-sort="1687881600000" data-listing-file-modified-sort="1688101845811" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/notes/machine-learning/2023-06-29-intro/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
-</div>
-<div class="body">
-<a href="./posts/notes/machine-learning/2023-06-29-intro/index.html">
-<h3 class="no-anchor listing-title">
-機器學習簡介
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('statistics'); return false;">
-statistics
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('machine learning'); return false;">
-machine learning
-</div>
-</div>
-<a href="./posts/notes/machine-learning/2023-06-29-intro/index.html">
-<div class="listing-description">
-在討論機器學習之前，…
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/notes/machine-learning/2023-06-29-intro/index.html">
-<div class="listing-date">
-Jun 28, 2023
-</div>
-<div class="listing-reading-time">
-1 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="statistics" data-listing-date-sort="1687881600000" data-listing-file-modified-sort="1687977785853" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13">
+<div class="quarto-post image-right" data-index="2" data-categories="statistics" data-listing-date-sort="1687881600000" data-listing-file-modified-sort="1687977785853" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13">
 <div class="thumbnail">
 <p><a href="./posts/notes/stats/2023-06-28-random-variables/index.html"> <p class="card-img-top"><img src="posts/notes/stats/2023-06-28-random-variables/index_files/figure-html/unnamed-chunk-2-1.png"  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -364,11 +314,7 @@ Univariate Random Variables and its Properties
 statistics
 </div>
 </div>
-<a href="./posts/notes/stats/2023-06-28-random-variables/index.html">
-<div class="listing-description">
-<span class="math inline">\(\textbf{Definition 1:}\)</span> A random variable is a function <span class="math inline">\(X\)</span> which assigns to each element <span class="math inline">\(s \in S\)</span> one and only one number <span class="math inline">\(X(s) = x\)</span>, where <span class="math inline">\(x \in…</span><span class="math display"></span><em></em>
-</div>
-</a>
+<a href="./posts/notes/stats/2023-06-28-random-variables/index.html"> </a>
 </div>
 <div class="metadata">
 <a href="./posts/notes/stats/2023-06-28-random-variables/index.html">
@@ -381,7 +327,7 @@ Jun 28, 2023
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="R,Markdown,programming language" data-listing-date-sort="1685030400000" data-listing-file-modified-sort="1685040375937" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
+<div class="quarto-post image-right" data-index="3" data-categories="R,Markdown,programming language" data-listing-date-sort="1685030400000" data-listing-file-modified-sort="1685040375937" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
 <div class="thumbnail">
 <p><a href="./posts/notes/R/2023-05-26-r-and-tex/index.html"> <p class="card-img-top"><img src="https://i.imgur.com/vviV4xh.jpg"  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -405,11 +351,7 @@ Markdown
 programming language
 </div>
 </div>
-<a href="./posts/notes/R/2023-05-26-r-and-tex/index.html">
-<div class="listing-description">
-排版一直以來是一個很麻煩的事情，無論是新聞、雜誌，乃至於學術文章，要將文章清楚、俐落且富有美感的呈現出來是需要功夫的；此外，要透過何種方式進行排版，也成為了諸多想學習排版或是已經成為排版的人而言心中曾經冒出的疑問。對此，這篇文章將會透過 R Markdown 的方式，結合些許的 <span class="math inline">\(\TeX\)</span> 語法，將個人的排版經歷與方法分享給大家。
-</div>
-</a>
+<a href="./posts/notes/R/2023-05-26-r-and-tex/index.html"> </a>
 </div>
 <div class="metadata">
 <a href="./posts/notes/R/2023-05-26-r-and-tex/index.html">
@@ -422,7 +364,7 @@ May 26, 2023
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="LaTeX,programming language" data-listing-date-sort="1685030400000" data-listing-file-modified-sort="1687547700775" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="4" data-categories="LaTeX,programming language" data-listing-date-sort="1685030400000" data-listing-file-modified-sort="1687547700775" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
 <p><a href="./posts/notes/latex/2023-05-26-bm/index.html"> <p class="card-img-top"><img src="https://i.imgur.com/cQoZAl6.png"  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -443,11 +385,7 @@ LaTeX
 programming language
 </div>
 </div>
-<a href="./posts/notes/latex/2023-05-26-bm/index.html">
-<div class="listing-description">
-為何使用 <span class="math inline">\(\LaTeX\)</span> 進行簡報製作呢，使用 <span class="math inline">\(\LaTeX\)</span> 製作簡報，個人認為大致有以下優點，首先是學術性強大，包含版面、顯示方式等，都能夠讓讀者或閱聽人看到沈穩的簡報內容與外觀，從而能夠專注聽講。另一個優點則是輸出的內容可以跨平台使用，因其產生的檔案類型為<code>.pdf</code>檔，故能夠避免使用<code>.pptx</code>時字體在其他電腦未安裝而無法顯示的窘境。不過…<span class="math inline"></span>
-</div>
-</a>
+<a href="./posts/notes/latex/2023-05-26-bm/index.html"> </a>
 </div>
 <div class="metadata">
 <a href="./posts/notes/latex/2023-05-26-bm/index.html">
@@ -460,7 +398,7 @@ May 26, 2023
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="LaTeX,programming language" data-listing-date-sort="1685030400000" data-listing-file-modified-sort="1685039574414" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="5" data-categories="LaTeX,programming language" data-listing-date-sort="1685030400000" data-listing-file-modified-sort="1685039574414" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
 <p><a href="./posts/notes/latex/2023-05-26-structure/index.html"> <p class="card-img-top"><img src="https://i.imgur.com/2PiNxCC.png"  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -481,11 +419,7 @@ LaTeX
 programming language
 </div>
 </div>
-<a href="./posts/notes/latex/2023-05-26-structure/index.html">
-<div class="listing-description">
-一本書籍或學術文章的基本架構大概可以切分成以下幾個元素
-</div>
-</a>
+<a href="./posts/notes/latex/2023-05-26-structure/index.html"> </a>
 </div>
 <div class="metadata">
 <a href="./posts/notes/latex/2023-05-26-structure/index.html">
@@ -498,7 +432,7 @@ May 26, 2023
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="LaTeX,programming language" data-listing-date-sort="1685030400000" data-listing-file-modified-sort="1685039135322" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
+<div class="quarto-post image-right" data-index="6" data-categories="LaTeX,programming language" data-listing-date-sort="1685030400000" data-listing-file-modified-sort="1685039135322" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
 <div class="thumbnail">
 <p><a href="./posts/notes/latex/2023-05-26-table-and-figure/index.html"> <p class="card-img-top"><img src="https://i.imgur.com/cW62Tjq.png"  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -519,12 +453,7 @@ LaTeX
 programming language
 </div>
 </div>
-<a href="./posts/notes/latex/2023-05-26-table-and-figure/index.html">
-<div class="listing-description">
-
-在學習 <span class="math inline">\(\LaTeX\)</span> 的過程中，表格的處理通常是最為棘手的，主要原因在於 <span class="math inline">\(\LaTeX\)</span> 係透過抽象與邏輯的方式繪製表格。網路上有針對 <span class="math inline">\(\LaTeX\)</span> 的表格編輯器，不過仍要先了解表格的大架構，便能在沒有編輯器的情況下製作表格，亦不會摸不著頭緒。
-</div>
-</a>
+<a href="./posts/notes/latex/2023-05-26-table-and-figure/index.html"> </a>
 </div>
 <div class="metadata">
 <a href="./posts/notes/latex/2023-05-26-table-and-figure/index.html">
@@ -537,7 +466,7 @@ May 26, 2023
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-categories="LaTeX,programming language" data-listing-date-sort="1684857600000" data-listing-file-modified-sort="1685040259296" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
+<div class="quarto-post image-right" data-index="7" data-categories="LaTeX,programming language" data-listing-date-sort="1684857600000" data-listing-file-modified-sort="1685040259296" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
 <div class="thumbnail">
 <p><a href="./posts/notes/latex/2023-05-24-latex-installation/index.html"> <p class="card-img-top"><img src="posts/notes/latex/2023-05-24-latex-installation/fig1.png"  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -558,11 +487,7 @@ LaTeX
 programming language
 </div>
 </div>
-<a href="./posts/notes/latex/2023-05-24-latex-installation/index.html">
-<div class="listing-description">
-<span class="math inline">\(\LaTeX\)</span> 是一個基於 <span class="math inline">\(\TeX\)</span> 的排版系統，由美國電腦科學家 Leslie Lamport開發，遵循呈現與內容分離的設計理念，讓使用者能夠在撰文時致力於寫作，而非同時兼顧版面與內文<sup>1</sup>。Word 與 <span class="math inline">\(\LaTeX\)</span> 最大的不同之處在於，Word…<span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span>
-</div>
-</a>
+<a href="./posts/notes/latex/2023-05-24-latex-installation/index.html"> </a>
 </div>
 <div class="metadata">
 <a href="./posts/notes/latex/2023-05-24-latex-installation/index.html">
@@ -575,7 +500,7 @@ May 24, 2023
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="9" data-categories="LaTeX,programming language" data-listing-date-sort="1684857600000" data-listing-file-modified-sort="1685040632392" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
+<div class="quarto-post image-right" data-index="8" data-categories="LaTeX,programming language" data-listing-date-sort="1684857600000" data-listing-file-modified-sort="1685040632392" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
 <div class="thumbnail">
 <p><a href="./posts/notes/latex/2023-05-25-math/index.html"> <p class="card-img-top"><img src="https://i.imgur.com/sCufibA.png"  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -596,11 +521,7 @@ LaTeX
 programming language
 </div>
 </div>
-<a href="./posts/notes/latex/2023-05-25-math/index.html">
-<div class="listing-description">
-為何要學數學排版，主要原因在於當我們使用 Word 排版時常常會達不到意想的效果，且 Word 內建的 <span class="math inline">\(\LaTeX\)</span> 不太友善；由於 <span class="math inline">\(\LaTeX\)</span> 是針對專業數學所設計的排版軟體，因此透過 <span class="math inline">\(\TeX\)</span> 具有的數學排版系統能夠達到最佳效果。
-</div>
-</a>
+<a href="./posts/notes/latex/2023-05-25-math/index.html"> </a>
 </div>
 <div class="metadata">
 <a href="./posts/notes/latex/2023-05-25-math/index.html">
@@ -613,7 +534,7 @@ May 24, 2023
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="10" data-categories="Julia,programming language,numerical analysis" data-listing-date-sort="1684684800000" data-listing-file-modified-sort="1684747840108" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="9" data-categories="Julia,programming language,numerical analysis" data-listing-date-sort="1684684800000" data-listing-file-modified-sort="1684747840108" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
 <p><a href="./posts/notes/julia/2023-05-23-RNG.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
@@ -637,11 +558,7 @@ programming language
 numerical analysis
 </div>
 </div>
-<a href="./posts/notes/julia/2023-05-23-RNG.html">
-<div class="listing-description">
-In social sciences, there are numerous cases of whether we need to use and generate random numbers, or draw random values from distributions.
-</div>
-</a>
+<a href="./posts/notes/julia/2023-05-23-RNG.html"> </a>
 </div>
 <div class="metadata">
 <a href="./posts/notes/julia/2023-05-23-RNG.html">
@@ -654,7 +571,7 @@ May 22, 2023
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="11" data-categories="Julia,programming language,numerical analysis" data-listing-date-sort="1684684800000" data-listing-file-modified-sort="1685040241167" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
+<div class="quarto-post image-right" data-index="10" data-categories="Julia,programming language,numerical analysis" data-listing-date-sort="1684684800000" data-listing-file-modified-sort="1685040241167" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
 <div class="thumbnail">
 <p><a href="./posts/notes/julia/2023-05-23-inv.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
@@ -678,11 +595,7 @@ programming language
 numerical analysis
 </div>
 </div>
-<a href="./posts/notes/julia/2023-05-23-inv.html">
-<div class="listing-description">
-Julia provides <code>rand()</code> and <code>randn()</code> to generate random…
-</div>
-</a>
+<a href="./posts/notes/julia/2023-05-23-inv.html"> </a>
 </div>
 <div class="metadata">
 <a href="./posts/notes/julia/2023-05-23-inv.html">
@@ -695,7 +608,7 @@ May 22, 2023
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="12" data-categories="R,programming language" data-listing-date-sort="1683993600000" data-listing-file-modified-sort="1685040249858" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="11" data-categories="R,programming language" data-listing-date-sort="1683993600000" data-listing-file-modified-sort="1685040249858" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
 <p><a href="./posts/notes/R/2023-05-14-first-R/index.html"> <p class="card-img-top"><img src="https://i.imgur.com/iRD88ri.jpg"  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -716,11 +629,7 @@ R
 programming language
 </div>
 </div>
-<a href="./posts/notes/R/2023-05-14-first-R/index.html">
-<div class="listing-description">
-R is a programming language for statistical computing and graphics supported by the R Core Team and the R Foundation for Statistical Computing. Created by statisticians Ross…<sup></sup>
-</div>
-</a>
+<a href="./posts/notes/R/2023-05-14-first-R/index.html"> </a>
 </div>
 <div class="metadata">
 <a href="./posts/notes/R/2023-05-14-first-R/index.html">

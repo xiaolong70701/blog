@@ -1,0 +1,11 @@
+{
+  "hash": "66b37a9ba5c5c83f3fd645f5a1358c74",
+  "result": {
+    "markdown": "---\ntitle: \"Income and Substitution Effects\"\ndate: \"2023-07-05\"\ncategories: [microeconomics]\nformat:\n  html: \n    code-fold: false\n---\n\nIn the previous notes, we have discussed about the nuts and bolts of consumer choice. At the very end, we talked about Lagrangian method to solve utility maximization problem. Solving the problem yields a set of individual function:\n$$\n\\begin{aligned}\nX_{1}^{*} &= D_{1}(p_{1}, p_{2}, \\cdots, p_{n},I)\\\\\nX_{2}^{*} &= D_{2}(p_{1}, p_{2}, \\cdots, p_{n},I)\\\\\n \\vdots\\\\\nX_{n}^{*} &= D_{n}(p_{1}, p_{2}, \\cdots, p_{n},I)\n\\end{aligned}\n$$\n\nHere $d_{k}$ denotes an individual's demand function of good $k$, $p_{k}$ denotes the price of good $k$, and $I$ denotes the individual's income.\n\n## Demand Functions\n\n::: {.cell execution_count=1}\n``` {.python .cell-code}\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n# Define the function\ndef f(x):\n    return x**2\n\n# Generate x values\nx = np.linspace(-2, 2, 100)\n\n# Generate y values\ny = f(x)\n\n# Create the plot\nplt.plot(x, y, 'r-', linewidth=2)\n\n# Add labels and title\nplt.xlabel('x')\nplt.ylabel('f(x)')\nplt.title('Convex Function')\n\n# Set axis limits\nplt.xlim([-2, 2])\nplt.ylim([0, 4])\n\n# Display the plot\nplt.show()\n```\n\n::: {.cell-output .cell-output-display}\n![](index_files/figure-html/cell-2-output-1.png){width=600 height=449}\n:::\n:::\n\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

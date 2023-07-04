@@ -1,0 +1,54 @@
+---
+title: "Income and Substitution Effects"
+date: "2023-07-05"
+categories: [microeconomics]
+format:
+  html: 
+    code-fold: false
+---
+
+## Demand Functions
+
+In the previous notes, we have discussed about the nuts and bolts of consumer choice. At the very end, we talked about Lagrangian method to solve utility maximization problem. Solving the problem yields a set of individual function:
+$$
+\begin{aligned}
+X_{1}^{*} &= D_{1}(p_{1}, p_{2}, \cdots, p_{n},I)\\
+X_{2}^{*} &= D_{2}(p_{1}, p_{2}, \cdots, p_{n},I)\\
+ \vdots\\
+X_{n}^{*} &= D_{n}(p_{1}, p_{2}, \cdots, p_{n},I)
+\end{aligned}
+$$
+
+Here $d_{k}$ denotes an individual's demand function of good $k$, $p_{k}$ denotes the price of good $k$, and $I$ denotes the individual's income.
+
+### Changes in Income
+
+Imagine that you got a promotion in your company, meanwhile your salary increased. It sounds good right? With your increased income, you don't have to eat instant noodles for meals; instead, you decide to go to a posh restaurant chow down on steak or some upscale delicacies.
+
+For economists, your story has theory behind, which is termed *income effect*. Understanding the change in income can help us capture the logic of consumer choice. That is, intuitively, if we can categorize goods in $X$, then we can predict what would happen on consumer's choice given his or her income increased. 
+
+![Fig 2.1: An Indifference curve map exhibiting normal goods](fig1.png){fig-align="center" width=55%}
+
+As income rises from $I_{1}$ to $I_{2}$ and then to $I_{3}$, the optimal choices of $x$ and $y$, which maximize utility, can be observed through a series of points of tangency. Notably, the budget constraint undergoes a parallel shift since its slope (represented by $−p_{x}=p_{y}$) remains unchanged. It is obvious that the change in income alter the optimal choice, or specifically, increase the amount of goods in the bundles. In Fig 2.1, these two goods are said to be *normal goods*.
+
+$\textbf{Definition 2.1}:$ A good $x_{i}$ for which $\partial x_{i}/\partial I > 0$ over some range of income changes is a normal (or "non-inferior") good in that range.
+
+However, for some goods, when the income of an individual increases, the amount of the good will decrease. Examples of such goods are rotgut whiskey, potatoes, and secondhand clothing.
+
+![Fig 2.2: An Indifference curve map exhibiting inferior goods](fig2.png){fig-align="center" width=55%}
+
+Within this diagram, we can observe that good $z$ is considered to be *inferior good* as its quantity purchased decreases with an increase in income. On the other hand, good $y$ is a normal good, which is expected when there are only two goods available. As total expenditures rise, the purchases of good $y$ also increase accordingly.
+
+$\textbf{Definition 2.2}:$ A good $x_{i}$ for which $\partial x_{i}/\partial I < 0$ over some range of income changes is a inferior good in that range.
+
+Moreover, there is another category of good, which is called an *neutral good* refers to a type of good for which changes in income do not affect the quantity demanded. 
+
+$\textbf{Definition 2.3}:$ A good $x_{i}$ for which $\partial x_{i}/\partial I = 0$ over some range of income changes is a neutral good in that range.
+
+Examples of income neutral goods include salt, public transportation, essential household items, etc.
+
+It's important to note that the income neutrality of a good can vary across different income ranges and consumer preferences. Additionally, a good may be income neutral in the short run but exhibit income elasticity of demand in the long run due to changing consumer behaviors and preferences.
+
+$\textbf{Theorem 2.1}$(Engel's Law):
+
+
