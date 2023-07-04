@@ -10,7 +10,7 @@ comments: false
 
 ::: grid
 ::: {.g-col-12 .g-col-md-10 .g-start-md-2}
-![](assets/images/yueswater_logo.png){fig-align="center"}
+![](assets/images/yueswater_logo.png){fig-align="center" width=35%}
 :::
 
 ::: {.g-col-12 .g-col-md-10 .g-start-md-2}
