@@ -178,6 +178,8 @@ cookieconsent.run({
   <li><a href="#雙邊勞動搜尋模型two-sided-search-model" id="toc-雙邊勞動搜尋模型two-sided-search-model" class="nav-link" data-scroll-target="#雙邊勞動搜尋模型two-sided-search-model">雙邊勞動搜尋模型(Two-sided Search Model)</a>
   <ul class="collapse">
   <li><a href="#模型設定與配對函數matching-function" id="toc-模型設定與配對函數matching-function" class="nav-link" data-scroll-target="#模型設定與配對函數matching-function">模型設定與配對函數(Matching Function)</a></li>
+  <li><a href="#議價談判bargaining-solution" id="toc-議價談判bargaining-solution" class="nav-link" data-scroll-target="#議價談判bargaining-solution">議價談判(Bargaining Solution)</a></li>
+  <li><a href="#雙邊勞動搜尋模型均衡求解" id="toc-雙邊勞動搜尋模型均衡求解" class="nav-link" data-scroll-target="#雙邊勞動搜尋模型均衡求解">雙邊勞動搜尋模型均衡求解</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -481,10 +483,124 @@ u=\frac{s}{p \pi+s}
 <li><p>市場中的求職人數：<span class="math inline">\(Q_{t} \geq 0\)</span></p></li>
 <li><p>經濟體系中的配對效率(efficiency)：<span class="math inline">\(e\)</span></p></li>
 </ul>
-<p>因此該經濟體系中的配對人數可以透過以下式子表達： <span class="math display">\[
+<p>因此該經濟體系中的配對人數可以透過以下式子表達：4 <span class="math display">\[
 M = em(Q, A) \geq 0
 \]</span></p>
-<p>配對函數</p>
+<p>配對函數具有以下特性：</p>
+<ul>
+<li><p>每期能夠成功配對的人數不超過廠商刊登的徵才公告數，即 <span class="math inline">\(M \leq A\)</span></p></li>
+<li><p>每期配對的人數不超過徵才者人數，即<span class="math inline">\(M \leq Q\)</span></p></li>
+<li><p>若廠商刊登徵才訊息與徵才者人數為 <span class="math inline">\(0\)</span>，則成功配對人數必為 <span class="math inline">\(0\)</span>，即 <span class="math inline">\(m(0, A) = m(Q, 0) = 0\)</span></p></li>
+<li><p>每期配對成功人數與廠商刊登徵才訊息與徵才者人數成正相關，即 <span class="math inline">\(M \propto A, Q\)</span></p></li>
+<li><p>邊際產出遞減，即隨著 <span class="math inline">\(A\)</span> 或 <span class="math inline">\(Q\)</span> 的上升，產量會下降</p></li>
+<li><p>固定規模報酬，即 <span class="math inline">\(m(\lambda Q, \lambda A) = \lambda m(Q, A), \forall \lambda &gt; 0\)</span></p></li>
+</ul>
+<p>如果行為者想要求職，其能夠成功找到工作的機率為 <span class="math display">\[
+p_{c} = \frac{em(Q, A)}{Q} = em\left(1, \frac{A}{Q}\right) = em(1, j)
+\]</span></p>
+<p>其中我們令 <span class="math inline">\(j = A/Q\)</span>，代表廠商徵才公告數與徵才者人數的比例，也就是捕捉了經濟體系的勞動市場「擁擠程度」(tightness)。</p>
+<section id="勞動市場中的勞動供給面the-supply-side-of-the-labor-market" class="level4">
+<h4 class="anchored" data-anchor-id="勞動市場中的勞動供給面the-supply-side-of-the-labor-market">勞動市場中的勞動供給面(The Supply Side of the Labor Market)</h4>
+<p>整個經濟體系中的求職者有可能會找到工作，也有可能沒有找到工作。假設成功獲取工作，其可以賺取 <span class="math inline">\(w\)</span> 的實質薪資；若未成功找到工作，則其能夠獲得政府發放的失業補助 <span class="math inline">\(b\)</span>。</p>
+<p>已知求職者成功找到工作的機率為 <span class="math display">\[
+p_{c} = em(1, j)
+\]</span></p>
+<p>換言之，失業的機率則為 <span class="math display">\[
+1 - p_{c} = 1 - em(1, j)
+\]</span></p>
+<p>因此找到工作的預期報酬函數可以透過以下方式計算： <span class="math display">\[
+P(Q) = p_{c}w + (1 - p_{c})b = b + em(1, j)(w - b)
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig13.png" class="img-fluid figure-img" style="width:50.0%" data-fig.align="center"></p>
+<figcaption class="figure-caption">Fig 1.13: 勞動市場中的勞動供給面</figcaption>
+</figure>
+</div>
+</section>
+<section id="勞動市場中的勞動需求面the-demand-side-of-the-labor-market" class="level4">
+<h4 class="anchored" data-anchor-id="勞動市場中的勞動需求面the-demand-side-of-the-labor-market">勞動市場中的勞動需求面(The Demand Side of the Labor Market)</h4>
+<p>勞動市場的需求面即是刻畫廠商需要雇用多少的勞動力，在此模型中即是廠商需要刊登多少求職廣告。</p>
+<p>假設廠商刊登徵才廣告需要支付 <span class="math inline">\(k\)</span> 的成本，且存在機率能夠成功招募到勞工： <span class="math display">\[
+p_{f} = \frac{em(Q, A)}{A} = em\left(\frac{Q}{A}, 1\right) = em\left(\frac{1}{j}, 1\right)
+\]</span></p>
+<p>其中 <span class="math inline">\(1/j\)</span> 可以解釋為對於廠商而言，平均而言有多少求職者。因此 <span class="math inline">\(1 - p_{f}\)</span> 即代表廠商未成功招募到員工的機率。我們令 <span class="math inline">\(z\)</span> 為廠商成功招募員工後的產出數量，則其產出利潤為 <span class="math inline">\(z - w\)</span>。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig14.png" class="img-fluid figure-img" style="width:50.0%" data-fig.align="center"></p>
+<figcaption class="figure-caption">Fig 1.14: 勞動市場中的勞動需求面</figcaption>
+</figure>
+</div>
+<p>已知刊登徵才廣告的成本為 <span class="math inline">\(k\)</span>，但是並非所有廠商刊登廣告後都能成功應聘員工，因此廠商的利潤為 <span class="math display">\[
+p_{f}(z - w)
+\]</span></p>
+<p>亦即考慮配對成功與否的機率。</p>
+<p>勞動市場中會有許多廠商在外蠢蠢欲動，認為有利可圖時進場，發現即將虧損時退場。因此市場會不斷地上演廠商進出市場，直到預期淨報酬為 <span class="math inline">\(0\)</span>，即 <span class="math display">\[
+p_{f}(z - w) - k = 0
+\]</span></p>
+<p>此時不會有廠商進入勞動市場刊登徵才廣告。我們將上式重新整理，會得到以下式子： <span class="math display">\[
+p_{f} = em\left(\frac{1}{j}, 1\right) = \frac{k}{z - w}
+\]</span></p>
+<p>廠商進入市場的目的就是為了刊登廣告並尋找勞動力，因此我們可以將上述問題視為尋找 <span class="math inline">\(Q\)</span> 是如何決定的。</p>
+</section>
+</section>
+<section id="議價談判bargaining-solution" class="level3">
+<h3 class="anchored" data-anchor-id="議價談判bargaining-solution">議價談判(Bargaining Solution)</h3>
+<p>在勞動市場中，「工資」是一項很好的談判籌碼(bargaining chip)：當工資高時，對於廠商而言是不利的，其能夠獲得的利潤較小；當工資低時，對於勞工而言是不利的，因其無法掙到許多錢以供其消費。可以看出，工資對於勞動市場的雙邊行為者而言，都是決定其效用高低的重要因素。</p>
+<p>當經濟行為者進行談判時，其結果取決於若兩者無法達成協議時所面臨的替代方案（談判破裂點），以及兩個人的相對議價能力(bargaining power)。談判之目的是在雙方或多方斡旋後得出之妥協，因此在勞動市場中廠商與求職者進行談判時，必須討論出每個行為者都能接受的工資。</p>
+<ul>
+<li><p>求職者從談判中獲得的好處是 <span class="math inline">\(w - b\)</span></p></li>
+<li><p>廠商從談判中獲得的好處是 <span class="math inline">\(z - w\)</span></p></li>
+</ul>
+<p>因此總剩餘是 <span class="math inline">\(z - b\)</span>，這代表了求職者和廠商共同通過達成協議可能獲得的利益。</p>
+<p>我們令 <span class="math inline">\(a\)</span> 代表求職者的議價能力，其中 <span class="math inline">\(0 &lt; a &lt; 1\)</span>。Nash 議價理論認為，廠商和求職者的分潤與議價能力成正比，因此廠商的議價能力即為 <span class="math inline">\(1- a\)</span>。故我們可以在考慮廠商與求職者的議價能力後，重新計算雙方的好處。求職者的好處為： <span class="math display">\[
+w - b = a(z - b) \Longrightarrow w = az + (1 - a)b
+\]</span></p>
+<p>廠商的好處為： <span class="math display">\[
+z - w = (1 - a)(z - b) \Longrightarrow w = az + (1 - a)b
+\]</span></p>
+<p>可以發現從兩方的角度求算，所得出的工資結果都是一樣的。</p>
+</section>
+<section id="雙邊勞動搜尋模型均衡求解" class="level3">
+<h3 class="anchored" data-anchor-id="雙邊勞動搜尋模型均衡求解">雙邊勞動搜尋模型均衡求解</h3>
+<p>首先，政府失業補助(<span class="math inline">\(b\)</span>)、配對效率(<span class="math inline">\(e\)</span>)、刊登廣告成本(<span class="math inline">\(k\)</span>)、求職者議價能力(<span class="math inline">\(a\)</span>)、廠商成功雇用勞工後之產出(<span class="math inline">\(z\)</span>)均為外生給定。接著我們有三個條件：</p>
+<ul>
+<li><p>Nash 議價解：廠商與求職者在談判後得出的工資，即 <span class="math display">\[
+w = az + (1 - a)b
+\]</span></p></li>
+<li><p>廠商自由進出勞動市場條件：廠商在預期利潤為 <span class="math inline">\(0\)</span> 下，會得到進出市場的條件： <span class="math display">\[
+em\left(\frac{1}{j}, 1\right) = \frac{k}{z - w}
+\]</span></p></li>
+<li><p>求職者預期報酬函數：我們可以透過預期報酬函數，刻畫勞動力是否會進入勞動市場求職，即 <span class="math display">\[
+P(Q) = b + em(1, j)(w - b)
+\]</span></p></li>
+</ul>
+<p>我們將廠商的勞動需求與求職者的勞動供給結合，得到： <span class="math display">\[
+\begin{cases}
+P(Q) = b + em(1, j)(w - b)\\
+em\left(\frac{1}{j}, 1\right) = \frac{k}{z - w}
+\end{cases}
+\]</span></p>
+<p>我們可以將求職者的 <span class="math inline">\(w\)</span> 以 <span class="math inline">\(a(z - b)\)</span> 代入，廠商的 <span class="math inline">\(w\)</span> 則以 <span class="math inline">\(z - w = (1 - a)(z - b)\)</span> 代入，故可以將上述結果改寫為： <span class="math display">\[
+\begin{cases}
+P(Q) = b + em(1, j)\cdot a(z - b)\\
+em\left(\frac{1}{j}, 1\right) = \frac{k}{(1 - a)(z - b)}
+\end{cases}
+\]</span></p>
+<p>因此可以求解出 <span class="math inline">\(j\)</span> 與 <span class="math inline">\(Q\)</span>。我們可以透過下圖了解兩個函數之間的互動關係：</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig15.png" class="img-fluid figure-img" style="width:60.0%" data-fig.align="center"></p>
+<figcaption class="figure-caption">Fig 1.15: 雙邊勞動搜尋模型均衡</figcaption>
+</figure>
+</div>
+<p>一旦我們知道 <span class="math inline">\(j\)</span> 和 <span class="math inline">\(Q\)</span> 後，我們可以計算失業率、職缺率和總產出，它們的計算方式分別是：</p>
+<ul>
+<li><p>失業率：<span class="math inline">\(u = 1 - p_c = 1 - em(1,j)\)</span></p></li>
+<li><p>職缺率：<span class="math inline">\(v = 1 - p_f = 1 - em\left(\frac{1}{j}, 1\right)\)</span></p></li>
+<li><p>總產出：<span class="math inline">\(Y = Mz = em(Q, A)z = Qem(1, j)z\)</span></p></li>
+</ul>
+<p>注意到，前述在描述失業率與職缺率時，兩者呈現負相關（參見 Beveridge 曲線），可看出雙邊勞動搜尋模型與實證結果相當契合。</p>
 
 
 </section>
