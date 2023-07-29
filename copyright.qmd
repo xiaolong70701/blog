@@ -1,0 +1,25 @@
+---
+comments: false
+---
+
+<center>
+<h1>
+Copyright Statement
+</h1>
+</center>
+
+Copyright © 2023 Anthony Sung.
+
+All rights reserved. No part of this website may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the publisher, except in the case of brief quotations embodied in critical reviews and certain other noncommercial uses permitted by copyright law.
+
+This website was created using Quarto. For more information about Quarto, please visit the official website at [https://quarto.org/](https://quarto.org/).
+
+The preview images used on this website are sourced from [https://www.freepik.com/](https://www.freepik.com/).
+
+For permission requests, please contact:
+
+Anthony Sung
+
+Email: [xiaolong70701@gmail.com](mailto:xiaolong70701@gmail.com)
+
+Any unauthorized use of the content of this website may violate copyright laws, trademark laws, and other applicable regulations and statutes.

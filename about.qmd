@@ -1,0 +1,15 @@
+---
+title: "About Me"
+image: profile.png
+comments: false
+about:
+  template: trestles
+---
+
+Hello! I'm Anthony Sung, a student who majors in political science at National Taiwan University. I have a passion for exploring politics and economics, as well as utilizing computational methods to analyze social phenomena. In my free time, you'll often find me listening to music, singing, and diving into programming projects.
+
+If you have any questions or feedback, please feel free to contact me via email.
+
+- **CV**: [Dowload my CV](anthony_cv.pdf)
+
+- **E-mail**: [xiaolong70701@gmail.com](mailto:xiaolong70701@gmail.com)

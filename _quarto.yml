@@ -1,0 +1,53 @@
+project:
+  type: website
+  output-dir: _site
+  preview:
+    port: 5902
+    browser: false
+    
+website:
+  google-analytics: "G-VLWNL5QXD8"
+  title: "Yueswater Blog"
+  favicon: images/favicon.png
+  repo-actions: [issue]
+  cookie-consent: true
+  page-footer: 
+    left: Copyright © 2023 Anthony. All rights reserved. See [statements](../copyright.html).
+    right: 
+      - icon: github
+        href: https://github.com/xiaolong70701
+      - icon: facebook
+        href: https://www.facebook.com/yueswater/
+      - icon: instagram
+        href: https://www.instagram.com/yues_19_water/
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: notes.qmd
+        text: Diary & Notes
+    right:
+      - text: About
+        href: about.html
+      - icon: github
+        href: https://github.com/xiaolong70701
+      - icon: facebook
+        href: https://www.facebook.com/yueswater/
+      - icon: instagram
+        href: https://www.instagram.com/yues_19_water/
+format:
+  html:
+    toc: true
+    theme:
+      light: css/karat_quarto.scss
+      dark: css/karat_dark.scss
+    code-copy: true
+    code-overflow: wrap
+    css: css/karat.css
+    comments:
+      giscus:
+        repo: xiaolong70701/quarto-blog
+        reactions-enabled: true
+        input-position: top
+        theme: light
+        language: en

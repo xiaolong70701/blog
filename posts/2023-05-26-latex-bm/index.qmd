@@ -1,0 +1,256 @@
+---
+title: "用 LaTeX 製作簡報"
+image: coding preview.png
+date: "2023-05-26"
+description: 創意、專業和易於製作的高品質投影片
+categories: [LaTeX, programming language]
+---
+
+為何使用 $\LaTeX$ 進行簡報製作呢，使用 $\LaTeX$ 製作簡報，個人認為大致有以下優點，首先是學術性強大，包含版面、顯示方式等，都能夠讓讀者或閱聽人看到沈穩的簡報內容與外觀，從而能夠專注聽講。另一個優點則是輸出的內容可以跨平台使用，因其產生的檔案類型為`.pdf`檔，故能夠避免使用`.pptx`時字體在其他電腦未安裝而無法顯示的窘境。不過缺點大概就是 coding 很麻煩！使用 $\LaTeX$ 做出來的簡報我們稱為 beamer（以下我們也這樣稱呼），可以先來看一個簡單的例子：
+
+```tex
+\documentclass{beamer}
+\title{Sample title}
+\author{Anonymous}
+\institute{Overleaf}
+\date{2023}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Sample frame title}
+
+This is some text in the first frame.
+\end{frame}
+
+\end{document}
+```
+
+可以看到我們是以`frame`這個環境產生簡報的一個頁面。接著我們就針對 beamer 的細節進行更細緻的討論。
+
+## 幀(frame)
+
+如同上面提到的，`frame`環境是產生 beamer 頁面的關鍵。`frame`環境的設定如下：
+
+```tex
+\begin{frame}[頁面設定]
+\frametitle{頁面標題}
+\framesubtitle{頁面副標題}
+頁面內容
+\end{frame}
+```
+
+![](https://i.imgur.com/cQoZAl6.png)
+
+加入頁面標題時必須使用`\frametitle{}`，而`[頁面設定]`的部分則留到後面幾個小節再討論。
+
+### 標題頁
+
+如果想要顯示標題頁，可以在前言區先加入標題資訊
+```tex
+\title[About Beamer] %optional
+{About the Beamer class in presentation making}
+
+\subtitle{A short story}
+
+\author[Anthony, Ben] % (optional)
+{Anthony\inst{1} \and Ben\inst{2}}
+
+\institute[NTU] % (optional)
+{
+  \inst{1}%
+  Department of Political Science\\
+  National Taiwan University
+  \and
+  \inst{2}%
+  Department of Economics\\
+  National Taiwan University
+}
+
+\date[2021] % (optional)
+{Very Large Conference, April 2021}
+```
+
+接著在`frame`環境內加上`\titlepage`：
+
+```tex
+\begin{frame}
+\titlepage
+\end{frame}
+```
+
+結果就會是：
+
+![](https://i.imgur.com/UwPO7NR.png)
+
+
+或是可以使用`\frame{\titlepage}`，更加簡潔有力。如果想要在標題頁加上 logo，則使用`\logo{\includegraphics{logo 檔案}}`。
+
+### 目錄頁
+
+通常來說，在一份演講簡報中都會含有目錄頁，目的是為了讓觀眾能夠先快速地掌握本次演講的重點，從而能夠在之後的演講中抓到其想要了解的重要資訊。加入目錄頁的方式跟標題頁十分相似，只要改為`\tableofcontents`即可。
+
+```tex
+\begin{frame}
+\tableofcontents
+\end{frame}
+```
+
+當然，如果你直接將上面的程式碼放到你的`.tex`檔案裡面是不會跑出東西的，我們在使用目錄頁的時候必須確認已經加入`\section`、`\subsection`等資訊。
+
+![](https://i.imgur.com/BzLV9nt.png)
+
+
+## 簡報內容的細節
+
+在了解完如何產生一個又一個的簡報頁面後，接下來我們要針對簡報內部的內容進行討論。
+
+### 列點與條列
+
+假設演講者想要將其所欲說明的資訊以列點的方式呈現，我們有以下兩種工具。首先是無序的列點，其結果只會是一個個的幾何圖案，我們使用`itemize`環境來達到此目的：
+
+```tex
+\begin{itemize}
+\item The first item
+\item The second item
+\item The third item
+\item The fourth item
+\end{itemize}
+```
+
+![](https://i.imgur.com/qh0rJGU.png)
+
+如果想要改為原點，則在`\item`後面加上`[$\bullet$]`，就會變成以下的形式：
+
+```tex
+\begin{itemize}
+\item[$\bullet$] Circle
+\item Triangle
+\end{itemize}
+```
+
+![](https://i.imgur.com/zJ05TX6.png)
+
+另一個方法則是有序列點，方法為使用`enumerate`環境，即
+
+```tex
+\begin{enumerate}
+\item The first item
+\item The second item
+\item The third item
+\item The fourth item
+\end{enumerate}
+```
+
+![](https://i.imgur.com/MU8MpUX.png)
+
+
+### 分欄
+
+作為簡報者，當然會想要簡報越能簡短的報告出越詳細的內容越好，因此常會在圖片、文字旁邊加上註解、說明文字，又或是進行比較。此時就需要使用`columns`環境：
+
+```tex
+\begin{columns}
+\begin{column}{寬度（小數點）\textwidth}
+文字/圖片
+\end{colimn}
+\begin{column}{寬度（小數點）\textwidth}
+文字/圖片
+\end{colimn}
+\end{columns}
+```
+
+![](https://i.imgur.com/EHruByk.png)
+
+### 區塊
+
+區塊可以將一般文字與想要強調的文字、公式等區分開，這個目的具有強調、警示的作用，能夠讓觀眾看到此張投影片的重點。例如我們想要將正弦半角公式放到投影片中，可以這麼做：
+
+![](https://i.imgur.com/0tY0v8Y.png)
+
+beamer 也有提供底下的幾個環境：
+
+* `block` 普通環境
+* `theorem` 定理環境
+* `lemma` 引理環境
+* `proof` 證明環境
+* `corollary` 推論環境
+* `example` 示例環境
+* `alertblock` 警示環境
+
+### beamer 顏色與主題
+
+為了讓簡報看起來不單調，可以使用 beamer 中的主題功能，為簡報頁面增添色彩，我們使用`\usetheme{主題}`改變 beamer 的主題，並以`\usecolortheme{顏色主題}`改變 beamer 整體的顏色配置。關於更多的顏色配置與主題，可以參考 [Another Beamer Theme](https://mpetroff.net/files/beamer-theme-matrix/)。
+
+![](https://i.imgur.com/LcqWSkk.png)
+
+## Overlay 的控制
+
+在`.pptx`中，我們可以透過加上動畫來將演講中的某些內容以動態的方式呈現。在 beamer 中我們雖然沒有精緻的動畫可呈現，但我們可以透過類似讓內容一個一個跑出來的概念達到這個目的。
+
+### pause 的用法
+
+最基本的 overlay 就是用`\pause`來做暫停，使用方法如下：
+
+```tex
+\begin{frame}
+內容 1
+\pause
+內容 2
+\pause
+內容 3
+\end{frame}
+```
+
+輸出成`.pdf`檔後就會產生三張投影片。同樣的，在列點的環境中我們也能使用這樣的功能：
+
+```tex
+\begin{frame}
+    \begin{enumerate}
+        \item Content 1
+        \pause
+        \item Content 2
+        \pause
+        \item Content 3
+    \end{enumerate}
+\end{frame}
+```
+![](https://i.imgur.com/LwdTqgu.gif)
+
+
+區塊功能也可以使用，這部分就留給讀者自己去嘗試。
+
+### 顯示程式碼
+
+許多資工系或是會遇到需要報告程式碼的使用者，在一般的 PowerPoint 輸入程式碼後，程式碼的字體、排版不會太美觀，而 beamer 便提供了此功能（一般文件也可以使用）。在 beamer 要引用程式碼請使用`verbatim`或`listings`套件。不過, 在使用可以顯示的投影片前，必需使用`fragile`的設定：
+```tex
+\begin{frame}[fragile]
+
+\end{frame}
+```
+接著我們就可以在投影片中加入程式碼：
+
+```tex
+\begin{frame}[fragile]
+\begin{lstlisting}
+# 程式碼
+\end{lstlisting}
+\end{frame}
+```
+如果想要在文中顯示程式碼，可以使用`\path{指令}`或是`\verb|指令|`。
+
+### 按鈕與指定頁面
+
+若要如 PowerPoint 一般，能夠跳到指定頁面，首先要將某頁投影片貼上標籤，即：
+```tex
+\begin{frame}[label=here]
+
+\end{frame}
+```
+接著就可以製作按鈕：
+```tex
+\hyperlink{here}{\beamerbutton{按鈕文字}}
+```
+
+![](https://i.imgur.com/cKpPlLD.gif)

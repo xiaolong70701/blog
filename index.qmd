@@ -1,0 +1,26 @@
+---
+title: "Home"
+image: images/avatar.svg
+about:
+  template: jolla
+  links:
+    - icon: linkedin
+      text: Linkedin
+      href: https://www.linkedin.com/in/anthonysung/
+    - icon: facebook
+      text: Facebook
+      href: https://www.facebook.com/yueswater/
+    - icon: github
+      text: Github
+      href: https://github.com/xiaolong70701
+    - icon: file-earmark-person
+      text: Resume
+      href: anthony_cv.pdf
+comments: false
+---
+
+Hi, this is **Anthony** speaking.
+
+Now are you ready to explore the world of economics?
+
+<iframe src="https://embeds.beehiiv.com/7deed8ef-3061-4985-a13e-2a3ede1f498e?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent;"></iframe>

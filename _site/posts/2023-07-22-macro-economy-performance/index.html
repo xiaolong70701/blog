@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anthony Sung">
+<meta name="dcterms.date" content="2023-07-22">
+<meta name="description" content="經濟表現的指標：GDP、GDP平減指數、CPI。">
+
+<title>Yueswater Blog - 衡量經濟表現</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VLWNL5QXD8"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VLWNL5QXD8', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../css/karat.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Yueswater Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../notes.html" rel="" target="">
+ <span class="menu-text">Diary &amp; Notes</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/" rel="" target=""><i class="bi bi-facebook" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/yues_19_water/" rel="" target=""><i class="bi bi-instagram" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#國內生產毛額gross-domestic-product-gdp" id="toc-國內生產毛額gross-domestic-product-gdp" class="nav-link active" data-scroll-target="#國內生產毛額gross-domestic-product-gdp">國內生產毛額(Gross Domestic Product, GDP)</a>
+  <ul class="collapse">
+  <li><a href="#支出面" id="toc-支出面" class="nav-link" data-scroll-target="#支出面">支出面</a></li>
+  <li><a href="#所得面" id="toc-所得面" class="nav-link" data-scroll-target="#所得面">所得面</a></li>
+  </ul></li>
+  <li><a href="#衡量經濟表現指標物價指數" id="toc-衡量經濟表現指標物價指數" class="nav-link" data-scroll-target="#衡量經濟表現指標物價指數">衡量經濟表現指標：物價指數</a>
+  <ul class="collapse">
+  <li><a href="#名目-gdp-與實質-gdp" id="toc-名目-gdp-與實質-gdp" class="nav-link" data-scroll-target="#名目-gdp-與實質-gdp">名目 GDP 與實質 GDP</a></li>
+  <li><a href="#國內生產毛額平減指數" id="toc-國內生產毛額平減指數" class="nav-link" data-scroll-target="#國內生產毛額平減指數">國內生產毛額平減指數</a></li>
+  <li><a href="#消費者物價指數" id="toc-消費者物價指數" class="nav-link" data-scroll-target="#消費者物價指數">消費者物價指數</a></li>
+  <li><a href="#gdp-平減指數與-cpi-的比較" id="toc-gdp-平減指數與-cpi-的比較" class="nav-link" data-scroll-target="#gdp-平減指數與-cpi-的比較">GDP 平減指數與 CPI 的比較</a></li>
+  <li><a href="#核心通膨" id="toc-核心通膨" class="nav-link" data-scroll-target="#核心通膨">核心通膨</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">衡量經濟表現</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">macroeconomics</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    <p>經濟表現的指標：GDP、GDP平減指數、CPI。</p>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Anthony Sung </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 22, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<p>經濟成長指的是一個國家之產出在長期不斷向上成長的趨勢，而景氣循環則是一個國家之產出在短期內的上下波動。無論是研究經濟成長或是景氣循環，我們都需要一個方法與途徑刻畫一國的整體經濟表現。在實證上我們多以下面三種指標衡量：</p>
+<ul>
+<li><p>國內生產毛額</p></li>
+<li><p>物價水準(price level)</p></li>
+<li><p>失業率(unemployment rate)</p></li>
+</ul>
+<section id="國內生產毛額gross-domestic-product-gdp" class="level2">
+<h2 class="anchored" data-anchor-id="國內生產毛額gross-domestic-product-gdp">國內生產毛額(Gross Domestic Product, GDP)</h2>
+<p><a href="https://www.dgbas.gov.tw/public/Attachment/732814143971.doc#:~:text=%E5%9C%8B%E5%85%A7%E7%94%9F%E7%94%A2%E6%AF%9B%E9%A1%8D%EF%BC%9A%E5%9C%8B%E5%85%A7,%E5%A4%96%E5%9C%8B%E4%BA%BA%E6%89%80%E7%B6%93%E7%87%9F%E8%80%85%E3%80%82">主計處</a>對於國內生產毛額的定義為：「在本國（或一定地區）疆域以內所有生產機構或單位之生產成果，不論這些生產者係本國人或外國人所經營者。」</p>
+<p>在現代社會中，分工與貿易是普遍存在的現象，不同國家或地區會根據各自的優勢和資源進行專業化的生產，然後通過貿易來交換商品和服務。在這樣的生產過程中，附加價值(value added)是一個重要的概念。</p>
+<p>附加價值是指產出的價值減去用於生產該產出的中間投入(intermediate consumption)。換句話說，附加價值是指生產過程中增加的價值。例如，假設農民將稻穀出售得到<span class="math inline">\(10\)</span>萬元，但他購買肥料和種子花了<span class="math inline">\(2\)</span>萬元，那麼農民的生產活動所創造的附加價值為<span class="math inline">\(8\)</span>萬元，即<span class="math inline">\(10\)</span>萬元產出價值減去<span class="math inline">\(2\)</span>萬元中間投入。</p>
+<p>而中間投入是指在生產過程中使用的非人力和機器設備的投入。這些投入包括原料、水電等，但不包括人力和機器設備。</p>
+<p>一般來說我們可以透過下面三種方式計算 GDP：</p>
+<ul>
+<li><p>生產面(product approach)</p></li>
+<li><p>支出面(expenditure approach)</p></li>
+<li><p>所得面(income approach)</p></li>
+</ul>
+<section id="支出面" class="level3">
+<h3 class="anchored" data-anchor-id="支出面">支出面</h3>
+<p>一般來說，GDP 的定義大多可以遵循以下這句話：</p>
+<blockquote class="blockquote">
+<p><em>GDP is the total market value of all final goods and services produced within a country in a given period of time.</em></p>
+</blockquote>
+<p>我們可以將上面的定義拆分為以下部分。</p>
+<ul>
+<li><p>GDP 為市場價值的加總：價值的衡量方式有許多種，而我們所聚焦的對象是流通在市面上的商品，由於市場價格為供需均衡所得出的結果，因此如果我們使用市場價格作為計算的方式，將不失其公正性與客觀性。</p></li>
+<li><p><span class="math inline">\(\cdots\)</span>包含最終商品價值<span class="math inline">\(\cdots\)</span>：誠如上述所言，我們需要扣除中間投入，計算產品最終的價值，才能夠避免重複計算。</p></li>
+<li><p><span class="math inline">\(\cdots\)</span>在一國境內<span class="math inline">\(\cdots\)</span>：國內生產毛額是以國家作為劃分經濟體系的依據，若為本國的生產則必須歸類在計算的範疇內。例如 Google 來臺設廠，因為在臺灣島境內，故也算在臺灣的 GDP。</p></li>
+<li><p><span class="math inline">\(\cdots\)</span>於給定期間<span class="math inline">\(\cdots\)</span>：國內生產毛額均是以一段時間作為計算區間，大多是以一年為單位，因此可以看出 GDP 是流量(flow)而非存量(stock)。</p></li>
+</ul>
+<p>國內生產毛額刻畫的是最終商品、服務的價值，其可以被四個單位解釋，並形成一個恆等式，稱之為<strong>國民所得恆等式(national income identity)</strong>： <span class="math display">\[
+Y = C + I + G + (X - M)
+\]</span></p>
+<ul>
+<li><p><span class="math inline">\(Y\)</span>：即 GDP。</p></li>
+<li><p><span class="math inline">\(C\)</span>：民間消費支出</p></li>
+<li><p><span class="math inline">\(I\)</span>：國內資本形成毛額</p></li>
+<li><p><span class="math inline">\(G\)</span>：政府購買</p></li>
+<li><p><span class="math inline">\(X\)</span>：出口</p></li>
+<li><p><span class="math inline">\(M\)</span>：進口</p></li>
+</ul>
+<p>為了衡量國內⽣產⽑額，我們必須計算各類⽀出。</p>
+</section>
+<section id="所得面" class="level3">
+<h3 class="anchored" data-anchor-id="所得面">所得面</h3>
+<p>表面上所得與支出看似為兩個不同的概念，但實際上這兩者即是一體兩面。</p>
+<p>附加價值是由生產要素創造的價值，而這些生產要素同時也獲得了這些價值，因此也就是這些生產要素的所得。而所謂的生產要素，指的是在生產過程中所使用的各種要素，它們是勞動、資本、土地和企業家能力。</p>
+<ol type="1">
+<li><p>勞動：勞工所獲得的報酬稱為勞動報酬，這是勞動生產要素的收入，可能包括薪水、工資等。</p></li>
+<li><p>資本所有者：資本所有者所獲得的報酬包含利息、租金。資本是指投入到生產中的財富、資金或資產，而利息則是這些資本所有者由於提供資本而獲得的收入。</p></li>
+<li><p>土地：土地作為生產要素的一部分，其所有者可以通過出租土地獲得收入，土地所有者所獲得的報酬稱為地租。。</p></li>
+<li><p>企業家能力：企業家負責創新、管理和風險承擔，他們從企業的經營中獲得利潤作為報酬。</p></li>
+</ol>
+<p>因此，國民所得(gross national income, GNI)即是指上述四種生產要素所得的總和，也就是一個國家在特定時期內生產所創造的附加價值總和。下面是對於一些概念的釐清與解釋。</p>
+<p>首先，勞動報酬稱作受僱員工報酬，其他報酬通稱營業盈餘。在國民所得帳中，將勞動報酬（即勞工的收入）稱作受僱員工報酬，這是因為這部分報酬是由受僱員工在企業中工作所獲得的。而除了受僱員工報酬外，其他報酬統稱為營業盈餘，這包括資本所有者的利息和企業家能力所獲得的利潤。</p>
+<p>其次，國民所得與國內生產毛額並不相等。國民所得是指國內生產毛額(GDP)再扣除營業稅和加上國外要素所得淨額的差額。這是因為在生產過程中，企業需要支付營業稅，而營業盈餘是在扣除營業稅後才分配給員工和股東。</p>
+<p>由於在國際貿易中，本國國民可能持有外國企業的股票，而外國人也可能持有本國企業的股票。這意味著一部分企業的利潤（股利）會流向外國。因此，需要考慮本國人在國外所獲得的要素所得與外國人在本國所獲得的要素所得之間的差額，稱為國外要素所得淨額(net foreign income, NFI)。</p>
+<p>因此，國民所得等於 GDP 加上國外要素所得淨額，即 <span class="math display">\[
+GNI = GDP + NFI
+\]</span></p>
+<p>而 GDP 的組成是由折舊（機器設備的耗損）、營業稅、受僱員工報酬和營業盈餘所組成，這些項目代表了在生產過程中不同要素的收入和成本。</p>
+</section>
+</section>
+<section id="衡量經濟表現指標物價指數" class="level2">
+<h2 class="anchored" data-anchor-id="衡量經濟表現指標物價指數">衡量經濟表現指標：物價指數</h2>
+<p>總體經濟學家並不關心個別商品或服務的價值為何，其焦點置於一國商品或服務的平均價格，以及物價指數(price index)。</p>
+<p>總體經濟學家在衡量一個國家商品與服務的平均價格時，使用加權平均是因為要考慮到各個商品與服務的相對重要性。不同商品和服務在經濟中的地位不同，因此單純使用算術平均來計算價格可能無法全面反映整個經濟體系的價格變動。為了衡量相對重要性，文獻上多透過以下兩種方式進行加權：</p>
+<ol type="1">
+<li><p>個別商品支出占總支出比例：觀察消費者在整體支出中對每種商品和服務的支出比例，通常以消費者支出的加權形式來反映商品的相對重要性。如果某種商品在整體支出中佔比較大，則其價格變動對整體平均價格的影響也會比較大。</p></li>
+<li><p>消費數量佔總產出的比例：考慮商品的產出數量，如果某種商品在國家總產出中佔比較大，則其價格變動也會對整體平均價格產生較大影響。</p></li>
+</ol>
+<p>在實際計算中，經濟學家通常使用消費者物價指數(consumer price index, CPI)來衡量商品與服務的平均價格。CPI 考慮了大量的消費品和服務，並根據消費者的消費模式給予不同商品和服務不同的權重。這些權重反映了每種商品和服務在消費者支出中的相對重要性。</p>
+<p>另一方面，國內生產毛額平減指數（GDP deflator）也是一個衡量商品價格變動的指標，但它考慮了全部的國內生產，包括消費品、投資品、政府支出和淨出口。GDP deflator 的計算方式與CPI有所不同，它對不同類型的支出給予不同的權重，以計算平均價格的變動。因此，兩者在商品涵蓋範圍和權數選取方法上有所差異，導致計算結果也可能有一定的差別。</p>
+<section id="名目-gdp-與實質-gdp" class="level3">
+<h3 class="anchored" data-anchor-id="名目-gdp-與實質-gdp">名目 GDP 與實質 GDP</h3>
+<p>國內生產總值（GDP）的變動可能來自以下原因：</p>
+<ul>
+<li><p>價格的變動</p></li>
+<li><p>生產輸出數量的變動</p></li>
+</ul>
+<p>而實質國內生產總值的變動僅受生產輸出數量的影響，這是因為實質 GDP是以固定的基準年度價格計算而成。通過使用固定的基期價格，實質 GDP可以消除通貨膨脹的影響，並專注反映產出數量的變動。</p>
+<p>因此，實質 GDP是經濟中真實的產出量，而名目 GDP則受到價格波動的影響。在經濟分析中，實質 GDP是一個重要的指標，因為它能更準確地反映經濟的實際增長或衰退，而不受價格變動的影響。</p>
+<p>經濟學家通常使用實質 GDP來衡量經濟的整體表現，並且可以幫助政府和企業制定更明智的經濟政策和投資決策。藉由控制通貨膨脹的影響，實質 GDP提供了更準確和客觀的經濟評估，有助於維持穩定的經濟發展。</p>
+<p>假設我們有 2015 至 2017 的資料，且該國僅有商品 <span class="math inline">\(A\)</span>、<span class="math inline">\(B\)</span>。</p>
+<table class="table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">\(P\)</span>(2015)</th>
+<th><span class="math inline">\(Q\)</span>(2015)</th>
+<th><span class="math inline">\(P\)</span>(2016)</th>
+<th><span class="math inline">\(Q\)</span>(2016)</th>
+<th><span class="math inline">\(P\)</span>(2017)</th>
+<th><span class="math inline">\(Q\)</span>(2017)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Good A</td>
+<td><span class="math inline">\(\$ 30\)</span></td>
+<td><span class="math inline">\(900\)</span></td>
+<td><span class="math inline">\(\$ 31\)</span></td>
+<td><span class="math inline">\(1000\)</span></td>
+<td><span class="math inline">\(\$ 36\)</span></td>
+<td><span class="math inline">\(1050\)</span></td>
+</tr>
+<tr class="even">
+<td>Good B</td>
+<td><span class="math inline">\(\$ 100\)</span></td>
+<td><span class="math inline">\(192\)</span></td>
+<td><span class="math inline">\(\$ 102\)</span></td>
+<td><span class="math inline">\(200\)</span></td>
+<td><span class="math inline">\(\$ 100\)</span></td>
+<td><span class="math inline">\(205\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>我們可以計算名目與實質 GDP。首先，第 <span class="math inline">\(t\)</span> 年的名目 GDP 的公式為： <span class="math display">\[
+\sum^{n}_{i = 1} P_{i,t}Q_{i,t}
+\]</span></p>
+<p>第 <span class="math inline">\(t\)</span> 年的實質 GDP 的公式為：</p>
+<p><span class="math display">\[
+\sum^{n}_{i = 1} P_{i, \text{base year}}Q_{i,t}
+\]</span> 其中 <span class="math inline">\(n\)</span> 為商品數量，<span class="math inline">\(i\)</span> 表示商品種類，<span class="math inline">\(t\)</span> 表示年份。注意到實質 GDP 的計算是將每年的商品數額乘上基期年的價格，因此標註為 <span class="math inline">\(P_{i, \text{base year}}\)</span>。綜上，我們可以分別計算名目與實質 GDP。</p>
+<ul>
+<li>計算名目GDP
+<ul>
+<li>2015年：<span class="math inline">\(\$30 \times 900 + \$100 × 192 = \$27,300 + \$19,200 = \$46,200\)</span></li>
+<li>2016年：<span class="math inline">\(\$51,400\)</span></li>
+<li>2017年：<span class="math inline">\(\$58,300\)</span></li>
+</ul></li>
+<li>計算實質GDP（使用2015年的價格作為基準）
+<ul>
+<li>2015年：<span class="math inline">\(\$46,200\)</span></li>
+<li>2016年：<span class="math inline">\(\$50,000\)</span></li>
+<li>2017年：<span class="math inline">\(\$30 × 1,050 + \$100 × 205 = \$31,500 + \$20,500 = \$52,000\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="國內生產毛額平減指數" class="level3">
+<h3 class="anchored" data-anchor-id="國內生產毛額平減指數">國內生產毛額平減指數</h3>
+<p>國內生產毛額物價指數，也被稱為國內生產毛額平減指數，是一個衡量整體物價水平變動的指標，它涵蓋了國民所得帳中所有的商品和服務。這種物價指數並不是直接從個別商品的價格計算得出的，而是計算國內生產毛額的副產品。</p>
+<p>「平減」這個詞的意思是指消除通貨膨脹或通貨蕭條等因素的影響。國內生產毛額是以當期的物價水準去衡量，因此又稱為名目生產總額。然而，這種以當期價格計算的生產價值會使跨年度比較失真，因為通貨膨脹會導致價格上升，看似產出增加，但實際上可能只是價格上漲的影響。為了能適當地反映整個經濟的實際產出，我們需要將物價變動的影響排除在外。</p>
+<p>為了衡量實質生產的大小，我們可以選定某一年的價格作為計算的基礎，這個年度被稱為基期(base year)。然後，根據基期的價格衡量各期的生產價值，這樣可以排除物價變動所造成的扭曲，我們將這種指標稱為實質國內生產毛額或固定價格國內生產毛額。實質國內生產毛額更能反映經濟的實際產出，而不受物價變動的影響。</p>
+<p>因此，國內生產毛額物價指數是一種衡量整體物價水平變動的指標，其是通過消除通貨膨脹等因素的影響，以實質國內生產毛額來反映經濟的實際產出。</p>
+<p>第 <span class="math inline">\(t\)</span> 年的GDP 平減指數的公式為： <span class="math display">\[
+\text{GDP deflator}_{t} = \frac{\text{nominal GDP}_{t}}{\text{real GDP}_{t}} \times 100
+\]</span></p>
+<p>透過比較名目 GDP 與實質 GDP，我們可以推算從基期開始，一般物價的變動情況。為了方便計算和比較，通常將實質GDP的基期指數設定為 <span class="math inline">\(100\)</span>。</p>
+<p>假設我們以2015年為基期，則2016年的國內生產總值平減指數可以定義如下： <span class="math display">\[
+\text{GDP deflator}_{2016} = \frac{\text{nominal GDP}_{2016}}{\text{real GDP}_{2016}} \times 100
+\]</span></p>
+<p>如果指數大於 <span class="math inline">\(100\)</span>，表示 2016 年的名目 GDP增加了，相對於基期來說，經濟活動有所擴張。如果指數小於 <span class="math inline">\(100\)</span>，表示 2016 年的名目 GDP減少了，相對於基期來說，經濟活動有所縮減。</p>
+<p>注意到第 <span class="math inline">\(t\)</span> 年的GDP 平減指數可以改寫為以下的形式： <span class="math display">\[
+\begin{aligned}
+\text{GDP deflator} &amp;= \frac{\text{NGDP}_{t}}{\text{RGDP}_{t}} = \frac{\sum^{n}_{i=1}P_{i,t}Q_{i,t}}{\text{RGDP}_{t}}\\
+&amp; = \sum^{n}_{i=1}\left(\frac{Q_{i,t}}{\text{RGDP}_{t}}\cdot P_{i,t}\right)
+\end{aligned}
+\]</span></p>
+<p>可以看出 GDP 平減指數就是價格的加權平均，反映了不同商品在 GDP 計算時的重要性。</p>
+</section>
+<section id="消費者物價指數" class="level3">
+<h3 class="anchored" data-anchor-id="消費者物價指數">消費者物價指數</h3>
+<p>GDP 平減物價指數涵蓋的商品範圍相當廣泛，但未必能忠實地反映消費者或廠商切身感受的物價變動。為了更準確地反映實際生活成本，我們可以縮減商品範圍，專注於一般家庭更關心的日常食衣住行等方面的價格變動。</p>
+<p>當名目所得上升時，若日常生活費用也同比例上升，家庭的生活品質並不會提升，因此一般家庭不僅關心薪資的變動，也關心物價的變動。消費者物價指數則是衡量一個國家的消費者在某一特定期間所購買的消費性商品與服務的平均價格。CPI 通常包含各種日常生活必需品，如食物、衣物、住房和交通等，因此能夠更貼近消費者的實際生活。此外，CPI 是用來衡量通貨膨脹或通貨緊縮的指標，也可用於調整薪資和退休金等，以確保收入能夠應對物價的變動。因此，CPI 在<strong>衡量消費者所感受的物價變動</strong>方面扮演著重要的角色。</p>
+<p>CPI的概念是基於一個固定的基期（通常選擇一年）來計算。首先，收集基期時的一籃子商品(a “basket” of good)和服務的價格，並且這些價格構成了基期 CPI 的基準。然後，在每個後續的時間點，重新收集同樣一籃子商品和服務的價格。通過將這些後續價格與基期的價格進行比較，可以計算出 CPI。因此，CPI的計算公式如下： <span class="math display">\[
+\text{CPI} = \frac{\text{Cost of basket in that year}}{\text{Cost of basket in base period}}
+\]</span></p>
+<p>CPI 的結果表示當前時期的平均價格相對於基期的價格水平。如果 CPI 為 <span class="math inline">\(100\)</span>，表示價格與基期持平，如果 CPI 高於 <span class="math inline">\(100\)</span>，表示價格上升，反之，如果 CPI 低於 <span class="math inline">\(100\)</span>，表示價格下降。</p>
+<p>如果以更數學的方式表達 CPI，第 <span class="math inline">\(t\)</span> 年的CPI 的計算公式為： <span class="math display">\[
+\begin{aligned}
+\text{CPI} &amp;= \frac{\sum^{n}_{i = 1}P_{i, t}Q_{i, \text{base year}}}{\sum^{n}_{i = 1}P_{i, \text{base year}}, Q_{i, \text{base year}}}\\
+&amp;= \sum^{n}_{i = 1}\frac{Q_{i, \text{base year}}}{\sum^{n}_{i = 1}P_{i, \text{base year}}, Q_{i, \text{base year}}} \times P_{i, t}\\
+&amp;= \sum_{i=1}^{n} \left( \frac{P_{i, \text{base year}} \times Q_{i, \text{base year}}}{\sum_{j=1}^{n} P_{j, \text{base year}} \times Q_{j, \text{base year}}} \times \frac{P_{i, t}}{P_{i, \text{base year}}} \right)
+\end{aligned}
+\]</span></p>
+</section>
+<section id="gdp-平減指數與-cpi-的比較" class="level3">
+<h3 class="anchored" data-anchor-id="gdp-平減指數與-cpi-的比較">GDP 平減指數與 CPI 的比較</h3>
+<p>GDP 平減指數和 CPI 是兩種衡量價格水平變動的指標，它們在一些方面有所不同。</p>
+<ol type="1">
+<li><p>範圍不同：GDP 平減指數計算的是 GDP 中所有商品和服務的價格變動，包括消費品、投資品、政府支出和淨出口。而 CPI 僅計算家庭用品和服務等消費品的價格變動，範圍較為有限。</p></li>
+<li><p>商品籃不同：CPI 中的商品籃是固定的，表示在一段時間內保持不變。而 GDP 平減指數的商品籃允許變動，根據不同時間段的經濟結構和消費模式做出調整。</p></li>
+<li><p>是否包含進口商品：CPI 包含進口商品的價格變動，因為它計算的是家庭用品和服務等消費品的價格。而 GDP 平減指數僅考慮國內生產的商品和服務，不包含進口商品的價格。</p></li>
+</ol>
+</section>
+<section id="核心通膨" class="level3">
+<h3 class="anchored" data-anchor-id="核心通膨">核心通膨</h3>
+<p>物價指數的編製涵蓋了廣泛的商品價格，因此指數的波動不僅受到貨幣政策的影響，還會即時反應短期事件（如颱風、地震等天災）的衝擊，以及受到季節性因素（如各類年節或假期效應等）的影響。因此，為了評析各項貨幣政策對應的施作環境或預測，各國政府或央行通常會使用核心消費者物價指數(core consumer price index, core CPI)，即濾除掉短期價格波動較劇烈的項目，來進行評估。其對應的年增率被簡稱為「核心通膨」。</p>
+<p>在我國，「核心消費者物價指數」是在計算消費者物價指數時排除了新鮮蔬果和能源（如燃氣、電費、油料費）項目的影響後得出的。這樣可以更集中地觀察消費品的價格波動，排除了蔬果和能源等波動較大的因素，更能反映出消費品價格的整體變動趨勢。</p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sung2023,
+  author = {Sung, Anthony},
+  title = {衡量經濟表現},
+  date = {2023-07-22},
+  url = {https://yueswater.netlify.app/posts/2023-07-22-macro-economy-performance/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sung2023" class="csl-entry quarto-appendix-citeas" role="listitem">
+Sung, Anthony. 2023. <span>“衡量經濟表現.”</span> July 22, 2023. <a href="https://yueswater.netlify.app/posts/2023-07-22-macro-economy-performance/">https://yueswater.netlify.app/posts/2023-07-22-macro-economy-performance/</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="xiaolong70701/quarto-blog" data-repo-id="R_kgDOJhS1Eg" data-category="General" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright © 2023 Anthony. All rights reserved. See <a href="../copyright.html">statements</a>.</div>   
+    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/">
+      <i class="bi bi-facebook" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/yues_19_water/">
+      <i class="bi bi-instagram" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

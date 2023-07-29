@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anthony Sung">
+<meta name="dcterms.date" content="2023-06-30">
+<meta name="description" content="分類器的訓練方式，透過適應性調整權重來學習與分類不同類別的數據。">
+
+<title>Yueswater Blog - 機器學習：感知器演算法(Perceptron Learning Algorithm, PLA)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VLWNL5QXD8"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VLWNL5QXD8', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../css/karat.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Yueswater Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../notes.html" rel="" target="">
+ <span class="menu-text">Diary &amp; Notes</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/" rel="" target=""><i class="bi bi-facebook" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/yues_19_water/" rel="" target=""><i class="bi bi-instagram" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#基本概念" id="toc-基本概念" class="nav-link active" data-scroll-target="#基本概念">基本概念</a></li>
+  <li><a href="#知錯能改的演算法" id="toc-知錯能改的演算法" class="nav-link" data-scroll-target="#知錯能改的演算法">知錯能改的演算法</a>
+  <ul class="collapse">
+  <li><a href="#搜尋思維逐步修正-g" id="toc-搜尋思維逐步修正-g" class="nav-link" data-scroll-target="#搜尋思維逐步修正-g">搜尋思維：逐步修正 <span class="math inline">\(g\)</span></a></li>
+  <li><a href="#pla-的細節探討" id="toc-pla-的細節探討" class="nav-link" data-scroll-target="#pla-的細節探討">PLA 的細節探討</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">機器學習：感知器演算法(Perceptron Learning Algorithm, PLA)</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">statistics</div>
+    <div class="quarto-category">machine learning</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    分類器的訓練方式，透過適應性調整權重來學習與分類不同類別的數據。
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Anthony Sung </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 30, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="基本概念" class="level2">
+<h2 class="anchored" data-anchor-id="基本概念">基本概念</h2>
+<p>上一章我們談到銀行發卡的例子。基於這個例子，我們要來介紹感知器演算法。假設我們已經搜集到所有銀行客戶的資料，我們便可以建立一個 <span class="math inline">\(d\)</span> 維度的向量 <span class="math inline">\(\mathbf{x} = (x_{1}, x_{2}, \cdots, x_{d})\)</span>，並計算其<em>加權分數(weighted score)</em>。則 <span class="math display">\[
+\begin{aligned}
+\text{approve if }&amp;\; \sum^{d}_{i=1}w_{i}x_{i}&gt; \text{threshold}\\
+\text{deny if }&amp;\; \sum^{d}_{i=1}w_{i}x_{i}&lt; \text{threshold}
+\end{aligned}
+\]</span></p>
+<p>其中 <span class="math inline">\(x_{i}\)</span> 為每個維度的數據，<span class="math inline">\(w_{i}\)</span> 為每個維度的重要性，亦即如果我們認為負債總額相當重要，則其權重就會相較其他維度更多。</p>
+<p>接下來我們需要電腦告訴我們是否應該發卡。我們定義發卡是好的(good)，記為 <span class="math inline">\(+1\)</span>；反之，若拒絕發卡則為不好的(bad)，記為 <span class="math inline">\(-1\)</span>，剛好在門檻上記為 <span class="math inline">\(0\)</span>（我們在此將其視為不重要，因此忽略它），即電腦應輸出 <span class="math display">\[
+\mathcal{Y} = \{+1, -1\}
+\]</span> 因此我們可以得到一個線性方程式 <span class="math inline">\(h \in \mathcal{H}\)</span>，表達如下： <span class="math display">\[
+h(\mathbf{x}) = \operatorname{sign}\Biggl(\Biggl(\sum^{d}_{i=1}w_{i}x_{i}\Biggr)- \text{threshold}\Biggl)
+\]</span> 為了簡化，我們引進維度 <span class="math inline">\(0\)</span>，並考慮以下改寫的方程式： <span class="math display">\[
+h(\mathbf{x}) = \operatorname{sign}\Biggl(\Biggl(\sum^{d}_{i=1}w_{i}x_{i}\Biggr)+ \underbrace{(-\text{threshold})}_{w_{0}} \cdot \underbrace{(+1)}_{w_{0}}\Biggl)
+\]</span> 因此我們可以將維度 <span class="math inline">\(0\)</span> 收納進前方的加總符號，使其從 <span class="math inline">\(0\)</span> 開始累加，最後改寫為矩陣的形式： <span class="math display">\[
+\operatorname{sign}\Biggl(\sum^{d}_{i=0}w_{i}x_{i}\Biggr) = \operatorname{sign}(\mathbf{w}^{\top}\mathbf{x})
+\]</span> <strong>例</strong> 假設我們今天只看考慮兩個維度，因此 <span class="math inline">\(h\)</span> 的形式如下： <span class="math display">\[
+h(\mathbf{x}) = \operatorname{sign}(w_{0} + w_{1}x_{1} + w_{2}x_{2})
+\]</span> 我們可以在二維的歐式空間繪製以下的圖，其中</p>
+<ul>
+<li><span class="math inline">\(\mathbf{x}\)</span>：平面上或 <span class="math inline">\(\mathbb{R}^{d}\)</span> 上的點</li>
+<li><span class="math inline">\(y\)</span>：<span class="math inline">\(\color{blue}{\circ}\)</span> (<span class="math inline">\(+1\)</span>)，<span class="math inline">\(\color{red}{\times}\)</span> (<span class="math inline">\(-1\)</span>)</li>
+<li><span class="math inline">\(h\)</span>：平面上或 <span class="math inline">\(\mathbb{R}^{d}\)</span> 上的直線，若屬正數則在直線的右邊，屬負數則在左邊。</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>可看出感知器演算法其實就是一種「線性分類」(<em>linear/binary classifiers</em>)，儘管到了更高維，在幾何上仍有線性的意義。</p>
+</section>
+<section id="知錯能改的演算法" class="level2">
+<h2 class="anchored" data-anchor-id="知錯能改的演算法">知錯能改的演算法</h2>
+<blockquote class="blockquote">
+<p>A fault confessed is hald redressed.</p>
+</blockquote>
+<p>我們之前提到過，因為實際上的公式 <span class="math inline">\(f\)</span> 是未知的，我們試圖找出一個公式，能夠完美的預測或至少在預測上表現良好，也就是 <span class="math display">\[
+g \approx f
+\]</span> 但由於不知道 <span class="math inline">\(f\)</span>，我們最卑微的要求就是根據「從 <span class="math inline">\(f\)</span> 抽取出來的資料」，使得 <span class="math inline">\(g\)</span> 與 <span class="math inline">\(f\)</span> 一樣或至少很接近，即是要求 <span class="math display">\[
+g(\mathbf{x}_{n}) = f(\mathbf{x}_{n}) = y_{n}
+\]</span> 不過，我們發現到在二維平面上有無限多條直線，找尋上會十分困難，也就是所有感知器的集合是無限的 (<span class="math inline">\(\mathcal{H}\)</span> is of infinite size)。</p>
+<section id="搜尋思維逐步修正-g" class="level3">
+<h3 class="anchored" data-anchor-id="搜尋思維逐步修正-g">搜尋思維：逐步修正 <span class="math inline">\(g\)</span></h3>
+<p>一個簡單也最直覺的想法，我們先任意挑一個 <span class="math inline">\(g_{0} \in g\)</span>，如果發現它沒辦法表現的良好，那麼我們就修正，並改為 <span class="math inline">\(g_{1}\)</span>，重複上述的動作直到我們覺得不能再好為止。這跟人類的學習方式大同小異，我們也是透過不斷地練習、試誤，才能夠達到一定的水準。</p>
+<p>以下是一個規則化的操作。首先從某個 <span class="math inline">\(\mathbf{w}_{0}\)</span> 開始，並假設 <span class="math inline">\(\mathbf{w}_{0} = \mathbf{0}\)</span>，代表最初一無所知的狀態。令 <span class="math inline">\(t\)</span> 代表回合數，則對於 <span class="math inline">\(t = 0, 1, \cdots\)</span>，</p>
+<ol type="1">
+<li><p>找出 <span class="math inline">\(\mathbf{w}_{t}\)</span> 上錯誤的點，記成 <span class="math inline">\((\mathbf{x}_{n(t)}, y_{n(t)})\)</span>，其中犯錯的定義為 <span class="math display">\[
+\operatorname{sign}\bigl(\mathbf{w}^{\top}\mathbf{x}_{n(t)}\bigr) \neq y_{n(t)}
+\]</span> 即內積的結果與預期的結果異號。</p></li>
+<li><p>試圖修正它，如果想要正的，就將 <span class="math inline">\(\mathbf{w}\)</span> 轉向 <span class="math inline">\(\mathbf{x}\)</span>；如果想要負的，就將 <span class="math inline">\(\mathbf{w}\)</span> 轉離 <span class="math inline">\(\mathbf{x}\)</span>，即 <span class="math display">\[
+\mathbf{w}_{t+1} \leftarrow \mathbf{w}_{t} + y_{n(t)}\mathbf{x}_{n(t)}
+\]</span></p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig1.png" class="img-fluid figure-img" style="width:55.0%"></p>
+</figure>
+</div>
+<p>重複上述動作直到沒有錯誤，回傳最終的 <span class="math inline">\(\mathbf{w}\)</span> 並稱為 <span class="math inline">\(\mathbf{w}_{\text{PLA}}\)</span>。</p>
+<p>那麼我們要如何認定 <span class="math inline">\(\mathbf{w}_{t}\)</span> 沒有錯誤呢？一個方法是我們就掃過維度上的每個點，若未發現錯誤則前往下一個點，直到發現錯誤後便進行上述的修正步驟，我們將此演算法稱為 Cyclic PLA。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig2.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">截圖自林軒田教授的授課講義</figcaption>
+</figure>
+</div>
+</section>
+<section id="pla-的細節探討" class="level3">
+<h3 class="anchored" data-anchor-id="pla-的細節探討">PLA 的細節探討</h3>
+<p>上面我們是假設 PLA 在找尋最佳公式的過程中會自動停下來(halt)，但實際上這個過程有可能是停不下來的。不過我們先不討論停不下來的情況，我們只著重在停下來的條件。</p>
+<p>我們知道 PLA 會停下的條件是找到一個能夠把資料完美切開或至少能夠將多數資料分割的公式，但是上述條件的前提是「資料要真的能夠被切開」，稱為線性可分(linear separable)。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig3.png" class="img-fluid figure-img" style="width:75.0%"></p>
+</figure>
+</div>
+<p>為了簡化，我們假設資料 <span class="math inline">\(\mathcal{D}\)</span> 是線性可分，那麼 PLA 是否會停止呢？</p>
+<p>我們知道若一筆資料為線性可分，那麼必然存在一條完美的公式 <span class="math inline">\(\mathbf{w}_{f}\)</span> 使得 <span class="math inline">\(y_{n} = \operatorname{sign}(\mathbf{w}_{f}^{\top}\mathbf{x}_{n})\)</span>，因此可以得出以下條件： <span class="math display">\[
+y_{n(t)}\mathbf{w}_{f}^{\top}\mathbf{x}_{n(t)} \geq \min_{n}y_{n}\mathbf{w}_{f}^{\top}\mathbf{x}_{n} &gt; 0
+\]</span> 代表每個 <span class="math inline">\(\mathbf{x}_{n}\)</span> 與直線的距離。接下來我們要衡量 <span class="math inline">\(\mathbf{w}_{t}\)</span> 與 <span class="math inline">\(\mathbf{w}_{f}\)</span> 是否接近，方法則是透過內積的方式，若內積的值夠大代表兩者越接近。已知 <span class="math inline">\(\mathbf{w}_{t+1} = \mathbf{w}_{t} + y_{n(t)}\mathbf{x}_{n(t)}\)</span>，則 <span class="math display">\[
+\begin{aligned}
+\mathbf{w}_{f}^{\top}\mathbf{w}_{t+1} &amp;= \mathbf{w}_{f}^{\top}(\mathbf{w}_{t}+y_{n(t)}\mathbf{x}_{n(t)}) \\
+&amp;\geq \mathbf{w}_{f}^{\top}\mathbf{w}_{t} + \min_{n}y_{n}\mathbf{w}_{f}^{\top}\mathbf{x}_{n}\\
+&amp;&gt; \mathbf{w}_{f}^{\top}\mathbf{w}_{t} + 0
+\end{aligned}
+\]</span> 可知 <span class="math inline">\(\mathbf{w}_{f}^{\top}\mathbf{w}_{t+1}\)</span> 在更新過後會變得比 <span class="math inline">\(\mathbf{w}_{f}^{\top}\mathbf{w}_{t}\)</span> 來得大，意味著兩條線看似會越來越接近。但我們忽略了向量長度的問題，因此以下要考慮這個因素。</p>
+<p>我們提到 <span class="math inline">\(\mathbf{w}_{t}\)</span> 會更新的條件是 <span class="math display">\[
+\operatorname{sign}(\mathbf{w}_{t}^{\top}\mathbf{x}_{n(t)}) \neq y_{n(t)}
+\]</span> 更簡單的表示方式為之前提過的，若 <span class="math inline">\(y_{n(t)}\)</span> 與 <span class="math inline">\(\mathbf{w}_{t}^{\top}\mathbf{x}_{n(t)}\)</span> 的內積異號，即 <span class="math display">\[
+y_{n(t)}\mathbf{w}_{t}^{\top}\mathbf{x}_{n(t)} \leq 0
+\]</span> 則我們稱該點有問題，公式必須做更新。</p>
+<p><span class="math display">\[
+\begin{aligned}
+\lVert \mathbf{w}_{t+1}\lVert^{2} &amp;= \lVert\mathbf{w}_{t}+y_{n(t)}\mathbf{x}_{n(t)}\lVert^{2}\\
+&amp;= \lVert\mathbf{w}_{t}\lVert^{2} + 2y_{n(t)}\mathbf{w}_{t}^{\top}\mathbf{x}_{n(t)} + \lVert y_{n(t)}\mathbf{x}_{n(t)}\lVert^{2}\\
+&amp;\leq \lVert\mathbf{w}_{t}\lVert^{2} + 0 + \lVert y_{n(t)}\mathbf{x}_{n(t)}\lVert^{2}\\
+&amp;\leq \lVert\mathbf{w}_{t}\lVert^{2} + \max_{n}\lVert y_{n}\mathbf{x}_{n}\lVert^{2}
+\end{aligned}
+\]</span> 我們將上述兩個條件進行正規化後，得到以下式子</p>
+<p><span class="math display">\[
+\begin{equation}
+\frac{\mathbf{w}_{f}^{\top}}{\lVert\mathbf{w}_{f}\lVert}\frac{\mathbf{w}_{T}}{\lVert\mathbf{w}_{T}\lVert} \geq \sqrt{T} \cdot \text{constant}
+\end{equation}
+\]</span></p>
+<p><strong>例</strong> Define <span class="math inline">\(R^{2} = \max_{n}\lVert \mathbf{x}_{n}\lVert^{2}\)</span>, and <span class="math inline">\(\rho = \min_{n}y_{n}\frac{\mathbf{w}_{f}^{\top}}{\lVert\mathbf{w}_{f}\lVert}\mathbf{x}_{n}\)</span></p>
+<p>We want to show that <span class="math inline">\(T \leq \square\)</span>. Express the upper bound <span class="math inline">\(\square\)</span> by the two terms above.</p>
+<p><strong>Sol</strong></p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="xiaolong70701/quarto-blog" data-repo-id="R_kgDOJhS1Eg" data-category="General" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright © 2023 Anthony. All rights reserved. See <a href="../copyright.html">statements</a>.</div>   
+    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/">
+      <i class="bi bi-facebook" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/yues_19_water/">
+      <i class="bi bi-instagram" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anthony Sung">
+<meta name="dcterms.date" content="2023-07-29">
+<meta name="description" content="分析勞動市場中的干擾因素：搜尋，從而了解市場無法達到完美均衡的原因。">
+
+<title>Yueswater Blog - 搜尋與失業</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VLWNL5QXD8"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VLWNL5QXD8', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../css/karat.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Yueswater Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../notes.html" rel="" target="">
+ <span class="menu-text">Diary &amp; Notes</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/" rel="" target=""><i class="bi bi-facebook" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/yues_19_water/" rel="" target=""><i class="bi bi-instagram" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#勞動市場" id="toc-勞動市場" class="nav-link active" data-scroll-target="#勞動市場">勞動市場</a>
+  <ul class="collapse">
+  <li><a href="#勞動市場特性" id="toc-勞動市場特性" class="nav-link" data-scroll-target="#勞動市場特性">勞動市場特性</a></li>
+  <li><a href="#失業率與總體變數之關係" id="toc-失業率與總體變數之關係" class="nav-link" data-scroll-target="#失業率與總體變數之關係">失業率與總體變數之關係</a></li>
+  </ul></li>
+  <li><a href="#單邊勞動搜尋模型one-sided-search-model" id="toc-單邊勞動搜尋模型one-sided-search-model" class="nav-link" data-scroll-target="#單邊勞動搜尋模型one-sided-search-model">單邊勞動搜尋模型(One-sided Search Model)</a>
+  <ul class="collapse">
+  <li><a href="#模型基本設定" id="toc-模型基本設定" class="nav-link" data-scroll-target="#模型基本設定">模型基本設定</a></li>
+  <li><a href="#就業者福利水準" id="toc-就業者福利水準" class="nav-link" data-scroll-target="#就業者福利水準">就業者福利水準</a></li>
+  <li><a href="#失業者福利水準" id="toc-失業者福利水準" class="nav-link" data-scroll-target="#失業者福利水準">失業者福利水準</a></li>
+  <li><a href="#保留薪資reservation-wage" id="toc-保留薪資reservation-wage" class="nav-link" data-scroll-target="#保留薪資reservation-wage">保留薪資(Reservation Wage)</a></li>
+  <li><a href="#失業率之決定" id="toc-失業率之決定" class="nav-link" data-scroll-target="#失業率之決定">失業率之決定</a></li>
+  <li><a href="#考慮跨期消費之單邊搜尋模型" id="toc-考慮跨期消費之單邊搜尋模型" class="nav-link" data-scroll-target="#考慮跨期消費之單邊搜尋模型">考慮跨期消費之單邊搜尋模型</a></li>
+  </ul></li>
+  <li><a href="#雙邊勞動搜尋模型two-sided-search-model" id="toc-雙邊勞動搜尋模型two-sided-search-model" class="nav-link" data-scroll-target="#雙邊勞動搜尋模型two-sided-search-model">雙邊勞動搜尋模型(Two-sided Search Model)</a>
+  <ul class="collapse">
+  <li><a href="#模型設定與配對函數matching-function" id="toc-模型設定與配對函數matching-function" class="nav-link" data-scroll-target="#模型設定與配對函數matching-function">模型設定與配對函數(Matching Function)</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">搜尋與失業</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">macroeconomics</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    <p>分析勞動市場中的干擾因素：搜尋，從而了解市場無法達到完美均衡的原因。</p>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Anthony Sung </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 29, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<p>現實世界的市場中存在諸多干擾因素，使得市場無法在價格機能下完美運行，其中一項因素是勞動市場中的「搜尋」(search)。</p>
+<p>假設今天一個求職者為了要謀得一份工作，必須投入一定的時間成本與精力；對於開出職缺的廠商或公司，也需要花費一定的人力資源尋找合適的勞工。因此，市場中必定存在想要找尋工作但未找到工作者，以及未找到合適勞工填補值缺的廠商。</p>
+<section id="勞動市場" class="level2">
+<h2 class="anchored" data-anchor-id="勞動市場">勞動市場</h2>
+<p>我們必須釐清，雖然勞動市場與商品市場類似，其均衡都是由市場中的供給與需求互動後決定的，但兩者之間存在一些差異。</p>
+<p>以勞動市場中的供給者（勞工）的角度觀之。商品與勞工在兩個層面上不同。首先，商品具有同質性(homogeneous，但勞工則具異質性(heterogeneous)，此即在描述個體間具有差別，每個人是不一樣的。</p>
+<p>承接上述的差別，商品與勞工的第二個差別在於，商品不會挑選買家，但是勞工會。勞工會依據其自身專長、工作地點、通勤時間等諸多因素，決定是否要投遞履歷給某家廠商。</p>
+<p>因此，交易成本(transaction cost)在勞動市場與商品市場不相同，勞動市場需要特別考慮其特性。</p>
+<section id="勞動市場特性" class="level3">
+<h3 class="anchored" data-anchor-id="勞動市場特性">勞動市場特性</h3>
+<p>國家在定義勞動市場衡量指標前，多半都會先定義一國的民間人口(working age population)、勞動力(labor force)與非勞動力(non-labor force)。根據中華民國統計資訊網的說明，民間人口係指 15 歲以上本國人口扣除武裝勞動力（現役軍人）、監管人口與失蹤人口，其中包括勞動力與非勞動力；勞動力則是指 15 歲以上可以工作之民間人口，包括就業者及失業者 ；非勞動力則指 15 歲以上不屬於勞動力之民間人口，包括因求學或準備升學、料理家務、高齡、身心障礙、想工作而未找工作及其他原因等，而未工作亦未找工作者 。</p>
+<p>我們令民間人口為 <span class="math inline">\(N\)</span>，就業者為 <span class="math inline">\(E\)</span>，失業者為 <span class="math inline">\(U\)</span>。勞動市場的衡量指標大致有以下三種：</p>
+<ul>
+<li><p>失業率(employment rate)：失業率是指民間人口中有就業意願的勞動人口，實際上沒有就業的比例，即 <span class="math display">\[
+\frac{U}{U + E}
+\]</span></p></li>
+<li><p>勞動參與率(labor force participation rate)：勞動參與率是指勞動年齡人口中實際參與勞動力市場的比例，包括已經就業的人和那些主動尋找工作的失業人口，即 <span class="math display">\[
+\frac{E + U}{N}
+\]</span></p></li>
+<li><p>勞動人口比例(employment population ratio)：勞動人口比例是指民間人口有就業意願的人中，實際上有工作的比例，即 <span class="math display">\[
+\frac{E}{N}
+\]</span></p></li>
+</ul>
+</section>
+<section id="失業率與總體變數之關係" class="level3">
+<h3 class="anchored" data-anchor-id="失業率與總體變數之關係">失業率與總體變數之關係</h3>
+<p>在總體經濟分析中，我們關心一國的失業率走勢。以美國為例，我們可以看到在長期而言，失業率波動十分劇烈，此外我們也可以看到 1960 年代到 1980 年代呈現長期上升的走勢，1980 年代至金融海嘯前則呈現下降的趨勢。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig1.png" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption class="figure-caption">Fig 1.1: 美國失業率長期走勢(1940s-2010s)</figcaption>
+</figure>
+</div>
+<p>此外，我們也關心失業率與一國實質 GDP 的關係。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig2.png" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption class="figure-caption">Fig 1.2: 失業率和實質 GDP 趨勢的偏離</figcaption>
+</figure>
+</div>
+<p>失業率為反景氣循環(countercyclical)指標，當實質 GDP 的百分比偏離趨勢為負時，失業率相對偏離趨勢通常為正，反之亦然。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig3.png" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption class="figure-caption">Fig 1.3: 勞動參與率相關圖表</figcaption>
+</figure>
+</div>
+<p>上圖左上描述美國勞動力參與率長期趨勢。美國的勞動力參與率從 1940 年代末開始增加，一直增長至 2000 年，之後開始下降。</p>
+<p>上圖右上則是描繪了美國男性與女性的勞動力參與率。圖中可以看到，從 1940 年代末到 2000 年，總體勞動力參與率的增加完全是由於女性的勞動力參與增加，因為男性的勞動力參與率自 1948 年以來一直在下降。</p>
+<p>上圖左下則是描述勞動力參與率和實質 GDP 趨勢的偏差。勞動力參與率是是順循環指標(procyclical)的，但其變動幅度遠小於實質 GDP。</p>
+<p>上圖右下則是說明勞動力參與率和就業人口比例，可看到勞動力參與率的波動遠小於就業人口比例的波動。</p>
+<p>最後，我們要針對失業率與廠商待填補職缺之間的關係。我們用 <span class="math inline">\(A\)</span> 表示廠商中開缺後卻仍存在空缺的職位，因此職缺率可以用以下數學式描述： <span class="math display">\[
+\frac{A}{A + E}
+\]</span></p>
+<p>而我們可以透過 Beveridge 曲線(Beveridge curve) 用以描述失業率和職位空缺率之間的關係。Beveridge 曲線描述的平面上，橫軸表示職位空缺率(job vacancy rate)，縱軸則代表失業率(unemployment rate)。</p>
+<p>其重要特徵是它呈現負向關係。通常情況下，當職位空缺率較高時，失業率較低，反之亦然。這意味著在經濟體系中，有時會出現失業率增加但職位空缺率下降的情況，或是失業率減少但職位空缺率上升的情況。</p>
+<p>此外，Beveridge 曲線的變化可以提供有關勞動力市場的重要資訊。例如，當曲線向右上方移動時，可能表示失業問題更為嚴重，因為在同一水平的職位空缺率下，失業率上升了。相反地，曲線向左下方移動可能表示勞動力市場更加緊張，因為失業率降低了，但職位空缺率上升。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig4.png" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption class="figure-caption">Fig 1.4: Beveridge 曲線</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="單邊勞動搜尋模型one-sided-search-model" class="level2">
+<h2 class="anchored" data-anchor-id="單邊勞動搜尋模型one-sided-search-model">單邊勞動搜尋模型(One-sided Search Model)</h2>
+<p>之所以稱為「單邊」，是因為此模型僅聚焦於失業者尋找工作的行為：施業者收到特定薪資的工作機會，並決定何時接受工作並停止尋找。然而，這個模型忽略了一些重要細節：雇用中的廠商行為以及個人選擇參與勞動力市場，或因找尋工作而生沮喪之心而離開勞動力市場的決策。</p>
+<section id="模型基本設定" class="level3">
+<h3 class="anchored" data-anchor-id="模型基本設定">模型基本設定</h3>
+<p>為了簡化分析，我們假設經濟體系中的全部個體為勞動力，換言之每個個體都想要且積極的找尋工作，其中成功找尋工作者稱之為就業人口，未找到者則稱為失業人口。我們以 <span class="math inline">\(U\)</span> 代表失業人口比例，因此 <span class="math inline">\(1 - U\)</span> 則是就業人口比例。</p>
+<p>現實生活中不同工作必定會存在差異，包含工作時長、薪資優渥、勞動者通勤時間等，但在此模型中我們僅考慮工作之間的差異主要反映在廠商給付的實質薪資，記作 <span class="math inline">\(w\)</span>。</p>
+</section>
+<section id="就業者福利水準" class="level3">
+<h3 class="anchored" data-anchor-id="就業者福利水準">就業者福利水準</h3>
+<p>我們以 <span class="math inline">\(V_{e}(w)\)</span> 代表就業者的福利水準，其中下標 <span class="math inline">\(e\)</span> 便是用以說明就業。可以觀察到 <span class="math inline">\(V_{e}(w)\)</span> 為實質工資的函數，白話來說即是不同工作帶給就業者的效用。此外，<span class="math inline">\(V_{e}(w)\)</span> 更考慮未來發生的事件，例如勞工可能因為諸多因素而被迫離職，我們以 <span class="math inline">\(s\)</span> 代表每期就業者從勞動市場中離職的隨機機率(random separation rate)。以下我們針對 <span class="math inline">\(V_{e}(w)\)</span> 的性質進行討論。</p>
+<section id="工資越高福利越高" class="level4">
+<h4 class="anchored" data-anchor-id="工資越高福利越高">工資越高，福利越高</h4>
+<p>工資越高，代表就業者所能夠負擔的消費量也隨之上升。因為就業者的效用高低取決於其消費量，故工資提高福利上升為一直觀結果。</p>
+</section>
+<section id="凹函數concave-function性質" class="level4">
+<h4 class="anchored" data-anchor-id="凹函數concave-function性質">凹函數(Concave Function)性質</h4>
+<p>此性質代表 <span class="math inline">\(V_{e}(w)\)</span> 的曲線斜率將隨著工資上升而下降。其隱含隨著工資上升，每增加一單位的工資，對於就業者福利的影響也會趨小，類似邊際效用遞減。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig5.png" class="img-fluid figure-img" style="width:50.0%" data-fig.align="center"></p>
+<figcaption class="figure-caption">Fig 1.5: <span class="math inline">\(V_{e}(w)\)</span> 為凹函數</figcaption>
+</figure>
+</div>
+</section>
+<section id="離職機率變化" class="level4">
+<h4 class="anchored" data-anchor-id="離職機率變化">離職機率變化</h4>
+<p>假設 <span class="math inline">\(s\)</span> 上升，代表當前的就業者在未來離開當前職位的機率較高，也就是變成失業狀態的機率提高。直觀而言，離職機率的上升將會降低就業者現階段的福利，福利函數因而往下移動。</p>
+</section>
+</section>
+<section id="失業者福利水準" class="level3">
+<h3 class="anchored" data-anchor-id="失業者福利水準">失業者福利水準</h3>
+<p>我們以 <span class="math inline">\(V_{u}\)</span> 代表就業者的福利水準，其中下標 <span class="math inline">\(u\)</span> 便是用以說明失業。決定失業者福利水準高低的因素並非薪水（因為他們也沒有工作），而是政府給予失業者的失業保險(unemployment insurance)或救濟、補助，我們以 <span class="math inline">\(b\)</span> 表示失業保險的規模，並假設其為定值，即不因先前失業者若有工作時的薪資而異。另一項決定失業者福利水準的因素是，其有多少機率能夠獲得工作，我們以 <span class="math inline">\(p\)</span> 表示之。</p>
+<section id="補助越高福利越高" class="level4">
+<h4 class="anchored" data-anchor-id="補助越高福利越高">補助越高，福利越高</h4>
+<p>失業者的福利會因政府補助額越高而上升，原因在於當補助額較高時，失業者即可享受到更高的生活水準，其消費量也會增加。</p>
+</section>
+<section id="獲得工作機率越高福利越高" class="level4">
+<h4 class="anchored" data-anchor-id="獲得工作機率越高福利越高">獲得工作機率越高，福利越高</h4>
+<p>若 <span class="math inline">\(p\)</span> 越高，則失業者的福利也會越高。假設失業者面臨較高獲得工作的機率，即代表失業者在下一期更容易獲得新的工作機會，無須擔心找不到工作。</p>
+</section>
+</section>
+<section id="保留薪資reservation-wage" class="level3">
+<h3 class="anchored" data-anchor-id="保留薪資reservation-wage">保留薪資(Reservation Wage)</h3>
+<p>在單邊勞動搜尋模型中，當失業者獲得新的工作機會時，該工作必定會註明從事工作所能夠獲得的工資，失業者的決定即是「是否接受此工作機會」。換言之，失業者所決定的即是「是否接受<strong>特定薪資</strong>的工作」，若接受則從失業狀態轉為就業狀態；若拒絕則繼續維持失業狀態，且忍受失業所帶給個體的痛苦。</p>
+<p>蔡宜展老師在課堂中舉了很有趣的例子，即是<a href="https://arielhsu.tw/socrates-love-story/">柏拉圖採花的故事</a>。事實上失業者找尋工作的過程就猶如人每個個體尋找愛情一般：總以為可以找到更好的，因此拒絕了許多機會，但我們卻無法確定是否能夠找到比原機會更加優質的選項，到頭來卻只能空手而歸。</p>
+<p>為了避免上述情形，經濟學家認為失業者應該比較失業時與特定薪資之下所帶來的福利水準：</p>
+<ul>
+<li><p>若特定薪資帶來的福利較失業來得高或至少與之相等，即 <span class="math inline">\(V_{e}(w) \geq V_{u}\)</span>，則失業者應接受此工作機會。</p></li>
+<li><p>若特定薪資帶來的福利較失業來的低，即 <span class="math inline">\(V_{e}(w) &lt; V_{u}\)</span>，則失業者應接受此工作機會。</p></li>
+</ul>
+<p>因此，在某些情況下，對於失業者來說，存在一個工作提供足夠高的薪資，使他們願意接受工作機會，並且只要工資高於這個金額，他們就會接受任何工資條件，我們稱這個臨界值為保留薪資，記成 <span class="math inline">\(w^{*}\)</span>。故我們可以得出以下小結：</p>
+<ul>
+<li><p>若 <span class="math inline">\(w \geq w^{*}\)</span>，則 <span class="math inline">\(V_{e}(w) \geq V_{u}\)</span>。</p></li>
+<li><p>若 <span class="math inline">\(w &lt; w^{*}\)</span>，則 <span class="math inline">\(V_{e}(w) &lt; V_{u}\)</span>。</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig6.png" class="img-fluid figure-img" style="width:50.0%" data-fig.align="center"></p>
+<figcaption class="figure-caption">Fig 1.6: 保留薪資</figcaption>
+</figure>
+</div>
+</section>
+<section id="失業率之決定" class="level3">
+<h3 class="anchored" data-anchor-id="失業率之決定">失業率之決定</h3>
+<p>已知我們可以將民間人口分為勞動力與非勞動力，其中勞動力又可細分為就業人口與失業人口。經濟體系中的個體必定屬於上述三種人口類型中的其中一種，因此，討論失業即是探討上述三個不同狀態的轉換過程。</p>
+<p>由於單邊搜尋模型假設所有的人口均在勞動力中，因此我們不考慮非勞動力。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig7.png" class="img-fluid figure-img" style="width:40.0%" data-fig.align="center"></p>
+<figcaption class="figure-caption">Fig 1.7: 就業人口與失業人口的流動 1</figcaption>
+</figure>
+</div>
+<p>我們將勞動力人口標準化為 <span class="math inline">\(1\)</span>，因此 <span class="math inline">\(U\)</span> 代表經濟體系中失業人數，即失業率，<span class="math inline">\(1 - U\)</span> 代表就業人數，也就是就業率。</p>
+<p>為了求出經濟體系的均衡失業率，可以透過分析經濟個體在失業與就業兩個狀態的轉換。已知 <span class="math inline">\(s\)</span> 代表當前就業者離職的比例，乘上 <span class="math inline">\((1 - u)\)</span> 後即代表目前就業狀態轉換成失業狀態的人數，也就是下一期新增的失業人口。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig8.png" class="img-fluid figure-img" style="width:40.0%" data-fig.align="center"></p>
+<figcaption class="figure-caption">Fig 1.8: 就業人口與失業人口的流動 2</figcaption>
+</figure>
+</div>
+<p>除了從就業狀態轉換為失業狀態，有些勞動力也會從失業狀態轉換為就業狀態。已知 <span class="math inline">\(p\)</span> 代表當前失業勞工下一期會獲得新工作的機率，但必須注意到，這些新工作所支付的薪資都不同，只有工資超過保留薪資的工作，失業者才會接受此機會，我們以 <span class="math inline">\(H(w^{*})\)</span> 代表失業者獲得的工作中，工資較保留薪資高的比例。因此失業者轉換為就業者的計算方式即為： <span class="math display">\[
+u \cdot p \cdot H(w^{*})
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig9.png" class="img-fluid figure-img" style="width:50.0%" data-fig.align="center"></p>
+<figcaption class="figure-caption">Fig 1.9: 工資較保留薪資高的薪資函數</figcaption>
+</figure>
+</div>
+<p>注意到隨著薪資增加，<span class="math inline">\(H(w)\)</span> 呈現遞減。</p>
+<p>依照上述的設定，我們可以從簡單的數學得知，當以下條件成立時，經濟體系將會達到均衡失業率，兩個狀態的人口將不會再進行轉換： <span class="math display">\[
+s(1 - u) = u \cdot p \cdot H(w^{*})
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig10.png" class="img-fluid figure-img" style="width:50.0%" data-fig.align="center"></p>
+<figcaption class="figure-caption">Fig 1.10: 均衡失業率</figcaption>
+</figure>
+</div>
+<p>注意到 <span class="math inline">\(p\)</span> 與 <span class="math inline">\(s\)</span> 是模型外生給定，且 <span class="math inline">\(w^{*}\)</span> 可透過前述比較得知，因此在上述條件中唯一的待定變數為 <span class="math inline">\(u\)</span>。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig11.png" class="img-fluid figure-img" style="width:75.0%" data-fig.align="center"></p>
+<figcaption class="figure-caption">Fig 1.11: 保留工資 <span class="math inline">\(w^*\)</span> 在圖 (a) 中 <span class="math inline">\(V_e(w)\)</span> 和 <span class="math inline">\(V_u\)</span> 的交點決定。接著，根據保留薪資，在圖 (b) 中決定了經濟體系中的長期失業率。</figcaption>
+</figure>
+</div>
+</section>
+<section id="考慮跨期消費之單邊搜尋模型" class="level3">
+<h3 class="anchored" data-anchor-id="考慮跨期消費之單邊搜尋模型">考慮跨期消費之單邊搜尋模型</h3>
+<p>以下我們需要考慮行為者的跨期消費選擇，從而求解經濟體系中的均衡失業率。</p>
+<p>在此經濟體系中，假設行為者永生(infinite-lived)，則其偏好可以表達為 <span class="math display">\[
+\mathbb{E}_{0}\left[\sum^{\infty}_{t = 0}\left(\frac{1}{1+r}\right)^{t}U(C_{t})\right]
+\]</span></p>
+<p>其中 <span class="math inline">\(\mathbb{E}\)</span> 為期望值符號(expectation operator)，下標 <span class="math inline">\(0\)</span> 代表給定第 <span class="math inline">\(0\)</span> 期，<span class="math inline">\(r\)</span> 為折現率(discount rate)，又可以透過折現因子(discount factor)的方式呈現： <span class="math display">\[
+\beta = \frac{1}{1+r}
+\]</span> 而 <span class="math inline">\(C_{t}\)</span> 代表第 <span class="math inline">\(t\)</span> 期的消費，<span class="math inline">\(U(\cdot)\)</span> 則是效用函數，其為嚴格遞增(strictly increasing)、連續，且為嚴格凹函數(strictly concave)。</p>
+<p>前面已經提到，由於行為者面對不確定性，即就業狀態與失業狀態兩者互相轉換的隨機性，因此這個體系中的行為者是<strong>預期效用極大化者(expected-utility maximizer)</strong>。</p>
+<p>我們在上面的小節已經提及有關就業者與失業者的福利函數，分別為 <span class="math inline">\(V_{e}(w)\)</span> 與 <span class="math inline">\(V_{u}\)</span>，但我們並未提及該函數的形式。事實上，就業者的福利函數可以寫成以下形式： <span class="math display">\[
+V_{e}(w) = \frac{1}{1+r}\left[U(w) + sV_{u} + (1 - s)V_{e}(w)\right]
+\]</span></p>
+<p>從此式可以得知，就業者在下一期所要考慮的不僅是其消費所帶給他的效用，更要將可能失業與仍維持就業狀態的情況。對於失業者而言，已知政府會給予失業者補助 <span class="math inline">\(b\)</span>，且其有 <span class="math inline">\(p\)</span> 的機率獲得新的工作機會，我們假設該機會係從一個累積分佈函數(cumulative density function, CDF)中抽出，記成 <span class="math inline">\(F(w)\)</span>，且該函數對應一個機率密度函數(probability density function, PDF)，記成 <span class="math inline">\(f(w)\)</span>。令 <span class="math inline">\(w \in [0, w_{1}]\)</span>，且 <span class="math inline">\(w_{1} &gt; 0\)</span>，則失業者將考慮是否要接受(accept)或拒絕(turn down)該機會。因此，失業者的福利函數可以透過以下形式表達： <span class="math display">\[
+V_{u} = \frac{1}{1+r}\left\{U(b) + (1 - p)V_{u} + p \int^{w_{1}}_{0}\max\left[V_{e}(w), V_{u}\right]f(w)dw \right\}
+\]</span></p>
+<p>也就是說，失業者考慮其領取補助後的消費帶來的效用外，更考慮其有 <span class="math inline">\((1 - p)\)</span> 的機率未得到工作機會而維持失業狀態，以及 <span class="math inline">\(p\)</span> 的機率獲得工作。注意到下式： <span class="math display">\[
+\int^{w_{1}}_{0}\max\left[V_{e}(w), V_{u}\right]f(w)dw
+\]</span></p>
+<p>由於工作所帶來的價值係由我們上述設定的累積分佈函數所決定，因此我們僅能計算期望值。我們在<a href="https://yueswater.netlify.app/posts/2023-07-28-macro-search-and-unemployment/#保留薪資reservation-wage">保留薪資</a>該小節提到，行為者可以藉由比較失業時與特定薪資之下所帶來的福利水準，此即 <span class="math inline">\(\max\left[V_{e}(w), V_{u}\right]\)</span> 的含義。</p>
+<p>【<strong>解</strong>】</p>
+<p>首先我們可以先對於 <span class="math inline">\(V_{e}(w)\)</span> 與 <span class="math inline">\(V_{u}\)</span> 進行化簡，得到 <span class="math display">\[
+\begin{aligned}
+r V_e(w) &amp;= U(w)+s\left[V_u-V_e(w)\right] \\
+r V_u &amp;= U(b)+p \int_0^{w_1} \max \left[0, V_e(w)-V_u\right] f(w) d w
+\end{aligned}
+\]</span></p>
+<p>其中 <span class="math inline">\(V_{e}(w)\)</span> 又可以進一步化簡為 <span class="math display">\[
+V_{e}(w) = \frac{U(w) + sV_{u}}{r + s}
+\]</span></p>
+<p>隱含 <span class="math inline">\(V_{e}(w)\)</span> 繼承 <span class="math inline">\(U(\cdot)\)</span> 的性質，因此上述問題可以定調為找到合適的保留薪資 <span class="math inline">\(w{*}\)</span>。</p>
+<p>已知在均衡薪資 <span class="math inline">\(w^{*}\)</span> 下，下式會成立： <span class="math display">\[
+V_{e}(w^{*}) = V_{u}
+\]</span></p>
+<p>因此， <span class="math display">\[
+V_{u} = \frac{U(w) + sV_{u}}{r + s}
+\]</span> 為了決定失業率，我們要求在穩定狀態下，從就業轉換為失業的勞工必須與從失業轉換為就業的勞工相等，即 <span class="math display">\[
+s(1-u)=p\left[1-F\left(w^*\right)\right] u
+\]</span> 解出失業率 <span class="math inline">\(u\)</span>，我們得到 <span class="math display">\[
+u=\frac{s}{p\left[1-F\left(w^*\right)\right]+s} .
+\]</span></p>
+<p>假設在收到薪資時，失業者以機率 <span class="math inline">\(\pi\)</span> 收到薪資為 <span class="math inline">\(\mathrm{w}_2\)</span> 的工作機會，以機率 <span class="math inline">\(1-\pi\)</span> 收到薪資為 <span class="math inline">\(0\)</span> 的工作機會，其中 <span class="math inline">\(0&lt;\pi&lt;1\)</span>。接著，假設薪資 <span class="math inline">\(w_2\)</span> 的工作機會 總是被接受，零薪資工作則總是被拒絕，在這種情況下， <span class="math display">\[
+\begin{gathered}
+r V_e=U\left(w_2\right)+s\left[V_u-V_e\right], \\
+r V_u=U(b)+p \pi\left(V_e-V_u\right)
+\end{gathered}
+\]</span> 其中 <span class="math inline">\(V_e\)</span> 是以實際工資 <span class="math inline">\(w_2\)</span> 就業的價值。然後，將上述兩個方程式求解得到 <span class="math inline">\(V_e\)</span> 和 <span class="math inline">\(V_u\)</span>，我們得到 <span class="math display">\[
+\begin{aligned}
+&amp; V_e=\frac{(p \pi+r) U\left(w_2\right)+s U(b)}{r(s+p \pi+r)}, \\
+&amp; V_u=\frac{(s+r) U(b)+p \pi U\left(w_2\right)}{r(s+p \pi+r)}
+\end{aligned}
+\]</span> 其中 <span class="math display">\[
+V_e-V_u=\frac{U\left(w_2\right)-U(b)}{s+p \pi+r} .
+\]</span> 因此，我們有 <span class="math inline">\(V_u&gt;0\)</span>，如此即可證明一個零薪資工作將被拒絕。此外，只有當 <span class="math inline">\(w_2 \geq b\)</span> 時，也就是說，當工作的工資高於失業補助時，才會接受工資報價 <span class="math inline">\(w_2\)</span>。綜上，失業率為 <span class="math display">\[
+u=\frac{s}{p \pi+s}
+\]</span> 但如果 <span class="math inline">\(b&gt;w_2\)</span>，則沒有人會接受工作，我們得到 <span class="math inline">\(u=1\)</span>，代表所有人都會失業。</p>
+</section>
+</section>
+<section id="雙邊勞動搜尋模型two-sided-search-model" class="level2">
+<h2 class="anchored" data-anchor-id="雙邊勞動搜尋模型two-sided-search-model">雙邊勞動搜尋模型(Two-sided Search Model)</h2>
+<p>不同於單邊勞動搜尋模型，雙邊搜尋模型不再假設經濟體中的行為者均為勞動力。令 <span class="math inline">\(N\)</span> 代表經濟體中的民間人口，<span class="math inline">\(Q\)</span> 代表勞動力，因此 <span class="math inline">\(N - Q\)</span> 代表非勞動力。因此在雙邊勞動搜尋模型中，行為者可能屬於下列三種狀態：就業狀態、失業狀態、非勞動力，而行為者的狀態並非固定，其會在這三種狀態之間流動。</p>
+<p>由於此經濟體系存在三種狀態，我們需要考慮以下兩種情況：</p>
+<ul>
+<li><p>勞動力與非勞動力之間的轉換：行為者可以決定是否要投入勞動市場，亦即供給其勞動力。</p></li>
+<li><p>就業與失業狀態之間的轉換：從尋找工作者的角度分析其有多少工作機會。</p></li>
+</ul>
+<section id="模型設定與配對函數matching-function" class="level3">
+<h3 class="anchored" data-anchor-id="模型設定與配對函數matching-function">模型設定與配對函數(Matching Function)</h3>
+<p>經濟體系中尋找工作的人數，取決於成功找尋並獲得工作後的預期報酬(expected payoff)有多高，我們以 <span class="math inline">\(P(Q)\)</span> 描述能夠使 <span class="math inline">\(Q\)</span> 人尋找工作的報酬誘因。直觀來說，當預期報酬越高，想要尋找工作的人就越多。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig12.png" class="img-fluid figure-img" style="width:50.0%" data-fig.align="center"></p>
+<figcaption class="figure-caption">Fig 1.12: 尋找工作的消費者的供給曲線</figcaption>
+</figure>
+</div>
+<p>我們可以看到此供給曲線呈上升趨勢，這是因為不同的行為者對於在家工作的報酬是不同的。</p>
+<p>接著我們要針對行為者找到工作的機率進行描述。在雙邊勞動搜尋模型中，每期勞動者與廠商「碰面」的機率，我們用配對函數來刻畫廠商和潛在勞動者透過配對函數「相遇」的過程，並以 <span class="math inline">\(m(\cdot, \cdot)\)</span> 表達。配對函數如同廠商的生產函數一樣，其投入取決於以下因素：</p>
+<ul>
+<li><p>求職廣告投放數量(firm posts a vacancy)：<span class="math inline">\(A_{t} \geq 0\)</span></p></li>
+<li><p>市場中的求職人數：<span class="math inline">\(Q_{t} \geq 0\)</span></p></li>
+<li><p>經濟體系中的配對效率(efficiency)：<span class="math inline">\(e\)</span></p></li>
+</ul>
+<p>因此該經濟體系中的配對人數可以透過以下式子表達： <span class="math display">\[
+M = em(Q, A) \geq 0
+\]</span></p>
+<p>配對函數</p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sung2023,
+  author = {Sung, Anthony},
+  title = {搜尋與失業},
+  date = {2023-07-29},
+  url = {https://yueswater.netlify.app/posts/2023-07-29-macro-search-and-unemployment/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sung2023" class="csl-entry quarto-appendix-citeas" role="listitem">
+Sung, Anthony. 2023. <span>“搜尋與失業.”</span> July 29, 2023. <a href="https://yueswater.netlify.app/posts/2023-07-29-macro-search-and-unemployment/">https://yueswater.netlify.app/posts/2023-07-29-macro-search-and-unemployment/</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="xiaolong70701/quarto-blog" data-repo-id="R_kgDOJhS1Eg" data-category="General" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright © 2023 Anthony. All rights reserved. See <a href="../copyright.html">statements</a>.</div>   
+    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/">
+      <i class="bi bi-facebook" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/yues_19_water/">
+      <i class="bi bi-instagram" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

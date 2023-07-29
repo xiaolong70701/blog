@@ -1,0 +1,23 @@
+# Options specified here will apply to all posts in this folder
+
+# freeze computational output
+freeze: true
+
+# Author name of all blog posts
+author: 'Anthony Sung'
+
+# Enable CC licence appendix
+license: 'CC BY'
+
+# Table of content settings
+toc: true
+toc-depth: 3
+toc-title: Table of Contents
+toc-location: left
+
+# Enable banner style title blocks
+title-block-banner: false
+
+page-layout: article
+
+lang: en

@@ -1,0 +1,32 @@
+---
+title: "Notes"
+listing:
+  type: grid
+  fields: [image, title, description, reading-time, categories, date]
+  page-size: 6
+  feed: true
+  contents: posts
+  sort-ui: true
+  filter-ui: true
+  sort: "date desc"
+  categories: true
+page-layout: full
+title-block-banner: false
+comments: false
+---
+
+:::{#posts}
+:::
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+To receive the latest articles updates, please subscribe.
+
+<iframe src="https://embeds.beehiiv.com/7deed8ef-3061-4985-a13e-2a3ede1f498e?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent;"></iframe>
+:::
+
+:::: 
+
+<p></p>

@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anthony Sung">
+<meta name="dcterms.date" content="2023-07-24">
+<meta name="description" content="透過分析廠商的最適選擇，我們可以了解廠商如何做決定，以及如何因應外在經濟環境的變化。">
+
+<title>Yueswater Blog - 總體經濟學中廠商的最適選擇</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VLWNL5QXD8"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VLWNL5QXD8', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../css/karat.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Yueswater Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../notes.html" rel="" target="">
+ <span class="menu-text">Diary &amp; Notes</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/" rel="" target=""><i class="bi bi-facebook" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/yues_19_water/" rel="" target=""><i class="bi bi-instagram" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#關於廠商的基本概念" id="toc-關於廠商的基本概念" class="nav-link active" data-scroll-target="#關於廠商的基本概念">關於廠商的基本概念</a>
+  <ul class="collapse">
+  <li><a href="#廠商的投入與產出" id="toc-廠商的投入與產出" class="nav-link" data-scroll-target="#廠商的投入與產出">廠商的投入與產出</a></li>
+  <li><a href="#廠商的生產技術" id="toc-廠商的生產技術" class="nav-link" data-scroll-target="#廠商的生產技術">廠商的生產技術</a></li>
+  </ul></li>
+  <li><a href="#生產函數" id="toc-生產函數" class="nav-link" data-scroll-target="#生產函數">生產函數</a>
+  <ul class="collapse">
+  <li><a href="#沒有投入就沒有產出" id="toc-沒有投入就沒有產出" class="nav-link" data-scroll-target="#沒有投入就沒有產出">沒有投入就沒有產出</a></li>
+  <li><a href="#投入越多產出越多" id="toc-投入越多產出越多" class="nav-link" data-scroll-target="#投入越多產出越多">投入越多產出越多</a></li>
+  <li><a href="#邊際報酬遞減法則" id="toc-邊際報酬遞減法則" class="nav-link" data-scroll-target="#邊際報酬遞減法則">邊際報酬遞減法則</a></li>
+  <li><a href="#生產要素互補" id="toc-生產要素互補" class="nav-link" data-scroll-target="#生產要素互補">生產要素互補</a></li>
+  <li><a href="#技術因子" id="toc-技術因子" class="nav-link" data-scroll-target="#技術因子">技術因子</a></li>
+  <li><a href="#固定規模報酬" id="toc-固定規模報酬" class="nav-link" data-scroll-target="#固定規模報酬">固定規模報酬</a></li>
+  </ul></li>
+  <li><a href="#廠商的決策目標" id="toc-廠商的決策目標" class="nav-link" data-scroll-target="#廠商的決策目標">廠商的決策目標</a>
+  <ul class="collapse">
+  <li><a href="#短期與長期" id="toc-短期與長期" class="nav-link" data-scroll-target="#短期與長期">短期與長期</a></li>
+  <li><a href="#廠商的最適化問題" id="toc-廠商的最適化問題" class="nav-link" data-scroll-target="#廠商的最適化問題">廠商的最適化問題</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">總體經濟學中廠商的最適選擇</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">macroeconomics</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    <p>透過分析廠商的最適選擇，我們可以了解廠商如何做決定，以及如何因應外在經濟環境的變化。</p>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Anthony Sung </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 24, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<p>在總體經濟學研究領域中，一般而言我們都將經濟體系中的生產單位稱之為廠商(firm)，例如臺灣的護國神山台積電、蘋果公司，乃至於巷口的早餐店、小吃店，都稱之為廠商——因為它們都從事生產活動。</p>
+<p>而廠商不論規模大小都面對了一些共同的決策，包含：</p>
+<ul>
+<li>要生產什麼樣的產品</li>
+<li>要如何生產產品</li>
+<li>要雇用多少生產要素</li>
+<li>勞工在不同職位的分配</li>
+<li>要生產多少數量</li>
+<li>如何定價</li>
+</ul>
+<p>廠商猶如經濟體系中的個體一般，在作出上述決策時也會面臨一些限制，包含市場的客觀條件，以及廠商自身的生產技術(technology)。客觀條件例如市場上有多少競爭者，或是消費者對於該產品的需求狀況。在總體經濟分析中，為了方便分析，我們會假設廠商為同質性(homogenous)：生產相同產品、價格接受者，且不考慮定價問題。</p>
+<p>因此，下述的分析將會著重在廠商雇用的人力、資本，以及廠商生產數量，不會特別討論市場結構、廠商類型等。</p>
+<section id="關於廠商的基本概念" class="level2">
+<h2 class="anchored" data-anchor-id="關於廠商的基本概念">關於廠商的基本概念</h2>
+<p>在進一步研究廠商最適選擇前，我們首先要來釐清廠商的組成，以及廠商需要什麼樣的東西協助其生產，以便於我們進行分析時能夠快速了解這項變數在廠商眼中應該是上升或下降。</p>
+<section id="廠商的投入與產出" class="level3">
+<h3 class="anchored" data-anchor-id="廠商的投入與產出">廠商的投入與產出</h3>
+<p>廠商在經濟體系中，從要素市場雇用生產要素以生產產品，並在產品市場將產品銷售出去。以巷口的小吃店為例，小吃店的老闆首先會先選定好開店的位置，在門口貼上「誠徵店員」的告示，這就是雇用土地與勞工的行為。接著，老闆會根據菜單從市場買菜或是從批發商進貨，並且購買廚具、碗盤，最後透過其高超的廚藝將美食端給客人，這就是廠商所需要的資本，以及最終所生產出來的產品。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig1.jpg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption class="figure-caption">Fig 1.1: 小吃店的座位也是廠商的資本<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></figcaption>
+</figure>
+</div>
+</section>
+<section id="廠商的生產技術" class="level3">
+<h3 class="anchored" data-anchor-id="廠商的生產技術">廠商的生產技術</h3>
+<p>我們可以用數學方程式表達上述廠商與不同生產要素之間的關係： <span class="math display">\[
+Y = zF(x_{1}, x_{2}, \cdots, x_{n})
+\]</span> 我們稱之為生產函數(production fucntion)。其中 <span class="math inline">\(Y\)</span> 代表廠商所生產的產品數量，<span class="math inline">\(x_{i}\)</span> 代表 <span class="math inline">\(n\)</span> 種生產要素，<span class="math inline">\(z\)</span> 則是生產效率(production efficiency)，用以捕捉生產技術或是生產面的干擾。</p>
+<p>為了簡化分析與作圖，我們假設廠商僅考慮兩種生產要素：資本(capital)與勞動(labor force)，分別記為 <span class="math inline">\(K\)</span> 與 <span class="math inline">\(N^{d}\)</span>。因此上式可改寫為 <span class="math display">\[
+Y = zF(K, N^{d})
+\]</span> 我們稱之為代表性廠商(representative firm)，隱含每個廠商都有相同的生產技術，但實際上不同廠商使用的生產技術可能不同，對應到的生產關係也不同。</p>
+<section id="勞動投入" class="level4">
+<h4 class="anchored" data-anchor-id="勞動投入">勞動投入</h4>
+<p>勞動投入是指經濟體中的總工時，以符號 <span class="math inline">\(L\)</span> 來表示，而 <span class="math inline">\(h\)</span> 則代表工人的平均效率或人力資本。所謂人力資本，是指工人通過教育、培訓和經驗所獲得的知識和技能的總和，以提高勞動生產力。這些技能和知識將體現在工人的勞動力中，進而影響生產力。具有較高學歷和技能的工人，在生產過程中所扮演的角色可能與其他人不同，導致職業水準上的異質性，同時也解釋了為何不同學歷的勞工起薪存在差異的現象。</p>
+<p>因此，勞動投入可以表示為 <span class="math display">\[
+N^{d} = hL
+\]</span> 這表示國民生產（或產出）的總量取決於平均效率總工時的乘積。換句話說，人力資本的水平與勞動投入成正比，人力資本水平越高，生產力越高，國民生產也會相應增長。</p>
+</section>
+<section id="資本" class="level4">
+<h4 class="anchored" data-anchor-id="資本">資本</h4>
+<p>資本即是泛指所有的機器設備(equipment)、廠房(plant)等，也就是幫助廠商在生產過程中加工、製作產品的要素。</p>
+</section>
+</section>
+</section>
+<section id="生產函數" class="level2">
+<h2 class="anchored" data-anchor-id="生產函數">生產函數</h2>
+<p>上面我們提及我們可以用生產函數描述廠商與不同要素之間的關係，以下我們就要針對生產函數的一些特性與性質進行更進一步的解釋與探討。</p>
+<p>不過，在探討之前，首先要先釐清兩個概念：勞動邊際產量(marginal product of labor, MPN)與資本邊際產量(marginal product of capital, MPK)。所謂邊際產量(marginal product)，即是在其他要素使用量固定不變下，某種生產要素使用量的變動所引起的總產量變動。</p>
+<p>因此在假設生產函數為離散型的情況下， MPN 與 MPK 的定義為： <span class="math display">\[
+\begin{aligned}
+&amp;\text{MPN} = \frac{zF(K, N+1) - zF(K, N)}{(N+1) - N} = \frac{\Delta Y}{\Delta N}\\
+&amp;\text{MPK} = \frac{zF(K+1, N) - zF(K, N)}{(K+1) - K} = \frac{\Delta Y}{\Delta K}
+\end{aligned}
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig2.png" class="img-fluid figure-img" style="width:90.0%" data-fig.align="center"></p>
+<figcaption class="figure-caption">Fig 1.2: Marginal product of labor and marginal product of capital</figcaption>
+</figure>
+</div>
+<p>如果生產函數為連續型，則 MPN 與 MPK 的計算方式為 <span class="math display">\[
+\begin{aligned}
+&amp;\text{MPN} = \frac{\partial Y}{\partial N}\\
+&amp;\text{MPK} = \frac{\partial Y}{\partial K}
+\end{aligned}
+\]</span> 或是可以寫成 <span class="math display">\[
+\text{MPN} = zF_{N}, \quad \text{MPK} = zF_{K}
+\]</span></p>
+<p>以下標表示對該變數偏微分。</p>
+<section id="沒有投入就沒有產出" class="level3">
+<h3 class="anchored" data-anchor-id="沒有投入就沒有產出">沒有投入就沒有產出</h3>
+<p>此處的投入包含資本與勞動，無論是哪一種投入，只要其中之一是 <span class="math inline">\(0\)</span>，產出都會是 <span class="math inline">\(0\)</span>，即 <span class="math display">\[
+0 = zF(0, N^{d}) = zF(K, 0)
+\]</span> 這個關係即是刻畫生產過程中，資本與勞動都是必備的要素，只要缺少其中之一，整個產出鏈就會因此瓦解。</p>
+</section>
+<section id="投入越多產出越多" class="level3">
+<h3 class="anchored" data-anchor-id="投入越多產出越多">投入越多產出越多</h3>
+<p>在其他條件不變的情況下，無論是資本或勞動的增加，都將導致總產量的增加。輸出隨著資本或勞動投入的增加而增加。勞動的邊際產量 (<span class="math inline">\(MPN\)</span>) 和資本的邊際產量 (<span class="math inline">\(MPK\)</span>) 是衡量這些增加的指標。一般而言 MPN 與 MPK 恆為正。</p>
+</section>
+<section id="邊際報酬遞減法則" class="level3">
+<h3 class="anchored" data-anchor-id="邊際報酬遞減法則">邊際報酬遞減法則</h3>
+<p>當增加某一要素的使用量時，在其他生產要素保持不變的情況下，該要素對產量的邊際貢獻逐漸減少。換句話說，當我們持續增加一種生產要素，額外的生產產出將逐漸減少。我們可以透過數學表示： <span class="math display">\[
+\begin{aligned}
+&amp;\frac{\partial \text{MPN}}{\partial N} = zF_{NN} &lt; 0\\
+&amp;\frac{\partial \text{MPK}}{\partial K} = zF_{KK} &lt; 0\\
+\end{aligned}
+\]</span></p>
+<p>對於邊際報酬遞減法則的解釋是：假設廠商一開始只有一名員工，其需要獨自處理所有工作，因此他的生產產量會受到限制。如果增加一名員工，他們可以相互協作，分工合作，這樣整體的生產產量將會提升。然而，隨著雇用的員工數量不斷增加，受限於現有的廠房和機器設備，新聘用的員工可能因為爭奪有限的機器而導致生產效率下降，從而妨礙整體生產的進行。因此，通常情況下，勞動的邊際產量會在一開始隨著勞動數量的增加而增加。然而，當勞動數量達到一定程度後，邊際產量開始遞減，甚至可能變為負值。</p>
+</section>
+<section id="生產要素互補" class="level3">
+<h3 class="anchored" data-anchor-id="生產要素互補">生產要素互補</h3>
+<p>勞動的邊際產量隨著資本的增加而增加，代表在其他條件不變的情況下，當資本的數量增加時，每單位勞動所能貢獻的額外產出也隨之增加。假設給定相同的勞動數量和技術因子準，資本的數量 (<span class="math inline">\(K\)</span>) 增加會增加勞動的邊際產量。同樣地，資本的邊際產量也會隨著勞動投入的增加而增加。</p>
+<p>因此，上述關係可以表示為： <span class="math display">\[
+\begin{aligned}
+&amp;\frac{\partial \text{MPN}}{\partial K} = zF_{NK} &gt; 0\\
+&amp;\frac{\partial \text{MPK}}{\partial N} = zF_{KN} &gt; 0\\
+\end{aligned}
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig3.png" class="img-fluid figure-img" style="width:50.0%" data-fig.align="center"></p>
+<figcaption class="figure-caption">Fig 1.3: Labor and capital are complementary</figcaption>
+</figure>
+</div>
+</section>
+<section id="技術因子" class="level3">
+<h3 class="anchored" data-anchor-id="技術因子">技術因子</h3>
+<p>隨著技術因子的提高，即更先進的技術應用於生產過程，可以在不增加資本和勞動的情況下生產更多的產品。</p>
+<p>由下圖可以看到，當技術上升時，生產函數會向上移動，即整體產出將隨著技術的進步而增加。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig4.png" class="img-fluid figure-img" style="width:50.0%" data-fig.align="center"></p>
+<figcaption class="figure-caption">Fig 1.4: Production with technological factor</figcaption>
+</figure>
+</div>
+</section>
+<section id="固定規模報酬" class="level3">
+<h3 class="anchored" data-anchor-id="固定規模報酬">固定規模報酬</h3>
+<p>假設生產函數為 <span class="math inline">\(Y_{1} = zF(K,N)\)</span>。當將所有生產要素按照相同的比例進行擴大時：</p>
+<ol type="1">
+<li><p>固定規模報酬(constant return to scale)：則當所有要素都按相同比例進行擴大時，產出的變化百分比也將與之相同。</p></li>
+<li><p>規模報酬遞增(increasing return to scale)：則當所有要素都按相同比例進行擴大時，產出的變化百分比將大於這個比例。</p></li>
+<li><p>規模報酬遞減(decreasing return to scale)：則當所有要素都按相同比例進行擴大時，產出的變化百分比將小於這個比例。</p></li>
+</ol>
+</section>
+</section>
+<section id="廠商的決策目標" class="level2">
+<h2 class="anchored" data-anchor-id="廠商的決策目標">廠商的決策目標</h2>
+<p>廠商在面對多個可能的選擇時，其決策目標是追求利潤極大化。利潤可以表示為總收益減去總成本，即 <span class="math display">\[
+\pi = \text{TR} - \text{TC}
+\]</span></p>
+<p>其中：</p>
+<ul>
+<li>總收益(<span class="math inline">\(TR\)</span>)：廠商販售商品所獲得的收入，每單位商品的價格乘上產出的數量，即 <span class="math display">\[
+\text{TR} = P \times Q
+\]</span></li>
+<li>成本(<span class="math inline">\(TC\)</span>)：指經濟成本，也稱為機會成本。在面對多個可能的選擇時，做出某項選擇會使廠商放棄其他可能的選擇機會。在這些放棄的選擇機會中，成本最高的機會對應的成本就是決策者的機會成本。</li>
+</ul>
+<section id="短期與長期" class="level3">
+<h3 class="anchored" data-anchor-id="短期與長期">短期與長期</h3>
+<p>短期與長期的差別在於，廠商在長期時，生產要素均可調整；但在短期內，⼀種要素或多種要素使⽤量則是固定的。</p>
+<p>短期的總產量是指在資本固定下，隨著勞動數量變化，廠商所能⽣產的產量。以下的分析只討論廠商在短期的最適決策，亦即將資本數量固定，針對勞動數量的最適選擇進行討問，以及勞動數量對產量的影響。</p>
+</section>
+<section id="廠商的最適化問題" class="level3">
+<h3 class="anchored" data-anchor-id="廠商的最適化問題">廠商的最適化問題</h3>
+<p>假設廠商是價格接受者(price taker)，即它無法改變市場價格。令 <span class="math inline">\(z, k, w\)</span> 為生產效率、資本、實質工資(real wage)，且三者皆為外生給定(exogenously given)。廠商的最適化問題就是如何選擇 <span class="math inline">\(n\)</span> 個勞動，使得利潤最大化。寫成數學形式即為： <span class="math display">\[
+\max_{n} \pi = zF(k, n) - wn
+\]</span></p>
+<p>根據一階條件(first order condition)，我們可以得到 <span class="math display">\[
+zF_{n}(k, n) − w = 0 \Longleftrightarrow \text{MPN} = w
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig5.png" class="img-fluid figure-img" style="width:50.0%" data-fig.align="center"></p>
+<figcaption class="figure-caption">Fig 1.5: Firm’s problem: profit maximization</figcaption>
+</figure>
+</div>
+<p>現在有兩種可能的情況：</p>
+<ul>
+<li><p><span class="math inline">\(\text{MPN} &gt; w\)</span>：表示勞動的邊際產量大於勞動的工資，這意味著增加勞動投入將增加利潤，廠商應該增加勞動數量。</p></li>
+<li><p><span class="math inline">\(\text{MPN} &lt; w\)</span>：表示勞動的邊際產量小於勞動的工資，這意味著增加勞動投入將降低利潤，廠商應該減少勞動數量。</p></li>
+</ul>
+<p>由此可知，勞動需求是一個動態的過程：廠商在邊際產量與實質工資之間進行調整。</p>
+<p>接著我們考慮以貨幣單位表示的生產函數，並令 <span class="math inline">\(W\)</span> 為名目工資(nominal wage)。則上述的最適化問題可以改寫為</p>
+<p><span class="math display">\[
+\max_{n} \Pi = P \times zF(k, n) - Wn
+\]</span> 同樣根據一階條件，我們可得</p>
+<p><span class="math display">\[
+P \times zF_{n}(k, n) − W = 0 \Longleftrightarrow P \times MPN = W \Longleftrightarrow \text{MPN} = \frac{W}{P} = w
+\]</span></p>
+<p>考慮一個例子。假設廠商的目標是在給定資本(<span class="math inline">\(k\)</span>)、生產力(<span class="math inline">\(A\)</span>)和工資(<span class="math inline">\(w\)</span>)的情況下，最大化利潤(<span class="math inline">\(\pi\)</span>)。令生產函數為 <span class="math inline">\(y = Ak^\alpha n^{1-\alpha}\)</span>，因此利潤最大化的問題可以表示為： <span class="math display">\[
+\max_n \pi = Ak^\alpha n^{1-\alpha} - wn
+\]</span></p>
+<p>根據一階條件，得到 <span class="math display">\[
+(1 - \alpha) Ak^\alpha n^{-\alpha} = w
+\]</span></p>
+<p>經過整理後可以得到勞動需求函數： <span class="math display">\[
+n^{d}(w, A, k) = \left( \frac{(1 - \alpha)A}{w} \right)^{\frac{1}{\alpha}} k
+\]</span></p>
+<p>勞動需求函數表示在給定工資、生產力和資本的情況下，廠商將選擇的最適勞動數量。我們根據這個勞動需求函數可以得到以下的資訊：</p>
+<ul>
+<li>當資本增加時，最適勞動數量也會增加。</li>
+<li>當生產力增加時，最適勞動數量也會增加。</li>
+<li>當工資增加時，最適勞動數量則會減少。</li>
+</ul>
+<p>因此綜合上述資訊，我們可以將勞動需求函數寫成隱函數(implicit function)的形式： <span class="math display">\[
+n^{d} = n^{d}(\underset{+}{A}, \underset{-}{w}, \underset{+}{k}, \cdots)
+\]</span></p>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Image by <a href="https://www.freepik.com/free-photo/full-shot-people-eating-japanese-street-food-restaurant_26411167.htm#query=taiwan%20nightmarket&amp;position=1&amp;from_view=search&amp;track=ais">Freepik</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sung2023,
+  author = {Sung, Anthony},
+  title = {總體經濟學中廠商的最適選擇},
+  date = {2023-07-24},
+  url = {https://yueswater.netlify.app/posts/2023-07-24-macro-firm-maximization-problem/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sung2023" class="csl-entry quarto-appendix-citeas" role="listitem">
+Sung, Anthony. 2023. <span>“總體經濟學中廠商的最適選擇.”</span> July 24,
+2023. <a href="https://yueswater.netlify.app/posts/2023-07-24-macro-firm-maximization-problem/">https://yueswater.netlify.app/posts/2023-07-24-macro-firm-maximization-problem/</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="xiaolong70701/quarto-blog" data-repo-id="R_kgDOJhS1Eg" data-category="General" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright © 2023 Anthony. All rights reserved. See <a href="../copyright.html">statements</a>.</div>   
+    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/">
+      <i class="bi bi-facebook" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/yues_19_water/">
+      <i class="bi bi-instagram" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

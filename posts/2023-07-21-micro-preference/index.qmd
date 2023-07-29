@@ -1,0 +1,86 @@
+---
+title: "偏好與個人選擇(Preference and Consumer Choice)"
+image: eco preview.png
+description: |
+    Analyzing how individuals make decisions about what goods and services to purchase based on preferences and constraints
+date: "2023-07-21"
+draft: FALSE
+citation:
+  url: https://yueswater.netlify.app/posts/2023-07-21-preference-and-consumer-choice/
+categories: [microeconomics]
+---
+
+## 理性選擇(Ratial Preference)
+
+$\textbf{Definition 1.1}:$ Given a relation $\succsim$ in an non-empty alternatives set $X$, which
+possesses three properties:
+
+1. completeness: Either $x \succsim y$, or $y \succsim x$, for any $x, y \in X$;
+
+2. reflexive: $x \succsim x$ for every $x \in X$;
+
+3. transitivity: for any $x, y, z \in X$, if $x \succsim y$, $y \succsim z$, then $x \succsim z$.
+
+we call $\succsim$ a rational relation or rational preference.
+
+$\textbf{Definition 1.2}:$ Strict preference relation $\succ$: $x \succ y \Leftrightarrow x \succsim y$ but not $y \succsim x$, for every $x, y \in X$. "$x \succ y$" means "$x$ preferred to $y$"
+
+$\textbf{Definition 1.3}:$ Indifferent relation $\sim$: $x \sim y \Leftrightarrow x \succsim y$, and $y \succsim x$, for every
+$x, y \in X$. "$x \sim y$" means "$x$ is indifferent as $y$".
+
+$\textbf{Proposition 1.1}:$ If $\succsim$ is rational, then:
+
+1. $\succ$ is transitivity but irreflexive;
+
+2. $\sim$ is reflexive and transitivity;
+
+3. if $x \succ y \succsim z$, then $x \succ z$
+
+但個人偏好在現實生活中有可能不滿足遞移性(transitivity)。書中給出的例子是「最小可覺差(just-perceptible difference)」，也就是在給予差別微小的兩個物體時，個體並不易察覺兩者的差別，因此給出無異(indifference)的偏好；但若一直持續增加兩者差別的差距，則最終個體將會發現兩者的差別，並給予其中一種較高的偏好，但此時就已經違反遞移性。
+
+## 選擇理論(Choice Rules)
+
+「個體在做選擇時是理性的」這件事是諸多學者設下的假設，但現實生活中是否真的符合理性則必須透過更科學的方式檢證，或者說能夠在實證研究下獲得肯認[^1]。因此我們需要選擇理論來幫助我們理解、探析這些假設。
+
+[^1]: 主要是因為科學乃是以「實用」為基礎，若我們的語言與思想只停留在「假設」的階段，一方面既無法被大眾所接受，最終被世人詬病為象牙塔；另一方面更無法探究世界的真理，無法參透世界的本質，終將失去科學存在的意義。
+
+每個個體在作出選擇時，背後必定存在一套自身的邏輯與偏好，但由於這是一種私人的訊息(private information)，除非是該個體允許我們得知，否則在有生之年或成為神之錢，我們永遠無法知道其偏好為何。不過，個體在作出選擇後，我們可以依據其作出的選擇，推導出其偏好，並驗證是否滿足上述提及的「理性」假設。
+
+### 理論建構
+
+我們首先要建立兩個重要的工具：
+
+- Choice function：$C(\cdot): X \to X$, for any $B \subset X$, $C(B) \subset B$
+- Budget sets: $B$
+
+其中 $X$ 被稱為選擇空間[^2]。
+
+[^2]: 我們可以簡單理解為 $X$ 就是世界上的所有流通商品，而 $B$ 就是零售店、量販店，或是線上商店的商品。
+
+有了這些工具後，接著我們就可以來構建「選擇的過程」。上述的 $B$ 實際上是給定的，也就是說個體僅能在現有的選擇空間中，根據外部環境因素而給定的選項作出選擇。[^3] 這些選擇有很多，我們記成 $B_{1}, B_{2}, \cdots, B_{n}$，並收納成一個集合，即 $\mathscr{B} = \{B_{1}, B_{2}, \cdots, B_{n}\}$，並根據 Choice function 產生最終決定，即 $C(B_{1}), C(B_{2}), \cdots, C(B_{n})$。
+
+[^3]: 例如去快餐店點餐時，我們只能夠根據檯面上或是菜單上的餐點做選擇。
+
+$\textbf{Definition 1.3}$ $(\mathscr{B}, C(\cdot)): B \subset X$ for every $B \in \mathscr{B}$ is a budget sets family determined by systemic, natural, social conditions.
+
+- $C(\cdot)$ is non-empty.
+
+- If the decision-maker’s preference is rational, then for every
+$x \in C(B)$, that $x \succsim y$ for any $y \in B$.
+
+$\textbf{Example 1.1}:$ If $x, y \in C(B)$, show that $x \sim y$.
+
+$\textit{Proof}.$ Since $x, y \in C(B)$, by definition, $x, y \in B$. Then 
+
+1. $x \in C(B) \Rightarrow x \succsim y$;
+
+2. $y \in C(B) \Rightarrow y \succsim x$.
+
+In conclusion, $x \sim y$.
+
+$\textbf{Definition 1.4}$ The choice structure $(\mathscr{B},C(\cdot))$ satisfies weak axiom of
+revealed preference (WARP) if the following property holds: if $x \in C(B)$ for some $B \in \mathscr{B}$ with $x, y \in B$, then for any $B^{\prime} \in \mathscr{B}$ with $x, y \in B^{\prime}$ and $y \in C(B^{\prime})$, we must have $x \in C(B^{\prime})$.
+
+
+$\textbf{Lemma 1.1}:$ The choice structure $(\mathscr{B},C(\cdot))$ satisfies WARP if the following property holds: if $x \in C(B)$ for some $B \in \mathscr$ with $x, y \in B$,then for any $B^{\prime} \in B$ with $y \in C(B^{\prime})$ and $x \notin C(B^{\prime})$, then we must have $x \notin B^{\prime}$.
+

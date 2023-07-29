@@ -1,0 +1,182 @@
+---
+title: "Set Theory and Basic Topology"
+image: math preview.png
+date: "2023-07-19"
+description: Analyzing relationships and interactions among various economic elements.
+categories: [real analysis, mathematical economics]
+format:
+  html: 
+    code-fold: false
+citation:
+  url: https://yueswater.netlify.app/posts/2023-07-19-mathematical-economics-set-theory/
+---
+
+A set can be simply defined as a collection of objects or elements. The followings are some examples of set:
+$$
+\begin{aligned}
+&A = \{1,2,3, \cdots\}\\
+&B = \{🍎,🍌,🍉,🍇\}
+\end{aligned}
+$$
+
+$\textbf{Definition 2.1}:$ If $A$ is any set, we write $x \in A$ to indicate that $x$ is a member of $A$; if $x$ is not a member of $A$, we write $x \notin A$.
+
+Note that a set can contain elements and sets. We speak of a collection of sets as a family, often denoted by $\mathcal{A}$.
+
+## Basic Set Relations and Ordered Sets
+
+Set relations are fundamental concepts in mathematics that describe how different sets relate to each other. Sets are collections of distinct elements, and set relations allow us to understand their interactions. Let's explore some of the most common set relations.
+
+### Set Relations
+
+$\textbf{Definition 2.2}:$ The *union* of sets is a set containing all elements that are in set $A$ or set $B$. Thus, we can write $x \in (A \cup B)$ if and only if $x \in A$  or $x \in B$. In particular, if $A_{1}, A_{2}, \cdots, A_{n}$ are $n$ sets, their union is a set containing all elements that are in at least one of the sets, write
+$$
+\bigcup_{i=1}^{n} A_{i}.
+$$
+$\textbf{Definition 2.3}:$ The *intersection* of sets is a new set containing all elements that are present in both sets simultaneously. In mathematical notation, we write $x \in (A \cap B)$ if and only if $x \in A$ and $x \in B$. Similarly, for $n$ sets $A_{1}, A_{2}, \cdots, A_{n}$, their intersection is a set containing all elements that are common to all of the sets. We denote the intersection of these sets as:
+$$
+\bigcap^{n}_{i=1} A_{i}
+$$
+Note that if $A \cap B$ is not empty, we say $A$ and $B$ intersect; otherwise they are *disjoint*.
+
+$\textbf{Definition 2.4}:$ The *complement* of a set $A$, denoted by $A^{c}$, is a set of elements not in $A$, i.e.,
+$$
+A^{c} = \{x: x \notin A\}
+$$
+
+Sometimes we only consider two set, $A$ and $B$. Then we can write the complement of $A$ as
+$$
+B \setminus A = \{x: x \notin A \text{ and } x \in B \}
+$$
+
+$\textbf{Definition 2.5}:$ If $A$ and $B$ are sets, and if every element of $A$ is an element of $B$, we say that $A$ is a subset of $B$, and write $A \subset B$, or $B \supset A$. If, in addition, there is an element of $B$ which is not in $A$, then $A$ is said to be a proper subset of $B$.
+
+$\textbf{Theorem 2.1}:$ Let $I$ be an index set. Given $n$ sets, $A_{1}, A_{2}, \cdots, A_{n}$, the complement of the union of $n$ sets is equal to the intersection of their complements, i.e.,
+$$
+\left(\bigcup_{i \in I}A_{i}\right)^{c} = \bigcap_{i \in I} A_{i}^{c}
+$$
+On the other hand, the complement of the intersection of $n$ sets is equal to the union of their complements, i.e.,
+
+$$
+\left(\bigcap_{i \in I}A_{i}\right)^{c} = \bigcup_{i \in I} A_{i}^{c}
+$$
+
+$\textbf{Definition 2.6}:$ The Cartesian product of sets $A$ and $B$, denoted by $A \times B$, is defined as:
+$$
+A \times B= \{(a,b) \lvert a \in A,b \in B\}
+$$
+
+which represents an ordered pair, where $a$ is an element of set $A$, and $b$ is an element of set $B$. The set $A \times B$ contains all such ordered pairs, forming the Cartesian product.
+
+### Ordered Sets
+
+$\textbf{Definition 2.7}:$ Let $S$ be a set. An order on $S$ is a relation, denoted by $<$, with the following two properties:
+
+1. If $x \in S$ and $y \in S$ then one and only one of the statements 
+$$
+x<y,\quad x=y, \quad y<x
+$$
+is true.
+
+2. If $x, y, z \in S$, if $x < y$ and $y < z$, then $x < z$.
+
+$\textbf{Definition 2.8}:$ An ordered set is a set $S$ in which an order is defined.
+
+Now we can define a maximum and minimum in a set on $\mathbb{R}$. Consider a set $A$ in the reals, i.e., $A \subset \mathbb{R}$.
+
+$\textbf{Definition 2.9}$: $x \in \mathbb{R}$ is the greatest element of $A$, denoted as $\max A$, if $x \in A$ and $x \geq a$ for all $a \in A$.
+
+$\textbf{Definition 2.10}:$ $x \in \mathbb{R}$ is the least element of $A$, denoted as $\min A$, if $x \in A$ and $x \leq a$ for all $a \in A$.
+
+Note that for any set $A \subset \mathbb{R}$, $\max A$ or $\min A$ may not exist. For example, given an open interval on $\mathbb{R}$, $(0, 1)$. Since $0$ and $1$ are not included in the interval, there are no maximum and minimum in the interval.
+
+Therefore, we introduce the idea of *supremum* and *infimum.*
+
+$\textbf{Definition 2.11}:$ Suppose $S$ is an ordered set, $E \subset S$, and $E$ is bounded above. Suppose there exists an $\alpha \in S$ with the following properties: 
+
+1. $\alpha$ is an upper bound of $E$.
+
+2. If $\gamma < \alpha$ then $\gamma$ is not an upper bound of $E$.
+
+Then $\alpha$ is called the *least upper bound* of $E$ or the supremum of E, and we write
+$$
+\alpha = \sup E.
+$$
+
+Conversely, we can define the greatest lower bound with same manner, and denote it as
+$$
+\alpha = \inf E
+$$
+
+![Fig 2.1: Infimum and supremum](https://upload.wikimedia.org/wikipedia/commons/0/0a/Infimum_illustration.svg){fig-align="center" width=55%}
+
+
+## Basic Topology
+
+$\textbf{Definition 2.12}:$ The Euclidean space is the space of vectors of real numbers with $n$ components, denoted by $\mathbb{R}^{n}$. Consider $\left(\mathbb{R}^{n}, d\right)$, where $d$ is Euclidean metric, i.e.,
+$$
+d(\mathbf{x}, \mathbf{y}) = \sqrt{\sum^{n}_{i=1}(x_{i} - y_{i})^2}, \;\; \forall\mathbf{x}, \mathbf{y} \in \mathbb{R}^{n}.
+$$
+$\textbf{Definition 2.13}:$ For $x \in \mathbb{R}^{n}$ and $\varepsilon \in \mathbb{R}$, we define a $\varepsilon$-open ball/neighborhood of $x$ as
+$$
+B_{\varepsilon}(x) = \{y \in \mathbb{R}^{n}\lvert d(x,y) < \varepsilon\}
+$$
+
+![Fig 2.2: Neighborhood](https://upload.wikimedia.org/wikipedia/commons/7/79/Neighborhood_illust1.svg){fig-align="center" width=55%}
+
+### Open Sets and Closed Sets
+
+In fact, there are numerous ways to define what an open set is. However, in this note, we use graphical way to define the abstract idea of open set.
+
+$\textbf{Definition 2.14}:$ We say $G \in \mathbb{R}^{n}$ is an open set if for all $x \in G$, there exists $\varepsilon_{x} > 0$, such that $B_{\varepsilon}(x) \subset G$.
+
+![Fig 2.3 Example of open set](fig3.svg){fig-align="center" width=35%}
+
+$\textbf{Theorem 2.2}:$
+
+1. $\varnothing$ and $\mathbb{R}^{n}$ are open.
+
+2. For any collection $\{G_{\alpha}\}$ of open sets, $\bigcup_{\alpha}G_{\alpha}$ is open.
+
+3. For any finite collection $G_{1}, G_{2}, \cdots, G_{n}$ of open sets, $\bigcap^{n}_{i=1}G_{i}$ is open.
+
+$\textit{Proof}.$ 
+
+1. Trivial.
+
+2. Take any $x \in \bigcup_{\alpha}G_{\alpha}$, then $x \in G_{\alpha^{\prime}}$ for some $\alpha^{\prime}$. Since $G_{\alpha^{\prime}}$ is open, there exists $\varepsilon > 0$, $B_{\varepsilon}(x) \subset G_{\alpha^{\prime}}$.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For any $y \in B_{\varepsilon}(x)$, $y \in G_{\alpha^{\prime}}$, so that $y \in \bigcup_{\alpha}G_{\alpha}$, then $B_{\varepsilon}(x) \subset \bigcup_{\alpha}G_{\alpha}$.
+
+3. Take any $x \in \bigcap^{n}_{i=1}G_{i}$, then $x \in G_{i}$ for all $i = 1, 2, \cdots, n$. Since $G_{i}$ is open, there exists $\varepsilon_{i} > 0$, such that $B_{\varepsilon_{i}}(x) \subset G_{i}$.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Let $\varepsilon = \min\{\varepsilon_{1}, \varepsilon_{2}, \cdots, \varepsilon_{n}\}$, then $B_{\varepsilon}(x) \subset G_{i}$  for $i = 1, 2, \cdots, n$, then $B_{\varepsilon}(x) \subset \bigcap^{n}_{i=1}G_{i}$.
+
+Notice that we consider finite case in (3) for the absolute existence of minimum. If we consider infinite case, we cannot guarantee that minimum exists.
+
+$\textbf{Definition 2.15}:$ A system $\mathcal{T} = \{S_{\alpha}\}_{\alpha \in A}$ is a topology on $\mathbf{X}$ if:
+
+1. $\varnothing, \mathbf{X} \in \mathcal{T}$;
+
+2. For all $\{S_{\beta}\}$ with $S_{\beta} \in \mathcal{T}$, then $\bigcup_{\beta}S_{\beta} \in \mathcal{T}$;
+
+3. For all $\{S_{i}\}^{k}_{i=1}$ with $S_{i} \in \mathcal{T}$, then $\bigcap^{k}_{i=1}S_{i} \in \mathcal{T}$.
+
+$\textbf{Definition 2.16}:$ $F \in \mathbb{R}^{n}$ is closed if $G^{c}$ is open.
+
+$\textbf{Theorem 2.3}:$
+
+1. $\varnothing$ and $\mathbb{R}^{n}$ are closed.
+
+2. For any collection $\{F_{\alpha}\}$ of closed sets, $\bigcap_{\alpha}F_{\alpha}$ is closed.
+
+3. For any finite collection $F_{1}, F_{2}, \cdots, F_{n}$ of open sets, $\bigcup^{n}_{i=1}F_{i}$ is closed.
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,82 @@
+---
+title: "Logic"
+image: math preview.png
+date: "2023-07-17"
+description: Foundations of logical reasoning essential for understanding economic principles and relationships mathematically.
+categories: [real analysis, mathematical economics]
+format:
+  html: 
+    code-fold: false
+citation:
+  url: https://yueswater.netlify.app/posts/2023-07-17-mathematical-economics-basic-logic/
+---
+
+## Basic Logic in Mathematical Economics
+
+Before we delve into the logic used in mathematical economics, let's first discuss what a 'proposition' is.
+
+### Proposition
+
+A **proposition** is a declaration that can be either true or false, but not both. E.g., $2 > 3$, which is false by fundamental mathematics, is a well-defined proposition, since it can be proved to be true or false.
+
+Let $P$ and $Q$ be propositions. We then define the following notations:
+
+- Negation: "not $P$", denoted by $\neg P$
+
+- Conjunction: "$P$ and $Q$", denoted by $P \land Q$
+
+- Disjunction: "$P$ or $Q$", denoted by $P \lor Q$
+
+- Implication: if $P$, then $Q$, denoted by $P \Rightarrow Q$
+
+- Equivalence: $P$ if and only if $Q$, denoted by $P \Leftrightarrow Q$
+
+As for the ultimate values of $P$ and $Q$, they are determined by their relationship and the truth values of P and Q themselves. Therefore, based on these conditions, we can establish the following truth table:
+
+| $P$ | $Q$ | $\neg P$ | $P \lor Q$ | $P \land Q$ | $P \Rightarrow Q$ | $P \Leftrightarrow Q$ |
+|-----|-----|----------|------------|-------------|-------------------|-----------------------|
+| $T$ | $T$ | $F$      | $T$        | $T$         | $T$               | $T$                   |
+| $T$ | $F$ | $F$      | $T$        | $F$         | $F$               | $F$                   |
+| $F$ | $T$ | $T$      | $T$        | $F$         | $T$               | $F$                   |
+| $F$ | $F$ | $T$      | $F$        | $F$         | $T$               | $T$                   |
+
+### Contraposition
+
+Contraposition is a logical inference technique used to establish the validity of an implication (conditional statement) by transforming it into an equivalent statement. Given the implication "If $P$ then $Q$", i.e., $P \Rightarrow Q$. From the truth table above, we deduce the following relationships:
+
+- Converse: if $Q$ then $P$, i.e., $Q \Rightarrow P$
+
+- Inverse: if not $P$ then not $Q$, i.e., $\neg P \Rightarrow \neg Q$
+
+- Contraposition: if not $Q$ then not $P$. i.e., $\neg Q \Rightarrow \neg P$, which is equivalent to $P \Rightarrow Q$
+
+Note that if two propositions $P$ and $Q$ have the same truth value for all possible truth values of component variables, they are said to be logically equivalent, denoted $P \equiv Q$. Therefore, in mathematical proofs, if we find it challenging to prove "If $P$ then $Q$," we can reverse the logic and prove "If not $Q$ then not $P$" instead.
+
+### Proof by Contradiction
+
+"Proof by contradiction" is a common method used in mathematical reasoning and logic to demonstrate the truth of a statement or proposition. It involves assuming the negation of the statement (i.e., assuming the statement is false) and then deriving a logical contradiction from that assumption. Since a logical contradiction cannot exist, it implies that the original assumption (the negation of the statement) must be false, and therefore, the original statement itself must be true.
+
+Given the proposition $P \Rightarrow Q$, the proof by contradiction follows these general steps:
+
+1. Assume the negation of the statement (the opposite of what you want to prove).
+2. Derive a logical contradiction using valid logical reasoning from that assumption.
+3. Conclude that the original statement must be true since its negation leads to a contradiction.
+
+By proving that the negation leads to a contradiction, we indirectly prove the original statement to be true.
+
+This method is particularly useful when direct proof (showing that a statement directly leads to a true conclusion) is challenging or not immediately apparent. Proof by contradiction allows mathematicians to establish the truth of a statement indirectly through the process of elimination.
+
+## Quantifier
+
+Let $P(x)$ be a proposition about $x$. Then 
+
+| Statement         | Is true if                                | Is false if                                |
+|-------------------|-------------------------------------------|--------------------------------------------|
+| $\forall x, P(x)$ | $P(x)$ is true for all $x$                | at least one $x$ for which $P(x)$ is false |
+| $\exists x, P(x)$ | at least one $x$ for which $P(x)$ is true | $P(x)$ is false for all $x$                |
+
+
+
+
+
+

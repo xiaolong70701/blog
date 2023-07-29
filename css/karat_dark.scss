@@ -1,0 +1,95 @@
+/*-- scss:defaults --*/
+
+// use litera as the base
+$theme: "litera" !default;
+
+// import google fonts
+
+@import url("https://fonts.googleapis.com/css2?family=Cardo");
+@import url("https://fonts.googleapis.com/css2?family=Alata");
+
+@import url("https://fonts.googleapis.com/css2?family=Expletus+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans");
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+.category,
+p {
+  font-family: "Roboto", sans-serif;
+  color: #ffffff;
+  line-height: 1.65;
+  font-size: 1.025em;
+  letter-spacing: 0.6px;
+}
+
+.navbar-title{
+    color: #ffffff;
+}
+.nav-link,
+h1{
+    color: #ffffff;
+}
+
+h2,
+h3,
+h4,
+h5{
+  font-family: "Expletus Sans", cursive;
+  color: #ffffff;
+}
+
+.listing-title{
+    color: #2b2b2b;
+}
+
+.listing-description p{
+    color: #3f3f3f;
+}
+
+h6 {
+  font-family: "Expletus Sans", cursive;
+  color: #ffffff;
+}
+
+ul {
+  color: #ffffff;
+}
+
+li {
+  color: #ffffff;
+}
+
+
+.quarto-title-meta-heading{
+    color: #ffffff;
+}
+
+.quarto-category{
+    color: #ffffff;
+}
+
+.navbar-title {
+  font-weight: 700;
+}
+
+.nav-link {
+  font-weight: 300;
+}
+
+.element.style {
+  width: 10cm;
+  height: 10cm;
+}
+
+$link-color: #3d3d3d;
+$toc-font-size: 12px;
+$font-size-root: 16px;
+$input-border-radius: 20px;
+// Default is 50 for navbar
+$navbar-height: 40px;
+
+$h1-font-family: "Expletus Sans", cursive;
+$body-bg: #121212;
+$body-color: #2b2b2b;
+$navbar-bg: $body-bg;
+$code-block-bg: #3c3c3c;

@@ -1,0 +1,90 @@
+---
+title: "機器學習簡介"
+image: preview.png
+date: "2023-06-28"
+description: 從統計學與演算法出發，將人類的「學習」應用在電腦上。
+preview: preview.png
+categories: [statistics, machine learning]
+format:
+  html: 
+    code-fold: false
+---
+
+## 從「學習」到「機器學習」
+
+在討論機器學習之前，我們必須釐清「學習」是什麽。在我們的童年時期，父母教我們說「媽媽」和「爸爸」；在學校生活中，我們坐在教室里，看著教授在黑板上奮筆疾書，然後停下來思考片刻，努力梳理方才接收到的知識。我們可以發現，不同學習階段有一個共同點：通過觀察獲得技能。更具體地說，機器學習的終極目標是模仿人類的學習過程，使計算機或程序能夠「觀察」數據，並通過機器學習獲得期望的結果。
+
+### 何謂「技能」？
+
+我們學習英文或數學為的是提高我們的熟練程度與流暢度，這就是培養一項技能。同樣地，在機器學習領域中，「技能」就是提高某種性能指標，例如預測準確性。
+
+比方說量化交易員可以透過分析歷史股票數據和其他變量，我們可以使用電腦確定何時該買入或賣出股票，使個人或公司有可能獲得更多的利潤。
+
+另一個例子是「識別」。以下面這張柴犬的圖片為例。為什麽你能夠立即識別它是一只狗，甚至能夠具體地辨認出它是一只柴犬呢？首先，你會通過觀察眾多細節來將其與其他動物區分開來。然後，你可以從它的面部特徵和耳朵來確定它是一只柴犬而不是秋田犬。
+
+<center>
+<a id='wiq4C2RfRyB9r5arAq00fg' class='gie-single' href='http://www.gettyimages.com/detail/1214044812' target='_blank' style='color:#a7a7a7;text-decoration:none;font-weight:normal !important;border:none;display:inline-block;'>Embed from Getty Images</a><script>window.gie=window.gie||function(c){(gie.q=gie.q||[]).push(c)};gie(function(){gie.widgets.load({id:'wiq4C2RfRyB9r5arAq00fg',sig:'I_OA_qyFwJvXMIsNvXyq_2TSWYJXgk4slmUbY9R1krE=',w:'509px',h:'339px',items:'1214044812',caption: true ,tld:'com',is360: false })});</script><script src='//embed-cdn.gettyimages.com/widgets.js' charset='utf-8' async></script>
+</center>
+
+換句話說，電腦可以通過觀察數據來識別物件，這比自己手刻一個系統更容易。
+
+### 機器學習：建立複雜系統的替代途徑
+
+有時候面對一些問題，以人類現階段的能力與技術可能無法解決，或是必須耗費極高的成本。例如火星探測一直是人類於近十年內一直想要實踐的目標，然而礙於火星上的環境，雖然我們可以將太空探測器送上去火星，但人類無法直接看到實際的環境，僅能透過探測器上的攝影機回傳的照片、影片進行分析。這時候便可以利用機器學習的方式：讓電腦根據回傳的照片分析。
+
+由於電腦的發達，量化交易變得越來越頻繁，高頻交易(high-frequency trading)於焉出現。但是人類要如何在短時間（幾毫秒內）內根據現有的資料立刻做出決策？實際上是很難的。因此我們便可以利用機器學習協助我們做出決策。
+
+### 機器學習的本質
+
+我們在使用機器學習之前，必須先探討「這個問題是否適用機器學習」。林軒田老師整理出了以下三個問題特質，供我們判斷問題是否存在適用機器學習的必要性。
+
+1. **存在潛在的解決模式(underlying pattern)**：解決方式存在一些潛藏模式可供學習，或是可以被優化，我們才可以得知效能、收益、運算速度等是否得到提升。
+2. **沒有可規則化的解決模式**：若我們可以將規則寫下，那麼便不需要機器學習了。
+3. **有歷史資料或相關數據**：如果我們的問題沒有相關的資料，機器就無法「觀察」，也沒有「輸入項」進入到電腦的大腦以供學習。
+
+
+## 機器學習的要素
+
+我們以銀行發卡業務作為開頭與例子。當一個人申請信用卡時，銀行需要評估他們的信用風險，以確定是否批准他們的申請。過去，銀行主要依靠人工審核和傳統統計模型來做出這些決策，但這種方法可能會有一些限制。
+
+隨著機器學習的發展，銀行開始應用機器學習算法來改善發卡決策的準確性和效率。這些機器學習模型能夠從大量的歷史數據中學習，並自動擬合複雜的關係，以預測個人的信用風險。這些模型可以考慮許多變量，例如個人的收入、就業狀況、借貸歷史和信用評分等。
+
+通過機器學習，銀行能夠更準確地評估每個申請者的信用風險，從而做出更明智的發卡決策。這不僅有助於減少信用風險和不良債務，還能提供更好的客戶體驗和快速的申請審核過程。同時，機器學習還可以實時監控信用卡交易，以檢測任何可疑的活動或詐騙行為，從而提高交易安全性。
+
+
+### 一些符號
+
+接下來我們要定義一些符號：
+
+- 輸入(*input*)：$x \in \mathcal{X}$
+- 輸出(*output*)：$y \in \mathcal{Y}$
+- 目標函數(*target function*)：$f:\mathcal{X} \to \mathcal{Y}$，且必須未知
+
+建立在目標函數的基礎上，我們必須要提供電腦資料，給予電腦觀察，我們記成 $\mathcal{D} = \{(x_1, y_1), \cdots, (x_n, y_n)\}$。接著電腦要根據上面的資料，並依據核心演算法(*algorithm*)，記成 $\mathcal{A}$，所生成出假設的函數，我們記成 $g:\mathcal{X} \to \mathcal{Y}$，其必須十分貼近 $f$，我們才會稱這個函數的表現很好。
+
+我們可以將不同假想或我們認定的公式放到一個集合 $\mathcal{H}$ 中，即 
+$$
+g \in \mathcal{H} = \{h_{k}\}
+$$
+交由電腦的演算法從這個集合當中抽取出一個表現
+最好的公式當作 $g$。
+
+**例** 假設我們要透過機器學習建立一個歌曲自動評分系統，以下是我們擁有的集合：
+
+- $\mathcal{S}_{1}$：$[0, 100]$
+- $\mathcal{S}_{2}$：all possible (`userid`, `songid`) pairs
+- $\mathcal{S}_{3}$：all formula that "multiplies" user factors & song factors;
+indexed by all possible combinations of such factors
+- $\mathcal{S}_{4}$：1,000,000 pairs of (`userid`, `songid`), rating)
+
+根據上面的定義，我們可以知道：
+$$
+\mathcal{S}_{1} = \mathcal{Y}, \; \mathcal{S}_{2} = \mathcal{X}, \; \mathcal{S}_{3} = \mathcal{H}, \; \mathcal{S}_{4} = \mathcal{D}
+$$
+這個過程可以寫成如下的形式：
+$$
+\mathcal{S}_{4} \xrightarrow{\mathcal{A} \text{ on } \mathcal{S}_{3}} (g : \mathcal{S}_{2} \to \mathcal{S}_{1}) 
+$$
+
+
+

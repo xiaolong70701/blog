@@ -1,0 +1,14 @@
+{
+  "hash": "1d5fa19c3fa8fef6d69ed435ab1a83e4",
+  "result": {
+    "markdown": "---\ntitle: \"Set Theory\"\nimage: stat preview.png\ndate: \"2023-07-19\"\ndescription: Analyzing relationships and interactions among various economic elements.\ncategories: [real analysis, mathematical economics]\nformat:\n  html: \n    code-fold: false\n---\n\n\nA set can be simply defined as a collection of objects or elements. The followings are some examples of set:\n$$\n\\begin{aligned}\n&A = \\{1,2,3, \\cdots\\}\\\\\n&B = \\{🍎,🍌,🍉,🍇\\}\n\\end{aligned}\n$$\n\n$\\textbf{Definition 2.1}:$ If $A$ is any set, we write $x \\in A$ to indicate that $x$ is a member of $A$; if $x$ is not a member of $A$, we write $x \\notin A$.\n\nNote that a set can contain elements and sets. We speak of a collection of sets as a family, often denoted by $\\mathcal{A}$.\n\n## Set Relations\n\nSet relations are fundamental concepts in mathematics that describe how different sets relate to each other. Sets are collections of distinct elements, and set relations allow us to understand their interactions. Let's explore some of the most common set relations:\n\n$\\textbf{Definition 2.2}:$ The union of sets is a set containing all elements that are in either one set or another set. Thus, we can write $x \\in (A \\cup B)$ if and only if $x \\in A$  or $x \\in B$.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(VennDiagram)\n```\n\n::: {.cell-output .cell-output-stderr}\n```\nLoading required package: grid\n```\n:::\n\n::: {.cell-output .cell-output-stderr}\n```\nLoading required package: futile.logger\n```\n:::\n\n```{.r .cell-code}\n# Generate 3 sets of 200 words\nset1 <- paste(rep(\"word_\" , 200) , sample(c(1:1000) , 200 , replace=F) , sep=\"\")\nset2 <- paste(rep(\"word_\" , 200) , sample(c(1:1000) , 200 , replace=F) , sep=\"\")\nset3 <- paste(rep(\"word_\" , 200) , sample(c(1:1000) , 200 , replace=F) , sep=\"\")\n \n# Chart\nvenn.diagram(\n  x = list(set1, set2, set3),\n  category.names = c(\"Set 1\" , \"Set 2 \" , \"Set 3\"),\n  filename = '#14_venn_diagramm.png',\n  output=TRUE\n)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 1\n```\n:::\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

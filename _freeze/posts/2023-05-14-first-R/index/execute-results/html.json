@@ -1,0 +1,14 @@
+{
+  "hash": "3cf77511eec99f8c2711440b0c23c3a1",
+  "result": {
+    "markdown": "---\ntitle: \"第一個 R 語言程式\"\ndate: \"2023-05-14\"\ndescription: 初學者入門的R語言教學，詳解撰寫第一個R程式的基本步驟。\ncategories: [R, programming language]\nformat:\n  html: \n    code-fold: false\n---\n\n\n> R is a programming language for statistical computing and graphics supported by the R Core Team and the R Foundation for Statistical Computing. Created by statisticians Ross Ihaka and Robert Gentleman, R is used among data miners and statisticians for data analysis and developing statistical software. Users have created packages to augment the functions of the R language.[^1]\n\n[^1]: 節錄自[維基百科](https://en.wikipedia.org/wiki/R_(programming_language))。\n\n對於許多學習社會科學的人而言，R 語言是一門再基礎不過的程式語言了。誠如維基百科上面所言，R 本身就是一套統計軟體，個人使用過 SPSS 與其他著名的統計軟體後，發現 R 最好用。一方面除了它語言邏輯十分簡潔，套件的多樣性如 python 一般，有一個專屬於 R 的社群，集結了許多大神的作品，十分推薦剛入門程式語言的人學。\n\n## 安裝 R 與 R Studio\n\n首先我們可以先到[臺大資工系的鏡像網站](http://cran.csie.ntu.edu.tw/)上根據使用者所使用的系統下載相對應的 R。\n\n![](https://i.imgur.com/iRD88ri.jpg)\n\n下載完畢並安裝完成後，接著到 [R Studio 官網](https://www.rstudio.com/products/rstudio/download/)下載 R Studio。除非你有需要使用更高階的功能，否則我們就當一個免費仔就好，勇敢地點下 Free 底下的 Download！\n\n![](https://i.imgur.com/9oNfbYF.jpg)\n\n接著就可以打開 R Studio 開始學習`R`語言囉！如果單看文字仍不了解的話可以參考以下的影片。\n\n-   Windows 系統 <iframe width=\"750\" height=\"640\" src=\"https://www.youtube.com/embed/TFGYlKvQEQ4\" title=\"How to download and install R and RStudio\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\n\n-   MacOS 系統   <iframe width=\"750\" height=\"640\" src=\"https://www.youtube.com/embed/JqV-USGR6AA\" title=\"How to install R and RStudio on Mac in 4 minutes (August 2021)\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\n\n## 撰寫你的第一支 R 語言\n\n這篇我們不會講述太多複雜的東西，只會提到如何使用介面。筆者的系統是 macOS，如果你是其他系統，其實操作上大同小異，只是有些地方需要特別注意，例如路徑。\n\n### 新增檔案\n\n進入 R Studio 的介面後，點擊左上角的 `file` 後，接著依序按下 `New File`、`R Script`，即可新增檔案，當然你也可以使用快捷鍵 `⌘+Shift+N`。\n\n### 使用者介面\n\nR studio 的介面可以分為四個區塊，對應到下圖中的每個數字：\n\n1. Workspace：新增檔案後才會出現\n2. Console：執行程式碼的地方，在 Workspace 選取程式碼後按下快捷鍵即可執行。\n3. Environment、History：前者為記錄變數名稱、狀態的地方，後者為執行程式碼的紀錄。\n4. Files、Plots、Packages、Help、Viewer：這個區塊很好理解，就不多作介紹。\n\n### 撰寫程式碼\n\n撰寫程式碼有兩種方式，第一種是在 Workspace 寫。比如我們可以打上以下程式碼：\n\n\n::: {.cell}\n\n```{.r .cell-code}\nprint(\"Hello World!\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"Hello World!\"\n```\n:::\n:::\n\n\n就會跑出 Hello World!\n\n寫完程式碼之後**記得儲存檔案**！這個步驟真的很重要，建議每五分鐘就儲存一次。[^2]\n\n[^2]: 筆者有慘痛的經驗，之前打了近 500 行程式碼，結果因為資料量太大導致電腦過熱當機，重啟後東西全部不見。之後就養成了每打完一個小段落就儲存的習慣，共勉之。\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

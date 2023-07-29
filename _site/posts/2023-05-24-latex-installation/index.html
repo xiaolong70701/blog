@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anthony Sung">
+<meta name="dcterms.date" content="2023-05-24">
+<meta name="description" content="入門LaTeX：學習、安裝及寫出第一個文件的指南。">
+
+<title>Yueswater Blog - 第一個 LaTeX 程式（包含安裝教學）</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VLWNL5QXD8"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VLWNL5QXD8', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../css/karat.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Yueswater Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../notes.html" rel="" target="">
+ <span class="menu-text">Diary &amp; Notes</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/" rel="" target=""><i class="bi bi-facebook" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/yues_19_water/" rel="" target=""><i class="bi bi-instagram" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#編輯及編譯系統安裝" id="toc-編輯及編譯系統安裝" class="nav-link active" data-scroll-target="#編輯及編譯系統安裝">編輯及編譯系統安裝</a>
+  <ul class="collapse">
+  <li><a href="#miktex-安裝" id="toc-miktex-安裝" class="nav-link" data-scroll-target="#miktex-安裝">MikTeX 安裝</a></li>
+  <li><a href="#安裝-texstudio" id="toc-安裝-texstudio" class="nav-link" data-scroll-target="#安裝-texstudio">安裝 TeXStudio</a></li>
+  </ul></li>
+  <li><a href="#語法概說" id="toc-語法概說" class="nav-link" data-scroll-target="#語法概說">語法概說</a>
+  <ul class="collapse">
+  <li><a href="#設定文稿結構與基礎格式" id="toc-設定文稿結構與基礎格式" class="nav-link" data-scroll-target="#設定文稿結構與基礎格式">設定文稿結構與基礎格式</a></li>
+  <li><a href="#開啟環境" id="toc-開啟環境" class="nav-link" data-scroll-target="#開啟環境">開啟環境</a></li>
+  <li><a href="#前言區preamble" id="toc-前言區preamble" class="nav-link" data-scroll-target="#前言區preamble">前言區(preamble)</a></li>
+  <li><a href="#章節標題設定" id="toc-章節標題設定" class="nav-link" data-scroll-target="#章節標題設定">章節標題設定</a></li>
+  </ul></li>
+  <li><a href="#第一份-latex-文件" id="toc-第一份-latex-文件" class="nav-link" data-scroll-target="#第一份-latex-文件">第一份 <span class="math inline">\(\LaTeX\)</span> 文件</a>
+  <ul class="collapse">
+  <li><a href="#簡單實例操作" id="toc-簡單實例操作" class="nav-link" data-scroll-target="#簡單實例操作">簡單實例操作</a></li>
+  <li><a href="#字體大小與字形的調整" id="toc-字體大小與字形的調整" class="nav-link" data-scroll-target="#字體大小與字形的調整">字體大小與字形的調整</a></li>
+  <li><a href="#使用中文" id="toc-使用中文" class="nav-link" data-scroll-target="#使用中文">使用中文</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">第一個 LaTeX 程式（包含安裝教學）</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">LaTeX</div>
+    <div class="quarto-category">programming language</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    入門LaTeX：學習、安裝及寫出第一個文件的指南。
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Anthony Sung </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 24, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<p><span class="math inline">\(\LaTeX\)</span> 是一個基於 <span class="math inline">\(\TeX\)</span> 的排版系統，由美國電腦科學家 Leslie Lamport開發，遵循呈現與內容分離的設計理念，讓使用者能夠在撰文時致力於寫作，而非同時兼顧版面與內文<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。Word 與 <span class="math inline">\(\LaTeX\)</span> 最大的不同之處在於，Word 最強大的功能「所得即所見」是勝過後者的優勢，初學者可以無師自通，後者則是需要學習指令，Word 的這個特點就完全贏過後者。然而，<span class="math inline">\(\LaTeX\)</span> 的特點即是「呈現與內容分離」，使用者可以專注於撰文，而不用同時注意內文與版面。因此，許多 <span class="math inline">\(\LaTeX\)</span> 的使用者仍會透過Word先進行「前端設計」，再交由 <span class="math inline">\(\LaTeX\)</span> 進行版面設定與產出。這個系列的內容係參考自李果正的<a href="https://jupiter.math.nctu.edu.tw/~smchang/latex/latex123.pdf">《大家來學<span class="math inline">\(\LaTeX\)</span>》</a>與吳聰敏老師的<a href="https://www.math.sinica.edu.tw/www/tex/cxbook3.pdf">《cw<span class="math inline">\(\TeX\)</span> 排版系統》</a>。</p>
+<section id="編輯及編譯系統安裝" class="level2">
+<h2 class="anchored" data-anchor-id="編輯及編譯系統安裝">編輯及編譯系統安裝</h2>
+<p><span class="math inline">\(\LaTeX\)</span> 有許多不同種類的編譯與編輯器組合，本文將以作者最常見的組合 MiKTeX 搭配 TeXStudio 介紹。當然如果有特別的偏好也無妨，只要能夠編輯即可。</p>
+<section id="miktex-安裝" class="level3">
+<h3 class="anchored" data-anchor-id="miktex-安裝">MikTeX 安裝</h3>
+<p>首先點擊<a href="">這裡</a>進入 MiKTeX 官網。</p>
+<p><img src="fig1.png" class="img-fluid"></p>
+<p>接著點擊 <code>Download</code> 按鈕， 進入頁面後根據電腦的作業系統選擇安裝檔。</p>
+<p><img src="fig2.png" class="img-fluid"></p>
+<p>下載並安裝後便可以進行更新。</p>
+<p><img src="fig3.png" class="img-fluid"> 按下之後即可更新 MiKTeX。更新完畢後點選左側的 <code>Updates</code> 按鈕進入更新區，依序按下 <code>Check for updates</code> 以及 <code>Update now</code> 後即完成。</p>
+<p><img src="fig4.png" class="img-fluid"></p>
+</section>
+<section id="安裝-texstudio" class="level3">
+<h3 class="anchored" data-anchor-id="安裝-texstudio">安裝 TeXStudio</h3>
+<p>請點擊<a href="https://www.texstudio.org/">這裡</a>進入 TeXStudio 官網後，按下下載按鈕即可安裝。安裝完成後基本上就可以開始編譯了。</p>
+<p><img src="fig5.png" class="img-fluid"> 如果要更改編譯器，請到依照以下步驟更改。</p>
+<ul>
+<li>macOS 系統：點選左上角 <code>TeXStudio</code> <span class="math inline">\(\rightarrow\)</span> 點選 <code>Preferences</code> <span class="math inline">\(\rightarrow\)</span> 點選 <code>Build</code> <span class="math inline">\(\rightarrow\)</span> 將 Default Compiler 改為你想要的編譯器。</li>
+<li>macOS 系統：點選左上角 <code>TeXStudio</code> <span class="math inline">\(\rightarrow\)</span> 點選 <code>Options</code> <span class="math inline">\(\rightarrow\)</span> 點選 <code>Build</code> <span class="math inline">\(\rightarrow\)</span> 將 Default Compiler 改為你想要的編譯器。</li>
+</ul>
+<p>以上就是安裝 MiKTeX 與 TeXStudio 的過程。</p>
+</section>
+</section>
+<section id="語法概說" class="level2">
+<h2 class="anchored" data-anchor-id="語法概說">語法概說</h2>
+<p>進到 <span class="math inline">\(\LaTeX\)</span> 之後，我們就可以在編輯頁面中輸入以下的指令(command)。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>[12pt]{<span class="ex">article</span>}</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\title</span>{My First Document}</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\author</span>{Author}</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">\date</span>{}</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">\maketitle</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>我們就可以看到以下的畫面。</p>
+<p><img src="https://i.imgur.com/kJmeLxD.png" class="img-fluid"></p>
+<p>在看這篇文章的你一定會好奇這幾行程式碼是什麼意思。那你肯定來對地方了！接下來我就要來一一解析這幾行程式碼背後的意義。</p>
+<section id="設定文稿結構與基礎格式" class="level3">
+<h3 class="anchored" data-anchor-id="設定文稿結構與基礎格式">設定文稿結構與基礎格式</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>[12pt]{<span class="ex">article</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>首先，<code>\documentclass</code> 代表我們要去設定這份文檔的基礎格式。而在 <span class="math inline">\(\LaTeX\)</span> 裡，如果我們要輸入 <span class="math inline">\(\LaTeX\)</span> 的指令，就必須要在前方加上 <code>\</code>（反斜線）。<span class="math inline">\(\LaTeX\)</span> 常見的排版專用符號大致可以用下面的表格呈現：</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>符號</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\</code></td>
+<td>下排版命令</td>
+</tr>
+<tr class="even">
+<td><code>%</code></td>
+<td>註解</td>
+</tr>
+<tr class="odd">
+<td><code>#</code></td>
+<td>定義巨集</td>
+</tr>
+<tr class="even">
+<td><code>~</code></td>
+<td>產生空白</td>
+</tr>
+<tr class="odd">
+<td><code>$</code></td>
+<td>進入/離開數學模式</td>
+</tr>
+<tr class="even">
+<td><code>^</code></td>
+<td>數學模式中的上標字</td>
+</tr>
+<tr class="odd">
+<td><code>_</code></td>
+<td>數學模式中的下標字</td>
+</tr>
+<tr class="even">
+<td><code>&amp;</code></td>
+<td>分隔符號</td>
+</tr>
+</tbody>
+</table>
+<section id="選擇參數與必要參數" class="level4">
+<h4 class="anchored" data-anchor-id="選擇參數與必要參數">選擇參數與必要參數</h4>
+<p>後面的 <code>[12pt]</code> 則是設定字體的大小，方括號（我們稱為<strong>選擇變數</strong>）裡面不只可以設定字級，也可以設定紙張大小，比如 <code>[12pt, a4paper]</code>。最後的 <code>{article}</code> 稱為<strong>必要參數</strong>，也就是說，前面的選擇參數可以不打任何東西，但花括號裡頭一定要放上內容。我們必須注意幾件事情：</p>
+<ul>
+<li>不同於Word，<span class="math inline">\(\LaTeX\)</span> 文稿中，空一個與多個英文空白的意思是一樣 的，<span class="math inline">\(\LaTeX\)</span> 會認作一個空白。</li>
+<li>按下Enter 鍵不代表換行，換行必須要使用雙斜線（<code>\\</code>，Windows 用戶可以同時按下 <code>Ctrl</code> 與 <code>Enter</code> 鍵），或是以 <code>\newline</code>、 <code>\linebreak</code> 進行換行。</li>
+</ul>
+</section>
+<section id="使用指令" class="level4">
+<h4 class="anchored" data-anchor-id="使用指令">使用指令</h4>
+<p><span class="math inline">\(\LaTeX\)</span> 的指令是從反斜線後第一個字母開始，到第一個非字母符號為止 （包含空白、標點符號及數字）。因此：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>This is my first <span class="fu">\LaTeX</span> typesetting example.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>這樣的話，由於空白屬於指令的一部分，故會印出：</p>
+<p>This is my first <span class="math inline">\(\LaTeX\)</span>typesetting example.</p>
+<p>因此若要避免上述情況，就必須使用以下三種方法：</p>
+<ol type="1">
+<li><code>This is my first {\LaTeX} typesetting example.</code></li>
+<li><code>This is my first \LaTeX{} typesetting example.</code></li>
+<li><code>This is my first \LaTeX\ typesetting example.</code></li>
+</ol>
+<p>正確的輸出應該為：</p>
+<p>This is my first <span class="math inline">\(\LaTeX\)</span> typesetting example.</p>
+</section>
+<section id="使用註解" class="level4">
+<h4 class="anchored" data-anchor-id="使用註解">使用註解</h4>
+<p>註解符號(<code>%</code>) 可以放在一行的任何地方，<code>%</code> 的文字會被 <span class="math inline">\(\LaTeX\)</span> 忽略。因此如果放在一行的最尾端，那麼 <span class="math inline">\(\LaTeX\)</span> 會自動插入的字間空白也將會被忽略。</p>
+</section>
+</section>
+<section id="開啟環境" class="level3">
+<h3 class="anchored" data-anchor-id="開啟環境">開啟環境</h3>
+<p><span class="math inline">\(\LaTeX\)</span> 有一種巨集結構，稱為環境(environment)，主要是讓作用範圍能 擴大至較大的範圍。所有的環境都起於<code>\begin{環境名稱}</code>，止於 <code>\end{環境名稱}</code>。這兩個指令之間的文稿都會被作用，而且，環境之內還可以套用其他不同的環境。<span class="math inline">\(\LaTeX\)</span> 文稿的內文，就是包在一個</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="er">環</span>境名稱}</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a> ...</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="er">環</span>境名稱}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>這個 document 環境當中。以下就是所有 <span class="math inline">\(\LaTeX\)</span> 必須具備的文稿大結構：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>[]{}</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">%這裡是preamble 區</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a> ...</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="前言區preamble" class="level3">
+<h3 class="anchored" data-anchor-id="前言區preamble">前言區(preamble)</h3>
+<p>這裡可以引用巨集(macro)，而且會影響整篇文稿的指令，例如一些事先 定義好的指令，想在整篇文稿中使用，就可以置放在 preamble 區。例如：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>[12pt]{<span class="ex">article</span>}</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>The text will be <span class="fu">\textcolor</span>{blue}{blue}.</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="https://i.imgur.com/GcndXpx.png" class="img-fluid"></p>
+</section>
+<section id="章節標題設定" class="level3">
+<h3 class="anchored" data-anchor-id="章節標題設定">章節標題設定</h3>
+<p>在 <span class="math inline">\(\LaTeX\)</span> 的文稿裡頭，章節標題的形成都是由同樣的指令來控制的，這樣有一個好處，臨時插入章節標題及其內文時，我們不必去理會標題編號及目錄的問題，也不必去理會要用什麼字型、及字型大小要多大，<span class="math inline">\(\LaTeX\)</span> 會自動計算處理，字型大小也會和內文使用的字型大小互相配合調整，使用者就專心在內文構思、寫作即可。以下由列表來瞭解整個章節結構：</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>深度編號</th>
+<th>指令</th>
+<th>作用及注意事項</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>-1</td>
+<td><code>part{}</code></td>
+<td>部</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td><code>chapter{}</code></td>
+<td>章，在 article 沒有章</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td><code>section{}</code></td>
+<td>節</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td><code>subsection{}</code></td>
+<td>小節</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><code>subsubsection{}</code></td>
+<td>次小節</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><code>paragraph{}</code></td>
+<td>段落</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td><code>subparagraph{}</code></td>
+<td>次段落</td>
+</tr>
+</tbody>
+</table>
+<p>上面程式碼可以在<a href="https://drive.google.com/file/d/17VCrSfvPtdstBdfau1ZEHwO2fjispekh/view?usp=sharing">這裡下載</a>。</p>
+</section>
+</section>
+<section id="第一份-latex-文件" class="level2">
+<h2 class="anchored" data-anchor-id="第一份-latex-文件">第一份 <span class="math inline">\(\LaTeX\)</span> 文件</h2>
+<section id="簡單實例操作" class="level3">
+<h3 class="anchored" data-anchor-id="簡單實例操作">簡單實例操作</h3>
+<p>先來試試看，這裡先使用 report 類別文稿，因為 article 類別文稿是沒有chapter 的</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>{<span class="ex">report</span>}</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>This is my first {<span class="fu">\LaTeX</span>} typesetting example.<span class="fu">\\</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>This is my first <span class="fu">\LaTeX</span>{} typesetting example.<span class="fu">\\</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>This is my first <span class="fu">\LaTeX\ </span>typesetting example.<span class="fu">\\</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>I am Mr. Edward G.J. Lee, G.J. is a abbreviation of my name.<span class="fu">\\</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>I am Mr.<span class="fu">\ </span>Edward G.J. Lee, G.J. is a abbreviation of my name.<span class="fu">\\</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>Please see Appendix A. We will be there soon.<span class="fu">\\</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>Please see Appendix A<span class="fu">\null</span>. We will be there soon.</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>排版結果如下：</p>
+<p><img src="https://i.imgur.com/nf1YHHL.jpg" class="img-fluid"></p>
+<section id="關於縮排" class="level4">
+<h4 class="anchored" data-anchor-id="關於縮排">關於縮排</h4>
+<p>我們可以看到第一行縮排了，因為沒有分章節便將換行前的內容做為引言，故會縮排。要解決問題有兩種方法：</p>
+<ul>
+<li>第一行加入<code>\noindent</code>來指示 <span class="math inline">\(\LaTeX\)</span> 不要縮排。但這種作法仍僅限於下指令之處，其他該縮排的地方仍會縮排。</li>
+<li>在 preamble 區加入<code>\parindent=0pt</code>，表示讓全文的縮排為0pt，當然這就表示全文都不要縮排了。</li>
+</ul>
+</section>
+<section id="加入章節標題" class="level4">
+<h4 class="anchored" data-anchor-id="加入章節標題">加入章節標題</h4>
+<p>在 <span class="math inline">\(\LaTeX\)</span> 中加入章節標題可以不用理會字體大小，只需下指令即可。以下仍用 report 類別說明。注意到，<span class="math inline">\(\LaTeX\)</span> 對於章節標題的預設數字都是阿拉伯數字，若要自行改成中文標題，可以在大括號前加上星號(<code>*</code>)，就可以自行替換了，例如<code>\section{}</code>、<code>\section*{}</code>。</p>
+</section>
+<section id="加入標題頁資訊" class="level4">
+<h4 class="anchored" data-anchor-id="加入標題頁資訊">加入標題頁資訊</h4>
+<p>這是指內頁的第一頁，我也不知道這個中文專有名詞是什麼，在 <span class="math inline">\(\LaTeX\)</span> 裡頭，我們就稱為 title page。在 <span class="math inline">\(\LaTeX\)</span> 的標準格式裡，他包括了標題(title)、作者名字(author)、日期(date) 及感謝詞(thanks)。</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>{<span class="ex">report</span>}</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\title</span>{Report File}</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\author</span>{Noname<span class="fu">\thanks</span>{Thanks to the readers.}}</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">\date</span>{<span class="fu">\today</span>}</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">\maketitle</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>This is the first sentence in my <span class="fu">\LaTeX\ </span>file.</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="kw">\chapter</span>{First Chapter}</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="kw">\section</span>{Section}</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>加入標題頁資訊後，必須在<code>\begin{document}</code>與<code>\end{document}</code>之間加入<code>\maketitle</code>，才能將剛剛的資訊在文件中顯示。</p>
+</section>
+<section id="加入目錄" class="level4">
+<h4 class="anchored" data-anchor-id="加入目錄">加入目錄</h4>
+<p>加入目錄(Table of Contents) 對 <span class="math inline">\(\LaTeX\)</span> 而言，更是輕而易舉的事情，只要在本文開頭加個<code>\tableofcontents</code>指令就成了。</p>
+</section>
+<section id="加入摘要" class="level4">
+<h4 class="anchored" data-anchor-id="加入摘要">加入摘要</h4>
+<p>如果要加入的話，可使用 abstract 環境，即</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">abstract</span>}</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">abstract</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>在這個環境中的文章，左右會縮排。要注意的是，只有 article/report 類別才有 abstract，book 類別不能使用這個環境。report 類別的摘要自成一頁，不編頁碼，且不會編入目錄中，這和一般的論文格式可能會不一樣，使用時請注意。article 的類別則仍然是和本文相連的，會出現在文章標題之後。</p>
+</section>
+<section id="加入註解" class="level4">
+<h4 class="anchored" data-anchor-id="加入註解">加入註解</h4>
+<p>在 <span class="math inline">\(\LaTeX\)</span> 裡頭，註解可有兩種方式，一種是<strong>腳註(footnote)</strong>，一種是<strong>邊註(marginal note)</strong>。通常 <span class="math inline">\(\LaTeX\)</span> 的腳註預設是由阿拉伯數字在編號，置於頁底部。在沒有部(part)的情形下，report/book 類別，編號每章會從頭起算，article 類別則會連續，而且會使用<code>footnotesize</code>的字體印出。邊註則不編號，字體是正常大小。</p>
+<ul>
+<li>腳註：只要在要加入腳註的後面加上<code>\footnote{}</code>即可。</li>
+<li>邊註：如果要使用邊註，首先必須在前言區引用<code>marginnote</code>這個套件，接著便可以在文件中加入邊註。</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>[a4paper,twoside,english]{<span class="ex">article</span>}</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\title</span>{Test}</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\author</span>{Noname}</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">lipsum</span>}</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">marginnote</span>}</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">\makeatother</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="fu">\maketitle</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="kw">\section</span>{Margin notes}</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="fu">\marginnote</span>{First margin note.}[0cm]</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="fu">\marginnote</span>{Second margin note.}[3cm]</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="fu">\lipsum</span>[1-2]<span class="fu">\footnote</span>{Footnote is right here.}</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="字體大小與字形的調整" class="level3">
+<h3 class="anchored" data-anchor-id="字體大小與字形的調整">字體大小與字形的調整</h3>
+<p>假設我們在文稿內想要將某些文字放大，有以下兩種方式：使用 <span class="math inline">\(\LaTeX\)</span> 中預設調整字體大小的方式；另一種則是使用<code>\selectfont{}</code>將文字有彈性地調整至使用者想要的大小。不過，在討論字體大小調整之前，我們先來看一些簡單的設定，也就是如何將文字變成粗體、斜體、粗斜體</p>
+<section id="字形的調整" class="level4">
+<h4 class="anchored" data-anchor-id="字形的調整">字形的調整</h4>
+<table class="table">
+<thead>
+<tr class="header">
+<th>指令</th>
+<th>結果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\textit{italic}</code></td>
+<td><span class="math inline">\(\textit{italic}\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\textbf{boldface}</code></td>
+<td><strong>boldface</strong></td>
+</tr>
+<tr class="odd">
+<td><code>\textsf{sans serif}</code></td>
+<td><span class="math inline">\(\textsf{sans serif}\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\textrm{roman}</code></td>
+<td><span class="math inline">\(\textrm{roman}\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\texttt{typewriter}</code></td>
+<td><span class="math inline">\(\texttt{typewriter}\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="字體大小" class="level4">
+<h4 class="anchored" data-anchor-id="字體大小">字體大小</h4>
+<p>系統預設調整字體大小的方式可以參考下列表格，右邊是對應的字級：</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>指令</th>
+<th>實際大小</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\tiny</code></td>
+<td>5pt</td>
+</tr>
+<tr class="even">
+<td><code>\scriptsize</code></td>
+<td>7pt</td>
+</tr>
+<tr class="odd">
+<td><code>\footnotesize</code></td>
+<td>8pt</td>
+</tr>
+<tr class="even">
+<td><code>\small</code></td>
+<td>9pt</td>
+</tr>
+<tr class="odd">
+<td><code>\normalsize</code></td>
+<td>10pt</td>
+</tr>
+<tr class="even">
+<td><code>\large</code></td>
+<td>12pt</td>
+</tr>
+<tr class="odd">
+<td><code>\Large</code></td>
+<td>14.4pt</td>
+</tr>
+<tr class="even">
+<td><code>\LARGE</code></td>
+<td>17.28pt</td>
+</tr>
+<tr class="odd">
+<td><code>\huge</code></td>
+<td>20.74pt</td>
+</tr>
+<tr class="even">
+<td><code>\Huge</code></td>
+<td>24.88pt</td>
+</tr>
+</tbody>
+</table>
+<p>另一個方式則是使用<code>{\fontsize{字級}{行基線間距}\selectfont Hello}</code></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>[12pt]{<span class="ex">article</span>}</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">anyfontsize</span>}</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\makeatother</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>{<span class="fu">\fontsize</span>{150}{60}<span class="fu">\selectfont</span> Hello}{<span class="fu">\fontsize</span>{15}{6}<span class="fu">\selectfont</span> Hello}</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="使用中文" class="level3">
+<h3 class="anchored" data-anchor-id="使用中文">使用中文</h3>
+<p><span class="math inline">\(\TeX\)</span> 的開發者 Knuth 教授當初並未料想到會有中文使用者欲進行排版，因此若我們想要在文件中顯示中文，則必須向 <span class="math inline">\(\LaTeX\)</span> 宣告中文套件，才能在文稿內使用中文。注意到 <span class="math inline">\(\TeX\)</span> 的編輯系統<code>pdfLaTeX</code>、<code>XeLaTeX</code>與<code>LuaLaTeX</code>在支援中文字體上有不一樣的程度：<code>pdfLaTeX</code> 是完全不支援；後兩者則是支援<code>UTF-8</code>。以下就分別以支援與不支援<code>UTF-8</code>的情況做說明。</p>
+<section id="不支援-utf-8" class="level4">
+<h4 class="anchored" data-anchor-id="不支援-utf-8">不支援 UTF-8</h4>
+<p>在不支援 UTF-8 的情況下，我們要引用<code>CJKutf8</code>套件，並參考以下程式碼：</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>[12pt]{<span class="ex">article</span>}</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">CJKutf8</span>}</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">CJK*</span>}{UTF8}{中文字體}</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\section</span>{大綱}</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>這裡是大綱，也可輸入英文<span class="fu">\\</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>You can also type english here.</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="kw">\section</span>{先備知識}</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>這裡是先備知識</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">CJK*</span>}</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="支援-utf-8" class="level4">
+<h4 class="anchored" data-anchor-id="支援-utf-8">支援 UTF-8</h4>
+<p>如果在 xeLaTeX 或 LuaLaTeX 的環境下，我們則使用<code>xeCJK</code>這個套件，並參考以下程式碼：</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>[12pt]{<span class="ex">article</span>}</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">xeCJK</span>}</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\setCJKmainfont</span>{標楷體}</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\section</span>{第一章}</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>認識<span class="fu">\LaTeX\</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="kw">\section</span>{第二章}</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>了解如何使用中文排版</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>前面展示了如何使用引用中文的巨集套件。不過，在撰文時可能會需要使用不同字體，比如標題規定要使用標楷體，內文要使用新細明體，<span class="math inline">\(\LaTeX\)</span> 可以針對電腦已安裝的字體搜尋其路徑，最後進行編譯。</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>[12pt]{<span class="ex">article</span>}</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">xeCJK</span>}</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\setCJKmainfont</span>{標楷體}</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">\setCJKfamilyfont</span>{QHei}{cwTeXQHei-Bold} <span class="co">%宣告抓取該字體</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">\newcommand*</span>{<span class="ex">\QH</span>}{<span class="fu">\CJKfamily</span>{QHei}} <span class="co">%設定該字體命令</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>最後，必須注意，這些字體都必須是已經安裝在讀者端的電腦上，如果想要下載由吳聰敏老師開發的<code>cwTeX</code>系列字體，可以參考<a href="https://github.com/l10n-tw/cwtex-q-fonts">這篇文章</a>。</p>
+
+
+</section>
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>“Latex.” Wikipedia, Wikimedia Foundation, 12 June 2021, <a href="zh.wikipedia.org/zh-tw/LaTeX">zh.wikipedia.org/zh-tw/LaTeX</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="xiaolong70701/quarto-blog" data-repo-id="R_kgDOJhS1Eg" data-category="General" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright © 2023 Anthony. All rights reserved. See <a href="../copyright.html">statements</a>.</div>   
+    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/">
+      <i class="bi bi-facebook" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/yues_19_water/">
+      <i class="bi bi-instagram" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
