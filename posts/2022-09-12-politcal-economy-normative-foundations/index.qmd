@@ -1,0 +1,252 @@
+---
+title: "政治經濟學的規範基礎(Normative Foundations)"
+image: polisci preview.svg
+lang: en
+description: |
+    政治經濟學與經濟發展入門。
+date: "2022-09-12"
+draft: FALSE
+citation:
+  url: https://yueswater.netlify.app/posts/2022-09-12-politcal-economy-normative-foundations/
+categories: [poilitical economy]
+---
+
+1970 年代以降，行為科學與科際整合的興起，導致政治學與經濟學的研究兩者相互影響。在政治經濟學的研究領域中會發現，儘管學者採用、引進個體經濟模型解釋諸多政治行為與現象，然而，政治(politics)作為一個重要的影響因子(factor)，在某種程度上會扭曲以個體經濟模型的本質與型態。
+
+## 效用函數與 Pareto 概念
+
+在現實生活中，對於任何事情，無論是食物、衣服，乃至於公共政策，每個個體都有不同的偏好(preferences)，而這些偏好可以透過數學的方式表達，稱之為**效用函數(utility function)**。[^1] 對於每個個體而言，若滿足下列條件，則效用函數 $U_i$ 可以表達第 $i$ 個人的偏好：
+
+- 嚴格偏好(strictly prefer)：若一個個體偏好 $x$ 的程度大於 $y$，則可記作 $x \succ y$，隱含 $U_i(x) > U_i(y)$。
+- 無異(indifference)：若一個個體偏好 $x$ 的程度等於 $y$，則可記作 $x \sim y$，隱含 $U_i(x) = U_i(y)$。
+
+
+### Pareto 優勢(Pareto dominance)
+
+若以下條件成立，則稱一個政策 $x$ Pareto 優於另一個政策 $y$：
+
+- $U_i(x) \geq U_i(y), \; \forall i$
+- $U_i(x) > U_i(y), \; \text{for at least one } i$
+
+當上述條件成立時，任何人都應該接受政策 $x$ 優於政策 $y$ 的事實。直觀而言，若一國非威權、極權國家，那麼作為民主體制的國家，政府則必須照顧多數人，也就是所謂的「少數服從多數」。
+
+### Pareto 改善(Pareto improvement) 與 Pareto 效率(Pareto efficiency)
+
+假設政策 $x$ Pareto 優於另一個政策 $y$，在不犧牲任何一方的福利下，從$x$ 移動到 $y$ 的過程若可改善另一方、或雙方的福利，則稱其為 Pareto 改善；若從$x$ 移動到 $y$ 的過程若將對於一方或雙方的福利產生傷害，則稱為該點為 Pareto 效率。
+
+![](https://i.imgur.com/jINEbH4.png)
+
+舉例來說，
+
+$$
+\begin{array}{lll}
+U_1(x)=5 & U_1(y)=2 & U_1(z)=4 \\
+U_2(x)=1 & U_2(y)=3 & U_2(z)=7 \\
+U_3(x)=4 & U_3(y)=1 & U_3(z)=1
+\end{array}
+$$
+
+$x$ 與 $z$ 是 Pareto 效率的政策，但 $x$ 政策的總效用為 $10$，$z$ 則為 $12$。而若從政策 $x$ 轉換到 $z$，或反向操作，均會造成部分人的利益受損，這也對應到現實社會上政策的改變會影響到某些族群的利益，從而產生反對的聲音。另外，從非 Pareto 效率移轉到 Pareto 效率，不必然產生 Pareto 改善(如從 $y$ 到 $x$)。
+
+$$
+\begin{array}{lll}
+U_1(x)=1 & U_1(y)=2 & U_1(z)=3 \\
+U_2(x)=3 & U_2(y)=2 & U_2(z)=0 \\
+U_3(x)=-2 & U_3(y)=4 & U_3(z)=0
+\end{array}
+$$
+
+第二個例子中可以發現每個政策均為 Pareto 效率，其中 $y$ 政策的總利益最高。
+
+
+### 效率與分配(efficiency and distribution)
+
+所謂效率，係指在個體經濟層面上極大化一個個體的效用，而分配則是指政府透過移轉性支出(transfer expenditure)補貼在達到效率產生的政策受損者(loser)。例如在 J. F. Hornbeck 所撰寫的 *Trade Adjustment Assistance (TAA) and Its Role in U.S. Trade Policy* 提到：
+
+> Congress created Trade Adjustment Assistance (TAA) in the Trade Expansion Act of 1962 to help workers and firms adjust to dislocation that may be caused by increased trade liberalization. It is justified now, as it was then, on grounds that the government has an obligation to help the "losers" of policy-driven trade opening.
+
+例如 2014 年臺灣的太陽花學運，若以後設的角度來看，可以發現當時的政策決定者僅看到簽訂自由貿易協定是一個 Pareto 效率，但並未考慮到在簽訂政策之後臺灣將產生出利益受損者。
+
+## 政策的兩難：政策與偏好模型(Model of Policies and Preferences)
+
+由上述的推論可以得知，一個政策的產生與決定必定會造成社會上某些人受損——儘管該政策能夠帶給多數人民最大的利益，因此一個理想的政策存在下列兩個條件：行動(action)，亦即政策，與移轉性計畫(transfer scheme)，即對於政策受損者的補貼。假設社會存在 $n$ 個人，所有的行動 $a$ 可以寫成一個集合 $\mathbf{A}$，即
+
+$$
+a \in \mathbf{A}
+$$
+
+另外，移轉性計畫則包含每個個體的移轉項目 $t_i$，記作 $t = (t_1, t_2, \cdots, t_n)$，其中若 $t_i < 0$，代表政府從該個體身上拿走部分所得，若 $t_i > 0$ 則是政府對其進行補貼。而在移轉性計畫下，正常情況是不會產生額外的資金，亦不會憑空減少，也就是「羊毛出在羊身上」，因此移轉性計畫的所有金額總和必為 $0$，即
+$$
+\sum^n_{i=1}t_i = 0
+$$
+我們可以將一個政策表達為 $(a, t)$，因此個體對於該政策的偏好可以寫作
+$$
+U_i(a,t)
+$$
+同樣地我們可以運用上述關於偏好排序的概念，描述個體對於不同政策之間的喜好程度。若某個體偏好 $(a, t)$的程度大於 $(a', t')$，則可寫成 $U_i(a, t) > U_i(a', t')$；若某個體認為$(a, t)$與 $(a', t')$對其而言沒有差別，則表示此個體對此兩個政策無異，寫作 $U_i(a, t) = U_i(a', t')$。
+
+### 準線性偏好(quasi-Linear Preferences)
+
+假設我們可以將個體對於政策的偏好區分為兩部分，其一為行動，另一個則為移轉性數額，則該個體之效用函數可以寫成
+$$
+U_i(a,t) = v_i(a) + t_i
+$$
+我們稱此種效用函數為準線性效用函數，其顯示出的偏好為準線性偏好，因個體收到的移轉支出即可視為所獲得的效用，故準線性偏好之效用與移轉性數額間具有線性關係(linear relationship)，但與行動則不具線性關係(non-linear relationship)。而在準線性偏好之下，若且唯若某個體偏好 $(x, t)$ 大於 $(y,t')$，則
+$$
+\begin{gathered}
+U_1(x, t)+U_2(x, t)>U_1\left(y, t^{\prime}\right)+U_2\left(y, t^{\prime}\right) \\
+v_1(x)+t_1+v_2(x)+t_2>v_1(y)+t_1^{\prime}+v_2(y)+t_2^{\prime}
+\end{gathered}
+$$
+而在預算平衡之下，隱含 $t_1 + t_2 = t_1'+ t_2' = 0$，則
+$$
+v_1(x) + v_2(x) > v_1(y) + v_2(y)
+$$
+言下之意，上述推導背後的邏輯，係在效用主義的假設之下，移轉性支出的數額並非個體決定偏好何種政策的關鍵，而是行動本身。
+
+![](https://i.imgur.com/7CWBZfN.png)
+
+令 $U_C$ 為資本家的效用，$U_L$ 為勞工的效用，在未採行自由貿易之下的關稅為 $a^\text{P}$，若開放自由貿易後關稅額移動到 $a^{\text{FT}}$ 後，勞工的利益會下降，資本家的利益則會上升。在自由貿易開放之後，因勞工利益受損，從而會使得勞工會採取體制內或體制外的行動表達對於此政策的不滿。
+
+![](https://i.imgur.com/irchFtw.png)
+
+誠如上述所言，一項好的政策必須包含行動與補貼，在自由貿易下，政府會對於勞工進行補貼，形成新的效用函數，$U_C^{\prime}$ 與 $U_L^{\prime}$，而因為準線性不會影響斜率，只會影響截距，導致效用函數在圖形上為上升或下降。此時的補貼係從資本家的利得移轉給勞工，勞工的效用值上升到紅色圓點，資本家的效用值則移動到紅色三角，兩者的利益均上升，形成雙贏(win-win)的局面。
+
+![](https://i.imgur.com/aqXR7Xu.png)
+
+不過就經濟意義上而言，這樣的配置並非最適，原因在於 Pareto 改善並不要求效用必須大於，事實上亦可以剛好等於，使其改善前後的效用無異。因此在現實生活中，資本家不會願意給予上圖的數額，而會給予能夠使勞工效用無異的數額。
+
+### 準線性偏好之重要性質
+
+假定個體服從準線性偏好，而每項政策都是諸多行動( $a \in \mathbf{A}$ )與移轉性支出( $t_i \in \mathbf{T}$ )的集合，若 $x \in \mathbf{A}$ 是所有行動中的最適，則對於所有 $t$，政策 $(x,t)$ 必為 Pareto 效率，反之亦可推得 $x$ 為最適。我們可以利用反證法證明上述的定理：假設 $x$ 為最適，但 $(x,t)$非 Pareto 效率，前項條件隱含
+$$
+\sum_{i=1}^n v_i(x) \geq \sum_{i=1}^n v_i(y),\; y \in \mathbf{A}
+$$
+後項條件隱含 $\exists \; (y, t') \text{ s.t. } (y, t')\succ (x,t)$，若此項條件成立，則 $v_i(y)+t_i^{\prime} \geq v_i(x)+t_i, \; \forall i$ 且 $v_i(y)+t_i^{\prime} \geq v_i(x)+t_i, \; \text{for at least one } i$，則
+$$
+\sum_{i=1}^n\left[v_i(y)+t_i^{\prime}\right]>\sum_{i=1}^n\left[v_i(x)+t_i\right]
+$$
+因預算平衡，則 $t = t'$，故
+$$
+\sum_{i=1}^nv_i(y)>\sum_{i=1}^nv_i(x)
+$$
+而此條件與 $x$ 為最適的條件產生矛盾。而反向的條件之證明如下，首先定義移轉性計畫函數如下：
+$$
+T_i=v_i(x)-v_i(y)+t_i
+$$
+個體對於 $(x,t)$ 與 $(y, T)$ 無異，
+$$
+\begin{aligned}
+U_i(y, T) &=v_i(y)+T_i \\
+&=v_i(y)+v_i(x)-v_i(y)+t_i \\
+&=v_i(x)+t_i \\
+&=U_i(x, t)
+\end{aligned}
+$$
+但移轉性支出未達預算平衡，則
+$$
+\begin{aligned}
+\sum_{i=1}^n T_i &=\sum_{i=1}^n\left[v_i(x)-v_i(y)+t_i\right] \\
+&=\sum_{i=1}^n v_i(x)-\sum_{i=1}^n v_i(y)+\sum_{i=1}^n t_i \\
+&=\sum_{i=1}^n v_i(x)-\sum_{i=1}^n v_i(y)<0
+\end{aligned}
+$$
+現令新的移轉性支出函數如下，
+$$
+T_i^{\prime}=T_i+k
+$$
+其中 $k=\frac{\sum_{i=1}^n v_i(y)-\sum_{i=1}^n v_i(x)}{n}>0$，而因為每個個體對於 $(y,T)$ 與 $(x, T)$ 無異，則 $(y,T')$ 嚴格偏好大於 $(x,T)$，故 $(x,T)$ 非 Pareto 效率。
+
+
+## 國際貿易與安全外部性
+
+外部性係指個體的行為對社會或者其他個體產生影響，卻未承擔相應的義務或獲得報酬。在政治經濟學領域中最值得探討的係「安全」(security)的外部性，國防安全是一種公共財(public good)，其無法排除(non-excludable)特定個人，亦不具有敵對性(non-rival)，而分析的意義在於，冷戰結束後美國成為全球霸權，其不斷推動貿易自由化，因在兩極體系之下，鮮少有敵我之間進行交易的現象，因此冷戰的結束標示著敵我之間的界線越來越模糊。在與敵人貿易之後，會產生安全上的不經濟(security diseconomy)，貿易後實質所得會上升，使生產力更蓬勃；但就安全性而言，與敵人交易會產生外部成本(external costs)，與盟友交易則會產生外部利益(external benefits)。
+
+### 兩國貿易：囚徒困境(prisoner's dilemma)
+
+假設兩國之間在進行貿易前，可以事先衡量各自採取政策之收益如下：
+
+- $F$：自由貿易收益(**F**ree trade payoff)
+- $P$：保護政策收益(**P**rotectionism payoff)
+- $B$：關稅壁壘(**B**arrier)
+- $D$：關稅歧視(**D**iscriminated)
+
+並有 $B>F>P>D$ 的關係。利用 Nash 均衡解可得
+
+
+|           |             | State $j$   |                  |
+|-----------|-------------|-------------|------------------|
+|           |             | Cooperation | Defection        |
+| **State** $i$ | Cooperation | $(F,F)$     | $(D,B)$          |
+|           | Defection   | $(B,D)$     | $\mathbf{(P,P)}$ |  
+
+### 兩國貿易：重複賽局(repeated game)
+
+假設兩國可以進行無窮次的貿易，且存在一折現因子(discount factor)用以衡量兩國之間貿易的難易度，即 $\delta$，其中 $0 < \delta < 1$。而兩國進行自由貿易後所得的收益如下：
+
+$$
+F + \delta F + \delta^2 F + \cdots = F(1+\delta+\delta^2+\cdots) = \frac{F}{1-\delta}
+$$
+我們現在考慮國家在進行自由貿易後，突然背叛後的賽局
+$$
+\underset{\textbf{Period }1} {\text{Free Trade}}, \underset{\textbf{Period }2} {\text{Free Trade}},
+\cdots,
+\underset{\textbf{Period }k} {\text{Defection}},
+\underset{\textbf{Period }k+1} {\text{Protectionism}}
+$$
+採取背叛的收益為
+$$
+B+\delta P+\delta^2 P+\ldots=B+P\left(\delta+\delta^2+\ldots\right)=B+\frac{\delta P}{1-\delta}
+$$
+因此自由貿易發生的條件為
+$$
+\underset{\textbf{Free Trade Payoffs}}{\frac{F}{1-\delta} }\geq \underset{\textbf{Protectionism Payoffs}}{B+\frac{\delta P}{1-\delta}}
+$$
+或改寫為
+$$
+\delta \geq \frac{B-F}{B-P}
+$$
+
+### 與敵國(Adversaries)貿易之條件
+|           |             | State $j$   |                  |
+|-----------|-------------|-------------|------------------|
+|           |             | Cooperation | Defection        |
+| **State** $i$ | Cooperation | $(F_i-c_{i,j} F_j, F_j-c_{j ,i} F_i)$     | $(D_i-c_{i ,j} B_j, B_j-c_{j, i} D_i)$          |
+|           | Defection   | $(B_i-c_{i ,j} D_j, D_j-c_{j ,i} B_i)$     | $(P_i-c_{i, j} P_j, P_j-c_{j ,i} P_i)$ | 
+
+其中 $c_{i,j}$ 是 $i$ 國與 $j$ 國進行貿易之後的社會成本，此成本可以理解為，在進行貿易之後，國家會得利，但其有可能將獲利投資在國防安全上，造成對另一國的威脅，因此 $c_{i,j}F_j$ 則是 $i$ 國的安全外部性。利用上述的方式計算，可以得到此時自由貿易的條件為：
+$$
+\underset{\textbf{Free Trade Payoffs}}{\frac{F_i-c_{i j} F_j}{1-\delta_i}} \geq \underset{\textbf{Protectionism Payoffs}}{B_i-c_{i j} D_j+\frac{\delta_i\left(P_i-c_{i j} P_j\right)}{1-\delta_i}}
+$$
+或
+$$
+\delta_i^{\text{AD}} \geq \frac{B_i-c_{i j} D_j-\left(F_i-c_{i j} F_j\right)}{B_i-c_{i j} D_j-\left(P_i-c_{i j} P_j\right)}
+$$
+
+### 與盟友(Allies)貿易之條件
+
+現在考慮與盟友的自由貿易情況，
+|           |             | State $j$   |                  |
+|-----------|-------------|-------------|------------------|
+|           |             | Cooperation | Defection        |
+| **State** $i$ | Cooperation | $(F_i+c_{i,j} F_j, F_j+c_{j ,i} F_i)$     | $(D_i+c_{i ,i} B_i, B_i+c_{i, j} D_i)$          |
+|           | Defection   | $(B_i+c_{i ,j} D_j, D_j+c_{j ,i} B_i)$     | $(P_i+c_{i, j} P_i, P_i+c_{i ,i} P_i)$ | 
+
+同樣可以得到自由貿易的條件為
+$$
+\underset{\textbf{Free Trade Payoffs}}{\frac{F_i+c_{i j} F_j}{1-\delta_i}} \geq \underset{\textbf{Protectionism Payoffs}}{B_i+c_{i j} D_j+\frac{\delta_i\left(P_i-c_{i j} P_j\right)}{1-\delta_i}}
+$$
+或
+$$
+\delta_i^{\text{AL}} \geq \frac{B_i+c_{i j} D_j-\left(F_i+c_{i j} F_j\right)}{B_i+c_{i j} D_j-\left(P_i+c_{i j} P_j\right)}
+$$
+若透過數字例計算，可以得到以下的結果。假設 $B=3, F=2, P=1, D=0$，且 $c_{i,j} = .4$，則
+
+- 一般情況：$\delta \geq .5$
+- 與敵國交易：$\delta^{\text{AD}}_i \geq .75$
+- 與盟友交易：$\delta^{\text{AL}}_i \geq .13$
+
+直觀來說，因為與盟友交易係能夠讓國家感受到信任的，從而降低交易成本；但若與敵國交易，因不確保敵國在進行交易之後是否會增加軍備，故與敵國之交易成本將大幅提升，遠高於與盟友交易的成本。
+
+
+[^1]:在現實生活中，我們無法明確描述偏好，僅能觀察到個體的消費(consumption)。

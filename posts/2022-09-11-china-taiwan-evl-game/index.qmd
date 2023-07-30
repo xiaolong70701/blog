@@ -1,8 +1,8 @@
 ---
 title: "消失的聲音—叛離或抗議：分析戒嚴時期臺灣與現階段中國之回應民意模式"
-image: polisci preview.png
+image: polisci preview.svg
 description: |
-    以「叛離、抗議模型」比較
+    以「叛離、抗議模型」比較戒嚴時期臺灣與現階段中國回應民意的模式。
 date: "2022-09-11"
 draft: FALSE
 citation:

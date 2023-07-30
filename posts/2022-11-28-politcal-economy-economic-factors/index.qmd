@@ -1,0 +1,54 @@
+---
+title: "政治體制的經濟因素(Economic Factors in Political Institution)"
+image: polisci preview.svg
+lang: en
+description: |
+    從經濟因素的角度分析政治體制。
+date: "2022-11-28"
+draft: FALSE
+citation:
+  url: https://yueswater.netlify.app/posts/2022-11-28-politcal-economy-economic-factors/
+categories: [poilitical economy]
+---
+
+## 承諾學派(Commitment problem)
+
+### 民主轉型與部分賦予選舉權
+
+政治體制的變化除了從某一政體轉移到另一個政體之外，亦包涵由獨裁過渡到民主，或從民主退步至獨裁的過程。近年來政治學與政治經濟學著墨最多的便是民主轉型(democratic transition)。民主轉型多半都是透過逐漸開放投票而形成，並非如我們「直接」看到在 18、19 世紀英國男性公民直接被賦予投票權(universal suffrage)。不過，若從經濟學的角度觀之，假設統治者（或統治集團）是理性的，作為既得利益者或是掌握大量金錢的團體在賦予選舉權時，其曾經擁有的資源將會減少，因此在選擇是否讓步時將面臨以下的取捨(trade-off)：
+- 社會將增加重分配，窮人獲利後將不會發動革命；
+- 統治者或統治集團讓步的行為將會被視為其能力的式微，導致窮人發動革命。
+
+因此可以發現窮人選擇抗爭、革命的原因大多不是因為想要追求所謂的民主自由，充其量只不過是希望爭取更多資源罷了。
+
+![](https://i.imgur.com/h2iCIpY.png)
+
+學者 Acemoglu 認為，在中位選民定理的模型下，於原先的政治環境下僅有 $\textit{The Rich}$ 可以投票，排除了其他群體，Condorcet 贏家便是 $m_0$。當開放選舉權後，假設僅開放到灰線的群體能夠投票，此時的 Condorcet 贏家將移動到 $m_1$，使得開放選舉權此一政策成為一不可逆的(irrevertible)，也讓政策變得**可信(credible)**。
+
+### 模型設定
+
+假設一個政治經濟體存在兩個行為者：獨裁者與抗爭者。若不存在抗爭，行為者獲得的利益為 $L$，若抗爭者發起抗爭則需要 $r$ 的成本。
+
+
+在沒有協調下，獨裁者的效用為
+$$
+U_D= \lambda L -r
+$$
+
+對抗爭者來說，其效用為
+
+$$
+U_P=(1-\lambda) L-r
+$$
+
+而若存在一個協調機制，則獨裁者的效用為
+$$
+U_D= \lambda L
+$$
+
+對抗爭者來說，其效用為
+
+$$
+U_P=(1-\lambda) L
+$$
+

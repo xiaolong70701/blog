@@ -1,0 +1,92 @@
+---
+title: "政府公債的動態觀念(Dynamic Concept of Government Debt)"
+image: polisci preview.svg
+lang: en
+description: |
+    負債融資維繫公共福祉與發展真的是最正確的策略嗎？
+date: "2022-11-14"
+draft: FALSE
+citation:
+  url: https://yueswater.netlify.app/posts/2022-11-14-politcal-economy-government-debt/
+categories: [poilitical economy]
+---
+
+## 內涵與模型設定
+
+預算編列在政治經濟領域專家眼中，其存在許多政治因素。Alesina Passalacqua(2016) 指出在民主國家中具有[財政幻覺(fiscal illusion)](https://en.wikipedia.org/wiki/Fiscal_illusion)的現象：
+
+> *According to this argument voters do not understand the notion of intertemporal budget constraint for the government, therefore when (especially close to elections) voters see spending hikes or tax cuts (the public choice schools was especially concerned with the former) they reward the incumbent, and remain unaware of the consequences of such policies on public debt and the future costs of taxation needed to service it*. [name=Alesina and
+Passalacqua]
+
+在經濟學領域中有對於景氣循環此一現象進行解釋的理論，而在政治學領域中亦具有景氣循環的概念，即是選舉。在選舉前候選人多半都會透過提出各種政見，向選民傳遞訊息：唯有投下該候選人一票，人民的生活才會變得更好。假設在此政治經濟體中存在三個行為者：選民(voter)、左翼候選人(left-wing politician)與右翼候選人(right-wing politician)，這三個行為者經歷著兩期的賽局(two-period game)。在每一期開始之前，選民會選出一名政治人物，其將會影響該期的政治。每一期的預算(budget)假定為 $1$。在第一期在任的政治人物可以於 $b \in (0,1)$ 的借貸限制下舉債，並於第二期還本付息。
+
+### 政策執行
+
+每一期的預算可以挹注在左翼($L$)或右翼($R$)的政綱(agenda)上，且在每一期開始之前，可觀察到有一個政綱是具有生產力的。選民亦有其考量，透過 $\lambda$ 評價政策，且 $\lambda \in (\frac{1}{2}, 1)$，給予較有生產力的政策 $\lambda$ 的分數，另一個則為 $1 - \lambda$。政治人物將會關注在 $1 - \lambda$。另一個參數為政策的代價(stake)，以 $\alpha_t$ 衡量，且 $\alpha_t:\mathbb{R} \in (0,1)$，並無法在選前觀測到；且 $\alpha_t$ 對於選民來說是重要的，舉例來說，假設當前的政治經濟體正面臨景氣低迷的狀態，一個良好政策的出現或是借貸度過難關是可以博得選民的選票，故此變量對於選民抑或政治人物而言皆是重要的。從上述的設定可以理解到一個有趣的觀點，儘管政策的代價很重要，但我們無法觀察到，因此我們可以透過經濟學理論中**預期(expected)** 或**期望**的概念衡量選民或政治人物的效用或結果。
+
+### 最適公債：不考慮政治人物連任的情況
+
+如果政策進行借貸，則
+$$
+E U_V^1\left(\text {borrow} \mid \alpha_1\right)=\overbrace{\alpha_1 \lambda(1+b)}^{\text {Period 1 Welfare} }+\overbrace{\frac{1}{2} \lambda(1-b)}^{\text {Expected Period 2 Welfare }}
+$$
+
+其中，由於上述模型設定提到我們無法觀測到第二期的政策代價，則用 $\alpha_t$ 之期望值代替[^1]。若此政策不進行借貸，則
+$$
+E U_V^2\left(\text {don't borrow} \mid \alpha_1\right)=\alpha_1 \lambda+\frac{1}{2} \lambda
+$$
+
+選民偏好借貸政策的條件為 $EU_V^1 > EU_V^2$，得到
+$$
+\alpha_1 > \frac{1}{2}
+$$
+直觀來說，當政策十分重要且具有超過平均的政策生產力時，選民才會偏好進行借貸的政策。
+
+### 選舉風險下(under electoral risk)的最適公債：考慮政治人物連任的情況
+
+現在重新假設政治人物預期其政見較他者的更加有效，且有 $p \in (0,1)$ 的機率會在第二期重新進行選舉。注意到政治人物考量借貸時機的邏輯與選民不同，選民關注的是目前政治經濟體的經濟狀況，但政治人物則是關注其是否會連任。若其選擇借貸，其預期效用為
+$$
+E U_P^1\left(\text {borrow} \mid \alpha_1\right)=\alpha_1 \lambda(1+b)+\frac{1}{2}\left[p \lambda(1-b)+(1-p)(1-\lambda)(1-b)\right]
+$$
+
+直觀上理解右側中括號內的式子之方式為：該名政治人物有 $p$ 的機率勝選，則此時必須以 $\lambda(1-b)$ 的數額還本付息；而其則有 $(1- p)$ 的機率敗選，則此時必須以 $(1-\lambda)(1-b)$ 的數額還本付息。若其選擇不借貸，其預期效用則為
+$$
+E U_P^2\left(\text {don't borrow} \mid \alpha_1\right)=\alpha_1 \lambda+\frac{1}{2}\left[p \lambda+(1-p)(1-\lambda)\right]
+$$
+
+政治人物偏好借貸政策的條件為，$EU_P^1 > EU_P^2$，整理可得：
+$$
+\alpha_1 >\frac{p \lambda+(1-p)(1-\lambda)}{2 \lambda} 
+$$
+
+上述結果小於 $\frac{1}{2}$。在下圖中可以看到，在 $1/2$ 至 $1$ 之間是不考慮選舉情況下政治人物的最適選擇區域；然而在考慮選舉的情況下，政治人物最是選擇的點將會移動到 $1/2$ 左側，代表儘管該政策對於選民不是那麼的重要，政治人物人會不負責任地選擇舉債，直觀上不僅是為了其自身的連任，更隱含著該政治人物認為這些債務若在其連任後可以透過增加稅收來補償，若敗選則將債留繼任政府，對其並無損失。
+
+![](https://i.imgur.com/bLY3GyS.png)
+
+
+最終得到的結論是政治人物會在此政策上較上一小節的假設下借貸更多。
+
+### 折現因子(discount factor)的考量
+
+假設我們現在移除了連任壓力，並考慮折現因子 $\delta \in (0,1)$，若進行借貸，
+
+$$
+E U_V^1\left(\text {borrow} \mid \alpha_1\right)=\overbrace{\alpha_1 \lambda(1+b)}^{\text {Period } 1 \text { Welfare }}+\overbrace{\delta \frac{1}{2} \lambda(1-b)}^{\text {Expected Period } 2 \text { Welfare }}
+$$
+若不進行借貸，
+
+$$
+E U_V^2\left(\text {don't borrow} \mid \alpha_1\right)=\alpha_1 \lambda+\delta \frac{1}{2} \lambda
+$$
+選民偏好借貸政策的條件為 $EU_V^1 > EU_V^2$，得到
+$$
+\alpha_1 > \frac{\delta}{2}
+$$
+
+若有世代落差，亦會出現政治人物過分舉債的現象，即所謂的債留子孫。
+
+### 小結
+
+在民主選舉下，必定存在連任壓力於各個政治人物之間，一個理性的政治人物必定會把握當下，因此會更輕易傾向借債；若政治人物已經預期在下一任不會當選，則其會選擇大幅增加支出。值得一提的是，若 $p \to 1$，也就是越能夠確保政治人物當選的可能性，則大幅舉債的結果將會逼近在不考慮連任下的最適選擇，不過這是天方夜譚（在民主國家中不可能發生）。
+
+[^1]:因 $\alpha_t$ 介於 $0$ 至 $1$ 之間，為一個連續均勻分配(continuous uniform distribution)，即 $\alpha_t \sim \text{U}[0,1]$，故其期望值為 $\mathbb{E}(\alpha_t) = \frac{1 - 0}{2} = \frac{1}{2}$。

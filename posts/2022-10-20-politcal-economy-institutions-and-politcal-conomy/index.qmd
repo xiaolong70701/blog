@@ -1,0 +1,124 @@
+---
+title: "制度與政治經濟學(Institutions and Politcal Economy)"
+image: polisci preview.svg
+lang: en
+description: |
+    制度之間交互影響與關係。
+date: "2022-10-20"
+draft: FALSE
+citation:
+  url: https://yueswater.netlify.app/posts/2022-10-20-politcal-economy-institutions-and-politcal-conomy/
+categories: [poilitical economy]
+---
+
+現代國家的特點是，在政治環境裡存在諸多的制度，這些制度不侷限於出現在民主國家或是非民主國家，美國國會、英國議會、我國的行政院、中國人大均是一個政治體制的制度。在政治學界上，學者均咸認制度是民主國家的一個特點，因**制度的目的便是限制政府的權力**，避免其過度擴張而侵害人權，而威權或極權體制相較於民主國家，其不存在一個良好、健康的制度。
+
+## 解釋人類行為的制度論
+
+在社會科學領域中，制度(institution)就嚴格意義而言，係國家或統治階級為了表現其意志、實現其目的 $\cdots$ 所採用的各種方法之總和。制度更可以細分為正式與非正式制度，前者包含法律、規章(law/regulations)等，或依附在法律規章之下的機關、機構、組織(organisation)；後者可能包含不成文的社會規範(social norms)、風俗信仰、民俗習慣等。因此，有學者稱人類的行為係建構在制度之下的，受到制度的框架與限制。[^1]
+
+### 理性制度理論(Rational Institutionalism)
+
+制度作為一個外生(exogenous)的遊戲規則，其會匡限行為者的各種行為、策略，一個理性行為者在執行行為前，將會產生下列的疑問："*What do I get from doing $X$ under the constraint of $Y$?*"。
+
+### 社會制度理論(Sociological Institutionalism)
+
+對社會學家而言，制度的另一個功能是界定了人類如何看待世界，甚至使人類形成某種行為的習慣(act **habitually**)，而非僅僅是策略性(strategically)的行動。社會學家對於制度所提出的疑問則會是："*What should I do?*" 或 "*What is appropriate?*"，例如父權體制便是限制了人類對於社會、世界的想像。
+
+### 國家為何會失敗？
+
+D. North 指出，當經濟學家在解釋經濟成長時所提出的理論，係一種「逼近」式的解釋，畢竟我們沒有辦法建構出一個完美解釋世界的模型，例如人力資源（教育）、經濟體稟賦、技術等等。然而，D. Acemoglu 在 "*[Why Nations Fail](https://www.amazon.com/Why-Nations-Fail-Origins-Prosperity/dp/0307719227)*" 一書中提到，影響經濟成長的原因不單只是上述所提及的因素，制度在形成經濟成長扮演著十分重要的角色。一個更根本的問題是：為何有些國家有更多、更好的人力資源與經濟稟賦，這個問題的解答似乎都指向「基礎、根本性的原因」(fundamental cause)：制度。
+
+> *Institutions are the rules of the game in a society or, more formally, are the humanly devised constraints that shape human interaction*. —— Douglass North (1990)
+
+儘管擁有豐富的天然資源，一個國家的制度若不夠健康，仍無法有良好的經濟成長與發展。Acemoglu 與 Johnson 指出，Norht 在談論制度時忽略了制度兩個部分，其將制度拆分為兩個要件(unbundling institutions)：一為是否保障人民財產權與契約，亦即如何保障公民如何免於有利人士的侵犯(protect citizens against expropriation by the government and powerful elites)，例如中國政府恣意拆遷人民的房屋等；二則是如何將私有契約良好執行，如透過法院進行強制執行。Acemoglu 與 Johnson 認為保障人民的私有財產權是一個制度最根本的要件。
+
+## 資本主義多樣性(Variety of Capitalism, VOC)與制度互補(Institutional Complementarity)
+
+自1990年 Esping-Andersen 出版了 "*[The Three Worlds of Welfare Capitalism](https://www.amazon.com/Three-Worlds-Welfare-Capitalism/dp/0691028575)*"，於社會政策或比較研究當中，引起了相當廣泛的討論，尤其是比較社會政策研究方面，他提出了一個較新的研究框架，使鉅視面的跨國比較研究涵蓋更多層面，而非僅僅依賴國家福利支出高低。[^2] 
+
+### 福利國家的類型
+
+該研究指出，不同的制度將會導致不同的政治與經濟結果。概念上其將福利國家區分為三種類型：
+
+- **自由主義式(Liberal)**：典型的例子是美、加、澳，其奉行以市場為中心的路徑(market-centered approach)，亦即在資本主義的制度之下，將人類商品化(commodification)，比如工作時會收到的薪資(wage)。在此制度之下的福利制度是建構在**貧窮**與**低所得(low-income)** 之上。
+- **統合主義式(Corporatist)**：國家為福利的主要提供者，例如法、義、德等國，將人類去商品化(de-commodification)，福利的提供與階級、社經地位息息相關。
+- **社會主義式(Social Democratic)**：北歐國家為最典型的社會主義式國家，其屏棄國家與市場、工人與中產階級的隔閡，努力追求社會上的平等與生活品質的高標準。
+
+
+### VOC 作為一種研究途徑
+
+全球資本主義體制可以分為兩大類，核心的關鍵是「企業中心」(firm-centered)的分析途徑，其認為制度之間的交互作用與互補性是十分重要的，即制度的互補性(institutional complementarity)。在經濟運行的體制之下，假設給定制度 $A$ 與 $B$，則此二者在某一政治經濟體上的表現記作 $\Omega$，且具有下方之性質：
+$$
+\Omega_{A,B} > \Omega_{A^{\prime}, B}, \Omega_{A, B^{\prime}}
+$$
+亦即 $A$、$B$ 兩個制度同時出現時，該政治經濟體的表現是最好的，不過以發展型國家而言，兩個制度同時存在的表現可能更糟糕，學界目前對此也沒有一個良好的共識與解釋。實證上我們可以將不同國家的政治經濟體寫作如下的迴歸方程式：
+$$
+\mathbf{D}_{i t}=\mathbf{N I}_{i t}+\mathbf{I C}_{i t}^c+\epsilon_{i t}
+$$
+其中 $\mathbf{D}_{i t}$ 為經濟發展，$\mathbf{IC}_{i t}$ 等同於在模型上加上制度互補性的因素，$\mathbf{NI}_{i t}$ 則是非制度性因素，此即稱為比較制度優勢(comparative institutional advantages)。
+
+### 中國與蘇聯不同國家的制度改革路徑
+
+經濟學家或關心一國經濟發展的學者時常提出這樣的問題：「為何國家在此階段仍無法經濟成長？」或者更進一步的討論「如何使國家的經濟成長？」端視 1980、90 年代，可以說是近代最動盪的時代，蘇聯的瓦解造成東歐出現許多採行社會主義的國家，而近年來其亟力想要擺脫社會主義制度，走向如西方發達國家一樣的民主體制，國家領導人或政治人物多會直接將這些民主體制搬運過來，也就是上述所說的，將 $A$ 制度取消變為 $A'$，並採納 $B$ 制度，形成 $\Omega_{A'B}$ 的局面。最著名的例子是波蘭所採行的震盪療法(shock therapy)，即突然放鬆價格或是貨幣管制，從管制經濟一夜之間轉為市場經濟；然而，反觀中國改革路徑採取漸進式，中國直至 1994 年才取消[價格雙軌制](https://zh.wikipedia.org/zh-tw/%E4%BB%B7%E6%A0%BC%E5%8F%8C%E8%BD%A8%E5%88%B6)。[^3]就理論上的角度來看，一個國家的經濟改革應該先衡量新制度與舊制度之間是否存在互補性，兩者是否能夠良好地搭配，而非以「拆零件」的方式進行改革；然而，從歷史觀之，似乎發現中國的漸進式改革是正確的，這也是學界目前爭論不休的議題之一。
+
+
+
+### 自由式市場經濟體與協調性市場經濟體
+
+VOC 透過私人企業或公司的需求，學者 [Hall 與 Soskice (2001) ](https://academic.oup.com/book/301)將政治經濟體粗略地劃分為兩種類型，其一為自由式市場經濟體(liberal market economies, LME)，另一個則為協調性市場經濟體(coordinated market economies, CME)，且每個分析面向均環環相扣。在這個分析途徑中，其採用「行動者中心」(actor-centered)的取向分析兩種資本主義的制度，並將**企業(firm)** 視為生產體制中的主要行動者，劃分為五個面向：(1)金融體系、(2)教育暨訓練體系、(3)公司治理/公司融資方式、(4)企業間關係、(5)勞雇關係。Hall 與 Soskice 指出生產與發展策略的交互影響(strategic of interactions)於 VOC 的研究中被視為一種後果，即制度的類型乃是策略交互影響所形成的產物。
+
+![](https://i.imgur.com/YqbCZa1.png)
+
+#### 自由式市場經濟體(LMEs)
+
+![](https://i.imgur.com/1S9RCD4.png)
+
+在 LMEs 下，行動者基於自己意願與理性進行交換，且價格係由市場供需決定。作為自由主義式的體制，在勞動關係上，工會不具有如此大的權力，不同於歐洲，美國便是採取 LME 的良好例子，薪資係由勞工的能力與勞動供需市場所決定，並非如歐洲一般，透過工會「協調薪資」；此外，企業所處的環境特點是競爭與正是契約關係。促成自由式市場經濟體的原因，Bonomi 認為係由正式教育的體制(formal education institution)，教育內容偏向博雅教育(liberal arts)，且教授的技術為可轉移的技術(transferable skills)。也正是在博雅教育的基礎之上，LME 之下的員工對於企業、公司之忠誠度不若 CME 高，使得工會無法良好發展。另外，在公司治理面向上，LME 之企業較願意接受外部投資，且仰賴短期、可見的融資方式，例如公司股價。
+
+#### 協調性市場經濟體(CMEs)
+
+![](https://i.imgur.com/6FMKF3r.png)
+
+不同於自由式市場經濟體，在 CME 的體制之下，教育對於企業而言是一種「職前訓練」，也就是說一般的國民義務教育乃至於高等教育，係幫助私人企業訓練員工的場域；企業依賴非市場關係與其他行動者協調，包含廣泛的關係契約與不完全契約，或是內部私下資訊交換。因此可以觀察到 CMEs 是一種**去競爭化(deliberation)** 的體制，而去競爭化的目的有兩種，首先透過廣泛分享資訊，可以消除因囚徒困境所帶來的競爭傷害，從而合作互益；第二則是提高行動者間有不同的策略行為能力，因應不同的政治、經濟變化。然而，透過如此訓練的人才之流動性非常低，原因在於其專業知識有在單一或少數領域。公司治理面向上，CME 企業受到監管，並依靠長期的融資方式。
+
+$$
+\begin{array}
+\\
+\hline
+ & \textbf{總體 GDP} & \textbf{人均 GDP} & \textbf{失業率}\\
+ \hline
+ \text{LMEs} & \text{變異大} & \text{低} & \text{高}\\
+  \text{CMEs} & \text{變異小} & \text{高} & \text{低}\\
+  \hline
+\end{array}
+$$
+
+### 中國的例子
+
+針對中國不同地區的經濟表現，學者 E. Thun 在"*[Changing Lanes in China: Foreign Direct Investment, Local Governments, and Auto Sector Development](https://www.amazon.com/Changing-Lanes-China-Governments-Development/dp/0521843820)*"以觀察汽車產業的發展得出中國存在三種不同的政治經濟模式，其各有不同的制度邏輯：
+
+
+#### 地方型的發展國家(local development state)：上海
+
+![](https://i.imgur.com/Gv6d9zx.png)
+
+其發現中國存在特殊吸納外資的方式，由於中國幅員廣大，人口基數眾多，使得中國本身具有強大的談判能力，故中國政府會要求外國企業若要進入中國市場，必須與本地企業合資(joint venture)；中國表面上希望與外國企業合資，然而實際上卻是透過合資的方式「竊取」外國企業的技術，有望將來能夠發展中國自己的產業，對國有化形成高度的投資。這樣的政治經濟結構使得上海市的中央地方關係變得更緊密：上海市能夠獲得更多來自中央的資源挹注，而中央亦能夠加強控制上海市。
+
+#### 自由放任式的產業發展模式(laissez-faire local states)：北京、廣州
+
+![](https://i.imgur.com/SVbxcE7.png)
+
+相對於上海與廣州為經濟性的都市，北京作為一個政治性的都市，北京最好的產業屬於低資本密集產業，使得北京市政府並不持有高額的外國企業股份，且市場結構度較為分散。
+
+#### 以企業為核心的發展模式：長春、武漢
+
+![](https://i.imgur.com/ctauCGr.png)
+
+長春（滿洲國的影響）與武漢（武漢三鎮）的特色均為該地區的老工業區，中國在早期計劃經濟時代曾挹注大量資金於此，但作為老工業區，當地的職缺多半都是鐵飯碗，使得生產不具有效率，因此逐漸廢棄計劃經濟而施行經濟改革；此外，作為重工業基地，這些地區都承載著國家發展的目標與政策，例如一年要產出多少噸的鋼、鐵。因此，當其在面對改革開放之後，由於這些地區的中央地方關係不甚好，承載著國家的福利政策，加上其財政也非健康的狀態，且當地企業本身便比較強勢，造成企業不必然要去配合國家將企業國有化的目標，使得長春、武漢等城市出現以企業為核心的發展模式。
+
+[^1]:有趣的點是，在政治學中，學者廣泛地討論「制度」對於人類生活的影響，但是在經濟學、社會學領域當中，鮮少討論制度之間的差別。一個合理的解釋是，各個國家的政治體制均不盡相同，例如美國採用總統制，英國為議會內閣制，但經濟體制或市場具有廣泛性、全球性，最大的差別頂多是市場結構的不同。
+[^2]:張國偉. 資本主義類型與福利體制的關係——關於東亞的討論, https://www.nhu.edu.tw/~society/e-j/76/76-06.htm. 
+
+[^3]: 價格雙軌制的其中一軌是舊有的制度，另一軌則是新的制度，開放外國商品進入中國市場，但這些商品僅在特定地區販售，最有名的就是[友誼商店](https://zh.wikipedia.org/zh-hant/%E5%8F%8B%E8%B0%8A%E5%95%86%E5%BA%97
+)，給予在政治上擁有特權的軍公教人員購買。

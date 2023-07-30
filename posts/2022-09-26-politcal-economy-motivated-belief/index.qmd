@@ -1,0 +1,70 @@
+---
+title: "認知政治學：信念的形成(Motivated Belief)"
+image: polisci preview.svg
+lang: en
+description: |
+    政治信念形成的動機與機制探究。
+date: "2022-09-26"
+draft: FALSE
+citation:
+  url: https://yueswater.netlify.app/posts/2022-09-26-politcal-economy-motivated-belief/
+categories: [poilitical economy]
+---
+
+## 行為經濟學與政治科學的關聯
+
+[Bénabou and Tirole (2006)](https://www.princeton.edu/~rbenabou/papers/AER%202006.pdf) 在 AER 的文章中指出
+
+> *In the economic models of old, agents had backward-looking expectations, arising from simple extrapolation or error-correction rules. Then came the rational-expectations revolution in macroeconomics, and in microeconomics the spread and increasing refinements of modern game theory. Agents were now highly sophisticated information processors, who could not be systematically fooled. This approach reigned for several decades until the pendulum swung back with the rise of behavioral economics and its emphasis on “heuristics and biases” (as in Tversky and Kahneman 1974). Overconfidence, confirmation bias, distorted probability weights, and a host of other “wired-in” cognitive mistakes are now common assumptions in many areas of economics. Over the last decade or so, the pendulum has started to swing again toward some form of adaptiveness, or at least implicit purposefulness, in human cognition.*
+
+
+信念(belief)可以視為人類行為的基礎，其是根據現實世界的事實所形成。在傳統個體經濟理論中，大多數的模型均會進行**人是理性(rational)** 的假設，不過近幾年興起的行為經濟學(behavioural economics)便是針對這個廣泛性的假設形成的反動，行為經濟學家發現現實世界中人類的行為多半不是個體經濟理論所指稱之理性，甚至主張數學或經濟模型把人類假設成過於複雜、聰明，因此其透過各種實驗、數據的方式，解釋人類日常的行為。
+
+### 迴聲室效應(Echo Chamber Effect)
+
+有時候政治與傳播是相互影響的。迴聲室效應研究的興起與西方世界極化的現象有莫大的關係：在一個理想、和諧的政治民主社會，人民的權利均等是必要的，但這項要求必須建立在人民存在良性、理性的相互溝通之基礎上達成共識，不同意識型態的族群應該會相互交流、影響，即比較政治理論所稱之交疊共識(overlapping consensus)。美國在 90 年代以前，共和、民主兩黨係處於上述的狀態的，亦即雖然人民存在意識型態上的差異，但並非在所有議題上相互對立；不過自 90 年代後，美國的政治開始出現極化現象[^1]，共和、民主兩黨的分界也越趨清晰，Nikolov、Flammini 與 Menczer 透過分析 Twitter 與 Facebook 上面的留言，利用社會網絡分析(social network analysis)觀察看到兩個族群各自形成「同溫層」(Nikolov, Flammini, and Menczer, 2021)。
+
+![](https://i.imgur.com/i2sQL24.jpg)
+
+### 香港的[顏色政治](https://news.mingpao.com/ins/%E6%B8%AF%E8%81%9E/article/20200101/s00001/1577701594081/%E3%80%902020%E5%B1%95%E6%9C%9B-%E9%A1%8F%E8%89%B2%E8%83%8C%E5%BE%8C%E3%80%91%E9%BB%83-%E8%97%8D%E9%9D%9E%E5%8B%A2%E4%B8%8D%E5%85%A9%E7%AB%8B-%E5%B9%B4%E8%BC%95%E5%AD%B8%E5%AD%90%E7%9B%BC%E6%9C%9B%E6%B0%91%E4%B8%BB%E8%87%AA%E7%94%B1)
+
+自 2019 年反對《逃犯條例》運動以來，香港的政治環境愈趨兩極化，甚至形成所謂的顏色政治：黃色代表反對中國極端政權的人民，藍色則是支持香港政府的人民。香港在如此的分裂之下，產生的[以顏色標記商家政治立場的APP](https://www.storm.mg/article/1963600?page=1)，此一現象就傳統經濟學的觀點而言，選擇「顏色」而非價格完全違反理性的假設，也因此許多經濟學者透過一連串的行為經濟學模型，嘗試解釋如此違反理性的現象。
+
+## Are People Baysian?
+貝氏定理(Bayes' theorem)描述在已知一些條件下，某事件的發生機率：
+$$
+\mathbb{P}(H|I) = \frac{\mathbb{P}(I|H) \cdot \mathbb{P}(H)}{\mathbb{P}(I)} = \frac{\mathbb{P}(H\cap I)}{\mathbb{P}(I)}
+$$
+若以貝氏定理描述人的行為，如果人是 Bayesian，人們面對新的資訊應該會接受、更新並納入決策的考量。不過，現實社會中人們可能不是 Bayesian，看見新的訊息會選擇性、策略性地忽視，甚至是因為個人的偏好或認同而扭曲(distort)機率。Golman 與 Russell 等人在 "*[The preference for belief consonance](https://www.aeaweb.org/articles/pdf/doi/10.1257/jep.30.3.165)*" 提到「選擇性的相信」之概念，也就是人們只會看到與其偏好、認同有關的事實，忽略了其他的意見、聲音。
+<!-- 
+#### group membership
+#### protected beliefs
+
+#### Motivated belief(濾鏡)
+#### selected information-seeking (Information avoidance)
+#### Belief-driven clustering/favourism -->
+
+[^1]:有論者稱美國極化政治現象的成因係由於全球化(globalisation)的產生，全球化帶來的人員、資訊、資源流動，雖然可以使國家受益，但也並非所有人均得到好處，亦即[政治經濟學的規範基礎(Normative Foundations)](https://hackmd.io/@yueswater/Normative_Foundations)提到的自由貿易話之下形成的贏家與輸家，而當然這些贏家與輸家所支持、信奉的政治、經濟制度明顯不同，從而導致美國的政治形成兩極化的現象。
+
+## 公正世界理論(Just-World Hypothesis)
+
+此理論係由 [Bénabou and Tirole (2016) ](https://www.aeaweb.org/articles/pdf/doi/10.1257/jep.30.3.141)所提出。該理論假設世界之運行是**公平公正**的，且每個行為均符合「**善有善報、惡有惡報**」(*people get what they deserve, and deserve what they get*)，顯示了人類對於社會正義本身就有不同的觀點。回到我們最初討論人類的偏好，事實上偏好是很難被量測(measure or capture)的，但是研究者可以透過觀察行為者的選擇以及數學推導（即顯示性偏好理論鑽研的議題），刻劃出行為者的偏好。將此一概念推廣到政治環境，甚至擴大到宏觀的整體社會，人類的意識型態(ideology)嚴格來說可以被視為是信念的一層濾鏡，透過意識型態的包袱闡述個人或群體的信念，因此信念對於人類產生各種政策偏好是十分重要的。
+
+### American Dream equilibrium
+
+> *When the safety net and redistribution are minimal, agents have strong incentives to maintain for themselves, and pass on to their children, beliefs that effort is more important than luck, as these will lead to working hard and persevering in the face of adversity*.
+
+### Euro-pessimistic equilibrium
+
+> *With high taxes and generous transfers...the poor are less (unjustly) stigmatized as lazy, while total effort (annual hours worked) and income are lower, than in the "American Dream" equilibrium*.
+
+
+<!-- 14'00'' 人類對於資訊的處理 -->
+
+![](https://i.imgur.com/nu01OCf.png)
+
+美國學界對於亞洲地區國家，尤其是臺灣，對於川普的支持度如此之高。上圖透過各種研究動機與信念之間的關係，發現到人們會存在「**偏聽偏見**」的現象。在中國的議題上分為兩個族群：中國夢支持者(China Dreamers) 與 中國夢懷疑者(China Skeptics)，從經濟、政治、文化與社會觀等各種層面觀之，可以發現到兩個族群存在鮮明的差別與對比。
+
+![](https://i.imgur.com/gl8i35t.png)
+
+![](https://i.imgur.com/dvq80r3.png)

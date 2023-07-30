@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Anthony Sung">
-<meta name="dcterms.date" content="2023-07-23">
-<meta name="description" content="政治經濟學與經濟發展入門。">
+<meta name="dcterms.date" content="2022-11-14">
+<meta name="description" content="負債融資維繫公共福祉與發展真的是最正確的策略嗎？">
 
-<title>Yueswater Blog - 政治經濟學與經濟發展導論</title>
+<title>Yueswater Blog - 政府公債的動態觀念(Dynamic Concept of Government Debt)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -157,7 +157,20 @@ cookieconsent.run({
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#內涵與模型設定" id="toc-內涵與模型設定" class="nav-link active" data-scroll-target="#內涵與模型設定">內涵與模型設定</a>
+  <ul class="collapse">
+  <li><a href="#政策執行" id="toc-政策執行" class="nav-link" data-scroll-target="#政策執行">政策執行</a></li>
+  <li><a href="#最適公債不考慮政治人物連任的情況" id="toc-最適公債不考慮政治人物連任的情況" class="nav-link" data-scroll-target="#最適公債不考慮政治人物連任的情況">最適公債：不考慮政治人物連任的情況</a></li>
+  <li><a href="#選舉風險下under-electoral-risk的最適公債考慮政治人物連任的情況" id="toc-選舉風險下under-electoral-risk的最適公債考慮政治人物連任的情況" class="nav-link" data-scroll-target="#選舉風險下under-electoral-risk的最適公債考慮政治人物連任的情況">選舉風險下(under electoral risk)的最適公債：考慮政治人物連任的情況</a></li>
+  <li><a href="#折現因子discount-factor的考量" id="toc-折現因子discount-factor的考量" class="nav-link" data-scroll-target="#折現因子discount-factor的考量">折現因子(discount factor)的考量</a></li>
+  <li><a href="#小結" id="toc-小結" class="nav-link" data-scroll-target="#小結">小結</a></li>
+  </ul></li>
+  </ul>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
@@ -168,15 +181,15 @@ cookieconsent.run({
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">政治經濟學與經濟發展導論</h1>
+<h1 class="title">政府公債的動態觀念(Dynamic Concept of Government Debt)</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">macroeconomics</div>
+    <div class="quarto-category">poilitical economy</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    <p>政治經濟學與經濟發展入門。</p>
+    <p>負債融資維繫公共福祉與發展真的是最正確的策略嗎？</p>
   </div>
 </div>
 
@@ -193,7 +206,7 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 23, 2023</p>
+      <p class="date">November 14, 2022</p>
     </div>
   </div>
   
@@ -203,47 +216,81 @@ cookieconsent.run({
 
 </header>
 
-<p>根據<a href="https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?end=2022&amp;name_desc=false&amp;start=2022&amp;view=map&amp;year=2022">世界銀行</a>在 2022 年的統計，美國的人均 GDP(GDP per capita)為 76399 美元，離美國最近的墨西哥為 11091 美元，肯亞為 2099 美元，而尼日則為 533 美元。我們可以很清楚的看到在 21 世紀的今天，國家之間還是存在如此巨大的貧富差距，甚至在 200、300 年前，這個差距遠比我們想像的還要來得更大。</p>
-<p>事實上這個差距並非定值，而是逐漸擴大的趨勢。Ben Olken 提出了一些假設，指出這些國家因為以下因素而存在貧富差距。</p>
-<ul>
-<li><p>地理因素：溫度、氣候、疾病</p></li>
-<li><p>人力資本：教育程度</p></li>
-<li><p>物理資本：機器設備、工廠</p></li>
-<li><p>制度：民主/獨裁、自由/保守</p></li>
-</ul>
-<p>事實上這些因素確實與國家之間的貧富差距有關係。不過我們在政治經濟學中所要聚焦的則是制度(instituiton)本身。學者 Alessio 在研究中透過散佈圖(scatter plot)描述了政府效率(Government effectiveness)與對數人均 GDP 之間的關係：</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="fig1.png" class="img-fluid figure-img" style="width:55.0%" data-fig.align="center"></p>
-<figcaption class="figure-caption">Fig 1.1: Correlation between quality of institutions and GDP per capita<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></figcaption>
-</figure>
-</div>
-<p>不過這裡又要提出另一個問題，那就是：制度真的與經濟發展有關嗎？諸多國家在成為富裕國家的過程中並不一定擁有民主政體（如中國、新加坡），而有些國家則是先變得富裕，然後才轉向民主體制（如韓國）。</p>
-<p>政治領袖、國家總統、歷史制度等因素對於一國經濟發展是否存在決定性因素？殖民統治結束 50 年後，殖民制度對於發展是否仍存在影響？這些都是政治經濟學所要探討與深究的問題。</p>
-<p>此外，政治經濟學討論的範疇更包含國家內部的政治。舉例來說，民主國家的一項主要特色即是投票與多數決（少數國家採共識決）的政策制定。我們最常聽到的一項分析工具即是由 Duncan Black在 1948 年提出的「中位選民定理」(median voter theorem)，其概念是贏得選舉需要獲得超過 <span class="math inline">\(50\%\)</span> 的選票。這意味著如果候選人競爭，政策應該表達中位選民的偏好。但是這個定理在現實世界中是否成立便是一個問題。</p>
-<p>此外，決定選舉結果的因素更可能有政治人物的身份、歷史事件、政治人物本身的人格特質，更甚者，選民有可能投票給他們最多賄賂的候選人。這些因素與一些我們無法考量到的因素加總起來，才能夠形成選舉的結果，比中位選民定理的假設更加複雜。</p>
+<section id="內涵與模型設定" class="level2">
+<h2 class="anchored" data-anchor-id="內涵與模型設定">內涵與模型設定</h2>
+<p>預算編列在政治經濟領域專家眼中，其存在許多政治因素。Alesina Passalacqua(2016) 指出在民主國家中具有<a href="https://en.wikipedia.org/wiki/Fiscal_illusion">財政幻覺(fiscal illusion)</a>的現象：</p>
 <blockquote class="blockquote">
-<p><em>How does the way that voting takes place in developed/developing countries influence the policies that governments actually put in place and ultimate development outcomes</em></p>
+<p><em>According to this argument voters do not understand the notion of intertemporal budget constraint for the government, therefore when (especially close to elections) voters see spending hikes or tax cuts (the public choice schools was especially concerned with the former) they reward the incumbent, and remain unaware of the consequences of such policies on public debt and the future costs of taxation needed to service it</em>. [name=Alesina and Passalacqua]</p>
 </blockquote>
+<p>在經濟學領域中有對於景氣循環此一現象進行解釋的理論，而在政治學領域中亦具有景氣循環的概念，即是選舉。在選舉前候選人多半都會透過提出各種政見，向選民傳遞訊息：唯有投下該候選人一票，人民的生活才會變得更好。假設在此政治經濟體中存在三個行為者：選民(voter)、左翼候選人(left-wing politician)與右翼候選人(right-wing politician)，這三個行為者經歷著兩期的賽局(two-period game)。在每一期開始之前，選民會選出一名政治人物，其將會影響該期的政治。每一期的預算(budget)假定為 <span class="math inline">\(1\)</span>。在第一期在任的政治人物可以於 <span class="math inline">\(b \in (0,1)\)</span> 的借貸限制下舉債，並於第二期還本付息。</p>
+<section id="政策執行" class="level3">
+<h3 class="anchored" data-anchor-id="政策執行">政策執行</h3>
+<p>每一期的預算可以挹注在左翼(<span class="math inline">\(L\)</span>)或右翼(<span class="math inline">\(R\)</span>)的政綱(agenda)上，且在每一期開始之前，可觀察到有一個政綱是具有生產力的。選民亦有其考量，透過 <span class="math inline">\(\lambda\)</span> 評價政策，且 <span class="math inline">\(\lambda \in (\frac{1}{2}, 1)\)</span>，給予較有生產力的政策 <span class="math inline">\(\lambda\)</span> 的分數，另一個則為 <span class="math inline">\(1 - \lambda\)</span>。政治人物將會關注在 <span class="math inline">\(1 - \lambda\)</span>。另一個參數為政策的代價(stake)，以 <span class="math inline">\(\alpha_t\)</span> 衡量，且 <span class="math inline">\(\alpha_t:\mathbb{R} \in (0,1)\)</span>，並無法在選前觀測到；且 <span class="math inline">\(\alpha_t\)</span> 對於選民來說是重要的，舉例來說，假設當前的政治經濟體正面臨景氣低迷的狀態，一個良好政策的出現或是借貸度過難關是可以博得選民的選票，故此變量對於選民抑或政治人物而言皆是重要的。從上述的設定可以理解到一個有趣的觀點，儘管政策的代價很重要，但我們無法觀察到，因此我們可以透過經濟學理論中<strong>預期(expected)</strong> 或<strong>期望</strong>的概念衡量選民或政治人物的效用或結果。</p>
+</section>
+<section id="最適公債不考慮政治人物連任的情況" class="level3">
+<h3 class="anchored" data-anchor-id="最適公債不考慮政治人物連任的情況">最適公債：不考慮政治人物連任的情況</h3>
+<p>如果政策進行借貸，則 <span class="math display">\[
+E U_V^1\left(\text {borrow} \mid \alpha_1\right)=\overbrace{\alpha_1 \lambda(1+b)}^{\text {Period 1 Welfare} }+\overbrace{\frac{1}{2} \lambda(1-b)}^{\text {Expected Period 2 Welfare }}
+\]</span></p>
+<p>其中，由於上述模型設定提到我們無法觀測到第二期的政策代價，則用 <span class="math inline">\(\alpha_t\)</span> 之期望值代替<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。若此政策不進行借貸，則 <span class="math display">\[
+E U_V^2\left(\text {don't borrow} \mid \alpha_1\right)=\alpha_1 \lambda+\frac{1}{2} \lambda
+\]</span></p>
+<p>選民偏好借貸政策的條件為 <span class="math inline">\(EU_V^1 &gt; EU_V^2\)</span>，得到 <span class="math display">\[
+\alpha_1 &gt; \frac{1}{2}
+\]</span> 直觀來說，當政策十分重要且具有超過平均的政策生產力時，選民才會偏好進行借貸的政策。</p>
+</section>
+<section id="選舉風險下under-electoral-risk的最適公債考慮政治人物連任的情況" class="level3">
+<h3 class="anchored" data-anchor-id="選舉風險下under-electoral-risk的最適公債考慮政治人物連任的情況">選舉風險下(under electoral risk)的最適公債：考慮政治人物連任的情況</h3>
+<p>現在重新假設政治人物預期其政見較他者的更加有效，且有 <span class="math inline">\(p \in (0,1)\)</span> 的機率會在第二期重新進行選舉。注意到政治人物考量借貸時機的邏輯與選民不同，選民關注的是目前政治經濟體的經濟狀況，但政治人物則是關注其是否會連任。若其選擇借貸，其預期效用為 <span class="math display">\[
+E U_P^1\left(\text {borrow} \mid \alpha_1\right)=\alpha_1 \lambda(1+b)+\frac{1}{2}\left[p \lambda(1-b)+(1-p)(1-\lambda)(1-b)\right]
+\]</span></p>
+<p>直觀上理解右側中括號內的式子之方式為：該名政治人物有 <span class="math inline">\(p\)</span> 的機率勝選，則此時必須以 <span class="math inline">\(\lambda(1-b)\)</span> 的數額還本付息；而其則有 <span class="math inline">\((1- p)\)</span> 的機率敗選，則此時必須以 <span class="math inline">\((1-\lambda)(1-b)\)</span> 的數額還本付息。若其選擇不借貸，其預期效用則為 <span class="math display">\[
+E U_P^2\left(\text {don't borrow} \mid \alpha_1\right)=\alpha_1 \lambda+\frac{1}{2}\left[p \lambda+(1-p)(1-\lambda)\right]
+\]</span></p>
+<p>政治人物偏好借貸政策的條件為，<span class="math inline">\(EU_P^1 &gt; EU_P^2\)</span>，整理可得： <span class="math display">\[
+\alpha_1 &gt;\frac{p \lambda+(1-p)(1-\lambda)}{2 \lambda}
+\]</span></p>
+<p>上述結果小於 <span class="math inline">\(\frac{1}{2}\)</span>。在下圖中可以看到，在 <span class="math inline">\(1/2\)</span> 至 <span class="math inline">\(1\)</span> 之間是不考慮選舉情況下政治人物的最適選擇區域；然而在考慮選舉的情況下，政治人物最是選擇的點將會移動到 <span class="math inline">\(1/2\)</span> 左側，代表儘管該政策對於選民不是那麼的重要，政治人物人會不負責任地選擇舉債，直觀上不僅是為了其自身的連任，更隱含著該政治人物認為這些債務若在其連任後可以透過增加稅收來補償，若敗選則將債留繼任政府，對其並無損失。</p>
+<p><img src="https://i.imgur.com/bLY3GyS.png" class="img-fluid"></p>
+<p>最終得到的結論是政治人物會在此政策上較上一小節的假設下借貸更多。</p>
+</section>
+<section id="折現因子discount-factor的考量" class="level3">
+<h3 class="anchored" data-anchor-id="折現因子discount-factor的考量">折現因子(discount factor)的考量</h3>
+<p>假設我們現在移除了連任壓力，並考慮折現因子 <span class="math inline">\(\delta \in (0,1)\)</span>，若進行借貸，</p>
+<p><span class="math display">\[
+E U_V^1\left(\text {borrow} \mid \alpha_1\right)=\overbrace{\alpha_1 \lambda(1+b)}^{\text {Period } 1 \text { Welfare }}+\overbrace{\delta \frac{1}{2} \lambda(1-b)}^{\text {Expected Period } 2 \text { Welfare }}
+\]</span> 若不進行借貸，</p>
+<p><span class="math display">\[
+E U_V^2\left(\text {don't borrow} \mid \alpha_1\right)=\alpha_1 \lambda+\delta \frac{1}{2} \lambda
+\]</span> 選民偏好借貸政策的條件為 <span class="math inline">\(EU_V^1 &gt; EU_V^2\)</span>，得到 <span class="math display">\[
+\alpha_1 &gt; \frac{\delta}{2}
+\]</span></p>
+<p>若有世代落差，亦會出現政治人物過分舉債的現象，即所謂的債留子孫。</p>
+</section>
+<section id="小結" class="level3">
+<h3 class="anchored" data-anchor-id="小結">小結</h3>
+<p>在民主選舉下，必定存在連任壓力於各個政治人物之間，一個理性的政治人物必定會把握當下，因此會更輕易傾向借債；若政治人物已經預期在下一任不會當選，則其會選擇大幅增加支出。值得一提的是，若 <span class="math inline">\(p \to 1\)</span>，也就是越能夠確保政治人物當選的可能性，則大幅舉債的結果將會逼近在不考慮連任下的最適選擇，不過這是天方夜譚（在民主國家中不可能發生）。</p>
 
 
+</section>
+</section>
 
 
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>Terzi, Alessio. (2016). <em>Qualifying and Quantifying the Greek Structural Reform Efforts</em>. 10.1057/978-1-137-58944-6_10.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>因 <span class="math inline">\(\alpha_t\)</span> 介於 <span class="math inline">\(0\)</span> 至 <span class="math inline">\(1\)</span> 之間，為一個連續均勻分配(continuous uniform distribution)，即 <span class="math inline">\(\alpha_t \sim \text{U}[0,1]\)</span>，故其期望值為 <span class="math inline">\(\mathbb{E}(\alpha_t) = \frac{1 - 0}{2} = \frac{1}{2}\)</span>。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sung2023,
+</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sung2022,
   author = {Sung, Anthony},
-  title = {政治經濟學與經濟發展導論},
-  date = {2023-07-23},
-  url = {https://yueswater.netlify.app/posts/2023-07-23-politcal-economy-intro/},
+  title = {政府公債的動態觀念(Dynamic {Concept} of {Government} {Debt)}},
+  date = {2022-11-14},
+  url = {https://yueswater.netlify.app/posts/2022-11-14-politcal-economy-government-debt/},
   langid = {en}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sung2023" class="csl-entry quarto-appendix-citeas" role="listitem">
-Sung, Anthony. 2023. <span>“政治經濟學與經濟發展導論.”</span> July 23,
-2023. <a href="https://yueswater.netlify.app/posts/2023-07-23-politcal-economy-intro/">https://yueswater.netlify.app/posts/2023-07-23-politcal-economy-intro/</a>.
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sung2022" class="csl-entry quarto-appendix-citeas" role="listitem">
+Sung, Anthony. 2022. <span>“政府公債的動態觀念(Dynamic Concept of
+Government Debt).”</span> November 14, 2022. <a href="https://yueswater.netlify.app/posts/2022-11-14-politcal-economy-government-debt/">https://yueswater.netlify.app/posts/2022-11-14-politcal-economy-government-debt/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

@@ -1,0 +1,81 @@
+---
+title: "政治極化(Political polarization)"
+image: polisci preview.svg
+lang: en
+description: |
+    如何分析政治立場、價值觀和意見上日益分歧和對立的現象。
+date: "2022-12-19"
+draft: FALSE
+citation:
+  url: https://yueswater.netlify.app/posts/2022-12-19-politcal-economy-political-polarization/
+categories: [poilitical economy]
+---
+
+政治極化是近年來政治學、政治傳播學、政治心理學最常討論的議題之一，其指出隨著時代的演進與科技進步，人們對於資訊的接收變得更容易，社群網路的出現帶來的是拓展的效果，但也因為如此容易導致其接收的資訊產生一定程度的偏差。量測極化的方式多如牛毛，包含從民調到國會兩大黨得票率的改變。
+
+## 極化的內涵(What is inside political polarization?)
+
+認知與資訊接受是極化產生的主要原因。如同先前的文章[認知政治學：信念的形成(Motivated Belief)](https://hackmd.io/@yueswater/Motivated_Belief)人們接受資訊多半是選擇性的，選擇的信念亦是如此。
+
+### 社會層次的極化
+
+![](https://i.imgur.com/jtOA9qL.png)
+
+以前的論者會稱所謂的極化並非社會存在兩邊對立的態勢，而是政治與政治人物的極化。但觀察 1994 至 2014 年由 [Pew Research 對於美國社會極化的現象](https://www.pewresearch.org/politics/2014/06/12/political-polarization-in-the-american-public/)（參見上圖），可以發現美國出現不一致(inconsistency)的現象，例如有些人可能在政治上係左派，但不接受同性戀。上圖上列左圖傳達的意思是在 1994 年時，美國的民主黨與共和黨支持者有一部分是重疊的，極化現象並不那麼嚴重；但是到了 2014 年時，有將近 92% 的共和黨支持者，彼此的共同點越來越少。
+![](https://i.imgur.com/CwqXHz1.png)
+
+不過政治上的極化多半是不可避免的，但最嚴重的狀況是兩黨制出現在開發中國家——當社會資源分配過於激烈時，政治權力將會掌握在少部分人手中。
+
+### 菁英層次上的極化
+
+![](https://i.imgur.com/2tVDRb5.png)
+
+政治極化的出現成因可以從多面向解釋，若以結構面的觀點來看，極化的產生與貿易有極大的關係。由於美國是全球支持自由貿易的大國，然而因為開放自由貿易導致美國產生許多社會上的問題，包含失業、資源分配不均等，中國則是此問題的一個核心對象。
+
+![](https://i.imgur.com/utTwV1l.png)
+
+由上圖可以看到在中部與中西部地區並不受到貿易的影響，但東部與東南部地區受到貿易的影響則十分嚴重。
+
+![](https://i.imgur.com/8sn52fw.png)
+
+### 近期對於極化政治的研究與結論
+
+學者發現在暴露在貿易(trade-exposed)的地區之議員多會支持反貿易的法案(anti-trade bill)，同樣地，這些結果也可以應用在解釋「反中國」的政策上，意即進口穿透度(import penetration)越高的地方，產生政治極化的可能性也越高。從相關的文獻中可以得到以下的原因：
+
+1. 美國開放貿易許久，不僅開放商品，更包含勞動力。近年來中國的崛起一方面在政治與軍事上挑戰美國的實力，另一方面從中國的商品與勞動力對於美國的影響甚鉅，成為了美國政治極化的導火索。
+2. 失業問題可以說是極化政治產生的關鍵原因。大部分的人不會感謝由全球化與國際貿易帶來的好處，但全球化所帶來的失業與社會問題則反倒成為人民的眾矢之的。
+
+![](https://i.imgur.com/J92Vnlk.png)
+
+### 國際三難(Impossible trinity)
+
+國際經濟學上最著名的理論——國際三難，係由 [Mundell-Fleming 模型](https://en.wikipedia.org/wiki/Mundell%E2%80%93Fleming_model#:~:text=The%20Mundell%E2%80%93Fleming%20model%2C%20also,of%20the%20IS%E2%80%93LM%20model.)推導而來，有些學者認為此即是極化現象產生的罪魁禍首(culprit)，原因在於當一個開放的經濟體系(open economy)面臨國際經貿的事件改變時，會使其國內統治集團或執政者處理衝突與進行資源分配的能力下降。
+
+![](https://i.imgur.com/TpzahbF.png)
+
+國際三難的理論講述的是，政府不可能在匯率穩定、貨幣政策自主性與資金自由移動之間達成三者共存的局面。具體而言，一國家如果選擇固定匯率制度，則可得到「匯率穩定」與「資本自由移動」，但必須放棄「貨幣政策自主性」。舉例來說，就一個實行固定匯率制度的國家而言，其可以容許資本自由移動，並藉由干預外匯市場以維持匯率穩定，但干預外匯市場將使其貨幣供給額改變，因此該國將失去貨幣政策自主性。[^1]實際上的例子猶如 1997 年的亞洲金融危機(Asian Financial crisis)，投資性的資金大量流入，導致熱錢(hot money)的出現，進而導致泡沫經濟(bubble economy)的產生。
+
+## 極化政治的解方
+
+學者 Dani Rodrik 試著透過改變國際三難這個三角的內容，梳理出解決極化政治的方法。其將上述的三角改為平衡超級全球化(hyperglobalisation)、國內政治(democratic politics)、民族國家(nation state)的關係。Dani 指出在全球化流行的年代，不同地區基本上所擁有的選擇是大同小異的，只能選擇其中兩者作為主要政策制定方向。
+
+![](https://i.imgur.com/yWfFHrI.png)
+
+
+### 黃金緊身衣(Golden straightjacket)：超級全球化與民族國家
+
+當一國選擇與國際接軌，但是又想要維繫民族國家的意識型態，將會出現重分配的衝突(redistributive conflicts)，例如中國。為了解決因全球化所致之金融資本挹注到國家中，其可能會降低勞動的成本與標準，甚至出現公司稅的競爭(corporate tax competition)。
+
+### 全球治理(global governance)：超級全球化與國內政治
+
+Dani 認為此即是解決上述問題中最為理想的方案，但實際上不太可能發生。解方為降低各個國家主權及政府的權力，需要更多跨境合作，目前歐盟是最接近此方式的例子。此解方背後的目的是為了破除國家之間的疆界，直接跳過國家疆界考量經濟對一國之影響，進而抑制國內因為全球化造成的分配衝突不至擴大。
+
+### 布列敦森林體系-GATT 體系：民族國家與國內政治
+
+國家必須透過各種補貼或政策性補償的方式，去彌補那些因為國際貿易而受損的國內受害者(losers under international trade)。
+
+
+
+
+[^1]:節錄自[黃志典教授金融案例評析——國際金融的「三難困局」](http://www.ib.ntu.edu.tw/jdhwang/files2/%E5%9C%8B%E9%9A%9B%E9%87%91%E8%9E%8D%E7%9A%84%E4%B8%89%E9%9B%A3%E5%9B%B0%E5%B1%80.pdf)。
+
