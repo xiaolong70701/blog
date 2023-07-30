@@ -7,7 +7,7 @@ description: |
 date: "2023-07-24"
 draft: FALSE
 citation:
-  url: https://yueswater.netlify.app/posts/2023-07-24-macro-firm-maximization-problem/
+  url: https://yueswater-blog.netlify.app/posts/2023-07-24-macro-firm-maximization-problem/
 categories: [macroeconomics]
 ---
 

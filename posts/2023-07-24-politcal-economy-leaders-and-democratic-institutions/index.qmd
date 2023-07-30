@@ -7,7 +7,7 @@ description: |
 date: "2023-07-24"
 draft: FALSE
 citation:
-  url: https://yueswater.netlify.app/posts/2023-07-24-politcal-economy-leaders-and-democratic-institutions/
+  url: https://yueswater-blog.netlify.app/posts/2023-07-24-politcal-economy-leaders-and-democratic-institutions/
 categories: [macroeconomics]
 ---
 

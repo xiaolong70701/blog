@@ -6,7 +6,7 @@ description: |
 date: "2023-07-21"
 draft: FALSE
 citation:
-  url: https://yueswater.netlify.app/posts/2023-07-21-preference-and-consumer-choice/
+  url: https://yueswater-blog.netlify.app/posts/2023-07-21-micro-preference/
 categories: [microeconomics]
 ---
 

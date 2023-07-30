@@ -7,7 +7,7 @@ description: |
 date: "2023-07-23"
 draft: FALSE
 citation:
-  url: https://yueswater.netlify.app/posts/2023-07-23-trading-preprocessing-and-dual-MA/
+  url: https://yueswater-blog.netlify.app/posts/2023-07-23-trading-preprocessing-and-dual-MA/
 categories: [macroeconomics]
 ---
 

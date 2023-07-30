@@ -3,6 +3,8 @@ title: "使用 Quarto 建立部落格"
 image: coding preview.png
 date: "2023-07-06"
 description: 使用 Quarto 建立個人獨特的部落格體驗。
+citation:
+  url: https://yueswater-blog.netlify.app/posts/2023-07-06-r-quarto/
 categories: [R, Quarto, programming language]
 format:
   html: 
