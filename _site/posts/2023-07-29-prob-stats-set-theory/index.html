@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Anthony Sung">
-<meta name="dcterms.date" content="2023-07-19">
-<meta name="description" content="Analyzing relationships and interactions among various economic elements.">
+<meta name="dcterms.date" content="2023-07-30">
+<meta name="description" content="從機率論的角度刻畫現代統計學的研究方法。">
 
-<title>Yueswater Blog - Set Theory and Basic Topology</title>
+<title>Yueswater Blog - 統計學與機率論</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -161,14 +161,16 @@ cookieconsent.run({
     <h2 id="toc-title">Table of Contents</h2>
    
   <ul>
-  <li><a href="#basic-set-relations-and-ordered-sets" id="toc-basic-set-relations-and-ordered-sets" class="nav-link active" data-scroll-target="#basic-set-relations-and-ordered-sets">Basic Set Relations and Ordered Sets</a>
+  <li><a href="#集合論基礎" id="toc-集合論基礎" class="nav-link active" data-scroll-target="#集合論基礎">集合論基礎</a>
   <ul class="collapse">
-  <li><a href="#set-relations" id="toc-set-relations" class="nav-link" data-scroll-target="#set-relations">Set Relations</a></li>
-  <li><a href="#ordered-sets" id="toc-ordered-sets" class="nav-link" data-scroll-target="#ordered-sets">Ordered Sets</a></li>
+  <li><a href="#交集intersection" id="toc-交集intersection" class="nav-link" data-scroll-target="#交集intersection">交集(Intersection)</a></li>
+  <li><a href="#聯集union" id="toc-聯集union" class="nav-link" data-scroll-target="#聯集union">聯集(Union)</a></li>
+  <li><a href="#集合的關係" id="toc-集合的關係" class="nav-link" data-scroll-target="#集合的關係">集合的關係</a></li>
+  <li><a href="#集合的運算" id="toc-集合的運算" class="nav-link" data-scroll-target="#集合的運算">集合的運算</a></li>
   </ul></li>
-  <li><a href="#basic-topology" id="toc-basic-topology" class="nav-link" data-scroll-target="#basic-topology">Basic Topology</a>
+  <li><a href="#機率論基礎" id="toc-機率論基礎" class="nav-link" data-scroll-target="#機率論基礎">機率論基礎</a>
   <ul class="collapse">
-  <li><a href="#open-sets-and-closed-sets" id="toc-open-sets-and-closed-sets" class="nav-link" data-scroll-target="#open-sets-and-closed-sets">Open Sets and Closed Sets</a></li>
+  <li><a href="#空間與機率函數" id="toc-空間與機率函數" class="nav-link" data-scroll-target="#空間與機率函數">空間與機率函數</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -182,16 +184,15 @@ cookieconsent.run({
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Set Theory and Basic Topology</h1>
+<h1 class="title">統計學與機率論</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">real analysis</div>
-    <div class="quarto-category">mathematical economics</div>
+    <div class="quarto-category">stats</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Analyzing relationships and interactions among various economic elements.
+    <p>從機率論的角度刻畫現代統計學的研究方法。</p>
   </div>
 </div>
 
@@ -208,7 +209,7 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 19, 2023</p>
+      <p class="date">July 30, 2023</p>
     </div>
   </div>
   
@@ -218,129 +219,175 @@ cookieconsent.run({
 
 </header>
 
-<p>A set can be simply defined as a collection of objects or elements. The followings are some examples of set: <span class="math display">\[
+<p>現代統計學(statistics)與計量經濟學(econometrics)係構建在兩個公理之上。第一個公理認為整個經濟體系可以被視為一個由機率法則(probability law)所掌控的隨機實驗(random experiment)，一般來說我們稱這個隨機過程為資料產生過程(data generating process)。第二個則是主張任何經濟現象(economic outcome)可以被視為是上述隨機實驗的結果。</p>
+<p><span class="math inline">\(\textbf{Definition 1.1}:\)</span> A <em>random experiment</em> is a mechanism which has at least two possible outcomes.</p>
+<p>我們在進行實驗後，只會有一個結果出現(one and only one outcome will occur)，但是在執行實驗前，我們對於出現的結果（通常稱為出象）的數量與內容一無所知。這邊必須強調，所謂實驗不一定是真的要如自然科學學科一般，需要拿滴管產生化學反應、拿彈簧測量彈性，此處的實驗泛指觀測與測量。例如在西門町的某間服飾店前站了一整天觀察來顧客年齡，這是一種實驗。又或者是在路上發放問卷調查公司新產品的口味，這也是一種實驗。</p>
+<p>一個隨機實驗包含兩個重要的元素：</p>
+<ul>
+<li><p>樣本空間(sample space)：即所有結果的集合(set)，記成 <span class="math inline">\(S\)</span>、<span class="math inline">\(\Omega\)</span> 或 <span class="math inline">\(\operatorname{supp}(\cdot)\)</span></p></li>
+<li><p>機率(probability)：所有結果出現的概率為何</p></li>
+</ul>
+<section id="集合論基礎" class="level2">
+<h2 class="anchored" data-anchor-id="集合論基礎">集合論基礎</h2>
+<p>首先我們給予樣本空間一個定義：</p>
+<p><span class="math inline">\(\textbf{Definition 1.2}:\)</span> The possible outcomes of a random experiment are called “basic outcomes”, and the set of all basic outcomes constitutes the <em>sample space</em>, which is denoted by <span class="math inline">\(S\)</span>.</p>
+<p>例如給定一個公正的骰子，其出現結果有 <span class="math inline">\(1\)</span> 至 <span class="math inline">\(6\)</span>，則這顆骰子的樣本空間可以寫成 <span class="math display">\[
+S = \{1, 2, 3, 4, 5, 6\}
+\]</span></p>
+<p>扔一枚公正硬幣的結果可以寫成樣本空間的形式： <span class="math display">\[
+S = \{\text{Head}, \text{Tail}\}
+\]</span></p>
+<p>若今天投擲兩個公正的硬幣，則樣本空間為 <span class="math display">\[
+S = \{(H, H). (H, T), (T, H), (T,T)\}
+\]</span></p>
+<p>又或假設今天氣象局測量一地的氣溫，最低溫令為 <span class="math inline">\(t_{0}\)</span>，最高溫為 <span class="math inline">\(t_{1}\)</span>，則該地氣溫的樣本空間則為 <span class="math display">\[
+S = \{t \in \mathbb{R}: t_{0} \leq t \leq t_{1}\}
+\]</span></p>
+<p>我們可以看出樣本空間可以是可數(countable)或不可數(uncountable)。</p>
+<p>值得注意的是，在一個隨機實驗中，我們知道所有可能的出象所形成的集合，但在進行隨機實驗之前，我們不知道也不可能會知道實驗將會出現哪個結果。</p>
+<p><span class="math inline">\(\textbf{Definition 1.3}:\)</span> An <em>event</em> <span class="math inline">\(A\)</span> is a collection of basic outcomes from the sample space <span class="math inline">\(S\)</span> that share certain common features or equivalently obey certain restrictions.</p>
+<p>因此一個事件 <span class="math inline">\(A\)</span> 為樣本空間的一個子集(subset)，即 <span class="math display">\[
+A \subseteq S
+\]</span></p>
+<p>事件中的出象必須滿足一些特點或限制。例如我們擲一個公正的骰子，並令事件 <span class="math inline">\(A\)</span> 為丟出正面的結果，則 <span class="math display">\[
+A = \{2, 4, 6\}
+\]</span></p>
+<p>又或我們令事件 <span class="math inline">\(B\)</span> 為質數，則 <span class="math display">\[
+B = \{2, 3, 5\}
+\]</span></p>
+<p>在下面的討論中，我們會使用文氏圖(Venn diagram)作為圖例，其可以用來表達樣本空間、事件或相關的概念。</p>
+<section id="交集intersection" class="level3">
+<h3 class="anchored" data-anchor-id="交集intersection">交集(Intersection)</h3>
+<p>所謂交集，代表元素同時出現在兩個或兩個以上的集合內。或者用統計學的語言來說，就是結果同時出現。我們給予交集數學上的定義：</p>
+<p><span class="math inline">\(\textbf{Definition 1.4}:\)</span> <em>Intersection</em> of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> , denoted <span class="math inline">\(A \cap B\)</span>, is the set of basic outcomes in <span class="math inline">\(S\)</span> that belong to both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, i.e., <span class="math display">\[
+A \cap B = \{x: x \in A \text{ and } x \in B\}
+\]</span></p>
+<p>上面已經提過，我們要求隨機實驗的出象不能同時出現，在機率論上我們稱其為互斥(exclusive)。</p>
+<p><span class="math inline">\(\textbf{Definition 1.5}:\)</span> If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> have no common basic outcomes, they are called mutually exclusive and their intersection is empty set <span class="math inline">\(\varnothing\)</span>, i.e., <span class="math inline">\(A \cap B = \varnothing\)</span>, where <span class="math inline">\(\varnothing\)</span> denotes an empty set that contains nothing.</p>
+<p>互斥事件也稱為不相交(disjoint)，因為在文氏圖中它們不會重疊。任何互斥事件不可能同時發生。舉例來說，樣本空間 <span class="math inline">\(S\)</span> 中的任意兩個基本結果都是互斥事件。</p>
+</section>
+<section id="聯集union" class="level3">
+<h3 class="anchored" data-anchor-id="聯集union">聯集(Union)</h3>
+<p>聯集則是指元素可能出現在某一個集合內，或在其他集合內。數學上對於聯集的定義為：</p>
+<p><span class="math inline">\(\textbf{Definition 1.6}:\)</span> The <em>union</em> of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, <span class="math inline">\(A \cup B\)</span>, is the set of all basic outcomes in <span class="math inline">\(S\)</span> that belong to either <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span>, i.e., <span class="math display">\[
+A \cup B = \{x: x \in A \text{ or } x \in B\}
+\]</span></p>
+<p>假設 <span class="math inline">\(A_{i} \subseteq S\)</span>，其中 <span class="math inline">\(i = 1, 2, \cdots, n\)</span>，則若 <span class="math display">\[
+\bigcup^{n}_{i = 1}A_{i} = S
+\]</span> 我們稱這 <span class="math inline">\(n\)</span>個事件為完全窮盡(collective exhaustiveness)。</p>
+</section>
+<section id="集合的關係" class="level3">
+<h3 class="anchored" data-anchor-id="集合的關係">集合的關係</h3>
+<p>接下來我們要討論兩個重要的集合關係。首先是補集(complement)，</p>
+<p><span class="math inline">\(\textbf{Definition 1.7}:\)</span> The <em>complement</em> of <span class="math inline">\(A\)</span> is the set of basic outcomes of a random experiment belonging to <span class="math inline">\(S\)</span> but not to <span class="math inline">\(A\)</span>, denoted as <span class="math inline">\(A^{c}\)</span> or <span class="math inline">\(A^{\prime}\)</span>, i.e., <span class="math display">\[
+A^{c} = \{x \notin A: x \in S\}
+\]</span></p>
+<p>而補集有以下的性質：任何事件 <span class="math inline">\(A\)</span> 及其補集 <span class="math inline">\(A^{c}\)</span>，兩者是互斥且完全窮舉的。也就是說：</p>
+<ul>
+<li><p>互斥：<span class="math inline">\(A \cap A^{c} = \varnothing\)</span></p></li>
+<li><p>完全窮舉：<span class="math inline">\(A \cup A^{c} = S\)</span></p></li>
+</ul>
+<p>另一個關係是差集(difference)，即是所有屬於 <span class="math inline">\(A\)</span> 但不屬於 <span class="math inline">\(B\)</span> 的元素組成的集合。</p>
+<p><span class="math inline">\(\textbf{Definition 1.8}:\)</span> The difference of A and B , denoted as <span class="math inline">\(A -B = A \cap B^{c}\)</span>, is the set of basic outcomes in <span class="math inline">\(S\)</span> that belong to <span class="math inline">\(A\)</span> but not to <span class="math inline">\(B\)</span>, i.e., <span class="math display">\[
+A - B = \{x \in A: x \notin B\}
+\]</span></p>
+</section>
+<section id="集合的運算" class="level3">
+<h3 class="anchored" data-anchor-id="集合的運算">集合的運算</h3>
+<p>假設我們給定三個集合 <span class="math inline">\(A, B, C \subseteq S\)</span>，則我們有以下補集關係： <span class="math display">\[
+(A^{c})^{c} = A,\; \varnothing^{c} = S,\; S^{c} = \varnothing
+\]</span></p>
+<p>接著來討論一些集合的運算。</p>
+<ul>
+<li><p>交換律(commutative property)： <span class="math display">\[
 \begin{aligned}
-&amp;A = \{1,2,3, \cdots\}\\
-&amp;B = \{🍎,🍌,🍉,🍇\}
+A \cup B &amp;= B \cup A\\
+A \cap B &amp;= B \cap A
+\end{aligned}
+\]</span></p></li>
+<li><p>結合律(associative property)： <span class="math display">\[
+\begin{aligned}
+(A \cup B) \cup C &amp;= A \cup (B \cup C)\\
+(A \cap B) \cap C &amp;= A \cap (B \cap C)
+\end{aligned}
+\]</span></p></li>
+<li><p>分配律(distributive property)： <span class="math display">\[
+\begin{aligned}
+A \cap (B \cup C) &amp;= (A \cap B) \cup (A \cap C)\\
+A \cup (B \cap C) &amp;= (A \cup B) \cap (A \cup C)
+\end{aligned}
+\]</span></p></li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;若 <span class="math inline">\(n \geq 1\)</span>，則</p>
+<p><span class="math display">\[
+\begin{aligned}
+B \bigcap \left(\bigcup^{n}_{i = 1}A_{i}\right) &amp;= \bigcup^{n}_{i = 1}\left(B \bigcap A_{i}\right)\\
+B \bigcup \left(\bigcap^{n}_{i = 1}A_{i}\right) &amp;= \bigcap^{n}_{i = 1}\left(B \bigcup A_{i}\right)\\
 \end{aligned}
 \]</span></p>
-<p><span class="math inline">\(\textbf{Definition 2.1}:\)</span> If <span class="math inline">\(A\)</span> is any set, we write <span class="math inline">\(x \in A\)</span> to indicate that <span class="math inline">\(x\)</span> is a member of <span class="math inline">\(A\)</span>; if <span class="math inline">\(x\)</span> is not a member of <span class="math inline">\(A\)</span>, we write <span class="math inline">\(x \notin A\)</span>.</p>
-<p>Note that a set can contain elements and sets. We speak of a collection of sets as a family, often denoted by <span class="math inline">\(\mathcal{A}\)</span>.</p>
-<section id="basic-set-relations-and-ordered-sets" class="level2">
-<h2 class="anchored" data-anchor-id="basic-set-relations-and-ordered-sets">Basic Set Relations and Ordered Sets</h2>
-<p>Set relations are fundamental concepts in mathematics that describe how different sets relate to each other. Sets are collections of distinct elements, and set relations allow us to understand their interactions. Let’s explore some of the most common set relations.</p>
-<section id="set-relations" class="level3">
-<h3 class="anchored" data-anchor-id="set-relations">Set Relations</h3>
-<p><span class="math inline">\(\textbf{Definition 2.2}:\)</span> The <em>union</em> of sets is a set containing all elements that are in set <span class="math inline">\(A\)</span> or set <span class="math inline">\(B\)</span>. Thus, we can write <span class="math inline">\(x \in (A \cup B)\)</span> if and only if <span class="math inline">\(x \in A\)</span> or <span class="math inline">\(x \in B\)</span>. In particular, if <span class="math inline">\(A_{1}, A_{2}, \cdots, A_{n}\)</span> are <span class="math inline">\(n\)</span> sets, their union is a set containing all elements that are in at least one of the sets, write <span class="math display">\[
-\bigcup_{i=1}^{n} A_{i}.
-\]</span> <span class="math inline">\(\textbf{Definition 2.3}:\)</span> The <em>intersection</em> of sets is a new set containing all elements that are present in both sets simultaneously. In mathematical notation, we write <span class="math inline">\(x \in (A \cap B)\)</span> if and only if <span class="math inline">\(x \in A\)</span> and <span class="math inline">\(x \in B\)</span>. Similarly, for <span class="math inline">\(n\)</span> sets <span class="math inline">\(A_{1}, A_{2}, \cdots, A_{n}\)</span>, their intersection is a set containing all elements that are common to all of the sets. We denote the intersection of these sets as: <span class="math display">\[
-\bigcap^{n}_{i=1} A_{i}
-\]</span> Note that if <span class="math inline">\(A \cap B\)</span> is not empty, we say <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> intersect; otherwise they are <em>disjoint</em>.</p>
-<p><span class="math inline">\(\textbf{Definition 2.4}:\)</span> The <em>complement</em> of a set <span class="math inline">\(A\)</span>, denoted by <span class="math inline">\(A^{c}\)</span>, is a set of elements not in <span class="math inline">\(A\)</span>, i.e., <span class="math display">\[
-A^{c} = \{x: x \notin A\}
-\]</span></p>
-<p>Sometimes we only consider two set, <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. Then we can write the complement of <span class="math inline">\(A\)</span> as <span class="math display">\[
-B \setminus A = \{x: x \notin A \text{ and } x \in B \}
-\]</span></p>
-<p><span class="math inline">\(\textbf{Definition 2.5}:\)</span> If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are sets, and if every element of <span class="math inline">\(A\)</span> is an element of <span class="math inline">\(B\)</span>, we say that <span class="math inline">\(A\)</span> is a subset of <span class="math inline">\(B\)</span>, and write <span class="math inline">\(A \subset B\)</span>, or <span class="math inline">\(B \supset A\)</span>. If, in addition, there is an element of <span class="math inline">\(B\)</span> which is not in <span class="math inline">\(A\)</span>, then <span class="math inline">\(A\)</span> is said to be a proper subset of <span class="math inline">\(B\)</span>.</p>
-<p><span class="math inline">\(\textbf{Theorem 2.1}:\)</span> Let <span class="math inline">\(I\)</span> be an index set. Given <span class="math inline">\(n\)</span> sets, <span class="math inline">\(A_{1}, A_{2}, \cdots, A_{n}\)</span>, the complement of the union of <span class="math inline">\(n\)</span> sets is equal to the intersection of their complements, i.e., <span class="math display">\[
-\left(\bigcup_{i \in I}A_{i}\right)^{c} = \bigcap_{i \in I} A_{i}^{c}
-\]</span> On the other hand, the complement of the intersection of <span class="math inline">\(n\)</span> sets is equal to the union of their complements, i.e.,</p>
+<ul>
+<li>De Morgan 法則：</li>
+</ul>
 <p><span class="math display">\[
-\left(\bigcap_{i \in I}A_{i}\right)^{c} = \bigcup_{i \in I} A_{i}^{c}
+\begin{aligned}
+(A \cup B)^{c} &amp;= A^{c} \cap B^{c}\\
+(A \cap B)^{c} &amp;= A^{c} \cup B^{c}
+\end{aligned}
 \]</span></p>
-<p><span class="math inline">\(\textbf{Definition 2.6}:\)</span> The Cartesian product of sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, denoted by <span class="math inline">\(A \times B\)</span>, is defined as: <span class="math display">\[
-A \times B= \{(a,b) \lvert a \in A,b \in B\}
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;若 <span class="math inline">\(n \geq 1\)</span>，則</p>
+<p><span class="math display">\[
+\begin{aligned}
+\left(\bigcup^{n}_{i = 1}A_{i}\right)^{c} = \bigcap^{n}_{i = 1}A_{i}^{c}\\
+\left(\bigcap^{n}_{i = 1}A_{i}\right)^{c} = \bigcup^{n}_{i = 1}A_{i}^{c}
+\end{aligned}
 \]</span></p>
-<p>which represents an ordered pair, where <span class="math inline">\(a\)</span> is an element of set <span class="math inline">\(A\)</span>, and <span class="math inline">\(b\)</span> is an element of set <span class="math inline">\(B\)</span>. The set <span class="math inline">\(A \times B\)</span> contains all such ordered pairs, forming the Cartesian product.</p>
-</section>
-<section id="ordered-sets" class="level3">
-<h3 class="anchored" data-anchor-id="ordered-sets">Ordered Sets</h3>
-<p><span class="math inline">\(\textbf{Definition 2.7}:\)</span> Let <span class="math inline">\(S\)</span> be a set. An order on <span class="math inline">\(S\)</span> is a relation, denoted by <span class="math inline">\(&lt;\)</span>, with the following two properties:</p>
-<ol type="1">
-<li><p>If <span class="math inline">\(x \in S\)</span> and <span class="math inline">\(y \in S\)</span> then one and only one of the statements <span class="math display">\[
-x&lt;y,\quad x=y, \quad y&lt;x
-\]</span> is true.</p></li>
-<li><p>If <span class="math inline">\(x, y, z \in S\)</span>, if <span class="math inline">\(x &lt; y\)</span> and <span class="math inline">\(y &lt; z\)</span>, then <span class="math inline">\(x &lt; z\)</span>.</p></li>
-</ol>
-<p><span class="math inline">\(\textbf{Definition 2.8}:\)</span> An ordered set is a set <span class="math inline">\(S\)</span> in which an order is defined.</p>
-<p>Now we can define a maximum and minimum in a set on <span class="math inline">\(\mathbb{R}\)</span>. Consider a set <span class="math inline">\(A\)</span> in the reals, i.e., <span class="math inline">\(A \subset \mathbb{R}\)</span>.</p>
-<p><span class="math inline">\(\textbf{Definition 2.9}\)</span>: <span class="math inline">\(x \in \mathbb{R}\)</span> is the greatest element of <span class="math inline">\(A\)</span>, denoted as <span class="math inline">\(\max A\)</span>, if <span class="math inline">\(x \in A\)</span> and <span class="math inline">\(x \geq a\)</span> for all <span class="math inline">\(a \in A\)</span>.</p>
-<p><span class="math inline">\(\textbf{Definition 2.10}:\)</span> <span class="math inline">\(x \in \mathbb{R}\)</span> is the least element of <span class="math inline">\(A\)</span>, denoted as <span class="math inline">\(\min A\)</span>, if <span class="math inline">\(x \in A\)</span> and <span class="math inline">\(x \leq a\)</span> for all <span class="math inline">\(a \in A\)</span>.</p>
-<p>Note that for any set <span class="math inline">\(A \subset \mathbb{R}\)</span>, <span class="math inline">\(\max A\)</span> or <span class="math inline">\(\min A\)</span> may not exist. For example, given an open interval on <span class="math inline">\(\mathbb{R}\)</span>, <span class="math inline">\((0, 1)\)</span>. Since <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> are not included in the interval, there are no maximum and minimum in the interval.</p>
-<p>Therefore, we introduce the idea of <em>supremum</em> and <em>infimum.</em></p>
-<p><span class="math inline">\(\textbf{Definition 2.11}:\)</span> Suppose <span class="math inline">\(S\)</span> is an ordered set, <span class="math inline">\(E \subset S\)</span>, and <span class="math inline">\(E\)</span> is bounded above. Suppose there exists an <span class="math inline">\(\alpha \in S\)</span> with the following properties:</p>
-<ol type="1">
-<li><p><span class="math inline">\(\alpha\)</span> is an upper bound of <span class="math inline">\(E\)</span>.</p></li>
-<li><p>If <span class="math inline">\(\gamma &lt; \alpha\)</span> then <span class="math inline">\(\gamma\)</span> is not an upper bound of <span class="math inline">\(E\)</span>.</p></li>
-</ol>
-<p>Then <span class="math inline">\(\alpha\)</span> is called the <em>least upper bound</em> of <span class="math inline">\(E\)</span> or the supremum of E, and we write <span class="math display">\[
-\alpha = \sup E.
-\]</span></p>
-<p>Conversely, we can define the greatest lower bound with same manner, and denote it as <span class="math display">\[
-\alpha = \inf E
-\]</span></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Infimum_illustration.svg" class="img-fluid figure-img" style="width:55.0%"></p>
-<figcaption class="figure-caption">Fig 2.1: Infimum and supremum</figcaption>
-</figure>
-</div>
 </section>
 </section>
-<section id="basic-topology" class="level2">
-<h2 class="anchored" data-anchor-id="basic-topology">Basic Topology</h2>
-<p><span class="math inline">\(\textbf{Definition 2.12}:\)</span> The Euclidean space is the space of vectors of real numbers with <span class="math inline">\(n\)</span> components, denoted by <span class="math inline">\(\mathbb{R}^{n}\)</span>. Consider <span class="math inline">\(\left(\mathbb{R}^{n}, d\right)\)</span>, where <span class="math inline">\(d\)</span> is Euclidean metric, i.e., <span class="math display">\[
-d(\mathbf{x}, \mathbf{y}) = \sqrt{\sum^{n}_{i=1}(x_{i} - y_{i})^2}, \;\; \forall\mathbf{x}, \mathbf{y} \in \mathbb{R}^{n}.
-\]</span> <span class="math inline">\(\textbf{Definition 2.13}:\)</span> For <span class="math inline">\(x \in \mathbb{R}^{n}\)</span> and <span class="math inline">\(\varepsilon \in \mathbb{R}\)</span>, we define a <span class="math inline">\(\varepsilon\)</span>-open ball/neighborhood of <span class="math inline">\(x\)</span> as <span class="math display">\[
-B_{\varepsilon}(x) = \{y \in \mathbb{R}^{n}\lvert d(x,y) &lt; \varepsilon\}
+<section id="機率論基礎" class="level2">
+<h2 class="anchored" data-anchor-id="機率論基礎">機率論基礎</h2>
+<p>上面我們已經定義了何謂事件，接下來我們為了賦予每個事件機率，我們要討論何謂機率函數(probability function)。</p>
+<section id="空間與機率函數" class="level3">
+<h3 class="anchored" data-anchor-id="空間與機率函數">空間與機率函數</h3>
+<p>機率函數可以簡單理解為：一個能夠將事件、事件的補集、事件的交集、聯集映射至(mapping to)實數的函數，因此這個函數的自變量為事件與事件的延伸之組合，這樣的事件集合被稱為樣本空間 <span class="math inline">\(S\)</span> 的一個 <span class="math inline">\(\sigma\)</span>-field 子集合，它將構成機率函數的定義域。</p>
+<p><span class="math inline">\(\textbf{Definition 1.9}:\)</span> A <span class="math inline">\(\sigma\)</span>-algebra, denoted by <span class="math inline">\(\mathcal{F}\)</span>, is a collection of subsets(events) of <span class="math inline">\(S\)</span> that satisfies the following properties:</p>
+<ul>
+<li><p><span class="math inline">\(X\in {\mathcal{F}}\)</span> and <span class="math inline">\(\varnothing \in \mathcal{F}\)</span>;</p></li>
+<li><p><span class="math inline">\(A\in {\mathcal {F}}\;\Rightarrow \;A^{c}\in {\mathcal {F}}\)</span>;</p></li>
+<li><p><span class="math inline">\(A_{n}\in {\mathcal {F}},\;\forall n\in \mathbb {N} \;\Rightarrow \;\bigcup_{n=1}^{\infty }A_{n}\in {\mathcal {F}}\)</span></p></li>
+</ul>
+<p>注意到 <span class="math inline">\(\sigma\)</span>-field 是 <span class="math inline">\(S\)</span> 中子集合的集合，但是 <span class="math inline">\(\sigma\)</span>-field 本身並非 <span class="math inline">\(S\)</span> 的子集，而 <span class="math inline">\(S\)</span> 則是 <span class="math inline">\(\sigma\)</span>-field 唯一的元素。我們稱 <span class="math inline">\((S, \mathcal{F})\)</span> 為一個可測空間(measurable space)。</p>
+<p><span class="math inline">\(\textbf{Example 1.1}:\)</span> Show that for any sample space <span class="math inline">\(S\)</span> , then set <span class="math inline">\(\mathcal{B} = \{\varnothing, S\}\)</span> is always a <span class="math inline">\(\sigma\)</span>-field.</p>
+<p><span class="math inline">\(\textit{Proof.}\)</span></p>
+<p>
+</p>
+<p>We verify the three properties of a <span class="math inline">\(\sigma\)</span>-field:</p>
+<ul>
+<li><p><span class="math inline">\(\varnothing \in \{\varnothing, S\}\)</span>. Thus <span class="math inline">\(\varnothing \in \mathcal{B}\)</span>.</p></li>
+<li><p><span class="math inline">\(\varnothing^{c} = S \in \mathcal{B}\)</span> and <span class="math inline">\(S^{c} = \varnothing \in \mathcal{B}\)</span>.</p></li>
+<li><p><span class="math inline">\(\varnothing \cup S = S \in \mathcal{B}\)</span>.</p></li>
+</ul>
+<p align="right">
+<span class="math inline">\(\square\)</span>
+</p>
+<p><span class="math inline">\(\textbf{Example 1.2}:\)</span> Suppose the sample space <span class="math inline">\(S = \{1,2,3\}\)</span>. Show that a set containing the following eight subsets <span class="math inline">\(\{1\}, \{2\}, \{3\}, \{1,2\}, \{1,3\}, \{2,3\}, \{1,2,3\}\)</span>, and <span class="math inline">\(\varnothing\)</span> is a <span class="math inline">\(\sigma\)</span>-field.</p>
+<p><span class="math inline">\(\textit{Proof.}\)</span></p>
+<p>
+</p>
+<p>Trivial.</p>
+<p>在引進可測空間的概念後，便可以定義何謂機率函數。</p>
+<p><span class="math inline">\(\textbf{Definition 1.10}:\)</span> Suppose a random experiment has a sample space <span class="math inline">\(S\)</span> and an associated <span class="math inline">\(\sigma\)</span>-field <span class="math inline">\(\mathcal{F}\)</span>. A probability function <span class="math display">\[
+\mathbb{P}: \mathcal{F} \to [0, 1]
 \]</span></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/7/79/Neighborhood_illust1.svg" class="img-fluid figure-img" style="width:55.0%"></p>
-<figcaption class="figure-caption">Fig 2.2: Neighborhood</figcaption>
-</figure>
-</div>
-<section id="open-sets-and-closed-sets" class="level3">
-<h3 class="anchored" data-anchor-id="open-sets-and-closed-sets">Open Sets and Closed Sets</h3>
-<p>In fact, there are numerous ways to define what an open set is. However, in this note, we use graphical way to define the abstract idea of open set.</p>
-<p><span class="math inline">\(\textbf{Definition 2.14}:\)</span> We say <span class="math inline">\(G \in \mathbb{R}^{n}\)</span> is an open set if for all <span class="math inline">\(x \in G\)</span>, there exists <span class="math inline">\(\varepsilon_{x} &gt; 0\)</span>, such that <span class="math inline">\(B_{\varepsilon}(x) \subset G\)</span>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="fig3.svg" class="img-fluid figure-img" style="width:35.0%"></p>
-<figcaption class="figure-caption">Fig 2.3 Example of open set</figcaption>
-</figure>
-</div>
-<p><span class="math inline">\(\textbf{Theorem 2.2}:\)</span></p>
+<p>is defined as a mapping that satisfies the following three properties:</p>
 <ol type="1">
-<li><p><span class="math inline">\(\varnothing\)</span> and <span class="math inline">\(\mathbb{R}^{n}\)</span> are open.</p></li>
-<li><p>For any collection <span class="math inline">\(\{G_{\alpha}\}\)</span> of open sets, <span class="math inline">\(\bigcup_{\alpha}G_{\alpha}\)</span> is open.</p></li>
-<li><p>For any finite collection <span class="math inline">\(G_{1}, G_{2}, \cdots, G_{n}\)</span> of open sets, <span class="math inline">\(\bigcap^{n}_{i=1}G_{i}\)</span> is open.</p></li>
+<li><p><span class="math inline">\(0 \leq \mathbb{P}(A) \leq 1\)</span> for any event <span class="math inline">\(A\)</span> in <span class="math inline">\(\mathcal{F}\)</span>，此即描述「任何事件都可能出現」。</p></li>
+<li><p><span class="math inline">\(\mathbb{P}(S) = 1\)</span>，表示每當進行一次隨機實驗時，某一事件總是會發生。</p></li>
+<li><p>If <span class="math inline">\(A_{n} \in \mathcal{F}\)</span> are mutually exclusive, then <span class="math display">\[
+\mathbb{P}\left(\bigcup^{\infty}_{i = 1}A_{i}\right) = \sum^{\infty}_{i = 1}\mathbb{P}(A_{i})
+\]</span></p></li>
 </ol>
-<p><span class="math inline">\(\textit{Proof}.\)</span></p>
-<ol type="1">
-<li><p>Trivial.</p></li>
-<li><p>Take any <span class="math inline">\(x \in \bigcup_{\alpha}G_{\alpha}\)</span>, then <span class="math inline">\(x \in G_{\alpha^{\prime}}\)</span> for some <span class="math inline">\(\alpha^{\prime}\)</span>. Since <span class="math inline">\(G_{\alpha^{\prime}}\)</span> is open, there exists <span class="math inline">\(\varepsilon &gt; 0\)</span>, <span class="math inline">\(B_{\varepsilon}(x) \subset G_{\alpha^{\prime}}\)</span>.</p></li>
-</ol>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For any <span class="math inline">\(y \in B_{\varepsilon}(x)\)</span>, <span class="math inline">\(y \in G_{\alpha^{\prime}}\)</span>, so that <span class="math inline">\(y \in \bigcup_{\alpha}G_{\alpha}\)</span>, then <span class="math inline">\(B_{\varepsilon}(x) \subset \bigcup_{\alpha}G_{\alpha}\)</span>.</p>
-<ol start="3" type="1">
-<li>Take any <span class="math inline">\(x \in \bigcap^{n}_{i=1}G_{i}\)</span>, then <span class="math inline">\(x \in G_{i}\)</span> for all <span class="math inline">\(i = 1, 2, \cdots, n\)</span>. Since <span class="math inline">\(G_{i}\)</span> is open, there exists <span class="math inline">\(\varepsilon_{i} &gt; 0\)</span>, such that <span class="math inline">\(B_{\varepsilon_{i}}(x) \subset G_{i}\)</span>.</li>
-</ol>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Let <span class="math inline">\(\varepsilon = \min\{\varepsilon_{1}, \varepsilon_{2}, \cdots, \varepsilon_{n}\}\)</span>, then <span class="math inline">\(B_{\varepsilon}(x) \subset G_{i}\)</span> for <span class="math inline">\(i = 1, 2, \cdots, n\)</span>, then <span class="math inline">\(B_{\varepsilon}(x) \subset \bigcap^{n}_{i=1}G_{i}\)</span>.</p>
-<p>Notice that we consider finite case in (3) for the absolute existence of minimum. If we consider infinite case, we cannot guarantee that minimum exists.</p>
-<p><span class="math inline">\(\textbf{Definition 2.15}:\)</span> A system <span class="math inline">\(\mathcal{T} = \{S_{\alpha}\}_{\alpha \in A}\)</span> is a topology on <span class="math inline">\(\mathbf{X}\)</span> if:</p>
-<ol type="1">
-<li><p><span class="math inline">\(\varnothing, \mathbf{X} \in \mathcal{T}\)</span>;</p></li>
-<li><p>For all <span class="math inline">\(\{S_{\beta}\}\)</span> with <span class="math inline">\(S_{\beta} \in \mathcal{T}\)</span>, then <span class="math inline">\(\bigcup_{\beta}S_{\beta} \in \mathcal{T}\)</span>;</p></li>
-<li><p>For all <span class="math inline">\(\{S_{i}\}^{k}_{i=1}\)</span> with <span class="math inline">\(S_{i} \in \mathcal{T}\)</span>, then <span class="math inline">\(\bigcap^{k}_{i=1}S_{i} \in \mathcal{T}\)</span>.</p></li>
-</ol>
-<p><span class="math inline">\(\textbf{Definition 2.16}:\)</span> <span class="math inline">\(F \in \mathbb{R}^{n}\)</span> is closed if <span class="math inline">\(G^{c}\)</span> is open.</p>
-<p><span class="math inline">\(\textbf{Theorem 2.3}:\)</span></p>
-<ol type="1">
-<li><p><span class="math inline">\(\varnothing\)</span> and <span class="math inline">\(\mathbb{R}^{n}\)</span> are closed.</p></li>
-<li><p>For any collection <span class="math inline">\(\{F_{\alpha}\}\)</span> of closed sets, <span class="math inline">\(\bigcap_{\alpha}F_{\alpha}\)</span> is closed.</p></li>
-<li><p>For any finite collection <span class="math inline">\(F_{1}, F_{2}, \cdots, F_{n}\)</span> of open sets, <span class="math inline">\(\bigcup^{n}_{i=1}F_{i}\)</span> is closed.</p></li>
-</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;這個性質表示獨立事件之和（即聯集）的機率等於它們各自機率的總和。</p>
+<p>當我們談論概率函數時，實際上是在描述事件集合 <span class="math inline">\(\mathcal{B}\)</span> 中事件發生的機率分佈：機率函數告訴我們各個事件的發生機率是如何分布的。</p>
 
 
 </section>
@@ -348,14 +395,13 @@ B_{\varepsilon}(x) = \{y \in \mathbb{R}^{n}\lvert d(x,y) &lt; \varepsilon\}
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sung2023,
   author = {Sung, Anthony},
-  title = {Set {Theory} and {Basic} {Topology}},
-  date = {2023-07-19},
-  url = {https://yueswater.netlify.app/posts/2023-07-19-mathematical-economics-set-theory/},
+  title = {統計學與機率論},
+  date = {2023-07-30},
+  url = {https://yueswater.netlify.app/posts/2023-07-30-prob-stats-set-theory-and-prob-theory/},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sung2023" class="csl-entry quarto-appendix-citeas" role="listitem">
-Sung, Anthony. 2023. <span>“Set Theory and Basic Topology.”</span> July
-19, 2023. <a href="https://yueswater.netlify.app/posts/2023-07-19-mathematical-economics-set-theory/">https://yueswater.netlify.app/posts/2023-07-19-mathematical-economics-set-theory/</a>.
+Sung, Anthony. 2023. <span>“統計學與機率論.”</span> July 30, 2023. <a href="https://yueswater.netlify.app/posts/2023-07-30-prob-stats-set-theory-and-prob-theory/">https://yueswater.netlify.app/posts/2023-07-30-prob-stats-set-theory-and-prob-theory/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
