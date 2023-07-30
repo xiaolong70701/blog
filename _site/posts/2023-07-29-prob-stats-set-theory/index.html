@@ -23,6 +23,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -171,6 +205,9 @@ cookieconsent.run({
   <li><a href="#機率論基礎" id="toc-機率論基礎" class="nav-link" data-scroll-target="#機率論基礎">機率論基礎</a>
   <ul class="collapse">
   <li><a href="#空間與機率函數" id="toc-空間與機率函數" class="nav-link" data-scroll-target="#空間與機率函數">空間與機率函數</a></li>
+  <li><a href="#條件機率" id="toc-條件機率" class="nav-link" data-scroll-target="#條件機率">條件機率</a></li>
+  <li><a href="#貝氏定理bayes-theorem" id="toc-貝氏定理bayes-theorem" class="nav-link" data-scroll-target="#貝氏定理bayes-theorem">貝氏定理(Bayes’ Theorem)</a></li>
+  <li><a href="#獨立事件" id="toc-獨立事件" class="nav-link" data-scroll-target="#獨立事件">獨立事件</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -357,7 +394,7 @@ B \bigcup \left(\bigcap^{n}_{i = 1}A_{i}\right) &amp;= \bigcap^{n}_{i = 1}\left(
 </ul>
 <p>注意到 <span class="math inline">\(\sigma\)</span>-field 是 <span class="math inline">\(S\)</span> 中子集合的集合，但是 <span class="math inline">\(\sigma\)</span>-field 本身並非 <span class="math inline">\(S\)</span> 的子集，而 <span class="math inline">\(S\)</span> 則是 <span class="math inline">\(\sigma\)</span>-field 唯一的元素。我們稱 <span class="math inline">\((S, \mathcal{F})\)</span> 為一個可測空間(measurable space)。</p>
 <p><span class="math inline">\(\textbf{Example 1.1}:\)</span> Show that for any sample space <span class="math inline">\(S\)</span> , then set <span class="math inline">\(\mathcal{B} = \{\varnothing, S\}\)</span> is always a <span class="math inline">\(\sigma\)</span>-field.</p>
-<p><span class="math inline">\(\textit{Proof.}\)</span></p>
+<p><span class="math inline">\(\textit{Sol.}\)</span></p>
 <p>
 </p>
 <p>We verify the three properties of a <span class="math inline">\(\sigma\)</span>-field:</p>
@@ -370,7 +407,7 @@ B \bigcup \left(\bigcap^{n}_{i = 1}A_{i}\right) &amp;= \bigcap^{n}_{i = 1}\left(
 <span class="math inline">\(\square\)</span>
 </p>
 <p><span class="math inline">\(\textbf{Example 1.2}:\)</span> Suppose the sample space <span class="math inline">\(S = \{1,2,3\}\)</span>. Show that a set containing the following eight subsets <span class="math inline">\(\{1\}, \{2\}, \{3\}, \{1,2\}, \{1,3\}, \{2,3\}, \{1,2,3\}\)</span>, and <span class="math inline">\(\varnothing\)</span> is a <span class="math inline">\(\sigma\)</span>-field.</p>
-<p><span class="math inline">\(\textit{Proof.}\)</span></p>
+<p><span class="math inline">\(\textit{Sol.}\)</span></p>
 <p>
 </p>
 <p>Trivial.</p>
@@ -388,12 +425,341 @@ B \bigcup \left(\bigcap^{n}_{i = 1}A_{i}\right) &amp;= \bigcap^{n}_{i = 1}\left(
 </ol>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;這個性質表示獨立事件之和（即聯集）的機率等於它們各自機率的總和。</p>
 <p>當我們談論概率函數時，實際上是在描述事件集合 <span class="math inline">\(\mathcal{B}\)</span> 中事件發生的機率分佈：機率函數告訴我們各個事件的發生機率是如何分布的。</p>
+<p>因此，對於一個給定的可測空間 <span class="math inline">\((S, \mathcal{F})\)</span>，可以定義許多不同的機率函數。計量經濟學和統計學的目標就是找到一個能夠最準確描述資料產生機制的機率函數，這個機率函數通常被稱為真實機率函數或真實機率分布模型。</p>
+<p>那麼，要如何去解釋我們對於每個事件都指派的「機率」呢？以下是最常見的兩種解釋方法：</p>
+<ul>
+<li>相對頻率(relative frequency)：一個事件的機率可以被看作是在大量獨立重複實驗後，在相同的條件下，該事件發生的「相對頻率」的極限。舉例來說，假設我們投擲硬幣總共 <span class="math inline">\(N\)</span> 次。每次投擲時，要麼出現「正面」，要麼出現「反面」。假設在這 <span class="math inline">\(N\)</span> 次實驗中，正面出現了 <span class="math inline">\(N_{h}\)</span>次。那麼在這 <span class="math inline">\(N\)</span> 次實驗中，「正面」出現的比例是 <span class="math inline">\(N_{h}/N\)</span>。當 <span class="math inline">\(N\)</span> 趨近於無窮大，即 <span class="math inline">\(N \to \infty\)</span>，該比例 <span class="math inline">\(N_{h}/N\)</span> 的變異將會縮小。</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我們可以用 <code>R</code> 來做個實驗。假設我們讓電腦投擲一個公正的硬幣，從 <span class="math inline">\(1\)</span> 次開始，一直投擲到 <span class="math inline">\(1000\)</span> 次，並且紀錄每次投擲後出現正面的相對頻率，來驗證上述的論述是否正確。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 定義模擬硬幣投擲的函數</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>simulate_coin_toss <span class="ot">&lt;-</span> <span class="cf">function</span>(N) {</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  tosses <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Head"</span>, <span class="st">"Tail"</span>), N, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  num_heads <span class="ot">&lt;-</span> <span class="fu">sum</span>(tosses <span class="sc">==</span> <span class="st">"Head"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  relative_frequency <span class="ot">&lt;-</span> num_heads <span class="sc">/</span> N</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(relative_frequency)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 執行模擬</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>num_tosses <span class="ot">&lt;-</span> <span class="dv">1000</span>  <span class="co"># 指定投擲硬幣的次數N</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>relative_frequencies <span class="ot">&lt;-</span> <span class="fu">numeric</span>(num_tosses)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_tosses) {</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  relative_frequencies[i] <span class="ot">&lt;-</span> <span class="fu">simulate_coin_toss</span>(i)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 繪製相對頻率的折線圖</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">N =</span> <span class="dv">1</span><span class="sc">:</span>num_tosses, <span class="at">Relative_Frequency =</span> relative_frequencies)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> N, <span class="at">y =</span> Relative_Frequency)) <span class="sc">+</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span>                      </span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">"#Ce0e4e"</span>) <span class="sc">+</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Number of tosses"</span>,</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Relative frequencies"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可以看到最終這個公正硬幣出現正面的相對頻率會趨近於 <span class="math inline">\(0.5\)</span>。注意到相對頻率解釋了在假設相同條件下進行大量重複實驗時是有效的，而在統計學中，這種假設被稱為<strong>獨立且同分布</strong>(independence and identical distribution, IID)。</p>
+<ul>
+<li>主觀機率(subjective probability)：即經濟行為者依照其信念(belief)、習慣(habit)等認定某一事件的機率為何。例如理性預期(Muth, 1961)假設經濟主體的主觀期望（即在經濟行為者的主觀機率信念下的期望）與數學期望（即在客觀機率分佈下的期望）相一致。<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+</ul>
+<p><span class="math inline">\(\textbf{Definition 1.11}:\)</span> A probability space is a triple <span class="math inline">\((S, \mathcal{F}, \mathbb{P})\)</span> where</p>
+<ul>
+<li><p><span class="math inline">\(S\)</span> is the sample space corresponding to the outcomes of the underlying random experiment.</p></li>
+<li><p><span class="math inline">\(\mathcal{F}\)</span> is the <span class="math inline">\(\sigma\)</span>-field of subsets of <span class="math inline">\(S\)</span>. These subsets are called events.</p></li>
+<li><p><span class="math inline">\(P: \mathcal{F} \to [0,1]\)</span> is a probability measure.</p></li>
+</ul>
+<p>因此 <span class="math inline">\((S, \mathcal{F}, \mathbb{P})\)</span> 就猶如三位一體的概念，可以完全地描述在樣本空間 <span class="math inline">\(S\)</span> 上定義的隨機實驗。</p>
+<p><span class="math inline">\(\textbf{Theorem 1.1}:\)</span> If <span class="math inline">\(\varnothing\)</span> denotes the empty set, then <span class="math inline">\(\mathbb{P}(\varnothing) = 0\)</span>.</p>
+<p><span class="math inline">\(\textit{Proof.}\)</span></p>
+<p>
+</p>
+<p>Given that <span class="math inline">\(S = S \cup \varnothing\)</span>, and <span class="math inline">\(S\)</span> and <span class="math inline">\(\varnothing\)</span> are mutually exclusive, we then have <span class="math display">\[
+\mathbb{P}(S) = \mathbb{P}(S \cup \varnothing) = \mathbb{P}(S) + \mathbb{P}(\varnothing)
+\]</span> It follows that <span class="math inline">\(\mathbb{P}(\varnothing) = 0\)</span></p>
+<p align="right">
+<span class="math inline">\(\square\)</span>
+</p>
+<p><span class="math inline">\(\textbf{Theorem 1.2}:\)</span> <span class="math inline">\(\mathbb{P}(A) = 1 - \mathbb{P}(A^{c})\)</span></p>
+<p><span class="math inline">\(\textit{Proof.}\)</span></p>
+<p>
+</p>
+<p>Since <span class="math inline">\(S = A \cup A^{c}\)</span>, then <span class="math display">\[
+\mathbb{P}(S) = \mathbb{P}(A \cup A^{c})
+\]</span> By definition, we have <span class="math inline">\(\mathbb{P}(S) = 1\)</span>, and note that <span class="math inline">\(A\)</span> and <span class="math inline">\(A^{c}\)</span> are mutually exclusive, then <span class="math display">\[
+1 = \mathbb{P}(A) + \mathbb{P}(A^{c})
+\]</span></p>
+<p align="right">
+<span class="math inline">\(\square\)</span>
+</p>
+<p><span class="math inline">\(\textbf{Theorem 1.3}:\)</span> If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are two events in <span class="math inline">\(\mathbb{B}\)</span>, and <span class="math inline">\(A \subseteq B\)</span>, then <span class="math inline">\(\mathbb{P}(A) \leq \mathbb{P}(B)\)</span>.</p>
+<p><span class="math inline">\(\textit{Proof.}\)</span></p>
+<p>
+</p>
+<p>Using the fact that <span class="math inline">\(S = A \cup A^{c}\)</span> and the distributive property of sets, we have <span class="math display">\[
+\begin{aligned}
+B &amp;= S \cap B = (A \cup A^{c}) \cap B\\
+&amp;= (A \cap B) \cup (A^{c} \cap B)\\
+&amp;= A \cup (A^{c} \cap B)
+\end{aligned}
+\]</span> where the last equality follows from <span class="math inline">\(A \subseteq B\)</span> so that <span class="math inline">\(A \cap B = A\)</span>. Because <span class="math inline">\(A\)</span> and <span class="math inline">\(A^{c} \cap B\)</span> are mutually exclusive, we have</p>
+<p><span class="math display">\[
+\mathbb{P}(B) = \mathbb{P}(A) + \mathbb{P}(A^{c} \cap B) \geq \mathbb{P}(A)
+\]</span> given that <span class="math inline">\(\mathbb{P}(A^{c} \cap B) \geq 0\)</span>.</p>
+<p align="right">
+<span class="math inline">\(\square\)</span>
+</p>
+<p>而底下是一個最常用的性質：</p>
+<p><span class="math inline">\(\textbf{Theorem 1.4}:\)</span> For any two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> in <span class="math inline">\(\mathcal{F}\)</span>, then <span class="math display">\[
+\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B)  
+\]</span></p>
+<p><span class="math inline">\(\textit{Proof.}\)</span></p>
+<p>
+</p>
+<p>Since <span class="math inline">\(A \cup B = A \cup (A^{c} \cap B)\)</span> and <span class="math inline">\(A\)</span> and <span class="math inline">\(A^{c} \cap B\)</span> are mutually exclusive, we have <span class="math display">\[
+\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(A^{c} \cap B)
+\]</span></p>
+<p>Also, because <span class="math inline">\(B = S \cap B = (A \cap B) \cup (A^{c} \cap B)\)</span>, and <span class="math inline">\((A \cap B)\)</span> and <span class="math inline">\((A^{c} \cap B)\)</span> are mutually exclusive, we have <span class="math display">\[
+\mathbb{P}(B) = \mathbb{P}(A \cap B) + \mathbb{P}(A^{c} \cap B)
+\]</span></p>
+<p>By rearranging both equations, we have <span class="math display">\[
+\begin{aligned}
+\mathbb{P}(A) &amp;= \mathbb{P}(A \cup B) - \mathbb{P}(A^{c} \cap B)\\
+\mathbb{P}(B) &amp;= \mathbb{P}(A \cap B) + \mathbb{P}(A^{c} \cap B)
+\end{aligned}
+\]</span></p>
+<p>Adding both equations and rearraning it gives us the desired result.</p>
+<p align="right">
+<span class="math inline">\(\square\)</span>
+</p>
+<p>接下來我們要介紹總機率法則(rule of total probability)。</p>
+<p><span class="math inline">\(\textbf{Theorem 1.5}:\)</span> If <span class="math inline">\(A_{1}, A_{2}, \cdots in \mathcal{F}\)</span> are mutually exclusive and collectively exhaustive, and <span class="math inline">\(A\)</span> is an event in <span class="math inline">\(S\)</span>, then <span class="math display">\[
+\mathbb{P}(A) = \sum^{\infty}_{i = 1}\mathbb{P}(A \cap A_{i})
+\]</span> <span class="math inline">\(\textit{Proof.}\)</span></p>
+<p>
+</p>
+<p>Noting <span class="math display">\[
+S = \bigcup_{i=1}^\infty A_i
+\]</span> and <span class="math display">\[
+A = A \cap S = A \cap \bigcup_{i=1}^\infty A_i = \bigcup_{i=1}^\infty (A \cap A_i)
+\]</span> where the last equality follows by the distributive law. The result follows because <span class="math inline">\(A \cap A_i\)</span> and <span class="math inline">\(A \cap A_j\)</span> are disjoint for all <span class="math inline">\(i \neq j\)</span>.</p>
+<p><span class="math inline">\(\textbf{Theorem 1.6}:\)</span> For any sequence of events <span class="math inline">\(\{A_{i} \in \mathcal{F}, \forall i = 1,2, \cdots\}\)</span>, we have</p>
+<p><span class="math display">\[
+{\mathbb {P} }\left(\bigcup _{i=1}^{\infty }A_{i}\right)\leq \sum _{i=1}^{\infty }{\mathbb {P} }(A_{i})
+\]</span></p>
+<p><span class="math inline">\(\textit{Proof.}\)</span></p>
+<p>
+</p>
+<p>Let <span class="math inline">\(B = \bigcup^{\infty}_{i = 2}A_{i}\)</span>. Then <span class="math display">\[
+\bigcup^{\infty}_{i = 1}A_{i} = A_{1} \cup B
+\]</span> By using Theorem 1.4, it follows <span class="math display">\[
+\begin{aligned}
+\mathbb{P}\left(\bigcup^{n}_{i = 1}A_{i}\right) &amp;= \mathbb{P}(A_{1} \cup B)\\
+&amp;= \mathbb{P}(A_{1}) + \mathbb{P}(B) - \mathbb{P}(A_{1} \cap B)\\
+&amp;\leq \mathbb{P}(A_{1}) + \mathbb{P}(B)
+\end{aligned}
+\]</span> where where the inequality follows given <span class="math inline">\(P(A_1 \cap B) \geq 0\)</span>. Again, let <span class="math inline">\(C = \bigcup_{i=3}^{\infty} A_i\)</span>. Then <span class="math display">\[
+\mathbb{P}(B) = \mathbb{P}(A_{2} \cup C) \leq \mathbb{P}(A_{2}) + \mathbb{P}(C)
+\]</span></p>
+<p>It follows that <span class="math display">\[
+\mathbb{P}\left(\bigcup^{n}_{i = 1}A_{i}\right) \leq \mathbb{P}(A_{1}) + \mathbb{P}(A_{2}) + \mathbb{P}(C)
+\]</span></p>
+<p>Repeating this process, we have <span class="math display">\[
+{\mathbb {P} }\left(\bigcup _{i=1}^{\infty }A_{i}\right)\leq \sum _{i=1}^{\infty }{\mathbb {P} }(A_{i})
+\]</span></p>
+</section>
+<section id="條件機率" class="level3">
+<h3 class="anchored" data-anchor-id="條件機率">條件機率</h3>
+<p>經濟事件乃至於事件上的所有事件通常彼此存在關聯。例如失業率與職缺率可能存在因果關係（此即 Beveridge 曲線的概念）。由於具有關聯性，事件 <span class="math inline">\(B\)</span> 的發生可能會影響或包含有關事件 <span class="math inline">\(A\)</span> 發生的機率資訊。因此，如果我們擁有有關事件 <span class="math inline">\(B\)</span> 的資訊，我們就能更好地了解事件 <span class="math inline">\(A\)</span> 的發生情況。這可以通過條件機率的概念來描述。</p>
+<p><span class="math inline">\(\textbf{Definition 1.12}:\)</span> Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be two events in probability space <span class="math inline">\((S, \mathcal{F}, \mathbb{P})\)</span>. Then the conditional probability of event <span class="math inline">\(A\)</span> given event <span class="math inline">\(B\)</span>, denoted as <span class="math inline">\(\mathbb{P}(A | B)\)</span>, is defined as <span class="math display">\[
+\mathbb{P}(A|B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}
+\]</span> provided that <span class="math inline">\(\mathbb{P}(B) &gt; 0\)</span>. Similarly, the conditional probability of event <span class="math inline">\(B\)</span> given <span class="math inline">\(A\)</span> is defined as <span class="math display">\[
+\mathbb{P}(B|A) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(A)}
+\]</span> provided that <span class="math inline">\(\mathbb{P}(A) &gt; 0\)</span>.</p>
+<p>在定義條件概率 <span class="math inline">\(\mathbb{P}(A | B)\)</span> 時，我們假設 <span class="math inline">\(\mathbb{P}(B)\)</span>。這是因為 <span class="math inline">\(\mathbb{P}(B)\)</span> 意味著事件 <span class="math inline">\(B\)</span> 不太可能發生，而對於一個不太可能發生的事件進行條件機率計算在實際上沒有意義。因此，我們要確保條件機率的分母不為零，也就是要確保事件 <span class="math inline">\(B\)</span> 的機率大於 <span class="math inline">\(0\)</span>。</p>
+<p><span class="math inline">\(\mathbb{P}(A|B)\)</span> 在一個文氏圖中可以表示為事件 <span class="math inline">\(A\)</span> 佔據事件 <span class="math inline">\(B\)</span> 占據的區域相對於事件 <span class="math inline">\(B\)</span> 占據的整個區域。直觀地說，當事件 <span class="math inline">\(B\)</span> 發生時，<span class="math inline">\(B^{c}\)</span> 將永遠不會發生。不確定性從整個樣本空間 <span class="math inline">\(S\)</span> 縮減為事件 <span class="math inline">\(B\)</span>，則可測空間變為 <span class="math inline">\(\left(S\cap B, \mathcal{F}\cap B, \mathbb{P}(\cdot|B)\right)\)</span>。因此，當我們考慮 <span class="math inline">\(\mathbb{P}(A|B)\)</span> 時，我們會將 <span class="math inline">\(B\)</span> 視為一個新的樣本空間，所有後續事件都將根據它們與 <span class="math inline">\(B\)</span> 的關係來進行校正。</p>
+<p>因此，我們可以說 <span class="math inline">\(\mathbb{P}(A|B)\)</span> 描述了如何使用事件 <span class="math inline">\(B\)</span> 的資訊來預測事件 <span class="math inline">\(A\)</span> 的機率。這是 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span> 之間的預測關係。但是我們必須注意到，<strong>一個預測關係不一定代表是 <span class="math inline">\(A\)</span> 與 <span class="math inline">\(B\)</span> 的因果關係</strong>，若我們要探討因果關係，則需要仰賴專業理論的相關知識補充說明。</p>
+<p><span class="math inline">\(\textbf{Lemma 1.1}:\)</span> Given two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, then</p>
+<ol type="1">
+<li><p>if <span class="math inline">\(\mathbb{P}(B) &gt; 0\)</span>, then <span class="math inline">\(\mathbb{P}(A \cap B) = \mathbb{P}(A|B)\mathbb{P}(B)\)</span></p></li>
+<li><p>if <span class="math inline">\(\mathbb{P}(A) &gt; 0\)</span>, then <span class="math inline">\(\mathbb{P}(A \cap B) = \mathbb{P}(B|A)\mathbb{P}(A)\)</span></p></li>
+</ol>
+<p>上面這個關係可以用於計算 <span class="math inline">\(\mathbb{P}(A \cap B)\)</span>。</p>
+<p><span class="math inline">\(\textbf{Theorem 1.7}:\)</span> Suppose <span class="math inline">\(\{A_{i} \in \mathcal{F}, \forall i = 1, \cdots, n\}\)</span> is a sequence of <span class="math inline">\(n\)</span> events. Then the joint probability of these <span class="math inline">\(n\)</span> events <span class="math display">\[
+\mathbb{P}\left(\bigcap^{n}_{i = 1}A_{i}\right) = \prod^{n}_{i = 1}\mathbb{P}\left(A_{i}|\bigcap^{i - 1}_{j = 1}A_{j}\right)
+\]</span></p>
+<p>with the convention that <span class="math display">\[
+\mathbb{P}\left(A_{1}|\bigcap^{0}_{j = 1}A_{j}\right) = \mathbb{P}(A_{1})
+\]</span></p>
+<p>上述的乘法規則可以被重複使用來獲得多個事件的聯合機率，且注意到對於事件序列 <span class="math inline">\(A_1, A_2, \ldots, A_n\)</span> 有 <span class="math inline">\(n!\)</span> 不同的條件機率算法。</p>
+<p><span class="math inline">\(\textbf{Theorem 1.8}:\)</span> Let <span class="math inline">\(\{A_{i}\}^{\infty}_{i = 1}\)</span> be a be a partition (i.e., mutually exclusive and collectively exhaustive) of sample space <span class="math inline">\(S\)</span>, with <span class="math inline">\(\mathbb{P}(A_{i}) &gt; 0\)</span> for <span class="math inline">\(i \geq 1\)</span>. Then for any event <span class="math inline">\(A\)</span> in <span class="math inline">\(\mathcal{F}\)</span>, <span class="math display">\[
+\mathbb{P}(A) = \sum^{\infty}_{i = 1}\mathbb{P}(A|A_{i})\mathbb{P}(A_{i})
+\]</span> <span class="math inline">\(\textit{Proof.}\)</span></p>
+<p>
+</p>
+<p>By Theorem 1.5, we have <span class="math display">\[
+\mathbb{P}(A) = \sum^{\infty}_{i = 1}\mathbb{P}(A \cap A_{i})
+\]</span></p>
+<p>The desired result follows immediately from the multiplication rule that <span class="math inline">\(\mathbb{P}(A \cap A_{i}) = \mathbb{P}(A|A_{i})\mathbb{P}(A_{i})\)</span>.</p>
+<p align="right">
+<span class="math inline">\(\square\)</span>
+</p>
+</section>
+<section id="貝氏定理bayes-theorem" class="level3">
+<h3 class="anchored" data-anchor-id="貝氏定理bayes-theorem">貝氏定理(Bayes’ Theorem)</h3>
+<p>貝氏定理可謂是條件機率的應用，雖然此定理的起源時間可以追溯到 18 世紀由 Thomas Bayes 提出的概念，但是在 21 世紀的今天，貝氏定理被廣泛的使用在諸多領域上，包含機器學習(machine learning)、政治經濟學(political economy)。</p>
+<p>貝氏定理描述的是一個修正或更新先驗概率的機制，當事件 <span class="math inline">\(B\)</span> 發生後，我們可以利用這個信息來修正或更新事件 <span class="math inline">\(A\)</span> 發生的先驗機率(prior probability)。</p>
+<p><span class="math inline">\(\textbf{Theorem 1.9}:\)</span> Suppose <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are two events with <span class="math inline">\(\mathbb{P}(A) &gt; 0\)</span> and <span class="math inline">\(\mathbb{P}(B) &gt; 0\)</span>. Then <span class="math display">\[
+\mathbb{P}(A|B) = \frac{\mathbb{P}(B|A)\mathbb{P}(A)}{\mathbb{P}(B|A)\mathbb{P}(A) + \mathbb{P}(B|A^{c})\mathbb{P}(A^{c})}
+\]</span></p>
+<p><span class="math inline">\(\mathbb{P}(A)\)</span> 被稱為先驗概率，即在事實或證據之前，因為它是在新資訊 <span class="math inline">\(B\)</span> 發生之前對事件 <span class="math inline">\(A\)</span> 的機率估計。而條件機率 <span class="math inline">\(\mathbb{P}(A|B)\)</span> 被稱為後驗概率(posterior probability)，即在事實或證據之後，因為它代表在獲得事件 <span class="math inline">\(B\)</span> 發生的新資訊之後，對事件 <span class="math inline">\(A\)</span> 機率進行修正後的分配。</p>
+<p>因此貝氏定理可以用更白話的方式呈現，即在事件 <span class="math inline">\(A\)</span> 發生後，事件 <span class="math inline">\(A\)</span> 的後驗概率與樣本證據 <span class="math inline">\(B\)</span> 的概率成正比，比例常數為事件 <span class="math inline">\(A\)</span> 的先驗概率。故我們可以說貝氏定理表達了主觀信念程度應該如何合理地改變以適應相關證據的可用性。<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p><span class="math inline">\(\textbf{Theorem 1.10}:\)</span> Suppose <span class="math inline">\(A_{1}, \cdots, A_{n}\)</span> are <span class="math inline">\(n\)</span> mutually exclusive and collectively exhaustive events in the sample space <span class="math inline">\(S\)</span>, and <span class="math inline">\(A\)</span> is an event with <span class="math inline">\(\mathbb{P}(A) &gt; 0\)</span>. Then the conditional probability of <span class="math inline">\(A_{i}\)</span> given <span class="math inline">\(A\)</span> is <span class="math display">\[
+\mathbb{P}(A|A_{i}) = \frac{\mathbb{P}(A|A_{i})\mathbb{P}(A_{i})}{\sum^{n}_{j = 1}\mathbb{P}(A|A_{j})\mathbb{P}(A_{j})}, \forall i = 1, \cdots, n
+\]</span></p>
+<p><span class="math inline">\(\textit{Proof.}\)</span></p>
+<p>
+</p>
+<p>By the conditional probability definition and multiplication rule, we have <span class="math display">\[
+\begin{aligned}
+\mathbb{P}(A_{i}|A) &amp;= \frac{\mathbb{P}(A_{i} \cap A)}{\mathbb{P}(A)}\\
+&amp;= \frac{\mathbb{P}(A|A_{i})\mathbb{P}(A_{i})}{\mathbb{P}(A)}
+\end{aligned}
+\]</span></p>
+<p>Because <span class="math inline">\(\{A_{i}\}^{n}_{i = 1}\)</span> are collectively exhaustive and mutually exclusive, from the rule of total probability in Theorem 1.8, we have <span class="math display">\[
+\begin{aligned}
+\mathbb{P}(A) &amp;= \sum^{n}_{j = 1}\mathbb{P}(A \cap A_{j})\\
+&amp;= \sum^{n}_{j = 1}\mathbb{P}(A|A_{j})\mathbb{P}(A_{j})
+\end{aligned}
+\]</span></p>
+<p>底下我們來探討一個汽車保險公司保費(auto-insurance premium)的例子。</p>
+<p><span class="math inline">\(\textbf{Example 1.2}:\)</span> Suppose an insurance company has three types of customers high risk, medium risk and low risk. From the company’s historical consumer database, it is known that <span class="math inline">\(25\%\)</span> of its customers are high risk, <span class="math inline">\(25\%\)</span> are medium risk, and <span class="math inline">\(50\%\)</span> are low risk. Also, the database shows that the probability that a customer has at least one speeding ticket in one year is <span class="math inline">\(0.25\)</span> for high risk, <span class="math inline">\(0.16\)</span> for medium risk, and <span class="math inline">\(0.10\)</span> for low risk.</p>
+<p>Now suppose a new customer wants to be insured and reports that he has had one speeding ticket this year. What is the probability that he is a high risk customer, given that he has had one speeding ticket this year?</p>
+<p><span class="math inline">\(\textit{Sol.}\)</span></p>
+<p>
+</p>
+<p>To calculate the probability that the new customer is a high-risk customer, given that he has had one speeding ticket this year, we can use Bayes’ theorem.</p>
+<p>Let <span class="math inline">\(H\)</span> be the event that the customer is high risk, and <span class="math inline">\(T\)</span> be the event that the customer has had one speeding ticket this year.</p>
+<p>We want to find <span class="math inline">\(\mathbb{P}(H|T)\)</span>, the probability that the customer is high risk given that he has had one speeding ticket.</p>
+<p>According to Bayes’ theorem:</p>
+<p><span class="math display">\[
+\mathbb{P}(H|T) = \frac{\mathbb{P}(T|H) \cdot \mathbb{P}(H)}{\mathbb{P}(T)}
+\]</span></p>
+<p>where</p>
+<ul>
+<li><p><span class="math inline">\(\mathbb{P}(T|H)\)</span> is the probability that the customer has had one speeding ticket given that he is high risk.</p></li>
+<li><p><span class="math inline">\(\mathbb{P}(H)\)</span> is the probability that a customer is high risk.</p></li>
+<li><p><span class="math inline">\(\mathbb{P}(T)\)</span> is the probability that the customer has had one speeding ticket, which can be calculated using the law of total probability:</p></li>
+</ul>
+<p><span class="math display">\[
+\mathbb{P}(T) = \mathbb{P}(T|H) \cdot \mathbb{P}(H) + \mathbb{P}(T|M) \cdot \mathbb{P}(M) + \mathbb{P}(T|L) \cdot \mathbb{P}(L)
+\]</span></p>
+<p>where:</p>
+<ul>
+<li><p><span class="math inline">\(\mathbb{P}(T|H)\mathbb{P}\)</span> is the probability of one speeding ticket given high risk (0.25).</p></li>
+<li><p><span class="math inline">\(\mathbb{P}(T|M)\)</span> is the probability of one speeding ticket given medium risk.</p></li>
+<li><p><span class="math inline">\(\mathbb{P}(T|L)\)</span> is the probability of one speeding ticket given low risk.</p></li>
+<li><p><span class="math inline">\(\mathbb{P}(M)\)</span> is the probability of a customer being medium risk.</p></li>
+<li><p><span class="math inline">\(\mathbb{P}(L)\)</span> is the probability of a customer being low risk.</p></li>
+</ul>
+<p>Now, let’s plug in the values and calculate:</p>
+<p><span class="math display">\[
+\mathbb{P}(T) = 0.25 \cdot 0.25 + 0.16 \cdot 0.25 + 0.10 \cdot 0.50 = 0.0625 + 0.04 + 0.05 = 0.1525
+\]</span></p>
+<p>Finally, we can calculate <span class="math inline">\(\mathbb{P}(H|T)\)</span>:</p>
+<p><span class="math display">\[
+\mathbb{P}(H|T) = \frac{0.25 \cdot 0.25}{0.1525} \approx 0.4098
+\]</span></p>
+<p>So, the probability that the new customer is a high-risk customer, given that he has had one speeding ticket this year, is approximately <span class="math inline">\(0.4098\)</span> or <span class="math inline">\(40.98\%\)</span>.</p>
+</section>
+<section id="獨立事件" class="level3">
+<h3 class="anchored" data-anchor-id="獨立事件">獨立事件</h3>
+<p>獨立事件(independent event)是指兩個或多個事件之間彼此不影響、不相關的情況。換句話說，一個事件的發生或不發生並不會影響其他事件的機率。</p>
+<p><span class="math inline">\(\textbf{Definition 1.13}:\)</span> Events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are said to be statistically independent if <span class="math inline">\(\mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B)\)</span></p>
+<p>具有獨立性的事件被稱為在統計學上是獨立、隨機獨立的，或在機率上是獨立的。在大多數情況下，我們使用「獨立」一詞來描述上述的情況。</p>
+<p>那我們可以從獨立的性質得出什麼結論呢？首先，假設 <span class="math inline">\(\mathbb{P}(B) &gt; 0\)</span>，則 <span class="math display">\[
+\begin{aligned}
+\mathbb{P}(A|B) &amp;= \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}\\
+&amp;= \frac{\mathbb{P}(A)\mathbb{P}(B)}{\mathbb{P}(B)}\\
+&amp;= \mathbb{P}(A)
+\end{aligned}
+\]</span></p>
+<p>對於事件 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span> 而言，如果 <span class="math inline">\(\mathbb{P}(B|A)\)</span>，表示在已知事件 <span class="math inline">\(B\)</span> 後對事件 <span class="math inline">\(A\)</span> 的預測沒有幫助，即知道事件 <span class="math inline">\(B\)</span> 發生並不改變預測事件 <span class="math inline">\(A\)</span> 發生的機率。直觀上來說，獨立性意味著事件 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span>是「不相關的(irrelevant)」，或者說它們之間不存在任何關係。</p>
+<p>獨立性質為何重要。我們來看一個金融學上的應用：隨機漫步(random walk)。假設有一支股票，其價格令為 <span class="math inline">\(P_{t}\)</span>，其中 <span class="math inline">\(t\)</span> 代表時間。該股票價格若滿足以下條件，則稱其符合隨機漫步：</p>
+<p><span class="math display">\[
+P_{t} + P_{t-1} = X_{t}
+\]</span></p>
+<p>其中 <span class="math inline">\(\{X_{t}\}\)</span> 在不同時間段上是相互獨立的，從上式也可以看出 <span class="math inline">\(X_{t}\)</span> 代表的是價格的增長(increment)，因</p>
+<p><span class="math display">\[
+X_{t} = P_{t} - P_{t-1}
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="randomWalk.gif" class="img-fluid figure-img" style="width:50.0%" data-fig.align="center"></p>
+<figcaption class="figure-caption">Fig 1.1: 隨機漫步<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></figcaption>
+</figure>
+</div>
+<p>令一個對於隨機漫步的變種定義為，如果股票價格 <span class="math inline">\(P_t\)</span> 符合以下條件，則稱為幾何隨機漫步：</p>
+<p><span class="math display">\[
+\ln P_t = \ln P_{t-1} + X_t
+\]</span></p>
+<p>根據泰勒展開式(Taylor expansion)， <span class="math display">\[
+X_t = \ln\left(\frac{P_t}{P_{t-1}}\right) = \ln\left(1 + \frac{P_t - P_{t-1}}{P_{t-1}}\right) \approx \frac{P_t - P_{t-1}}{P_{t-1}}
+\]</span> 代表價格變動的比例。幾何隨機漫步假設最重要的含義是：如果在不同的時間段內，<span class="math inline">\(X_{t}\)</span> 是序列獨立的，則未來的股票價格變化 <span class="math inline">\(X_{t}\)</span> 不能透過歷史股價資料來預測。在這樣的情況下，我們稱股票市場具有資訊效率(informationally efficient)。</p>
+<p><span class="math inline">\(\textbf{Theorem 1.11}:\)</span> Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be two independent events. Then</p>
+<ul>
+<li><p><span class="math inline">\(A\)</span> and <span class="math inline">\(B^{c}\)</span> are independent</p></li>
+<li><p><span class="math inline">\(A^{c}\)</span> and <span class="math inline">\(B^{c}\)</span> are independent</p></li>
+<li><p><span class="math inline">\(A^{c}\)</span> and <span class="math inline">\(B^{c}\)</span> are independent</p></li>
+</ul>
+<p><span class="math inline">\(\textit{Proof.}\)</span></p>
+<p>
+</p>
+<ol type="1">
+<li><p>If <span class="math inline">\(\mathbb{P}\left(A \cap B^c\right)=\mathbb{P}(A) \mathbb{P}\left(B^c\right)\)</span>, then <span class="math inline">\(A\)</span> and <span class="math inline">\(B^c\)</span> are independent. Because <span class="math inline">\((A \cap B) \cup\left(A \cap B^{c}\right)=A\)</span>, we have <span class="math display">\[
+\mathbb{P}(A \cap B)+\mathbb{P}(A \cap B^{c})=\mathbb{P}(A) .
+\]</span> It follows from the multiplication rule that <span class="math display">\[
+\begin{aligned}
+\mathbb{P}(A \cap B^c) &amp; =\mathbb{P}(A)-\mathbb{P}(A \cap B) \\
+&amp; =\mathbb{P}(A)-\mathbb{P}(A) \mathbb{P}(B) \\
+&amp; =\mathbb{P}(A)\left[1-\mathbb{P}(B)\right] \\
+&amp; =\mathbb{P}(A) \mathbb{P}(B^c)
+\end{aligned}
+\]</span></p></li>
+<li><p>By symmetry.</p></li>
+<li><p>Because <span class="math inline">\((A \cap B^c) \cup(A^c \cap B^c)=B^c\)</span>, we have <span class="math display">\[
+\mathbb{P}(A \cap B^c)+\mathbb{P}(A^c \cap B^c)=\mathbb{P}(B^c)
+\]</span> It follows that <span class="math display">\[
+\begin{aligned}
+\mathbb{P}(A^{c} \cap B^{c}) &amp;= \mathbb{P}(B^{c}) - \mathbb{P}(A \cap B^{c})\\
+&amp;= \mathbb{P}(B^{c}) - \mathbb{P}(A)\mathbb{P}(B^{c})\\
+&amp;= \mathbb{P}(A^{c})\mathbb{P}(B^{c})
+\end{aligned}
+\]</span></p></li>
+</ol>
+<p>假設 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span> 是獨立的，那麼 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B^c\)</span> 也應該是獨立的，因為如果不是這樣，就可以用 <span class="math inline">\(A\)</span> 來預測 <span class="math inline">\(B^c\)</span> 的機率，然後通過補集機率公式來預測 <span class="math inline">\(B\)</span> 在給定 <span class="math inline">\(A\)</span> 的條件下的機率： <span class="math display">\[
+\mathbb{P}(B|A)=1-\mathbb{P}(B^c|A)
+\]</span></p>
+<p><span class="math inline">\(\textbf{Definition 1.14}:\)</span> Suppose <span class="math inline">\(k\)</span> events <span class="math inline">\(A_{1}, \cdots, A_{k}\)</span> are mutually independent if, for every possible subset <span class="math inline">\(A_{i_{1}}, \cdots, A_{i_{j}}\)</span> of <span class="math inline">\(j\)</span> of those events, where <span class="math inline">\(j = 1,2, \cdots, k\)</span>, then <span class="math display">\[
+\mathbb{P}(A_{i_{1}} \cap \cdots \cap A_{i_{j}}) = \mathbb{P}(A_{i_{1}}) \times \cdots \times \mathbb{P}(A_{i_{j}})
+\]</span></p>
 
 
 </section>
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sung2023,
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Muth, J. F. (1961, July). <a href="https://www.jstor.org/stable/1909635">Rational Expectations and the Theory of Price Movements</a>. <em>Econometrica</em>, 29(3), 315. <a href="https://doi.org/10.2307/1909635">https://doi.org/10.2307/1909635</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>不妨可以參考成語「曾參殺人」的典故。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><em>Brownian motion and random walks</em>. (n.d.). Brownian Motion and Random Walks. Retrieved July 31, 2023, from <a href="https://web.mit.edu/8.334/www/grades/projects/projects17/OscarMickelin/brownian.html">https://web.mit.edu/8.334/www/grades/projects/projects17/OscarMickelin/brownian.html</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sung2023,
   author = {Sung, Anthony},
   title = {統計學與機率論},
   date = {2023-07-30},

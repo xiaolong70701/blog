@@ -206,7 +206,7 @@ subsets(events) of $S$ that satisfies the following properties:
 
 $\textbf{Example 1.1}:$ Show that for any sample space $S$ , then set $\mathcal{B} = \{\varnothing, S\}$ is always a $\sigma$-field.
 
-$\textit{Proof.}$ 
+$\textit{Sol.}$ 
 
 <p></p>
 
@@ -223,7 +223,7 @@ We verify the three properties of a $\sigma$-field:
 
 $\textbf{Example 1.2}:$ Suppose the sample space $S = \{1,2,3\}$. Show that a set containing the following eight subsets $\{1\}, \{2\}, \{3\}, \{1,2\}, \{1,3\}, \{2,3\}, \{1,2,3\}$, and $\varnothing$ is a $\sigma$-field.
 
-$\textit{Proof.}$ 
+$\textit{Sol.}$ 
 
 <p></p>
 
@@ -250,4 +250,520 @@ $$
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;這個性質表示獨立事件之和（即聯集）的機率等於它們各自機率的總和。
 
 當我們談論概率函數時，實際上是在描述事件集合 $\mathcal{B}$ 中事件發生的機率分佈：機率函數告訴我們各個事件的發生機率是如何分布的。
+
+因此，對於一個給定的可測空間 $(S, \mathcal{F})$，可以定義許多不同的機率函數。計量經濟學和統計學的目標就是找到一個能夠最準確描述資料產生機制的機率函數，這個機率函數通常被稱為真實機率函數或真實機率分布模型。
+
+那麼，要如何去解釋我們對於每個事件都指派的「機率」呢？以下是最常見的兩種解釋方法：
+
+- 相對頻率(relative frequency)：一個事件的機率可以被看作是在大量獨立重複實驗後，在相同的條件下，該事件發生的「相對頻率」的極限。舉例來說，假設我們投擲硬幣總共 $N$ 次。每次投擲時，要麼出現「正面」，要麼出現「反面」。假設在這 $N$ 次實驗中，正面出現了 $N_{h}$次。那麼在這 $N$ 次實驗中，「正面」出現的比例是 $N_{h}/N$。當 $N$ 趨近於無窮大，即 $N \to \infty$，該比例 $N_{h}/N$ 的變異將會縮小。
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我們可以用 `R` 來做個實驗。假設我們讓電腦投擲一個公正的硬幣，從 $1$ 次開始，一直投擲到 $1000$ 次，並且紀錄每次投擲後出現正面的相對頻率，來驗證上述的論述是否正確。
+
+```{r}
+library(ggplot2)
+
+# 定義模擬硬幣投擲的函數
+simulate_coin_toss <- function(N) {
+  tosses <- sample(c("Head", "Tail"), N, replace = TRUE)
+  num_heads <- sum(tosses == "Head")
+  relative_frequency <- num_heads / N
+  return(relative_frequency)
+}
+
+# 執行模擬
+num_tosses <- 1000  # 指定投擲硬幣的次數N
+relative_frequencies <- numeric(num_tosses)
+
+for (i in 1:num_tosses) {
+  relative_frequencies[i] <- simulate_coin_toss(i)
+}
+
+# 繪製相對頻率的折線圖
+data <- data.frame(N = 1:num_tosses, Relative_Frequency = relative_frequencies)
+
+ggplot(data, aes(x = N, y = Relative_Frequency)) +
+  geom_line(color = "black") +                      
+  geom_hline(yintercept = 0.5, color = "#Ce0e4e") +
+  labs(x = "Number of tosses",
+       y = "Relative frequencies")
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可以看到最終這個公正硬幣出現正面的相對頻率會趨近於 $0.5$。注意到相對頻率解釋了在假設相同條件下進行大量重複實驗時是有效的，而在統計學中，這種假設被稱為**獨立且同分布**(independence and identical distribution, IID)。
+
+- 主觀機率(subjective probability)：即經濟行為者依照其信念(belief)、習慣(habit)等認定某一事件的機率為何。例如理性預期(Muth, 1961)假設經濟主體的主觀期望（即在經濟行為者的主觀機率信念下的期望）與數學期望（即在客觀機率分佈下的期望）相一致。[^1]
+
+[^1]:Muth, J. F. (1961, July). [Rational Expectations and the Theory of Price Movements](https://www.jstor.org/stable/1909635). *Econometrica*, 29(3), 315. [https://doi.org/10.2307/1909635](https://doi.org/10.2307/1909635)
+
+$\textbf{Definition 1.11}:$ A probability space is a triple $(S, \mathcal{F}, \mathbb{P})$ where
+
+- $S$ is the sample space corresponding to the outcomes of the underlying random experiment.
+
+- $\mathcal{F}$ is the $\sigma$-field of subsets of $S$. These subsets are called events.
+- $P: \mathcal{F} \to [0,1]$ is a probability measure.
+
+因此 $(S, \mathcal{F}, \mathbb{P})$ 就猶如三位一體的概念，可以完全地描述在樣本空間 $S$ 上定義的隨機實驗。
+
+$\textbf{Theorem 1.1}:$ If $\varnothing$ denotes the empty set, then $\mathbb{P}(\varnothing) = 0$.
+
+$\textit{Proof.}$
+
+<p></p>
+
+Given that $S = S \cup \varnothing$, and $S$ and $\varnothing$ are mutually exclusive, we then have
+$$
+\mathbb{P}(S) = \mathbb{P}(S \cup \varnothing) = \mathbb{P}(S) + \mathbb{P}(\varnothing)
+$$
+It follows that $\mathbb{P}(\varnothing) = 0$
+
+<p align='right'>$\square$</p>
+
+$\textbf{Theorem 1.2}:$ $\mathbb{P}(A) = 1 - \mathbb{P}(A^{c})$
+
+$\textit{Proof.}$
+
+<p></p>
+
+Since $S = A \cup A^{c}$, then
+$$
+\mathbb{P}(S) = \mathbb{P}(A \cup A^{c})
+$$
+By definition, we have $\mathbb{P}(S) = 1$, and note that $A$ and $A^{c}$ are mutually exclusive, then
+$$
+1 = \mathbb{P}(A) + \mathbb{P}(A^{c})
+$$
+
+<p align='right'>$\square$</p>
+
+$\textbf{Theorem 1.3}:$ If $A$ and $B$ are two events in $\mathbb{B}$, and $A \subseteq B$, then $\mathbb{P}(A) \leq \mathbb{P}(B)$.
+
+$\textit{Proof.}$
+
+<p></p>
+
+Using the fact that $S = A \cup A^{c}$ and the distributive property of sets, we have
+$$
+\begin{aligned}
+B &= S \cap B = (A \cup A^{c}) \cap B\\
+&= (A \cap B) \cup (A^{c} \cap B)\\
+&= A \cup (A^{c} \cap B)
+\end{aligned}
+$$
+where the last equality follows from $A \subseteq B$ so that $A \cap B = A$. Because $A$ and $A^{c} \cap B$ are mutually exclusive, we have
+
+$$
+\mathbb{P}(B) = \mathbb{P}(A) + \mathbb{P}(A^{c} \cap B) \geq \mathbb{P}(A)
+$$
+given that $\mathbb{P}(A^{c} \cap B) \geq 0$.
+
+<p align='right'>$\square$</p>
+
+而底下是一個最常用的性質：
+
+$\textbf{Theorem 1.4}:$ For any two events $A$ and $B$ in $\mathcal{F}$, then
+$$
+\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B)  
+$$
+
+$\textit{Proof.}$
+
+<p></p>
+
+Since $A \cup B = A \cup (A^{c} \cap B)$ and $A$ and $A^{c} \cap B$ are mutually exclusive, we have
+$$
+\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(A^{c} \cap B)
+$$
+
+Also, because $B = S \cap B = (A \cap B) \cup (A^{c} \cap B)$, and $(A \cap B)$ and $(A^{c} \cap B)$ are mutually exclusive, we have
+$$
+\mathbb{P}(B) = \mathbb{P}(A \cap B) + \mathbb{P}(A^{c} \cap B)
+$$
+
+By rearranging both equations, we have
+$$
+\begin{aligned}
+\mathbb{P}(A) &= \mathbb{P}(A \cup B) - \mathbb{P}(A^{c} \cap B)\\
+\mathbb{P}(B) &= \mathbb{P}(A \cap B) + \mathbb{P}(A^{c} \cap B)
+\end{aligned}
+$$
+
+Adding both equations and rearraning it gives us the desired result.
+
+<p align='right'>$\square$</p>
+
+接下來我們要介紹總機率法則(rule of total probability)。
+
+$\textbf{Theorem 1.5}:$ If $A_{1}, A_{2}, \cdots in \mathcal{F}$ are mutually exclusive and collectively exhaustive, and $A$ is an event in $S$, then
+$$
+\mathbb{P}(A) = \sum^{\infty}_{i = 1}\mathbb{P}(A \cap A_{i})
+$$
+$\textit{Proof.}$
+
+<p></p>
+
+Noting
+$$
+S = \bigcup_{i=1}^\infty A_i
+$$
+and
+$$
+A = A \cap S = A \cap \bigcup_{i=1}^\infty A_i = \bigcup_{i=1}^\infty (A \cap A_i)
+$$
+where the last equality follows by the distributive law. The result follows because $A \cap A_i$ and $A \cap A_j$ are disjoint for all $i \neq j$.
+
+$\textbf{Theorem 1.6}:$ For any sequence of events $\{A_{i} \in \mathcal{F}, \forall i = 1,2, \cdots\}$, we have
+
+$$
+{\mathbb {P} }\left(\bigcup _{i=1}^{\infty }A_{i}\right)\leq \sum _{i=1}^{\infty }{\mathbb {P} }(A_{i})
+$$
+
+$\textit{Proof.}$
+
+<p></p>
+
+Let $B = \bigcup^{\infty}_{i = 2}A_{i}$. Then
+$$
+\bigcup^{\infty}_{i = 1}A_{i} = A_{1} \cup B
+$$
+By using Theorem 1.4, it follows
+$$
+\begin{aligned}
+\mathbb{P}\left(\bigcup^{n}_{i = 1}A_{i}\right) &= \mathbb{P}(A_{1} \cup B)\\
+&= \mathbb{P}(A_{1}) + \mathbb{P}(B) - \mathbb{P}(A_{1} \cap B)\\
+&\leq \mathbb{P}(A_{1}) + \mathbb{P}(B)
+\end{aligned}
+$$
+where where the inequality follows given $P(A_1 \cap B) \geq 0$. Again, let $C = \bigcup_{i=3}^{\infty} A_i$. Then
+$$
+\mathbb{P}(B) = \mathbb{P}(A_{2} \cup C) \leq \mathbb{P}(A_{2}) + \mathbb{P}(C)
+$$
+
+It follows that
+$$
+\mathbb{P}\left(\bigcup^{n}_{i = 1}A_{i}\right) \leq \mathbb{P}(A_{1}) + \mathbb{P}(A_{2}) + \mathbb{P}(C)
+$$
+
+Repeating this process, we have
+$$
+{\mathbb {P} }\left(\bigcup _{i=1}^{\infty }A_{i}\right)\leq \sum _{i=1}^{\infty }{\mathbb {P} }(A_{i})
+$$
+
+### 條件機率
+
+經濟事件乃至於事件上的所有事件通常彼此存在關聯。例如失業率與職缺率可能存在因果關係（此即 Beveridge 曲線的概念）。由於具有關聯性，事件 $B$ 的發生可能會影響或包含有關事件 $A$ 發生的機率資訊。因此，如果我們擁有有關事件 $B$ 的資訊，我們就能更好地了解事件 $A$ 的發生情況。這可以通過條件機率的概念來描述。
+
+$\textbf{Definition 1.12}:$ Let $A$ and $B$ be two events in probability space $(S, \mathcal{F}, \mathbb{P})$. Then the conditional probability of event $A$ given event $B$, denoted as $\mathbb{P}(A | B)$, is defined as 
+$$
+\mathbb{P}(A|B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}
+$$
+provided that $\mathbb{P}(B) > 0$. Similarly, the conditional probability of event $B$ given $A$ is defined as
+$$
+\mathbb{P}(B|A) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(A)}
+$$
+provided that $\mathbb{P}(A) > 0$.
+
+在定義條件概率 $\mathbb{P}(A | B)$ 時，我們假設 $\mathbb{P}(B)$。這是因為 $\mathbb{P}(B)$ 意味著事件 $B$ 不太可能發生，而對於一個不太可能發生的事件進行條件機率計算在實際上沒有意義。因此，我們要確保條件機率的分母不為零，也就是要確保事件 $B$ 的機率大於 $0$。
+
+$\mathbb{P}(A|B)$ 在一個文氏圖中可以表示為事件 $A$ 佔據事件 $B$ 占據的區域相對於事件 $B$ 占據的整個區域。直觀地說，當事件 $B$ 發生時，$B^{c}$ 將永遠不會發生。不確定性從整個樣本空間 $S$ 縮減為事件 $B$，則可測空間變為 $\left(S\cap B, \mathcal{F}\cap B, \mathbb{P}(\cdot|B)\right)$。因此，當我們考慮 $\mathbb{P}(A|B)$ 時，我們會將 $B$ 視為一個新的樣本空間，所有後續事件都將根據它們與 $B$ 的關係來進行校正。
+
+因此，我們可以說 $\mathbb{P}(A|B)$ 描述了如何使用事件 $B$ 的資訊來預測事件 $A$ 的機率。這是 $A$ 和 $B$ 之間的預測關係。但是我們必須注意到，**一個預測關係不一定代表是 $A$ 與 $B$ 的因果關係**，若我們要探討因果關係，則需要仰賴專業理論的相關知識補充說明。
+
+$\textbf{Lemma 1.1}:$ Given two events $A$ and $B$, then
+
+1. if $\mathbb{P}(B) > 0$, then $\mathbb{P}(A \cap B) = \mathbb{P}(A|B)\mathbb{P}(B)$
+
+2. if $\mathbb{P}(A) > 0$, then $\mathbb{P}(A \cap B) = \mathbb{P}(B|A)\mathbb{P}(A)$
+
+上面這個關係可以用於計算 $\mathbb{P}(A \cap B)$。
+
+$\textbf{Theorem 1.7}:$ Suppose $\{A_{i} \in \mathcal{F}, \forall i = 1, \cdots, n\}$ is a sequence of $n$ events. Then the joint probability of these $n$ events
+$$
+\mathbb{P}\left(\bigcap^{n}_{i = 1}A_{i}\right) = \prod^{n}_{i = 1}\mathbb{P}\left(A_{i}|\bigcap^{i - 1}_{j = 1}A_{j}\right)
+$$
+
+with the convention that
+$$
+\mathbb{P}\left(A_{1}|\bigcap^{0}_{j = 1}A_{j}\right) = \mathbb{P}(A_{1})
+$$
+
+上述的乘法規則可以被重複使用來獲得多個事件的聯合機率，且注意到對於事件序列 $A_1, A_2, \ldots, A_n$ 有 $n!$ 不同的條件機率算法。
+
+$\textbf{Theorem 1.8}:$ Let $\{A_{i}\}^{\infty}_{i = 1}$ be a be a partition (i.e., mutually exclusive and collectively exhaustive) of sample space $S$, with $\mathbb{P}(A_{i}) > 0$ for $i \geq 1$. Then for any event $A$ in $\mathcal{F}$,
+$$
+\mathbb{P}(A) = \sum^{\infty}_{i = 1}\mathbb{P}(A|A_{i})\mathbb{P}(A_{i})
+$$
+$\textit{Proof.}$
+
+<p></p>
+
+By Theorem 1.5, we have
+$$
+\mathbb{P}(A) = \sum^{\infty}_{i = 1}\mathbb{P}(A \cap A_{i})
+$$
+
+The desired result follows immediately from the multiplication rule that $\mathbb{P}(A \cap A_{i}) = \mathbb{P}(A|A_{i})\mathbb{P}(A_{i})$.
+
+<p align='right'>$\square$</p>
+
+### 貝氏定理(Bayes' Theorem)
+
+貝氏定理可謂是條件機率的應用，雖然此定理的起源時間可以追溯到 18 世紀由 Thomas Bayes 提出的概念，但是在 21 世紀的今天，貝氏定理被廣泛的使用在諸多領域上，包含機器學習(machine learning)、政治經濟學(political economy)。
+
+貝氏定理描述的是一個修正或更新先驗概率的機制，當事件 $B$ 發生後，我們可以利用這個信息來修正或更新事件 $A$ 發生的先驗機率(prior probability)。
+
+$\textbf{Theorem 1.9}:$ Suppose $A$ and $B$ are two events with $\mathbb{P}(A) > 0$ and $\mathbb{P}(B) > 0$. Then
+$$
+\mathbb{P}(A|B) = \frac{\mathbb{P}(B|A)\mathbb{P}(A)}{\mathbb{P}(B|A)\mathbb{P}(A) + \mathbb{P}(B|A^{c})\mathbb{P}(A^{c})}
+$$
+
+$\mathbb{P}(A)$ 被稱為先驗概率，即在事實或證據之前，因為它是在新資訊 $B$ 發生之前對事件 $A$ 的機率估計。而條件機率 $\mathbb{P}(A|B)$ 被稱為後驗概率(posterior probability)，即在事實或證據之後，因為它代表在獲得事件 $B$ 發生的新資訊之後，對事件 $A$ 機率進行修正後的分配。
+
+因此貝氏定理可以用更白話的方式呈現，即在事件 $A$ 發生後，事件 $A$ 的後驗概率與樣本證據 $B$ 的概率成正比，比例常數為事件 $A$ 的先驗概率。故我們可以說貝氏定理表達了主觀信念程度應該如何合理地改變以適應相關證據的可用性。[^2]
+
+[^2]: 不妨可以參考成語「曾參殺人」的典故。
+
+$\textbf{Theorem 1.10}:$ Suppose $A_{1}, \cdots, A_{n}$ are $n$ mutually exclusive and collectively exhaustive events in the sample space $S$, and $A$ is an event with $\mathbb{P}(A) > 0$. Then the conditional probability of $A_{i}$ given $A$ is
+$$
+\mathbb{P}(A|A_{i}) = \frac{\mathbb{P}(A|A_{i})\mathbb{P}(A_{i})}{\sum^{n}_{j = 1}\mathbb{P}(A|A_{j})\mathbb{P}(A_{j})}, \forall i = 1, \cdots, n
+$$
+
+$\textit{Proof.}$
+
+<p></p>
+
+By the conditional probability definition and multiplication rule, we have
+$$
+\begin{aligned}
+\mathbb{P}(A_{i}|A) &= \frac{\mathbb{P}(A_{i} \cap A)}{\mathbb{P}(A)}\\
+&= \frac{\mathbb{P}(A|A_{i})\mathbb{P}(A_{i})}{\mathbb{P}(A)}
+\end{aligned}
+$$
+
+Because $\{A_{i}\}^{n}_{i = 1}$ are collectively exhaustive and mutually exclusive, from the rule of total probability in Theorem 1.8, we have
+$$
+\begin{aligned}
+\mathbb{P}(A) &= \sum^{n}_{j = 1}\mathbb{P}(A \cap A_{j})\\
+&= \sum^{n}_{j = 1}\mathbb{P}(A|A_{j})\mathbb{P}(A_{j})
+\end{aligned}
+$$
+
+底下我們來探討一個汽車保險公司保費(auto-insurance premium)的例子。
+
+$\textbf{Example 1.2}:$ Suppose an insurance company has three types of customers high risk, medium risk and low risk. From the company's historical consumer database, it is known that $25\%$ of its customers are high risk, $25\%$ are medium risk, and $50\%$ are low risk. Also, the database shows that the probability that a customer has at least one speeding ticket in one year is $0.25$ for high risk, $0.16$ for medium risk, and $0.10$ for low risk. 
+
+Now suppose a new customer wants to be insured and reports that he has had one speeding ticket this year. What is the probability that he is a high risk customer, given that he has had one speeding ticket this year?
+
+$\textit{Sol.}$
+
+<p></p>
+
+To calculate the probability that the new customer is a high-risk customer, given that he has had one speeding ticket this year, we can use Bayes' theorem.
+
+Let $H$ be the event that the customer is high risk, and $T$ be the event that the customer has had one speeding ticket this year.
+
+We want to find $\mathbb{P}(H|T)$, the probability that the customer is high risk given that he has had one speeding ticket.
+
+According to Bayes' theorem:
+
+$$
+\mathbb{P}(H|T) = \frac{\mathbb{P}(T|H) \cdot \mathbb{P}(H)}{\mathbb{P}(T)}
+$$
+
+where
+
+- $\mathbb{P}(T|H)$ is the probability that the customer has had one speeding ticket given that he is high risk.
+
+- $\mathbb{P}(H)$ is the probability that a customer is high risk.
+- $\mathbb{P}(T)$ is the probability that the customer has had one speeding ticket, which can be calculated using the law of total probability:
+
+$$
+\mathbb{P}(T) = \mathbb{P}(T|H) \cdot \mathbb{P}(H) + \mathbb{P}(T|M) \cdot \mathbb{P}(M) + \mathbb{P}(T|L) \cdot \mathbb{P}(L)
+$$
+
+where:
+
+- $\mathbb{P}(T|H)\mathbb{P}$ is the probability of one speeding ticket given high risk (0.25).
+
+- $\mathbb{P}(T|M)$ is the probability of one speeding ticket given medium risk.
+
+- $\mathbb{P}(T|L)$ is the probability of one speeding ticket given low risk.
+
+- $\mathbb{P}(M)$ is the probability of a customer being medium risk.
+
+- $\mathbb{P}(L)$ is the probability of a customer being low risk.
+
+Now, let's plug in the values and calculate:
+
+$$
+\mathbb{P}(T) = 0.25 \cdot 0.25 + 0.16 \cdot 0.25 + 0.10 \cdot 0.50 = 0.0625 + 0.04 + 0.05 = 0.1525
+$$
+
+Finally, we can calculate $\mathbb{P}(H|T)$:
+
+$$
+\mathbb{P}(H|T) = \frac{0.25 \cdot 0.25}{0.1525} \approx 0.4098
+$$
+
+So, the probability that the new customer is a high-risk customer, given that he has had one speeding ticket this year, is approximately $0.4098$ or $40.98\%$.
+
+### 獨立事件
+
+獨立事件(independent event)是指兩個或多個事件之間彼此不影響、不相關的情況。換句話說，一個事件的發生或不發生並不會影響其他事件的機率。
+
+$\textbf{Definition 1.13}:$ Events $A$ and $B$ are said to be statistically independent
+if $\mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B)$
+
+具有獨立性的事件被稱為在統計學上是獨立、隨機獨立的，或在機率上是獨立的。在大多數情況下，我們使用「獨立」一詞來描述上述的情況。
+
+那我們可以從獨立的性質得出什麼結論呢？首先，假設 $\mathbb{P}(B) > 0$，則
+$$
+\begin{aligned}
+\mathbb{P}(A|B) &= \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}\\
+&= \frac{\mathbb{P}(A)\mathbb{P}(B)}{\mathbb{P}(B)}\\
+&= \mathbb{P}(A)
+\end{aligned}
+$$
+
+對於事件 $A$ 和 $B$ 而言，如果 $\mathbb{P}(B|A)$，表示在已知事件 $B$ 後對事件 $A$ 的預測沒有幫助，即知道事件 $B$ 發生並不改變預測事件 $A$ 發生的機率。直觀上來說，獨立性意味著事件 $A$ 和 $B$是「不相關的(irrelevant)」，或者說它們之間不存在任何關係。
+
+獨立性質為何重要。我們來看一個金融學上的應用：隨機漫步(random walk)。假設有一支股票，其價格令為 $P_{t}$，其中 $t$ 代表時間。該股票價格若滿足以下條件，則稱其符合隨機漫步：
+
+$$
+P_{t} + P_{t-1} = X_{t}
+$$
+
+其中 $\{X_{t}\}$ 在不同時間段上是相互獨立的，從上式也可以看出 $X_{t}$ 代表的是價格的增長(increment)，因
+
+$$
+X_{t} = P_{t} - P_{t-1}
+$$
+
+
+![Fig 1.1: 隨機漫步[^3]](randomWalk.gif){fig.align='center' width="50%"}
+
+[^3]: *Brownian motion and random walks*. (n.d.). Brownian Motion and Random Walks. Retrieved July 31, 2023, from [https://web.mit.edu/8.334/www/grades/projects/projects17/OscarMickelin/brownian.html](https://web.mit.edu/8.334/www/grades/projects/projects17/OscarMickelin/brownian.html)
+
+令一個對於隨機漫步的變種定義為，如果股票價格 $P_t$ 符合以下條件，則稱為幾何隨機漫步：
+
+$$
+\ln P_t = \ln P_{t-1} + X_t
+$$
+
+根據泰勒展開式(Taylor expansion)，
+$$
+X_t = \ln\left(\frac{P_t}{P_{t-1}}\right) = \ln\left(1 + \frac{P_t - P_{t-1}}{P_{t-1}}\right) \approx \frac{P_t - P_{t-1}}{P_{t-1}}
+$$
+代表價格變動的比例。幾何隨機漫步假設最重要的含義是：如果在不同的時間段內，$X_{t}$ 是序列獨立的，則未來的股票價格變化 $X_{t}$ 不能透過歷史股價資料來預測。在這樣的情況下，我們稱股票市場具有資訊效率(informationally efficient)。
+
+$\textbf{Theorem 1.11}:$ Let $A$ and $B$ be two independent events. Then
+
+- $A$ and $B^{c}$ are independent
+
+- $A^{c}$ and $B^{c}$ are independent
+
+- $A^{c}$ and $B^{c}$ are independent
+
+$\textit{Proof.}$
+
+<p></p>
+
+1. If $\mathbb{P}\left(A \cap B^c\right)=\mathbb{P}(A) \mathbb{P}\left(B^c\right)$, then $A$ and $B^c$ are independent. Because $(A \cap B) \cup\left(A \cap B^{c}\right)=A$, we have
+$$
+\mathbb{P}(A \cap B)+\mathbb{P}(A \cap B^{c})=\mathbb{P}(A) .
+$$
+It follows from the multiplication rule that
+$$
+\begin{aligned}
+\mathbb{P}(A \cap B^c) & =\mathbb{P}(A)-\mathbb{P}(A \cap B) \\
+& =\mathbb{P}(A)-\mathbb{P}(A) \mathbb{P}(B) \\
+& =\mathbb{P}(A)\left[1-\mathbb{P}(B)\right] \\
+& =\mathbb{P}(A) \mathbb{P}(B^c)
+\end{aligned}
+$$
+
+2. By symmetry.
+
+3. Because $(A \cap B^c) \cup(A^c \cap B^c)=B^c$, we have
+$$
+\mathbb{P}(A \cap B^c)+\mathbb{P}(A^c \cap B^c)=\mathbb{P}(B^c)
+$$
+It follows that
+$$
+\begin{aligned}
+\mathbb{P}(A^{c} \cap B^{c}) &= \mathbb{P}(B^{c}) - \mathbb{P}(A \cap B^{c})\\
+&= \mathbb{P}(B^{c}) - \mathbb{P}(A)\mathbb{P}(B^{c})\\
+&= \mathbb{P}(A^{c})\mathbb{P}(B^{c})
+\end{aligned}
+$$
+
+假設 $A$ 和 $B$ 是獨立的，那麼 $A$ 和 $B^c$ 也應該是獨立的，因為如果不是這樣，就可以用 $A$ 來預測 $B^c$ 的機率，然後通過補集機率公式來預測 $B$ 在給定 $A$ 的條件下的機率：
+$$
+\mathbb{P}(B|A)=1-\mathbb{P}(B^c|A)
+$$
+
+$\textbf{Definition 1.14}:$ Suppose $k$ events $A_{1}, \cdots, A_{k}$ are mutually independent if, for every possible subset $A_{i_{1}}, \cdots, A_{i_{j}}$ of $j$ of those events, where $j = 1,2, \cdots, k$, then
+$$
+\mathbb{P}(A_{i_{1}} \cap \cdots \cap A_{i_{j}}) = \mathbb{P}(A_{i_{1}}) \times \cdots \times \mathbb{P}(A_{i_{j}})
+$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
