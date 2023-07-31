@@ -4,7 +4,7 @@ image: coding preview.png
 date: "2023-07-06"
 description: 使用 Quarto 建立個人獨特的部落格體驗。
 citation:
-  url: https://yueswater-blog.netlify.app/posts/2023-07-06-r-quarto/
+  url: https://yueswater-blog.netlify.app/posts/2023-07-06-r-blog-with-quarto-zh/
 categories: [R, Quarto, programming language]
 format:
   html: 
@@ -323,7 +323,7 @@ git remote set-url https://你的token@github.com/你的帳號名稱/你的 Repo
 git add .
 git status
 git commit -m "first commit"
-git remote add origin https://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@github.com/anthonysung119/quarto-blog.git # 這行指令僅有在第一次設定時才要輸入
+git remote add origin https://你的token@github.com/anthonysung119/quarto-blog.git # 這行指令僅有在第一次設定時才要輸入
 git branch -M main
 git push -u origin main
 ```
