@@ -1,0 +1,11 @@
+{
+  "hash": "df5fffcae837700bf822bf2a2e636646",
+  "result": {
+    "markdown": "---\ntitle: \"Test\"\nimage: stat preview.png\nlang: en\ndescription: |\n    Test.\ndate: \"2023-08-01\"\ndraft: FALSE\ncitation:\n  url: https://yueswater-blog.netlify.app/posts/2023-07-31-prob-random-variables/\ncategories: [stats]\neditor: \n  markdown: \n    wrap: 72\n---\n\n```{js}\nimport {Runtime, Inspector} from \"https://unpkg.com/@observablehq/notebook-runtime@0.11.0/dist/notebook-runtime.js\";\n\nconst notebook = `\n{\n  const f = (m, b) => {\n    const x = d3.range(-10, 10, 0.01);\n    const y = x.map(x => m * x + b);\n\n    const margin = ({top: 10, right: 10, bottom: 20, left: 20});\n    const width = 500 - margin.left - margin.right;\n    const height = 300 - margin.top - margin.bottom;\n\n    const svg = d3.create(\"svg\")\n        .attr(\"viewBox\", [0, 0, width + margin.left + margin.right, height + margin.top + margin.bottom]);\n\n    const xScale = d3.scaleLinear()\n        .domain(d3.extent(x))\n        .range([margin.left, width - margin.right]);\n\n    const yScale = d3.scaleLinear()\n        .domain([-5, 5])\n        .range([height - margin.bottom, margin.top]);\n\n    const line = d3.line()\n        .x((d, i) => xScale(x[i]))\n        .y((d, i) => yScale(d));\n\n    svg.append(\"g\")\n        .attr(\"transform\", `translate(0,${height - margin.bottom})`)\n        .call(d3.axisBottom(xScale));\n\n    svg.append(\"g\")\n        .attr(\"transform\", `translate(${margin.left},0)`)\n        .call(d3.axisLeft(yScale));\n\n    svg.append(\"path\")\n        .datum(y)\n        .attr(\"fill\", \"none\")\n        .attr(\"stroke\", \"blue\")\n        .attr(\"stroke-width\", 1.5)\n        .attr(\"d\", line);\n\n    return svg.node();\n  };\n  \n  Inspector.into(\"#observable-chart\")(new Runtime().module(f, Inspector.into(\"#observable-chart\")));\n}\n`;\n\nconst main = Runtime.load(notebook);\n```\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

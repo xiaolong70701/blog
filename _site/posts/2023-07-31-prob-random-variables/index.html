@@ -757,7 +757,149 @@ f_{Y}(y)=
 <p align="right">
 <span class="math inline">\(\square\)</span>
 </p>
-<p>上面的性質可以應用在許多地方，比如我們今天使用 <code>R</code> 或 <code>Python</code> 等程式想要產生任意分配，其都是從上面的方法加上其他演算法模擬出結果。</p>
+<p>上面的性質可以應用在許多地方，比如我們今天使用 <code>R</code> 或 <code>Python</code> 等程式想要產生任意分配，其都是從上面的方法加上其他演算法模擬出結果。以下我們就用 <code>Python</code> 描述上述的轉換過程：</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.optimize <span class="im">as</span> optimize</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.patches <span class="im">as</span> mpatches</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">5.0</span>, <span class="fl">5.0</span>, num<span class="op">=</span><span class="dv">100000</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># mean and standard deviation</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># sample the distribution</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>number_of_samples <span class="op">=</span> <span class="dv">100000</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>samples <span class="op">=</span> np.random.normal(mu, sigma, number_of_samples)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>samples.sort()</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># get sample parameters</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>sample_mean <span class="op">=</span> np.mean(samples)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>sample_std <span class="op">=</span> np.std(samples)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>true_distribution <span class="op">=</span> stats.norm.pdf(x, mu, sigma)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>n_bins <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> number_of_samples <span class="op">&lt;</span> <span class="dv">50</span>:</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    n_bins <span class="op">=</span> number_of_samples</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    n_bins <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Create 2x2 grid of plots</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">13</span>, <span class="dv">10</span>))</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot [0, 0]: Histogram of Samples from Gaussian</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>, <span class="dv">0</span>].hist(samples, n_bins, density<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">'white'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(array([1.67099253e-04, 1.11399502e-04, 7.79796512e-04, 7.24096761e-04,
+       9.46895765e-04, 2.33938954e-03, 4.45598007e-03, 7.79796512e-03,
+       1.15298484e-02, 1.94392131e-02, 2.97993667e-02, 4.33344062e-02,
+       6.18267235e-02, 8.88968024e-02, 1.15855482e-01, 1.50667826e-01,
+       1.89267753e-01, 2.32769259e-01, 2.75936566e-01, 3.20106468e-01,
+       3.56032808e-01, 3.80150800e-01, 3.88672862e-01, 4.04602990e-01,
+       3.94855534e-01, 3.57091103e-01, 3.36259396e-01, 2.97882268e-01,
+       2.54436462e-01, 2.14109842e-01, 1.69550042e-01, 1.35684593e-01,
+       9.55250727e-02, 7.36350706e-02, 5.13551703e-02, 3.55921408e-02,
+       2.57889847e-02, 1.74340220e-02, 9.74745640e-03, 5.79277409e-03,
+       3.73188331e-03, 2.50648879e-03, 1.28109427e-03, 8.35496263e-04,
+       3.34198505e-04, 1.67099253e-04, 5.56997509e-05, 0.00000000e+00,
+       0.00000000e+00, 1.11399502e-04]), array([-4.17718571, -3.99765169, -3.81811768, -3.63858366, -3.45904964,
+       -3.27951563, -3.09998161, -2.92044759, -2.74091358, -2.56137956,
+       -2.38184554, -2.20231153, -2.02277751, -1.84324349, -1.66370948,
+       -1.48417546, -1.30464144, -1.12510743, -0.94557341, -0.76603939,
+       -0.58650538, -0.40697136, -0.22743734, -0.04790333,  0.13163069,
+        0.31116471,  0.49069872,  0.67023274,  0.84976676,  1.02930077,
+        1.20883479,  1.38836881,  1.56790282,  1.74743684,  1.92697086,
+        2.10650487,  2.28603889,  2.46557291,  2.64510692,  2.82464094,
+        3.00417496,  3.18370897,  3.36324299,  3.54277701,  3.72231102,
+        3.90184504,  4.08137906,  4.26091307,  4.44044709,  4.61998111,
+        4.79951512]), &lt;BarContainer object of 50 artists&gt;)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>, <span class="dv">0</span>].plot(x, true_distribution, linewidth<span class="op">=</span><span class="dv">2</span>, color<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>, <span class="dv">0</span>].set_xlabel(<span class="st">"$x$"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>, <span class="dv">0</span>].set_ylabel(<span class="st">"$f_</span><span class="sc">{X}</span><span class="st">(x)$"</span>, rotation<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>, <span class="dv">0</span>].spines[[<span class="st">'top'</span>, <span class="st">'right'</span>]].set_visible(<span class="va">False</span>)  <span class="co"># Remove top and right spines</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>, <span class="dv">0</span>].get_yaxis().set_label_coords(<span class="op">-</span><span class="fl">0.1</span>,<span class="fl">0.5</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot [1, 0]: Cumulative Distribution Function (CDF) of Gaussian</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>, <span class="dv">0</span>].plot(x, stats.norm.cdf(x), linewidth<span class="op">=</span><span class="dv">2</span>, color<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>, <span class="dv">0</span>].set_xlabel(<span class="st">"$x$"</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>, <span class="dv">0</span>].set_ylabel(<span class="st">"$F_</span><span class="sc">{X}</span><span class="st">(x)$"</span>, rotation<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>, <span class="dv">0</span>].set_xlim([<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(-5.0, 5.0)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>, <span class="dv">0</span>].set_ylim([<span class="dv">0</span>, <span class="fl">1.1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(0.0, 1.1)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>, <span class="dv">0</span>].spines[[<span class="st">'top'</span>, <span class="st">'right'</span>]].set_visible(<span class="va">False</span>)  <span class="co"># Remove top and right spines</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>, <span class="dv">0</span>].get_yaxis().set_label_coords(<span class="op">-</span><span class="fl">0.1</span>,<span class="fl">0.5</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot [1, 1]: Histogram of Recovered Samples (Transformed from Uniform)</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>, <span class="dv">1</span>].plot(x, x, <span class="st">'--'</span>, label<span class="op">=</span><span class="st">'y = x'</span>, color<span class="op">=</span><span class="st">"black"</span>)  <span class="co"># 绘制45度线</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>, <span class="dv">1</span>].set_xlabel(<span class="st">"$y$"</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>, <span class="dv">1</span>].set_ylabel(<span class="st">"$F_</span><span class="sc">{X}</span><span class="st">(x)$"</span>, rotation<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>, <span class="dv">1</span>].set_xlim([<span class="dv">0</span>, <span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(0.0, 2.0)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>, <span class="dv">1</span>].spines[[<span class="st">'top'</span>, <span class="st">'right'</span>]].set_visible(<span class="va">False</span>)  <span class="co"># Remove top and right spines</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>, <span class="dv">1</span>].get_yaxis().set_label_coords(<span class="op">-</span><span class="fl">0.1</span>,<span class="fl">0.5</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot [0, 1]: Samples Transformed to Uniform Distribution</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>output <span class="op">=</span> stats.norm.cdf(samples)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>, <span class="dv">1</span>].hist(output, n_bins, density<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"white"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(array([1.00851568, 1.01651581, 1.01851584, 0.9840153 , 1.01501579,
+       0.99751551, 0.99901554, 0.97051509, 0.9840153 , 1.02451593,
+       1.00401561, 1.02951601, 1.01551579, 0.97601518, 1.00701566,
+       1.02701597, 0.99751551, 1.02501594, 1.00201558, 1.01251575,
+       0.94901476, 0.99751551, 0.9900154 , 0.98001524, 1.03851615,
+       0.9835153 , 1.00101557, 1.04251621, 0.98651534, 1.03201605,
+       1.01901585, 0.98001524, 0.9775152 , 0.96151495, 0.98551533,
+       0.99701551, 0.99701551, 1.01951586, 0.99251544, 0.99451547,
+       0.98101526, 0.98051525, 1.01151573, 1.01051572, 0.9710151 ,
+       0.99601549, 1.02951601, 0.94751474, 0.99451547, 1.03951617]), array([1.47569026e-05, 2.00144459e-02, 4.00141348e-02, 6.00138238e-02,
+       8.00135127e-02, 1.00013202e-01, 1.20012891e-01, 1.40012580e-01,
+       1.60012269e-01, 1.80011958e-01, 2.00011646e-01, 2.20011335e-01,
+       2.40011024e-01, 2.60010713e-01, 2.80010402e-01, 3.00010091e-01,
+       3.20009780e-01, 3.40009469e-01, 3.60009158e-01, 3.80008847e-01,
+       4.00008536e-01, 4.20008225e-01, 4.40007914e-01, 4.60007603e-01,
+       4.80007292e-01, 5.00006981e-01, 5.20006670e-01, 5.40006359e-01,
+       5.60006048e-01, 5.80005737e-01, 6.00005426e-01, 6.20005115e-01,
+       6.40004804e-01, 6.60004492e-01, 6.80004181e-01, 7.00003870e-01,
+       7.20003559e-01, 7.40003248e-01, 7.60002937e-01, 7.80002626e-01,
+       8.00002315e-01, 8.20002004e-01, 8.40001693e-01, 8.60001382e-01,
+       8.80001071e-01, 9.00000760e-01, 9.20000449e-01, 9.40000138e-01,
+       9.59999827e-01, 9.79999516e-01, 9.99999205e-01]), &lt;BarContainer object of 50 artists&gt;)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>, <span class="dv">1</span>].plot(x, stats.uniform.pdf(x), linewidth<span class="op">=</span><span class="dv">2</span>, color<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>, <span class="dv">1</span>].set_xlabel(<span class="st">"$y$"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>, <span class="dv">1</span>].set_ylabel(<span class="st">"$f_</span><span class="sc">{Y}</span><span class="st">(y)$"</span>, rotation<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>, <span class="dv">1</span>].set_xlim([<span class="dv">0</span>, <span class="fl">1.2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(0.0, 1.2)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>, <span class="dv">1</span>].set_ylim([<span class="dv">0</span>, <span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(0.0, 2.0)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>, <span class="dv">1</span>].spines[[<span class="st">'top'</span>, <span class="st">'right'</span>]].set_visible(<span class="va">False</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>, <span class="dv">1</span>].get_yaxis().set_label_coords(<span class="op">-</span><span class="fl">0.1</span>,<span class="fl">0.5</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="1248"></p>
+</div>
+</div>
 <p>另一個應用則是分配的適合度檢定，即檢驗隨機變量 <span class="math inline">\(X\)</span> 是否符合假設的分配 <span class="math inline">\(F_0(\cdot)\)</span>。首先計算機率的積分轉換，即令 <span class="math inline">\(Y = F_0(X)\)</span>，然後使用隨機樣本 <span class="math inline">\(\{Y_i = F_0(X_i)\}_{i = 1}\)</span> 檢查 <span class="math inline">\(Y\)</span> 是否符合 <span class="math inline">\(U[0, 1]\)</span> 分配。只有當樣本 <span class="math inline">\(\{X_i\}_{i = 1}\)</span> 符合假設的分配時，<span class="math inline">\(Y_i\)</span> 才會符合 <span class="math inline">\(U[0, 1]\)</span> 分配。</p>
 </section>
 <section id="transformation-approach" class="level4">

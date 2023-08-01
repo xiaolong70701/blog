@@ -829,7 +829,83 @@ $$
 
 <p align='right'>$\square$</p>
 
-上面的性質可以應用在許多地方，比如我們今天使用 `R` 或 `Python` 等程式想要產生任意分配，其都是從上面的方法加上其他演算法模擬出結果。
+上面的性質可以應用在許多地方，比如我們今天使用 `R` 或 `Python` 等程式想要產生任意分配，其都是從上面的方法加上其他演算法模擬出結果。以下我們就用 `Python` 描述上述的轉換過程：
+
+```{python}
+import numpy as np
+import scipy.stats as stats
+import scipy.optimize as optimize
+
+import matplotlib.patches as mpatches
+import matplotlib.pyplot as plt
+
+x = np.linspace(-5.0, 5.0, num=100000)
+# mean and standard deviation
+mu = 0
+sigma = 1
+
+# sample the distribution
+number_of_samples = 100000
+samples = np.random.normal(mu, sigma, number_of_samples)
+samples.sort()
+
+# get sample parameters
+sample_mean = np.mean(samples)
+sample_std = np.std(samples)
+
+true_distribution = stats.norm.pdf(x, mu, sigma)
+
+n_bins = 1
+if number_of_samples < 50:
+    n_bins = number_of_samples
+else:
+    n_bins = 50
+
+# Create 2x2 grid of plots
+fig, axes = plt.subplots(2, 2, figsize=(13, 10))
+
+# Plot [0, 0]: Histogram of Samples from Gaussian
+axes[0, 0].hist(samples, n_bins, density=True, color='white', alpha=0.7)
+axes[0, 0].plot(x, true_distribution, linewidth=2, color="black")
+axes[0, 0].set_xlabel("$x$")
+axes[0, 0].set_ylabel("$f_{X}(x)$", rotation=0)
+axes[0, 0].spines[['top', 'right']].set_visible(False)  # Remove top and right spines
+axes[0, 0].get_yaxis().set_label_coords(-0.1,0.5)
+
+
+# Plot [1, 0]: Cumulative Distribution Function (CDF) of Gaussian
+axes[1, 0].plot(x, stats.norm.cdf(x), linewidth=2, color="black")
+axes[1, 0].set_xlabel("$x$")
+axes[1, 0].set_ylabel("$F_{X}(x)$", rotation=0)
+axes[1, 0].set_xlim([-5, 5])
+axes[1, 0].set_ylim([0, 1.1])
+axes[1, 0].spines[['top', 'right']].set_visible(False)  # Remove top and right spines
+axes[1, 0].get_yaxis().set_label_coords(-0.1,0.5)
+
+
+# Plot [1, 1]: Histogram of Recovered Samples (Transformed from Uniform)
+axes[1, 1].plot(x, x, '--', label='y = x', color="black")  # 绘制45度线
+axes[1, 1].set_xlabel("$y$")
+axes[1, 1].set_ylabel("$F_{X}(x)$", rotation=0)
+axes[0, 1].set_xlim([0, 2])
+axes[1, 1].spines[['top', 'right']].set_visible(False)  # Remove top and right spines
+axes[1, 1].get_yaxis().set_label_coords(-0.1,0.5)
+
+# Plot [0, 1]: Samples Transformed to Uniform Distribution
+output = stats.norm.cdf(samples)
+axes[0, 1].hist(output, n_bins, density=True, color="white")
+axes[0, 1].plot(x, stats.uniform.pdf(x), linewidth=2, color="black")
+axes[0, 1].set_xlabel("$y$")
+axes[0, 1].set_ylabel("$f_{Y}(y)$", rotation=0)
+axes[0, 1].set_xlim([0, 1.2])
+axes[0, 1].set_ylim([0, 2])
+axes[0, 1].spines[['top', 'right']].set_visible(False)
+axes[0, 1].get_yaxis().set_label_coords(-0.1,0.5)
+
+
+plt.tight_layout()
+plt.show()
+```
 
 另一個應用則是分配的適合度檢定，即檢驗隨機變量 $X$ 是否符合假設的分配 $F_0(\cdot)$。首先計算機率的積分轉換，即令 $Y = F_0(X)$，然後使用隨機樣本 $\{Y_i = F_0(X_i)\}_{i = 1}$ 檢查 $Y$ 是否符合 $U[0, 1]$ 分配。只有當樣本 $\{X_i\}_{i = 1}$ 符合假設的分配時，$Y_i$ 才會符合 $U[0, 1]$ 分配。
 
