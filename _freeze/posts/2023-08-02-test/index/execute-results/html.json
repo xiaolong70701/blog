@@ -1,0 +1,14 @@
+{
+  "hash": "1b35dd9b41d0aa4bc0d527be3825e6ee",
+  "result": {
+    "markdown": "---\ntitle: \"Test\"\nimage: stat preview.png\nlang: en\ndescription: |\n    單一特徵值的隨機性描述。\ndate: \"2023-07-31\"\ndraft: FALSE\ncitation:\n  url: https://yueswater-blog.netlify.app/posts/2023-07-31-prob-random-variables/\ncategories: [stats]\neditor: \n  markdown: \n    wrap: 72\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nvideo_path  <- getwd()\nvideo_files <- list.files(video_path,\n                         recursive = TRUE,\n                         all.files = FALSE,\n                         full.names = FALSE)\nvideo_files[2]\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"index.rmarkdown\"\n```\n:::\n:::\n\n\n<iframe width=\"720\" height=\"480\" src=\"index.rmarkdown\" align=\"middle\" frameborder=\"0\" allowfullscreen></iframe>\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
