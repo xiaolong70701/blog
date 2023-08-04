@@ -1,0 +1,37 @@
+---
+title: "台語才是愛台灣的象徵嗎？"
+description: 台灣島上承載著許多語言，也曾受到不公平的壓迫，為何台語卻特立獨行？
+image: preview.png
+date: "2023-08-04"
+categories: [diary]
+---
+
+<iframe width="750" height="486" src="https://www.youtube.com/embed/uTiUeK4I__s" title="講台語才愛台灣？為什麼台語會變成愛台獎章？這真的有道理嗎？《台味七七》EP035｜志祺七七" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+這篇文章是看到志祺七七的影片有感而發所寫下的，歡迎大家理性討論！
+
+## 個人觀點
+
+「爭取失去的東西」似乎不用透過強迫他人、詆毀他人、嘲諷他人來達到目的吧。
+
+我在家裡大概有50%的比例是講台語，50%的比例則是講「國語」，但是我在日常生活中也不會逼迫我的朋友、家人一定要講台語。語言使用習慣如果需要透過強制的方式來去改變，那麼就失去了這個語言本身存在的目的（屏除統治他者、其他文化的因素），自身招致污名化的可能性也隨之提高。
+
+有時候我在看台語漢字跟台羅拼音時，都會一愣一愣的，可能會有點看不懂，只能根據前後文去猜測這個字的意思。但是，似乎有一群人卻要求我們必須看得懂，認為這才是台語的真諦。
+
+但台語的真諦真的是以此作為定義嗎？
+
+1. 從教育的角度來看，打個比方好了，一個台語十分流利的耆老，卻因為過去的政府政策，導致他沒有辦法學習，進而導致他成為文盲。當他看到這些臺羅漢字、台羅拼音時，大概也無法理解其中的意思，這時候你會稱他為不愛台灣的人嗎？
+
+2. 從文化的角度來看，我們就舉美國這個「文化大熔爐」為例。根據美國社區問卷調查(American Community Survey)的統計，2017至2021年，全美有78.5%的人講英文，13.2%講西班牙文，1.1%講華語。如果今天一個操著一口流利西文的人在你前面，開心地跟你介紹美國的文化，你會懷疑他不是美國人嗎？但他就是美國人啊，而且還很愛美國。你可能會問了，為什麼他不講英文？有幾種可能：他在上西文課、他的母語就是西文，而他「講話的當下」就真的很想用西文。
+
+現在也有許多政府政策在努力推動台語保護，但我們似乎卻忘了，這塊土地上還承載著其他語言，包含客語、不同族的原住民語、新住民語，還有我們每個人從小就必須學習，最終變成考試科目的英語。
+語言的傳承確實是需要大家共同努力維護，但如果變成衛道者，總是站在高位認為自己的語言才是正統、標準的，那與18、19世紀那些殖民國家邪惡的嘴臉有何不同？如果只有台語才能夠成為「愛台灣」的象徵，不就成為名副其實的「台語霸權」(Taiwanese hegemony)嗎？
+
+## 參考文獻
+
+Bureau, United States Census. n.d. Explore Census Data. https://t.ly/dOeag.
+
+Languages of the United States - Wikipedia. (2017, August 1). Languages of the United States - Wikipedia. https://en.wikipedia.org/wiki/Languages_of_the_United_States
+
+講台語才愛台灣？為什麼台語會變成愛台獎章？這真的有道理嗎？《台味七七》EP035｜志祺七七. (2023, August 3). YouTube. https://www.youtube.com/watch?v=uTiUeK4I__s
+

@@ -15,6 +15,11 @@ title-block-banner: false
 comments: false
 ---
 
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+
 :::{#posts}
 :::
 
@@ -25,8 +30,10 @@ comments: false
 To receive the latest articles updates, please subscribe.
 
 <iframe src="https://embeds.beehiiv.com/7deed8ef-3061-4985-a13e-2a3ede1f498e?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin: 0; border-radius: 0px !important; background-color: transparent;"></iframe>
+
 :::
 
-:::: 
+::::
+
 
 <p></p>
