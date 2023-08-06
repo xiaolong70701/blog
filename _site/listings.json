@@ -2,6 +2,7 @@
   {
     "listing": "/archive.html",
     "items": [
+      "/posts/2023-08-05-real-analysis-basic-topolgy/index.html",
       "/posts/2023-08-04-taiwanese-preservation/index.html",
       "/posts/2023-07-31-prob-random-variables/index.html",
       "/posts/2023-07-30-prob-stats-set-theory/index.html",
@@ -14,7 +15,6 @@
       "/posts/2023-07-22-macro-economy-performance/index.html",
       "/posts/2023-07-22-macro-intro/index.html",
       "/posts/2023-07-21-micro-preference/index.html",
-      "/posts/2023-08-03-real-analysis-set-and-map/index.html",
       "/posts/2023-07-06-r-blog-with-quarto-zh/index.html",
       "/posts/2023-06-30-ML-yes-no/index.html",
       "/posts/2023-06-29-ML-intro/index.html",
@@ -44,6 +44,7 @@
   {
     "listing": "/notes.html",
     "items": [
+      "/posts/2023-08-05-real-analysis-basic-topolgy/index.html",
       "/posts/2023-08-04-taiwanese-preservation/index.html",
       "/posts/2023-07-31-prob-random-variables/index.html",
       "/posts/2023-07-30-prob-stats-set-theory/index.html",
@@ -56,7 +57,6 @@
       "/posts/2023-07-22-macro-economy-performance/index.html",
       "/posts/2023-07-22-macro-intro/index.html",
       "/posts/2023-07-21-micro-preference/index.html",
-      "/posts/2023-08-03-real-analysis-set-and-map/index.html",
       "/posts/2023-07-06-r-blog-with-quarto-zh/index.html",
       "/posts/2023-06-30-ML-yes-no/index.html",
       "/posts/2023-06-29-ML-intro/index.html",
@@ -86,6 +86,7 @@
   {
     "listing": "/projects.html",
     "items": [
+      "/posts/2023-08-05-real-analysis-basic-topolgy/index.html",
       "/posts/2023-08-04-taiwanese-preservation/index.html",
       "/posts/2023-07-31-prob-random-variables/index.html",
       "/posts/2023-07-30-prob-stats-set-theory/index.html",
@@ -98,7 +99,6 @@
       "/posts/2023-07-22-macro-economy-performance/index.html",
       "/posts/2023-07-22-macro-intro/index.html",
       "/posts/2023-07-21-micro-preference/index.html",
-      "/posts/2023-08-03-real-analysis-set-and-map/index.html",
       "/posts/2023-07-06-r-blog-with-quarto-zh/index.html",
       "/posts/2023-06-30-ML-yes-no/index.html",
       "/posts/2023-06-29-ML-intro/index.html",
