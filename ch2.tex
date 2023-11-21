@@ -1,0 +1,91 @@
+\chapter{Second--Order Differential Equation}
+
+The general form of second--order differential equation can be expressed as
+\begin{equation}
+	\label{eq:sode, general}
+	y'' - py' + qy = b(t), \quad p, q \in \mathbb{R}
+\end{equation}
+where $b(t)$ can have various form. The key to solve (\ref{eq:sode, general}) is by the technique of solving first--order non--homogeneous differential equation.
+
+Let $b(t) = 0$, then
+\begin{equation}
+	\label{eq:sode, b(t)=0}
+	y'' - py' + qy = 0,
+\end{equation}
+Recall that the quadratic equation $x^{2} - px + q = 0$ has a solution formula, i.e.,
+\[
+	x = \dfrac{p \pm \sqrt{p^{2} - 4q}}{2}.
+\]
+Let $D = p^{2} - 4q$. Then if 
+\begin{itemize}
+	\item $D > 0$: two distinct roots, $\alpha, \beta \in \mathbb{R}, \alpha \neq \beta$.
+	\item $D = 0$: two identical real roots, i.e., $-b/2a$.
+	\item $D < 0$: two conjugates (\kai{共軛根}), i.e., if $\alpha = a + bi$, then $\beta = a - bi$.
+\end{itemize}
+Hence, we can break down the above quadratic equation into
+\[
+	\begin{aligned}
+		&(x - \alpha)(x - \beta) = 0\\
+		\Rightarrow\;& x^{2} - (\alpha + \beta) x + \alpha \beta = 0
+	\end{aligned}
+\]
+We can easily get $p = \alpha + \beta, q = \alpha \beta$.
+
+Rewrite (\ref{eq:sode, b(t)=0}), we have
+\[
+	y'' - (\alpha + \beta)y' + (\alpha \beta) y = 0
+\]
+Let $L$ be an operator, where
+\begin{align}
+	L &= \dfrac{d^{2}}{dt^{2}} - (\alpha + \beta) \dfrac{d}{dt} + (\alpha \beta) I\\
+	&= \left(\dfrac{d}{dt} - \alpha I\right) \left(\dfrac{d}{dt} - \beta I\right)
+\end{align}
+
+\begin{enumerate}[label={\textbf{Case \arabic*:}}, leftmargin=50pt]
+	\item $\alpha, \beta \in \mathbb{R}, \alpha \neq \beta$
+	
+	To solve $y'' - (\alpha + \beta) y' + (\alpha \beta) y = 0$, i.e.,
+	\[
+		\begin{aligned}
+			&\left(\dfrac{d}{dt} - \alpha I\right) \left(\dfrac{d}{dt} - \beta I\right) [y] = 0\\
+			\Rightarrow\;& \left(\dfrac{d}{dt} - \alpha I\right)[y' - \beta y] = 0
+		\end{aligned}
+	\]
+	Let $\bar{Y}(t) = y'(t) - \beta y(t)$. Then
+	\[
+		\begin{aligned}
+			&\left(\dfrac{d}{dt} - \alpha I\right) [\bar{Y}(t)] = 0\\
+			\Rightarrow\;& \bar{Y}'(t) - \alpha \bar{Y}(t) = 0
+		\end{aligned}
+	\]
+	So $\bar{Y}(t) = k_{1}e^{\alpha t}$, where $k_{1}$ is any arbitrary constant. Now, from the assumption, we have
+	\begin{equation}
+		\label{eq:4*}
+		y'(t) - \beta y(t) = k_{1}e^{\alpha t},
+	\end{equation}
+	which is the first--order non--homogeneous linear equation. The general solutions of the equation $y'(t) - \beta y(t) = 0$ are
+	\[
+		y_h(t) = k_{2} e^{\beta t}
+	\]
+	To find out $y_{p}$ for (\ref{eq:4*}), let $y(t) = \gamma e^{\alpha t}$, then
+	\[
+		\begin{aligned}
+			&(\gamma e^{\alpha t})' - \beta (\gamma e^{\alpha t}) \overset{*}{=} k_{1} e^{\alpha t}\\
+			\Rightarrow\;& \alpha \gamma e^{\alpha t} - \beta \gamma e^{\alpha t} = k_{1}e^{\alpha t}\\
+			\Rightarrow\;& \gamma(\alpha - \beta) = k_{1}\\
+			\Rightarrow\;& \gamma = \dfrac{k_{1}}{\alpha - \beta}
+		\end{aligned}
+	\]
+	Hence, we obtain
+	\[
+		y_{p}(t) = \dfrac{k_{1}}{\alpha - \beta} e^{\alpha t}
+	\]
+	Therefore, the general solution is
+	\[
+		\begin{aligned}
+			y(t) &= k_{2}e^{\alpha t} + \dfrac{k_{1}}{\alpha - \beta} e^{\alpha t}\\
+			&= k_{2}e^{\alpha t} + k_{1}^{*} e^{\alpha t},
+		\end{aligned}
+	\]
+	where $k_{1}^{*}, k_{2}$ are arbitrary constants.
+\end{enumerate}
