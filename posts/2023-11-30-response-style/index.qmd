@@ -1,0 +1,63 @@
+---
+title: "回答模式(response style)初探"
+image: stat preview.png
+lang: en
+description: |
+    本篇文章係基於[〈**態度量表的回答模式：以外來人口影響與兩岸統合兩題組為例**〉](https://www.airitilibrary.com/Article/Detail/10270221-200712-11-2-3-51-a)作成的閱讀論文筆記。
+date: "2023-11-30"
+draft: FALSE
+citation:
+  url: https://yueswater-blog.netlify.app/posts/2023-11-30-response-style/
+categories: [stats]
+---
+
+在進行問卷訪問時，傳統上研究者關注的議題是該問卷是否具有信度(reliability)或效度(validity)。針對該議題，學者提出**回答模式(response style)**是造成問卷（尤其時態度量表）測量誤差的其中一項因素。所謂回答模式，係指回答態度量表時，無論量表的題目、主題是否存在差異，受訪者均表現出特定的回答行為，或者說固定回答某一個選項(Tu & Liao, 2007)。
+
+一般來說，回答模式可以大致分為以下五種類型，分別為：
+
+- 極端(extreme)回答模式
+
+- 正面(yeasaying)回答模式
+
+- 負面(naysaying)回答模式
+
+- 中立(middle)回答模式
+
+- 默許(acquiescence)回答模式
+
+## 回答模式的產生原因
+
+文中提到，過去的文獻針對回答模式產生的原因多半圍繞在人格特質與認知能力。舉例來說，Hamilton(1968) 指出受訪者會產生極端回答模式的行為，通常是**無法忍受事情被模糊化**、個性上**較為緊張**，抑或是**認知能力較低**。中立回答則是受訪者個性較為優柔寡斷(indecisive)、表達意願較低，或是**喜歡保持中立態度、不偏離常態個性**。正面回答可能是內向、批判能力較差、無法集中精神回答者；負面回答則可歸因於受訪者的外向個性。
+
+道德規範(ethics)可能也是造成回答模式的其中一項因素。例如在崇尚集體主義的地區中，性行為時常被視為「見不得人」的情事；然而，在追求個人主義之下，性行為則以正常的眼光看待。如此差異可能會導致不同道德規範環境下生長的受訪者在回答態度量表上，容易彰顯/隱藏自己的想法。[^1]
+
+## 回答模式的偵測與處理
+
+為了檢測問卷（或態度量表）是否存在回答模式，通常我們會使**觀測敘述統計量**，粗略判斷是否有回答模式。簡單來說，假設我們有五個問題，每個問題各自有 $5$ 個選項，我們可以求算每位個體每題答題分數(score)的平均數(mean)與標準差(standard deviation)。[^2]假設我們想要檢測某一份問卷的五個問題（每題各有 $4$ 個選項）中，是否存在極端與非極端的回答模式，其中極端模式定義為選擇 $1$ 與 $4$，非極端模式則為 $2$ 與 $3$，可以透過以下程式碼進行處理：
+
+```{r, eval = FALSE}
+library(dplyr)
+
+# define extreme and non-extreme responses
+calculate_responses <- function(data, col_init, col_end, extreme_values, non_extreme_values) {
+  data %>%
+    rowwise() %>%
+    mutate(
+      Extreme = sum(c_across(col_init:col_end) %in% extreme_values) / 5,
+      Non_Extreme = sum(c_across(col_init:col_end) %in% non_extreme_values) / 5
+    )
+}
+
+df <- df %>% calculate_responses(c(1, 4), c(2, 3))
+```
+
+這樣就可以在原始的資料後面加上兩欄，分別為極端與非極端回答模式。
+
+### 降低回答模式產生之測量誤差
+
+降低回答模式的測量誤差分為事前與事後兩種。事前處理(ex ante processing)是指在設計問卷時將題目調整次序、插入可用於確認效度的題目等；事後處理(ex post processing)則可使用探索性因素分析(exploratory factor analysis, EFA)、潛在類別分析(latent class analysis, LCA)或潛在類別因素分析(latent class factor analysis, LCFA)，最後搭配模型比較指標如 BIC、Log-Likelihood 等。
+
+[^1]: 想像一下將問卷丟給來自崇尚儒家思想、文化的亞洲國家的受訪者，就算生長環境很開放、接收許多來自追求個人主義的歐美國家教育、生活習慣、價值觀等，事實上在道德潛移默化的影響下，還是會不自覺地隱藏自己這類「過於隱私」的訊息。
+
+[^2]:此處的答題分數並非測驗問卷的分數，而是每個量表中的量尺(scale)分數。例如[國際社會調查(International Social Survey Programme) 於 2018 年的問卷](https://www.gesis.org/en/issp/modules/issp-modules-by-topic/religion/2018)中之 v7 題："*How much confidence do you have in Parliament*"，其中量表分數從 $1 = \text{Complete confidence}$ 到 $5 = \text{No confidence at all}$。
+

@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Anthony Sung">
-<meta name="dcterms.date" content="2023-11-21">
-<meta name="description" content="探討多變數間的潛在結構，揭示變數間的共變異性及其背後的因素關係。">
+<meta name="dcterms.date" content="2023-11-30">
+<meta name="description" content="本篇文章係基於〈態度量表的回答模式：以外來人口影響與兩岸統合兩題組為例〉作成的閱讀論文筆記。">
 
-<title>Yueswater Blog - 因素分析 (Factor Analysis)</title>
+<title>Yueswater Blog - 回答模式(response style)初探</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -161,10 +195,10 @@ cookieconsent.run({
     <h2 id="toc-title">Table of Contents</h2>
    
   <ul>
-  <li><a href="#因素分析模型" id="toc-因素分析模型" class="nav-link active" data-scroll-target="#因素分析模型">因素分析模型</a>
+  <li><a href="#回答模式的產生原因" id="toc-回答模式的產生原因" class="nav-link active" data-scroll-target="#回答模式的產生原因">回答模式的產生原因</a></li>
+  <li><a href="#回答模式的偵測與處理" id="toc-回答模式的偵測與處理" class="nav-link" data-scroll-target="#回答模式的偵測與處理">回答模式的偵測與處理</a>
   <ul class="collapse">
-  <li><a href="#模型假設" id="toc-模型假設" class="nav-link" data-scroll-target="#模型假設">模型假設</a></li>
-  <li><a href="#變異數共變異數矩陣" id="toc-變異數共變異數矩陣" class="nav-link" data-scroll-target="#變異數共變異數矩陣">變異數—共變異數矩陣</a></li>
+  <li><a href="#降低回答模式產生之測量誤差" id="toc-降低回答模式產生之測量誤差" class="nav-link" data-scroll-target="#降低回答模式產生之測量誤差">降低回答模式產生之測量誤差</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -178,7 +212,7 @@ cookieconsent.run({
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">因素分析 (Factor Analysis)</h1>
+<h1 class="title">回答模式(response style)初探</h1>
   <div class="quarto-categories">
     <div class="quarto-category">stats</div>
   </div>
@@ -186,7 +220,7 @@ cookieconsent.run({
 
 <div>
   <div class="description">
-    <p>探討多變數間的潛在結構，揭示變數間的共變異性及其背後的因素關係。</p>
+    <p>本篇文章係基於<a href="https://www.airitilibrary.com/Article/Detail/10270221-200712-11-2-3-51-a">〈<strong>態度量表的回答模式：以外來人口影響與兩岸統合兩題組為例</strong>〉</a>作成的閱讀論文筆記。</p>
   </div>
 </div>
 
@@ -203,7 +237,7 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 21, 2023</p>
+      <p class="date">November 30, 2023</p>
     </div>
   </div>
   
@@ -213,152 +247,64 @@ cookieconsent.run({
 
 </header>
 
-<p>假設今天小明心血來潮，一口氣買了 20 幾種菜，但看來看去還是不知道這 20 種菜可以煮成幾道不同的菜。這時候小明想到：如果我有一種方法，能夠跟我說這些菜哪些能夠歸為一類，並真的成為一道好吃的菜，就不用費心思去想要怎麼做了！</p>
-<p>上面這個例子就是因素分析的基本概念。簡單來說，因素分析是研究一系列變量中潛在類別的統計方法。因素分析可以檢查潛在結構如何由一系列測量變量反應出來，也就是<strong>將大量的變量轉化成少量的因素</strong>。常見的兩種因素分析如下：</p>
+<p>在進行問卷訪問時，傳統上研究者關注的議題是該問卷是否具有信度(reliability)或效度(validity)。針對該議題，學者提出<strong>回答模式(response style)</strong>是造成問卷（尤其時態度量表）測量誤差的其中一項因素。所謂回答模式，係指回答態度量表時，無論量表的題目、主題是否存在差異，受訪者均表現出特定的回答行為，或者說固定回答某一個選項(Tu &amp; Liao, 2007)。</p>
+<p>一般來說，回答模式可以大致分為以下五種類型，分別為：</p>
 <ul>
-<li><p>探索性因素分析(exploratory factor analysis, EFA)：若無任何理論框架（食譜），就要使用 EFA。</p></li>
-<li><p>驗證性因素分析(confirmatory factor analysis, EFA)：若已經有理論框架，就可以使用 CFA 來驗證理論框架是否能夠經得起數據檢驗（按照食譜做是不是真的好吃）。</p></li>
+<li><p>極端(extreme)回答模式</p></li>
+<li><p>正面(yeasaying)回答模式</p></li>
+<li><p>負面(naysaying)回答模式</p></li>
+<li><p>中立(middle)回答模式</p></li>
+<li><p>默許(acquiescence)回答模式</p></li>
 </ul>
-<!--補圖-->
-<section id="因素分析模型" class="level2">
-<h2 class="anchored" data-anchor-id="因素分析模型">因素分析模型</h2>
-<p>假設我們從一筆資料當中得到 <span class="math inline">\(k\)</span> 個觀察變量，每一個變量中有 <span class="math inline">\(N\)</span> 個觀察值。則第 <span class="math inline">\(k\)</span> 個變量可以記成 <span class="math inline">\(y_{k}\)</span>，其中 <span class="math display">\[
-y_{k} =
-\begin{pmatrix}
-y_{k}^{1}\\
-y_{k}^{2}\\
-\vdots\\
-y_{k}^{N}\\
-\end{pmatrix}
-\]</span></p>
-<p>設有 <span class="math inline">\(m\)</span> 個類別，記成 <span class="math inline">\(\eta_{i}\)</span>，且 <span class="math display">\[
-\eta_{i} =
-\begin{pmatrix}
-\eta_{i}^{1}\\
-\eta_{i}^{2}\\
-\vdots\\
-\eta_{i}^{N}\\
-\end{pmatrix}
-\]</span></p>
-<p>則 <span class="math inline">\(\mathbf{y}_{K}\)</span> 可以表示為 <span class="math display">\[
-y_{k} = \lambda_{k1} \eta_{1} + \lambda_{k2} \eta_{2} + \cdots + \lambda_{km} \eta_{m}  + \pmb{\varepsilon}_{k}
-\]</span> 注意到 <span class="math inline">\(\pmb{\varepsilon}_{k}\)</span> 是會隨著不同變量而改變的，也就是說這個誤差對於每個變量而言是<strong>獨一無二的</strong>。因此，我們最終可以將上面這些式子結合之間的關係寫成下面的矩陣形式(matrix form)：</p>
-<p><span class="math display">\[
-\begin{pmatrix}
-y_{1}\\
-y_{2}\\
-\vdots\\
-y_{k}
-\end{pmatrix}
-=
-\begin{pmatrix}
-\lambda_{11} &amp; \cdots &amp; \lambda_{1k}\\
-\vdots &amp; \ddots &amp; \vdots\\
-\lambda_{k1} &amp; \cdots &amp; \lambda_{km}
-\end{pmatrix}
-\begin{pmatrix}
-\eta_{1}\\
-\eta_{2}\\
-\vdots\\
-\eta_{m}
-\end{pmatrix}
-+
-\begin{pmatrix}
-\pmb{\varepsilon}_{1}\\
-\pmb{\varepsilon}_{2}\\
-\vdots\\
-\pmb{\varepsilon}_{k}
-\end{pmatrix}
-\]</span></p>
-<p>或可以簡化為 <span class="math display">\[
-\mathbf{y} = \Lambda \eta + \pmb{\varepsilon}
-\]</span></p>
-<p>因為 <span class="math inline">\(\mathbf{y}\)</span> 與 <span class="math inline">\(\eta\)</span> 都是隱性(implicit)，因此我們為每個觀察值加上指標，因此上面的矩陣形式可以寫成： <span class="math display">\[
-\begin{pmatrix}
-y_{11} &amp; \cdots &amp; y_{1j}\\
-\vdots &amp; \ddots &amp; \vdots\\
-y_{N1} &amp; \cdots &amp; y_{Nj}
-\end{pmatrix}
-=
-\begin{pmatrix}
-\eta_{11} &amp; \cdots &amp; \eta_{1m}\\
-\vdots &amp; \ddots &amp; \vdots\\
-\eta_{N1} &amp; \cdots &amp; \eta_{Nm}\\
-\end{pmatrix}
-\begin{pmatrix}
-\lambda_{11} &amp; \cdots &amp; \lambda_{j1}\\
-\vdots &amp; \ddots &amp; \vdots\\
-\lambda_{1j} &amp; \cdots &amp; \lambda_{mj}
-\end{pmatrix}
-+
-\begin{pmatrix}
-\pmb{\varepsilon}_{11} &amp; \cdots &amp; \pmb{\varepsilon}_{1j}\\
-\vdots &amp; \ddots &amp; \vdots\\
-\pmb{\varepsilon}_{N1} &amp; \cdots &amp; \pmb{\varepsilon}_{Nj}
-\end{pmatrix}
-\]</span></p>
-<p>我們以可以用代數的方法表達，即： <span class="math display">\[
-\mathbf{y}_{NV} = \mathbf{F}_{Nf}\mathbf{P}^{\top}_{fV} + \pmb{\varepsilon}_{NV}
-\]</span> 其中 <span class="math inline">\(N\)</span> 代表觀察值（人數）、<span class="math inline">\(f\)</span> 為因素（類別）數量，而 <span class="math inline">\(V\)</span> 則是特徵數量（觀察到的特徵）。在因素分析當中，我們經常將誤差項寫成如下的形式： <span class="math display">\[
-\pmb{\pmb{\varepsilon}}_{NV} = \mathbf{U}_{NV}\mathbf{D}^{\top}_{VV}
-\]</span> 其中 <span class="math inline">\(\mathbf{U}\)</span> 代表每個觀察特殊的因素分數，<span class="math inline">\(\mathbf{D}\)</span> 則是每個分數的權重，也因此 <span class="math inline">\(\mathbf{D}\)</span> 為一個對角矩陣(diagnoal matrix)： <span class="math display">\[
-\mathbf{D} =
-\begin{pmatrix}
-\lambda_{u1} &amp; \cdots &amp; 0\\
-\vdots &amp; \ddots &amp; \vdots\\
-0 &amp; \cdots &amp; \lambda_{uN}
-\end{pmatrix}
-\]</span></p>
-<section id="模型假設" class="level3">
-<h3 class="anchored" data-anchor-id="模型假設">模型假設</h3>
-<p>此處我們僅針對驗證性因素分析，也就是 CFA 的模型假設進行探討。</p>
-<ul>
-<li><p><strong>標準化</strong>(standardization)：為了方便比較，我們將觀察值進行標準化，此時 <span class="math inline">\(\mathbb{E}[\mathbf{y}] = 0\)</span>，且隱含 <span class="math inline">\(\mathbb{E}[{\eta}] = 0\)</span>、<span class="math inline">\(\mathbb{E}[\pmb{\varepsilon}] = 0\)</span>。</p></li>
-<li><p><strong>因素與誤差無相關</strong>：我們要求 <span class="math inline">\(\mathbb{E}[\eta \pmb{\varepsilon}^{\top}] = 0\)</span>。</p></li>
-</ul>
+<section id="回答模式的產生原因" class="level2">
+<h2 class="anchored" data-anchor-id="回答模式的產生原因">回答模式的產生原因</h2>
+<p>文中提到，過去的文獻針對回答模式產生的原因多半圍繞在人格特質與認知能力。舉例來說，Hamilton(1968) 指出受訪者會產生極端回答模式的行為，通常是<strong>無法忍受事情被模糊化</strong>、個性上<strong>較為緊張</strong>，抑或是<strong>認知能力較低</strong>。中立回答則是受訪者個性較為優柔寡斷(indecisive)、表達意願較低，或是<strong>喜歡保持中立態度、不偏離常態個性</strong>。正面回答可能是內向、批判能力較差、無法集中精神回答者；負面回答則可歸因於受訪者的外向個性。</p>
+<p>道德規範(ethics)可能也是造成回答模式的其中一項因素。例如在崇尚集體主義的地區中，性行為時常被視為「見不得人」的情事；然而，在追求個人主義之下，性行為則以正常的眼光看待。如此差異可能會導致不同道德規範環境下生長的受訪者在回答態度量表上，容易彰顯/隱藏自己的想法。<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 </section>
-<section id="變異數共變異數矩陣" class="level3">
-<h3 class="anchored" data-anchor-id="變異數共變異數矩陣">變異數—共變異數矩陣</h3>
-<p>上面假設我們有 <span class="math inline">\(k\)</span> 個變量，則每個變量之間的變異數—共變異數可以寫成如下的形式：</p>
-<p><span class="math display">\[
-\begin{pmatrix}
-1 &amp; \sigma_{12} &amp; \cdots &amp; \sigma_{1k}\\
-\sigma_{21} &amp; 1 &amp; \ddots &amp; \vdots\\
-\vdots &amp; \vdots &amp; 1 &amp; \vdots\\
-\sigma_{k1} &amp; \cdots &amp; \cdots &amp; 1
-\end{pmatrix}
-\]</span></p>
-<p>因為已經將 <span class="math inline">\(\mathbf{y}\)</span> 進行標準化，因此 <span class="math inline">\(\sigma_{k}^{2} = 1\)</span>。已知 <span class="math inline">\(\mathbb{E}[\mathbf{y}] = 0\)</span>，則</p>
-<p><span class="math display">\[
-\begin{aligned}
-\operatorname{var}[{\mathbf{y}}] &amp;= \mathbf{E}[(\mathbf{y} - \mathbb{E}[y])(\mathbf{y} - \mathbb{E}[y])^{\top}]\\
-&amp;= \mathbb{E}[\mathbf{y}\mathbf{y}^{\top}]\\
-&amp;= \mathbb{E}[(\Lambda\eta + \pmb{\varepsilon})(\Lambda\eta + \pmb{\varepsilon})^{\top}]\\
-&amp;= \mathbb{E}[(\Lambda\eta + \pmb{\varepsilon})(\Lambda^{\top}\eta^{\top} + \pmb{\varepsilon}^{\top})]\\
-&amp;= \mathbb{E}[\Lambda\eta\eta^{\top}\Lambda^{\top} + \Lambda\eta\pmb{\varepsilon}^{\top} + \pmb{\varepsilon}\eta^{\top}\Lambda^{\top} + \pmb{\varepsilon}\pmb{\varepsilon}^{\top}]\\
-&amp;= \Lambda\mathbb{E}[\eta\eta^{\top}]\Lambda^{\top} + \Lambda\mathbb{E}[\eta\pmb{\varepsilon}^{\top}] + \mathbb{E}[\pmb{\varepsilon}\eta^{\top}]\Lambda^{\top} + \mathbb{E}[\pmb{\varepsilon}\pmb{\varepsilon}^{\top}]\\
-&amp;= \Lambda\mathbb{E}[\eta\eta^{\top}]\Lambda^{\top} +  \mathbb{E}[\pmb{\varepsilon}\pmb{\varepsilon}^{\top}]\\
-\end{aligned}
-\]</span></p>
-<p>其中 <span class="math inline">\(\mathbb{E}[\eta\eta^{\top}]\)</span> 代表因素之間的變異數—共變異數矩陣，而 <span class="math inline">\(\mathbb{E}[\pmb{\varepsilon}\pmb{\varepsilon}^{\top}]\)</span> 則是誤差之間的變異數—共變異數矩陣。為了方便起見，我們令 <span class="math inline">\(\Phi =\mathbb{E}[\eta\eta^{\top}]\)</span>，以及 <span class="math inline">\(\Theta = \mathbb{E}[\pmb{\varepsilon}\pmb{\varepsilon}^{\top}]\)</span>。因此可以將上面的式子改寫為</p>
-<p><span class="math display">\[
-\operatorname{var}[{\mathbf{y}}] = \Lambda\Phi\Lambda^{\top} +  \Theta\\
-\]</span></p>
+<section id="回答模式的偵測與處理" class="level2">
+<h2 class="anchored" data-anchor-id="回答模式的偵測與處理">回答模式的偵測與處理</h2>
+<p>為了檢測問卷（或態度量表）是否存在回答模式，通常我們會使<strong>觀測敘述統計量</strong>，粗略判斷是否有回答模式。簡單來說，假設我們有五個問題，每個問題各自有 <span class="math inline">\(5\)</span> 個選項，我們可以求算每位個體每題答題分數(score)的平均數(mean)與標準差(standard deviation)。<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>假設我們想要檢測某一份問卷的五個問題（每題各有 <span class="math inline">\(4\)</span> 個選項）中，是否存在極端與非極端的回答模式，其中極端模式定義為選擇 <span class="math inline">\(1\)</span> 與 <span class="math inline">\(4\)</span>，非極端模式則為 <span class="math inline">\(2\)</span> 與 <span class="math inline">\(3\)</span>，可以透過以下程式碼進行處理：</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># define extreme and non-extreme responses</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>calculate_responses <span class="ot">&lt;-</span> <span class="cf">function</span>(data, col_init, col_end, extreme_values, non_extreme_values) {</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">Extreme =</span> <span class="fu">sum</span>(<span class="fu">c_across</span>(col_init<span class="sc">:</span>col_end) <span class="sc">%in%</span> extreme_values) <span class="sc">/</span> <span class="dv">5</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">Non_Extreme =</span> <span class="fu">sum</span>(<span class="fu">c_across</span>(col_init<span class="sc">:</span>col_end) <span class="sc">%in%</span> non_extreme_values) <span class="sc">/</span> <span class="dv">5</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">calculate_responses</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>這樣就可以在原始的資料後面加上兩欄，分別為極端與非極端回答模式。</p>
+<section id="降低回答模式產生之測量誤差" class="level3">
+<h3 class="anchored" data-anchor-id="降低回答模式產生之測量誤差">降低回答模式產生之測量誤差</h3>
+<p>降低回答模式的測量誤差分為事前與事後兩種。事前處理(ex ante processing)是指在設計問卷時將題目調整次序、插入可用於確認效度的題目等；事後處理(ex post processing)則可使用探索性因素分析(exploratory factor analysis, EFA)、潛在類別分析(latent class analysis, LCA)或潛在類別因素分析(latent class factor analysis, LCFA)，最後搭配模型比較指標如 BIC、Log-Likelihood 等。</p>
 
 
 </section>
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sung2023,
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>想像一下將問卷丟給來自崇尚儒家思想、文化的亞洲國家的受訪者，就算生長環境很開放、接收許多來自追求個人主義的歐美國家教育、生活習慣、價值觀等，事實上在道德潛移默化的影響下，還是會不自覺地隱藏自己這類「過於隱私」的訊息。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>此處的答題分數並非測驗問卷的分數，而是每個量表中的量尺(scale)分數。例如<a href="https://www.gesis.org/en/issp/modules/issp-modules-by-topic/religion/2018">國際社會調查(International Social Survey Programme) 於 2018 年的問卷</a>中之 v7 題：“<em>How much confidence do you have in Parliament</em>”，其中量表分數從 <span class="math inline">\(1 = \text{Complete confidence}\)</span> 到 <span class="math inline">\(5 = \text{No confidence at all}\)</span>。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sung2023,
   author = {Sung, Anthony},
-  title = {因素分析 {(Factor} {Analysis)}},
-  date = {2023-11-21},
-  url = {https://yueswater-blog.netlify.app/posts/2023-11-21-factor-analysis/},
+  title = {回答模式(response {style)初探}},
+  date = {2023-11-30},
+  url = {https://yueswater-blog.netlify.app/posts/2023-11-30-response-style/},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sung2023" class="csl-entry quarto-appendix-citeas" role="listitem">
-Sung, Anthony. 2023. <span>“因素分析 (Factor Analysis).”</span> November
-21, 2023. <a href="https://yueswater-blog.netlify.app/posts/2023-11-21-factor-analysis/">https://yueswater-blog.netlify.app/posts/2023-11-21-factor-analysis/</a>.
+Sung, Anthony. 2023. <span>“回答模式(response Style)初探.”</span>
+November 30, 2023. <a href="https://yueswater-blog.netlify.app/posts/2023-11-30-response-style/">https://yueswater-blog.netlify.app/posts/2023-11-30-response-style/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
