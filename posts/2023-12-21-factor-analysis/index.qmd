@@ -1,0 +1,101 @@
+---
+title: "因素分析(Factor Analysis)"
+image: stat preview.png
+lang: en
+description: |
+    因素分析是在做量表研究時，最常用以進行效度分析的統計方法。
+date: "2023-12-21"
+draft: FALSE
+citation:
+  url: https://yueswater-blog.netlify.app/posts/2023-12-21-factor-analysis/
+categories: [stats]
+---
+
+因素分析是一種簡化數據的方法，透過找出一系列測量變數的共同之處，總結並簡化成一個或多個因素，即分析潛在結構如何由一系列測量變數反映。在學理上分為兩種類型的因素分析，實際研究中應該使用何種類型，則取決於研究問題決定。[^1]
+
+- 探索性因素分析(exploratory factor analysis, EFA)：無足夠理論依據確定潛藏的因素，或想要探索測量變量可以被歸納為幾種維度。透過 EFA 可以幫助研究者探索潛在的因素。
+
+- 驗證性因素分析(confirmatory factor analysis, CFA)：存在明確理論框架，或已經確定測量變量可以歸納為多少因素。藉由 CFA，研究者將測量變數置於理論框架之中，驗證理論是否正確。
+
+下圖呈現因素分析的關係，可以看到不同因素對應到觀察變數。
+
+![Fig 1.1: 因素分析圖示](fig1.png){fig.align="center" width=35%}
+
+[^1]: 注意到 EFA 與 CFA **不能使用同個樣本**。
+
+## 因素分析模型
+
+因素分析具有以下兩項假設：
+
+- 觀察變數必須為**連續(continuous)**變數
+
+- 因素為連續的**潛在變數(latent variable)**
+
+模型中的方程式數目等於觀察變數（或稱為指標變數）的數目。假設有 $p$ 個觀察變數 $X_{1}, \cdots, X_{p}$，且 $p>1$，在這些變數中潛藏 $q$ 個因素 $F_{1}, \cdots, F_{q}$，且 $q \geq 1$。同時，我們要求觀察變數的數量必須大於潛藏變數的數量，即 $p > q$。[^2]
+
+[^2]: 例如置放彈珠，彈珠的數量必須大於置放空間的數量。
+
+上述的假設可以寫成以下的方程式：
+$$
+\label{eq1}\tag{1}
+\begin{aligned}
+X_{1} &= a_{11}F_{1} + a_{12}F_{2} + \cdots + a_{1q}F_{q} + u_{1}\\
+X_{2} &= a_{21}F_{1} + a_{22}F_{2} + \cdots + a_{2q}F_{q} + u_{2}\\
+\; & \vdots\\
+X_{p} &= a_{p1}F_{1} + a_{p2}F_{2} + \cdots + a_{pq}F_{q} + u_{p}
+\end{aligned}
+$$
+
+上述方程式可以理解為每個變數可以表示為不同因素的線性組合(linear combination)，再加上一項無法觀測的誤差項(error term)。此外，方程式中有些符號必須釐清。首先，誤差項與迴歸分析中的誤差項存在差別，在因素分析中，$u$ 被稱為獨特因素(uniqueness)，並假設與因素無關。另外，$a_{pq}$ 則是因素 $q$ 在指標變數 $p$ 上的因素負荷量(loading)，數值越大隱含觀察變數與因素關係越大，在實務上因素負荷量會經過標準化，從而方便比較其之間的差異。[^3]
+
+[^3]: 可以理解為潛在變數影響每個測量指標的得分。
+
+為了進行計算，可將上述的方程式透過矩陣的方式表達：
+$$
+\label{eq2}\tag{2}
+\mathbf{x} = \mathbf{a}\mathbf{F} + \mathbf{u}
+$$
+其中 $\mathbf{x} = (X_{1}, \cdots, X_{p})^{\top}$，$\mathbf{a} = \left[a_{jk}\right]_{q\times p}$，$\mathbf{F} = (F_{1}, \cdots, F_{p})^{\top}$，$\mathbf{u} = (u_{1}, \cdots, u_{p})^{\top}$。為了理解變異數矩陣(variance-covariance matrix)，式(\ref{eq2})可以表示為標準化的形式：
+$$
+\mathbf{z} = \mathbf{a}\mathbf{F} + \mathbf{u}
+\label{eq3}\tag{3}
+$$
+
+同時，透過下圖可以理解因素分析中變異數如何組成。
+
+![Fig 1.2: 變異數組成](fig2.png){fig.align="center" width=70%}
+
+注意到 common variance 是因素分析中想方設法要求得的變異數，specific variance 可以理解為測量人類行為時個體的特點，例如下棋、玩撲克牌、打麻將三個均是娛樂活動(entertainment)，但是三者之間的區別就由 specific variance 描述
+；error variance 則是在測量時因爲隨機而產生的誤差。
+
+- 因素共變異數(communality)：$\sigma^{2}_{c}/\sigma^{2}_{T} = 1 - (\sigma^{2}_{u}/\sigma^{2}_{T})$，其中下標 $c$、$T$、$u$ 分別代表 common、total 與 unique variance。
+
+- 信度(reliability)：$(\sigma^{2}_{c} + \sigma^{2}_{s}) /\sigma^{2}_{T} = 1 - (\sigma^{2}_{e} / \sigma^{2}_{T})$，其中下標 $s$、$e$ 分別代表 specific 與 error variance。
+
+## 探索性因素分析
+
+透過探索性因素分析，研究者可以確定觀察變數可以構成多少因素、觀察變數與因素之間的強度與因素分數(factor score)。
+
+具體來說，「構成多少因素」可以被理解為哪些變數**聚集在一起**，從而探索量表的維度，在歸類過程中，可以根據觀察變數與因素之間的相關程度選擇保留或捨棄某些量表問題。此外，藉由計算因素分數，可以將其視為不相關的變數，避免迴歸分析中共線性(multicollinearity)的問題。
+
+### 探索性因素分析原理
+
+誠如上述所言，探索性因素分析要幫助研究者找出觀察變數可以被歸類為多少因素，也就是最合適的因素數量($q$)值。為了求出最適的 $q$，我們可以從較少的因素數量開始嘗試，然後依序增加因素數量，最終找到合適的因素數量。注意到若有合理的取值標準，可以從非 $1$ 的值開始找起。
+
+#### 探索性因素分析的步驟
+
+有了上述的理論基礎之後，接著便是實際進行探索性因素分析，在實務上我們有以下步驟：
+
+1. 確定因素數量：透過特徵值(eigenvalue)、平行分析(parallel analysis)、配適值(fitted value)。
+
+2. 旋轉：確認數量後則要考慮是否要將結果旋轉，目的是為了讓因素負荷量更加整齊，有助於解讀其含義。
+
+3. 估計因素分數
+
+4. 解釋因素意涵
+
+
+
+
+
+
