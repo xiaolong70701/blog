@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.55">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anthony Sung">
+<meta name="dcterms.date" content="2023-07-30">
+<meta name="description" content="從機率論的角度刻畫現代統計學的研究方法。">
+
+<title>統計學與機率論 – Yueswater Blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VLWNL5QXD8"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VLWNL5QXD8', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script> 
+  
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../css/karat.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Yueswater Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../notes.html"> 
+<span class="menu-text">Diary &amp; Notes</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/"> <i class="bi bi-facebook" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/yues_19_water/"> <i class="bi bi-instagram" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#集合論基礎" id="toc-集合論基礎" class="nav-link active" data-scroll-target="#集合論基礎">集合論基礎</a>
+  <ul class="collapse">
+  <li><a href="#交集intersection" id="toc-交集intersection" class="nav-link" data-scroll-target="#交集intersection">交集(Intersection)</a></li>
+  <li><a href="#聯集union" id="toc-聯集union" class="nav-link" data-scroll-target="#聯集union">聯集(Union)</a></li>
+  <li><a href="#集合的關係" id="toc-集合的關係" class="nav-link" data-scroll-target="#集合的關係">集合的關係</a></li>
+  <li><a href="#集合的運算" id="toc-集合的運算" class="nav-link" data-scroll-target="#集合的運算">集合的運算</a></li>
+  </ul></li>
+  <li><a href="#機率論基礎" id="toc-機率論基礎" class="nav-link" data-scroll-target="#機率論基礎">機率論基礎</a>
+  <ul class="collapse">
+  <li><a href="#空間與機率函數" id="toc-空間與機率函數" class="nav-link" data-scroll-target="#空間與機率函數">空間與機率函數</a></li>
+  <li><a href="#條件機率" id="toc-條件機率" class="nav-link" data-scroll-target="#條件機率">條件機率</a></li>
+  <li><a href="#貝氏定理bayes-theorem" id="toc-貝氏定理bayes-theorem" class="nav-link" data-scroll-target="#貝氏定理bayes-theorem">貝氏定理(Bayes’ Theorem)</a></li>
+  <li><a href="#獨立事件" id="toc-獨立事件" class="nav-link" data-scroll-target="#獨立事件">獨立事件</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">統計學與機率論</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">stats</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    <p>從機率論的角度刻畫現代統計學的研究方法。</p>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Anthony Sung </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 30, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>現代統計學(statistics)與計量經濟學(econometrics)係構建在兩個公理之上。第一個公理認為整個經濟體系可以被視為一個由機率法則(probability law)所掌控的隨機實驗(random experiment)，一般來說我們稱這個隨機過程為資料產生過程(data generating process)。第二個則是主張任何經濟現象(economic outcome)可以被視為是上述隨機實驗的結果。</p>
+<p><span class="math inline">\(\textbf{Definition 1.1}:\)</span> A <em>random experiment</em> is a mechanism which has at least two possible outcomes.</p>
+<p>我們在進行實驗後，只會有一個結果出現(one and only one outcome will occur)，但是在執行實驗前，我們對於出現的結果（通常稱為出象）的數量與內容一無所知。這邊必須強調，所謂實驗不一定是真的要如自然科學學科一般，需要拿滴管產生化學反應、拿彈簧測量彈性，此處的實驗泛指觀測與測量。例如在西門町的某間服飾店前站了一整天觀察來顧客年齡，這是一種實驗。又或者是在路上發放問卷調查公司新產品的口味，這也是一種實驗。</p>
+<p>一個隨機實驗包含兩個重要的元素：</p>
+<ul>
+<li><p>樣本空間(sample space)：即所有結果的集合(set)，記成 <span class="math inline">\(S\)</span>、<span class="math inline">\(\Omega\)</span> 或 <span class="math inline">\(\operatorname{supp}(\cdot)\)</span></p></li>
+<li><p>機率(probability)：所有結果出現的概率為何</p></li>
+</ul>
+<section id="集合論基礎" class="level2">
+<h2 class="anchored" data-anchor-id="集合論基礎">集合論基礎</h2>
+<p>首先我們給予樣本空間一個定義：</p>
+<p><span class="math inline">\(\textbf{Definition 1.2}:\)</span> The possible outcomes of a random experiment are called “basic outcomes”, and the set of all basic outcomes constitutes the <em>sample space</em>, which is denoted by <span class="math inline">\(S\)</span>.</p>
+<p>例如給定一個公正的骰子，其出現結果有 <span class="math inline">\(1\)</span> 至 <span class="math inline">\(6\)</span>，則這顆骰子的樣本空間可以寫成 <span class="math display">\[
+S = \{1, 2, 3, 4, 5, 6\}
+\]</span></p>
+<p>扔一枚公正硬幣的結果可以寫成樣本空間的形式： <span class="math display">\[
+S = \{\text{Head}, \text{Tail}\}
+\]</span></p>
+<p>若今天投擲兩個公正的硬幣，則樣本空間為 <span class="math display">\[
+S = \{(H, H). (H, T), (T, H), (T,T)\}
+\]</span></p>
+<p>又或假設今天氣象局測量一地的氣溫，最低溫令為 <span class="math inline">\(t_{0}\)</span>，最高溫為 <span class="math inline">\(t_{1}\)</span>，則該地氣溫的樣本空間則為 <span class="math display">\[
+S = \{t \in \mathbb{R}: t_{0} \leq t \leq t_{1}\}
+\]</span></p>
+<p>我們可以看出樣本空間可以是可數(countable)或不可數(uncountable)。</p>
+<p>值得注意的是，在一個隨機實驗中，我們知道所有可能的出象所形成的集合，但在進行隨機實驗之前，我們不知道也不可能會知道實驗將會出現哪個結果。</p>
+<p><span class="math inline">\(\textbf{Definition 1.3}:\)</span> An <em>event</em> <span class="math inline">\(A\)</span> is a collection of basic outcomes from the sample space <span class="math inline">\(S\)</span> that share certain common features or equivalently obey certain restrictions.</p>
+<p>因此一個事件 <span class="math inline">\(A\)</span> 為樣本空間的一個子集(subset)，即 <span class="math display">\[
+A \subseteq S
+\]</span></p>
+<p>事件中的出象必須滿足一些特點或限制。例如我們擲一個公正的骰子，並令事件 <span class="math inline">\(A\)</span> 為丟出正面的結果，則 <span class="math display">\[
+A = \{2, 4, 6\}
+\]</span></p>
+<p>又或我們令事件 <span class="math inline">\(B\)</span> 為質數，則 <span class="math display">\[
+B = \{2, 3, 5\}
+\]</span></p>
+<p>在下面的討論中，我們會使用文氏圖(Venn diagram)作為圖例，其可以用來表達樣本空間、事件或相關的概念。</p>
+<section id="交集intersection" class="level3">
+<h3 class="anchored" data-anchor-id="交集intersection">交集(Intersection)</h3>
+<p>所謂交集，代表元素同時出現在兩個或兩個以上的集合內。或者用統計學的語言來說，就是結果同時出現。我們給予交集數學上的定義：</p>
+<p><span class="math inline">\(\textbf{Definition 1.4}:\)</span> <em>Intersection</em> of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> , denoted <span class="math inline">\(A \cap B\)</span>, is the set of basic outcomes in <span class="math inline">\(S\)</span> that belong to both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, i.e., <span class="math display">\[
+A \cap B = \{x: x \in A \text{ and } x \in B\}
+\]</span></p>
+<p>上面已經提過，我們要求隨機實驗的出象不能同時出現，在機率論上我們稱其為互斥(exclusive)。</p>
+<p><span class="math inline">\(\textbf{Definition 1.5}:\)</span> If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> have no common basic outcomes, they are called mutually exclusive and their intersection is empty set <span class="math inline">\(\varnothing\)</span>, i.e., <span class="math inline">\(A \cap B = \varnothing\)</span>, where <span class="math inline">\(\varnothing\)</span> denotes an empty set that contains nothing.</p>
+<p>互斥事件也稱為不相交(disjoint)，因為在文氏圖中它們不會重疊。任何互斥事件不可能同時發生。舉例來說，樣本空間 <span class="math inline">\(S\)</span> 中的任意兩個基本結果都是互斥事件。</p>
+</section>
+<section id="聯集union" class="level3">
+<h3 class="anchored" data-anchor-id="聯集union">聯集(Union)</h3>
+<p>聯集則是指元素可能出現在某一個集合內，或在其他集合內。數學上對於聯集的定義為：</p>
+<p><span class="math inline">\(\textbf{Definition 1.6}:\)</span> The <em>union</em> of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, <span class="math inline">\(A \cup B\)</span>, is the set of all basic outcomes in <span class="math inline">\(S\)</span> that belong to either <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span>, i.e., <span class="math display">\[
+A \cup B = \{x: x \in A \text{ or } x \in B\}
+\]</span></p>
+<p>假設 <span class="math inline">\(A_{i} \subseteq S\)</span>，其中 <span class="math inline">\(i = 1, 2, \cdots, n\)</span>，則若 <span class="math display">\[
+\bigcup^{n}_{i = 1}A_{i} = S
+\]</span> 我們稱這 <span class="math inline">\(n\)</span>個事件為完全窮盡(collective exhaustiveness)。</p>
+</section>
+<section id="集合的關係" class="level3">
+<h3 class="anchored" data-anchor-id="集合的關係">集合的關係</h3>
+<p>接下來我們要討論兩個重要的集合關係。首先是補集(complement)，</p>
+<p><span class="math inline">\(\textbf{Definition 1.7}:\)</span> The <em>complement</em> of <span class="math inline">\(A\)</span> is the set of basic outcomes of a random experiment belonging to <span class="math inline">\(S\)</span> but not to <span class="math inline">\(A\)</span>, denoted as <span class="math inline">\(A^{c}\)</span> or <span class="math inline">\(A^{\prime}\)</span>, i.e., <span class="math display">\[
+A^{c} = \{x \notin A: x \in S\}
+\]</span></p>
+<p>而補集有以下的性質：任何事件 <span class="math inline">\(A\)</span> 及其補集 <span class="math inline">\(A^{c}\)</span>，兩者是互斥且完全窮舉的。也就是說：</p>
+<ul>
+<li><p>互斥：<span class="math inline">\(A \cap A^{c} = \varnothing\)</span></p></li>
+<li><p>完全窮舉：<span class="math inline">\(A \cup A^{c} = S\)</span></p></li>
+</ul>
+<p>另一個關係是差集(difference)，即是所有屬於 <span class="math inline">\(A\)</span> 但不屬於 <span class="math inline">\(B\)</span> 的元素組成的集合。</p>
+<p><span class="math inline">\(\textbf{Definition 1.8}:\)</span> The difference of A and B , denoted as <span class="math inline">\(A -B = A \cap B^{c}\)</span>, is the set of basic outcomes in <span class="math inline">\(S\)</span> that belong to <span class="math inline">\(A\)</span> but not to <span class="math inline">\(B\)</span>, i.e., <span class="math display">\[
+A - B = \{x \in A: x \notin B\}
+\]</span></p>
+</section>
+<section id="集合的運算" class="level3">
+<h3 class="anchored" data-anchor-id="集合的運算">集合的運算</h3>
+<p>假設我們給定三個集合 <span class="math inline">\(A, B, C \subseteq S\)</span>，則我們有以下補集關係： <span class="math display">\[
+(A^{c})^{c} = A,\; \varnothing^{c} = S,\; S^{c} = \varnothing
+\]</span></p>
+<p>接著來討論一些集合的運算。</p>
+<ul>
+<li><p>交換律(commutative property)： <span class="math display">\[
+\begin{aligned}
+A \cup B &amp;= B \cup A\\
+A \cap B &amp;= B \cap A
+\end{aligned}
+\]</span></p></li>
+<li><p>結合律(associative property)： <span class="math display">\[
+\begin{aligned}
+(A \cup B) \cup C &amp;= A \cup (B \cup C)\\
+(A \cap B) \cap C &amp;= A \cap (B \cap C)
+\end{aligned}
+\]</span></p></li>
+<li><p>分配律(distributive property)： <span class="math display">\[
+\begin{aligned}
+A \cap (B \cup C) &amp;= (A \cap B) \cup (A \cap C)\\
+A \cup (B \cap C) &amp;= (A \cup B) \cap (A \cup C)
+\end{aligned}
+\]</span></p></li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;若 <span class="math inline">\(n \geq 1\)</span>，則</p>
+<p><span class="math display">\[
+\begin{aligned}
+B \bigcap \left(\bigcup^{n}_{i = 1}A_{i}\right) &amp;= \bigcup^{n}_{i = 1}\left(B \bigcap A_{i}\right)\\
+B \bigcup \left(\bigcap^{n}_{i = 1}A_{i}\right) &amp;= \bigcap^{n}_{i = 1}\left(B \bigcup A_{i}\right)\\
+\end{aligned}
+\]</span></p>
+<ul>
+<li>De Morgan 法則：</li>
+</ul>
+<p><span class="math display">\[
+\begin{aligned}
+(A \cup B)^{c} &amp;= A^{c} \cap B^{c}\\
+(A \cap B)^{c} &amp;= A^{c} \cup B^{c}
+\end{aligned}
+\]</span></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;若 <span class="math inline">\(n \geq 1\)</span>，則</p>
+<p><span class="math display">\[
+\begin{aligned}
+\left(\bigcup^{n}_{i = 1}A_{i}\right)^{c} = \bigcap^{n}_{i = 1}A_{i}^{c}\\
+\left(\bigcap^{n}_{i = 1}A_{i}\right)^{c} = \bigcup^{n}_{i = 1}A_{i}^{c}
+\end{aligned}
+\]</span></p>
+</section>
+</section>
+<section id="機率論基礎" class="level2">
+<h2 class="anchored" data-anchor-id="機率論基礎">機率論基礎</h2>
+<p>上面我們已經定義了何謂事件，接下來我們為了賦予每個事件機率，我們要討論何謂機率函數(probability function)。</p>
+<section id="空間與機率函數" class="level3">
+<h3 class="anchored" data-anchor-id="空間與機率函數">空間與機率函數</h3>
+<p>機率函數可以簡單理解為：一個能夠將事件、事件的補集、事件的交集、聯集映射至(mapping to)實數的函數，因此這個函數的自變量為事件與事件的延伸之組合，這樣的事件集合被稱為樣本空間 <span class="math inline">\(S\)</span> 的一個 <span class="math inline">\(\sigma\)</span>-field 子集合，它將構成機率函數的定義域。</p>
+<p><span class="math inline">\(\textbf{Definition 1.9}:\)</span> A <span class="math inline">\(\sigma\)</span>-algebra, denoted by <span class="math inline">\(\mathcal{F}\)</span>, is a collection of subsets(events) of <span class="math inline">\(S\)</span> that satisfies the following properties:</p>
+<ul>
+<li><p><span class="math inline">\(X\in {\mathcal{F}}\)</span> and <span class="math inline">\(\varnothing \in \mathcal{F}\)</span>;</p></li>
+<li><p><span class="math inline">\(A\in {\mathcal {F}}\;\Rightarrow \;A^{c}\in {\mathcal {F}}\)</span>;</p></li>
+<li><p><span class="math inline">\(A_{n}\in {\mathcal {F}},\;\forall n\in \mathbb {N} \;\Rightarrow \;\bigcup_{n=1}^{\infty }A_{n}\in {\mathcal {F}}\)</span></p></li>
+</ul>
+<p>注意到 <span class="math inline">\(\sigma\)</span>-field 是 <span class="math inline">\(S\)</span> 中子集合的集合，但是 <span class="math inline">\(\sigma\)</span>-field 本身並非 <span class="math inline">\(S\)</span> 的子集，而 <span class="math inline">\(S\)</span> 則是 <span class="math inline">\(\sigma\)</span>-field 唯一的元素。我們稱 <span class="math inline">\((S, \mathcal{F})\)</span> 為一個可測空間(measurable space)。</p>
+<p><span class="math inline">\(\textbf{Example 1.1}:\)</span> Show that for any sample space <span class="math inline">\(S\)</span> , then set <span class="math inline">\(\mathcal{B} = \{\varnothing, S\}\)</span> is always a <span class="math inline">\(\sigma\)</span>-field.</p>
+<p><span class="math inline">\(\textit{Sol.}\)</span></p>
+<p>
+</p>
+<p>We verify the three properties of a <span class="math inline">\(\sigma\)</span>-field:</p>
+<ul>
+<li><p><span class="math inline">\(\varnothing \in \{\varnothing, S\}\)</span>. Thus <span class="math inline">\(\varnothing \in \mathcal{B}\)</span>.</p></li>
+<li><p><span class="math inline">\(\varnothing^{c} = S \in \mathcal{B}\)</span> and <span class="math inline">\(S^{c} = \varnothing \in \mathcal{B}\)</span>.</p></li>
+<li><p><span class="math inline">\(\varnothing \cup S = S \in \mathcal{B}\)</span>.</p></li>
+</ul>
+<p align="right">
+<span class="math inline">\(\square\)</span>
+</p>
+<p><span class="math inline">\(\textbf{Example 1.2}:\)</span> Suppose the sample space <span class="math inline">\(S = \{1,2,3\}\)</span>. Show that a set containing the following eight subsets <span class="math inline">\(\{1\}, \{2\}, \{3\}, \{1,2\}, \{1,3\}, \{2,3\}, \{1,2,3\}\)</span>, and <span class="math inline">\(\varnothing\)</span> is a <span class="math inline">\(\sigma\)</span>-field.</p>
+<p><span class="math inline">\(\textit{Sol.}\)</span></p>
+<p>
+</p>
+<p>Trivial.</p>
+<p>在引進可測空間的概念後，便可以定義何謂機率函數。</p>
+<p><span class="math inline">\(\textbf{Definition 1.10}:\)</span> Suppose a random experiment has a sample space <span class="math inline">\(S\)</span> and an associated <span class="math inline">\(\sigma\)</span>-field <span class="math inline">\(\mathcal{F}\)</span>. A probability function <span class="math display">\[
+\mathbb{P}: \mathcal{F} \to [0, 1]
+\]</span></p>
+<p>is defined as a mapping that satisfies the following three properties:</p>
+<ol type="1">
+<li><p><span class="math inline">\(0 \leq \mathbb{P}(A) \leq 1\)</span> for any event <span class="math inline">\(A\)</span> in <span class="math inline">\(\mathcal{F}\)</span>，此即描述「任何事件都可能出現」。</p></li>
+<li><p><span class="math inline">\(\mathbb{P}(S) = 1\)</span>，表示每當進行一次隨機實驗時，某一事件總是會發生。</p></li>
+<li><p>If <span class="math inline">\(A_{n} \in \mathcal{F}\)</span> are mutually exclusive, then <span class="math display">\[
+\mathbb{P}\left(\bigcup^{\infty}_{i = 1}A_{i}\right) = \sum^{\infty}_{i = 1}\mathbb{P}(A_{i})
+\]</span></p></li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;這個性質表示獨立事件之和（即聯集）的機率等於它們各自機率的總和。</p>
+<p>當我們談論概率函數時，實際上是在描述事件集合 <span class="math inline">\(\mathcal{B}\)</span> 中事件發生的機率分佈：機率函數告訴我們各個事件的發生機率是如何分布的。</p>
+<p>因此，對於一個給定的可測空間 <span class="math inline">\((S, \mathcal{F})\)</span>，可以定義許多不同的機率函數。計量經濟學和統計學的目標就是找到一個能夠最準確描述資料產生機制的機率函數，這個機率函數通常被稱為真實機率函數或真實機率分布模型。</p>
+<p>那麼，要如何去解釋我們對於每個事件都指派的「機率」呢？以下是最常見的兩種解釋方法：</p>
+<ul>
+<li>相對頻率(relative frequency)：一個事件的機率可以被看作是在大量獨立重複實驗後，在相同的條件下，該事件發生的「相對頻率」的極限。舉例來說，假設我們投擲硬幣總共 <span class="math inline">\(N\)</span> 次。每次投擲時，要麼出現「正面」，要麼出現「反面」。假設在這 <span class="math inline">\(N\)</span> 次實驗中，正面出現了 <span class="math inline">\(N_{h}\)</span>次。那麼在這 <span class="math inline">\(N\)</span> 次實驗中，「正面」出現的比例是 <span class="math inline">\(N_{h}/N\)</span>。當 <span class="math inline">\(N\)</span> 趨近於無窮大，即 <span class="math inline">\(N \to \infty\)</span>，該比例 <span class="math inline">\(N_{h}/N\)</span> 的變異將會縮小。</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我們可以用 <code>R</code> 來做個實驗。假設我們讓電腦投擲一個公正的硬幣，從 <span class="math inline">\(1\)</span> 次開始，一直投擲到 <span class="math inline">\(1000\)</span> 次，並且紀錄每次投擲後出現正面的相對頻率，來驗證上述的論述是否正確。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 定義模擬硬幣投擲的函數</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>simulate_coin_toss <span class="ot">&lt;-</span> <span class="cf">function</span>(N) {</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  tosses <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Head"</span>, <span class="st">"Tail"</span>), N, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  num_heads <span class="ot">&lt;-</span> <span class="fu">sum</span>(tosses <span class="sc">==</span> <span class="st">"Head"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  relative_frequency <span class="ot">&lt;-</span> num_heads <span class="sc">/</span> N</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(relative_frequency)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 執行模擬</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>num_tosses <span class="ot">&lt;-</span> <span class="dv">1000</span>  <span class="co"># 指定投擲硬幣的次數N</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>relative_frequencies <span class="ot">&lt;-</span> <span class="fu">numeric</span>(num_tosses)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_tosses) {</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  relative_frequencies[i] <span class="ot">&lt;-</span> <span class="fu">simulate_coin_toss</span>(i)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 繪製相對頻率的折線圖</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">N =</span> <span class="dv">1</span><span class="sc">:</span>num_tosses, <span class="at">Relative_Frequency =</span> relative_frequencies)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> N, <span class="at">y =</span> Relative_Frequency)) <span class="sc">+</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span>                      </span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">"#Ce0e4e"</span>) <span class="sc">+</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Number of tosses"</span>,</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Relative frequencies"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可以看到最終這個公正硬幣出現正面的相對頻率會趨近於 <span class="math inline">\(0.5\)</span>。注意到相對頻率解釋了在假設相同條件下進行大量重複實驗時是有效的，而在統計學中，這種假設被稱為<strong>獨立且同分布</strong>(independence and identical distribution, IID)。</p>
+<ul>
+<li>主觀機率(subjective probability)：即經濟行為者依照其信念(belief)、習慣(habit)等認定某一事件的機率為何。例如理性預期(Muth, 1961)假設經濟主體的主觀期望（即在經濟行為者的主觀機率信念下的期望）與數學期望（即在客觀機率分佈下的期望）相一致。<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+</ul>
+<p><span class="math inline">\(\textbf{Definition 1.11}:\)</span> A probability space is a triple <span class="math inline">\((S, \mathcal{F}, \mathbb{P})\)</span> where</p>
+<ul>
+<li><p><span class="math inline">\(S\)</span> is the sample space corresponding to the outcomes of the underlying random experiment.</p></li>
+<li><p><span class="math inline">\(\mathcal{F}\)</span> is the <span class="math inline">\(\sigma\)</span>-field of subsets of <span class="math inline">\(S\)</span>. These subsets are called events.</p></li>
+<li><p><span class="math inline">\(P: \mathcal{F} \to [0,1]\)</span> is a probability measure.</p></li>
+</ul>
+<p>因此 <span class="math inline">\((S, \mathcal{F}, \mathbb{P})\)</span> 就猶如三位一體的概念，可以完全地描述在樣本空間 <span class="math inline">\(S\)</span> 上定義的隨機實驗。</p>
+<p><span class="math inline">\(\textbf{Theorem 1.1}:\)</span> If <span class="math inline">\(\varnothing\)</span> denotes the empty set, then <span class="math inline">\(\mathbb{P}(\varnothing) = 0\)</span>.</p>
+<p><span class="math inline">\(\textit{Proof.}\)</span></p>
+<p>
+</p>
+<p>Given that <span class="math inline">\(S = S \cup \varnothing\)</span>, and <span class="math inline">\(S\)</span> and <span class="math inline">\(\varnothing\)</span> are mutually exclusive, we then have <span class="math display">\[
+\mathbb{P}(S) = \mathbb{P}(S \cup \varnothing) = \mathbb{P}(S) + \mathbb{P}(\varnothing)
+\]</span> It follows that <span class="math inline">\(\mathbb{P}(\varnothing) = 0\)</span></p>
+<p align="right">
+<span class="math inline">\(\square\)</span>
+</p>
+<p><span class="math inline">\(\textbf{Theorem 1.2}:\)</span> <span class="math inline">\(\mathbb{P}(A) = 1 - \mathbb{P}(A^{c})\)</span></p>
+<p><span class="math inline">\(\textit{Proof.}\)</span></p>
+<p>
+</p>
+<p>Since <span class="math inline">\(S = A \cup A^{c}\)</span>, then <span class="math display">\[
+\mathbb{P}(S) = \mathbb{P}(A \cup A^{c})
+\]</span> By definition, we have <span class="math inline">\(\mathbb{P}(S) = 1\)</span>, and note that <span class="math inline">\(A\)</span> and <span class="math inline">\(A^{c}\)</span> are mutually exclusive, then <span class="math display">\[
+1 = \mathbb{P}(A) + \mathbb{P}(A^{c})
+\]</span></p>
+<p align="right">
+<span class="math inline">\(\square\)</span>
+</p>
+<p><span class="math inline">\(\textbf{Theorem 1.3}:\)</span> If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are two events in <span class="math inline">\(\mathbb{B}\)</span>, and <span class="math inline">\(A \subseteq B\)</span>, then <span class="math inline">\(\mathbb{P}(A) \leq \mathbb{P}(B)\)</span>.</p>
+<p><span class="math inline">\(\textit{Proof.}\)</span></p>
+<p>
+</p>
+<p>Using the fact that <span class="math inline">\(S = A \cup A^{c}\)</span> and the distributive property of sets, we have <span class="math display">\[
+\begin{aligned}
+B &amp;= S \cap B = (A \cup A^{c}) \cap B\\
+&amp;= (A \cap B) \cup (A^{c} \cap B)\\
+&amp;= A \cup (A^{c} \cap B)
+\end{aligned}
+\]</span> where the last equality follows from <span class="math inline">\(A \subseteq B\)</span> so that <span class="math inline">\(A \cap B = A\)</span>. Because <span class="math inline">\(A\)</span> and <span class="math inline">\(A^{c} \cap B\)</span> are mutually exclusive, we have</p>
+<p><span class="math display">\[
+\mathbb{P}(B) = \mathbb{P}(A) + \mathbb{P}(A^{c} \cap B) \geq \mathbb{P}(A)
+\]</span> given that <span class="math inline">\(\mathbb{P}(A^{c} \cap B) \geq 0\)</span>.</p>
+<p align="right">
+<span class="math inline">\(\square\)</span>
+</p>
+<p>而底下是一個最常用的性質：</p>
+<p><span class="math inline">\(\textbf{Theorem 1.4}:\)</span> For any two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> in <span class="math inline">\(\mathcal{F}\)</span>, then <span class="math display">\[
+\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B)  
+\]</span></p>
+<p><span class="math inline">\(\textit{Proof.}\)</span></p>
+<p>
+</p>
+<p>Since <span class="math inline">\(A \cup B = A \cup (A^{c} \cap B)\)</span> and <span class="math inline">\(A\)</span> and <span class="math inline">\(A^{c} \cap B\)</span> are mutually exclusive, we have <span class="math display">\[
+\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(A^{c} \cap B)
+\]</span></p>
+<p>Also, because <span class="math inline">\(B = S \cap B = (A \cap B) \cup (A^{c} \cap B)\)</span>, and <span class="math inline">\((A \cap B)\)</span> and <span class="math inline">\((A^{c} \cap B)\)</span> are mutually exclusive, we have <span class="math display">\[
+\mathbb{P}(B) = \mathbb{P}(A \cap B) + \mathbb{P}(A^{c} \cap B)
+\]</span></p>
+<p>By rearranging both equations, we have <span class="math display">\[
+\begin{aligned}
+\mathbb{P}(A) &amp;= \mathbb{P}(A \cup B) - \mathbb{P}(A^{c} \cap B)\\
+\mathbb{P}(B) &amp;= \mathbb{P}(A \cap B) + \mathbb{P}(A^{c} \cap B)
+\end{aligned}
+\]</span></p>
+<p>Adding both equations and rearraning it gives us the desired result.</p>
+<p align="right">
+<span class="math inline">\(\square\)</span>
+</p>
+<p>接下來我們要介紹總機率法則(rule of total probability)。</p>
+<p><span class="math inline">\(\textbf{Theorem 1.5}:\)</span> If <span class="math inline">\(A_{1}, A_{2}, \cdots in \mathcal{F}\)</span> are mutually exclusive and collectively exhaustive, and <span class="math inline">\(A\)</span> is an event in <span class="math inline">\(S\)</span>, then <span class="math display">\[
+\mathbb{P}(A) = \sum^{\infty}_{i = 1}\mathbb{P}(A \cap A_{i})
+\]</span> <span class="math inline">\(\textit{Proof.}\)</span></p>
+<p>
+</p>
+<p>Noting <span class="math display">\[
+S = \bigcup_{i=1}^\infty A_i
+\]</span> and <span class="math display">\[
+A = A \cap S = A \cap \bigcup_{i=1}^\infty A_i = \bigcup_{i=1}^\infty (A \cap A_i)
+\]</span> where the last equality follows by the distributive law. The result follows because <span class="math inline">\(A \cap A_i\)</span> and <span class="math inline">\(A \cap A_j\)</span> are disjoint for all <span class="math inline">\(i \neq j\)</span>.</p>
+<p><span class="math inline">\(\textbf{Theorem 1.6}:\)</span> For any sequence of events <span class="math inline">\(\{A_{i} \in \mathcal{F}, \forall i = 1,2, \cdots\}\)</span>, we have</p>
+<p><span class="math display">\[
+{\mathbb {P} }\left(\bigcup _{i=1}^{\infty }A_{i}\right)\leq \sum _{i=1}^{\infty }{\mathbb {P} }(A_{i})
+\]</span></p>
+<p><span class="math inline">\(\textit{Proof.}\)</span></p>
+<p>
+</p>
+<p>Let <span class="math inline">\(B = \bigcup^{\infty}_{i = 2}A_{i}\)</span>. Then <span class="math display">\[
+\bigcup^{\infty}_{i = 1}A_{i} = A_{1} \cup B
+\]</span> By using Theorem 1.4, it follows <span class="math display">\[
+\begin{aligned}
+\mathbb{P}\left(\bigcup^{n}_{i = 1}A_{i}\right) &amp;= \mathbb{P}(A_{1} \cup B)\\
+&amp;= \mathbb{P}(A_{1}) + \mathbb{P}(B) - \mathbb{P}(A_{1} \cap B)\\
+&amp;\leq \mathbb{P}(A_{1}) + \mathbb{P}(B)
+\end{aligned}
+\]</span> where where the inequality follows given <span class="math inline">\(P(A_1 \cap B) \geq 0\)</span>. Again, let <span class="math inline">\(C = \bigcup_{i=3}^{\infty} A_i\)</span>. Then <span class="math display">\[
+\mathbb{P}(B) = \mathbb{P}(A_{2} \cup C) \leq \mathbb{P}(A_{2}) + \mathbb{P}(C)
+\]</span></p>
+<p>It follows that <span class="math display">\[
+\mathbb{P}\left(\bigcup^{n}_{i = 1}A_{i}\right) \leq \mathbb{P}(A_{1}) + \mathbb{P}(A_{2}) + \mathbb{P}(C)
+\]</span></p>
+<p>Repeating this process, we have <span class="math display">\[
+{\mathbb {P} }\left(\bigcup _{i=1}^{\infty }A_{i}\right)\leq \sum _{i=1}^{\infty }{\mathbb {P} }(A_{i})
+\]</span></p>
+</section>
+<section id="條件機率" class="level3">
+<h3 class="anchored" data-anchor-id="條件機率">條件機率</h3>
+<p>經濟事件乃至於事件上的所有事件通常彼此存在關聯。例如失業率與職缺率可能存在因果關係（此即 Beveridge 曲線的概念）。由於具有關聯性，事件 <span class="math inline">\(B\)</span> 的發生可能會影響或包含有關事件 <span class="math inline">\(A\)</span> 發生的機率資訊。因此，如果我們擁有有關事件 <span class="math inline">\(B\)</span> 的資訊，我們就能更好地了解事件 <span class="math inline">\(A\)</span> 的發生情況。這可以通過條件機率的概念來描述。</p>
+<p><span class="math inline">\(\textbf{Definition 1.12}:\)</span> Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be two events in probability space <span class="math inline">\((S, \mathcal{F}, \mathbb{P})\)</span>. Then the conditional probability of event <span class="math inline">\(A\)</span> given event <span class="math inline">\(B\)</span>, denoted as <span class="math inline">\(\mathbb{P}(A | B)\)</span>, is defined as <span class="math display">\[
+\mathbb{P}(A|B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}
+\]</span> provided that <span class="math inline">\(\mathbb{P}(B) &gt; 0\)</span>. Similarly, the conditional probability of event <span class="math inline">\(B\)</span> given <span class="math inline">\(A\)</span> is defined as <span class="math display">\[
+\mathbb{P}(B|A) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(A)}
+\]</span> provided that <span class="math inline">\(\mathbb{P}(A) &gt; 0\)</span>.</p>
+<p>在定義條件概率 <span class="math inline">\(\mathbb{P}(A | B)\)</span> 時，我們假設 <span class="math inline">\(\mathbb{P}(B)\)</span>。這是因為 <span class="math inline">\(\mathbb{P}(B)\)</span> 意味著事件 <span class="math inline">\(B\)</span> 不太可能發生，而對於一個不太可能發生的事件進行條件機率計算在實際上沒有意義。因此，我們要確保條件機率的分母不為零，也就是要確保事件 <span class="math inline">\(B\)</span> 的機率大於 <span class="math inline">\(0\)</span>。</p>
+<p><span class="math inline">\(\mathbb{P}(A|B)\)</span> 在一個文氏圖中可以表示為事件 <span class="math inline">\(A\)</span> 佔據事件 <span class="math inline">\(B\)</span> 占據的區域相對於事件 <span class="math inline">\(B\)</span> 占據的整個區域。直觀地說，當事件 <span class="math inline">\(B\)</span> 發生時，<span class="math inline">\(B^{c}\)</span> 將永遠不會發生。不確定性從整個樣本空間 <span class="math inline">\(S\)</span> 縮減為事件 <span class="math inline">\(B\)</span>，則可測空間變為 <span class="math inline">\(\left(S\cap B, \mathcal{F}\cap B, \mathbb{P}(\cdot|B)\right)\)</span>。因此，當我們考慮 <span class="math inline">\(\mathbb{P}(A|B)\)</span> 時，我們會將 <span class="math inline">\(B\)</span> 視為一個新的樣本空間，所有後續事件都將根據它們與 <span class="math inline">\(B\)</span> 的關係來進行校正。</p>
+<p>因此，我們可以說 <span class="math inline">\(\mathbb{P}(A|B)\)</span> 描述了如何使用事件 <span class="math inline">\(B\)</span> 的資訊來預測事件 <span class="math inline">\(A\)</span> 的機率。這是 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span> 之間的預測關係。但是我們必須注意到，<strong>一個預測關係不一定代表是 <span class="math inline">\(A\)</span> 與 <span class="math inline">\(B\)</span> 的因果關係</strong>，若我們要探討因果關係，則需要仰賴專業理論的相關知識補充說明。</p>
+<p><span class="math inline">\(\textbf{Lemma 1.1}:\)</span> Given two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, then</p>
+<ol type="1">
+<li><p>if <span class="math inline">\(\mathbb{P}(B) &gt; 0\)</span>, then <span class="math inline">\(\mathbb{P}(A \cap B) = \mathbb{P}(A|B)\mathbb{P}(B)\)</span></p></li>
+<li><p>if <span class="math inline">\(\mathbb{P}(A) &gt; 0\)</span>, then <span class="math inline">\(\mathbb{P}(A \cap B) = \mathbb{P}(B|A)\mathbb{P}(A)\)</span></p></li>
+</ol>
+<p>上面這個關係可以用於計算 <span class="math inline">\(\mathbb{P}(A \cap B)\)</span>。</p>
+<p><span class="math inline">\(\textbf{Theorem 1.7}:\)</span> Suppose <span class="math inline">\(\{A_{i} \in \mathcal{F}, \forall i = 1, \cdots, n\}\)</span> is a sequence of <span class="math inline">\(n\)</span> events. Then the joint probability of these <span class="math inline">\(n\)</span> events <span class="math display">\[
+\mathbb{P}\left(\bigcap^{n}_{i = 1}A_{i}\right) = \prod^{n}_{i = 1}\mathbb{P}\left(A_{i}|\bigcap^{i - 1}_{j = 1}A_{j}\right)
+\]</span></p>
+<p>with the convention that <span class="math display">\[
+\mathbb{P}\left(A_{1}|\bigcap^{0}_{j = 1}A_{j}\right) = \mathbb{P}(A_{1})
+\]</span></p>
+<p>上述的乘法規則可以被重複使用來獲得多個事件的聯合機率，且注意到對於事件序列 <span class="math inline">\(A_1, A_2, \ldots, A_n\)</span> 有 <span class="math inline">\(n!\)</span> 不同的條件機率算法。</p>
+<p><span class="math inline">\(\textbf{Theorem 1.8}:\)</span> Let <span class="math inline">\(\{A_{i}\}^{\infty}_{i = 1}\)</span> be a be a partition (i.e., mutually exclusive and collectively exhaustive) of sample space <span class="math inline">\(S\)</span>, with <span class="math inline">\(\mathbb{P}(A_{i}) &gt; 0\)</span> for <span class="math inline">\(i \geq 1\)</span>. Then for any event <span class="math inline">\(A\)</span> in <span class="math inline">\(\mathcal{F}\)</span>, <span class="math display">\[
+\mathbb{P}(A) = \sum^{\infty}_{i = 1}\mathbb{P}(A|A_{i})\mathbb{P}(A_{i})
+\]</span> <span class="math inline">\(\textit{Proof.}\)</span></p>
+<p>
+</p>
+<p>By Theorem 1.5, we have <span class="math display">\[
+\mathbb{P}(A) = \sum^{\infty}_{i = 1}\mathbb{P}(A \cap A_{i})
+\]</span></p>
+<p>The desired result follows immediately from the multiplication rule that <span class="math inline">\(\mathbb{P}(A \cap A_{i}) = \mathbb{P}(A|A_{i})\mathbb{P}(A_{i})\)</span>.</p>
+<p align="right">
+<span class="math inline">\(\square\)</span>
+</p>
+</section>
+<section id="貝氏定理bayes-theorem" class="level3">
+<h3 class="anchored" data-anchor-id="貝氏定理bayes-theorem">貝氏定理(Bayes’ Theorem)</h3>
+<p>貝氏定理可謂是條件機率的應用，雖然此定理的起源時間可以追溯到 18 世紀由 Thomas Bayes 提出的概念，但是在 21 世紀的今天，貝氏定理被廣泛的使用在諸多領域上，包含機器學習(machine learning)、政治經濟學(political economy)。</p>
+<p>貝氏定理描述的是一個修正或更新先驗概率的機制，當事件 <span class="math inline">\(B\)</span> 發生後，我們可以利用這個信息來修正或更新事件 <span class="math inline">\(A\)</span> 發生的先驗機率(prior probability)。</p>
+<p><span class="math inline">\(\textbf{Theorem 1.9}:\)</span> Suppose <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are two events with <span class="math inline">\(\mathbb{P}(A) &gt; 0\)</span> and <span class="math inline">\(\mathbb{P}(B) &gt; 0\)</span>. Then <span class="math display">\[
+\mathbb{P}(A|B) = \frac{\mathbb{P}(B|A)\mathbb{P}(A)}{\mathbb{P}(B|A)\mathbb{P}(A) + \mathbb{P}(B|A^{c})\mathbb{P}(A^{c})}
+\]</span></p>
+<p><span class="math inline">\(\mathbb{P}(A)\)</span> 被稱為先驗概率，即在事實或證據之前，因為它是在新資訊 <span class="math inline">\(B\)</span> 發生之前對事件 <span class="math inline">\(A\)</span> 的機率估計。而條件機率 <span class="math inline">\(\mathbb{P}(A|B)\)</span> 被稱為後驗概率(posterior probability)，即在事實或證據之後，因為它代表在獲得事件 <span class="math inline">\(B\)</span> 發生的新資訊之後，對事件 <span class="math inline">\(A\)</span> 機率進行修正後的分配。</p>
+<p>因此貝氏定理可以用更白話的方式呈現，即在事件 <span class="math inline">\(A\)</span> 發生後，事件 <span class="math inline">\(A\)</span> 的後驗概率與樣本證據 <span class="math inline">\(B\)</span> 的概率成正比，比例常數為事件 <span class="math inline">\(A\)</span> 的先驗概率。故我們可以說貝氏定理表達了主觀信念程度應該如何合理地改變以適應相關證據的可用性。<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p><span class="math inline">\(\textbf{Theorem 1.10}:\)</span> Suppose <span class="math inline">\(A_{1}, \cdots, A_{n}\)</span> are <span class="math inline">\(n\)</span> mutually exclusive and collectively exhaustive events in the sample space <span class="math inline">\(S\)</span>, and <span class="math inline">\(A\)</span> is an event with <span class="math inline">\(\mathbb{P}(A) &gt; 0\)</span>. Then the conditional probability of <span class="math inline">\(A_{i}\)</span> given <span class="math inline">\(A\)</span> is <span class="math display">\[
+\mathbb{P}(A|A_{i}) = \frac{\mathbb{P}(A|A_{i})\mathbb{P}(A_{i})}{\sum^{n}_{j = 1}\mathbb{P}(A|A_{j})\mathbb{P}(A_{j})}, \forall i = 1, \cdots, n
+\]</span></p>
+<p><span class="math inline">\(\textit{Proof.}\)</span></p>
+<p>
+</p>
+<p>By the conditional probability definition and multiplication rule, we have <span class="math display">\[
+\begin{aligned}
+\mathbb{P}(A_{i}|A) &amp;= \frac{\mathbb{P}(A_{i} \cap A)}{\mathbb{P}(A)}\\
+&amp;= \frac{\mathbb{P}(A|A_{i})\mathbb{P}(A_{i})}{\mathbb{P}(A)}
+\end{aligned}
+\]</span></p>
+<p>Because <span class="math inline">\(\{A_{i}\}^{n}_{i = 1}\)</span> are collectively exhaustive and mutually exclusive, from the rule of total probability in Theorem 1.8, we have <span class="math display">\[
+\begin{aligned}
+\mathbb{P}(A) &amp;= \sum^{n}_{j = 1}\mathbb{P}(A \cap A_{j})\\
+&amp;= \sum^{n}_{j = 1}\mathbb{P}(A|A_{j})\mathbb{P}(A_{j})
+\end{aligned}
+\]</span></p>
+<p>底下我們來探討一個汽車保險公司保費(auto-insurance premium)的例子。</p>
+<p><span class="math inline">\(\textbf{Example 1.2}:\)</span> Suppose an insurance company has three types of customers high risk, medium risk and low risk. From the company’s historical consumer database, it is known that <span class="math inline">\(25\%\)</span> of its customers are high risk, <span class="math inline">\(25\%\)</span> are medium risk, and <span class="math inline">\(50\%\)</span> are low risk. Also, the database shows that the probability that a customer has at least one speeding ticket in one year is <span class="math inline">\(0.25\)</span> for high risk, <span class="math inline">\(0.16\)</span> for medium risk, and <span class="math inline">\(0.10\)</span> for low risk.</p>
+<p>Now suppose a new customer wants to be insured and reports that he has had one speeding ticket this year. What is the probability that he is a high risk customer, given that he has had one speeding ticket this year?</p>
+<p><span class="math inline">\(\textit{Sol.}\)</span></p>
+<p>
+</p>
+<p>To calculate the probability that the new customer is a high-risk customer, given that he has had one speeding ticket this year, we can use Bayes’ theorem.</p>
+<p>Let <span class="math inline">\(H\)</span> be the event that the customer is high risk, and <span class="math inline">\(T\)</span> be the event that the customer has had one speeding ticket this year.</p>
+<p>We want to find <span class="math inline">\(\mathbb{P}(H|T)\)</span>, the probability that the customer is high risk given that he has had one speeding ticket.</p>
+<p>According to Bayes’ theorem:</p>
+<p><span class="math display">\[
+\mathbb{P}(H|T) = \frac{\mathbb{P}(T|H) \cdot \mathbb{P}(H)}{\mathbb{P}(T)}
+\]</span></p>
+<p>where</p>
+<ul>
+<li><p><span class="math inline">\(\mathbb{P}(T|H)\)</span> is the probability that the customer has had one speeding ticket given that he is high risk.</p></li>
+<li><p><span class="math inline">\(\mathbb{P}(H)\)</span> is the probability that a customer is high risk.</p></li>
+<li><p><span class="math inline">\(\mathbb{P}(T)\)</span> is the probability that the customer has had one speeding ticket, which can be calculated using the law of total probability:</p></li>
+</ul>
+<p><span class="math display">\[
+\mathbb{P}(T) = \mathbb{P}(T|H) \cdot \mathbb{P}(H) + \mathbb{P}(T|M) \cdot \mathbb{P}(M) + \mathbb{P}(T|L) \cdot \mathbb{P}(L)
+\]</span></p>
+<p>where:</p>
+<ul>
+<li><p><span class="math inline">\(\mathbb{P}(T|H)\mathbb{P}\)</span> is the probability of one speeding ticket given high risk (0.25).</p></li>
+<li><p><span class="math inline">\(\mathbb{P}(T|M)\)</span> is the probability of one speeding ticket given medium risk.</p></li>
+<li><p><span class="math inline">\(\mathbb{P}(T|L)\)</span> is the probability of one speeding ticket given low risk.</p></li>
+<li><p><span class="math inline">\(\mathbb{P}(M)\)</span> is the probability of a customer being medium risk.</p></li>
+<li><p><span class="math inline">\(\mathbb{P}(L)\)</span> is the probability of a customer being low risk.</p></li>
+</ul>
+<p>Now, let’s plug in the values and calculate:</p>
+<p><span class="math display">\[
+\mathbb{P}(T) = 0.25 \cdot 0.25 + 0.16 \cdot 0.25 + 0.10 \cdot 0.50 = 0.0625 + 0.04 + 0.05 = 0.1525
+\]</span></p>
+<p>Finally, we can calculate <span class="math inline">\(\mathbb{P}(H|T)\)</span>:</p>
+<p><span class="math display">\[
+\mathbb{P}(H|T) = \frac{0.25 \cdot 0.25}{0.1525} \approx 0.4098
+\]</span></p>
+<p>So, the probability that the new customer is a high-risk customer, given that he has had one speeding ticket this year, is approximately <span class="math inline">\(0.4098\)</span> or <span class="math inline">\(40.98\%\)</span>.</p>
+</section>
+<section id="獨立事件" class="level3">
+<h3 class="anchored" data-anchor-id="獨立事件">獨立事件</h3>
+<p>獨立事件(independent event)是指兩個或多個事件之間彼此不影響、不相關的情況。換句話說，一個事件的發生或不發生並不會影響其他事件的機率。</p>
+<p><span class="math inline">\(\textbf{Definition 1.13}:\)</span> Events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are said to be statistically independent if <span class="math inline">\(\mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B)\)</span></p>
+<p>具有獨立性的事件被稱為在統計學上是獨立、隨機獨立的，或在機率上是獨立的。在大多數情況下，我們使用「獨立」一詞來描述上述的情況。</p>
+<p>那我們可以從獨立的性質得出什麼結論呢？首先，假設 <span class="math inline">\(\mathbb{P}(B) &gt; 0\)</span>，則 <span class="math display">\[
+\begin{aligned}
+\mathbb{P}(A|B) &amp;= \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}\\
+&amp;= \frac{\mathbb{P}(A)\mathbb{P}(B)}{\mathbb{P}(B)}\\
+&amp;= \mathbb{P}(A)
+\end{aligned}
+\]</span></p>
+<p>對於事件 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span> 而言，如果 <span class="math inline">\(\mathbb{P}(B|A)\)</span>，表示在已知事件 <span class="math inline">\(B\)</span> 後對事件 <span class="math inline">\(A\)</span> 的預測沒有幫助，即知道事件 <span class="math inline">\(B\)</span> 發生並不改變預測事件 <span class="math inline">\(A\)</span> 發生的機率。直觀上來說，獨立性意味著事件 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span>是「不相關的(irrelevant)」，或者說它們之間不存在任何關係。</p>
+<p>獨立性質為何重要。我們來看一個金融學上的應用：隨機漫步(random walk)。假設有一支股票，其價格令為 <span class="math inline">\(P_{t}\)</span>，其中 <span class="math inline">\(t\)</span> 代表時間。該股票價格若滿足以下條件，則稱其符合隨機漫步：</p>
+<p><span class="math display">\[
+P_{t} + P_{t-1} = X_{t}
+\]</span></p>
+<p>其中 <span class="math inline">\(\{X_{t}\}\)</span> 在不同時間段上是相互獨立的，從上式也可以看出 <span class="math inline">\(X_{t}\)</span> 代表的是價格的增長(increment)，因</p>
+<p><span class="math display">\[
+X_{t} = P_{t} - P_{t-1}
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="randomWalk.gif" class="img-fluid figure-img" style="width:50.0%" data-fig.align="center"></p>
+<figcaption>Fig 1.1: 隨機漫步<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></figcaption>
+</figure>
+</div>
+<p>令一個對於隨機漫步的變種定義為，如果股票價格 <span class="math inline">\(P_t\)</span> 符合以下條件，則稱為幾何隨機漫步：</p>
+<p><span class="math display">\[
+\ln P_t = \ln P_{t-1} + X_t
+\]</span></p>
+<p>根據泰勒展開式(Taylor expansion)， <span class="math display">\[
+X_t = \ln\left(\frac{P_t}{P_{t-1}}\right) = \ln\left(1 + \frac{P_t - P_{t-1}}{P_{t-1}}\right) \approx \frac{P_t - P_{t-1}}{P_{t-1}}
+\]</span> 代表價格變動的比例。幾何隨機漫步假設最重要的含義是：如果在不同的時間段內，<span class="math inline">\(X_{t}\)</span> 是序列獨立的，則未來的股票價格變化 <span class="math inline">\(X_{t}\)</span> 不能透過歷史股價資料來預測。在這樣的情況下，我們稱股票市場具有資訊效率(informationally efficient)。</p>
+<p><span class="math inline">\(\textbf{Theorem 1.11}:\)</span> Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be two independent events. Then</p>
+<ul>
+<li><p><span class="math inline">\(A\)</span> and <span class="math inline">\(B^{c}\)</span> are independent</p></li>
+<li><p><span class="math inline">\(A^{c}\)</span> and <span class="math inline">\(B^{c}\)</span> are independent</p></li>
+<li><p><span class="math inline">\(A^{c}\)</span> and <span class="math inline">\(B^{c}\)</span> are independent</p></li>
+</ul>
+<p><span class="math inline">\(\textit{Proof.}\)</span></p>
+<p>
+</p>
+<ol type="1">
+<li><p>If <span class="math inline">\(\mathbb{P}\left(A \cap B^c\right)=\mathbb{P}(A) \mathbb{P}\left(B^c\right)\)</span>, then <span class="math inline">\(A\)</span> and <span class="math inline">\(B^c\)</span> are independent. Because <span class="math inline">\((A \cap B) \cup\left(A \cap B^{c}\right)=A\)</span>, we have <span class="math display">\[
+\mathbb{P}(A \cap B)+\mathbb{P}(A \cap B^{c})=\mathbb{P}(A) .
+\]</span> It follows from the multiplication rule that <span class="math display">\[
+\begin{aligned}
+\mathbb{P}(A \cap B^c) &amp; =\mathbb{P}(A)-\mathbb{P}(A \cap B) \\
+&amp; =\mathbb{P}(A)-\mathbb{P}(A) \mathbb{P}(B) \\
+&amp; =\mathbb{P}(A)\left[1-\mathbb{P}(B)\right] \\
+&amp; =\mathbb{P}(A) \mathbb{P}(B^c)
+\end{aligned}
+\]</span></p></li>
+<li><p>By symmetry.</p></li>
+<li><p>Because <span class="math inline">\((A \cap B^c) \cup(A^c \cap B^c)=B^c\)</span>, we have <span class="math display">\[
+\mathbb{P}(A \cap B^c)+\mathbb{P}(A^c \cap B^c)=\mathbb{P}(B^c)
+\]</span> It follows that <span class="math display">\[
+\begin{aligned}
+\mathbb{P}(A^{c} \cap B^{c}) &amp;= \mathbb{P}(B^{c}) - \mathbb{P}(A \cap B^{c})\\
+&amp;= \mathbb{P}(B^{c}) - \mathbb{P}(A)\mathbb{P}(B^{c})\\
+&amp;= \mathbb{P}(A^{c})\mathbb{P}(B^{c})
+\end{aligned}
+\]</span></p></li>
+</ol>
+<p>假設 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span> 是獨立的，那麼 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B^c\)</span> 也應該是獨立的，因為如果不是這樣，就可以用 <span class="math inline">\(A\)</span> 來預測 <span class="math inline">\(B^c\)</span> 的機率，然後通過補集機率公式來預測 <span class="math inline">\(B\)</span> 在給定 <span class="math inline">\(A\)</span> 的條件下的機率： <span class="math display">\[
+\mathbb{P}(B|A)=1-\mathbb{P}(B^c|A)
+\]</span></p>
+<p><span class="math inline">\(\textbf{Definition 1.14}:\)</span> Suppose <span class="math inline">\(k\)</span> events <span class="math inline">\(A_{1}, \cdots, A_{k}\)</span> are mutually independent if, for every possible subset <span class="math inline">\(A_{i_{1}}, \cdots, A_{i_{j}}\)</span> of <span class="math inline">\(j\)</span> of those events, where <span class="math inline">\(j = 1,2, \cdots, k\)</span>, then <span class="math display">\[
+\mathbb{P}(A_{i_{1}} \cap \cdots \cap A_{i_{j}}) = \mathbb{P}(A_{i_{1}}) \times \cdots \times \mathbb{P}(A_{i_{j}})
+\]</span></p>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Muth, J. F. (1961, July). <a href="https://www.jstor.org/stable/1909635">Rational Expectations and the Theory of Price Movements</a>. <em>Econometrica</em>, 29(3), 315. <a href="https://doi.org/10.2307/1909635">https://doi.org/10.2307/1909635</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>不妨可以參考成語「曾參殺人」的典故。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><em>Brownian motion and random walks</em>. (n.d.). Brownian Motion and Random Walks. Retrieved July 31, 2023, from <a href="https://web.mit.edu/8.334/www/grades/projects/projects17/OscarMickelin/brownian.html">https://web.mit.edu/8.334/www/grades/projects/projects17/OscarMickelin/brownian.html</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sung2023,
+  author = {Sung, Anthony},
+  title = {統計學與機率論},
+  date = {2023-07-30},
+  url = {https://yueswater-blog.netlify.app/posts/2023-07-29-prob-stats-set-theory/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sung2023" class="csl-entry quarto-appendix-citeas" role="listitem">
+Sung, Anthony. 2023. <span>“統計學與機率論.”</span> July 30, 2023. <a href="https://yueswater-blog.netlify.app/posts/2023-07-29-prob-stats-set-theory/">https://yueswater-blog.netlify.app/posts/2023-07-29-prob-stats-set-theory/</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="xiaolong70701/quarto-blog" data-repo-id="R_kgDOJhS1Eg" data-category="General" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="light">
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright © 2023 Anthony. All rights reserved. See <a href="../copyright.html">statements</a>.</p>
+</div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/">
+      <i class="bi bi-facebook" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/yues_19_water/">
+      <i class="bi bi-instagram" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

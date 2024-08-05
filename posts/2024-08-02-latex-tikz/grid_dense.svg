@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="170.08" height="141.73" viewBox="0 0 170.08 141.73">
+<defs>
+<clipPath id="clip-0">
+<path clip-rule="nonzero" d="M 42.519531 31.179688 L 127.558594 31.179688 L 127.558594 116.21875 L 42.519531 116.21875 Z M 42.519531 31.179688 "/>
+</clipPath>
+<clipPath id="clip-1">
+<path clip-rule="nonzero" d="M 0 0 L 12 0 L 12 12 L 0 12 Z M 0 0 "/>
+</clipPath>
+<clipPath id="clip-2">
+<rect x="0" y="0" width="12" height="12"/>
+</clipPath>
+<g id="source-5" clip-path="url(#clip-2)">
+<g clip-path="url(#clip-1)">
+<rect x="-39.599849" y="-32.999098" width="259.199009" height="215.994095" fill="rgb(0%, 0%, 0%)" fill-opacity="1"/>
+</g>
+<path fill-rule="nonzero" fill="rgb(79.998779%, 79.998779%, 79.998779%)" fill-opacity="1" d="M 0 0 L 6 0 L 6 6 L 0 6 Z M 6 6 L 12 6 L 12 12 L 6 12 Z M 6 6 "/>
+</g>
+<pattern id="pattern-0" patternUnits="userSpaceOnUse" x="0" y="0" width="12" height="12" viewBox="0 0 12 12" patternTransform="matrix(0.944892, 0, 0, -0.944892, 0, 141.73)">
+<use xlink:href="#source-5"/>
+</pattern>
+</defs>
+<g clip-path="url(#clip-0)">
+<path fill-rule="nonzero" fill="url(#pattern-0)" d="M 42.519531 116.21875 L 127.558594 116.21875 L 127.558594 31.179688 L 42.519531 31.179688 Z M 42.519531 116.21875 "/>
+</g>
+</svg>
