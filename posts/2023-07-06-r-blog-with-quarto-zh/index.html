@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anthony Sung">
+<meta name="dcterms.date" content="2023-07-06">
+<meta name="description" content="使用 Quarto 建立個人獨特的部落格體驗。">
+
+<title>使用 Quarto 建立部落格 – Yueswater Blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VLWNL5QXD8"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VLWNL5QXD8', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script> 
+  
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../css/karat.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Yueswater Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../notes.html"> 
+<span class="menu-text">Diary &amp; Notes</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/"> <i class="bi bi-facebook" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/yues_19_water/"> <i class="bi bi-instagram" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#下載-quarto" id="toc-下載-quarto" class="nav-link active" data-scroll-target="#下載-quarto">下載 Quarto</a></li>
+  <li><a href="#開始第一個-quarto-blog-專案" id="toc-開始第一個-quarto-blog-專案" class="nav-link" data-scroll-target="#開始第一個-quarto-blog-專案">開始第一個 Quarto Blog 專案。</a>
+  <ul class="collapse">
+  <li><a href="#專案檔案介紹與建立網站" id="toc-專案檔案介紹與建立網站" class="nav-link" data-scroll-target="#專案檔案介紹與建立網站">專案檔案介紹與建立網站</a></li>
+  <li><a href="#網站外觀設定" id="toc-網站外觀設定" class="nav-link" data-scroll-target="#網站外觀設定">網站外觀設定</a></li>
+  <li><a href="#更改主題" id="toc-更改主題" class="nav-link" data-scroll-target="#更改主題">更改主題</a></li>
+  <li><a href="#設定首頁" id="toc-設定首頁" class="nav-link" data-scroll-target="#設定首頁">設定首頁</a></li>
+  <li><a href="#設定關於頁面" id="toc-設定關於頁面" class="nav-link" data-scroll-target="#設定關於頁面">設定「關於」頁面</a></li>
+  <li><a href="#新增文章" id="toc-新增文章" class="nav-link" data-scroll-target="#新增文章">新增文章</a></li>
+  </ul></li>
+  <li><a href="#發佈網站github-netlify" id="toc-發佈網站github-netlify" class="nav-link" data-scroll-target="#發佈網站github-netlify">發佈網站：github + Netlify</a>
+  <ul class="collapse">
+  <li><a href="#上傳到-github" id="toc-上傳到-github" class="nav-link" data-scroll-target="#上傳到-github">上傳到 github</a></li>
+  <li><a href="#設定-netlify-並發佈網站" id="toc-設定-netlify-並發佈網站" class="nav-link" data-scroll-target="#設定-netlify-並發佈網站">設定 Netlify 並發佈網站</a></li>
+  </ul></li>
+  <li><a href="#小結" id="toc-小結" class="nav-link" data-scroll-target="#小結">小結</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">使用 Quarto 建立部落格</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">R</div>
+    <div class="quarto-category">Quarto</div>
+    <div class="quarto-category">programming language</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    使用 Quarto 建立個人獨特的部落格體驗。
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Anthony Sung </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 6, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Quarto 提供了靈活的文檔結構和編寫方式，可以輕鬆組織和管理您的部落格內容。它支援 <code>Markdown</code> 和 <code>R Markdown</code>，讓您能以簡單的語法撰寫文章並輕鬆地插入程式碼、圖片和數學符號。而且 Quarto 有美觀的主題和自定義樣式選項，讓您能根據個人喜好來設計和呈現部落格，包含引用 <code>css</code> 與 <code>scss</code>。對於當前 Quarto 結合了數據科學工具和數據可視化庫，如 <code>R</code> 和 <code>Python</code>，在這個資料科學與視覺化盛行的年代，能夠在部落格中輕鬆展示和分享數據分析、統計圖表和互動式可視化。然而，Quarto 的使用對於非技術背景的使用者可能具有一定的學習曲線，因為它需要一些基本的程式基礎和文檔編寫知識，以及對於 <code>Markdown</code> 或 <code>R Markdown</code>的理解。此外，部分進階功能可能需要更深入的技術理解和設定；但對於想要免費建立部落格的人來說，Quarto 確實比 Wordpress、Wix 等網站相對方便（對我就是免費仔才會學這個東西）。</p>
+<p>因為 Quarto 算是一個很新的玩具，中文社群討論的內容少之又少，作為喜歡寫文章分享新東西的我就著手撰寫了這篇教學文，希望對於那些想要學習新東西、想要建立網站但又不想學 <code>HTML</code>、<code>css</code> 與 <code>JavaScript</code> 的人來說有很大的幫助！</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>以下的內容都是假設讀者的電腦裡面都有 R Studio 且已經熟悉 <code>Markdown</code> 語法，如果沒有的話請自行到 <a href="https://posit.co/downloads/">R Studio 官方網站</a>下載，並到 <a href="https://hackmd.io/@eMP9zQQ0Qt6I8Uqp2Vqy6w/SyiOheL5N/%2FBVqowKshRH246Q7UDyodFA?type=book">HackMD 語法教學</a>補齊相關知識。</p>
+</div>
+</div>
+<section id="下載-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="下載-quarto">下載 Quarto</h2>
+<p>我們首先進入 <a href="https://quarto.org">Quarto 官方網站</a>，接著按下 Get Started 的按鈕後就進入下載介面了。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig1.png" class="img-fluid figure-img" style="width:100.0%" data-fig.align="center"></p>
+<figcaption>Fig 1: Quarto 官方網站</figcaption>
+</figure>
+</div>
+<p>進入到下載頁面後，網站會自動偵測你使用的電腦系統是什麼，因此不用特別去尋找特定的版本（除非有特別需求）。</p>
+<p><img src="fig2.png" class="img-fluid" style="width:100.0%" data-fig.align="center" alt="Fig 2: Quarto 下載頁面"> 點擊下載後即可安裝。因為安裝步驟就是不斷地執行下一步，因此這邊就不贅述。</p>
+</section>
+<section id="開始第一個-quarto-blog-專案" class="level2">
+<h2 class="anchored" data-anchor-id="開始第一個-quarto-blog-專案">開始第一個 Quarto Blog 專案。</h2>
+<p>下載完畢後我們進入 R Studio，依照以下的方式建立專案：</p>
+<center>
+New Project… ➡️ New Directory ➡️ Quarto Blog ➡️ Name Your Project
+</center>
+<p>或是觀看以下的影片：</p>
+<div style="padding:62.5% 0 0 0;position:relative;">
+<iframe src="https://player.vimeo.com/video/842876849?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="create quarto blog proj">
+</iframe>
+</div>
+<script src="https://player.vimeo.com/api/player.js"></script>
+<p>建立完成之後我們就可以開始動一些手腳了。</p>
+<section id="專案檔案介紹與建立網站" class="level3">
+<h3 class="anchored" data-anchor-id="專案檔案介紹與建立網站">專案檔案介紹與建立網站</h3>
+<p>我們可以在 R Studio 右下角的區域看到這個專案目前擁有的檔案。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig3.png" class="img-fluid figure-img" style="width:65.0%" data-fig.align="center"></p>
+<figcaption>Fig 3: Quarto Blog 專案檔案列表</figcaption>
+</figure>
+</div>
+<p>用樹狀圖呈現則是如下：</p>
+<pre><code>.
+├── _quarto.yml
+├── about.qmd
+├── index.qmd
+├── posts
+│&nbsp;&nbsp; ├── _metadata.yml
+│&nbsp;&nbsp; ├── post-with-code
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── image.jpg
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── index.qmd
+│&nbsp;&nbsp; └── welcome
+│&nbsp;&nbsp;     ├── index.qmd
+│&nbsp;&nbsp;     └── thumbnail.jpg
+├── profile.jpg
+├── quarto web.Rproj
+└── styles.css</code></pre>
+<p>這些文件和目錄組成了 Quarto Blog 專案的結構，每個文件都具有特定的功能，包括配置、內容編寫、圖片存儲和自定義樣式設置等。通過編輯和管理這些文件，就可以建立一個功能完整且具有個性化的 Quarto 部落格。</p>
+<ul>
+<li><code>_quarto.yml</code>：這是 Quarto 專案的配置文件，其中包含配置和設置的metadata。它可以指定佈局、主題、樣式表等全局設置。</li>
+<li><code>about.qmd</code>：這是一個 <code>Markdown</code> 文件，用於呈現有關部落格的關於頁面或描述性內容。您可以在此文件中編寫有關部落格的介紹、作者資訊等。</li>
+<li><code>index.qmd</code>：這是部落格的首頁 <code>Markdown</code> 文件。它呈現部落格的首頁內容，可以包含部落格文章的列表、特色內容等。</li>
+<li><code>posts</code> 目錄：這個目錄包含部落格文章的子目錄，每個子目錄都對應一篇部落格文章。
+<ul>
+<li><code>_metadata.yml</code>：這是一個包含metadata的 <code>YAML</code> 文件，用於指定部落格文章的元資訊，如標題、日期、作者等。</li>
+<li><code>post-with-code</code> 目錄：這是一篇具有程式碼的部落格文章的子目錄。
+<ul>
+<li><code>image.jpg</code>：這是部落格文章中使用的圖片文件。</li>
+<li><code>index.qmd</code>：這是 <code>Markdown</code> 文件，包含具有程式碼的部落格文章的內容。</li>
+</ul></li>
+<li><code>welcome</code> 目錄：這是一篇歡迎部落格文章的子目錄。
+<ul>
+<li><code>index.qmd</code>：這是 <code>Markdown</code> 文件，包含歡迎部落格文章的內容。</li>
+<li><code>thumbnail.jpg</code>：這是部落格文章的縮略圖或封面圖片。</li>
+</ul></li>
+</ul></li>
+<li><code>profile.jpg</code>：這是部落格的作者個人檔案圖片。</li>
+<li><code>quarto web.Rproj</code>：這是 RStudio 專案文件，用於組織和管理 Quarto 部落格專案。</li>
+<li><code>styles.css</code>：這是自訂的 <code>css</code> 樣式表，用於為部落格定制外觀和樣式。</li>
+</ul>
+<p>下一個小節將會進行更進一步的設定教學，在此之前我們直接按下左上角的 Render Website：</p>
+<div style="padding:62.5% 0 0 0;position:relative;">
+<iframe src="https://player.vimeo.com/video/842883200?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="build website">
+</iframe>
+</div>
+<script src="https://player.vimeo.com/api/player.js"></script>
+<p>沒有意外的話就會在你預設的瀏覽器跑出網站。注意到上面的網址是 <code>http://localhost:6170/</code>，代表 <code>127.0.0.1</code> 為表示「本電腦所保留的位址」，因此如果你很興奮地想要將結果分享給別人，別人是看不到的喔！</p>
+</section>
+<section id="網站外觀設定" class="level3">
+<h3 class="anchored" data-anchor-id="網站外觀設定">網站外觀設定</h3>
+<p>剛剛的網站渲染(rendering)過後的結果如下，我們可以將 Quarto 網站的外觀分成五個區域。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig4.png" class="img-fluid figure-img" style="width:100.0%" data-fig.align="center"></p>
+<figcaption>Fig 4: Quarto 網站外觀</figcaption>
+</figure>
+</div>
+<p>Quarto 網站通常由以下五個區域組成：</p>
+<ul>
+<li><strong>頁首（header）</strong>：頁首通常位於網站的頂部，其中包含網站的標題、圖示、網站導覽和其他重要的網站元素。</li>
+<li><strong>頁腳（footer）</strong>：頁腳通常位於網站的底部，其中包含頁面的版權信息、聯繫方式、社交媒體連結和其他頁面導覽鏈接。</li>
+<li><strong>本文（body）</strong>：本文區域包含網站的主要內容，例如文章。</li>
+<li><strong>側邊欄（sidebar）</strong>：側邊欄通常位於頁面的一側，提供額外的信息、導覽或其他相關內容。</li>
+<li><strong>邊界（margin）</strong>：邊界指的是網站內容和瀏覽器視窗之間的空白區域，用於提供網站元素之間的空間分隔，並幫助網站設計更加平衡和易於閱讀。</li>
+</ul>
+</section>
+<section id="更改主題" class="level3">
+<h3 class="anchored" data-anchor-id="更改主題">更改主題</h3>
+<p>Quarto 系統預設的主題是 <code>cosmo</code>，你可以到 <a href="https://quarto.org/docs/websites/website-blog.html#themes">Quarto 主題列表</a>選擇適合你風格的主題。選擇完主題後打開 <code>_quarto.yml</code>，你會看到以下程式碼：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">project</span><span class="kw">:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> website</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"quarto web"</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">navbar</span><span class="kw">:</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">right</span><span class="kw">:</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> about.qmd</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">icon</span><span class="kw">:</span><span class="at"> github</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">href</span><span class="kw">:</span><span class="at"> https://github.com/</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">icon</span><span class="kw">:</span><span class="at"> twitter</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">href</span><span class="kw">:</span><span class="at"> https://twitter.com</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cosmo</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">css</span><span class="kw">:</span><span class="at"> styles.css</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">editor</span><span class="kw">:</span><span class="at"> visual</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>接著在 theme 後面改上你想要的主題。比如我想將主題改為 <a href="https://bootswatch.com/lux/">lux</a>，則要修改為：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> lux</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">css</span><span class="kw">:</span><span class="at"> styles.css</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>按下 Render Website 或 Render 後即可得到更新後的結果。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig5.png" class="img-fluid figure-img" style="width:100.0%" data-fig.align="center"></p>
+<figcaption>Fig 5: 更改主題範例：lux</figcaption>
+</figure>
+</div>
+</section>
+<section id="設定首頁" class="level3">
+<h3 class="anchored" data-anchor-id="設定首頁">設定首頁</h3>
+<p>在 <code>index.qmd</code> 中我們會看到以下的程式碼：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "quarto web"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="an">listing:</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">  contents: posts</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">  sort: "date desc"</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">  type: default</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">  categories: true</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">  sort-ui: false</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">  filter-ui: false</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="an">page-layout:</span><span class="co"> full</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="an">title-block-banner:</span><span class="co"> true</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>該區塊的功能是對於網站配置進行設定，包含呈現什麼文字、如何排序文章、網頁名稱為何等資訊。</p>
+<ul>
+<li><code>title: "quarto web"</code>：這設定了網站的標題為 “quarto web”，這個標題會在網站的標題區域顯示。</li>
+<li><code>listing:</code>：這個設定用於配置網站的列表(listing)功能。
+<ul>
+<li><code>contents: posts</code>：指定了列表的內容來自於名為 “posts” 的資料夾，用於顯示部落格文章列表。</li>
+<li><code>sort: "date desc"</code>：指定了列表的排序方式為按照日期(date)的降序(desc)排序。這意味著部落格文章將按照日期的新舊順序顯示在列表中。</li>
+<li><code>type: default</code>：指定了列表的類型為預設(default)。</li>
+<li><code>categories: true</code>：啟用了顯示部落格文章的分類(categories)功能，分類不同類型的文章。</li>
+<li><code>sort-ui: false</code>：禁用了列表的排序界面(sort-ui)，表示無法透過界面元素來更改排序文章方式。</li>
+<li><code>filter-ui: false</code>：禁用了列表的篩選界面(filter-ui)，表示無法透過界面元素來進行篩選文章。</li>
+</ul></li>
+<li><code>page-layout: full</code>：指定了頁面的佈局為全寬度(full)，意味著網站的內容將佔據整個網頁可見區域的寬度。</li>
+<li><code>title-block-banner: true</code>：啟用了標題區塊橫幅(title-block-banner)，這可能表示標題區塊將以橫幅的形式在頁面頂部顯示。</li>
+</ul>
+<p>你可以依據自己的需求更改這些設定。更改設定完畢後，有兩個方式可以查看更新結果：</p>
+<ol type="1">
+<li>重新按下 Render Website 或 Render（最推薦）：按下後電腦就會重新渲染網站，並重新顯示網頁。</li>
+<li>按下重新整理（不推薦）：按下儲存按鈕後回到網頁重新整理，即可看到更新後的內容。</li>
+</ol>
+<p>注意到由於 Quarto 渲染的方式是將 <code>.qmd</code> 的內容製作成 <code>.html</code> 的檔案，並儲存到 <code>_site</code> 這個資料夾，如果你只是想要簡單看一下更新後的內容當然推薦第二個；但如果你已經準備要將網站內容推播到 github 等平台上，那麽建議使用第一個方式。</p>
+</section>
+<section id="設定關於頁面" class="level3">
+<h3 class="anchored" data-anchor-id="設定關於頁面">設定「關於」頁面</h3>
+<p>開啟 <code>about.qmd</code> 介面後，我們會看到以下內容：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "About"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> profile.jpg</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="an">about:</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">  template: jolla</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">  links:</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">    - icon: twitter</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">      text: Twitter</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">      href: https://twitter.com</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">    - icon: linkedin</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">      text: LinkedIn</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">      href: https://linkedin.com</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">    - icon: github</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">      text: Github</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">      href: https://github.com</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>About this blog</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>設定大致上跟首頁一樣，而這邊新增了一些小東西。</p>
+<p>首先是主題。如同首頁一樣，你可以自行設定主題，而「關於」頁面的主題請參考 <a href="https://quarto.org/docs/websites/website-about.html#templates">Quarto About Page 主題</a>。</p>
+<p>再來是個人大頭照的部分，你可以上傳你的大頭照到資料夾中，如果你有特別想要修改檔名，記得在設定的地方改成以下的形式：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> 你的檔名.副檔名</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>接下來是個人連結，以下有幾點要說明：</p>
+<ul>
+<li><code>icon</code>：顯示在網頁上的圖示，但不是你隨便想用什麼圖案都可以，除非有特別設定，否則這些圖示都是根據 <a href="https://icons.getbootstrap.com/">Bootstrap 5 icons</a>裡面提供的圖示。</li>
+<li><code>text</code>：你可以更改想要顯示在網頁上的文字，例如 github、facebook、instagram 等等。</li>
+<li><code>href</code>：連結的部分要先確定該連結是可以訪問的，否則沒有辦法連結到網站。</li>
+</ul>
+<p>這邊給一點小技巧，如果你已經用 <a href="https://www.canva.com/">Canvas</a>、Word、<span class="math inline">\(\LaTeX\)</span>、<a href="https://www.cakeresume.com/en">CakeResume</a>等方式建立履歷表，並想要供讀者下載，你可以按照以下幾個步驟將履歷表置於網頁。</p>
+<ol type="1">
+<li><strong>將檔案上傳到資料夾</strong>：基本上履歷表應該都是 <code>.pdf</code> 的格式，除非有特別需求，否則直接上傳到父目錄即可。</li>
+<li><strong>新增圖示、文字、連結</strong>：在設定區域加入以下的程式碼即可完成設定：</li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>links:</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>icon: 圖示名稱</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>      text: 顯示名稱</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>      href: 檔名.pdf</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>重新渲染後即可看到上述更新後內容。</p>
+</section>
+<section id="新增文章" class="level3">
+<h3 class="anchored" data-anchor-id="新增文章">新增文章</h3>
+<p>接下來要進到重頭戲：新增文章。文章是部落格的主體，或者是說部落格存在的目的就是向讀者分享你內心的想法、個人經驗、上課筆記等。</p>
+<p>基本上文章儲存的地方在 <code>posts</code> 資料夾。Quarto 專案預設有兩篇文章，可以注意到他們都是將 <code>.qmd</code> <strong>放在資料夾裡</strong>，這邊會特別註明是因為有時候文章會大量使用圖片、可供下載的數據集等，因此使用資料夾儲存每篇文章是最好的方式。</p>
+<p>假設我們現在想要新增一篇文章，叫做「我的第一篇文章」。首先我們在 <code>posts</code> 資料夾新增子資料夾 <code>first article</code>，並在資料夾新增 <code>index.qmd</code>（如果你很懶可以直接複製預設的兩篇文章其中一篇）。接著我們在檔案中新增以下程式碼：</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Post With Code"</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Harlow Malloc"</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2023-07-06"</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [news, code, analysis]</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> "image.jpg"</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>這邊有一些新的東西，我們一一介紹：</p>
+<ul>
+<li><code>author</code>：作者的名稱，必須以<code>""</code>包著。一篇文章的作者可能不只一個人，或是不同文章有不同的作者（如果網站的文章是由多人撰寫）。如果有很多作者，之間必須以半形逗號<code>,</code>隔開。</li>
+<li><code>date</code>：撰寫文章的日期，你可以自行設定文章日期。</li>
+<li><code>categories</code>：文章的分類。一個部落格可能有很多不同類型的文章，它將會顯示在 Margin 的區域</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig6.png" class="img-fluid figure-img" style="width:100.0%" data-fig.align="center"></p>
+<figcaption>Fig 6: 開啟 sort-ui 功能</figcaption>
+</figure>
+</div>
+<ul>
+<li><code>image</code>：預覽圖片。這個圖片會顯示在文章列表中，可以先讓讀者看到你想要事先顯示的圖片。</li>
+</ul>
+<p>個人化這些設定後，就可以開始用 <code>Markdown</code> 和 <code>HTML</code> 語法撰寫你的文章了！</p>
+<p>值得一提的是，如果你想要在文章內顯示程式碼與輸出結果，可以按照以下步驟進行：</p>
+<ol type="1">
+<li><strong>新增程式碼區塊(chunk)</strong>：我們可以點擊下圖圈選的區域，就會變成 <code>R</code> 語言的區塊。</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig7.png" class="img-fluid figure-img" style="width:100.0%" data-fig.align="center"></p>
+<figcaption>Fig 7: 新增程式碼區塊</figcaption>
+</figure>
+</div>
+<p>如果想要修改只要改掉程式語言的名稱即可，例如 python、cpp（<code>c++</code>）等。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig8.png" class="img-fluid figure-img" style="width:100.0%" data-fig.align="center"></p>
+<figcaption>Fig 8: 程式碼區塊範例</figcaption>
+</figure>
+</div>
+<ol start="2" type="1">
+<li><strong>命名區塊</strong>：這個步驟不是很必要，但有時候程式碼有些問題經電腦報錯後，可以很快追蹤。命名的方式很簡單，只要在程式語言的名稱後面空格後加上名稱即可。例如：```<code>{r plot}</code>。</li>
+</ol>
+</section>
+</section>
+<section id="發佈網站github-netlify" class="level2">
+<h2 class="anchored" data-anchor-id="發佈網站github-netlify">發佈網站：github + Netlify</h2>
+<p>撰寫完文章後，便可以發佈到 github 等平台，以下我只會針對 github 平台的發佈作說明。</p>
+<section id="上傳到-github" class="level3">
+<h3 class="anchored" data-anchor-id="上傳到-github">上傳到 github</h3>
+<p>首先我們要到 <a href="https://github.com">github 網站</a>註冊 github。註冊完畢後我們在以下頁面點擊 New Repository：</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig9.png" class="img-fluid figure-img" style="width:100.0%" data-fig.align="center"></p>
+<figcaption>Fig 9: 新增 Repository</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig10.png" class="img-fluid figure-img" style="width:100.0%" data-fig.align="center"></p>
+<figcaption>Fig 10: 設定 Repository 內容</figcaption>
+</figure>
+</div>
+<p>接著我們開啟終端機，然後進入 Quarto Blog 的資料夾。</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>cd quarto web</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>接著初始化 git：</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>git init</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>然後設定你要 git 上去的網址：</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>git remote set<span class="sc">-</span>url https<span class="sc">:</span><span class="er">//</span>你的token<span class="sc">@</span>github.com<span class="sc">/</span>你的帳號名稱<span class="sc">/</span>你的 Repo 的名稱.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>關於 token 的設定可以參考<a href="https://hackmd.io/@yillkid/ry_FvBmWY">使用 GitHub Personal key 存取 GitHub Repository</a>這篇文章。</p>
+<p>然後依序執行以下指令即可：</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>git add .</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>git status</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>git commit <span class="sc">-</span>m <span class="st">"first commit"</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>git remote add origin https<span class="sc">:</span><span class="er">//</span>你的token<span class="sc">@</span>github.com<span class="sc">/</span>anthonysung119<span class="sc">/</span>quarto<span class="sc">-</span>blog.git <span class="co"># 這行指令僅有在第一次設定時才要輸入</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>git branch <span class="sc">-</span>M main</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>git push <span class="sc">-</span>u origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>不出意外的你的 git repo 上面就會出現你的檔案了！</p>
+</section>
+<section id="設定-netlify-並發佈網站" class="level3">
+<h3 class="anchored" data-anchor-id="設定-netlify-並發佈網站">設定 Netlify 並發佈網站</h3>
+<p>我們進入 <a href="http://netlify.com">Netlify 官方網站</a>註冊帳號。註冊完畢並認證信箱後，會看到以下畫面。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig11.png" class="img-fluid figure-img" style="width:100.0%" data-fig.align="center"></p>
+<figcaption>Fig 11: 設定 Netlify</figcaption>
+</figure>
+</div>
+<p>填完一些基本資訊後我們就可以與 github 連動。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig12.png" class="img-fluid figure-img" style="width:100.0%" data-fig.align="center"></p>
+<figcaption>Fig 12: 選擇 github</figcaption>
+</figure>
+</div>
+<p>然後我們就會進入以下頁面：</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig13.png" class="img-fluid figure-img" style="width:100.0%" data-fig.align="center"></p>
+<figcaption>Fig 13: 從 github 導入專案</figcaption>
+</figure>
+</div>
+<p>點擊 Import from Git，選擇你的專案後即可完成，系統就會自動構建並發佈網站。</p>
+</section>
+</section>
+<section id="小結" class="level2">
+<h2 class="anchored" data-anchor-id="小結">小結</h2>
+<p>今天的教學就到這裡結束啦！希望這次的教學能夠幫助到有需要的人。如果想要看更多的模板，建議可以到 github 上面以 “quarto blog” 作為關鍵字搜尋，就可以找到更多好看的模板提供你做更改。</p>
+<p>喜歡的話記得幫我按一下追蹤😍</p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sung2023,
+  author = {Sung, Anthony},
+  title = {使用 {Quarto} {建立部落格}},
+  date = {2023-07-06},
+  url = {https://yueswater-blog.netlify.app/posts/2023-07-06-r-blog-with-quarto-zh/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sung2023" class="csl-entry quarto-appendix-citeas" role="listitem">
+Sung, Anthony. 2023. <span>“使用 Quarto 建立部落格.”</span> July 6,
+2023. <a href="https://yueswater-blog.netlify.app/posts/2023-07-06-r-blog-with-quarto-zh/">https://yueswater-blog.netlify.app/posts/2023-07-06-r-blog-with-quarto-zh/</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="xiaolong70701/quarto-blog" data-repo-id="R_kgDOJhS1Eg" data-category="General" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="light">
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright © 2024 Anthony. All rights reserved. See <a href="../copyright.html">statements</a>.</p>
+</div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/">
+      <i class="bi bi-facebook" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:xiaolong70701@gmail.com">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

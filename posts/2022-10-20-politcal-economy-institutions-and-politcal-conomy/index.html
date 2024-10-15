@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anthony Sung">
+<meta name="dcterms.date" content="2022-10-20">
+<meta name="description" content="制度之間交互影響與關係。">
+
+<title>制度與政治經濟學(Institutions and Politcal Economy) – Yueswater Blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VLWNL5QXD8"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VLWNL5QXD8', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script> 
+  
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../css/karat.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Yueswater Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../notes.html"> 
+<span class="menu-text">Diary &amp; Notes</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/"> <i class="bi bi-facebook" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/yues_19_water/"> <i class="bi bi-instagram" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#解釋人類行為的制度論" id="toc-解釋人類行為的制度論" class="nav-link active" data-scroll-target="#解釋人類行為的制度論">解釋人類行為的制度論</a>
+  <ul class="collapse">
+  <li><a href="#理性制度理論rational-institutionalism" id="toc-理性制度理論rational-institutionalism" class="nav-link" data-scroll-target="#理性制度理論rational-institutionalism">理性制度理論(Rational Institutionalism)</a></li>
+  <li><a href="#社會制度理論sociological-institutionalism" id="toc-社會制度理論sociological-institutionalism" class="nav-link" data-scroll-target="#社會制度理論sociological-institutionalism">社會制度理論(Sociological Institutionalism)</a></li>
+  <li><a href="#國家為何會失敗" id="toc-國家為何會失敗" class="nav-link" data-scroll-target="#國家為何會失敗">國家為何會失敗？</a></li>
+  </ul></li>
+  <li><a href="#資本主義多樣性variety-of-capitalism-voc與制度互補institutional-complementarity" id="toc-資本主義多樣性variety-of-capitalism-voc與制度互補institutional-complementarity" class="nav-link" data-scroll-target="#資本主義多樣性variety-of-capitalism-voc與制度互補institutional-complementarity">資本主義多樣性(Variety of Capitalism, VOC)與制度互補(Institutional Complementarity)</a>
+  <ul class="collapse">
+  <li><a href="#福利國家的類型" id="toc-福利國家的類型" class="nav-link" data-scroll-target="#福利國家的類型">福利國家的類型</a></li>
+  <li><a href="#voc-作為一種研究途徑" id="toc-voc-作為一種研究途徑" class="nav-link" data-scroll-target="#voc-作為一種研究途徑">VOC 作為一種研究途徑</a></li>
+  <li><a href="#中國與蘇聯不同國家的制度改革路徑" id="toc-中國與蘇聯不同國家的制度改革路徑" class="nav-link" data-scroll-target="#中國與蘇聯不同國家的制度改革路徑">中國與蘇聯不同國家的制度改革路徑</a></li>
+  <li><a href="#自由式市場經濟體與協調性市場經濟體" id="toc-自由式市場經濟體與協調性市場經濟體" class="nav-link" data-scroll-target="#自由式市場經濟體與協調性市場經濟體">自由式市場經濟體與協調性市場經濟體</a></li>
+  <li><a href="#中國的例子" id="toc-中國的例子" class="nav-link" data-scroll-target="#中國的例子">中國的例子</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">制度與政治經濟學(Institutions and Politcal Economy)</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">poilitical economy</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    <p>制度之間交互影響與關係。</p>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Anthony Sung </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 20, 2022</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>現代國家的特點是，在政治環境裡存在諸多的制度，這些制度不侷限於出現在民主國家或是非民主國家，美國國會、英國議會、我國的行政院、中國人大均是一個政治體制的制度。在政治學界上，學者均咸認制度是民主國家的一個特點，因<strong>制度的目的便是限制政府的權力</strong>，避免其過度擴張而侵害人權，而威權或極權體制相較於民主國家，其不存在一個良好、健康的制度。</p>
+<section id="解釋人類行為的制度論" class="level2">
+<h2 class="anchored" data-anchor-id="解釋人類行為的制度論">解釋人類行為的制度論</h2>
+<p>在社會科學領域中，制度(institution)就嚴格意義而言，係國家或統治階級為了表現其意志、實現其目的 <span class="math inline">\(\cdots\)</span> 所採用的各種方法之總和。制度更可以細分為正式與非正式制度，前者包含法律、規章(law/regulations)等，或依附在法律規章之下的機關、機構、組織(organisation)；後者可能包含不成文的社會規範(social norms)、風俗信仰、民俗習慣等。因此，有學者稱人類的行為係建構在制度之下的，受到制度的框架與限制。<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<section id="理性制度理論rational-institutionalism" class="level3">
+<h3 class="anchored" data-anchor-id="理性制度理論rational-institutionalism">理性制度理論(Rational Institutionalism)</h3>
+<p>制度作為一個外生(exogenous)的遊戲規則，其會匡限行為者的各種行為、策略，一個理性行為者在執行行為前，將會產生下列的疑問：“<em>What do I get from doing <span class="math inline">\(X\)</span> under the constraint of <span class="math inline">\(Y\)</span>?</em>”。</p>
+</section>
+<section id="社會制度理論sociological-institutionalism" class="level3">
+<h3 class="anchored" data-anchor-id="社會制度理論sociological-institutionalism">社會制度理論(Sociological Institutionalism)</h3>
+<p>對社會學家而言，制度的另一個功能是界定了人類如何看待世界，甚至使人類形成某種行為的習慣(act <strong>habitually</strong>)，而非僅僅是策略性(strategically)的行動。社會學家對於制度所提出的疑問則會是：“<em>What should I do?</em>” 或 “<em>What is appropriate?</em>”，例如父權體制便是限制了人類對於社會、世界的想像。</p>
+</section>
+<section id="國家為何會失敗" class="level3">
+<h3 class="anchored" data-anchor-id="國家為何會失敗">國家為何會失敗？</h3>
+<p>D. North 指出，當經濟學家在解釋經濟成長時所提出的理論，係一種「逼近」式的解釋，畢竟我們沒有辦法建構出一個完美解釋世界的模型，例如人力資源（教育）、經濟體稟賦、技術等等。然而，D. Acemoglu 在 “<em><a href="https://www.amazon.com/Why-Nations-Fail-Origins-Prosperity/dp/0307719227">Why Nations Fail</a></em>” 一書中提到，影響經濟成長的原因不單只是上述所提及的因素，制度在形成經濟成長扮演著十分重要的角色。一個更根本的問題是：為何有些國家有更多、更好的人力資源與經濟稟賦，這個問題的解答似乎都指向「基礎、根本性的原因」(fundamental cause)：制度。</p>
+<blockquote class="blockquote">
+<p><em>Institutions are the rules of the game in a society or, more formally, are the humanly devised constraints that shape human interaction</em>. —— Douglass North (1990)</p>
+</blockquote>
+<p>儘管擁有豐富的天然資源，一個國家的制度若不夠健康，仍無法有良好的經濟成長與發展。Acemoglu 與 Johnson 指出，Norht 在談論制度時忽略了制度兩個部分，其將制度拆分為兩個要件(unbundling institutions)：一為是否保障人民財產權與契約，亦即如何保障公民如何免於有利人士的侵犯(protect citizens against expropriation by the government and powerful elites)，例如中國政府恣意拆遷人民的房屋等；二則是如何將私有契約良好執行，如透過法院進行強制執行。Acemoglu 與 Johnson 認為保障人民的私有財產權是一個制度最根本的要件。</p>
+</section>
+</section>
+<section id="資本主義多樣性variety-of-capitalism-voc與制度互補institutional-complementarity" class="level2">
+<h2 class="anchored" data-anchor-id="資本主義多樣性variety-of-capitalism-voc與制度互補institutional-complementarity">資本主義多樣性(Variety of Capitalism, VOC)與制度互補(Institutional Complementarity)</h2>
+<p>自1990年 Esping-Andersen 出版了 “<em><a href="https://www.amazon.com/Three-Worlds-Welfare-Capitalism/dp/0691028575">The Three Worlds of Welfare Capitalism</a></em>”，於社會政策或比較研究當中，引起了相當廣泛的討論，尤其是比較社會政策研究方面，他提出了一個較新的研究框架，使鉅視面的跨國比較研究涵蓋更多層面，而非僅僅依賴國家福利支出高低。<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<section id="福利國家的類型" class="level3">
+<h3 class="anchored" data-anchor-id="福利國家的類型">福利國家的類型</h3>
+<p>該研究指出，不同的制度將會導致不同的政治與經濟結果。概念上其將福利國家區分為三種類型：</p>
+<ul>
+<li><strong>自由主義式(Liberal)</strong>：典型的例子是美、加、澳，其奉行以市場為中心的路徑(market-centered approach)，亦即在資本主義的制度之下，將人類商品化(commodification)，比如工作時會收到的薪資(wage)。在此制度之下的福利制度是建構在<strong>貧窮</strong>與<strong>低所得(low-income)</strong> 之上。</li>
+<li><strong>統合主義式(Corporatist)</strong>：國家為福利的主要提供者，例如法、義、德等國，將人類去商品化(de-commodification)，福利的提供與階級、社經地位息息相關。</li>
+<li><strong>社會主義式(Social Democratic)</strong>：北歐國家為最典型的社會主義式國家，其屏棄國家與市場、工人與中產階級的隔閡，努力追求社會上的平等與生活品質的高標準。</li>
+</ul>
+</section>
+<section id="voc-作為一種研究途徑" class="level3">
+<h3 class="anchored" data-anchor-id="voc-作為一種研究途徑">VOC 作為一種研究途徑</h3>
+<p>全球資本主義體制可以分為兩大類，核心的關鍵是「企業中心」(firm-centered)的分析途徑，其認為制度之間的交互作用與互補性是十分重要的，即制度的互補性(institutional complementarity)。在經濟運行的體制之下，假設給定制度 <span class="math inline">\(A\)</span> 與 <span class="math inline">\(B\)</span>，則此二者在某一政治經濟體上的表現記作 <span class="math inline">\(\Omega\)</span>，且具有下方之性質： <span class="math display">\[
+\Omega_{A,B} &gt; \Omega_{A^{\prime}, B}, \Omega_{A, B^{\prime}}
+\]</span> 亦即 <span class="math inline">\(A\)</span>、<span class="math inline">\(B\)</span> 兩個制度同時出現時，該政治經濟體的表現是最好的，不過以發展型國家而言，兩個制度同時存在的表現可能更糟糕，學界目前對此也沒有一個良好的共識與解釋。實證上我們可以將不同國家的政治經濟體寫作如下的迴歸方程式： <span class="math display">\[
+\mathbf{D}_{i t}=\mathbf{N I}_{i t}+\mathbf{I C}_{i t}^c+\epsilon_{i t}
+\]</span> 其中 <span class="math inline">\(\mathbf{D}_{i t}\)</span> 為經濟發展，<span class="math inline">\(\mathbf{IC}_{i t}\)</span> 等同於在模型上加上制度互補性的因素，<span class="math inline">\(\mathbf{NI}_{i t}\)</span> 則是非制度性因素，此即稱為比較制度優勢(comparative institutional advantages)。</p>
+</section>
+<section id="中國與蘇聯不同國家的制度改革路徑" class="level3">
+<h3 class="anchored" data-anchor-id="中國與蘇聯不同國家的制度改革路徑">中國與蘇聯不同國家的制度改革路徑</h3>
+<p>經濟學家或關心一國經濟發展的學者時常提出這樣的問題：「為何國家在此階段仍無法經濟成長？」或者更進一步的討論「如何使國家的經濟成長？」端視 1980、90 年代，可以說是近代最動盪的時代，蘇聯的瓦解造成東歐出現許多採行社會主義的國家，而近年來其亟力想要擺脫社會主義制度，走向如西方發達國家一樣的民主體制，國家領導人或政治人物多會直接將這些民主體制搬運過來，也就是上述所說的，將 <span class="math inline">\(A\)</span> 制度取消變為 <span class="math inline">\(A'\)</span>，並採納 <span class="math inline">\(B\)</span> 制度，形成 <span class="math inline">\(\Omega_{A'B}\)</span> 的局面。最著名的例子是波蘭所採行的震盪療法(shock therapy)，即突然放鬆價格或是貨幣管制，從管制經濟一夜之間轉為市場經濟；然而，反觀中國改革路徑採取漸進式，中國直至 1994 年才取消<a href="https://zh.wikipedia.org/zh-tw/%E4%BB%B7%E6%A0%BC%E5%8F%8C%E8%BD%A8%E5%88%B6">價格雙軌制</a>。<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>就理論上的角度來看，一個國家的經濟改革應該先衡量新制度與舊制度之間是否存在互補性，兩者是否能夠良好地搭配，而非以「拆零件」的方式進行改革；然而，從歷史觀之，似乎發現中國的漸進式改革是正確的，這也是學界目前爭論不休的議題之一。</p>
+</section>
+<section id="自由式市場經濟體與協調性市場經濟體" class="level3">
+<h3 class="anchored" data-anchor-id="自由式市場經濟體與協調性市場經濟體">自由式市場經濟體與協調性市場經濟體</h3>
+<p>VOC 透過私人企業或公司的需求，學者 <a href="https://academic.oup.com/book/301">Hall 與 Soskice (2001)</a>將政治經濟體粗略地劃分為兩種類型，其一為自由式市場經濟體(liberal market economies, LME)，另一個則為協調性市場經濟體(coordinated market economies, CME)，且每個分析面向均環環相扣。在這個分析途徑中，其採用「行動者中心」(actor-centered)的取向分析兩種資本主義的制度，並將<strong>企業(firm)</strong> 視為生產體制中的主要行動者，劃分為五個面向：(1)金融體系、(2)教育暨訓練體系、(3)公司治理/公司融資方式、(4)企業間關係、(5)勞雇關係。Hall 與 Soskice 指出生產與發展策略的交互影響(strategic of interactions)於 VOC 的研究中被視為一種後果，即制度的類型乃是策略交互影響所形成的產物。</p>
+<p><img src="https://i.imgur.com/YqbCZa1.png" class="img-fluid"></p>
+<section id="自由式市場經濟體lmes" class="level4">
+<h4 class="anchored" data-anchor-id="自由式市場經濟體lmes">自由式市場經濟體(LMEs)</h4>
+<p><img src="https://i.imgur.com/1S9RCD4.png" class="img-fluid"></p>
+<p>在 LMEs 下，行動者基於自己意願與理性進行交換，且價格係由市場供需決定。作為自由主義式的體制，在勞動關係上，工會不具有如此大的權力，不同於歐洲，美國便是採取 LME 的良好例子，薪資係由勞工的能力與勞動供需市場所決定，並非如歐洲一般，透過工會「協調薪資」；此外，企業所處的環境特點是競爭與正是契約關係。促成自由式市場經濟體的原因，Bonomi 認為係由正式教育的體制(formal education institution)，教育內容偏向博雅教育(liberal arts)，且教授的技術為可轉移的技術(transferable skills)。也正是在博雅教育的基礎之上，LME 之下的員工對於企業、公司之忠誠度不若 CME 高，使得工會無法良好發展。另外，在公司治理面向上，LME 之企業較願意接受外部投資，且仰賴短期、可見的融資方式，例如公司股價。</p>
+</section>
+<section id="協調性市場經濟體cmes" class="level4">
+<h4 class="anchored" data-anchor-id="協調性市場經濟體cmes">協調性市場經濟體(CMEs)</h4>
+<p><img src="https://i.imgur.com/6FMKF3r.png" class="img-fluid"></p>
+<p>不同於自由式市場經濟體，在 CME 的體制之下，教育對於企業而言是一種「職前訓練」，也就是說一般的國民義務教育乃至於高等教育，係幫助私人企業訓練員工的場域；企業依賴非市場關係與其他行動者協調，包含廣泛的關係契約與不完全契約，或是內部私下資訊交換。因此可以觀察到 CMEs 是一種<strong>去競爭化(deliberation)</strong> 的體制，而去競爭化的目的有兩種，首先透過廣泛分享資訊，可以消除因囚徒困境所帶來的競爭傷害，從而合作互益；第二則是提高行動者間有不同的策略行為能力，因應不同的政治、經濟變化。然而，透過如此訓練的人才之流動性非常低，原因在於其專業知識有在單一或少數領域。公司治理面向上，CME 企業受到監管，並依靠長期的融資方式。</p>
+<p><span class="math display">\[
+\begin{array}
+\\
+\hline
+&amp; \textbf{總體 GDP} &amp; \textbf{人均 GDP} &amp; \textbf{失業率}\\
+\hline
+\text{LMEs} &amp; \text{變異大} &amp; \text{低} &amp; \text{高}\\
+  \text{CMEs} &amp; \text{變異小} &amp; \text{高} &amp; \text{低}\\
+  \hline
+\end{array}
+\]</span></p>
+</section>
+</section>
+<section id="中國的例子" class="level3">
+<h3 class="anchored" data-anchor-id="中國的例子">中國的例子</h3>
+<p>針對中國不同地區的經濟表現，學者 E. Thun 在”<em><a href="https://www.amazon.com/Changing-Lanes-China-Governments-Development/dp/0521843820">Changing Lanes in China: Foreign Direct Investment, Local Governments, and Auto Sector Development</a></em>”以觀察汽車產業的發展得出中國存在三種不同的政治經濟模式，其各有不同的制度邏輯：</p>
+<section id="地方型的發展國家local-development-state上海" class="level4">
+<h4 class="anchored" data-anchor-id="地方型的發展國家local-development-state上海">地方型的發展國家(local development state)：上海</h4>
+<p><img src="https://i.imgur.com/Gv6d9zx.png" class="img-fluid"></p>
+<p>其發現中國存在特殊吸納外資的方式，由於中國幅員廣大，人口基數眾多，使得中國本身具有強大的談判能力，故中國政府會要求外國企業若要進入中國市場，必須與本地企業合資(joint venture)；中國表面上希望與外國企業合資，然而實際上卻是透過合資的方式「竊取」外國企業的技術，有望將來能夠發展中國自己的產業，對國有化形成高度的投資。這樣的政治經濟結構使得上海市的中央地方關係變得更緊密：上海市能夠獲得更多來自中央的資源挹注，而中央亦能夠加強控制上海市。</p>
+</section>
+<section id="自由放任式的產業發展模式laissez-faire-local-states北京廣州" class="level4">
+<h4 class="anchored" data-anchor-id="自由放任式的產業發展模式laissez-faire-local-states北京廣州">自由放任式的產業發展模式(laissez-faire local states)：北京、廣州</h4>
+<p><img src="https://i.imgur.com/SVbxcE7.png" class="img-fluid"></p>
+<p>相對於上海與廣州為經濟性的都市，北京作為一個政治性的都市，北京最好的產業屬於低資本密集產業，使得北京市政府並不持有高額的外國企業股份，且市場結構度較為分散。</p>
+</section>
+<section id="以企業為核心的發展模式長春武漢" class="level4">
+<h4 class="anchored" data-anchor-id="以企業為核心的發展模式長春武漢">以企業為核心的發展模式：長春、武漢</h4>
+<p><img src="https://i.imgur.com/ctauCGr.png" class="img-fluid"></p>
+<p>長春（滿洲國的影響）與武漢（武漢三鎮）的特色均為該地區的老工業區，中國在早期計劃經濟時代曾挹注大量資金於此，但作為老工業區，當地的職缺多半都是鐵飯碗，使得生產不具有效率，因此逐漸廢棄計劃經濟而施行經濟改革；此外，作為重工業基地，這些地區都承載著國家發展的目標與政策，例如一年要產出多少噸的鋼、鐵。因此，當其在面對改革開放之後，由於這些地區的中央地方關係不甚好，承載著國家的福利政策，加上其財政也非健康的狀態，且當地企業本身便比較強勢，造成企業不必然要去配合國家將企業國有化的目標，使得長春、武漢等城市出現以企業為核心的發展模式。</p>
+
+
+</section>
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>有趣的點是，在政治學中，學者廣泛地討論「制度」對於人類生活的影響，但是在經濟學、社會學領域當中，鮮少討論制度之間的差別。一個合理的解釋是，各個國家的政治體制均不盡相同，例如美國採用總統制，英國為議會內閣制，但經濟體制或市場具有廣泛性、全球性，最大的差別頂多是市場結構的不同。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>張國偉. 資本主義類型與福利體制的關係——關於東亞的討論, https://www.nhu.edu.tw/~society/e-j/76/76-06.htm.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>價格雙軌制的其中一軌是舊有的制度，另一軌則是新的制度，開放外國商品進入中國市場，但這些商品僅在特定地區販售，最有名的就是<a href="https://zh.wikipedia.org/zh-hant/%E5%8F%8B%E8%B0%8A%E5%95%86%E5%BA%97">友誼商店</a>，給予在政治上擁有特權的軍公教人員購買。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sung2022,
+  author = {Sung, Anthony},
+  title = {制度與政治經濟學(Institutions and {Politcal} {Economy)}},
+  date = {2022-10-20},
+  url = {https://yueswater.netlify.app/posts/2022-10-20-politcal-economy-institutions-and-politcal-conomy/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sung2022" class="csl-entry quarto-appendix-citeas" role="listitem">
+Sung, Anthony. 2022. <span>“制度與政治經濟學(Institutions and Politcal
+Economy).”</span> October 20, 2022. <a href="https://yueswater.netlify.app/posts/2022-10-20-politcal-economy-institutions-and-politcal-conomy/">https://yueswater.netlify.app/posts/2022-10-20-politcal-economy-institutions-and-politcal-conomy/</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="xiaolong70701/quarto-blog" data-repo-id="R_kgDOJhS1Eg" data-category="General" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="light">
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright © 2024 Anthony. All rights reserved. See <a href="../copyright.html">statements</a>.</p>
+</div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/">
+      <i class="bi bi-facebook" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:xiaolong70701@gmail.com">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

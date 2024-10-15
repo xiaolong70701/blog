@@ -1,0 +1,3577 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anthony Sung">
+<meta name="dcterms.date" content="2024-07-10">
+<meta name="description" content="根據 LaTeX 教學系列 1～5 的內容進行延伸。">
+
+<title>LaTeX 教學系列：進階設定 – Yueswater Blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-contrib/videojs/video.min.js"></script>
+<link href="../../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VLWNL5QXD8"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VLWNL5QXD8', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script> 
+  
+
+
+<link rel="stylesheet" href="../../css/karat.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Yueswater Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../notes.html"> 
+<span class="menu-text">Diary &amp; Notes</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/"> <i class="bi bi-facebook" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/yues_19_water/"> <i class="bi bi-instagram" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#度量單位與空間調整" id="toc-度量單位與空間調整" class="nav-link active" data-scroll-target="#度量單位與空間調整">度量單位與空間調整</a>
+  <ul class="collapse">
+  <li><a href="#度量單位" id="toc-度量單位" class="nav-link" data-scroll-target="#度量單位">度量單位</a></li>
+  <li><a href="#空間調整橫向直向距離" id="toc-空間調整橫向直向距離" class="nav-link" data-scroll-target="#空間調整橫向直向距離">空間調整：橫向直向距離</a></li>
+  <li><a href="#空間調整行距" id="toc-空間調整行距" class="nav-link" data-scroll-target="#空間調整行距">空間調整：行距</a>
+  <ul class="collapse">
+  <li><a href="#基本行距調整" id="toc-基本行距調整" class="nav-link" data-scroll-target="#基本行距調整">基本行距調整</a></li>
+  <li><a href="#使用-setspace-套件" id="toc-使用-setspace-套件" class="nav-link" data-scroll-target="#使用-setspace-套件">使用 setspace 套件</a></li>
+  </ul></li>
+  <li><a href="#空間調整首段縮排" id="toc-空間調整首段縮排" class="nav-link" data-scroll-target="#空間調整首段縮排">空間調整：首段縮排</a></li>
+  </ul></li>
+  <li><a href="#調整紙張方向與直書" id="toc-調整紙張方向與直書" class="nav-link" data-scroll-target="#調整紙張方向與直書">調整紙張方向與直書</a>
+  <ul class="collapse">
+  <li><a href="#調整紙張方向" id="toc-調整紙張方向" class="nav-link" data-scroll-target="#調整紙張方向">調整紙張方向</a>
+  <ul class="collapse">
+  <li><a href="#使用-geometry-套件" id="toc-使用-geometry-套件" class="nav-link" data-scroll-target="#使用-geometry-套件">使用 geometry 套件</a></li>
+  <li><a href="#直接設定" id="toc-直接設定" class="nav-link" data-scroll-target="#直接設定">直接設定</a></li>
+  <li><a href="#使用-pdflscape-套件" id="toc-使用-pdflscape-套件" class="nav-link" data-scroll-target="#使用-pdflscape-套件">使用 pdflscape 套件</a></li>
+  </ul></li>
+  <li><a href="#直書編排" id="toc-直書編排" class="nav-link" data-scroll-target="#直書編排">直書編排</a></li>
+  </ul></li>
+  <li><a href="#條列式清單" id="toc-條列式清單" class="nav-link" data-scroll-target="#條列式清單">條列式清單</a>
+  <ul class="collapse">
+  <li><a href="#不同種類的清單" id="toc-不同種類的清單" class="nav-link" data-scroll-target="#不同種類的清單">不同種類的清單</a>
+  <ul class="collapse">
+  <li><a href="#無序清單" id="toc-無序清單" class="nav-link" data-scroll-target="#無序清單">無序清單</a></li>
+  <li><a href="#有序清單" id="toc-有序清單" class="nav-link" data-scroll-target="#有序清單">有序清單</a></li>
+  <li><a href="#說明性清單" id="toc-說明性清單" class="nav-link" data-scroll-target="#說明性清單">說明性清單</a></li>
+  </ul></li>
+  <li><a href="#設定清單" id="toc-設定清單" class="nav-link" data-scroll-target="#設定清單">設定清單</a>
+  <ul class="collapse">
+  <li><a href="#使用-renewcommand-調整編號" id="toc-使用-renewcommand-調整編號" class="nav-link" data-scroll-target="#使用-renewcommand-調整編號">使用 \renewcommand 調整編號</a></li>
+  <li><a href="#使用-enumitem-套件調整編號" id="toc-使用-enumitem-套件調整編號" class="nav-link" data-scroll-target="#使用-enumitem-套件調整編號">使用 enumitem 套件調整編號</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#顏色" id="toc-顏色" class="nav-link" data-scroll-target="#顏色">顏色</a>
+  <ul class="collapse">
+  <li><a href="#color-套件" id="toc-color-套件" class="nav-link" data-scroll-target="#color-套件">color 套件</a></li>
+  <li><a href="#xcolor-套件" id="toc-xcolor-套件" class="nav-link" data-scroll-target="#xcolor-套件">xcolor 套件</a>
+  <ul class="collapse">
+  <li><a href="#混色" id="toc-混色" class="nav-link" data-scroll-target="#混色">混色</a></li>
+  <li><a href="#調整透明度" id="toc-調整透明度" class="nav-link" data-scroll-target="#調整透明度">調整透明度</a></li>
+  <li><a href="#加入文字背景顏色" id="toc-加入文字背景顏色" class="nav-link" data-scroll-target="#加入文字背景顏色">加入文字背景顏色</a></li>
+  <li><a href="#設定頁面底色" id="toc-設定頁面底色" class="nav-link" data-scroll-target="#設定頁面底色">設定頁面底色</a></li>
+  <li><a href="#色彩模式轉換" id="toc-色彩模式轉換" class="nav-link" data-scroll-target="#色彩模式轉換">色彩模式轉換</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#線條與方框" id="toc-線條與方框" class="nav-link" data-scroll-target="#線條與方框">線條與方框</a>
+  <ul class="collapse">
+  <li><a href="#線條" id="toc-線條" class="nav-link" data-scroll-target="#線條">線條</a></li>
+  <li><a href="#方框" id="toc-方框" class="nav-link" data-scroll-target="#方框">方框</a>
+  <ul class="collapse">
+  <li><a href="#fbox-套件" id="toc-fbox-套件" class="nav-link" data-scroll-target="#fbox-套件">fbox 套件</a></li>
+  <li><a href="#fancybox-套件" id="toc-fancybox-套件" class="nav-link" data-scroll-target="#fancybox-套件">fancybox 套件</a></li>
+  <li><a href="#tcolorbox-套件" id="toc-tcolorbox-套件" class="nav-link" data-scroll-target="#tcolorbox-套件">tcolorbox 套件</a></li>
+  <li><a href="#mdframed-套件" id="toc-mdframed-套件" class="nav-link" data-scroll-target="#mdframed-套件">mdframed 套件</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#說明文字的設定" id="toc-說明文字的設定" class="nav-link" data-scroll-target="#說明文字的設定">說明文字的設定</a>
+  <ul class="collapse">
+  <li><a href="#caption-套件" id="toc-caption-套件" class="nav-link" data-scroll-target="#caption-套件">caption 套件</a>
+  <ul class="collapse">
+  <li><a href="#進階用法將標籤改為中文模式" id="toc-進階用法將標籤改為中文模式" class="nav-link" data-scroll-target="#進階用法將標籤改為中文模式">進階用法：將標籤改為中文模式</a></li>
+  <li><a href="#declarecaption-設定" id="toc-declarecaption-設定" class="nav-link" data-scroll-target="#declarecaption-設定">DeclareCaption 設定</a></li>
+  </ul></li>
+  <li><a href="#subcaption-套件" id="toc-subcaption-套件" class="nav-link" data-scroll-target="#subcaption-套件">subcaption 套件</a></li>
+  </ul></li>
+  <li><a href="#交互參照與超連結" id="toc-交互參照與超連結" class="nav-link" data-scroll-target="#交互參照與超連結">交互參照與超連結</a>
+  <ul class="collapse">
+  <li><a href="#引用基本規則" id="toc-引用基本規則" class="nav-link" data-scroll-target="#引用基本規則">引用基本規則</a></li>
+  <li><a href="#超連結" id="toc-超連結" class="nav-link" data-scroll-target="#超連結">超連結</a>
+  <ul class="collapse">
+  <li><a href="#基本使用方法" id="toc-基本使用方法" class="nav-link" data-scroll-target="#基本使用方法">基本使用方法</a></li>
+  <li><a href="#進階功能" id="toc-進階功能" class="nav-link" data-scroll-target="#進階功能">進階功能</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">LaTeX 教學系列：進階設定</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">latex</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    <p>根據 LaTeX 教學系列 1～5 的內容進行延伸。</p>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Anthony Sung </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 10, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style id="ace-dawn">.ace-dawn .ace_gutter {background: #ebebeb;color: #333}.ace-dawn .ace_print-margin {width: 1px;background: #e8e8e8}.ace-dawn {background-color: #F9F9F9;color: #080808}.ace-dawn .ace_cursor {color: #000000}.ace-dawn .ace_marker-layer .ace_selection {background: rgba(39, 95, 255, 0.30)}.ace-dawn.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px #F9F9F9;}.ace-dawn .ace_marker-layer .ace_step {background: rgb(255, 255, 0)}.ace-dawn .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgba(75, 75, 126, 0.50)}.ace-dawn .ace_marker-layer .ace_active-line {background: rgba(36, 99, 180, 0.12)}.ace-dawn .ace_gutter-active-line {background-color : #dcdcdc}.ace-dawn .ace_marker-layer .ace_selected-word {border: 1px solid rgba(39, 95, 255, 0.30)}.ace-dawn .ace_invisible {color: rgba(75, 75, 126, 0.50)}.ace-dawn .ace_keyword,.ace-dawn .ace_meta {color: #794938}.ace-dawn .ace_constant,.ace-dawn .ace_constant.ace_character,.ace-dawn .ace_constant.ace_character.ace_escape,.ace-dawn .ace_constant.ace_other {color: #811F24}.ace-dawn .ace_invalid.ace_illegal {text-decoration: underline;font-style: italic;color: #F8F8F8;background-color: #B52A1D}.ace-dawn .ace_invalid.ace_deprecated {text-decoration: underline;font-style: italic;color: #B52A1D}.ace-dawn .ace_support {color: #691C97}.ace-dawn .ace_support.ace_constant {color: #B4371F}.ace-dawn .ace_fold {background-color: #794938;border-color: #080808}.ace-dawn .ace_list,.ace-dawn .ace_markup.ace_list,.ace-dawn .ace_support.ace_function {color: #693A17}.ace-dawn .ace_storage {font-style: italic;color: #A71D5D}.ace-dawn .ace_string {color: #0B6125}.ace-dawn .ace_string.ace_regexp {color: #CF5628}.ace-dawn .ace_comment {font-style: italic;color: #5A525F}.ace-dawn .ace_heading,.ace-dawn .ace_markup.ace_heading {color: #19356D}.ace-dawn .ace_variable {color: #234A97}.ace-dawn .ace_indent-guide {background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEklEQVQImWNgYGBgYLh/5+x/AAizA4hxNNsZAAAAAElFTkSuQmCC) right repeat-y}
+/*# sourceURL=ace/css/ace-dawn */</style>
+<style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style>
+<style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: blue;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}
+/*# sourceURL=ace/css/ace-tm */</style>
+<style id="ace_editor.css">.ace_br1 {border-top-left-radius    : 3px;}.ace_br2 {border-top-right-radius   : 3px;}.ace_br3 {border-top-left-radius    : 3px; border-top-right-radius:    3px;}.ace_br4 {border-bottom-right-radius: 3px;}.ace_br5 {border-top-left-radius    : 3px; border-bottom-right-radius: 3px;}.ace_br6 {border-top-right-radius   : 3px; border-bottom-right-radius: 3px;}.ace_br7 {border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px;}.ace_br8 {border-bottom-left-radius : 3px;}.ace_br9 {border-top-left-radius    : 3px; border-bottom-left-radius:  3px;}.ace_br10{border-top-right-radius   : 3px; border-bottom-left-radius:  3px;}.ace_br11{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-left-radius:  3px;}.ace_br12{border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br13{border-top-left-radius    : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br14{border-top-right-radius   : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br15{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;}.ace_editor {position: relative;overflow: hidden;padding: 0;font: 12px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;direction: ltr;text-align: left;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;cursor: text;}.ace_content {position: absolute;box-sizing: border-box;min-width: 100%;contain: style size layout;font-variant-ligatures: no-common-ligatures;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;contain: style size layout;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {position: absolute;top: 0;left: 0;right: 0;padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {contain: strict;position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;contain: strict;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;white-space: pre!important;}.ace_text-input.ace_composition {background: transparent;color: inherit;z-index: 1000;opacity: 1;}.ace_composition_placeholder { color: transparent }.ace_composition_marker { border-bottom: 1px solid;position: absolute;border-radius: 0;margin-top: 1px;}[ace_nocontext=true] {transform: none!important;filter: none!important;clip-path: none!important;mask : none!important;contain: none!important;perspective: none!important;mix-blend-mode: initial!important;z-index: auto;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;word-wrap: normal;white-space: pre;height: 100%;width: 100%;box-sizing: border-box;pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;height: 1000000px;contain: style size layout;}.ace_text-layer {font: inherit !important;position: absolute;height: 1000000px;width: 1000000px;contain: style size layout;}.ace_text-layer > .ace_line, .ace_text-layer > .ace_line_group {contain: style size layout;position: absolute;top: 0;left: 0;right: 0;}.ace_hidpi .ace_text-layer,.ace_hidpi .ace_gutter-layer,.ace_hidpi .ace_content,.ace_hidpi .ace_gutter {contain: strict;will-change: transform;}.ace_hidpi .ace_text-layer > .ace_line, .ace_hidpi .ace_text-layer > .ace_line_group {contain: strict;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;box-sizing: border-box;border-left: 2px solid;transform: translatez(0);}.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_hasPlaceholder .ace_hidden-cursors .ace_cursor {opacity: 0;}.ace_smooth-blinking .ace_cursor {transition: opacity 0.18s;}.ace_animate-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: step-end;animation-name: blink-ace-animate;animation-iteration-count: infinite;}.ace_animate-blinking.ace_smooth-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: ease-in-out;animation-name: blink-ace-animate-smooth;}@keyframes blink-ace-animate {from, to { opacity: 1; }60% { opacity: 0; }}@keyframes blink-ace-animate-smooth {from, to { opacity: 1; }45% { opacity: 1; }60% { opacity: 0; }85% { opacity: 0; }}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_error_bracket {position: absolute;border-bottom: 1px solid #DE5555;border-radius: 0;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;box-sizing: border-box;}.ace_line .ace_fold {box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(114, 113, 113, 0.05);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_inline_button {
+    border: 2px solid black; /* Add border */
+    display: inline-block;
+    margin: -1px 8px;
+    padding: 10px 20px; /* Adjust padding for better appearance */
+    pointer-events: auto;
+    cursor: pointer;
+    border-radius: 20px; /* Rounded corners */
+    background-color: white; /* Set background color */
+    color: black; /* Set text color */
+    text-align: center; /* Center text */
+    font-size: 16px; /* Adjust font size */
+    transition: background 0.3s, border-color 0.3s; /* Add transition for hover effects */
+}
+
+.ace_inline_button:hover {
+    border-color: gray;
+    background: rgba(200, 200, 200, 0.2);
+    pointer-events: auto;
+    border-radius: 20px; /* Maintain rounded corners */
+}
+.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}.ace_mobile-menu {position: absolute;line-height: 1.5;border-radius: 4px;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;background: white;box-shadow: 1px 3px 2px grey;border: 1px solid #dcdcdc;color: black;}.ace_dark > .ace_mobile-menu {background: #333;color: #ccc;box-shadow: 1px 3px 2px grey;border: 1px solid #444;}.ace_mobile-button {padding: 2px;cursor: pointer;overflow: hidden;}.ace_mobile-button:hover {background-color: #eee;opacity:1;}.ace_mobile-button:active {background-color: #ddd;}.ace_placeholder {font-family: arial;transform: scale(0.9);transform-origin: left;white-space: pre;opacity: 0.7;margin: 0 10px;}
+/*# sourceURL=ace/css/ace_editor.css */</style>
+<script src="./src/ace.min.js"></script>
+<style type="text/css" media="screen">
+  .ace_editor {
+  border: 1px solid lightgray;
+  margin-bottom: 1px !important;
+  width: 100%;
+  }
+  div.spacer {
+  margin-top:16px;
+  }
+</style>
+<script src="./src/runlatex.js"></script>
+<style>
+  body {margin:auto; max-width: 100em;}
+  div.h {background-color: #F5F5FF;margin: .5em 0;}
+  pre {background-color: #EEE;margin:0;padding: .5em;}
+  .llbutton {
+      border-radius: 12px;
+  }
+</style>
+<script src="./src/theme-dawn.js"></script>
+<script src="./src/mode-latex.js"></script>
+<style>
+    .answer {
+        display: none;
+        color: black;
+        margin-top: 10px;
+    }
+    .question {
+        cursor: pointer;
+        color: black;
+        background-color: white;
+        border: none;
+        padding: 2px 7px;
+        text-decoration: none;
+        font-size: 14px;
+        border-radius: 50px;
+    }
+    .question:hover {
+        background-color: white;
+    }
+</style>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+    #latex-input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    #preview {
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+</style>
+
+<p>LaTeX 系列寫到這邊，相信很多讀者都應該能夠掌握一定程度的 LaTeX 技巧。從最一開始了解 LaTeX 的運作原理，到自己建立一份 LaTeX 文件、設定字體、使用數學模式、繪製表格與插入圖片等，基本上這些技巧足以應付 LaTeX 文件了。但人往往都是需要更進階、更有效率的功能，因此這篇文章是針對前面五篇的內容進行延伸，因此本篇內容會稍顯複雜，還請讀者多多擔待。</p>
+<p>在這篇文章中，你會學到：</p>
+<ul>
+<li>度量單位與空間調整</li>
+<li>調整紙張方向</li>
+<li>條列式清單</li>
+<li>顏色</li>
+<li>線條、方框</li>
+<li>caption 的設定</li>
+<li>交互參照與超連結</li>
+</ul>
+<section id="度量單位與空間調整" class="level1">
+<h1>度量單位與空間調整</h1>
+<p>排版是一門精確的藝術，需要精準地控制文字、圖片和其他元素在文件頁面上的位置與大小，正因如此，我們需要一套統一的長度度量單位系統，允許使用者和排版軟體準確指定元素的尺寸、間距和位置。沒有這些單位，排版將變得非常困難，幾乎不可能在不同設備和閱讀軟體上保持一致的外觀，否則會顯得突兀。</p>
+<section id="度量單位" class="level2">
+<h2 class="anchored" data-anchor-id="度量單位">度量單位</h2>
+<p>度量單位在許多方面都有其重要性，在排版中的度量單位是長度。它們用於設定頁面邊距、段落縮進、行距、字體大小等。長度單位之所以重要，是因為它們必須適應不同的螢幕尺寸和解析度；同時，精確的度量單位還能確保輸出成品的品質不會參差不齊，使文字在各種紙張大小上都能正確地顯示出來。以下是 LaTeX 中常用的度量單位：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>單位</th>
+<th>全名</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>pt</code></td>
+<td>點</td>
+<td>1/72.27 英寸，約0.35 毫米</td>
+</tr>
+<tr class="even">
+<td><code>mm</code></td>
+<td>毫米</td>
+<td>公制單位</td>
+</tr>
+<tr class="odd">
+<td><code>cm</code></td>
+<td>公分</td>
+<td>1 cm = 10 mm</td>
+</tr>
+<tr class="even">
+<td><code>in</code></td>
+<td>英寸</td>
+<td>1 in = 72.27 pt</td>
+</tr>
+<tr class="odd">
+<td><code>em</code></td>
+<td>em</td>
+<td>當前字體大小</td>
+</tr>
+<tr class="even">
+<td><code>ex</code></td>
+<td>ex</td>
+<td>當前字體的小寫 x 的高度</td>
+</tr>
+<tr class="odd">
+<td><code>pc</code></td>
+<td>pica</td>
+<td>1 pc = 12 pt</td>
+</tr>
+<tr class="even">
+<td><code>bp</code></td>
+<td>大點</td>
+<td>1/72 英寸，用於 PostScript</td>
+</tr>
+<tr class="odd">
+<td><code>dd</code></td>
+<td>迪多點</td>
+<td>1157/1238 mm，用於法國印刷</td>
+</tr>
+<tr class="even">
+<td><code>cc</code></td>
+<td>西塞羅</td>
+<td>12 dd，約 4.531 mm</td>
+</tr>
+<tr class="odd">
+<td><code>sp</code></td>
+<td>可擴展點</td>
+<td>TeX 的最小單位，1 pt = 65536 sp</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="空間調整橫向直向距離" class="level2">
+<h2 class="anchored" data-anchor-id="空間調整橫向直向距離">空間調整：橫向直向距離</h2>
+<p>排版有時候在實務上最常碰到的問題就是需要微調，畢竟沒有一份精美的文件能夠一次到位，都是需要經過多次調整後才會有如此好看的結果。</p>
+<p>LaTeX 常見的微調是橫向與直向距離的調整，我們會使用 <code>\hspace</code> 和 <code>\vspace</code> 這兩個指令進行調整，使用方式很簡單，只要以 <code>\hspace{長度}</code> 或 <code>\vspace{長度}</code> 即可調整。但是必須注意，這個長度<strong>包含度量單位</strong>，因此使用時需要加上你所使用的度量單位。此外，這個長度<strong>可以是負值</strong>，用於縮減空間。以下是一個調整橫向距離的實際範例：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Space}
+\author{John Doe} 
+\date{\today}
+
+\begin{document}
+\maketitle
+
+這是一個\hspace{1cm}範例。
+
+這是一個\hspace{2cm}範例。
+
+這是一個\hspace{-0.5cm}範例。
+
+\end{document}
+</div></div></div></div></pre>
+<p>接著是直向距離的調整：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Space}
+\author{John Doe} 
+\date{\today}
+
+\begin{document}
+\maketitle
+
+第一段落。\vspace{1cm}
+
+第二段落。
+
+\end{document}
+</div></div></div></div></pre>
+<p>除了固定長度的空白，LaTeX 還支援彈性空白，也就是空白會根據頁面的實際排版情況而自動調整。彈性空白的單位包括 <code>\stretch</code> 和 <code>plus</code> / <code>minus</code>。例如：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Space}
+\author{John Doe} 
+\date{\today}
+
+\begin{document}
+\maketitle
+
+第一段落。\vspace{1cm plus 0.5cm minus 0.5cm}
+
+第二段落。
+
+\end{document}
+</div></div></div></div></pre>
+<p>上述例子中，垂直空白的長度會在 0.5 公分至 1.5 公分之間進行自動調整，從而適應頁面的排版狀況。</p>
+<p>另外，LaTeX 中，<code>\hspace</code> 有另一個兄弟（或姐妹）<code>\hspace*</code>。它們兩個都用於插入水平空白，但有一個重要區別：<code>\hspace</code> 在行首或行尾的空白會被忽略，而 <code>\hspace*</code> 則會保留這些空白。同樣地，<code>\vspace</code> 和 <code>\vspace*</code> 也適用於插入垂直空白，<code>\vspace</code> 在頁首或頁尾的空白會被忽略，而 <code>\vspace*</code> 則會保留這些空白。簡單來說，如果需要在行首或行尾、頁首或頁尾保留空白，那麼使用 <code>\hspace*</code> 或 <code>\vspace*</code> 較為適合。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Space}
+\author{John Doe} 
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% 使用 \hspace 插入水平空白
+這是一行文字。\hspace{1cm}這是同一行文字。\\
+\hspace{1cm}這行文字前應有空白，但被忽略了。\\
+這行文字末尾應有空白。\hspace{1cm}
+
+\vspace{1cm}
+
+% 使用 \hspace* 插入水平空白
+這是一行文字。\hspace*{1cm}這是同一行文字。\\
+\hspace*{1cm}這行文字前的空白被保留了。\\
+這行文字末尾的空白。\hspace*{1cm}也被保留了。
+
+\end{document}
+</div></div></div></div></pre>
+<p>LaTeX 還有提供插入彈性空白的指令，分別是水平的 <code>\hfill</code> 與 <code>\hfil</code>，以及垂直的 <code>\vfill</code> 與 <code>\vfil</code>。它們的用法分別說明如下：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 92%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>指令</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\hfill</code></td>
+<td>在行內插入彈性空白，將後面的內容推到行的右邊</td>
+</tr>
+<tr class="even">
+<td><code>\hfil</code></td>
+<td>在行內插入彈性空白，根據需求在多部分之間平均分配空間</td>
+</tr>
+<tr class="odd">
+<td><code>\vfill</code></td>
+<td>在頁面內插入彈性空白，將後面的內容推到頁面的底部</td>
+</tr>
+<tr class="even">
+<td><code>\vfil</code></td>
+<td>在頁面內插入彈性空白，不一定將後面的內容推到頁面底部，根據需求分配空間</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="空間調整行距" class="level2">
+<h2 class="anchored" data-anchor-id="空間調整行距">空間調整：行距</h2>
+<p>行距通常指連續的兩行文字的基線間的距離，或指兩行文字之間的空白部分（行間）的寬度<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。我們可以使用多種方法來調整行距，下面將介紹幾種常用的方法。</p>
+<p>在 LaTeX 中，行距的調整是排版中的重要一環，能夠顯著影響文件的可讀性和美觀性。行距指的是兩行文本之間的垂直間距。在 LaTeX 中，我們可以使用多種方法來調整行距，本文將介紹幾種常用的方法。</p>
+<section id="基本行距調整" class="level3">
+<h3 class="anchored" data-anchor-id="基本行距調整">基本行距調整</h3>
+<p>最基本的方法是使用 <code>\linespread</code> 指令來調整全域的行距。該指令的參數是一個相對於標準行距的<strong>倍數</strong>（請注意，它是比例）。例如，如果希望行距加倍，可以在前言區加入 <code>\linespread{2}</code>，這樣整份文件的行距就會變為標準行距的兩倍。同理，如果希望設定為 1.5 倍行距，可以使用 <code>\linespread{1.5}</code>。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入中文假文產生器
+\usepackage{zhlipsum}
+
+% 調整為標準行距的 2 倍
+\linespread{2}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Space}
+\author{John Doe} 
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\zhlipsum[1-2]
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="使用-setspace-套件" class="level3">
+<h3 class="anchored" data-anchor-id="使用-setspace-套件">使用 setspace 套件</h3>
+<p>另一種常用的方法是使用 <code>setspace</code> 套件。首先需要在前言區載入該套件，載入後則可以使用以下指令設定不同的行距：</p>
+<ul>
+<li>單倍行距：<code>\singlespacing</code></li>
+<li>1.5 倍行距：<code>\onehalfspacing</code></li>
+<li>雙倍行距：<code>\doublespacing</code></li>
+</ul>
+<p>例如，如果希望在文件中設定 1.5 倍行距，可以這樣寫：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入中文假文產生器
+\usepackage{zhlipsum}
+
+% 載入 setspace 套件
+\usepackage{setspace}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Space}
+\author{John Doe} 
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% 調整行距為標準行距的 1.5 倍
+\onehalfspacing
+\zhlipsum[1-2]
+
+\end{document}
+</div></div></div></div></pre>
+<p>此外，可以在局部區域內設定行距。例如，只在某段落內設定雙倍行距：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入中文假文產生器
+\usepackage{zhlipsum}
+
+% 載入 setspace 套件
+\usepackage{setspace}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Space}
+\author{John Doe} 
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% 設定為標準行距的 2 倍
+\begin{doublespace}
+\zhlipsum[1]
+\end{doublespace}
+
+% 以下是標準行距
+\zhlipsum[1]
+
+\end{document}
+</div></div></div></div></pre>
+<p>另一種方式則是使用以下兩個較為靈活的方式：</p>
+<ul>
+<li>調整標準行距倍數：<code>\renewcommand{\baselinestretch}{}</code></li>
+<li>精準調整行距：<code>\setlength{\baselineskip}{}</code><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+</ul>
+<p><code>\renewcommand{\baselinestretch}{倍數}</code> 指令用於全局調整行距。這個指令通過設定一個相對於標準行距的倍數來調整行距，跟 <code>linespread</code> 很相似。而 <code>\setlength{\baselineskip}{長度}</code> 指令則用於設定行距的基線距離，其中行與行之間的距離為長度，因此可以用來精準地控制每行之間的距離。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入中文假文產生器
+\usepackage{zhlipsum}
+
+% 載入 setspace 套件
+\usepackage{setspace}
+\renewcommand{\baselinestretch}{1.3}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Space}
+\author{John Doe} 
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\zhlipsum[1]
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+</section>
+<section id="空間調整首段縮排" class="level2">
+<h2 class="anchored" data-anchor-id="空間調整首段縮排">空間調整：首段縮排</h2>
+<p>「中文首段縮排」應該是臺灣學生從國小初次寫作文開始便習得的習慣<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>。Word 只要按下 tab 鍵即可縮排，但 LaTeX 預設第一段首段不會縮排，不符合中文的使用習慣，因此需要仰賴套件的協助。<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<p>LaTeX 中調整首段縮排的套件是 <code>indentfirst</code>，我們可以使用以下指令進行縮排：<code>\setlength{\parindent}{2em}</code>，其中 <code>par</code> 代表段落，<code>indent</code> 則是縮排的英文 “indentation” 的縮寫。此時所有段落的第一行就會縮排。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入中文假文產生器
+\usepackage{zhlipsum}
+
+% 載入 indentfirst 套件
+\usepackage{indentfirst}
+\setlength{\parindent}{2em} % 2em代表首行縮排兩個字
+
+% 設定標題頁資訊
+\title{\LaTeX\ Space}
+\author{John Doe} 
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\zhlipsum[1]
+
+\end{document}
+</div></div></div></div></pre>
+<p>如果某一段落不想要首行縮排，可以在段落文字開始之前加上 <code>\noindent</code> 指令；如果想要保證該段首行縮排，則加上 <code>\indent</code> 即可。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入中文假文產生器
+\usepackage{zhlipsum}
+
+% 載入 indentfirst 套件
+\setlength{\parindent}{2em} % 2em代表首行縮排兩個字
+
+% 設定標題頁資訊
+\title{\LaTeX\ Space}
+\author{John Doe} 
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% 這段首行不縮排
+\noindent\zhlipsum[1]
+
+% 這段首行縮排
+\indent\zhlipsum[1]
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+</section>
+<section id="調整紙張方向與直書" class="level1">
+<h1>調整紙張方向與直書</h1>
+<p>有時文件需要以不同的方式進行呈現，一方面是為了美感，另一方面則是為了讓讀者更容易閱讀文字，舉例來說，臺灣的國文課本絕大多數是直書編排（應該沒有一個出版社是橫書編排，有的話可以拍給我看）。為了迎合特定需求，我們便需要設定文件的方向、排版方向等。以下將先介紹如何調整紙張方向，接著提到中文使用者最需要的直書編排。</p>
+<section id="調整紙張方向" class="level2">
+<h2 class="anchored" data-anchor-id="調整紙張方向">調整紙張方向</h2>
+<p>現實生活中，常見的印刷品通常都是直向（portrait），但有時也會有橫向（landscape）的需求，例如考卷。因此，在排版中調整紙張方向是一項重要技能，能夠影響讀者的閱讀體驗和視覺效果。紙張方向主要分為縱向和橫向兩種。選擇適當的紙張方向不僅能讓內容的呈現更良好，更能提高讀者的閱讀舒適度。</p>
+<p>縱向排版通常適用於文字較多的文件，如書籍、報告或論文等，因為直向能夠容納更多的文字行數，有利於讀者順暢地閱讀長段落。相比之下，橫向排版則更適合展示寬幅的圖表或大型表格等。</p>
+<section id="使用-geometry-套件" class="level3">
+<h3 class="anchored" data-anchor-id="使用-geometry-套件">使用 geometry 套件</h3>
+<p>之前我們在<a href="https://xiaolong70701.github.io/blog/posts/2024-06-24-latex-setting/">LaTeX 教學系列：基本設定</a>介紹過 <code>geometry</code> 套件，當時我們只有針對紙張大小、邊界等進行設定。如果我們想要將紙張轉成橫向，只要載入此套件後，使用 <code>landscape</code> 選項，即 <code>\usepackage[landscape](geometry)</code>。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入 geometry 套件並設定紙張為橫向
+\usepackage[landscape]{geometry}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入中文假文產生器
+\usepackage{zhlipsum}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Landscape}
+\author{John Doe} 
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\zhlipsum[1-10]
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="直接設定" class="level3">
+<h3 class="anchored" data-anchor-id="直接設定">直接設定</h3>
+<p>另一個直接將整份文件轉向的方法是直接在文件類型進行設定，也就是 <code>\documentclass[landscape]{文件類型}</code>。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass[landscape]{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入中文假文產生器
+\usepackage{zhlipsum}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Landscape}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{前言}
+
+\zhlipsum[1-10]
+
+\end{document}
+</div></div></div></div></pre>
+<p>但是如果沒有設定好邊界，就會像上面的例子一樣跑版，因此建議設定邊界，參數可以參考以下的範例：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass[landscape]{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入中文假文產生器
+\usepackage{zhlipsum}
+
+% 設定標題格式
+\usepackage{titlesec}
+\titleformat{\section}         % 設定 \section 標題的格式
+  {\normalfont\Large\bfseries} % 標題的字體和大小
+  {\CJKnumber{\thesection}、}  % 使用 \CJKnumber 將章節編號轉換為中文數字
+  {1em}                        % 編號與文字之間的距離
+  {}                           % 標題文字之前的程式碼
+
+% 設定邊界
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+% 設定標題頁資訊
+\title{第一份 \LaTeX\ 文件}
+\author{王大明}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{前言}
+
+\zhlipsum[1-10]
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="使用-pdflscape-套件" class="level3">
+<h3 class="anchored" data-anchor-id="使用-pdflscape-套件">使用 pdflscape 套件</h3>
+<p>當然，不是所有時候都需要將整份文件都轉向。如果我們只需要將文件中特定頁面轉向，例如有一張較大的迴歸分析表，那麼就可以使用 <code>pdflscape</code> 套件，該套件允許使用者在文件中局部改變頁面方向。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入 pdflscape 套件
+\usepackage{pdflscape}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入中文假文產生器
+\usepackage{zhlipsum}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Landscape}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{前言}
+
+\zhlipsum[1-2]
+
+\begin{landscape}
+    \zhlipsum[3-4]
+\end{landscape}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+</section>
+<section id="直書編排" class="level2">
+<h2 class="anchored" data-anchor-id="直書編排">直書編排</h2>
+<p>直書是中國傳統文化中的重要元素，源遠流長。在古代中國，文字多以直書形式呈現，也就是由右至左、由上至下。該書寫方式不僅體現了中國文化所具有的獨特性，也與漢字的結構特點相得益彰。直書能夠充分展現漢字的方塊特性，使得每個字都能獨立成章，形成一種視覺上的均衡美感。</p>
+<p>此外，直書在某些場合仍然具有它重要的意義。例如，在書法藝術中，直書能夠更好地展現筆劃的流暢性和作品的整體氣韻。在傳統建築和文物中，直書題字也常被用來彰顯莊重感和歷史感。因此，在現代排版中，有時仍需要使用直書來呈現特定的文化內容或營造特殊的氛圍。</p>
+<p>廢話不多說，直接看例子：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass[12pt,a5paper,landscape]{article} % 使用 a5 landscape 版面
+\usepackage[landscape]{geometry}
+
+% 設定字體
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\setCJKmainfont[RawFeature={vertical:+vert}]{FandolSong} %旋轉輸出 CJK 字符
+\defaultfontfeatures{Ligatures=TeX} % 啟用 TeX 排版風格的連字
+\xeCJKsetup{CJKglue=\hspace{0.005em plus .08 \baselineskip }} % 放鬆字距
+\xeCJKsetup{RubberPunctSkip=false} % 取消標點符號之間的彈性間距
+\xeCJKsetup{PunctStyle=plain} % 設定標點符號的樣式為簡單模式
+\xeCJKsetup{CheckSingle=true} % 啟用單字檢查，防止行末出現單獨的漢字
+\xeCJKsetup{Verb=false} % 禁用 xeCJK 對 \verb 和 verbatim 環境的干擾
+
+% 載入中文假文產生器
+\usepackage{zhlipsum}
+
+\usepackage{geometry} % 用來調整頁面邊距
+\geometry{margin=3cm}
+
+\usepackage{graphicx} % 載入此套件以使用 \rotatebox 指令
+\usepackage{fancyhdr} % 載入此套件設定頁首與頁腳
+\pagestyle{fancy}
+\fancyhf{} % 清除所有的頁首和頁腳設定
+\fancyfoot[R]{%
+    \smash{\raisebox{0.55\textheight}[0pt][0pt]{\rlap{\hspace{1.2cm}\rotatebox[origin=c]{90}{\thepage}}}} % 旋轉頁碼，並放置於頁面右側
+}
+\renewcommand{\headrulewidth}{0pt} % 移除頁首橫線
+\setlength{\parskip}{0em} % 取消段落間距
+\newcommand*\eng[1]{\raisebox{-.35em}{#1}} % 使用英文時向下移動 0.35em 與中文對齊
+\renewcommand{\baselinestretch}{1.5} % 設定行距
+\setlength{\parindent}{2em} % 設定首段縮排長度
+
+% 自定義標題頁
+\newcommand{\customtitle}[3]{% % 定義自訂標題指令
+    \thispagestyle{fancy} % 設定目前頁的頁面樣式為 fancy
+    \vspace{1.5cm} % 增加 1.5 公分的垂直空白
+    \begin{center}
+        {\LARGE #1\par} % 顯示第一個參數，字體大小為 LARGE，並換行
+        \vspace{1cm} % 增加 1 公分的垂直空白
+        {\large #2\par} % 顯示第二個參數，字體大小為 large，並換行
+        \vspace{0.5cm} % 增加 0.5 公分的垂直空白
+        {\large #3\par} % 顯示第三個參數，字體大小為 large，並換行
+    \end{center}
+}
+
+\begin{document}
+
+\customtitle{測試文件}{作者名字}{二〇二四年七月十日}
+\zhlipsum[1-3]
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+</section>
+<section id="條列式清單" class="level1">
+<h1>條列式清單</h1>
+<p>條列式的表達在各種領域都十分重要，除了簡潔之外，讀者也可以快速閱讀完相關內容，輕易地理解作者提出的論點、比較的基準等<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>。LaTeX 中有三種條列式清單的環境，分別是 <code>itemize</code>、<code>enumerate</code> 與 <code>description</code>，每個條列環境最多可以支援到六個嵌套。以下我們就一一介紹這三種不同的條列式環境，並進一步講解如何調整裡面的內容。</p>
+<section id="不同種類的清單" class="level2">
+<h2 class="anchored" data-anchor-id="不同種類的清單">不同種類的清單</h2>
+<p>LaTeX 所提供的清單環境，每一個項目都是以 <code>\item</code> 開頭，後面放上內容。如果想要針對項目符號進行調整，請參閱下一小節。</p>
+<section id="無序清單" class="level3">
+<h3 class="anchored" data-anchor-id="無序清單">無序清單</h3>
+<p>無序清單適合用來列出不需要特定順序的項目，每個項目前都有一個符號標記，默認為實心圓點，例如我們想要顯示以下的無序清單：</p>
+<ul>
+<li>項目一</li>
+<li>項目二</li>
+<li>項目三</li>
+</ul>
+<p>我們只需將各項目放在 <code>\itemize</code> 環境即可。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ List}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{itemize}
+    \item 項目一
+    \item 項目二
+    \item 項目三
+\end{itemize}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="有序清單" class="level3">
+<h3 class="anchored" data-anchor-id="有序清單">有序清單</h3>
+<p>有序清單可以有效地呈現需要按順序排列的內容，有序清單預設的項目編號是阿拉伯數字，例如我們想要呈現以下的有序清單：</p>
+<ol type="1">
+<li>項目一</li>
+<li>項目二</li>
+<li>項目三</li>
+</ol>
+<p>可以使用 <code>enumerate</code> 環境。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ List}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+    \item 項目一
+    \item 項目二
+    \item 項目三
+\end{enumerate}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="說明性清單" class="level3">
+<h3 class="anchored" data-anchor-id="說明性清單">說明性清單</h3>
+<p>在 LaTeX 中，說明性清單是一種特殊的條列清單，用於列出帶有標題的項目。此種清單格式特別適用於定義列表或需要解釋的術語。使用方法如下：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ List}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{description}
+    \item[項目一] 這是項目一的說明。
+    \item[項目二] 這是項目二的說明。
+    \item[項目三] 這是項目三的說明。
+\end{description}
+
+\end{document}
+</div></div></div></div></pre>
+<p>說明性清單的環境中，每個 <code>\item</code> 後面的 <code>[]</code> 是自定義標題，隨後是該項目的說明。使用者可以定義自己的標題，且可以透過調整格式設置來改變標題的外觀，例如字體加粗、斜體等。</p>
+</section>
+</section>
+<section id="設定清單" class="level2">
+<h2 class="anchored" data-anchor-id="設定清單">設定清單</h2>
+<p>如果我們不喜歡預設的清單項目符號，可以利用不同的方法來設定，例如有時需要羅馬數字、英文字母等。但是在 LaTeX 中，我們需要將這些數字進行特別處理，將數字視為<strong>順序</strong>，並利用指令來呈現出想要的項目編號。以下是 LaTeX 提供的指令，用於調整項目編號：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>指令</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\arabic</code></td>
+<td>阿拉伯數字 (1, 2, 3, …)</td>
+</tr>
+<tr class="even">
+<td><code>\roman</code></td>
+<td>小寫羅馬數字 (i, ii, iii, …)</td>
+</tr>
+<tr class="odd">
+<td><code>\Roman</code></td>
+<td>大寫羅馬數字 (I, II, III, …)</td>
+</tr>
+<tr class="even">
+<td><code>\alph</code></td>
+<td>小寫字母 (a, b, c, …)</td>
+</tr>
+<tr class="odd">
+<td><code>\Alph</code></td>
+<td>大寫字母 (A, B, C, …)</td>
+</tr>
+</tbody>
+</table>
+<section id="使用-renewcommand-調整編號" class="level3">
+<h3 class="anchored" data-anchor-id="使用-renewcommand-調整編號">使用 \renewcommand 調整編號</h3>
+<p>最簡單調整編號的方式是使用 <code>\renewcommand</code>。之前沒有介紹過這個指令，在這邊快速講解。<code>\renewcommand</code> 用於重新定義既有的指令，其指令內容為 <code>\renewcommand{原指令名稱}{定義}</code>，也就是針對既有的指令進行調整。</p>
+<p>套用在項目編號的設定中，<code>\renewcommand</code> 的使用方式為 <code>\renewcommand{項目名稱}{欲設定符號}</code>。不同的條列式環境都有對應的項目名稱，<code>\itemize</code> 環境對應到 <code>\labelitemi</code>，<code>enumerate</code> 環境則對應到 <code>\labelenumi</code>。例如我們可以將 <code>enumerate</code> 環境的項目編號改成帶括號的小寫英文字母，即 (a)、(b)、(c)…：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定項目編號為帶括號的小寫英文字母
+\renewcommand{\labelenumi}{(\alph{enumi})}
+
+% 設定標題頁資訊
+\title{\LaTeX\ List}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+    \item 項目一
+    \item 項目二
+    \item 項目三
+\end{enumerate}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="使用-enumitem-套件調整編號" class="level3">
+<h3 class="anchored" data-anchor-id="使用-enumitem-套件調整編號">使用 enumitem 套件調整編號</h3>
+<p>如果需要更複雜的編號格式，可以使用 <code>enumitem</code> 套件。使用方式很簡單，只要在 <code>\begin{條列式環境}</code> 後面加上方括號，並在括號內加入 <code>label=欲設定符號*</code> 即可<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>。例如我們將 <code>enumerate</code> 環境項目編號修改成大寫羅馬數字，並在編號後面都加上一個點，則可以參考以下程式碼：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入 enumitem 套件
+\usepackage{enumitem}
+
+% 設定標題頁資訊
+\title{\LaTeX\ List}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}[label={\Roman*.}]
+    \item 項目一
+    \item 項目二
+    \item 項目三
+\end{enumerate}
+
+\end{document}
+</div></div></div></div></pre>
+<p><code>enumitem</code> 的功能還不止這些，利用此套件，我們還可以進一步設定條列式清單的其他外觀。而在設定不同外觀時，請記得使用半形逗號 <code>,</code> 進行分隔。</p>
+<ol type="1">
+<li>調整內縮距離：使用 <code>left</code> 調整清單的內縮，也就是項目符號可以左右移動使其對齊。</li>
+<li>設定項目間距：利用 <code>itemsep</code>，我們可以調整各項目之間的間距。</li>
+<li>調整整體清單間距：我們可以調整周圍文字或清單項目之間的垂直和水平空白距離，使用 <code>parsep</code> 調整段落間距，<code>topsep</code> 調整清單上方和下方的空白。</li>
+<li>多層次清單：上面提到 LaTeX 的條列式清單最多可以支援六個嵌套，載入 <code>enumitem</code> 套件後就可以使用此功能。<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></li>
+</ol>
+<p>以下範例同時使用上面四個設定：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入 enumitem 套件
+\usepackage{enumitem}
+
+% 設定標題頁資訊
+\title{\LaTeX\ List}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}[left=1cm, itemsep=0.5cm, parsep=1cm, topsep=1cm]
+    \item 第一項
+    \item 第二項
+    \begin{enumerate}[left=1.5cm, itemsep=0.4cm, parsep=0.8cm, topsep=0.8cm]
+        \item 第二項的子項目一
+        \item 第二項的子項目二
+        \begin{enumerate}[left=2cm, itemsep=0.3cm, parsep=0.6cm, topsep=0.6cm]
+            \item 第二項的子項目一的子項目一
+            \item 第二項的子項目一的子項目二
+        \end{enumerate}
+    \end{enumerate}
+    \item 第三項
+\end{enumerate}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+</section>
+</section>
+<section id="顏色" class="level1">
+<h1>顏色</h1>
+<p>顏色在我們的日常生活中扮演著不可或缺的角色，不僅能夠傳達情感、突顯重點，還能創造視覺上的美感和層次。從交通號誌的紅綠燈到品牌標誌的設計，顏色無處不在，並且在無形之中影響著我們的決策和感受。同樣地，在文件製作中，恰當地運用顏色同樣能夠有畫龍點睛的效果，幫助讀者更好地理解文件。</p>
+<p>在 Word 中，新增顏色通常是一個簡單直接的過程——直接選擇文字，然後從調色板中挑選所需的顏色即可。然而，在 LaTeX 裡面，顏色的使用雖然有點複雜，但卻更加精確且系統化的方法。</p>
+<p>LaTeX 中的顏色處理主要依賴於專門的顏色套件。最常用的兩個套件是 <code>color</code> 和 <code>xcolor</code>，其中 <code>xcolor</code> 是 <code>color</code> 的拓展版本，提供了更多進階功能。這些套件允許使用者定義自己的顏色、混合顏色、調整顏色深淺，甚至使用漸變效果。與 Word 等所見即所得的軟件不同，LaTeX 中的顏色定義和使用更加程式化、系統化，使得在文件中能夠保持顏色的一致性。</p>
+<section id="color-套件" class="level2">
+<h2 class="anchored" data-anchor-id="color-套件">color 套件</h2>
+<p><code>color</code> 套件是 LaTeX 中處理顏色的基礎套件，它提供了一系列基本的顏色定義和使用命令。載入 <code>color</code> 套件後，我們可以使用以下兩種指令改變文字顏色：<code>\textcolor{顏色}{文字}</code> 或 <code>\color{顏色}{文字}</code>。使用方法請參見以下範例程式碼：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入 color 套件
+\usepackage{color}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Color}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+這是正常顏色的文字，{\color{red}{這是紅色的文字}}，回到正常顏色。
+
+\end{document}
+</div></div></div></div></pre>
+<p><code>color</code> 套件事先定義的顏色指令有：<code>black</code>, <code>blue</code>, <code>brown</code>, <code>cyan</code>, <code>darkgray</code>, <code>gray</code>, <code>green</code>, <code>lightgray</code>, <code>lime</code>, <code>magenta</code>, <code>olive</code>, <code>orange</code>, <code>pink</code>, <code>purple</code>, <code>red</code>, <code>teal</code>, <code>violet</code>, <code>white</code>, <code>yellow.</code>。不過，世界上的顏色種類超過一億種，目前人類能夠區分出的顏色也有一千萬種，因此上面這些顏色指令往往不敷使用。因此，<code>color</code> 套件允許使用者定義自己的顏色。我們可以使用 <code>RGB</code>、<code>CMYK</code> 或灰度值等模式來定義顏色。</p>
+<p>定義顏色的指令為 <code>\definecolor{自定義顏色名稱}{色彩模式}{對應顏色值}</code>，而以下是不同色彩模式、說明與範例：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 41%">
+<col style="width: 41%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>色彩模式</th>
+<th>說明</th>
+<th>範例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>rgb</code></td>
+<td>使用 RGB 值定義顏色（範圍 0-1）</td>
+<td><code>\color[rgb]{1,0,0}</code></td>
+</tr>
+<tr class="even">
+<td><code>RGB</code></td>
+<td>使用 RGB 值定義顏色（範圍 0-255）</td>
+<td><code>\color[RGB]{255,0,0}</code></td>
+</tr>
+<tr class="odd">
+<td><code>cmyk</code></td>
+<td>使用 CMYK 值定義顏色（範圍 0-1）</td>
+<td><code>\color[cmyk]{0,1,1,0}</code></td>
+</tr>
+<tr class="even">
+<td><code>hsb</code></td>
+<td>使用 HSB 值定義顏色（範圍 0-1）</td>
+<td><code>\color[hsb]{0,1,1}</code></td>
+</tr>
+<tr class="odd">
+<td><code>gray</code></td>
+<td>使用灰度值定義顏色（範圍 0-1）</td>
+<td><code>\color[gray]{0.5}</code></td>
+</tr>
+<tr class="even">
+<td><code>HTML</code></td>
+<td>使用 HTML 十六進制代碼定義顏色</td>
+<td><code>\color[HTML]{FF0000}</code></td>
+</tr>
+<tr class="odd">
+<td><code>Hsb</code></td>
+<td>使用 Hsb 值定義顏色（範圍 0-1）</td>
+<td><code>\color[Hsb]{0,1,1}</code></td>
+</tr>
+</tbody>
+</table>
+<p>以下我們分別用 <code>RGB</code>、<code>CMYK</code> 與灰度值定義三種顏色：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入 color 套件
+\usepackage{color}
+
+% 定義顏色
+\definecolor{myblue}{RGB}{0,0,255}
+\definecolor{mypurple}{cmyk}{0.3,0.8,0.1,0.1}
+\definecolor{mygray}{gray}{0.7}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Color}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\color{myblue}{這是 myblue 的文字}
+
+\color{mypurple}{這是 mypurple 的文字}
+
+\color{mygray}{這是 mygray 的文字}
+
+\end{document}
+</div></div></div></div></pre>
+<p>如果你跟我一樣<sub>很懶</sub>想要有效率地定義顏色，可以參考<a href="https://latexcolor.com/">LaTeX Color</a>這個網站。該網站提供多種顏色的定義和程式碼範例，只要找到想要的顏色，點擊右邊的程式碼之後，複製下來即可。</p>
+<p>另一個推薦的網站是<a href="https://www.w3schools.com/colors/colors_picker.asp">HTML Color Picker</a>，進入網站後可以看到以下的介面，右邊的 “Selected Color” 顯示使用者選取的顏色，並給予黑、白文字與加上陰影效果的範例，“Lighter / Darker” 區域則是讓使用者知道該顏色不同透明度的效果為何，且給予 HTML 的色碼。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="colors_picker.png" class="img-fluid figure-img" style="width:100.0%" data-fig.align="center"></p>
+<figcaption>圖 1：HTML Color Picker 使用介面</figcaption>
+</figure>
+</div>
+<p>使用者有好幾種方式選擇顏色，一是直接在六角形的區域選擇，二是點選 “Or Use HTML5” 下面的顏色條，就會顯示出選取顏色的畫面，可以在下方的選擇器點選想要顯示的色碼，或是點選滴管選擇圖片、網頁等的顏色。</p>
+</section>
+<section id="xcolor-套件" class="level2">
+<h2 class="anchored" data-anchor-id="xcolor-套件">xcolor 套件</h2>
+<p>在使用過 <code>color</code> 套件後，是不是發現好像少了一些功能，例如將文字加底色、改變頁面顏色等。沒錯！這時候就需要用到 <code>xcolor</code> 套件。</p>
+<section id="混色" class="level3">
+<h3 class="anchored" data-anchor-id="混色">混色</h3>
+<p><code>xcolor</code> 套件最大的優勢除了提供了更多的預定義顏色之外，還可以混色！混色的意思是可以利用百分比來混合兩種或多種顏色，例如 <code>\color{red!30!blue}</code> 就是使用了 30% 的紅色和 70% 的藍色混合而成的顏色（照理來說應該是紫色）。實際結果長這樣：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入 xcolor 套件
+\usepackage{xcolor}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Color}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\color{red!30!blue}{文字}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="調整透明度" class="level3">
+<h3 class="anchored" data-anchor-id="調整透明度">調整透明度</h3>
+<p><code>xcolor</code> 允許使用者定義顏色的<strong>透明度</strong>（opacity），在建立浮水印或疊加效果時非常有幫助。使用方法就是在顏色後面加上半形的驚嘆號 <code>!</code> 後，打上透明度的數字（從 0 到 100）。例如：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入 xcolor 套件
+\usepackage{xcolor}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Color}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\textcolor{red}{這是無透明度的紅色文字。}
+
+\textcolor{red!50}{這是透明度 0.5 的紅色文字。}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="加入文字背景顏色" class="level3">
+<h3 class="anchored" data-anchor-id="加入文字背景顏色">加入文字背景顏色</h3>
+<p>Word 裡面為文字加入背景顏色的方法是將文字框起來後，點擊文字醒目提示色彩，選取想要的顏色即可。不過可以發現到 Word 提供的顏色很少，但在 LaTeX 中使用 <code>xcolor</code> 就可以加入很多顏色，並且可以調整透明度。加入文字背景色的方式很簡單，指令為 <code>\colorbox{顏色}{文字}</code> 即可。以下是範例程式碼：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入 xcolor 套件
+\usepackage{xcolor}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Color}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\colorbox{red}{這是無透明度的紅色背景。}
+
+\colorbox{red!50}{這是透明度 0.5 的紅色背景。}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="設定頁面底色" class="level3">
+<h3 class="anchored" data-anchor-id="設定頁面底色">設定頁面底色</h3>
+<p>如果不想要頁面原本的底色，想要將頁面底色修改為其他顏色，除了使用 <code>xcolor</code> 套件外，還需要額外載入 <code>pagecolor</code> 套件。使用方法就是在前言區加上 <code>\pagecolor{顏色}</code> 即可。例如我們將頁面顏色設定為藍色，透明度為 20%，排版結果如下：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入中文假文產生器
+\usepackage{zhlipsum}
+
+% 載入 xcolor 套件
+\usepackage{xcolor}
+
+% 載入 pagecolor 套件
+\usepackage{pagecolor}
+\pagecolor{blue!20} % 設定頁面顏色為藍色，透明度為 20%
+
+% 設定標題頁資訊
+\title{\LaTeX\ Color}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\zhlipsum[1-10]
+
+\end{document}
+</div></div></div></div></pre>
+<p>如果想要將頁面顏色改為白色，在該頁面開始前輸入 <code>\pagecolor{white}</code>，就可以變回白色。</p>
+</section>
+<section id="色彩模式轉換" class="level3">
+<h3 class="anchored" data-anchor-id="色彩模式轉換">色彩模式轉換</h3>
+<p><code>xcolor</code> 套件支援色彩模式的轉換。例如，我們可以在 <code>RGB</code>、<code>CMYK</code>、<code>HSB</code> 等不同的色彩模型之間進行轉換。我們先看以下範例再來解釋：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入中文假文產生器
+\usepackage{zhlipsum}
+
+% 載入 xcolor 套件
+\usepackage{xcolor}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Color}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\convertcolorspec{named}{RoyalBlue}{RGB}\tmp
+
+Royalblue 這個顏色在 RGB 模型中的值是：\tmp
+
+\end{document}
+</div></div></div></div></pre>
+<p>進行色彩模式轉換的語法為 <code>\convertcolorspec{輸入色彩模式}{色碼}{輸出色彩模式}{暫存指令}</code>。它的意思是給定已知的色彩模式與在該色彩模式定義下的色碼，我們可以轉換成目標色彩模式。例如上述例子中，我們將預定義的顏色 Royalblue 的色碼以 <code>RGB</code> 色彩模式顯示出來，並將結果暫存在 <code>\tmp</code> 指令中。顏色轉換功能在需要精準控制顏色或在不同顏色模式之間轉換時非常有用。在需要知道某個命名顏色的確切 <code>RGB</code> 值，或者當需要將 <code>RGB</code> 顏色轉換為 <code>CMYK</code> 以便進行印刷、排版時，這個功能就能派上用場。</p>
+</section>
+</section>
+</section>
+<section id="線條與方框" class="level1">
+<h1>線條與方框</h1>
+<p>線條與方框在一份文件當中，可以拿來標示或分隔特定的文字。Word 與 LaTeX 在處理線條與方框上有很大的不同：Word 只要點幾個按鈕就可以繪製線條與方框；LaTeX 就需要透過指令來繪製。在線條與方框上面，確實 LaTeX 略遜一籌，但是 LaTeX 提供的線條與方框美觀程度不輸 Word。</p>
+<section id="線條" class="level2">
+<h2 class="anchored" data-anchor-id="線條">線條</h2>
+<p>LaTeX 提供了多種繪製線條的方法，其中最常用的是 <code>\rule</code> 指令，<code>\rule</code> 指令的基本語法是：<code>\rule[raise]{width}{height}</code>。其中，<code>raise</code> 是可選參數，表示線條相對於基線的垂直偏移量；<code>width</code> 是線條的寬度，<code>height</code> 則是線條的高度。例如，<code>\rule{5cm}{0.4pt}</code> 會繪製一條寬 5 公分、高 0.4 pt 的水平線。除了基本的水平線，LaTeX 支援垂直線和斜線。要繪製垂直線，只需將寬度設為很小的值，高度設為所需長度即可。例如，<code>\rule{0.4pt}{3cm}</code> 會產生一條高 3 公分的垂直線。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Line}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\rule{5cm}{0.4pt} % 繪製一條寬 5 公分、高 0.4 點的水平線
+
+\end{document}
+</div></div></div></div></pre>
+<p>如果想要繪製斜線，就需要使用到 <code>graphicx</code> 套件，雖然 <code>\rule</code> 指令本身不能直接畫斜線，但結合 <code>\rotatebox 和適當的調整，我們可以實現各種角度和長度的斜線效果。。首先，在前言區中載入</code>graphicx<code>套件後，使用如下語法來繪製斜線：</code>`</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入 graphicx 套件
+\usepackage{graphicx}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Line}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% 畫一條向右上方 45 度的斜線：
+\rotatebox{45}{\rule{1cm}{0.4pt}}
+% 畫一條向右下方 45 度的斜線：
+\rotatebox{-45}{\rule{1cm}{0.4pt}}
+% 畫一條更長、更粗的 60 度斜線：
+\rotatebox{60}{\rule{2cm}{1pt}}
+
+\end{document}
+</div></div></div></div></pre>
+<p>如果需要更精確控制斜線的位置，可以將 <code>\rotatebox</code> 和 <code>\rule</code> 組合放在一個 <code>\raisebox</code> 指令中，即 <code>\raisebox{垂直偏移}{\rotatebox{角度}{\rule{長度}{粗細}}}</code>。例如：<code>\raisebox{5pt}{\rotatebox{30}{\rule{2cm}{0.6pt}}}</code>，這樣就會將斜線向上移動 5pt，然後旋轉 30 度。</p>
+</section>
+<section id="方框" class="level2">
+<h2 class="anchored" data-anchor-id="方框">方框</h2>
+<p>在 LaTeX 中，方框是重要的排版工具。它們能凸顯出文件關鍵資訊與美化版面，提高可讀性。LaTeX 繪製方框可以用 <code>\fbox</code>、<code>fancybox</code>、<code>tcolorbox</code>、<code>mdframed</code> 等套件。</p>
+<section id="fbox-套件" class="level3">
+<h3 class="anchored" data-anchor-id="fbox-套件">fbox 套件</h3>
+<p>事實上，使用 <code>fbox</code> 時可以不用使用套件，直接用 <code>\fbox{文字}</code> 即可。例如以下範例：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Frame}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\fbox{範例文字}
+
+\end{document}
+</div></div></div></div></pre>
+<p>這個指令就是在文字外面加上外框而已，並無太大變化。</p>
+<p>如果到這裡就介紹結束了，那就太小看 <code>fbox</code> 了。我們可以載入 <code>fbox</code> 套件進行更進一步的調整，並根據不同的需求，透過調整參數來改變方框的外觀。載入 <code>fbox</code> 套件後，我們使用 <code>\fbox[參數]{文字}</code> 來調整方框。這些參數包含：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>參數</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>r</code></td>
+<td>僅有右邊線條</td>
+</tr>
+<tr class="even">
+<td><code>l</code></td>
+<td>僅有左邊線條</td>
+</tr>
+<tr class="odd">
+<td><code>b</code></td>
+<td>僅有下方線條</td>
+</tr>
+<tr class="even">
+<td><code>t</code></td>
+<td>僅有左右兩邊線條</td>
+</tr>
+<tr class="odd">
+<td><code>T</code></td>
+<td>顯示在文字的頂端</td>
+</tr>
+<tr class="even">
+<td><code>B</code></td>
+<td>顯示在文字的底部</td>
+</tr>
+</tbody>
+</table>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入 fbox 套件
+\usepackage{fbox}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Frame}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% 單純文字方框
+\fbox{範例文字}
+
+% 無左邊線條方框
+\fbox[rbt]{範例文字}
+\fbox[brt]{範例文字}
+\fbox[bRT]{範例文字}
+
+% 僅左、上有線條
+\fbox[lT]{範例文字}
+\fbox[Tl]{範例文字}
+
+% 僅右、下有線條
+\fbox[rB]{範例文字}
+\fbox[Br]{範例文字}
+
+% 僅上下有線條
+\fbox[bT]{範例文字}
+
+\end{document}
+</div></div></div></div></pre>
+<p>我們也可以用 <code>\setlength</code> 來調整 <code>fbox</code> 的線條寬度，語法為 <code>\setlength\fboxrule{寬度}</code>，使用後 <code>fbox</code> 的文字外框就會全部變成該寬度。例如 <code>\setlength\fboxrule{5pt}</code> 就會將外框線寬度設定為 5pt。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入 fbox 套件
+\usepackage{fbox}
+\setlength\fboxrule{5pt} % 設定 fbox 外框線為 5pt
+
+% 設定標題頁資訊
+\title{\LaTeX\ Frame}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\fbox[rB]{範例文字}
+
+\end{document}
+</div></div></div></div></pre>
+<p>上述設定的結果有陰影的感覺，大家可以再嘗試看看其他的寬度。</p>
+</section>
+<section id="fancybox-套件" class="level3">
+<h3 class="anchored" data-anchor-id="fancybox-套件">fancybox 套件</h3>
+<p><code>fancybox</code> 套件的名字聽起來就很 fancy，實際上也確實很 fancy。該套件提供了多種繪製文字外框的選項，包括陰影框（Shadowbox）、雙線框（Doublebox）和橢圓框（Ovalbox）。這些不同的外框指令如下表所示：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>指令</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\shadowbox{}</code></td>
+<td>繪製帶陰影的外框</td>
+</tr>
+<tr class="even">
+<td><code>\doublebox{}</code></td>
+<td>繪製雙線外框</td>
+</tr>
+<tr class="odd">
+<td><code>\ovalbox{}</code></td>
+<td>繪製圓角矩形外框</td>
+</tr>
+<tr class="even">
+<td><code>\Ovalbox{}</code></td>
+<td>繪製更粗的圓角矩形外框</td>
+</tr>
+</tbody>
+</table>
+<p>我們也可以透過以下指令選項進行調整：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>指令</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\cornersize{}</code></td>
+<td>調整圓角大小</td>
+</tr>
+<tr class="even">
+<td><code>\fboxrule</code></td>
+<td>調整框線寬度</td>
+</tr>
+<tr class="odd">
+<td><code>\setlength{\fboxsep}{長度}</code></td>
+<td>調整文字與框線的間距</td>
+</tr>
+<tr class="even">
+<td><code>\parbox{}</code></td>
+<td>結合 <code>\shadowbox</code> 等指令實現框內文字換行</td>
+</tr>
+<tr class="odd">
+<td><code>\vskip</code></td>
+<td>在不同外框之間新增垂直間距</td>
+</tr>
+<tr class="even">
+<td><code>\shadowsize</code></td>
+<td>調整陰影大小</td>
+</tr>
+</tbody>
+</table>
+<p>直接看以下範例會更明瞭：<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入 fancybox 套件
+\usepackage{fancybox}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Frame}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\shadowbox{這是一個陰影外框}
+
+\vskip 5mm
+
+\setlength{\fboxsep}{6pt} % 修改內部間距
+ 
+\shadowbox{使用陰影外框}
+ 
+\vskip 5mm
+
+% \fboxrule \shadowsize 都設置兩倍
+\fboxrule=2\fboxrule
+\shadowsize=2\shadowsize
+ 
+\shadowbox{使用陰影外框}
+
+\vskip 5mm
+
+\fboxrule=0.5\fboxrule
+\shadowsize=0.5\shadowsize
+ 
+\vskip 5mm
+ 
+\doublebox{雙重線外框}
+ 
+\vskip 5mm
+ 
+\fboxrule=2\fboxrule % 線寬兩倍
+ 
+\doublebox{兩重線外框}
+ 
+\fboxrule=0.5\fboxrule
+ 
+\vskip 5mm
+ 
+\ovalbox{橢圓外框}
+ 
+\vskip 5mm
+ 
+\cornersize{2} % 角度為 2
+ 
+\ovalbox{橢圓外框}
+ 
+\cornersize{0.5} % 角度為 .5
+ 
+\vskip 5mm
+ 
+\Ovalbox{橢圓外框}
+
+\vskip 5mm
+ 
+\cornersize{0.5}
+ 
+\shadowbox{\parbox{40mm}{使用 {\tt parbox} 進行換行的陰影外框}}
+ 
+\vskip 5mm
+ 
+\doublebox{\parbox{40mm}{使用  {\tt parbox} 進行換行的外框}}
+ 
+\vskip 5mm
+ 
+\ovalbox{\parbox{40mm}{使用 {\tt parbox} 進行換行的外框}}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="tcolorbox-套件" class="level3">
+<h3 class="anchored" data-anchor-id="tcolorbox-套件">tcolorbox 套件</h3>
+<p><code>tcolorbox</code> 是一個功能豐富且十分齊全的 LaTeX 套件，它專門用於繪製自定義的彩色文字外框。此套件不僅僅提供基本的文字外框功能，更包括了多種設定，例如標題、分欄、嵌套外框、外觀設定等。</p>
+<section id="基本用法" class="level4">
+<h4 class="anchored" data-anchor-id="基本用法">基本用法</h4>
+<p>在前言區載入 <code>tcolorbox</code> 套件後，我們可以直接進入 <code>tcolorbox</code> 環境：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入 tcolorbox 套件
+\usepackage{tcolorbox}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Frame}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{tcolorbox}
+    這是一個基本的彩色文字外框。
+\end{tcolorbox}
+
+\end{document}
+</div></div></div></div></pre>
+<p>從範例程式碼可以看到，<code>tcolorbox</code> 套件的預設底色是灰色，外框線為黑色。</p>
+</section>
+<section id="參數設定" class="level4">
+<h4 class="anchored" data-anchor-id="參數設定">參數設定</h4>
+<p><code>tcolorbox</code> 套件有多樣的參數選項（是真的很多），允許使用者自訂文字外框的外觀，例如調整邊框顏色、背景顏色，<code>tcolorbox</code> 還支援多種特殊效果，如陰影、漸層等，建議直接看<a href="https://ctan.org/pkg/tcolorbox?lang=en">官方文件</a>會比較快。以下是最基本的 <code>tcolorbox</code> 參數設定：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>指令</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>colback</code></td>
+<td>設定方塊的背景顏色</td>
+</tr>
+<tr class="even">
+<td><code>colframe</code></td>
+<td>設定方塊的邊框顏色</td>
+</tr>
+<tr class="odd">
+<td><code>boxrule</code></td>
+<td>設定方塊邊框的寬度</td>
+</tr>
+<tr class="even">
+<td><code>width</code></td>
+<td>設定方塊的寬度</td>
+</tr>
+<tr class="odd">
+<td><code>height</code></td>
+<td>設定方塊的高度</td>
+</tr>
+<tr class="even">
+<td><code>title</code></td>
+<td>為方塊新增標題</td>
+</tr>
+<tr class="odd">
+<td><code>fonttitle</code></td>
+<td>設定標題的字型</td>
+</tr>
+<tr class="even">
+<td><code>sharp corners</code></td>
+<td>設定方塊為直角</td>
+</tr>
+<tr class="odd">
+<td><code>rounded corners</code></td>
+<td>設定方塊為圓角</td>
+</tr>
+<tr class="even">
+<td><code>arc</code></td>
+<td>設定圓角的弧度</td>
+</tr>
+<tr class="odd">
+<td><code>top</code></td>
+<td>設定方塊與上方文字的間距</td>
+</tr>
+<tr class="even">
+<td><code>bottom</code></td>
+<td>設定方塊與下方文字的間距</td>
+</tr>
+<tr class="odd">
+<td><code>left</code></td>
+<td>設定方塊與左側文字的間距</td>
+</tr>
+<tr class="even">
+<td><code>right</code></td>
+<td>設定方塊與右側文字的間距</td>
+</tr>
+</tbody>
+</table>
+<p>參數設定的方式很簡單，有兩種最主要的方式：直接在環境使用時設定，以及在前言區自定義一個 <code>tcolorbox</code> 樣式。</p>
+<p>第一種方法是在使用 <code>tcolorbox</code> 環境時，直接在方括號 <code>[]</code> 中設定參數，也就是</p>
+<pre><code>\begin{tcolorbox}[
+  % 在此設定
+]
+範例文字
+\end{tcolorbox}</code></pre>
+<p>例如我們可以將背景顏色設定為淺黃色、使用深紅色邊框、設定標題為粗體，以及將標題文字設定為「範例文字框」：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入 tcolorbox 套件
+\usepackage{tcolorbox}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Frame}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{tcolorbox}[
+    colback=yellow!10,
+    colframe=red!50!black,
+    fonttitle=\bfseries,
+    title=範例文字框
+]
+直接設定的 tcolorbox 範例。
+\end{tcolorbox}
+
+\end{document}
+</div></div></div></div></pre>
+<p>另一個方法則是在前言區<strong>自定義樣式</strong>。方法是在前言區或欲修改樣式的前面開啟 <code>\tcbset{}</code> 的指令，並在裡面加上所要設定的樣式名稱，也就是：</p>
+<pre><code>\tcbset{
+  樣式名稱/.style={
+    設定 1,
+    設定 2,
+    ...
+    設定 k
+  }
+}</code></pre>
+<p>使用方式則是在進入 <code>tcolorbox</code> 環境後，在方框內打上樣式名稱，亦即</p>
+<pre><code>\begin{tcolorbox}[樣式名稱]
+    ...
+\end{tcolorbox}</code></pre>
+<p>我們直接看以下範例：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入 tcolorbox 套件
+\usepackage{tcolorbox}
+
+% 自定義 tcb 樣式 "myfancybox"
+\tcbset{
+  myfancybox/.style={
+    colback=green!5!white,
+    colframe=green!50!black,
+    arc=7mm,
+    boxrule=1.5pt,
+    title=蝦趴文字框,
+    fonttitle=\bfseries,
+    colbacktitle=green!15!white,
+    coltitle=green!50!black,
+    top=4pt,
+    bottomrule=2pt
+  }
+}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Frame}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{tcolorbox}[myfancybox]
+    蝦趴文字框有夠蝦趴
+\end{tcolorbox}
+
+\end{document}
+</div></div></div></div></pre>
+<p>上面的範例程式碼中，我們建立了一個「蝦趴文字框」，除了調整背景顏色、外框顏色外，還微調了頂部與底部距離，以及加上一點點的陰影效果。</p>
+<p>其實關於 tcolorbox 的玩法還有很多種，與下面要介紹的 <code>mdframed</code> 都是能夠開一篇新文章來討論的套件，不過這篇還是希望大家能夠先掌握基本的使用方法即可。</p>
+</section>
+</section>
+<section id="mdframed-套件" class="level3">
+<h3 class="anchored" data-anchor-id="mdframed-套件">mdframed 套件</h3>
+<p><code>mdframed</code> 套件跟 <code>tcolorbox</code> 一樣，是 LaTeX 中非常強大的文字外框套件。這個套件的名稱中的 “md” 代表 “multi-line”，代表它能夠輕鬆處理跨行甚至多頁的內容。</p>
+<p>要開始使用 <code>mdframed</code> 套件，我們首先需要在前言區域載入它，接著就可以開始使用它的基本功能了。最簡單的用法是使用 <code>mdframed</code> 環境來包住我們想要框起來的內容：</p>
+<pre><code>\begin{mdframed}
+簡單的 mdframed 範例。
+\end{mdframed}</code></pre>
+<p><code>mdframed</code> 框架會自動調整大小以適應文字框中的內容，並將內容與周圍的文本分隔開來。直接上範例：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入 mdframed 套件
+\usepackage{mdframed}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Frame}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
+
+\begin{mdframed}
+    簡單的 mdframed 範例。
+\end{mdframed}
+
+文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
+
+\end{document}
+</div></div></div></div></pre>
+<p>但 <code>mdframed</code> 的真正魅力在於它的彈性，跟 <code>tcolorbox</code> 一樣，我們可以利用一系列參數來調整框架的外觀。例如，如果我們想繪製一個帶有彩色背景的外框，可以使用以下程式碼：</p>
+<pre><code>\begin{mdframed}[backgroundcolor=yellow!20]
+    此文字框有淡黃色的背景，適合用來強調重要資訊。
+\end{mdframed}</code></pre>
+<p><code>mdframed</code> 套件還支援更複雜的設計，例如我們可以製作出一個帶有陰影效果的文字框：</p>
+<pre><code>\begin{mdframed}[shadow=true,shadowsize=5pt,shadowcolor=gray]
+    此文字框帶有陰影效果。
+\end{mdframed}</code></pre>
+<p>如果需要在文件中加入特別注意的警告或提示，我們可以使用如下設定：</p>
+<pre><code>\begin{mdframed}[linecolor=red,linewidth=1pt,backgroundcolor=red!5,leftmargin=1cm,rightmargin=1cm]
+    警告：這是一個重要提示！
+\end{mdframed}</code></pre>
+<p>實際排版結果如下所示：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入 xcolor 套件
+\usepackage{xcolor}
+
+% 載入 mdframed 套件
+\usepackage{mdframed}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Frame}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{mdframed}[backgroundcolor=yellow]
+    此文字框有淡黃色的背景，適合用來強調重要資訊。
+\end{mdframed}
+
+\begin{mdframed}[
+    shadow=true,
+    shadowsize=5pt,
+    shadowcolor=gray
+]
+    此文字框帶有陰影效果。
+\end{mdframed}
+
+\begin{mdframed}[
+    linecolor=red,
+    linewidth=1pt,
+    backgroundcolor=red,
+    leftmargin=1cm,
+    rightmargin=1cm
+]
+    警告：這是一個重要提示！
+\end{mdframed}
+
+\end{document}
+</div></div></div></div></pre>
+<p><code>mdframed</code> 的另一個強大功能是處理跨頁內容。當我們在文字框放入的內容太長，沒辦法在一頁內顯示完畢時，<code>mdframed</code> 會自動將內容分割到下一頁，並在新頁的頂部繼續繪製、延續上面的文字框設定。設定方法請見以下範例：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入中文假文產生器
+\usepackage{zhlipsum}
+
+% 載入 mdframed 套件
+\usepackage{mdframed}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Frame}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{mdframed}[
+    topline=true,
+    bottomline=true,
+    leftline=true,
+    rightline=true,
+    innertopmargin=10pt,
+    innerbottommargin=10pt,
+    innerrightmargin=10pt,
+    innerleftmargin=10pt,
+    everyline=true,         % 確保每一頁的文字框都有完整的邊框
+    skipabove=\topskip,     % 調整跨頁後新頁面頂部的間距
+    skipbelow=\topskip      % 調整跨頁後舊頁面底部的間距
+]
+    \zhlipsum[1-10]
+\end{mdframed}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+</section>
+</section>
+<section id="說明文字的設定" class="level1">
+<h1>說明文字的設定</h1>
+<p>上一篇<a href="https://xiaolong70701.github.io/blog/posts/2024-07-08-latex-table-figure/">LaTeX 教學系列：表格與圖片的處理</a>，我們介紹了 LaTeX 中表格與圖片的處理。不過，當時並沒有在說明文字（caption）有太多的著墨。原因是因為說明文字的設定稍顯複雜，因此額外變成一篇來討論。</p>
+<p>論文中的圖、表都需要說明文字，而說明文字通常都有預設的標題。LaTeX 中圖片的預設標題為 “Figure:”，表格則是 “Table:”。但是，論文的撰寫語言不一定是英文，有時可能是中文。如果還是使用英文的說明文字標題，那麼會顯得有點突兀。因此我們需要修改說明文字的預設標題。</p>
+<section id="caption-套件" class="level2">
+<h2 class="anchored" data-anchor-id="caption-套件">caption 套件</h2>
+<p>LaTeX 對於說明文字的設定，我們使用 <code>caption</code> 套件來處理。<code>caption</code> 套件的優勢是進行全域設定標題的樣式，確保整份文件中的說明文字標題保持一致。我們可以使用 <code>\captionsetup</code> 進行設定，語法為 <code>\captionsetup[環境名]{參數1=值1, 參數2=值2, ...}</code>，而可以設定的參數如下表呈現：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 74%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>參數</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>format</code></td>
+<td>設定標題的格式，例如 <code>plain</code>, <code>hang</code>, <code>indented</code>。</td>
+</tr>
+<tr class="even">
+<td><code>labelsep</code></td>
+<td>設定標題和標籤之間的分隔符，可以是 <code>colon</code>, <code>period</code>, <code>space</code> 等。</td>
+</tr>
+<tr class="odd">
+<td><code>labelfont</code></td>
+<td>設定標題標籤的字體屬性，如 <code>bf</code>（粗體），<code>it</code>（斜體），<code>sc</code>（小型大寫字母）。</td>
+</tr>
+<tr class="even">
+<td><code>textfont</code></td>
+<td>設定標題文字的字體屬性，類似 <code>labelfont</code>。</td>
+</tr>
+<tr class="odd">
+<td><code>justification</code></td>
+<td>設定標題的對齊方式，例如 <code>RaggedRight</code>, <code>centering</code>, <code>justified</code>。</td>
+</tr>
+<tr class="even">
+<td><code>singlelinecheck</code></td>
+<td>設定單行標題是否檢查對齊，取值為 <code>true</code> 或 <code>false</code>。</td>
+</tr>
+<tr class="odd">
+<td><code>position</code></td>
+<td>設定標題的位置，例如 <code>top</code>, <code>bottom</code>。</td>
+</tr>
+<tr class="even">
+<td><code>font</code></td>
+<td>同時設置標籤和文字的字體屬性。</td>
+</tr>
+<tr class="odd">
+<td><code>skip</code></td>
+<td>設定標題與圖像或表格之間的垂直距離。</td>
+</tr>
+<tr class="even">
+<td><code>width</code></td>
+<td>設定標題的最大寬度。</td>
+</tr>
+<tr class="odd">
+<td><code>name</code></td>
+<td>設定標題類型的名稱，例如圖的標題為 “圖”，表的標題為 “表”。</td>
+</tr>
+<tr class="even">
+<td><code>type</code></td>
+<td>設定標題的類型，用於修改編號，例如將圖編號為表。</td>
+</tr>
+</tbody>
+</table>
+<p>比方說我們想要將圖片與表格的標籤名稱分別設為 “圖” 與 “表”，可以參考以下程式碼：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入中文假文產生器
+\usepackage{zhlipsum}
+
+% 載入浮動環境套件
+\usepackage{float}
+
+% 載入繪製三線表的相關套件
+\usepackage{booktabs}
+
+% 載入 graphicx 套件
+\usepackage{graphicx}
+
+% 載入 caption 套件
+\usepackage{caption}
+\captionsetup[figure]{name={圖}}
+\captionsetup[table]{name={表}}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Caption}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{example-image}
+    \caption{這是一張圖片}
+    \label{fig:example}
+\end{figure}
+
+\begin{table}[H]
+\centering
+    \begin{tabular}{lcc}
+    \toprule
+        項目 &amp; 數量 &amp; 單價 \\
+        \midrule
+        蘋果 &amp; 5 &amp; \$2 \\
+        香蕉 &amp; 3 &amp; \$1.5 \\
+        橙子 &amp; 4 &amp; \$1.8 \\
+        \bottomrule
+    \end{tabular}
+\caption{水果價格表}
+\label{tab:fruit_prices}
+\end{table}
+
+\end{document}
+</div></div></div></div></pre>
+<section id="進階用法將標籤改為中文模式" class="level3">
+<h3 class="anchored" data-anchor-id="進階用法將標籤改為中文模式">進階用法：將標籤改為中文模式</h3>
+<p>如果想要將說明文字標題改為 “圖一、”、“表一、” 該怎麼辦呢？我們需要先複習一下，在 LaTeX 中如果要將阿拉伯數字轉換為中文數字，需要使用 <code>CJKnumb</code> 套件，接著使用 <code>\CJKnumber{計數器}</code> 將計數器放在裡面。</p>
+<p>為了達到上述需求，我們需要執行兩個任務：將阿拉伯數字轉換成中文數字，以及將說明文字標題與內容的分隔符號轉成 “、”。我們分別來討論一下。</p>
+<p>標籤編號的計數器是 <code>thefigure</code> 與 <code>thetable</code>，但是我們不會用到這兩個計數器，而是用參數的方式來處理，指令為 <code>\DeclareCaptionLabelFormat{chinese}{#1\CJKnumber{#2}}</code>，其中 <code>#1</code> 是標籤名稱，<code>#2</code> 則是標籤的編號。而頓號的處理則是用類似的方式，指令為 <code>\DeclareCaptionLabelSeparator{dunhao}{、}</code>，其中第一個括號內放分隔符號名稱，第二個則是放分隔符號實際呈現內容，此處為頓號。</p>
+<p>以下程式碼為結合上述的範例：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入中文假文產生器
+\usepackage{zhlipsum}
+
+% 載入浮動環境套件
+\usepackage{float}
+
+% 載入繪製三線表的相關套件
+\usepackage{booktabs}
+
+% 載入 graphicx 套件
+\usepackage{graphicx}
+
+% 載入 caption 套件
+\usepackage{caption}
+
+% 自定義格式
+\DeclareCaptionLabelFormat{chinese}{#1\CJKnumber{#2}}
+\DeclareCaptionLabelSeparator{dunhao}{、}
+\captionsetup[figure]{
+  labelformat=chinese,
+  labelsep=dunhao,
+  name={圖}
+}
+\captionsetup[table]{
+  labelformat=chinese,
+  labelsep=dunhao,
+  name={表}
+}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Caption}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{example-image}
+    \caption{這是一張圖片}
+    \label{fig:example}
+\end{figure}
+
+\begin{table}[H]
+\centering
+    \begin{tabular}{lcc}
+    \toprule
+        項目 &amp; 數量 &amp; 單價 \\
+        \midrule
+        蘋果 &amp; 5 &amp; \$2 \\
+        香蕉 &amp; 3 &amp; \$1.5 \\
+        橙子 &amp; 4 &amp; \$1.8 \\
+        \bottomrule
+    \end{tabular}
+    \caption{水果價格表}
+    \label{tab:fruit_prices}
+\end{table}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="declarecaption-設定" class="level3">
+<h3 class="anchored" data-anchor-id="declarecaption-設定">DeclareCaption 設定</h3>
+<p>上面的範例中，提到可以使用 <code>\DeclareCaptionLabelFormat</code> 與 <code>\DeclareCaptionLabelSeparator</code> 這兩個指令來設定標籤格式與分隔符號。以下的表格提供的指令都是 <code>\DeclareCaption</code> 開頭，言下之意都是與設定標籤外觀有關。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>指令</th>
+<th>說明</th>
+<th>範例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\DeclareCaptionFont</code></td>
+<td>定義新的字體樣式</td>
+<td><code>\DeclareCaptionFont{myred}{\color{red}}</code> <br> <code>\captionsetup{labelfont=myred}</code></td>
+</tr>
+<tr class="even">
+<td><code>\DeclareCaptionFormat</code></td>
+<td>定義新的標題格式</td>
+<td><code>\DeclareCaptionFormat{mybox}{\colorbox{lightgray}{#1#2#3}}</code> <br> <code>\captionsetup{format=mybox}</code></td>
+</tr>
+<tr class="odd">
+<td><code>\DeclareCaptionLabelFormat</code></td>
+<td>定義新的標籤格式</td>
+<td><code>\DeclareCaptionLabelFormat{myparens}{(#2)}</code> <br> <code>\captionsetup{labelformat=myparens}</code></td>
+</tr>
+<tr class="even">
+<td><code>\DeclareCaptionLabelSeparator</code></td>
+<td>定義新的標籤分隔符</td>
+<td><code>\DeclareCaptionLabelSeparator{mydash}{ -- }</code> <br> <code>\captionsetup{labelsep=mydash}</code></td>
+</tr>
+<tr class="odd">
+<td><code>\DeclareCaptionStyle</code></td>
+<td>定義新的標題樣式</td>
+<td><code>\DeclareCaptionStyle{mystyle}{labelfont=bf,textfont=it}</code> <br> <code>\captionsetup{style=mystyle}</code></td>
+</tr>
+<tr class="even">
+<td><code>\DeclareCaptionListFormat</code></td>
+<td>定義新的列表格式</td>
+<td><code>\DeclareCaptionListFormat{mylist}{圖 #2：}</code> <br> <code>\captionsetup{listformat=mylist}</code></td>
+</tr>
+<tr class="odd">
+<td><code>\DeclareCaptionOption</code></td>
+<td>定義新的標題選項</td>
+<td><code>\DeclareCaptionOption{myoption}{\def\mycaption{#1}}</code> <br> <code>\captionsetup{myoption=Hello}</code></td>
+</tr>
+<tr class="even">
+<td><code>\DeclareCaptionTextFormat</code></td>
+<td>定義新的文字格式</td>
+<td><code>\DeclareCaptionTextFormat{mytext}{\textit{#1}}</code> <br> <code>\captionsetup{textformat=mytext}</code></td>
+</tr>
+<tr class="odd">
+<td><code>\DeclareCaptionJustification</code></td>
+<td>定義新的對齊方式</td>
+<td><code>\DeclareCaptionJustification{myright}{\raggedleft}</code> <br> <code>\captionsetup{justification=myright}</code></td>
+</tr>
+<tr class="even">
+<td><code>\DeclareCaptionLabelFormat</code></td>
+<td>定義新的標籤格式</td>
+<td><code>\DeclareCaptionLabelFormat{mybold}{{\bfseries #2}}</code> <br> <code>\captionsetup{labelformat=mybold}</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="subcaption-套件" class="level2">
+<h2 class="anchored" data-anchor-id="subcaption-套件">subcaption 套件</h2>
+<p>正如之前文章提到的，如果我們有許多子圖，這時候可能會有共同說明文字，抑或是每張子圖有各自的說明文字。我們需要使用 <code>subcaption</code> 套件來設定說明文字。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入浮動環境套件
+\usepackage{float}
+
+% 載入 graphicx 套件
+\usepackage{graphicx}
+
+% 載入 subcaption 套件
+\usepackage{subcaption}
+
+% 修改小標題為 (a)、(b)、(c)...的格式
+\renewcommand\thesubfigure{(\alph{subfigure})}
+\captionsetup[subfigure]{labelfont=normalfont, labelformat=simple, labelsep=space}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Caption}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{example-image-a}
+        \caption{第一張圖片的標題}
+        \label{fig:image1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{example-image-b}
+        \caption{第二張圖片的標題}
+        \label{fig:image2}
+    \end{subfigure}
+\end{figure}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+</section>
+<section id="交互參照與超連結" class="level1">
+<h1>交互參照與超連結</h1>
+<p>在學術寫作或是任何需要精準且精確引用的文件中，交互參照是一個極為重要的功能。它能夠讓我們在文件的不同部分之間<strong>建立連結</strong>，使讀者能夠輕鬆地在文件中遨遊。想像一下，當在撰寫一篇長篇論文時，需要引用一個大概三個月之前寫的某個章節的圖表或方程式，如果沒有交互參照，可能就需要手動記錄並輸入每個引用的頁碼或編號，這不僅耗時，而且在後續修改文件時極易出錯。而 LaTeX 的交互參照功能則完美地解決了這個問題，它能夠<strong>自動追蹤</strong>和<strong>更新所有的引用</strong>，確保您的文件前後的引用始終保持一致性和準確性。</p>
+<section id="引用基本規則" class="level2">
+<h2 class="anchored" data-anchor-id="引用基本規則">引用基本規則</h2>
+<p>LaTeX 的交互參照功能主要利用 <code>\label</code> 和 <code>\ref</code> 指令來引用。文件中的任何元素（如章節、圖表、公式等）都可以設定一個<strong>唯一</strong>的標籤，然後在文件的其他地方使用這個標籤來引用該元素。簡言之，在寫引用時，你應該先在特定元素出現的區域<strong>錨定</strong>後（打上 <code>\label</code>），再<strong>引用</strong>它（使用 <code>\ref</code> 呼叫）。</p>
+<p>錨定方式是 <code>\label{參照名稱}</code>，其中參照名稱可以依照不同的元素進行分類，筆者最常使用的分類如下：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>前綴</th>
+<th>用途</th>
+<th>範例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>fig</code></td>
+<td>圖片</td>
+<td><code>\label{fig:histogram}</code></td>
+</tr>
+<tr class="even">
+<td><code>tab</code></td>
+<td>表格</td>
+<td><code>\label{tab:results}</code></td>
+</tr>
+<tr class="odd">
+<td><code>eq</code></td>
+<td>方程式</td>
+<td><code>\label{eq:einstein}</code></td>
+</tr>
+<tr class="even">
+<td><code>sec</code></td>
+<td>章節</td>
+<td><code>\label{sec:intro}</code></td>
+</tr>
+<tr class="odd">
+<td><code>subsec</code></td>
+<td>子章節</td>
+<td><code>\label{subsec:method}</code></td>
+</tr>
+<tr class="even">
+<td><code>chap</code></td>
+<td>章</td>
+<td><code>\label{chap:theory}</code></td>
+</tr>
+<tr class="odd">
+<td><code>app</code></td>
+<td>附錄</td>
+<td><code>\label{app:glossary}</code></td>
+</tr>
+<tr class="even">
+<td><code>alg</code></td>
+<td>演算法</td>
+<td><code>\label{alg:quicksort}</code></td>
+</tr>
+<tr class="odd">
+<td><code>lst</code></td>
+<td>程式碼清單</td>
+<td><code>\label{lst:function}</code></td>
+</tr>
+<tr class="even">
+<td><code>thm</code></td>
+<td>定理</td>
+<td><code>\label{thm:pythagoras}</code></td>
+</tr>
+<tr class="odd">
+<td><code>lem</code></td>
+<td>引理</td>
+<td><code>\label{lem:inequality}</code></td>
+</tr>
+<tr class="even">
+<td><code>def</code></td>
+<td>定義</td>
+<td><code>\label{def:matrix}</code></td>
+</tr>
+<tr class="odd">
+<td><code>ex</code></td>
+<td>例子</td>
+<td><code>\label{ex:application}</code></td>
+</tr>
+</tbody>
+</table>
+<p>假設有一張圖，我們可以這樣標記它：</p>
+<pre><code>\begin{figure}
+    \centering
+    \includegraphics{important-graph.png}
+    \caption{一個非常重要的圖表}
+    \label{fig:important-graph}
+\end{figure}</code></pre>
+<p>然後，在文件的其他地方使用 <code>\ref{參照名稱}</code> 即可：</p>
+<pre><code>如圖\ref{fig:important-graph}所示，我們可以看到......</code></pre>
+<p>LaTeX 會自動將 <code>\ref{fig:important-graph}</code> 更新為正確的圖表編號。這樣即使在文件中增加或刪除了其他圖，導致圖片編號發生變化，引用也會自動更新，始終保持正確的順序。</p>
+<p>另外，我們也可以引用頁碼，也就是標記出特定頁數，避免讀者找老半天都找不到。<code>\pageref</code> 命令可以引用標籤所在的頁碼，而 <code>\nameref</code> 命令（需要 <code>nameref</code> 包）則可以引用標籤所屬元素的名稱或標題。<code>nameref</code> 套件的使用方式是引用該套件後，使用 <code>\nameref{參照名稱}</code> 即可。</p>
+<p>以下範例直接示範如何在 LaTeX 中使用交互參照：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入中文假文產生器
+\usepackage{zhlipsum}
+
+% 設定標題格式
+\usepackage{titlesec}
+\titleformat{\section}         % 設定 \section 標題的格式
+  {\normalfont\Large\bfseries} % 標題的字體和大小
+  {\CJKnumber{\thesection}、}  % 使用 \CJKnumber 將章節編號轉換為中文數字
+  {1em}                        % 編號與文本之間的距離
+  {}                           % 標題文本之前的程式碼
+
+% 設定邊界
+\usepackage{geometry}
+\geometry{a4paper, margin=4cm}
+
+% 載入 caption 套件
+\usepackage{caption}
+\captionsetup[figure]{name={圖}}
+\captionsetup[table]{name={表}}
+
+% 載入浮動環境套件
+\usepackage{float}
+
+% 載入繪製三線表的相關套件
+\usepackage{booktabs}
+
+% 載入 graphicx 套件
+\usepackage{graphicx}
+
+% 載入 nameref 套件
+\usepackage{nameref}
+
+% 設定行距
+\renewcommand{\baselinestretch}{1.3}
+
+% 載入 indentfirst 套件
+\usepackage{indentfirst}
+\setlength{\parindent}{2em} % 2em代表首行縮排兩個字
+
+% 設定標題頁資訊
+\title{一篇範例文章}
+\author{作者名字}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{研究方法}
+\label{sec:methodology}
+
+\zhlipsum[1-2]
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.8\textwidth]{example-image}
+    \caption{這是一張圖片}
+    \label{fig: example}
+\end{figure}
+
+\zhlipsum[3-4]
+
+如圖(\ref{fig: example})所示，我們可以看到...
+
+\section{結論}
+
+\zhlipsum[5-6]
+
+在本文的\nameref{sec:methodology}中，我們詳細介紹了...
+
+% 強制將表格置放在程式碼所在處
+\begin{table}[H]
+\centering
+    \begin{tabular}{lcc}
+    \toprule
+        項目 &amp; 數量 &amp; 單價 \\
+        \midrule
+        蘋果 &amp; 5 &amp; \$2 \\
+        香蕉 &amp; 3 &amp; \$1.5 \\
+        橙子 &amp; 4 &amp; \$1.8 \\
+        \bottomrule
+    \end{tabular}
+    \caption{水果價格表}
+    \label{tab:fruit_prices}
+\end{table}
+
+根據表(\ref{tab:fruit_prices})的內容所示...
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="超連結" class="level2">
+<h2 class="anchored" data-anchor-id="超連結">超連結</h2>
+<p>可以發現，在使用交互參照時，雖然 LaTeX 自動將這些參照內容編號自動排序，但還是有個問題：讀者在閱讀時還是很難知道到底引用的內容在第幾頁；就算知道在哪一頁，也要翻一段時間。這時候我們都希望有一個類似超連結的功能，可以允許讀者按下引用內容後直接跳轉到該頁面。</p>
+<p>幸運的是，LaTeX 提供了強大的超連結功能，利用 <code>hyperref</code> 套件來實現。該套件不僅能夠將交互參照內容轉換為可點擊的超連結，還能為導出的 PDF 文件新增書籤、設置 <a href="https://helpx.adobe.com/tw/acrobat/using/pdf-properties-metadata.html">metadata</a> 等。</p>
+<section id="基本使用方法" class="level3">
+<h3 class="anchored" data-anchor-id="基本使用方法">基本使用方法</h3>
+<p><code>hyperref</code> 套件只要在前言區載入該套件後，就可以將交互參照的內容變成超連結：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入中文假文產生器
+\usepackage{zhlipsum}
+
+% 設定邊界
+\usepackage{geometry}
+\geometry{a4paper, margin=4cm}
+
+% 載入 caption 套件
+\usepackage{caption}
+\captionsetup[figure]{name={圖}}
+
+% 載入浮動環境套件
+\usepackage{float}
+
+% 載入 graphicx 套件
+\usepackage{graphicx}
+
+% 載入 hyperref 套件
+\usepackage{hyperref}
+
+% 設定標題頁資訊
+\title{一篇範例文章}
+\author{作者名字}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\zhlipsum[1-5]
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.8\textwidth]{example-image}
+    \caption{這是一張圖片}
+    \label{fig: example}
+\end{figure}
+
+\zhlipsum[6-10]
+
+根據圖(\ref{fig: example})所示...
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="進階功能" class="level3">
+<h3 class="anchored" data-anchor-id="進階功能">進階功能</h3>
+<p>當然，超連結不只有文內的交互參照才會使用到，一般網頁的超連結也可以派上用場。為網頁加上超連結的指令為：<code>\href{網址}{顯示文字}</code>。例如：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入 hyperref 套件
+\usepackage{hyperref}
+
+% 設定標題頁資訊
+\title{一篇範例文章}
+\author{作者名字}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+我的部落格是：\href{https://xiaolong70701.github.io/blog/}{Yueswater Blog}。
+
+\end{document}
+</div></div></div></div></pre>
+<p>另一個 <code>hyperref</code> 套件的使用時機是在使用文獻時，文內連結到參考文獻章節。不過這個要等待參考文獻一篇中進行討論，此處不加贅述。</p>
+<p>如果想要修改超連結顏色，我們在前言區使用用 <code>\hypersetup{參數1=值1, 參數2=值2, ...}</code> 這個指令即可，如果想要使用更多顏色，可以載入 <code>xcolor</code> 協助。例如以下範例僅設定文內交互參照超連結與網頁超連結的顏色，且注意到我們必須加上 <code>colorlinks=true</code> 才能夠讓超連結顯示顏色。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入 hyperref 套件
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=cyan,
+}
+
+% 設定標題頁資訊
+\title{一篇範例文章}
+\author{作者名字}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+我的部落格是：\href{https://xiaolong70701.github.io/blog/}{Yueswater Blog}。
+
+\end{document}
+</div></div></div></div></pre>
+<p>此外，我們可以設定 PDF 文件的 metadata。PDF 的 metadata（中文譯作元數據）是指儲存在 PDF 檔案中的額外資訊，這些資訊包含了文件的特性和內容，通常不會直接顯示在文件頁面上。常見的 metadata 包括文件標題、作者、文件創建日期、關鍵字等。這些資訊可以幫助讀者更容易地識別、搜索與管理 PDF 檔案。在大多數 PDF 閱讀器中，可以通過「檔案屬性」或類似選項來查看這些 metadata。</p>
+<p>以下直接示範如何建立 metadata。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入 hyperref 套件
+\usepackage[bookmarks=true,bookmarksopen=true,bookmarksopenlevel=2]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=cyan,
+    pdftitle={LaTeX Hyperref 書籤範例},
+    pdfauthor={張三},
+    pdfsubject={LaTeX 使用指南},
+    pdfkeywords={LaTeX, 超連結, hyperref, 書籤}
+}
+
+% 設定標題頁資訊
+\title{LaTeX Hyperref 書籤範例}
+\author{張三}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{介紹}
+\label{sec:intro}
+這是一個使用 hyperref 套件新增 PDF 書籤的範例。在這個文件中，我們將示範如何建立可點擊的目錄和章節標題。
+
+\section{Hyperref 套件基礎}
+\label{sec:basics}
+Hyperref 套件是 LaTeX 中用於建立超連結和 PDF 書籤的強大工具。
+
+\subsection{載入 Hyperref}
+\label{subsec:loading}
+要使用 hyperref，只需在導言區新增：
+\verb|\usepackage{hyperref}|
+
+\subsection{基本設置}
+\label{subsec:settings}
+可以使用 \verb|\hypersetup| 指令進行基本設置，如改變連結顏色等。
+
+\section{新增書籤}
+\label{sec:bookmarks}
+Hyperref 會自動為文件的章節建立書籤。
+
+\subsection{自定義書籤深度}
+\label{subsec:depth}
+可以使用 \verb|bookmarksopenlevel| 選項設置默認打開的書籤層級。
+
+\subsection{手動新增書籤}
+\label{subsec:manual}
+除了自動生成的書籤，還可以使用 \verb|\pdfbookmark| 指令手動新增書籤：
+
+\pdfbookmark[1]{手動新增的書籤}{manual-bookmark}
+
+這是一個手動新增的書籤示例。
+
+\section{超連結示例}
+\label{sec:examples}
+以下是一些超連結的示例：
+
+\begin{itemize}
+    \item 內部連結：點擊這裡跳轉到 \hyperref[sec:intro]{介紹部分}。
+    \item 外部連結：參見 \href{https://xiaolong70701.github.io/blog/}{Yueswater Blog}。
+    \item URL 連結：\url{https://www.latex-project.org/}
+\end{itemize}
+
+
+\end{document}
+</div></div></div></div></pre>
+<p>下圖就是範例程式碼導出的 PDF 中，metadata 所擁有的資訊。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="metadata.png" class="img-fluid figure-img" style="width:100.0%" data-fig.align="center"></p>
+<figcaption>圖 2：PDF 的 metadata 資訊頁面</figcaption>
+</figure>
+</div>
+<!--  -->
+
+
+</section>
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>維基百科 (2024, June 7). 行距. 維基百科，自由的百科全書. <a href="https://zh.wikipedia.org/wiki/%E8%A1%8C%E8%B7%9D">https://zh.wikipedia.org/wiki/行距</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>筆者較偏好使用這個指令，在設定上較為容易，也比較直觀。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Tung, B. (2022, May 12). 段落開頭為什麼要「空兩格」？ - Bobby Tung - Medium. Medium. <a href="https://bobtung.medium.com/段落開頭為什麼要-空兩格-99287e0653a9">https://bobtung.medium.com/段落開頭為什麼要-空兩格-99287e0653a9</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>LaTex论文排版 | (20) LaTex首行缩进-CSDN博客. <a href="https://blog.csdn.net/sdu_hao/article/details/103398959">https://blog.csdn.net/sdu_hao/article/details/103398959</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>新書搶先看》「條列式表達」是最強的商務技能-SmartM 人才培訓網. SmartM 人才培訓網. <a href="https://www.smartlinkin.com.tw/article/3243">https://www.smartlinkin.com.tw/article/3243</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>注意到我們在設定 <code>label=</code> 時，多半都會用花括號包住，目的是為了不要影響到其他設定。<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>筆者不建議使用太多嵌套，因為太多層次的條列式清單會讓讀者看得眼花繚亂。<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>LaTeX 技巧 947： 玩转 fbox，排版再不难. LaTeX工作室. <a href="https://www.latexstudio.net/archives/51609.html">https://www.latexstudio.net/archives/51609.html</a><a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sung2024,
+  author = {Sung, Anthony},
+  title = {LaTeX {教學系列：進階設定}},
+  date = {2024-07-10},
+  url = {https://yueswater.com/posts/2024-07-10-latex-setting-advanced/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sung2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Sung, Anthony. 2024. <span>“LaTeX 教學系列：進階設定.”</span> July 10,
+2024. <a href="https://yueswater.com/posts/2024-07-10-latex-setting-advanced/">https://yueswater.com/posts/2024-07-10-latex-setting-advanced/</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="xiaolong70701/quarto-blog" data-repo-id="R_kgDOJhS1Eg" data-category="General" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="light">
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright © 2024 Anthony. All rights reserved. See <a href="../copyright.html">statements</a>.</p>
+</div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/">
+      <i class="bi bi-facebook" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:xiaolong70701@gmail.com">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+<script>videojs(video_shortcode_videojs_video1);</script>
+
+
+
+
+</body></html>

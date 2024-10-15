@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anthony Sung">
+<meta name="dcterms.date" content="2024-06-24">
+<meta name="description" content="使用與不使用套件進行 LaTeX 基本設定，包含字體大小、字型、版面設定">
+
+<title>LaTeX 教學系列：基本設定 – Yueswater Blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VLWNL5QXD8"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VLWNL5QXD8', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script> 
+  
+
+
+<link rel="stylesheet" href="../../css/karat.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Yueswater Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../notes.html"> 
+<span class="menu-text">Diary &amp; Notes</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/"> <i class="bi bi-facebook" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/yues_19_water/"> <i class="bi bi-instagram" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#前情提要" id="toc-前情提要" class="nav-link active" data-scroll-target="#前情提要">前情提要</a></li>
+  <li><a href="#tex-世界的巴別塔" id="toc-tex-世界的巴別塔" class="nav-link" data-scroll-target="#tex-世界的巴別塔">TeX 世界的巴別塔</a></li>
+  <li><a href="#latex-的裝備套件" id="toc-latex-的裝備套件" class="nav-link" data-scroll-target="#latex-的裝備套件">LaTeX 的裝備：套件</a>
+  <ul class="collapse">
+  <li><a href="#買裝備安裝與使用套件" id="toc-買裝備安裝與使用套件" class="nav-link" data-scroll-target="#買裝備安裝與使用套件">買裝備：安裝與使用套件</a></li>
+  <li><a href="#說明書ctan" id="toc-說明書ctan" class="nav-link" data-scroll-target="#說明書ctan">說明書：CTAN</a></li>
+  </ul></li>
+  <li><a href="#latex-百變怪設定文字" id="toc-latex-百變怪設定文字" class="nav-link" data-scroll-target="#latex-百變怪設定文字">LaTeX 百變怪：設定文字</a>
+  <ul class="collapse">
+  <li><a href="#設定字體大小" id="toc-設定字體大小" class="nav-link" data-scroll-target="#設定字體大小">設定字體大小</a></li>
+  <li><a href="#設定字體系列" id="toc-設定字體系列" class="nav-link" data-scroll-target="#設定字體系列">設定字體系列</a></li>
+  <li><a href="#設定字型" id="toc-設定字型" class="nav-link" data-scroll-target="#設定字型">設定字型</a></li>
+  <li><a href="#設定中文" id="toc-設定中文" class="nav-link" data-scroll-target="#設定中文">設定中文</a></li>
+  </ul></li>
+  <li><a href="#latex-的服裝版面設定" id="toc-latex-的服裝版面設定" class="nav-link" data-scroll-target="#latex-的服裝版面設定">LaTeX 的服裝：版面設定</a>
+  <ul class="collapse">
+  <li><a href="#邊界設定" id="toc-邊界設定" class="nav-link" data-scroll-target="#邊界設定">邊界設定</a></li>
+  <li><a href="#章節標題格式設定" id="toc-章節標題格式設定" class="nav-link" data-scroll-target="#章節標題格式設定">章節標題格式設定</a></li>
+  <li><a href="#頁首頁尾設定" id="toc-頁首頁尾設定" class="nav-link" data-scroll-target="#頁首頁尾設定">頁首頁尾設定</a></li>
+  </ul></li>
+  <li><a href="#小結" id="toc-小結" class="nav-link" data-scroll-target="#小結">小結</a>
+  <ul class="collapse">
+  <li><a href="#footnotes" id="toc-footnotes" class="nav-link" data-scroll-target="#footnotes">Footnotes</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">LaTeX 教學系列：基本設定</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">latex</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    <p>使用與不使用套件進行 LaTeX 基本設定，包含字體大小、字型、版面設定</p>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Anthony Sung </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 24, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style id="ace-dawn">.ace-dawn .ace_gutter {background: #ebebeb;color: #333}.ace-dawn .ace_print-margin {width: 1px;background: #e8e8e8}.ace-dawn {background-color: #F9F9F9;color: #080808}.ace-dawn .ace_cursor {color: #000000}.ace-dawn .ace_marker-layer .ace_selection {background: rgba(39, 95, 255, 0.30)}.ace-dawn.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px #F9F9F9;}.ace-dawn .ace_marker-layer .ace_step {background: rgb(255, 255, 0)}.ace-dawn .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgba(75, 75, 126, 0.50)}.ace-dawn .ace_marker-layer .ace_active-line {background: rgba(36, 99, 180, 0.12)}.ace-dawn .ace_gutter-active-line {background-color : #dcdcdc}.ace-dawn .ace_marker-layer .ace_selected-word {border: 1px solid rgba(39, 95, 255, 0.30)}.ace-dawn .ace_invisible {color: rgba(75, 75, 126, 0.50)}.ace-dawn .ace_keyword,.ace-dawn .ace_meta {color: #794938}.ace-dawn .ace_constant,.ace-dawn .ace_constant.ace_character,.ace-dawn .ace_constant.ace_character.ace_escape,.ace-dawn .ace_constant.ace_other {color: #811F24}.ace-dawn .ace_invalid.ace_illegal {text-decoration: underline;font-style: italic;color: #F8F8F8;background-color: #B52A1D}.ace-dawn .ace_invalid.ace_deprecated {text-decoration: underline;font-style: italic;color: #B52A1D}.ace-dawn .ace_support {color: #691C97}.ace-dawn .ace_support.ace_constant {color: #B4371F}.ace-dawn .ace_fold {background-color: #794938;border-color: #080808}.ace-dawn .ace_list,.ace-dawn .ace_markup.ace_list,.ace-dawn .ace_support.ace_function {color: #693A17}.ace-dawn .ace_storage {font-style: italic;color: #A71D5D}.ace-dawn .ace_string {color: #0B6125}.ace-dawn .ace_string.ace_regexp {color: #CF5628}.ace-dawn .ace_comment {font-style: italic;color: #5A525F}.ace-dawn .ace_heading,.ace-dawn .ace_markup.ace_heading {color: #19356D}.ace-dawn .ace_variable {color: #234A97}.ace-dawn .ace_indent-guide {background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEklEQVQImWNgYGBgYLh/5+x/AAizA4hxNNsZAAAAAElFTkSuQmCC) right repeat-y}
+/*# sourceURL=ace/css/ace-dawn */</style>
+<style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style>
+<style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: blue;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}
+/*# sourceURL=ace/css/ace-tm */</style>
+<style id="ace_editor.css">.ace_br1 {border-top-left-radius    : 3px;}.ace_br2 {border-top-right-radius   : 3px;}.ace_br3 {border-top-left-radius    : 3px; border-top-right-radius:    3px;}.ace_br4 {border-bottom-right-radius: 3px;}.ace_br5 {border-top-left-radius    : 3px; border-bottom-right-radius: 3px;}.ace_br6 {border-top-right-radius   : 3px; border-bottom-right-radius: 3px;}.ace_br7 {border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px;}.ace_br8 {border-bottom-left-radius : 3px;}.ace_br9 {border-top-left-radius    : 3px; border-bottom-left-radius:  3px;}.ace_br10{border-top-right-radius   : 3px; border-bottom-left-radius:  3px;}.ace_br11{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-left-radius:  3px;}.ace_br12{border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br13{border-top-left-radius    : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br14{border-top-right-radius   : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br15{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;}.ace_editor {position: relative;overflow: hidden;padding: 0;font: 12px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;direction: ltr;text-align: left;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;cursor: text;}.ace_content {position: absolute;box-sizing: border-box;min-width: 100%;contain: style size layout;font-variant-ligatures: no-common-ligatures;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;contain: style size layout;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {position: absolute;top: 0;left: 0;right: 0;padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {contain: strict;position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;contain: strict;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;white-space: pre!important;}.ace_text-input.ace_composition {background: transparent;color: inherit;z-index: 1000;opacity: 1;}.ace_composition_placeholder { color: transparent }.ace_composition_marker { border-bottom: 1px solid;position: absolute;border-radius: 0;margin-top: 1px;}[ace_nocontext=true] {transform: none!important;filter: none!important;clip-path: none!important;mask : none!important;contain: none!important;perspective: none!important;mix-blend-mode: initial!important;z-index: auto;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;word-wrap: normal;white-space: pre;height: 100%;width: 100%;box-sizing: border-box;pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;height: 1000000px;contain: style size layout;}.ace_text-layer {font: inherit !important;position: absolute;height: 1000000px;width: 1000000px;contain: style size layout;}.ace_text-layer > .ace_line, .ace_text-layer > .ace_line_group {contain: style size layout;position: absolute;top: 0;left: 0;right: 0;}.ace_hidpi .ace_text-layer,.ace_hidpi .ace_gutter-layer,.ace_hidpi .ace_content,.ace_hidpi .ace_gutter {contain: strict;will-change: transform;}.ace_hidpi .ace_text-layer > .ace_line, .ace_hidpi .ace_text-layer > .ace_line_group {contain: strict;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;box-sizing: border-box;border-left: 2px solid;transform: translatez(0);}.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_hasPlaceholder .ace_hidden-cursors .ace_cursor {opacity: 0;}.ace_smooth-blinking .ace_cursor {transition: opacity 0.18s;}.ace_animate-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: step-end;animation-name: blink-ace-animate;animation-iteration-count: infinite;}.ace_animate-blinking.ace_smooth-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: ease-in-out;animation-name: blink-ace-animate-smooth;}@keyframes blink-ace-animate {from, to { opacity: 1; }60% { opacity: 0; }}@keyframes blink-ace-animate-smooth {from, to { opacity: 1; }45% { opacity: 1; }60% { opacity: 0; }85% { opacity: 0; }}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_error_bracket {position: absolute;border-bottom: 1px solid #DE5555;border-radius: 0;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;box-sizing: border-box;}.ace_line .ace_fold {box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(114, 113, 113, 0.05);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_inline_button {
+    border: 2px solid black; /* Add border */
+    display: inline-block;
+    margin: -1px 8px;
+    padding: 10px 20px; /* Adjust padding for better appearance */
+    pointer-events: auto;
+    cursor: pointer;
+    border-radius: 20px; /* Rounded corners */
+    background-color: white; /* Set background color */
+    color: black; /* Set text color */
+    text-align: center; /* Center text */
+    font-size: 16px; /* Adjust font size */
+    transition: background 0.3s, border-color 0.3s; /* Add transition for hover effects */
+}
+
+.ace_inline_button:hover {
+    border-color: gray;
+    background: rgba(200, 200, 200, 0.2);
+    pointer-events: auto;
+    border-radius: 20px; /* Maintain rounded corners */
+}
+.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}.ace_mobile-menu {position: absolute;line-height: 1.5;border-radius: 4px;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;background: white;box-shadow: 1px 3px 2px grey;border: 1px solid #dcdcdc;color: black;}.ace_dark > .ace_mobile-menu {background: #333;color: #ccc;box-shadow: 1px 3px 2px grey;border: 1px solid #444;}.ace_mobile-button {padding: 2px;cursor: pointer;overflow: hidden;}.ace_mobile-button:hover {background-color: #eee;opacity:1;}.ace_mobile-button:active {background-color: #ddd;}.ace_placeholder {font-family: arial;transform: scale(0.9);transform-origin: left;white-space: pre;opacity: 0.7;margin: 0 10px;}
+/*# sourceURL=ace/css/ace_editor.css */</style>
+<script src="./src/ace.min.js"></script>
+<style type="text/css" media="screen">
+  .ace_editor {
+  border: 1px solid lightgray;
+  margin-bottom: 1px !important;
+  width: 100%;
+  }
+  div.spacer {
+  margin-top:16px;
+  }
+</style>
+<script src="./src/runlatex.js"></script>
+<style>
+  body {margin:auto; max-width: 100em;}
+  div.h {background-color: #F5F5FF;margin: .5em 0;}
+  pre {background-color: #EEE;margin:0;padding: .5em;}
+  .llbutton {
+      border-radius: 12px;
+  }
+</style>
+<script src="./src/theme-dawn.js"></script>
+<script src="./src/mode-latex.js"></script>
+
+<section id="前情提要" class="level1">
+<h1>前情提要</h1>
+<p><a href="https://xiaolong70701.github.io/blog/posts/2024-06-23-latex-first-doc/">LaTeX 教學系列：第一份 LaTeX 文件</a>裡面，我們提到了如何建立第一份文件，並且根據不同的文件類別使用章節標題。而在這篇文章中，你會學到：</p>
+<ul>
+<li>了解 TeX 語言不同編譯器</li>
+<li>使用 LaTeX 套件</li>
+<li>設定字體</li>
+<li>設定版面（包含邊界、頁首、頁尾、標題字體等）</li>
+</ul>
+</section>
+<section id="tex-世界的巴別塔" class="level1">
+<h1>TeX 世界的巴別塔</h1>
+<p>跟許多程式語言一樣，TeX 語言也是由西方世界的人所發明的，因此自然地對於東亞國家的使用者不太友善，就像《聖經》中提到的巴別塔（Tower of Babel）一樣，把不同語言使用者隔絕開來。然而，隨著電腦的普及，有排版需求的人越來越多，因此不同的編譯系統便被許多無所事事厲害的工程師魔改，製作出可以允許不同語言使用者的編譯系統。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 42%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>編譯系統</th>
+<th>優點</th>
+<th>缺點</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>pdfLaTeX</td>
+<td>穩定且廣泛支持，直接生成 PDF 文件</td>
+<td>對非拉丁字母和 OpenType 字體支持較差</td>
+</tr>
+<tr class="even">
+<td>XeLaTeX</td>
+<td>支持 Unicode 和 OpenType 字體，可以使用不同語言</td>
+<td>編譯速度可能較慢</td>
+</tr>
+<tr class="odd">
+<td>LuaLaTeX</td>
+<td>支持 Unicode 和 OpenType 字體，基於 Lua 擴展功能強大</td>
+<td>編譯速度可能較慢</td>
+</tr>
+<tr class="even">
+<td>LaTeX</td>
+<td>可以生成 DVI 文件，靈活性高</td>
+<td>需要額外步驟將 DVI 轉換為 PS 或 PDF 文件，使用較為繁瑣</td>
+</tr>
+<tr class="odd">
+<td>TeX</td>
+<td>高靈活度與可控性</td>
+<td>語法較為複雜，不如 LaTeX 方便易用</td>
+</tr>
+<tr class="even">
+<td>ConTeXt</td>
+<td>對多語言和複雜文檔處理較好，開發活躍</td>
+<td>與 LaTeX 兼容性較差，需要學習新的語法</td>
+</tr>
+<tr class="odd">
+<td>OpTeX</td>
+<td>簡單易用，語法設計現代</td>
+<td>使用者社群較小，資料和資源相對較少</td>
+</tr>
+<tr class="even">
+<td>AMS-TeX</td>
+<td>數學公式排版效果極佳，專為數學出版物設計</td>
+<td>相比 LaTeX 功能更單一</td>
+</tr>
+</tbody>
+</table>
+<p>看到這裡的你一定會想問：之前文章中的例子都是用英文寫的，那如果我的文件是中文怎麼辦呢？如果你有這個問題的話，恭喜你已經贏過許多人了！在這篇文章的第三小節就會提到如何設定中文字體！</p>
+<p>別著急，且聽我慢慢細說。</p>
+</section>
+<section id="latex-的裝備套件" class="level1">
+<h1>LaTeX 的裝備：套件</h1>
+<p>如果你有遊玩線上遊戲（尤其是角色扮演類）的經驗，肯定需要在遊戲內購買裝備，才能夠打敗特定關主、魔王。LaTeX 也是一樣，需要使用裝備才能夠使用特定功能，例如上一小節最後提到的使用中文。因此，這個小節將會教你如何安裝並使用套件，並且在不清楚套件可以如何設定的情況下，到哪裡尋求援助。</p>
+<section id="買裝備安裝與使用套件" class="level2">
+<h2 class="anchored" data-anchor-id="買裝備安裝與使用套件">買裝備：安裝與使用套件</h2>
+<p>使用 LaTeX 套件時，我們需要以<code>\usepackage[套件設定]{套件名稱}</code>下指令，告訴電腦我們需要使用特定套件。<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>不過需要注意，如果你是在本機裡面使用 LaTeX，也就是已經裝好編譯器，那麼在使用套件之前，編譯器通常都會先詢問是否要安裝特定套件<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>，必須要確保真的安裝該套件成功之後，編譯才會成功。</p>
+<p>在上一篇<a href="https://xiaolong70701.github.io/blog/posts/2024-06-23-latex-first-doc/">LaTeX 教學系列：第一份 LaTeX 文件</a>的最後，不曉得聰明的你有沒有發現，在範例中有一些很奇怪的拉丁字母。這些文字就是排版領域大名鼎鼎的<strong><a href="https://zh.wikipedia.org/zh-tw/Lorem_ipsum">Lorem ipsum</a></strong>（簡稱為 Lipsum）。Lipsum 是一段常見的占位文字，或稱為假文，起源於古羅馬西賽羅（Cicero）的作品，通常用於設計和排版中，用來填充文本文字區域以模擬實際的文字內容，協助測試版面效果。以下我們拿 <code>lipsum</code> 與 <code>blindtext</code> 兩個套件做說明。<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"><div class="ace_active-line" style="height: 16px; top: 0px; left: 0px; right: 0px;"></div></div>\documentclass{article}
+\usepackage{lipsum}
+
+\begin{document}
+\lipsum[1-2]  % 生成第 1 到第 2 段 Lorem ipsum 文本
+\end{document}
+
+\documentclass{article}
+\usepackage{blindtext}
+
+\begin{document}
+\blinddocument  % 生成一個包含標題、段落、列表等的範例
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="說明書ctan" class="level2">
+<h2 class="anchored" data-anchor-id="說明書ctan">說明書：CTAN</h2>
+<p>如果你買了一個東西卻不知道如何使用的話，那麽購買該項產品或服務的意義就不大。因此通常廠商都會給予使用者說明書（manual），清楚地告訴使用者應該如何使用，以及一些問題排解的指示。</p>
+<p>TeX 的各種套件也有對應的使用說明書，而這個說明書被存放在<a href="https://ctan.org/?lang=en">CTAN</a>這個使用說明書儲存櫃中。<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>假設我們要查看 <code>lipsum</code> 這個套件的使用說明，可以在瀏覽器的搜尋欄打上「CTAN lipsum」這兩個關鍵字，大部分第一個都是正確的搜尋結果。點進去之後就會看到 CTAN 上存放該套件的使用說明（多以 Package documentation 命名）。例如<code>lipsum</code>的使用說明書可以點擊<a href="http://mirrors.ctan.org/macros/latex/contrib/lipsum/lipsum.pdf">此連結</a>。</p>
+</section>
+</section>
+<section id="latex-百變怪設定文字" class="level1">
+<h1>LaTeX 百變怪：設定文字</h1>
+<p>終於來到大家最期待的第三小節了！在本小節開始之前，必須先說明：由於我是串接 <a href="https://texlive.net/">TeXLive.net</a>，無法將字體檔、圖片檔等上傳到 TeXLive，因此我是使用 TeXLive.net 官網提供的範例做調整，還請讀者多見諒。</p>
+<section id="設定字體大小" class="level2">
+<h2 class="anchored" data-anchor-id="設定字體大小">設定字體大小</h2>
+<p>在 LaTeX 中，更改字體大小有多種方法，主要是使用預定義的字體大小指令和 <code>\selectfont</code> 指令兩種不同方法。預定義的字體大小指令非常簡單且易於使用，</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 20%">
+<col style="width: 29%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>字體大小指令</th>
+<th>字體大小 (pt)</th>
+<th>字體大小指令</th>
+<th>字體大小 (pt)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\tiny</code></td>
+<td>5</td>
+<td><code>\large</code></td>
+<td>12</td>
+</tr>
+<tr class="even">
+<td><code>\scriptsize</code></td>
+<td>7</td>
+<td><code>\Large</code></td>
+<td>14</td>
+</tr>
+<tr class="odd">
+<td><code>\footnotesize</code></td>
+<td>8</td>
+<td><code>\LARGE</code></td>
+<td>17</td>
+</tr>
+<tr class="even">
+<td><code>\small</code></td>
+<td>9</td>
+<td><code>\huge</code></td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td><code>\normalsize</code></td>
+<td>10</td>
+<td><code>\Huge</code></td>
+<td>25</td>
+</tr>
+</tbody>
+</table>
+<p>這些指令的排版效果如下：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"><div class="ace_active-line" style="height: 16px; top: 0px; left: 0px; right: 0px;"></div></div>\documentclass{article}
+\begin{document}
+
+This is \tiny tiny text.
+
+This is \scriptsize very small text.
+
+This is \footnotesize smaller text.
+
+This is \small small text.
+
+This is \normalsize normal size text.
+
+This is \large large text.
+
+This is \Large larger text.
+
+This is \LARGE even larger text.
+
+This is \huge huge text.
+
+This is \Huge the largest text.
+
+\end{document}
+</div></div></div></div></pre>
+<p>另一種設定字體大小則是使用<code>\fontsize{size}{baselineskip}\selectfont</code> 指令。在這裡，<code>size</code>是字體大小，<code>baselineskip</code>是行距。例如，若要設定字體大小為 25pt 並將行距設定為 14pt，可以使用 <code>{\fontsize{25}{14}\selectfont 要更改大小的字體}</code>，實際效果如下面所示：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"><div class="ace_active-line" style="height: 16px; top: 0px; left: 0px; right: 0px;"></div></div>\documentclass{article}
+\begin{document}
+
+This is the {\fontsize{25}{14}\selectfont modified} text.
+
+\end{document}
+</div></div></div></div></pre>
+<p>在這邊有一個小技巧，我們使用花括號<code>{}</code>創建一個<strong>局部範圍</strong>，範圍內的設定只影響括號內的內容，括號外的內容不受影響。</p>
+<p>如果你不知道字體大小測量的方式，可以先看下圖。排版技術十分要求<strong>對齊</strong>（alignment），因此設計字體時，一定都會以下圖的線條作為輔助線。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="font.png" class="img-fluid figure-img" style="width:65.0%" data-fig.align="center"></p>
+<figcaption>圖 1：字體大小測量方式<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></figcaption>
+</figure>
+</div>
+<p>而字體基線跟排版有什麼關係呢？下圖顯示了兩行文字，第一行文字與第二行文字之間的基線用紅色線段標示出來，一般來說我們都會以基線作為兩行之間的對齊基準，太大會讓字體離得太遠，太小則會讓字體看起來很擠，因此中庸之道就是選擇一個適合目前文件大小的基線高度。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="baselineskip.png" class="img-fluid figure-img" style="width:65.0%" data-fig.align="center"></p>
+<figcaption>圖 2：字體基線<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></figcaption>
+</figure>
+</div>
+</section>
+<section id="設定字體系列" class="level2">
+<h2 class="anchored" data-anchor-id="設定字體系列">設定字體系列</h2>
+<p>這張圖片展示了 LaTeX 中不同字體系列（typeface/family）的設定方法，包括 serif（羅馬字體）、sans serif（無襯線字體）和 typewriter（等寬字體）。每種字體系列都有相應的指令和切換指令：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 39%">
+<col style="width: 12%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>字體系列</th>
+<th>指令</th>
+<th>替代指令</th>
+<th>輸出結果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>serif (roman)</td>
+<td><code>\textrm{Sample Text 0123}</code></td>
+<td><code>\rmfamily</code></td>
+<td><em>Sample Text 0123</em></td>
+</tr>
+<tr class="even">
+<td>sans serif</td>
+<td><code>\textsf{Sample Text 0123}</code></td>
+<td><code>\sffamily</code></td>
+<td>Sample Text 0123</td>
+</tr>
+<tr class="odd">
+<td>typewriter (monospace)</td>
+<td><code>\texttt{Sample Text 0123}</code></td>
+<td><code>\ttfamily</code></td>
+<td>Sample Text 0123</td>
+</tr>
+</tbody>
+</table>
+<p>在 Word 裡面，使用者可以將某一段文字反白，接著選擇想要的字型進行更改。不過有時這個操作沒有辦法正確地更改文字字型，而且如果對方的電腦沒有特定字型檔案，那麼就會顯示預設字體（通常都是新細明體）。LaTeX 很好地解決這個問題，在 LaTeX 中可以使用 <code>fontspec</code> 套件，該套件提供了一個簡便的方法來設定和更改字型，特別適用於使用 XeLaTeX 或 LuaLaTeX 編譯的文檔。</p>
+<p>首先，你需要在文檔的導言區引入 <code>fontspec</code> 套件，接著使用 <code>\setmainfont</code>、<code>\setsansfont</code> 與 <code>\setmonofont</code>，接著就可以更改你想要的字體。不過通常來說，字體檔應該都要儲存在資料夾中的 <code>fonts</code> 資料夾，並且指定路徑，否則電腦不會知道你想要的字體是什麼。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"><div class="ace_active-line" style="height: 16px; top: 0px; left: 0px; right: 0px;"></div></div>\documentclass{article}
+
+\usepackage{fontspec}
+
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{Courier New}
+
+\begin{document}
+
+This is Serif.
+
+\textsf{This is Sans Serif.}
+
+\textsf{This is Mono.}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="設定字型" class="level2">
+<h2 class="anchored" data-anchor-id="設定字型">設定字型</h2>
+<p>在 LaTeX 中，粗體、斜體和粗斜體的用途各有不同，主要用於突出和強調文本內容。<strong>粗體</strong>（Bold）常用於強調重要的詞或句子，標題或副標題，以引起讀者的注意；在技術文檔中，粗體用於強調關鍵詞或重要術語。<strong>斜體</strong>（Italic）則通常用於書名、文章名稱或強調外來詞，以及在數學和科學文檔中表示變數或斜體符號。斜體也可以用於引用或強調特定的詞語或句子。至於<strong>粗斜體</strong>（Bold Italic），則用於需要特別強調的文本，例如在強調的同時需要更強的視覺效果，或者在標題中的特別強調部分。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"><div class="ace_active-line" style="height: 16px; top: 0px; left: 0px; right: 0px;"></div></div>\documentclass{article}
+\begin{document}
+This is normal text.
+
+This is \textbf{bold} text.
+
+This is \textit{italic} text.
+
+This is \textbf{\textit{bold italic}} text.
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="設定中文" class="level2">
+<h2 class="anchored" data-anchor-id="設定中文">設定中文</h2>
+<p>在 LaTeX 中，使用中文需要特別的套件來處理字體和字符編碼問題。常用的套件是 xeCJK，該套件需要 XeLaTeX 編譯器來正確顯示中文。<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>首先，你需要確保系統已安裝 XeLaTeX 編譯器，接著，在你的 LaTeX 文檔中引入 <code>xeCJK</code> 和 <code>fontspec</code> 兩個套件。<code>xeCJK</code> 用於處理中文排版，而 <code>fontspec</code> 用於設定字體。以下是範例程式碼，展示如何設定中文：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"><div class="ace_active-line" style="height: 16px; top: 0px; left: 0px; right: 0px;"></div></div>% !TeX xelatex
+\documentclass{article}
+
+\usepackage{fontspec}
+
+\setmainfont{FandolSong}
+
+\begin{document}
+
+你好，這是一份測試文件。
+
+\end{document}
+</div></div></div></div></pre>
+<p>由於前面提到無法上傳字體檔到 TeXLive 上，因此以下提供在本機建立 fonts 資料夾的處理方式。首先，在 <code>.tex</code> 的同個資料夾路徑下建立 fonts 資料夾，並將中文字體檔（副檔名多半是 <code>.ttf</code>、<code>.TTF</code> 或 <code>.otf</code>）放在裡面，中文字體檔案建議用<a href="https://github.com/l10n-tw/cwtex-q-fonts">cwTeX 字體</a>。先看範例，再來一一講解如何設定。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"><div class="ace_active-line" style="height: 16px; top: 0px; left: 0px; right: 0px;"></div></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入套件
+\usepackage{xeCJK}
+\usepackage{fontspec}
+
+% 設定中文字體
+\setCJKmainfont[Path=./fonts/]{cwTeXQMing-Medium.ttf}
+\setCJKfamilyfont{kai}[Path=./fonts/]{cwTeXQKai-Medium.ttf}
+\newcommand{\kai}[1]{{\CJKfamily{kai}#1}}
+\setCJKfamilyfont{yuan}[Path=./fonts/]{cwTeXQYuan-Medium.ttf}
+\newcommand{\yuan}[1]{{\CJKfamily{yuan}#1}}
+\setCJKfamilyfont{hei}[Path=./fonts/]{cwTeXQHei-Bold.ttf}
+\newcommand{\hei}[1]{{\CJKfamily{hei}#1}}
+
+\begin{document}
+
+你好，這是一份測試文件。
+
+\end{document}
+</div></div></div></div></pre>
+<p>在範例程式碼中，我們使用 <code>\setCJKmainfont</code> 設定文件的<strong>主要</strong>中文字體，也就是如果你不加修改字體，那麼就是依照使用者預設的字體呈現。接著，<code>\setCJKfamilyfont</code> 則是新增中文字體的<strong>字體家族</strong>，例如 <code>\setCJKfamilyfont{kai}[Path=./fonts/]{cwTeXQKai-Medium.ttf}</code> 便指定了字體家族為 <code>kai</code>（因為是楷體），在選擇參數中加入 <code>Path=./fonts/</code>，代表將字體檔路徑設定在子資料夾 fonts 中，最後告訴電腦字體檔案名稱是什麼。</p>
+<p>設定到這邊並未結束，因為這樣只有告訴電腦有這個字體家族，但是並沒有呼叫該字體的指令。不過因為每個人設定的字體家族名稱都不盡相同，因此需要<strong>新增指令</strong>。新增指令的方式很簡單，只要用 <code>\newcommand{指令名稱}[參數數目]{定義指令}</code>。<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>回到原本的例子，文件中已經設定一個字體家族名為 <code>kai</code>，我們就創建新指令 <code>\kai</code>，定義為 <code>\newcommand{\kai}[1]{{\CJKfamily{kai}#1}}</code>，也就是當使用者需要將字體變成楷體時，使用 <code>\kai{欲變更文字}</code> 即可。其他的字體類型以此類推，我們就可以建立一個好看的中文文件了！</p>
+</section>
+</section>
+<section id="latex-的服裝版面設定" class="level1">
+<h1>LaTeX 的服裝：版面設定</h1>
+<p>有了上面的設定概念後，接著我們就可以針對文件中的其他部分進行修改。我們可以透過一些套件，讓我們的文件變得更加易讀、美觀。這一小節我們將會提到如何進行邊界設定、章節標題字體設定，以及頁首與頁尾的設定。</p>
+<section id="邊界設定" class="level2">
+<h2 class="anchored" data-anchor-id="邊界設定">邊界設定</h2>
+<p>在 Word 中，我們可以進行版面設定，即設定上、下、左、右邊界，LaTeX 也有提供相同的功能。設定邊界的方式很簡單，只要使用 <code>geometry</code> 套件即可。不過，在設定時還是有些地方需要注意。先看下圖：</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="layout-dimensions.png" class="img-fluid figure-img" style="width:65.0%" data-fig.align="center"></p>
+<figcaption>圖 3：geometry 巨集套件設定圖示<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></figcaption>
+</figure>
+</div>
+<p>一份文件中，本文的位置由圖左中間的方框包住，該方框與紙張中間的距離就稱為邊距（margin）。邊距分為上（top）、下（bottom）、左（left）、右（right）。引用套件後，我們可以使用 <code>\geometry{}</code> 來設定。以下是範例，假設將頁面的上邊距和下邊距設定為 2 公分，左邊距和右邊距設定為 2.5 公分，你也可以自己調整看看，不同的數字會有何種變化。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"><div class="ace_active-line" style="height: 16px; top: 0px; left: 0px; right: 0px;"></div></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\setmainfont{FandolSong}
+
+% 設定邊界
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+% 設定標題頁資訊
+\title{第一份 \LaTeX\ 文件}
+\author{王大明}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+你好，這是一份測試文件。
+
+\end{document}
+</div></div></div></div></pre>
+<p>如果你想要將所有邊距設為同一數值，例如 <code>\geometry{margin=2cm}</code>，這樣就將會把文件的所有邊距都設定為 2 公分。如果只想設定某一方向的邊距，可以使用以下指令：<code>\geometry{left=3cm}</code>，類似地，可以設定 <code>top</code>、<code>right</code> 和 <code>bottom</code> 邊距。</p>
+<p>如果你認為 <code>geometry</code> 套件只有這樣的功能，那你就太小看它了！如果我們的文件不是一般常見的 a4 格式，例如中學考卷通常都是 a3，那麼要如何處理？更進一步地說，中學的考卷有時需要橫向排版，這時候又應該怎麼做？別緊張，<code>geometry</code> 套件還提供了其他設定選項，例如紙張大小、頁面方向和裝訂邊距等。</p>
+<p>使用者可以通過 a4paper、letterpaper 等選項來設定紙張大小，或是可以用 <code>landscape</code> 將頁面設定為縱向或橫向，<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>如果需要為裝訂預留額外的邊距，可以使用 <code>bindingoffset</code> 參數。假設我們要將文件設定為 a3 的橫向大小，邊距均為 2.5 公分，並預留裝訂區域為 1 公分，可參考以下範例：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"><div class="ace_active-line" style="height: 16px; top: 0px; left: 0px; right: 0px;"></div></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\setmainfont{FandolSong}
+
+% 設定邊界
+\usepackage{geometry}
+\geometry{a3paper, margin=2.5cm, landscape, bindingoffset=1cm}
+
+% 設定標題頁資訊
+\title{第一份 \LaTeX\ 文件}
+\author{王大明}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+你好，這是一份測試文件。
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="章節標題格式設定" class="level2">
+<h2 class="anchored" data-anchor-id="章節標題格式設定">章節標題格式設定</h2>
+<p>Word 裡面我們對於章節標題格式設定，需要先選取一個章節的標題，接著點選樣式進行設定，<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>不過這樣的設定方式稍顯麻煩，有時會因為加入新的小節而跑版。</p>
+<p>在 LaTeX 中，我們使用 <code>titlesec</code> 進行設定。首先，在導言區載入 <code>titlesec</code> 套件後，使用 <code>\titleformat{欲設定標題}[形狀]{格式}{標籤樣式}{標題編號與文本間距}{標題文本前指令}[標題文本後指令]</code> 指令來設定章節標題的格式。這個指令分成好幾個部分：</p>
+<ol type="1">
+<li><p><strong>欲設定標題</strong>：指定要設定格式的標題指令，例如 <code>\section</code>、<code>\subsection</code> 等。</p></li>
+<li><p><strong>形狀</strong>：可選參數，用於指定標題的形狀或樣式，例如 <code>block</code>（塊狀）或 <code>display</code>（顯示）。如果不需要特別的形狀，這部分可以省略。</p></li>
+<li><p><strong>格式</strong>：設定標題的字體、大小、顏色等格式，使用 LaTeX 的文本格式指令。</p></li>
+<li><p><strong>標籤樣式</strong>：指定標題的標籤樣式，即標題編號部分。可以使用 <code>\thesection</code>、<code>\thesubsection</code> 等指令來設定。如果不需要標題編號，可以使用空的大括號 <code>{}</code>。</p></li>
+<li><p><strong>標題編號與文本間距</strong>：設定標題編號與標題文本之間的距離，單位可以是 <code>pt</code>、<code>em</code>、<code>cm</code>等。</p></li>
+<li><p><strong>標題文本前指令</strong>：指定在標題文本之前執行的 LaTeX 指令，例如插入圖片、水平線等。如果不需要，可以留空。</p></li>
+<li><p><strong>標題文本後指令</strong>：可選參數，指定在標題文本之後執行的 LaTeX 指令。</p></li>
+</ol>
+<p>我們直接從以下範例看一下如何處理：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"><div class="ace_active-line" style="height: 16px; top: 0px; left: 0px; right: 0px;"></div></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入中文假文產生器
+\usepackage{zhlipsum}
+
+% 設定標題格式
+\usepackage{titlesec}
+\titleformat{\section}         % 設定 \section 標題的格式
+  {\normalfont\Large\bfseries} % 標題的字體和大小
+  {\CJKnumber{\thesection}、}  % 使用 \CJKnumber 將章節編號轉換為中文數字
+  {1em}                        % 編號與文本之間的距離
+  {}                           % 標題文本之前的程式碼
+
+% 設定邊界
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+% 設定標題頁資訊
+\title{第一份 \LaTeX\ 文件}
+\author{王大明}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{前言}
+
+\zhlipsum[1-3]
+
+\end{document}
+</div></div></div></div></pre>
+<p>在上面的範例程式碼中，有幾個小技巧：</p>
+<ol type="1">
+<li>可以看到我們使用 <code>\usepackage{xeCJK, CJKnumb}</code> 將兩個套件載入進來。如果欲載入沒有要設定其他的內容，那麼就可以將多個套件以逗號分隔一次載入。</li>
+<li>前面我們提到拉丁字母有假文產生器 <code>lipsum</code>，中文也有相應的套件 <code>zhlipsum</code>，使用方法與 <code>lipsum</code> 大致相同，即輸入 <code>\zhlipsum[起始段落-結束段落]</code> 即可。</li>
+</ol>
+</section>
+<section id="頁首頁尾設定" class="level2">
+<h2 class="anchored" data-anchor-id="頁首頁尾設定">頁首頁尾設定</h2>
+<p>在 Word 中，頁首與頁尾的設定十分複雜，除了腳註的設定外，更包含奇偶數不同的頁碼、頁首文字等。LaTeX 則提供 <code>fancyhdr</code> 套件，透過預先設定，就不用一個個微調。</p>
+<p>在以下的範例程式碼中有一個地方必須注意：我們以頁腳的設定來說，程式碼中有 <code>fancyfoot</code> 與 <code>cfoot</code>、<code>lfoot</code>、<code>rfoot</code>，你可能會想說這是不一樣的東西吧。答案是肯定，也是否定。事實上 <code>fancyfoot</code> 是較為正式的用法，可以設定的參數較多，常用位置參數包括：<code>L</code> 左邊（Left）、<code>C</code> 中間（Center）、<code>R</code> 右邊（Right）、<code>E</code> 偶數頁（Even）、<code>O</code> 奇數頁（Odd）。而 <code>cfoot</code>、<code>lfoot</code>、<code>rfoot</code> 則是 <code>fancyhdr</code> 套件提供的快捷命令，用於快速設置頁腳的中間、左邊和右邊內容。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"><div class="ace_active-line" style="height: 16px; top: 0px; left: 0px; right: 0px;"></div></div>% !TeX xelatex
+\documentclass[twoside]{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 載入中文假文產生器
+\usepackage{zhlipsum}
+
+% 設定標題格式
+\usepackage{titlesec}
+\titleformat{\section}         % 設定 \section 標題的格式
+  {\normalfont\Large\bfseries} % 標題的字體和大小
+  {\CJKnumber{\thesection}、}  % 使用 \CJKnumber 將章節編號轉換為中文數字
+  {1em}                        % 編號與文本之間的距離
+  {}                           % 標題文本之前的程式碼
+
+% 設定邊界
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+% 設定頁首頁尾
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\normalsize 左上文字 \\ 左下文字}
+\rhead{\normalsize 右上文字 \\ 右下文字}
+
+% 設置偶數頁和奇數頁的不同頁眉和頁腳
+\fancyfoot[C]{}
+\fancyfoot[LE,RO]{第~\thepage~頁}      % 頁碼放在偶數頁的左邊及奇數頁的右邊
+
+% 設定標題頁資訊
+\title{第一份 \LaTeX\ 文件}
+\author{王大明}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{前言}
+
+\zhlipsum[1-10]
+
+\section{研究方法}
+
+\zhlipsum[11-20]
+
+\end{document}
+</div></div></div></div></pre>
+<p>在使用 <code>fancyhdr</code> 之前，建議使用 <code>\fancyhf{}</code> 清除任何預設的頁首和頁腳設定。然後，使用 <code>\lhead</code> 和 <code>\rhead</code> 命令分別設定頁首的左側和右側內容，其中 <code>\lhead{\normalsize 左上文字 \ 左下文字}</code> 將頁首的左側設定為包含「左上文字」和 「左下文字」，而 <code>\rhead{\normalsize 右上文字 \ 右下文字}</code> 則將頁首的右側設定為包含「右上文字」和 「右下文字」。</p>
+<p>頁腳部分，使用 <code>\cfoot{\footnotesize \thepage}</code> 在頁腳的中央顯示頁碼。此外，利用 <code>\fancyfoot[C]{}</code> 清空中央的頁腳內容，然後使用 <code>\fancyfoot[LE,RO]{第~\thepage~頁}</code> 設定頁碼，使其在偶數頁的左側和奇數頁的右側顯示，並且格式為<code>第~頁碼~頁</code>。</p>
+</section>
+</section>
+<section id="小結" class="level1">
+<h1>小結</h1>
+<p>這篇文章教的內容有點多，可能對於初學者而言沒辦法一下子吸收過來，建議多看幾次，或是直接實際操作，讓 LaTeX 的指令變成<strong>肌肉記憶</strong>。如果找不到可以練習的素材，可以使用筆者的模板（<del>趁機打廣告</del>）練習看看：<a href="https://www.overleaf.com/latex/templates/note-template/ddmbggrxcmfb">Note template</a>。</p>
+<section id="footnotes" class="level2">
+<h2 class="anchored" data-anchor-id="footnotes">Footnotes</h2>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>如果你不曉得<code>[]</code>與<code>{}</code>的差別在哪，請回去看第一篇文章的<a href="https://xiaolong70701.github.io/blog/posts/2024-06-22-latex/#%E6%B1%BA%E5%AE%9A%E7%BE%8E%E9%86%9C%E7%9A%84%E9%97%9C%E9%8D%B5%E5%8F%83%E6%95%B8">決定美醜的關鍵：參數</a>。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>筆者未有使用過 MikTeX 以外編譯器的經驗，因此不確定其他編譯器是否如此智慧。MikTeX 的好處是可以在 MikTeX Console 裡面設定自動安裝套件，不用每次詢問。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><code>lipsum</code> 與 <code>blindtext</code> 最大的差別是：<code>lipsum</code> 僅生成 Lorem ipsum 占位文本，而 <code>blindtext</code> 則可以生成各種格式的測試文本，例如標題、副標題等。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>但是這個儲存櫃唯一的缺點就是全英文，但現在 chatGPT 等 AI 工具如此發達，只要將文件內容丟進去即可翻譯，因此不用擔心看不懂。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>How is font size measured? (n.d.). Quora. <a href="https://www.quora.com/How-is-font-size-measured">https://www.quora.com/How-is-font-size-measured</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Understanding line height / line spacing / baselineskip in LaTeX. (n.d.). TeX - LaTeX Stack Exchange. <a href="https://tex.stackexchange.com/questions/410250/understanding-line-height-line-spacing-baselineskip-in-latex">https://tex.stackexchange.com/questions/410250/understanding-line-height-line-spacing-baselineskip-in-latex</a><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>另外還有 <code>CTEX</code>、<code>CJK</code>、<code>CJKutf8</code>，但是最常見最好用的套件是 <code>xeCJK</code>。而 CJK 代表的意思是中文（Chinese）、日文（Japanese）與韓文（Korean）。<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>新指令的定義是包含你希望指令執行的內容。如果指令可以允許接受參數，則可以在定義中使用 <code>#1</code>、<code>#2</code> 等來引用這些參數，<code>#1</code> 表示第一個參數，依此類推。<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>圖片取自台大經濟系吳聰敏教授之<a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=&amp;cad=rja&amp;uact=8&amp;ved=2ahUKEwjb8NT9rfKGAxVJrlYBHSQKAFEQFnoECBQQAQ&amp;url=http%3A%2F%2Fhomepage.ntu.edu.tw%2F~ntut019%2Fcwtex%2Fcxbook3.pdf&amp;usg=AOvVaw2JOT7Sa4bbi6liDKOAWEv-&amp;opi=89978449">《cwTEX 排版系統》</a>頁 284。<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>默認情況下是縱向（portrait），因此不需要設定。<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>請參考<a href="https://zanzan.tw/archives/18528">Word標題設定：1個操作，更改整份文件排版設計</a>。<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sung2024,
+  author = {Sung, Anthony},
+  title = {LaTeX {教學系列：基本設定}},
+  date = {2024-06-24},
+  url = {https://yueswater.com/posts/2024-06-24-latex-setting/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sung2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Sung, Anthony. 2024. <span>“LaTeX 教學系列：基本設定.”</span> June 24,
+2024. <a href="https://yueswater.com/posts/2024-06-24-latex-setting/">https://yueswater.com/posts/2024-06-24-latex-setting/</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="xiaolong70701/quarto-blog" data-repo-id="R_kgDOJhS1Eg" data-category="General" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="light">
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright © 2024 Anthony. All rights reserved. See <a href="../copyright.html">statements</a>.</p>
+</div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/">
+      <i class="bi bi-facebook" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:xiaolong70701@gmail.com">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

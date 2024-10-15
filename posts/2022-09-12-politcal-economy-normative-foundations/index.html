@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anthony Sung">
+<meta name="dcterms.date" content="2022-09-12">
+<meta name="description" content="政治經濟學與經濟發展入門。">
+
+<title>政治經濟學的規範基礎(Normative Foundations) – Yueswater Blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VLWNL5QXD8"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VLWNL5QXD8', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script> 
+  
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../css/karat.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Yueswater Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../notes.html"> 
+<span class="menu-text">Diary &amp; Notes</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/"> <i class="bi bi-facebook" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/yues_19_water/"> <i class="bi bi-instagram" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#效用函數與-pareto-概念" id="toc-效用函數與-pareto-概念" class="nav-link active" data-scroll-target="#效用函數與-pareto-概念">效用函數與 Pareto 概念</a>
+  <ul class="collapse">
+  <li><a href="#pareto-優勢pareto-dominance" id="toc-pareto-優勢pareto-dominance" class="nav-link" data-scroll-target="#pareto-優勢pareto-dominance">Pareto 優勢(Pareto dominance)</a></li>
+  <li><a href="#pareto-改善pareto-improvement-與-pareto-效率pareto-efficiency" id="toc-pareto-改善pareto-improvement-與-pareto-效率pareto-efficiency" class="nav-link" data-scroll-target="#pareto-改善pareto-improvement-與-pareto-效率pareto-efficiency">Pareto 改善(Pareto improvement) 與 Pareto 效率(Pareto efficiency)</a></li>
+  <li><a href="#效率與分配efficiency-and-distribution" id="toc-效率與分配efficiency-and-distribution" class="nav-link" data-scroll-target="#效率與分配efficiency-and-distribution">效率與分配(efficiency and distribution)</a></li>
+  </ul></li>
+  <li><a href="#政策的兩難政策與偏好模型model-of-policies-and-preferences" id="toc-政策的兩難政策與偏好模型model-of-policies-and-preferences" class="nav-link" data-scroll-target="#政策的兩難政策與偏好模型model-of-policies-and-preferences">政策的兩難：政策與偏好模型(Model of Policies and Preferences)</a>
+  <ul class="collapse">
+  <li><a href="#準線性偏好quasi-linear-preferences" id="toc-準線性偏好quasi-linear-preferences" class="nav-link" data-scroll-target="#準線性偏好quasi-linear-preferences">準線性偏好(quasi-Linear Preferences)</a></li>
+  <li><a href="#準線性偏好之重要性質" id="toc-準線性偏好之重要性質" class="nav-link" data-scroll-target="#準線性偏好之重要性質">準線性偏好之重要性質</a></li>
+  </ul></li>
+  <li><a href="#國際貿易與安全外部性" id="toc-國際貿易與安全外部性" class="nav-link" data-scroll-target="#國際貿易與安全外部性">國際貿易與安全外部性</a>
+  <ul class="collapse">
+  <li><a href="#兩國貿易囚徒困境prisoners-dilemma" id="toc-兩國貿易囚徒困境prisoners-dilemma" class="nav-link" data-scroll-target="#兩國貿易囚徒困境prisoners-dilemma">兩國貿易：囚徒困境(prisoner’s dilemma)</a></li>
+  <li><a href="#兩國貿易重複賽局repeated-game" id="toc-兩國貿易重複賽局repeated-game" class="nav-link" data-scroll-target="#兩國貿易重複賽局repeated-game">兩國貿易：重複賽局(repeated game)</a></li>
+  <li><a href="#與敵國adversaries貿易之條件" id="toc-與敵國adversaries貿易之條件" class="nav-link" data-scroll-target="#與敵國adversaries貿易之條件">與敵國(Adversaries)貿易之條件</a></li>
+  <li><a href="#與盟友allies貿易之條件" id="toc-與盟友allies貿易之條件" class="nav-link" data-scroll-target="#與盟友allies貿易之條件">與盟友(Allies)貿易之條件</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">政治經濟學的規範基礎(Normative Foundations)</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">poilitical economy</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    <p>政治經濟學與經濟發展入門。</p>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Anthony Sung </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 12, 2022</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>1970 年代以降，行為科學與科際整合的興起，導致政治學與經濟學的研究兩者相互影響。在政治經濟學的研究領域中會發現，儘管學者採用、引進個體經濟模型解釋諸多政治行為與現象，然而，政治(politics)作為一個重要的影響因子(factor)，在某種程度上會扭曲以個體經濟模型的本質與型態。</p>
+<section id="效用函數與-pareto-概念" class="level2">
+<h2 class="anchored" data-anchor-id="效用函數與-pareto-概念">效用函數與 Pareto 概念</h2>
+<p>在現實生活中，對於任何事情，無論是食物、衣服，乃至於公共政策，每個個體都有不同的偏好(preferences)，而這些偏好可以透過數學的方式表達，稱之為<strong>效用函數(utility function)</strong>。<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 對於每個個體而言，若滿足下列條件，則效用函數 <span class="math inline">\(U_i\)</span> 可以表達第 <span class="math inline">\(i\)</span> 個人的偏好：</p>
+<ul>
+<li>嚴格偏好(strictly prefer)：若一個個體偏好 <span class="math inline">\(x\)</span> 的程度大於 <span class="math inline">\(y\)</span>，則可記作 <span class="math inline">\(x \succ y\)</span>，隱含 <span class="math inline">\(U_i(x) &gt; U_i(y)\)</span>。</li>
+<li>無異(indifference)：若一個個體偏好 <span class="math inline">\(x\)</span> 的程度等於 <span class="math inline">\(y\)</span>，則可記作 <span class="math inline">\(x \sim y\)</span>，隱含 <span class="math inline">\(U_i(x) = U_i(y)\)</span>。</li>
+</ul>
+<section id="pareto-優勢pareto-dominance" class="level3">
+<h3 class="anchored" data-anchor-id="pareto-優勢pareto-dominance">Pareto 優勢(Pareto dominance)</h3>
+<p>若以下條件成立，則稱一個政策 <span class="math inline">\(x\)</span> Pareto 優於另一個政策 <span class="math inline">\(y\)</span>：</p>
+<ul>
+<li><span class="math inline">\(U_i(x) \geq U_i(y), \; \forall i\)</span></li>
+<li><span class="math inline">\(U_i(x) &gt; U_i(y), \; \text{for at least one } i\)</span></li>
+</ul>
+<p>當上述條件成立時，任何人都應該接受政策 <span class="math inline">\(x\)</span> 優於政策 <span class="math inline">\(y\)</span> 的事實。直觀而言，若一國非威權、極權國家，那麼作為民主體制的國家，政府則必須照顧多數人，也就是所謂的「少數服從多數」。</p>
+</section>
+<section id="pareto-改善pareto-improvement-與-pareto-效率pareto-efficiency" class="level3">
+<h3 class="anchored" data-anchor-id="pareto-改善pareto-improvement-與-pareto-效率pareto-efficiency">Pareto 改善(Pareto improvement) 與 Pareto 效率(Pareto efficiency)</h3>
+<p>假設政策 <span class="math inline">\(x\)</span> Pareto 優於另一個政策 <span class="math inline">\(y\)</span>，在不犧牲任何一方的福利下，從<span class="math inline">\(x\)</span> 移動到 <span class="math inline">\(y\)</span> 的過程若可改善另一方、或雙方的福利，則稱其為 Pareto 改善；若從<span class="math inline">\(x\)</span> 移動到 <span class="math inline">\(y\)</span> 的過程若將對於一方或雙方的福利產生傷害，則稱為該點為 Pareto 效率。</p>
+<p><img src="https://i.imgur.com/jINEbH4.png" class="img-fluid"></p>
+<p>舉例來說，</p>
+<p><span class="math display">\[
+\begin{array}{lll}
+U_1(x)=5 &amp; U_1(y)=2 &amp; U_1(z)=4 \\
+U_2(x)=1 &amp; U_2(y)=3 &amp; U_2(z)=7 \\
+U_3(x)=4 &amp; U_3(y)=1 &amp; U_3(z)=1
+\end{array}
+\]</span></p>
+<p><span class="math inline">\(x\)</span> 與 <span class="math inline">\(z\)</span> 是 Pareto 效率的政策，但 <span class="math inline">\(x\)</span> 政策的總效用為 <span class="math inline">\(10\)</span>，<span class="math inline">\(z\)</span> 則為 <span class="math inline">\(12\)</span>。而若從政策 <span class="math inline">\(x\)</span> 轉換到 <span class="math inline">\(z\)</span>，或反向操作，均會造成部分人的利益受損，這也對應到現實社會上政策的改變會影響到某些族群的利益，從而產生反對的聲音。另外，從非 Pareto 效率移轉到 Pareto 效率，不必然產生 Pareto 改善(如從 <span class="math inline">\(y\)</span> 到 <span class="math inline">\(x\)</span>)。</p>
+<p><span class="math display">\[
+\begin{array}{lll}
+U_1(x)=1 &amp; U_1(y)=2 &amp; U_1(z)=3 \\
+U_2(x)=3 &amp; U_2(y)=2 &amp; U_2(z)=0 \\
+U_3(x)=-2 &amp; U_3(y)=4 &amp; U_3(z)=0
+\end{array}
+\]</span></p>
+<p>第二個例子中可以發現每個政策均為 Pareto 效率，其中 <span class="math inline">\(y\)</span> 政策的總利益最高。</p>
+</section>
+<section id="效率與分配efficiency-and-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="效率與分配efficiency-and-distribution">效率與分配(efficiency and distribution)</h3>
+<p>所謂效率，係指在個體經濟層面上極大化一個個體的效用，而分配則是指政府透過移轉性支出(transfer expenditure)補貼在達到效率產生的政策受損者(loser)。例如在 J. F. Hornbeck 所撰寫的 <em>Trade Adjustment Assistance (TAA) and Its Role in U.S. Trade Policy</em> 提到：</p>
+<blockquote class="blockquote">
+<p>Congress created Trade Adjustment Assistance (TAA) in the Trade Expansion Act of 1962 to help workers and firms adjust to dislocation that may be caused by increased trade liberalization. It is justified now, as it was then, on grounds that the government has an obligation to help the “losers” of policy-driven trade opening.</p>
+</blockquote>
+<p>例如 2014 年臺灣的太陽花學運，若以後設的角度來看，可以發現當時的政策決定者僅看到簽訂自由貿易協定是一個 Pareto 效率，但並未考慮到在簽訂政策之後臺灣將產生出利益受損者。</p>
+</section>
+</section>
+<section id="政策的兩難政策與偏好模型model-of-policies-and-preferences" class="level2">
+<h2 class="anchored" data-anchor-id="政策的兩難政策與偏好模型model-of-policies-and-preferences">政策的兩難：政策與偏好模型(Model of Policies and Preferences)</h2>
+<p>由上述的推論可以得知，一個政策的產生與決定必定會造成社會上某些人受損——儘管該政策能夠帶給多數人民最大的利益，因此一個理想的政策存在下列兩個條件：行動(action)，亦即政策，與移轉性計畫(transfer scheme)，即對於政策受損者的補貼。假設社會存在 <span class="math inline">\(n\)</span> 個人，所有的行動 <span class="math inline">\(a\)</span> 可以寫成一個集合 <span class="math inline">\(\mathbf{A}\)</span>，即</p>
+<p><span class="math display">\[
+a \in \mathbf{A}
+\]</span></p>
+<p>另外，移轉性計畫則包含每個個體的移轉項目 <span class="math inline">\(t_i\)</span>，記作 <span class="math inline">\(t = (t_1, t_2, \cdots, t_n)\)</span>，其中若 <span class="math inline">\(t_i &lt; 0\)</span>，代表政府從該個體身上拿走部分所得，若 <span class="math inline">\(t_i &gt; 0\)</span> 則是政府對其進行補貼。而在移轉性計畫下，正常情況是不會產生額外的資金，亦不會憑空減少，也就是「羊毛出在羊身上」，因此移轉性計畫的所有金額總和必為 <span class="math inline">\(0\)</span>，即 <span class="math display">\[
+\sum^n_{i=1}t_i = 0
+\]</span> 我們可以將一個政策表達為 <span class="math inline">\((a, t)\)</span>，因此個體對於該政策的偏好可以寫作 <span class="math display">\[
+U_i(a,t)
+\]</span> 同樣地我們可以運用上述關於偏好排序的概念，描述個體對於不同政策之間的喜好程度。若某個體偏好 <span class="math inline">\((a, t)\)</span>的程度大於 <span class="math inline">\((a', t')\)</span>，則可寫成 <span class="math inline">\(U_i(a, t) &gt; U_i(a', t')\)</span>；若某個體認為<span class="math inline">\((a, t)\)</span>與 <span class="math inline">\((a', t')\)</span>對其而言沒有差別，則表示此個體對此兩個政策無異，寫作 <span class="math inline">\(U_i(a, t) = U_i(a', t')\)</span>。</p>
+<section id="準線性偏好quasi-linear-preferences" class="level3">
+<h3 class="anchored" data-anchor-id="準線性偏好quasi-linear-preferences">準線性偏好(quasi-Linear Preferences)</h3>
+<p>假設我們可以將個體對於政策的偏好區分為兩部分，其一為行動，另一個則為移轉性數額，則該個體之效用函數可以寫成 <span class="math display">\[
+U_i(a,t) = v_i(a) + t_i
+\]</span> 我們稱此種效用函數為準線性效用函數，其顯示出的偏好為準線性偏好，因個體收到的移轉支出即可視為所獲得的效用，故準線性偏好之效用與移轉性數額間具有線性關係(linear relationship)，但與行動則不具線性關係(non-linear relationship)。而在準線性偏好之下，若且唯若某個體偏好 <span class="math inline">\((x, t)\)</span> 大於 <span class="math inline">\((y,t')\)</span>，則 <span class="math display">\[
+\begin{gathered}
+U_1(x, t)+U_2(x, t)&gt;U_1\left(y, t^{\prime}\right)+U_2\left(y, t^{\prime}\right) \\
+v_1(x)+t_1+v_2(x)+t_2&gt;v_1(y)+t_1^{\prime}+v_2(y)+t_2^{\prime}
+\end{gathered}
+\]</span> 而在預算平衡之下，隱含 <span class="math inline">\(t_1 + t_2 = t_1'+ t_2' = 0\)</span>，則 <span class="math display">\[
+v_1(x) + v_2(x) &gt; v_1(y) + v_2(y)
+\]</span> 言下之意，上述推導背後的邏輯，係在效用主義的假設之下，移轉性支出的數額並非個體決定偏好何種政策的關鍵，而是行動本身。</p>
+<p><img src="https://i.imgur.com/7CWBZfN.png" class="img-fluid"></p>
+<p>令 <span class="math inline">\(U_C\)</span> 為資本家的效用，<span class="math inline">\(U_L\)</span> 為勞工的效用，在未採行自由貿易之下的關稅為 <span class="math inline">\(a^\text{P}\)</span>，若開放自由貿易後關稅額移動到 <span class="math inline">\(a^{\text{FT}}\)</span> 後，勞工的利益會下降，資本家的利益則會上升。在自由貿易開放之後，因勞工利益受損，從而會使得勞工會採取體制內或體制外的行動表達對於此政策的不滿。</p>
+<p><img src="https://i.imgur.com/irchFtw.png" class="img-fluid"></p>
+<p>誠如上述所言，一項好的政策必須包含行動與補貼，在自由貿易下，政府會對於勞工進行補貼，形成新的效用函數，<span class="math inline">\(U_C^{\prime}\)</span> 與 <span class="math inline">\(U_L^{\prime}\)</span>，而因為準線性不會影響斜率，只會影響截距，導致效用函數在圖形上為上升或下降。此時的補貼係從資本家的利得移轉給勞工，勞工的效用值上升到紅色圓點，資本家的效用值則移動到紅色三角，兩者的利益均上升，形成雙贏(win-win)的局面。</p>
+<p><img src="https://i.imgur.com/aqXR7Xu.png" class="img-fluid"></p>
+<p>不過就經濟意義上而言，這樣的配置並非最適，原因在於 Pareto 改善並不要求效用必須大於，事實上亦可以剛好等於，使其改善前後的效用無異。因此在現實生活中，資本家不會願意給予上圖的數額，而會給予能夠使勞工效用無異的數額。</p>
+</section>
+<section id="準線性偏好之重要性質" class="level3">
+<h3 class="anchored" data-anchor-id="準線性偏好之重要性質">準線性偏好之重要性質</h3>
+<p>假定個體服從準線性偏好，而每項政策都是諸多行動( <span class="math inline">\(a \in \mathbf{A}\)</span> )與移轉性支出( <span class="math inline">\(t_i \in \mathbf{T}\)</span> )的集合，若 <span class="math inline">\(x \in \mathbf{A}\)</span> 是所有行動中的最適，則對於所有 <span class="math inline">\(t\)</span>，政策 <span class="math inline">\((x,t)\)</span> 必為 Pareto 效率，反之亦可推得 <span class="math inline">\(x\)</span> 為最適。我們可以利用反證法證明上述的定理：假設 <span class="math inline">\(x\)</span> 為最適，但 <span class="math inline">\((x,t)\)</span>非 Pareto 效率，前項條件隱含 <span class="math display">\[
+\sum_{i=1}^n v_i(x) \geq \sum_{i=1}^n v_i(y),\; y \in \mathbf{A}
+\]</span> 後項條件隱含 <span class="math inline">\(\exists \; (y, t') \text{ s.t. } (y, t')\succ (x,t)\)</span>，若此項條件成立，則 <span class="math inline">\(v_i(y)+t_i^{\prime} \geq v_i(x)+t_i, \; \forall i\)</span> 且 <span class="math inline">\(v_i(y)+t_i^{\prime} \geq v_i(x)+t_i, \; \text{for at least one } i\)</span>，則 <span class="math display">\[
+\sum_{i=1}^n\left[v_i(y)+t_i^{\prime}\right]&gt;\sum_{i=1}^n\left[v_i(x)+t_i\right]
+\]</span> 因預算平衡，則 <span class="math inline">\(t = t'\)</span>，故 <span class="math display">\[
+\sum_{i=1}^nv_i(y)&gt;\sum_{i=1}^nv_i(x)
+\]</span> 而此條件與 <span class="math inline">\(x\)</span> 為最適的條件產生矛盾。而反向的條件之證明如下，首先定義移轉性計畫函數如下： <span class="math display">\[
+T_i=v_i(x)-v_i(y)+t_i
+\]</span> 個體對於 <span class="math inline">\((x,t)\)</span> 與 <span class="math inline">\((y, T)\)</span> 無異， <span class="math display">\[
+\begin{aligned}
+U_i(y, T) &amp;=v_i(y)+T_i \\
+&amp;=v_i(y)+v_i(x)-v_i(y)+t_i \\
+&amp;=v_i(x)+t_i \\
+&amp;=U_i(x, t)
+\end{aligned}
+\]</span> 但移轉性支出未達預算平衡，則 <span class="math display">\[
+\begin{aligned}
+\sum_{i=1}^n T_i &amp;=\sum_{i=1}^n\left[v_i(x)-v_i(y)+t_i\right] \\
+&amp;=\sum_{i=1}^n v_i(x)-\sum_{i=1}^n v_i(y)+\sum_{i=1}^n t_i \\
+&amp;=\sum_{i=1}^n v_i(x)-\sum_{i=1}^n v_i(y)&lt;0
+\end{aligned}
+\]</span> 現令新的移轉性支出函數如下， <span class="math display">\[
+T_i^{\prime}=T_i+k
+\]</span> 其中 <span class="math inline">\(k=\frac{\sum_{i=1}^n v_i(y)-\sum_{i=1}^n v_i(x)}{n}&gt;0\)</span>，而因為每個個體對於 <span class="math inline">\((y,T)\)</span> 與 <span class="math inline">\((x, T)\)</span> 無異，則 <span class="math inline">\((y,T')\)</span> 嚴格偏好大於 <span class="math inline">\((x,T)\)</span>，故 <span class="math inline">\((x,T)\)</span> 非 Pareto 效率。</p>
+</section>
+</section>
+<section id="國際貿易與安全外部性" class="level2">
+<h2 class="anchored" data-anchor-id="國際貿易與安全外部性">國際貿易與安全外部性</h2>
+<p>外部性係指個體的行為對社會或者其他個體產生影響，卻未承擔相應的義務或獲得報酬。在政治經濟學領域中最值得探討的係「安全」(security)的外部性，國防安全是一種公共財(public good)，其無法排除(non-excludable)特定個人，亦不具有敵對性(non-rival)，而分析的意義在於，冷戰結束後美國成為全球霸權，其不斷推動貿易自由化，因在兩極體系之下，鮮少有敵我之間進行交易的現象，因此冷戰的結束標示著敵我之間的界線越來越模糊。在與敵人貿易之後，會產生安全上的不經濟(security diseconomy)，貿易後實質所得會上升，使生產力更蓬勃；但就安全性而言，與敵人交易會產生外部成本(external costs)，與盟友交易則會產生外部利益(external benefits)。</p>
+<section id="兩國貿易囚徒困境prisoners-dilemma" class="level3">
+<h3 class="anchored" data-anchor-id="兩國貿易囚徒困境prisoners-dilemma">兩國貿易：囚徒困境(prisoner’s dilemma)</h3>
+<p>假設兩國之間在進行貿易前，可以事先衡量各自採取政策之收益如下：</p>
+<ul>
+<li><span class="math inline">\(F\)</span>：自由貿易收益(<strong>F</strong>ree trade payoff)</li>
+<li><span class="math inline">\(P\)</span>：保護政策收益(<strong>P</strong>rotectionism payoff)</li>
+<li><span class="math inline">\(B\)</span>：關稅壁壘(<strong>B</strong>arrier)</li>
+<li><span class="math inline">\(D\)</span>：關稅歧視(<strong>D</strong>iscriminated)</li>
+</ul>
+<p>並有 <span class="math inline">\(B&gt;F&gt;P&gt;D\)</span> 的關係。利用 Nash 均衡解可得</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th></th>
+<th>State <span class="math inline">\(j\)</span></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>Cooperation</td>
+<td>Defection</td>
+</tr>
+<tr class="even">
+<td><strong>State</strong> <span class="math inline">\(i\)</span></td>
+<td>Cooperation</td>
+<td><span class="math inline">\((F,F)\)</span></td>
+<td><span class="math inline">\((D,B)\)</span></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Defection</td>
+<td><span class="math inline">\((B,D)\)</span></td>
+<td><span class="math inline">\(\mathbf{(P,P)}\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="兩國貿易重複賽局repeated-game" class="level3">
+<h3 class="anchored" data-anchor-id="兩國貿易重複賽局repeated-game">兩國貿易：重複賽局(repeated game)</h3>
+<p>假設兩國可以進行無窮次的貿易，且存在一折現因子(discount factor)用以衡量兩國之間貿易的難易度，即 <span class="math inline">\(\delta\)</span>，其中 <span class="math inline">\(0 &lt; \delta &lt; 1\)</span>。而兩國進行自由貿易後所得的收益如下：</p>
+<p><span class="math display">\[
+F + \delta F + \delta^2 F + \cdots = F(1+\delta+\delta^2+\cdots) = \frac{F}{1-\delta}
+\]</span> 我們現在考慮國家在進行自由貿易後，突然背叛後的賽局 <span class="math display">\[
+\underset{\textbf{Period }1} {\text{Free Trade}}, \underset{\textbf{Period }2} {\text{Free Trade}},
+\cdots,
+\underset{\textbf{Period }k} {\text{Defection}},
+\underset{\textbf{Period }k+1} {\text{Protectionism}}
+\]</span> 採取背叛的收益為 <span class="math display">\[
+B+\delta P+\delta^2 P+\ldots=B+P\left(\delta+\delta^2+\ldots\right)=B+\frac{\delta P}{1-\delta}
+\]</span> 因此自由貿易發生的條件為 <span class="math display">\[
+\underset{\textbf{Free Trade Payoffs}}{\frac{F}{1-\delta} }\geq \underset{\textbf{Protectionism Payoffs}}{B+\frac{\delta P}{1-\delta}}
+\]</span> 或改寫為 <span class="math display">\[
+\delta \geq \frac{B-F}{B-P}
+\]</span></p>
+</section>
+<section id="與敵國adversaries貿易之條件" class="level3">
+<h3 class="anchored" data-anchor-id="與敵國adversaries貿易之條件">與敵國(Adversaries)貿易之條件</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th></th>
+<th>State <span class="math inline">\(j\)</span></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>Cooperation</td>
+<td>Defection</td>
+</tr>
+<tr class="even">
+<td><strong>State</strong> <span class="math inline">\(i\)</span></td>
+<td>Cooperation</td>
+<td><span class="math inline">\((F_i-c_{i,j} F_j, F_j-c_{j ,i} F_i)\)</span></td>
+<td><span class="math inline">\((D_i-c_{i ,j} B_j, B_j-c_{j, i} D_i)\)</span></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Defection</td>
+<td><span class="math inline">\((B_i-c_{i ,j} D_j, D_j-c_{j ,i} B_i)\)</span></td>
+<td><span class="math inline">\((P_i-c_{i, j} P_j, P_j-c_{j ,i} P_i)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>其中 <span class="math inline">\(c_{i,j}\)</span> 是 <span class="math inline">\(i\)</span> 國與 <span class="math inline">\(j\)</span> 國進行貿易之後的社會成本，此成本可以理解為，在進行貿易之後，國家會得利，但其有可能將獲利投資在國防安全上，造成對另一國的威脅，因此 <span class="math inline">\(c_{i,j}F_j\)</span> 則是 <span class="math inline">\(i\)</span> 國的安全外部性。利用上述的方式計算，可以得到此時自由貿易的條件為： <span class="math display">\[
+\underset{\textbf{Free Trade Payoffs}}{\frac{F_i-c_{i j} F_j}{1-\delta_i}} \geq \underset{\textbf{Protectionism Payoffs}}{B_i-c_{i j} D_j+\frac{\delta_i\left(P_i-c_{i j} P_j\right)}{1-\delta_i}}
+\]</span> 或 <span class="math display">\[
+\delta_i^{\text{AD}} \geq \frac{B_i-c_{i j} D_j-\left(F_i-c_{i j} F_j\right)}{B_i-c_{i j} D_j-\left(P_i-c_{i j} P_j\right)}
+\]</span></p>
+</section>
+<section id="與盟友allies貿易之條件" class="level3">
+<h3 class="anchored" data-anchor-id="與盟友allies貿易之條件">與盟友(Allies)貿易之條件</h3>
+<p>現在考慮與盟友的自由貿易情況，</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 22%">
+<col style="width: 22%">
+<col style="width: 31%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th></th>
+<th>State <span class="math inline">\(j\)</span></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>Cooperation</td>
+<td>Defection</td>
+</tr>
+<tr class="even">
+<td><strong>State <span class="math inline">\(i\)</span></strong></td>
+<td>Cooperation</td>
+<td><span class="math inline">\((F_i + c_{i,j} F_j, F_j + c_{j,i} F_i)\)</span></td>
+<td><span class="math inline">\((D_i + c_{i,i} B_i, B_i + c_{i,j} D_i)\)</span></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Defection</td>
+<td><span class="math inline">\((B_i + c_{i,j} D_j, D_j + c_{j,i} B_i)\)</span></td>
+<td><span class="math inline">\((P_i + c_{i,j} P_i, P_i + c_{i,i} P_i)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>同樣可以得到自由貿易的條件為 <span class="math display">\[
+\underset{\textbf{Free Trade Payoffs}}{\frac{F_i+c_{i j} F_j}{1-\delta_i}} \geq \underset{\textbf{Protectionism Payoffs}}{B_i+c_{i j} D_j+\frac{\delta_i\left(P_i-c_{i j} P_j\right)}{1-\delta_i}}
+\]</span> 或 <span class="math display">\[
+\delta_i^{\text{AL}} \geq \frac{B_i+c_{i j} D_j-\left(F_i+c_{i j} F_j\right)}{B_i+c_{i j} D_j-\left(P_i+c_{i j} P_j\right)}
+\]</span> 若透過數字例計算，可以得到以下的結果。假設 <span class="math inline">\(B=3, F=2, P=1, D=0\)</span>，且 <span class="math inline">\(c_{i,j} = .4\)</span>，則</p>
+<ul>
+<li>一般情況：<span class="math inline">\(\delta \geq .5\)</span></li>
+<li>與敵國交易：<span class="math inline">\(\delta^{\text{AD}}_i \geq .75\)</span></li>
+<li>與盟友交易：<span class="math inline">\(\delta^{\text{AL}}_i \geq .13\)</span></li>
+</ul>
+<p>直觀來說，因為與盟友交易係能夠讓國家感受到信任的，從而降低交易成本；但若與敵國交易，因不確保敵國在進行交易之後是否會增加軍備，故與敵國之交易成本將大幅提升，遠高於與盟友交易的成本。</p>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>在現實生活中，我們無法明確描述偏好，僅能觀察到個體的消費(consumption)。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sung2022,
+  author = {Sung, Anthony},
+  title = {政治經濟學的規範基礎(Normative {Foundations)}},
+  date = {2022-09-12},
+  url = {https://yueswater.netlify.app/posts/2022-09-12-politcal-economy-normative-foundations/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sung2022" class="csl-entry quarto-appendix-citeas" role="listitem">
+Sung, Anthony. 2022. <span>“政治經濟學的規範基礎(Normative
+Foundations).”</span> September 12, 2022. <a href="https://yueswater.netlify.app/posts/2022-09-12-politcal-economy-normative-foundations/">https://yueswater.netlify.app/posts/2022-09-12-politcal-economy-normative-foundations/</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="xiaolong70701/quarto-blog" data-repo-id="R_kgDOJhS1Eg" data-category="General" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="light">
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright © 2024 Anthony. All rights reserved. See <a href="../copyright.html">statements</a>.</p>
+</div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/">
+      <i class="bi bi-facebook" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:xiaolong70701@gmail.com">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

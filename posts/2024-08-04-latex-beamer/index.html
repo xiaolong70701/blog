@@ -1,0 +1,2565 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anthony Sung">
+<meta name="dcterms.date" content="2024-08-04">
+<meta name="description" content="利用 TikZ 套件繪製圖形">
+
+<title>LaTeX 教學系列：用 Beamer 製作簡報 – Yueswater Blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-contrib/videojs/video.min.js"></script>
+<link href="../../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VLWNL5QXD8"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VLWNL5QXD8', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script> 
+  
+
+
+<link rel="stylesheet" href="../../css/karat.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Yueswater Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../notes.html"> 
+<span class="menu-text">Diary &amp; Notes</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/"> <i class="bi bi-facebook" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/yues_19_water/"> <i class="bi bi-instagram" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#beamer-簡介" id="toc-beamer-簡介" class="nav-link active" data-scroll-target="#beamer-簡介">Beamer 簡介</a></li>
+  <li><a href="#beamer-文件基本結構" id="toc-beamer-文件基本結構" class="nav-link" data-scroll-target="#beamer-文件基本結構">Beamer 文件基本結構</a>
+  <ul class="collapse">
+  <li><a href="#幀" id="toc-幀" class="nav-link" data-scroll-target="#幀">幀</a></li>
+  <li><a href="#標題頁" id="toc-標題頁" class="nav-link" data-scroll-target="#標題頁">標題頁</a></li>
+  <li><a href="#目錄頁" id="toc-目錄頁" class="nav-link" data-scroll-target="#目錄頁">目錄頁</a></li>
+  <li><a href="#第一份-beamer-簡報" id="toc-第一份-beamer-簡報" class="nav-link" data-scroll-target="#第一份-beamer-簡報">第一份 Beamer 簡報</a></li>
+  </ul></li>
+  <li><a href="#設定簡報外觀" id="toc-設定簡報外觀" class="nav-link" data-scroll-target="#設定簡報外觀">設定簡報外觀</a>
+  <ul class="collapse">
+  <li><a href="#主題選擇" id="toc-主題選擇" class="nav-link" data-scroll-target="#主題選擇">主題選擇</a></li>
+  <li><a href="#字體主題" id="toc-字體主題" class="nav-link" data-scroll-target="#字體主題">字體主題</a></li>
+  </ul></li>
+  <li><a href="#簡報內容的細節" id="toc-簡報內容的細節" class="nav-link" data-scroll-target="#簡報內容的細節">簡報內容的細節</a>
+  <ul class="collapse">
+  <li><a href="#列點與條列" id="toc-列點與條列" class="nav-link" data-scroll-target="#列點與條列">列點與條列</a></li>
+  <li><a href="#分欄" id="toc-分欄" class="nav-link" data-scroll-target="#分欄">分欄</a></li>
+  <li><a href="#區塊環境" id="toc-區塊環境" class="nav-link" data-scroll-target="#區塊環境">區塊環境</a></li>
+  <li><a href="#頁內逐步顯示" id="toc-頁內逐步顯示" class="nav-link" data-scroll-target="#頁內逐步顯示">頁內逐步顯示</a>
+  <ul class="collapse">
+  <li><a href="#pause-指令" id="toc-pause-指令" class="nav-link" data-scroll-target="#pause-指令">pause 指令</a></li>
+  </ul></li>
+  <li><a href="#插入動圖" id="toc-插入動圖" class="nav-link" data-scroll-target="#插入動圖">插入動圖</a>
+  <ul class="collapse">
+  <li><a href="#轉換動圖" id="toc-轉換動圖" class="nav-link" data-scroll-target="#轉換動圖">轉換動圖</a></li>
+  <li><a href="#插入動圖-1" id="toc-插入動圖-1" class="nav-link" data-scroll-target="#插入動圖-1">插入動圖</a></li>
+  </ul></li>
+  <li><a href="#內外部主題設定" id="toc-內外部主題設定" class="nav-link" data-scroll-target="#內外部主題設定">內外部主題設定</a>
+  <ul class="collapse">
+  <li><a href="#外部主題" id="toc-外部主題" class="nav-link" data-scroll-target="#外部主題">外部主題</a></li>
+  <li><a href="#內部主題" id="toc-內部主題" class="nav-link" data-scroll-target="#內部主題">內部主題</a></li>
+  <li><a href="#自定義內外部主題" id="toc-自定義內外部主題" class="nav-link" data-scroll-target="#自定義內外部主題">自定義內外部主題</a></li>
+  </ul></li>
+  <li><a href="#插入程式碼" id="toc-插入程式碼" class="nav-link" data-scroll-target="#插入程式碼">插入程式碼</a>
+  <ul class="collapse">
+  <li><a href="#使用-verbatim" id="toc-使用-verbatim" class="nav-link" data-scroll-target="#使用-verbatim">使用 verbatim</a></li>
+  <li><a href="#使用-listings-套件" id="toc-使用-listings-套件" class="nav-link" data-scroll-target="#使用-listings-套件">使用 listings 套件</a></li>
+  <li><a href="#使用-minited-套件" id="toc-使用-minited-套件" class="nav-link" data-scroll-target="#使用-minited-套件">使用 minited 套件</a></li>
+  </ul></li>
+  <li><a href="#按鈕與指定頁面" id="toc-按鈕與指定頁面" class="nav-link" data-scroll-target="#按鈕與指定頁面">按鈕與指定頁面</a></li>
+  <li><a href="#設定幀" id="toc-設定幀" class="nav-link" data-scroll-target="#設定幀">設定幀</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">LaTeX 教學系列：用 Beamer 製作簡報</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">latex</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    <p>利用 TikZ 套件繪製圖形</p>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Anthony Sung </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 4, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style id="ace-dawn">.ace-dawn .ace_gutter {background: #ebebeb;color: #333}.ace-dawn .ace_print-margin {width: 1px;background: #e8e8e8}.ace-dawn {background-color: #F9F9F9;color: #080808}.ace-dawn .ace_cursor {color: #000000}.ace-dawn .ace_marker-layer .ace_selection {background: rgba(39, 95, 255, 0.30)}.ace-dawn.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px #F9F9F9;}.ace-dawn .ace_marker-layer .ace_step {background: rgb(255, 255, 0)}.ace-dawn .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgba(75, 75, 126, 0.50)}.ace-dawn .ace_marker-layer .ace_active-line {background: rgba(36, 99, 180, 0.12)}.ace-dawn .ace_gutter-active-line {background-color : #dcdcdc}.ace-dawn .ace_marker-layer .ace_selected-word {border: 1px solid rgba(39, 95, 255, 0.30)}.ace-dawn .ace_invisible {color: rgba(75, 75, 126, 0.50)}.ace-dawn .ace_keyword,.ace-dawn .ace_meta {color: #794938}.ace-dawn .ace_constant,.ace-dawn .ace_constant.ace_character,.ace-dawn .ace_constant.ace_character.ace_escape,.ace-dawn .ace_constant.ace_other {color: #811F24}.ace-dawn .ace_invalid.ace_illegal {text-decoration: underline;font-style: italic;color: #F8F8F8;background-color: #B52A1D}.ace-dawn .ace_invalid.ace_deprecated {text-decoration: underline;font-style: italic;color: #B52A1D}.ace-dawn .ace_support {color: #691C97}.ace-dawn .ace_support.ace_constant {color: #B4371F}.ace-dawn .ace_fold {background-color: #794938;border-color: #080808}.ace-dawn .ace_list,.ace-dawn .ace_markup.ace_list,.ace-dawn .ace_support.ace_function {color: #693A17}.ace-dawn .ace_storage {font-style: italic;color: #A71D5D}.ace-dawn .ace_string {color: #0B6125}.ace-dawn .ace_string.ace_regexp {color: #CF5628}.ace-dawn .ace_comment {font-style: italic;color: #5A525F}.ace-dawn .ace_heading,.ace-dawn .ace_markup.ace_heading {color: #19356D}.ace-dawn .ace_variable {color: #234A97}.ace-dawn .ace_indent-guide {background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEklEQVQImWNgYGBgYLh/5+x/AAizA4hxNNsZAAAAAElFTkSuQmCC) right repeat-y}
+/*# sourceURL=ace/css/ace-dawn */</style>
+<style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style>
+<style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: blue;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}
+/*# sourceURL=ace/css/ace-tm */</style>
+<style id="ace_editor.css">.ace_br1 {border-top-left-radius    : 3px;}.ace_br2 {border-top-right-radius   : 3px;}.ace_br3 {border-top-left-radius    : 3px; border-top-right-radius:    3px;}.ace_br4 {border-bottom-right-radius: 3px;}.ace_br5 {border-top-left-radius    : 3px; border-bottom-right-radius: 3px;}.ace_br6 {border-top-right-radius   : 3px; border-bottom-right-radius: 3px;}.ace_br7 {border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px;}.ace_br8 {border-bottom-left-radius : 3px;}.ace_br9 {border-top-left-radius    : 3px; border-bottom-left-radius:  3px;}.ace_br10{border-top-right-radius   : 3px; border-bottom-left-radius:  3px;}.ace_br11{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-left-radius:  3px;}.ace_br12{border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br13{border-top-left-radius    : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br14{border-top-right-radius   : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br15{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;}.ace_editor {position: relative;overflow: hidden;padding: 0;font: 12px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;direction: ltr;text-align: left;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;cursor: text;}.ace_content {position: absolute;box-sizing: border-box;min-width: 100%;contain: style size layout;font-variant-ligatures: no-common-ligatures;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;contain: style size layout;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {position: absolute;top: 0;left: 0;right: 0;padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {contain: strict;position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;contain: strict;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;white-space: pre!important;}.ace_text-input.ace_composition {background: transparent;color: inherit;z-index: 1000;opacity: 1;}.ace_composition_placeholder { color: transparent }.ace_composition_marker { border-bottom: 1px solid;position: absolute;border-radius: 0;margin-top: 1px;}[ace_nocontext=true] {transform: none!important;filter: none!important;clip-path: none!important;mask : none!important;contain: none!important;perspective: none!important;mix-blend-mode: initial!important;z-index: auto;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;word-wrap: normal;white-space: pre;height: 100%;width: 100%;box-sizing: border-box;pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;height: 1000000px;contain: style size layout;}.ace_text-layer {font: inherit !important;position: absolute;height: 1000000px;width: 1000000px;contain: style size layout;}.ace_text-layer > .ace_line, .ace_text-layer > .ace_line_group {contain: style size layout;position: absolute;top: 0;left: 0;right: 0;}.ace_hidpi .ace_text-layer,.ace_hidpi .ace_gutter-layer,.ace_hidpi .ace_content,.ace_hidpi .ace_gutter {contain: strict;will-change: transform;}.ace_hidpi .ace_text-layer > .ace_line, .ace_hidpi .ace_text-layer > .ace_line_group {contain: strict;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;box-sizing: border-box;border-left: 2px solid;transform: translatez(0);}.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_hasPlaceholder .ace_hidden-cursors .ace_cursor {opacity: 0;}.ace_smooth-blinking .ace_cursor {transition: opacity 0.18s;}.ace_animate-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: step-end;animation-name: blink-ace-animate;animation-iteration-count: infinite;}.ace_animate-blinking.ace_smooth-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: ease-in-out;animation-name: blink-ace-animate-smooth;}@keyframes blink-ace-animate {from, to { opacity: 1; }60% { opacity: 0; }}@keyframes blink-ace-animate-smooth {from, to { opacity: 1; }45% { opacity: 1; }60% { opacity: 0; }85% { opacity: 0; }}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_error_bracket {position: absolute;border-bottom: 1px solid #DE5555;border-radius: 0;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;box-sizing: border-box;}.ace_line .ace_fold {box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(114, 113, 113, 0.05);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_inline_button {
+    border: 2px solid black; /* Add border */
+    display: inline-block;
+    margin: -1px 8px;
+    padding: 10px 20px; /* Adjust padding for better appearance */
+    pointer-events: auto;
+    cursor: pointer;
+    border-radius: 20px; /* Rounded corners */
+    background-color: white; /* Set background color */
+    color: black; /* Set text color */
+    text-align: center; /* Center text */
+    font-size: 16px; /* Adjust font size */
+    transition: background 0.3s, border-color 0.3s; /* Add transition for hover effects */
+}
+
+.ace_inline_button:hover {
+    border-color: gray;
+    background: rgba(200, 200, 200, 0.2);
+    pointer-events: auto;
+    border-radius: 20px; /* Maintain rounded corners */
+}
+.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}.ace_mobile-menu {position: absolute;line-height: 1.5;border-radius: 4px;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;background: white;box-shadow: 1px 3px 2px grey;border: 1px solid #dcdcdc;color: black;}.ace_dark > .ace_mobile-menu {background: #333;color: #ccc;box-shadow: 1px 3px 2px grey;border: 1px solid #444;}.ace_mobile-button {padding: 2px;cursor: pointer;overflow: hidden;}.ace_mobile-button:hover {background-color: #eee;opacity:1;}.ace_mobile-button:active {background-color: #ddd;}.ace_placeholder {font-family: arial;transform: scale(0.9);transform-origin: left;white-space: pre;opacity: 0.7;margin: 0 10px;}
+/*# sourceURL=ace/css/ace_editor.css */</style>
+<script src="./src/ace.min.js"></script>
+<style type="text/css" media="screen">
+  .ace_editor {
+  border: 1px solid lightgray;
+  margin-bottom: 1px !important;
+  width: 100%;
+  }
+  div.spacer {
+  margin-top:16px;
+  }
+</style>
+<script src="./src/runlatex.js"></script>
+<style>
+  body {margin:auto; max-width: 100em;}
+  div.h {background-color: #F5F5FF;margin: .5em 0;}
+  pre {background-color: #EEE;margin:0;padding: .5em;}
+  .llbutton {
+      border-radius: 12px;
+  }
+</style>
+<script src="./src/theme-dawn.js"></script>
+<script src="./src/mode-latex.js"></script>
+<style>
+    .answer {
+        display: none;
+        color: black;
+        margin-top: 10px;
+    }
+    .question {
+        cursor: pointer;
+        color: black;
+        background-color: white;
+        border: none;
+        padding: 2px 7px;
+        text-decoration: none;
+        font-size: 14px;
+        border-radius: 50px;
+    }
+    .question:hover {
+        background-color: white;
+    }
+</style>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+    #latex-input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    #preview {
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+</style>
+
+<p>簡報製作在各種領域都是一項很重要的技能，畢竟透過簡報，可以將複雜的資訊用<strong>簡單</strong>的方式呈現。<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>最常見的簡報製作軟體非 PowerPoint 莫屬，還有近幾年異軍突起的 Canva 也是一套很搶手的製作簡報軟體。</p>
+<p>這篇文章將會教你如何使用 LaTeX 裡面的 Beamer 類別製作簡報，如果想要更多模板，可以參考 Overleaf 上面的<a href="https://www.overleaf.com/latex/templates/tagged/presentation">簡報模板區</a>，筆者最常用也是最喜歡的模板是<a href="https://www.overleaf.com/latex/templates/metropolis-beamer-theme/qzyvdhrntfmr">Metropolis Beamer Theme</a>，如果你有發現其他更好看的模板，歡迎分享給我！</p>
+<section id="beamer-簡介" class="level1">
+<h1>Beamer 簡介</h1>
+<p>Beamer 是一個用於建立簡報的 LaTeX 的文件類別，其同時支援 LaTeX + dvips、pdfLaTeX、LuaLaTeX 以及 XeLaTeX。Beamer 的名稱來源自德文詞彙 “Beamer”，意思是影像演示（pseudo-anglicism）。<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>作為一個用於製作簡報的工具，與常見的 PowerPoint 不同，Beamer 讓你可以用<strong>純文字</strong>來做簡報：只要寫一些簡單的指令，就會自動把你的內容變成漂亮的投影片。因此 Beamer 最大的優點是特別適合做<strong>學術</strong>或<strong>技術</strong>簡報，除了因為它可以用簡單的指令來將文字呈現在投影片上，更能夠使用 LaTeX 最引以為傲的功能：插入數學公式、程式碼、圖表等專業內容。而且 Bemaer 它的格式非常一致，不會因為你換了電腦就跑掉，只要設定好文件外觀就沒事。</p>
+<p>對初學者而言，用 Beamer 做簡報雖然一開始可能會覺得有點難，但熟悉後就會發現它其實很方便，因為你可以專注在內容上，不用花太多時間去調整外觀；此外，Beamer 做出來的簡報檔案很小，非常方便分享。</p>
+</section>
+<section id="beamer-文件基本結構" class="level1">
+<h1>Beamer 文件基本結構</h1>
+<p>使用 Beamer 製作簡報時，我們需要指定文件的類別為 <code>beamer</code>，如以下程式碼所示：</p>
+<pre><code>\usepackage[選項]{beamer}</code></pre>
+<p>跟 <code>article</code>、<code>report</code> 等類別一樣，我們可以在前言區加上文件的資訊，如標題、作者姓名、日期等，程式碼與之前相同。接著就可以進入 <code>document</code> 環境編寫本文。</p>
+<section id="幀" class="level2">
+<h2 class="anchored" data-anchor-id="幀">幀</h2>
+<p>一頁的投影片使用 <code>frame</code> 這個環境包住的。最古早的簡報是由一幀一幀的<strong>幻燈片</strong>（lantern slide）製作而成，透過光學的技巧投影成像，而一幀在英文中就是 “frame”。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./magic lantern.jpg" class="img-fluid figure-img" style="width:50.0%" data-fig.align="center"></p>
+<figcaption>圖 1：幻燈片使用<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></figcaption>
+</figure>
+</div>
+<p><code>frame</code> 環境是產生 beamer 頁面的關鍵。<code>frame</code> 環境的設定如下：</p>
+<pre><code>\begin{frame}[頁面設定]
+\frametitle{頁面標題}
+\framesubtitle{頁面副標題}
+    頁面內容
+\end{frame}</code></pre>
+<p>或者也可以是</p>
+<pre><code>\begin{frame}[頁面設定]{頁面標題}{頁面副標題}
+    頁面內容
+\end{frame}</code></pre>
+</section>
+<section id="標題頁" class="level2">
+<h2 class="anchored" data-anchor-id="標題頁">標題頁</h2>
+<p>如同前面提及的，若想要顯示標題頁，可以在前言區先加入文件資訊。關於文件資訊的設定，我們一一講解。首先看一下完整的標題頁設定程式碼：</p>
+<pre><code>\title[About Beamer] % 選填
+{About the Beamer class in presentation making}
+
+\subtitle{A short story}
+
+\author[Anthony, Ben] % 選填
+{Anthony\inst{1} \and Ben\inst{2}}
+
+\institute[NTU] % 選填
+{
+  \inst{1}%
+  Department of Political Science\\
+  National Taiwan University
+  \and
+  \inst{2}%
+  Department of Economics\\
+  National Taiwan University
+}
+
+\date[2024] % 選填
+{Very Large Conference, April 2024}</code></pre>
+<p>我們可以看到，在設定標題、作者名字、所屬研究機構與日期時，都有一個選填的方括號，其中的內容是可選的簡短標題，會在導航欄或目錄中顯示。而花括號中的內容則是我們需要填入的資訊。另外，我們可以同時設定很多作者，並且使用 <code>\inst{}</code> 指令來標示機構編號。</p>
+<p>如果想要在標題頁加上 logo，則使用 <code>\logo{\includegraphics{logo 檔案}}</code> 即可。同樣為了管理方便，建議在資料夾裡面新建一個子資料夾，用於儲存圖片。</p>
+</section>
+<section id="目錄頁" class="level2">
+<h2 class="anchored" data-anchor-id="目錄頁">目錄頁</h2>
+<p>通常來說，在一份演講簡報中都會含有目錄頁，目的是為了讓觀眾能夠先快速地掌握本次演講的重點，從而能夠在之後的演講中抓到其想要了解的重要資訊。加入目錄頁的方式跟標題頁十分相似，只要改為 <code>\tableofcontents</code> 即可。</p>
+<pre><code>\begin{frame}
+    \tableofcontents
+\end{frame}</code></pre>
+<p>當然，如果你直接將上面的程式碼放到你的 <code>.tex</code> 檔案裡面是不會跑出東西的，我們在使用目錄頁的時候必須確認已經加入 <code>\section</code>、<code>\subsection</code> 等章節指令。</p>
+</section>
+<section id="第一份-beamer-簡報" class="level2">
+<h2 class="anchored" data-anchor-id="第一份-beamer-簡報">第一份 Beamer 簡報</h2>
+<p>綜合以上資訊，我們可以建立第一份 Beamer 簡報。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>\documentclass{beamer}
+
+% 設定標題頁資訊
+\title[About Beamer] % 選填
+{First Beamer}
+
+\subtitle{A short story}
+
+\author[Anthony, Ben] % 選填
+{Anthony\inst{1} \and Ben\inst{2}}
+
+\institute[NTU] % 選填
+{
+  \inst{1}%
+  Department of Political Science\\
+  National Taiwan University
+  \and
+  \inst{2}%
+  Department of Economics\\
+  National Taiwan University
+}
+
+\date[2024] % 選填
+{Very Large Conference, April 2024}
+
+\begin{document}
+    
+    \begin{frame}
+        \maketitle % 也可以使用 \titlepage 或 \frame{\titlepage}
+    \end{frame}
+
+    \begin{frame}
+        \tableofcontents
+    \end{frame}
+
+    \section{Introduction}
+    \subsection{My First {\LaTeX}}
+
+    \begin{frame}{Frame title}{Frame subtitle}
+        This is my first \LaTeX\ slide.
+    \end{frame}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+</section>
+<section id="設定簡報外觀" class="level1">
+<h1>設定簡報外觀</h1>
+<p>雖然 Beamer 簡報看起來很簡潔，但有點太過簡潔，少了一點美感。因此我們需要對 Beamer 簡報的外觀進行調整。以下將詳細介紹如何設定和自定義 Beamer 簡報，包括主題選擇、顏色主題、字體主題以及內部和外部主題的設定。關於內部和外部主題，我們等稍後提到更多細節之後再來討論。</p>
+<section id="主題選擇" class="level2">
+<h2 class="anchored" data-anchor-id="主題選擇">主題選擇</h2>
+<p>正如上面所提到的，Beamer 的預設主題太過<strong>慘白</strong>，因此我們需要為它增添一些新的色彩。對此，Beamer 提供多種主題樣式，每種主題都有獨特的風格和設計，因此使用者可以根據需求選擇合適的主題，使簡報看起來更加專業，並且擺脫單調。以下是一些常見的主題選擇和設定方法。</p>
+<p>我們只需在文件的前言區使用 <code>\usetheme{主題名稱}</code> 命令即可。例如，使用 Warsaw 主題：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>\documentclass{beamer}
+
+% 設定主題
+\usetheme{Warsaw}
+
+% 設定標題頁資訊
+\title[About Beamer] % 選填
+{First Beamer}
+
+\subtitle{A short story}
+
+\author[Anthony, Ben] % 選填
+{Anthony\inst{1} \and Ben\inst{2}}
+
+\institute[NTU] % 選填
+{
+  \inst{1}%
+  Department of Political Science\\
+  National Taiwan University
+  \and
+  \inst{2}%
+  Department of Economics\\
+  National Taiwan University
+}
+
+\date[2024] % 選填
+{Very Large Conference, April 2024}
+
+\begin{document}
+    
+    \begin{frame}
+        \maketitle % 也可以使用 \titlepage 或 \frame{\titlepage}
+    \end{frame}
+
+    \begin{frame}
+        \tableofcontents
+    \end{frame}
+
+    \section{Introduction}
+    \subsection{My First {\LaTeX}}
+
+    \begin{frame}{Frame title}{Frame subtitle}
+        This is my first \LaTeX\ slide.
+    \end{frame}
+
+\end{document}
+</div></div></div></div></pre>
+<p>而我們也可以修改顏色的主題，改變整體的配色，不僅能夠提升簡報的視覺效果，還能夠使得不同類型的資訊更加醒目和易於區分。設定顏色主題的語法為 <code>\usecolortheme{顏色主題}</code>。例如使用 dolphin 顏色主題，加上剛剛的 Warsaw 主題，看起來就會像這樣：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>\documentclass{beamer}
+
+% 設定主題
+\usetheme{Warsaw}
+% 設定顏色主題
+\usecolortheme{beaver}
+
+% 設定標題頁資訊
+\title[About Beamer] % 選填
+{First Beamer}
+
+\subtitle{A short story}
+
+\author[Anthony, Ben] % 選填
+{Anthony\inst{1} \and Ben\inst{2}}
+
+\institute[NTU] % 選填
+{
+  \inst{1}%
+  Department of Political Science\\
+  National Taiwan University
+  \and
+  \inst{2}%
+  Department of Economics\\
+  National Taiwan University
+}
+
+\date[2024] % 選填
+{Very Large Conference, April 2024}
+
+\begin{document}
+    
+    \begin{frame}
+        \maketitle % 也可以使用 \titlepage 或 \frame{\titlepage}
+    \end{frame}
+
+    \begin{frame}
+        \tableofcontents
+    \end{frame}
+
+    \section{Introduction}
+    \subsection{My First {\LaTeX}}
+
+    \begin{frame}{Frame title}{Frame subtitle}
+        This is my first \LaTeX\ slide.
+    \end{frame}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="字體主題" class="level2">
+<h2 class="anchored" data-anchor-id="字體主題">字體主題</h2>
+<p>字體主題可以改變簡報中使用的字體樣式，讓簡報的整體美感和可讀性得到大大的提升。Beamer 提供了多種字體主題，我們可以根據需要進行設定。我們使用 <code>\usefonttheme{字體主題}</code> 來進行字體主題的設定，而字體主題的指令則列舉於下方表格：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 39%">
+<col style="width: 60%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>選項名稱</th>
+<th>指令</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>預設字體主題</td>
+<td><code>\usefonttheme{default}</code></td>
+</tr>
+<tr class="even">
+<td>襯線字體</td>
+<td><code>\usefonttheme{serif}</code></td>
+</tr>
+<tr class="odd">
+<td>粗體結構字體</td>
+<td><code>\usefonttheme{structurebold}</code></td>
+</tr>
+<tr class="even">
+<td>斜體襯線字體</td>
+<td><code>\usefonttheme{structureitalicserif}</code></td>
+</tr>
+<tr class="odd">
+<td>小型大寫襯線字體</td>
+<td><code>\usefonttheme{structuresmallcapsserif}</code></td>
+</tr>
+<tr class="even">
+<td>粗體斜體襯線字體</td>
+<td><code>\usefonttheme{structurebolditalicserif}</code></td>
+</tr>
+<tr class="odd">
+<td>粗體小型大寫襯線字體</td>
+<td><code>\usefonttheme{structureboldsmallcapsserif}</code></td>
+</tr>
+<tr class="even">
+<td>斜體粗體字體</td>
+<td><code>\usefonttheme{structureitalicbold}</code></td>
+</tr>
+<tr class="odd">
+<td>斜體小型大寫字體</td>
+<td><code>\usefonttheme{structureitalicsmallcaps}</code></td>
+</tr>
+<tr class="even">
+<td>專業字體</td>
+<td><code>\usefonttheme{professionalfonts}</code></td>
+</tr>
+</tbody>
+</table>
+<p>例如我們使用 <code>professionalfonts</code>，並搭配上面的設定。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>\documentclass{beamer}
+
+% 設定主題
+\usetheme{Warsaw}
+% 設定顏色主題
+\usecolortheme{beaver}
+% 設定字體主題
+\usefonttheme{professionalfonts}
+
+% 設定標題頁資訊
+\title[About Beamer] % 選填
+{First Beamer}
+
+\subtitle{A short story}
+
+\author[Anthony, Ben] % 選填
+{Anthony\inst{1} \and Ben\inst{2}}
+
+\institute[NTU] % 選填
+{
+  \inst{1}%
+  Department of Political Science\\
+  National Taiwan University
+  \and
+  \inst{2}%
+  Department of Economics\\
+  National Taiwan University
+}
+
+\date[2024] % 選填
+{Very Large Conference, April 2024}
+
+\begin{document}
+    
+    \begin{frame}
+        \maketitle % 也可以使用 \titlepage 或 \frame{\titlepage}
+    \end{frame}
+
+    \begin{frame}
+        \tableofcontents
+    \end{frame}
+
+    \section{Introduction}
+    \subsection{My First {\LaTeX}}
+
+    \begin{frame}{Frame title}{Frame subtitle}
+        This is my first \LaTeX\ slide.
+    \end{frame}
+
+\end{document}
+</div></div></div></div></pre>
+<p>如果說你想要找更多主題，可以在 <a href="https://mpetroff.net/files/beamer-theme-matrix/">Another Beamer Theme Matrix</a> 這個網站找到。該網站展示 Beamer 預設主題和顏色主題變化，行列分別列出了 Beamer 的預設主題和顏色主題搭配，使用者可以通過該網站快速預覽各種組合效果。</p>
+</section>
+</section>
+<section id="簡報內容的細節" class="level1">
+<h1>簡報內容的細節</h1>
+<p>接下來我們要談一下簡報設定的細節。之前提過的數學模式、字體設定等，在此就不細談，請讀者自行參考之前的文章。以下所談的內容，是用來處理簡報內容的呈現，例如列點、分欄、區塊等，使用這些設定不只可以讓簡報變得更易讀，還能夠提升專業性。</p>
+<section id="列點與條列" class="level2">
+<h2 class="anchored" data-anchor-id="列點與條列">列點與條列</h2>
+<p>列點與條列在之前的文章<a href="https://xiaolong70701.github.io/blog/posts/2024-07-10-latex-setting-advanced/#條列式清單">LaTeX 教學系列：進階設定</a>已經提過，但是注意到，在 Beamer 類別中，很不幸地我們不能使用 <code>enumitem</code> 來設定條列式環境的項目符號。那麼要怎麼做呢？我們使用 <code>\setbeamertemplate</code> 來處理。<code>setbeamertemplate</code> 指令可以用來設定 Beamer 中的各種項目，其中包含我們稍後會提到的區塊以及文字內容等。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 39%">
+<col style="width: 12%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>指令</th>
+<th>說明</th>
+<th>指令</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>title page</code></td>
+<td>設定標題頁的樣式</td>
+<td><code>footline</code></td>
+<td>設定頁尾的樣式</td>
+</tr>
+<tr class="even">
+<td><code>frametitle</code></td>
+<td>設定每張投影片標題的樣式</td>
+<td><code>headline</code></td>
+<td>設定頁首的樣式</td>
+</tr>
+<tr class="odd">
+<td><code>background</code></td>
+<td>設定背景的樣式</td>
+<td><code>sidebar left</code></td>
+<td>設定左側邊欄的樣式</td>
+</tr>
+<tr class="even">
+<td><code>sidebar right</code></td>
+<td>設定右側邊欄的樣式</td>
+<td><code>navigation symbols</code></td>
+<td>設定導航符號的樣式</td>
+</tr>
+<tr class="odd">
+<td><code>blocks</code></td>
+<td>設定區塊的樣式</td>
+<td><code>itemize items</code></td>
+<td>設定 itemize 環境中項目的樣式</td>
+</tr>
+<tr class="even">
+<td><code>enumerate items</code></td>
+<td>設定 enumerate 環境中項目的樣式</td>
+<td><code>section in toc</code></td>
+<td>設定目錄中的章節樣式</td>
+</tr>
+<tr class="odd">
+<td><code>subsection in toc</code></td>
+<td>設定目錄中的子章節樣式</td>
+<td><code>bibliography item</code></td>
+<td>設定參考文獻項目的樣式</td>
+</tr>
+<tr class="even">
+<td><code>caption</code></td>
+<td>設定圖表標題的樣式</td>
+<td><code>footnotes</code></td>
+<td>設定註腳的樣式</td>
+</tr>
+<tr class="odd">
+<td><code>note page</code></td>
+<td>設定注釋頁的樣式</td>
+<td><code>sidebar</code></td>
+<td>設定側邊欄的樣式</td>
+</tr>
+<tr class="even">
+<td><code>part page</code></td>
+<td>設定部分頁面的樣式</td>
+<td><code>subsection in sidebar</code></td>
+<td>設定側邊欄中的子章節樣式</td>
+</tr>
+<tr class="odd">
+<td><code>mini frames</code></td>
+<td>設定迷你框架的樣式</td>
+<td><code>section in sidebar</code></td>
+<td>設定側邊欄中的章節樣式</td>
+</tr>
+<tr class="even">
+<td><code>section in head/foot</code></td>
+<td>設定頁首或頁尾中的章節樣式</td>
+<td><code>subsection in head/foot</code></td>
+<td>設定頁首或頁尾中的子章節樣式</td>
+</tr>
+<tr class="odd">
+<td><code>title graphic</code></td>
+<td>設定標題頁中的圖形</td>
+<td><code>page number in head/foot</code></td>
+<td>設定頁首或頁尾中的頁碼樣式</td>
+</tr>
+<tr class="even">
+<td><code>title logo</code></td>
+<td>設定標題頁中的標誌</td>
+<td><code>frametitle continuation</code></td>
+<td>設定跨頁框架標題的樣式</td>
+</tr>
+<tr class="odd">
+<td><code>frametitle continuation first</code></td>
+<td>設定跨頁框架標題的首個頁面樣式</td>
+<td><code>framesubtitle</code></td>
+<td>設定每張投影片副標題的樣式</td>
+</tr>
+<tr class="even">
+<td><code>frametitle right</code></td>
+<td>設定右對齊的投影片標題樣式</td>
+<td><code>block title</code></td>
+<td>設定區塊標題的樣式</td>
+</tr>
+<tr class="odd">
+<td><code>block body</code></td>
+<td>設定區塊內容的樣式</td>
+<td><code>alerted text</code></td>
+<td>設定警告文本的樣式</td>
+</tr>
+<tr class="even">
+<td><code>example text</code></td>
+<td>設定示例文本的樣式</td>
+<td><code>itemize subitem</code></td>
+<td>設定 itemize 環境中子項目的樣式</td>
+</tr>
+<tr class="odd">
+<td><code>enumerate subitem</code></td>
+<td>設定 enumerate 環境中子項目的樣式</td>
+<td><code>itemize subsubitem</code></td>
+<td>設定 itemize 環境中子子項目的樣式</td>
+</tr>
+<tr class="even">
+<td><code>enumerate subsubitem</code></td>
+<td>設定 enumerate 環境中子子項目的樣式</td>
+<td><code>description item</code></td>
+<td>設定 description 環境中項目的樣式</td>
+</tr>
+<tr class="odd">
+<td><code>frametitle in head/foot</code></td>
+<td>設定頁首或頁尾中的投影片標題樣式</td>
+<td><code>logo in head/foot</code></td>
+<td>設定頁首或頁尾中的標誌樣式</td>
+</tr>
+<tr class="even">
+<td><code>mini frame in head/foot</code></td>
+<td>設定頁首或頁尾中的迷你框架樣式</td>
+<td><code>note</code></td>
+<td>設定注釋的樣式</td>
+</tr>
+<tr class="odd">
+<td><code>note page</code></td>
+<td>設定注釋頁的樣式</td>
+<td><code>navigation symbols</code></td>
+<td>設定導航符號的樣式</td>
+</tr>
+<tr class="even">
+<td><code>headline</code></td>
+<td>設定頁首的樣式</td>
+<td><code>footline</code></td>
+<td>設定頁尾的樣式</td>
+</tr>
+<tr class="odd">
+<td><code>sidebar left</code></td>
+<td>設定左側邊欄的樣式</td>
+<td><code>sidebar right</code></td>
+<td>設定右側邊欄的樣式</td>
+</tr>
+<tr class="even">
+<td><code>background</code></td>
+<td>設定背景的樣式</td>
+<td><code>section in toc</code></td>
+<td>設定目錄中的章節樣式</td>
+</tr>
+<tr class="odd">
+<td><code>subsection in toc</code></td>
+<td>設定目錄中的子章節樣式</td>
+<td><code>bibliography item</code></td>
+<td>設定參考文獻項目的樣式</td>
+</tr>
+<tr class="even">
+<td><code>caption</code></td>
+<td>設定圖表標題的樣式</td>
+<td><code>footnotes</code></td>
+<td>設定註腳的樣式</td>
+</tr>
+<tr class="odd">
+<td><code>part page</code></td>
+<td>設定部分頁面的樣式</td>
+<td><code>section in head/foot</code></td>
+<td>設定頁首或頁尾中的章節樣式</td>
+</tr>
+<tr class="even">
+<td><code>subsection in head/foot</code></td>
+<td>設定頁首或頁尾中的子章節樣式</td>
+<td><code>title graphic</code></td>
+<td>設定標題頁中的圖形</td>
+</tr>
+<tr class="odd">
+<td><code>title logo</code></td>
+<td>設定標題頁中的標誌</td>
+<td><code>framesubtitle</code></td>
+<td>設定每張投影片副標題的樣式</td>
+</tr>
+<tr class="even">
+<td><code>frametitle</code></td>
+<td>設定每張投影片標題的樣式</td>
+<td><code>block title</code></td>
+<td>設定區塊標題的樣式</td>
+</tr>
+<tr class="odd">
+<td><code>block body</code></td>
+<td>設定區塊內容的樣式</td>
+<td><code>alerted text</code></td>
+<td>設定警告文本的樣式</td>
+</tr>
+<tr class="even">
+<td><code>example text</code></td>
+<td>設定示例文本的樣式</td>
+<td><code>itemize subitem</code></td>
+<td>設定 itemize 環境中子項目的樣式</td>
+</tr>
+<tr class="odd">
+<td><code>enumerate subitem</code></td>
+<td>設定 enumerate 環境中子項目的樣式</td>
+<td><code>itemize subsubitem</code></td>
+<td>設定 itemize 環境中子子項目的樣式</td>
+</tr>
+<tr class="even">
+<td><code>enumerate subsubitem</code></td>
+<td>設定 enumerate 環境中子子項目的樣式</td>
+<td><code>description item</code></td>
+<td>設定 description 環境中項目的樣式</td>
+</tr>
+<tr class="odd">
+<td><code>frametitle in head/foot</code></td>
+<td>設定頁首或頁尾中的投影片標題樣式</td>
+<td><code>logo in head/foot</code></td>
+<td>設定頁首或頁尾中的標誌樣式</td>
+</tr>
+<tr class="even">
+<td><code>mini frame in head/foot</code></td>
+<td>設定頁首或頁尾中的迷你框架樣式</td>
+<td><code>note</code></td>
+<td>設定注釋的樣式</td>
+</tr>
+<tr class="odd">
+<td><code>note page</code></td>
+<td>設定注釋頁的樣式</td>
+<td><code>navigation symbols</code></td>
+<td>設定導航符號的樣式</td>
+</tr>
+<tr class="even">
+<td><code>headline</code></td>
+<td>設定頁首的樣式</td>
+<td><code>footline</code></td>
+<td>設定頁尾的樣式</td>
+</tr>
+</tbody>
+</table>
+<p>我們以 <code>itemize</code> 環境作為範例（預設為三角形），假設我們想要將第一層的項目符號設定為圓形，第二層設為三角形，第三層設為正方形，我們可以在前言區使用以下程式碼：</p>
+<pre><code>\setbeamertemplate{itemize item}[circle]
+\setbeamertemplate{itemize subitem}[triangle]
+\setbeamertemplate{itemize subsubitem}[square]</code></pre>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>\documentclass{beamer}
+
+% 設定 itemize 環境項目符號
+\setbeamertemplate{itemize item}[circle]
+\setbeamertemplate{itemize subitem}[triangle]
+\setbeamertemplate{itemize subsubitem}[square]
+
+% 設定標題頁資訊
+\title{First Beamer}
+\author{Anthony}
+\date{\today}
+
+\begin{document}
+    
+    \begin{frame}
+        \maketitle
+    \end{frame}
+
+    \begin{frame}{Itemize Setting}
+        \begin{itemize}
+        \item Circle
+            \begin{itemize}
+                \item Circle
+                    \begin{itemize}
+                        \item Circle
+                    \end{itemize}
+            \end{itemize}
+        \end{itemize}
+    \end{frame}
+
+\end{document}
+</div></div></div></div></pre>
+<p><code>enumerate</code> 環境的設定方法也是相同的。</p>
+</section>
+<section id="分欄" class="level2">
+<h2 class="anchored" data-anchor-id="分欄">分欄</h2>
+<p>作為簡報者，當然會想要簡報越能簡短的報告出越詳細的內容越好，因此常會在圖片、文字旁邊加上註解、說明文字，又或是進行比較。這樣做不僅能幫助觀眾快速抓住重點，還能有效地傳達複雜資訊。例如，在展示圖表時，可以在旁邊加上簡短的說明，解釋圖表中的關鍵數據和趨勢。這樣聽眾便能一目了然地理解圖表與數據背後的意義。此外，適時使用註解可以提供額外的資訊，如數據的來源、計算方法或是相關背景知識。</p>
+<p>或當我們進行比較時，可以將不同數據或觀點擺放在一起，通過圖表或列表形式直觀地展示差異。這種方法不僅能使內容更有說服力，更能幫助觀眾快速理解不同選項的優劣，或是兩者之間的差異。</p>
+<p>我們使用 <code>columns</code> 環境來處理。根據想要分成幾欄（建議不超過三欄），選擇使用幾個 <code>column</code> 環境，也就是說 <code>columns</code> 裡面包著 <code>column</code> 環境。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>\documentclass{beamer}
+
+% 設定標題頁資訊
+\title{First Beamer}
+\author{Anthony}
+\date{\today}
+
+\begin{document}
+    
+    \begin{frame}
+        \maketitle
+    \end{frame}
+
+    \begin{frame}{Columns}
+        \begin{columns}
+        \begin{column}{.5\textwidth}
+            Left left left...
+        \end{column}
+        \begin{column}{.5\textwidth}
+            Right right right...
+        \end{column}
+        \end{columns}
+    \end{frame}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="區塊環境" class="level2">
+<h2 class="anchored" data-anchor-id="區塊環境">區塊環境</h2>
+<p>區塊可以將一般文字與想要強調的文字、公式等區分開，這個目的具有強調、警示的作用，能夠讓觀眾看到此張投影片的重點。使用區塊的另一個好處是可以提高簡報的視覺層次感，讓聽眾更容易分辨不同類型的資訊。例如，在介紹一個複雜的概念時，可以使用普通區塊來呈現主要內容，並使用警示區塊將重點或注意事項凸顯出來。</p>
+<p>使用區塊的程式碼為：</p>
+<pre><code>\begin{區塊名稱}{區塊標題}
+    區塊內容
+\end{區塊名稱}</code></pre>
+<p>其中區塊標題可以選填，若留空則會將內容第一個字設定為標題。而 Beamer 也有提供底下的幾個區塊名稱：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>區塊名稱</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>block</code></td>
+<td>普通環境</td>
+</tr>
+<tr class="even">
+<td><code>theorem</code></td>
+<td>定理環境</td>
+</tr>
+<tr class="odd">
+<td><code>lemma</code></td>
+<td>引理環境</td>
+</tr>
+<tr class="even">
+<td><code>proof</code></td>
+<td>證明環境</td>
+</tr>
+<tr class="odd">
+<td><code>corollary</code></td>
+<td>推論環境</td>
+</tr>
+<tr class="even">
+<td><code>example</code></td>
+<td>示例環境</td>
+</tr>
+<tr class="odd">
+<td><code>alertblock</code></td>
+<td>警示環境</td>
+</tr>
+</tbody>
+</table>
+<p>例如我們想要將 Euler 公式放到投影片中，並用警示環境，可以這麼做：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>\documentclass{beamer}
+
+% 設定標題頁資訊
+\title{First Beamer}
+\author{Anthony}
+\date{\today}
+
+\begin{document}
+    
+    \begin{frame}
+        \maketitle
+    \end{frame}
+
+    \begin{frame}{Columns}
+        \begin{alertblock}{Euler Equation}
+            $$
+            e^{i\pi} + 1 = 0 
+            $$
+        \end{alertblock}
+    \end{frame}
+
+\end{document}
+</div></div></div></div></pre>
+<p>如果你覺得原本的區塊環境很醜，想要自己設定一個，就用 <code>\newenvironment</code> 建立一個自己的區塊環境。例如我們定義了一個名為 <code>customblock</code> 的自定義區塊環境。當使用 <code>customblock</code> 環境時，區塊的標題背景設定為紅色（<code>bg=red</code>），標題文字設定為白色（<code>fg=white</code>），區塊正文背景設定為淡紅色（<code>bg=red!10</code>），正文文字設定為黑色（<code>fg=black</code>）。標題字體大小設定為較大（<code>size=\large</code>），並使用粗體字（<code>series=\bfseries</code>）。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>\documentclass{beamer}
+
+% 定義區塊環境 customblock
+\newenvironment{customblock}[1]{%
+  \setbeamercolor{block title}{bg=red,fg=white}%
+  \setbeamercolor{block body}{bg=red!10,fg=black}%
+  \setbeamerfont{block title}{size=\large,series=\bfseries}%
+  \setbeamertemplate{block begin}{
+    \begin{beamercolorbox}[colsep*=.75ex,rounded=true,shadow=true]{block title}#1\end{beamercolorbox}%
+    \begin{beamercolorbox}[colsep*=.75ex,rounded=true,shadow=true]{block body}%
+  }%
+  \setbeamertemplate{block end}{
+    \end{beamercolorbox}%
+  }%
+  \begin{block}{#1}}{\end{block}}
+
+% 設定標題頁資訊
+\title{First Beamer}
+\author{Anthony}
+\date{\today}
+
+\begin{document}
+    
+    \begin{frame}
+        \maketitle
+    \end{frame}
+
+    \begin{frame}{Columns}
+        \begin{customblock}{Euler Equation}
+            $$
+            e^{i\pi} + 1 = 0 
+            $$
+        \end{customblock}
+    \end{frame}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="頁內逐步顯示" class="level2">
+<h2 class="anchored" data-anchor-id="頁內逐步顯示">頁內逐步顯示</h2>
+<p>在簡報中使用逐步顯示的功能可以有效吸引觀眾的注意力，使他們能夠逐步理解複雜的概念和圖形。逐步顯示不僅能讓觀眾跟隨報告者的節奏，還能防止他們提前看到所有資訊而感到困惑，更方便簡報者依序將內容呈現出來。此種方式特別適合在介紹流程圖、數學推導或多步驟過程時使用，讓每一步的邏輯和重點更加清楚。</p>
+<section id="pause-指令" class="level3">
+<h3 class="anchored" data-anchor-id="pause-指令">pause 指令</h3>
+<p><code>\pause</code> 是 Beamer 中的一個指令，可以在投影片中建立<strong>暫停點</strong>。 例如在 TikZ 圖形中使用 <code>\pause</code> 時，它會將圖形分割成多個部分，每次顯示一部分。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>\documentclass{beamer}
+
+% 載入 TikZ 套件
+\usepackage{tikz}
+
+% 載入圖片與浮動套件
+\usepackage{graphicx, float}
+
+% 設定標題頁資訊
+\title{First Beamer}
+\author{Anthony}
+\date{\today}
+
+\begin{document}
+    
+    \begin{frame}
+        \maketitle
+    \end{frame}
+    
+    \begin{frame}{Pause Example 1}
+        \begin{itemize}
+            \item Content 1
+            \pause
+            \item Content 2
+            \pause
+            \item Content 3
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{Pause Example 2}
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \draw (0,0) -- (1,1); \pause
+                \draw (1,1) -- (2,0); \pause
+                \draw (2,0) -- (3,1);
+            \end{tikzpicture}
+        \end{figure}
+    \end{frame}
+    
+\end{document}
+</div></div></div></div></pre>
+<p>但是在使用 <code>\pause</code> 指令時必須注意，它會將同一頁投影片的內容依照暫停點的位置，分成好幾頁。因此使用 <code>\pause</code> 指令的時機建議在真正要進行簡報時使用，如果是作閱讀用，不想要一個個將 <code>\pause</code> 指令刪除的話，可以在文件類別選項中加上 <code>handout</code>，也就是讓整份投影片變成講義的形式。</p>
+<p>另一個與 <code>\pause</code> 指令相同的指令為 <code>&lt;&gt;</code>，該指令允許使用者指定每個元素在投影片上顯示的順序，其語法為 <code>&lt;起始編號-結束編號&gt;</code>。例如我們可以依照 1➡️3➡️2 的順序顯示 <code>itemize</code> 環境的項目。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>\documentclass{beamer}
+
+% 設定標題頁資訊
+\title{First Beamer}
+\author{Anthony}
+\date{\today}
+
+\begin{document}
+    
+    \begin{frame}
+        \maketitle
+    \end{frame}
+    
+    \begin{frame}{Overlay Example}
+        \begin{itemize}
+            \item&lt;1-&gt; Content 1
+            \item&lt;3-&gt; Content 3
+            \item&lt;2-&gt; Content 2
+        \end{itemize}
+    \end{frame}
+    
+\end{document}
+</div></div></div></div></pre>
+</section>
+</section>
+<section id="插入動圖" class="level2">
+<h2 class="anchored" data-anchor-id="插入動圖">插入動圖</h2>
+<p>在 PowerPoint 中，我們有時會插入動圖，讓使用者能夠在漫長的簡報過程中，利用動圖的生動與有趣緩和一下無聊的情緒。此外，當簡報者在呈現數據變化、操作步驟或流程時，使用 動圖可以比靜態圖片更具說服力和吸引力。</p>
+<p>Beamer 中插入動圖的方式我們需要使用 <code>animate</code> 套件。首先，在文件的導言區中載入此套件：</p>
+<pre><code>\usepackage{animate}</code></pre>
+<section id="轉換動圖" class="level3">
+<h3 class="anchored" data-anchor-id="轉換動圖">轉換動圖</h3>
+<p>接著準備好動圖檔案（通常來講都是 <code>.gif</code> 檔）後，將動圖轉換為多張靜態圖片。本篇文章參考<a href="https://latex-beamer.com/tutorials/gif-latex-beamer/">Insert a GIF into LaTeX Beamer — Short guide</a>的建議，使用 <a href="https://imagemagick.org/index.php">ImageMagick</a> 進行轉換。</p>
+<p>下載 ImageMagick 完成後，無論是哪種系統，打開終端機後，切換到動圖存在的目錄後，使用以下指令進行轉換：</p>
+<pre><code>magick &lt;動圖名稱&gt;.gif &lt;靜態圖名稱&gt;.png</code></pre>
+<p>ImageMagick 會自動將靜態圖片以 <code>靜態圖名稱-數字.png</code> 格式命名，其中數字預設從 0 開始。轉換成功後，將轉換過後的 <code>.png</code> 圖片放到 <code>.tex</code> 主文件的子資料夾中。</p>
+</section>
+<section id="插入動圖-1" class="level3">
+<h3 class="anchored" data-anchor-id="插入動圖-1">插入動圖</h3>
+<p>最後，在想要插入動圖的地方，使用 <code>\animategraphics</code> 指令，其語法為</p>
+<pre><code>\animategraphics[選項]{每秒播放的幀數}{動圖文件名稱}{起始編號}{結束編號}</code></pre>
+<p>例如我們使用<a href="https://giphy.com/gifs/cat-lol-vFKqnCdLPNOKc">一隻可愛貓貓的動圖</a>，將其命名為 <code>cute_cat</code>，然後讓動圖自動播放，並且無限循環。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>\documentclass{beamer}
+
+% 載入 animate 套件
+\usepackage{animate}
+
+\begin{document}
+    
+    \begin{frame}{GIFs in Beamer}
+        \centering
+        \animategraphics[loop, autoplay, width=4cm]{10}{cute_cat-}{0}{4}
+    \end{frame}
+    
+\end{document}
+</div></div></div></div></pre>
+</section>
+</section>
+<section id="內外部主題設定" class="level2">
+<h2 class="anchored" data-anchor-id="內外部主題設定">內外部主題設定</h2>
+<p>Beamer 中的內外部主題設定，實際上是在控制投影片的整體外觀和風格。外部主題就是投影片的「皮」，而內部主題則是投影片的「肉」，通過調整這兩種主題，可以建立出獨特的、專屬於你自己的演講風格和內容的簡報設計。</p>
+<section id="外部主題" class="level3">
+<h3 class="anchored" data-anchor-id="外部主題">外部主題</h3>
+<p>我們在前言區使用 <code>\useoutertheme{主題名稱}</code> 來調整外部主題。常見的外部主題包含：</p>
+<ul>
+<li><p>默認（default）：最基本的主題，通常不需要顯式設定。</p></li>
+<li><p><code>infolines</code>：在頁首和頁尾顯示作者、標題和頁碼等資訊。</p></li>
+<li><p><code>sidebar</code>：在投影片一側加入導航欄。</p></li>
+<li><p><code>split</code>：將標題欄分成兩部分，用於顯示標題和子標題。</p></li>
+<li><p><code>shadow</code>：為投影片元素新增陰影效果。</p></li>
+<li><p><code>tree</code>：使用樹狀結構顯示章節資訊。</p></li>
+</ul>
+<p>例如我們使用 <code>infolines</code>，排版結果如下所示：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>\documentclass{beamer}
+
+% 在頁首和頁尾顯示作者、標題和頁碼等資訊
+\useoutertheme{infolines}
+
+% 設定標題頁資訊
+\title{First Beamer}
+\author{Anthony}
+\date{\today}
+
+\begin{document}
+    
+    \begin{frame}
+        \maketitle
+    \end{frame}
+    
+    \begin{frame}{Add Info}
+        Hello
+    \end{frame}
+    
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="內部主題" class="level3">
+<h3 class="anchored" data-anchor-id="內部主題">內部主題</h3>
+<p>內部主題可以控制投影片內容的呈現方式，包括區塊、列表、強調文本等。設定內部主題的指令是 <code>\useinnertheme{主題名稱}</code>，而常見的內部主題包含：</p>
+<ul>
+<li><p>默認（default）：最基本的內部樣式。</p></li>
+<li><p><code>circles</code>：使用圓形項目符號。</p></li>
+<li><p><code>rectangles</code>：使用矩形項目符號。</p></li>
+<li><p><code>rounded</code>：設定為圓角。</p></li>
+<li><p><code>inmargin</code>：將某些元素放置在邊距中。</p></li>
+</ul>
+<p>例如我們使用 <code>circles</code> 將項目符號設定為圓形。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>\documentclass{beamer}
+
+\useinnertheme{rounded}
+
+% 設定標題頁資訊
+\title{First Beamer}
+\author{Anthony}
+\date{\today}
+
+\begin{document}
+    
+    \begin{frame}
+        \maketitle
+    \end{frame}
+    
+    \begin{frame}{Circle Item}
+        \begin{itemize}
+            \item Content
+        \end{itemize}
+    \end{frame}
+    
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="自定義內外部主題" class="level3">
+<h3 class="anchored" data-anchor-id="自定義內外部主題">自定義內外部主題</h3>
+<p>前面提到我們可以使用 <code>\setbeamertemplate</code> 指令來修改 Beamer 中的元素。以下表格列出了 Beamer 中主要的外部和內部主題元素，以及每個元素的簡要說明。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 15%">
+<col style="width: 34%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>外部主題元素</th>
+<th>說明</th>
+<th>內部主題元素</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>headline</td>
+<td>投影片頂部的頁首區域</td>
+<td>itemize items</td>
+<td>無序列表的項目符號</td>
+</tr>
+<tr class="even">
+<td>footline</td>
+<td>投影片底部的頁尾區域</td>
+<td>enumerate items</td>
+<td>有序列表的編號樣式</td>
+</tr>
+<tr class="odd">
+<td>sidebar</td>
+<td>投影片側邊的導航欄</td>
+<td>blocks</td>
+<td>用於強調內容的塊環境</td>
+</tr>
+<tr class="even">
+<td>navigation symbols</td>
+<td>用於控制演示的導航圖標</td>
+<td>alerted text</td>
+<td>需要特別強調的文本</td>
+</tr>
+<tr class="odd">
+<td>logo</td>
+<td>在投影片上顯示的標誌</td>
+<td>example text</td>
+<td>用於示例的文本樣式</td>
+</tr>
+<tr class="even">
+<td>frametitle</td>
+<td>每張投影片的標題區域</td>
+<td>theorem</td>
+<td>定理環境的樣式</td>
+</tr>
+<tr class="odd">
+<td>background</td>
+<td>投影片的背景</td>
+<td>proof</td>
+<td>證明環境的樣式</td>
+</tr>
+<tr class="even">
+<td>section in head/foot</td>
+<td>在頁首或頁尾顯示的章節資訊</td>
+<td>description items</td>
+<td>描述列表的樣式</td>
+</tr>
+<tr class="odd">
+<td>subsection in head/foot</td>
+<td>在頁首或頁尾顯示的小節資訊</td>
+<td>button</td>
+<td>按鈕樣式的文本</td>
+</tr>
+<tr class="even">
+<td>page number</td>
+<td>頁碼的顯示方式</td>
+<td>quote</td>
+<td>引用文本的樣式</td>
+</tr>
+<tr class="odd">
+<td>frame number</td>
+<td>幀編號的顯示方式</td>
+<td>verse</td>
+<td>詩歌格式的文本樣式</td>
+</tr>
+<tr class="even">
+<td>caption</td>
+<td>圖表標題的樣式</td>
+<td>bibliography item</td>
+<td>參考文獻條目的樣式</td>
+</tr>
+<tr class="odd">
+<td>date in head/foot</td>
+<td>在頁手或頁尾顯示的日期</td>
+<td>footnote</td>
+<td>腳註的樣式</td>
+</tr>
+<tr class="even">
+<td>author in head/foot</td>
+<td>在頁首頁或頁尾顯示的作者資訊</td>
+<td>abstract</td>
+<td>摘要環境的樣式</td>
+</tr>
+<tr class="odd">
+<td>title in head/foot</td>
+<td>在頁首或頁尾顯示的標題資訊</td>
+<td>section in toc</td>
+<td>目錄中章節的顯示樣式</td>
+</tr>
+<tr class="even">
+<td>institute in head/foot</td>
+<td>在頁首或頁尾顯示的機構資訊</td>
+<td>subsection in toc</td>
+<td>目錄中小節的顯示樣式</td>
+</tr>
+</tbody>
+</table>
+<p>例如以下程式碼，就將頁腳設定只顯示幀編號，並隱藏導航符號，且將列表項目符號設定為三角形，並為區塊環境新增圓角和陰影。</p>
+<pre><code>\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize items}[triangle]
+\setbeamertemplate{blocks}[rounded][shadow=true]</code></pre>
+<p>當然，你也可以自己建立一個 <code>.sty</code> 檔來自定義主題。例如</p>
+<pre><code>\ProvidesPackage{mytheme}
+\useoutertheme{infolines}
+\useinnertheme{rectangles}
+\usecolortheme{crane}
+% 更多自定義設定...</code></pre>
+<p>接著就可以在主文件使用 <code>mytheme</code> 套件：</p>
+<pre><code>\usetheme{mytheme}</code></pre>
+</section>
+</section>
+<section id="插入程式碼" class="level2">
+<h2 class="anchored" data-anchor-id="插入程式碼">插入程式碼</h2>
+<p>許多資工系或是會遇到需要報告程式碼的使用者，在一般的 PowerPoint 輸入程式碼後，程式碼的字體、排版不會太美觀，而 beamer 便提供了此功能（一般文件也可以使用）。這一小節我們不只會講如何在 Beamer 中插入程式碼，也可以應用於一般文件中。</p>
+<section id="使用-verbatim" class="level3">
+<h3 class="anchored" data-anchor-id="使用-verbatim">使用 verbatim</h3>
+<p>LaTeX 提供了 <code>verbatim</code> 環境來插入程式碼，<code>verbatim 環境會保持輸入文本的原始格式，包括空格和換行。我們需要在前言區載入</code>verbatim` 套件：</p>
+<pre><code>\usepackage{verbatim}</code></pre>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>\documentclass{article}
+
+% 載入 verbatim 套件
+\usepackage{verbatim}
+
+\begin{document}
+
+% 使用 verbatim 環境
+\begin{verbatim}
+def hello_world():
+    print("Hello, world!")
+\end{verbatim}
+
+\end{document}
+</div></div></div></div></pre>
+<p>如果想要在行內顯示程式碼，我們毋需套件，只要使用 <code>\verb|程式碼|</code> 即可。在 Beamer 中，我們也可以使用 <code>verbatim</code> 環境，但必須將 <code>frame</code> 設定選項為 <code>fragile</code>，才能夠正確顯示程式碼。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>\documentclass{beamer}
+
+% 設定主題
+\usetheme{Warsaw}
+
+% 載入 verbatim 套件
+\usepackage{verbatim}
+
+% 設定標題頁資訊
+\title{First Beamer}
+\author{Anthony}
+\date{\today}
+
+\begin{document}
+    
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}[fragile]
+% 使用 verbatim 環境
+\begin{verbatim}
+def hello_world():
+    print("Hello, world!")
+\end{verbatim}
+\end{frame}
+
+\end{document}
+</div></div></div></div></pre>
+<p>但 <code>verbatim</code> 套件的缺點相信眼睛敏銳的你，應該一眼就能看出，就是它太過單調了，每一段程式碼都一樣，沒有語法標示<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>。而且 <code>verbatim</code> 套件難以進行更複雜的格式設定，例如行號、背景色等。因此建議使用以下的其他套件。</p>
+</section>
+<section id="使用-listings-套件" class="level3">
+<h3 class="anchored" data-anchor-id="使用-listings-套件">使用 listings 套件</h3>
+<p>為了提供更豐富的程式碼顯示功能，可以使用 <code>listings</code> 套件。<code>listings</code> 提供了強大的功能來插入和格式化程式碼，還可以指定程式碼語言。</p>
+<p>首先，在前言區載入 <code>listings</code> 套件，而為了搭配高亮功能，我們還需要額外載入顏色套件 <code>xcolor</code>。</p>
+<pre><code>\usepackage{listings}
+\usepackage{xcolor}</code></pre>
+<p>然後就可以在文件內使用 <code>lstlisting</code> 將程式碼包住。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>\documentclass{beamer}
+
+% 載入 listings 與 xcolor 套件
+\usepackage{listings}
+\usepackage{xcolor}
+
+\begin{document}
+
+\begin{frame}[fragile]
+\begin{lstlisting}[language=Python]
+def hello_world():
+    print("Hello, world!")
+\end{lstlisting}
+\end{frame}
+
+\end{document}
+</div></div></div></div></pre>
+<section id="自定義程式碼樣式" class="level4">
+<h4 class="anchored" data-anchor-id="自定義程式碼樣式">自定義程式碼樣式</h4>
+<p>但你可能會發現，在 <code>,</code> 與 <code>w</code> 中間有一個奇怪的符號。這是因為 <code>listings</code> 套件不知道「空格」什麼，因此會將其視為其他符號。解決方法是在前言區使用 <code>\lstset</code> 指令來設定程式碼格式。此外，我們可以使用 <code>courier</code> 套件，讓文字使用 Courier 字體，讓程式碼的顯示變得更好看。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>\documentclass{beamer}
+
+% 載入 listings、xcolor 與 courier 套件
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{courier}
+
+\lstset{
+  basicstyle=\ttfamily,
+  showspaces=false,           % 顯示一般空格
+  showstringspaces=false      % 顯示字串中的空格
+}
+
+\begin{document}
+
+\begin{frame}[fragile]
+\begin{lstlisting}[language=Python]
+def hello_world():
+    print("Hello, world!")
+\end{lstlisting}
+\end{frame}
+
+\end{document}
+</div></div></div></div></pre>
+<p>而 <code>\lstset</code> 指令可以設定的選項如下所示：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 34%">
+<col style="width: 17%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>指令名稱</th>
+<th>說明</th>
+<th>指令名稱</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>basicstyle</code></td>
+<td>基本字體樣式</td>
+<td><code>caption</code></td>
+<td>程式碼塊的標題</td>
+</tr>
+<tr class="even">
+<td><code>columns</code></td>
+<td>列的對齊方式</td>
+<td><code>commentstyle</code></td>
+<td>註釋的樣式</td>
+</tr>
+<tr class="odd">
+<td><code>deletekeywords</code></td>
+<td>刪除指定關鍵字</td>
+<td><code>emph</code></td>
+<td>強調的單詞</td>
+</tr>
+<tr class="even">
+<td><code>emphstyle</code></td>
+<td>強調單字的樣式</td>
+<td><code>escapeinside</code></td>
+<td>逃逸字符</td>
+</tr>
+<tr class="odd">
+<td><code>firstnumber</code></td>
+<td>第一行的行號</td>
+<td><code>frame</code></td>
+<td>程式碼框架樣式</td>
+</tr>
+<tr class="even">
+<td><code>identifierstyle</code></td>
+<td>標識符的樣式</td>
+<td><code>keywordstyle</code></td>
+<td>關鍵字的樣式</td>
+</tr>
+<tr class="odd">
+<td><code>language</code></td>
+<td>程式碼語言</td>
+<td><code>morekeywords</code></td>
+<td>添加更多的關鍵字</td>
+</tr>
+<tr class="even">
+<td><code>numbers</code></td>
+<td>行號顯示</td>
+<td><code>numbersep</code></td>
+<td>行號和程式碼之間的距離</td>
+</tr>
+<tr class="odd">
+<td><code>numberstyle</code></td>
+<td>行號的樣式</td>
+<td><code>showspaces</code></td>
+<td>是否顯示空格</td>
+</tr>
+<tr class="even">
+<td><code>showstringspaces</code></td>
+<td>是否顯示字串中的空格</td>
+<td><code>stepnumber</code></td>
+<td>行號的步長</td>
+</tr>
+<tr class="odd">
+<td><code>stringstyle</code></td>
+<td>字串的樣式</td>
+<td><code>tabsize</code></td>
+<td>Tab 符的寬度</td>
+</tr>
+<tr class="even">
+<td><code>title</code></td>
+<td>程式碼塊的標題</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>此外，我們也可以使用 <code>\lstdefinestyle</code> 指令來自定義程式碼區塊的樣式。這樣做的好處是使樣式定義集中管理，方便維護和更新。其基本語法為</p>
+<pre><code>\lstdefinestyle{樣式名稱}{樣式選項}</code></pre>
+<p>樣式選項如上表所示，而樣式名稱可以自己選擇，但盡量不要亂取名（例如 <code>aaa</code>、<code>abc</code> 這種）。設定完畢後，我們指定 <code>listings</code> 的樣式為自定義的樣式名稱：</p>
+<pre><code>\lstset{style=樣式名稱}</code></pre>
+<p>請參考以下範例：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>\documentclass{beamer}
+
+% 載入 listings、xcolor 與 courier 套件
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{courier}
+
+% 自定義程式碼區塊樣式
+\lstdefinestyle{mystyle}{
+  basicstyle=\ttfamily\footnotesize,
+  backgroundcolor=\color{gray!10},
+  commentstyle=\color{green},
+  keywordstyle=\color{blue},
+  stringstyle=\color{red},
+  numberstyle=\tiny\color{gray},
+  stepnumber=1,
+  numbersep=10pt,
+  frame=single,
+  breaklines=true,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=2
+}
+
+% 使用自定義程式碼樣式
+\lstset{style=mystyle}
+
+\begin{document}
+
+\begin{frame}[fragile]
+\begin{lstlisting}[language=Python]
+def hello_world():
+    print("Hello, world!")
+\end{lstlisting}
+\end{frame}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="插入外部程式碼" class="level4">
+<h4 class="anchored" data-anchor-id="插入外部程式碼">插入外部程式碼</h4>
+<p>當我們想要將外部程式碼插入到 LaTeX 文件中，可以使用 <code>\lstinputlisting</code> 這個指令，從而將程式碼與 LaTeX 文件分開管理，保持程式碼文件的完整性和整潔。其基本語法為</p>
+<pre><code>\lstinputlisting[選項]{檔案名稱}</code></pre>
+<p>其中，選項是用於自定義顯示樣式的可選參數，例如可以指定語言。假設有一份名為 <code>example.py</code> 的 Python 程式碼文件，我們可以使用 <code>\lstinputlisting</code> 將這個程式碼文件插入到 LaTeX 文件中：</p>
+<pre><code>\lstinputlisting[language=Python]{example.py}</code></pre>
+</section>
+</section>
+<section id="使用-minited-套件" class="level3">
+<h3 class="anchored" data-anchor-id="使用-minited-套件">使用 minited 套件</h3>
+<p><code>minted</code> 套件是另一個強大的插入程式碼工具。<code>minted</code> 使用 Pygments 程式碼高亮套件，提供了優異的語法高亮效果。需要注意的是，<code>minted</code> 依賴於外部的 Python 程式，因此需要額外的設定，因此必須確保系統已安裝 Python 和 Pygments 套件。</p>
+<p>我們使用 <code>pip</code> 安裝 Pygments 套件：</p>
+<pre><code>pip install Pygments</code></pre>
+<p>並在終端中運行以下指令，確認 pygmentize 已安裝並可用：</p>
+<pre><code>pygmentize -V</code></pre>
+<p>安裝完成後，在前言區中導入 <code>minted</code> 套件：</p>
+<pre><code>\usepackage{minted}</code></pre>
+<p>接著就可以在 <code>minted</code> 環境中插入程式碼。以下為使用範例：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>\documentclass{beamer}
+
+% 載入 minted 套件
+\usepackage{minted}
+
+\begin{document}
+    
+\begin{frame}[fragile]
+\begin{minted}[linenos, frame=lines, fontsize=\footnotesize]{python}
+def hello_world():
+    print("Hello, world!")
+\end{minted}
+\end{frame}
+    
+\end{document}
+</div></div></div></div></pre>
+<p>但必須注意，使用 <code>minted</code> 套件需要啟用 <code>shell-escape</code> 才能夠成功編譯。我們在終端中運行以下指令來編譯 LaTeX 文件：</p>
+<pre><code>pdflatex -shell-escape 文件名稱.tex</code></pre>
+<p>如果使用 Texmaker 或 TeXStudio 等 LaTeX 編輯器，可以設定這些編輯器在編譯時自動使用 <code>-shell-escape</code> 選項。設定方式為在這些編輯器的 Configure 中，將 pdflatex 命令更改為：</p>
+<pre><code>pdflatex -synctex=1 -interaction=nonstopmode -shell-escape %.tex</code></pre>
+<p><code>minted</code> 環境可以透過以下選項設定：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 32%">
+<col style="width: 16%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>選項名稱</th>
+<th>說明</th>
+<th>選項名稱</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>linenos</code></td>
+<td>顯示行號</td>
+<td><code>frame</code></td>
+<td>程式碼區塊的框線樣式，如 <code>single</code> 或 <code>lines</code></td>
+</tr>
+<tr class="even">
+<td><code>fontsize</code></td>
+<td>字體大小</td>
+<td><code>bgcolor</code></td>
+<td>背景顏色</td>
+</tr>
+<tr class="odd">
+<td><code>style</code></td>
+<td>語法高亮的樣式</td>
+<td><code>numbersep</code></td>
+<td>行號與程式碼之間的距離</td>
+</tr>
+<tr class="even">
+<td><code>xleftmargin</code></td>
+<td>程式碼區塊左側的空白</td>
+<td><code>xrightmargin</code></td>
+<td>程式碼區塊右側的空白</td>
+</tr>
+<tr class="odd">
+<td><code>escapeinside</code></td>
+<td>文字轉義的起始和結束符號</td>
+<td><code>tabsize</code></td>
+<td>Tab 符的寬度</td>
+</tr>
+<tr class="even">
+<td><code>baselinestretch</code></td>
+<td>行間距</td>
+<td><code>breaklines</code></td>
+<td>自動換行長程式碼</td>
+</tr>
+<tr class="odd">
+<td><code>breakanywhere</code></td>
+<td>允許在任何地方斷行</td>
+<td><code>gobble</code></td>
+<td>忽略每行前的指定數量的空格</td>
+</tr>
+<tr class="even">
+<td><code>autogobble</code></td>
+<td>自動忽略每行前的多餘空格</td>
+<td><code>mathescape</code></td>
+<td>允許在程式碼中使用 LaTeX 數學模式</td>
+</tr>
+<tr class="odd">
+<td><code>samepage</code></td>
+<td>防止頁面中斷</td>
+<td><code>showspaces</code></td>
+<td>顯示空格符號</td>
+</tr>
+<tr class="even">
+<td><code>showtabs</code></td>
+<td>顯示 Tab 符號</td>
+<td><code>stripnl</code></td>
+<td>移除程式碼前後的空行</td>
+</tr>
+<tr class="odd">
+<td><code>texcl</code></td>
+<td>在行首顯示 LaTeX 註解</td>
+<td><code>escapeinside</code></td>
+<td>程式碼內部的文字轉義符號</td>
+</tr>
+<tr class="even">
+<td><code>bgcolor</code></td>
+<td>背景顏色</td>
+<td><code>breakautoindent</code></td>
+<td>自動縮排斷行的程式碼</td>
+</tr>
+<tr class="odd">
+<td><code>breakindent</code></td>
+<td>斷行的縮排距離</td>
+<td><code>numberblanklines</code></td>
+<td>為空行顯示行號</td>
+</tr>
+<tr class="even">
+<td><code>numberfirstline</code></td>
+<td>為第一行顯示行號</td>
+<td><code>highlightlines</code></td>
+<td>高亮顯示特定行</td>
+</tr>
+<tr class="odd">
+<td><code>highlightcolor</code></td>
+<td>高亮行的顏色</td>
+<td><code>firstnumber</code></td>
+<td>第一行的行號</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="按鈕與指定頁面" class="level2">
+<h2 class="anchored" data-anchor-id="按鈕與指定頁面">按鈕與指定頁面</h2>
+<p>若要如 PowerPoint 一般，能夠跳到指定頁面，首先要將某頁投影片貼上標籤，即：</p>
+<pre><code>\begin{frame}[label=標籤]
+    % 內容
+\end{frame}</code></pre>
+<p>接著在其他投影片中加入按鈕即可，語法為 <code>\hyperlink{標籤}{\beamerbutton{顯示文字}}</code>。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>\documentclass{beamer}
+
+% 設定標題頁資訊
+\title{First Beamer}
+\author{Anthony}
+\date{\today}
+
+\begin{document}
+    
+    \begin{frame}
+        \maketitle
+    \end{frame}
+    
+    \begin{frame}[label=here]{Example Page}
+        Back
+    \end{frame}
+    
+    \begin{frame}
+        \hyperlink{here}{\beamerbutton{Button}}
+    \end{frame}
+    
+\end{document}
+</div></div></div></div></pre>
+<p>效果如以下影片所示：</p>
+<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="bm_button.mp4"></video></div>
+</section>
+<section id="設定幀" class="level2">
+<h2 class="anchored" data-anchor-id="設定幀">設定幀</h2>
+<p>如果想要讓投影片有不同的效果，可以在 <code>frame</code> 環境的選項中設定。語法為：</p>
+<pre><code>\begin{frame}[選項]
+    % 內容
+\end{frame}</code></pre>
+<p>下面表格提供 <code>frame</code> 可以修改的選項：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 35%">
+<col style="width: 13%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>選項</th>
+<th>說明</th>
+<th>選項</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>allowframebreaks</code></td>
+<td>允許在需要時自動分頁</td>
+<td><code>fragile</code></td>
+<td>允許在框架內使用 verbatim 環境</td>
+</tr>
+<tr class="even">
+<td><code>shrink</code></td>
+<td>使內容自動縮小以適應框架</td>
+<td><code>plain</code></td>
+<td>移除標題和頁尾</td>
+</tr>
+<tr class="odd">
+<td><code>t</code></td>
+<td>垂直對齊置頂部</td>
+<td><code>c</code></td>
+<td>垂直對齊置中間</td>
+</tr>
+<tr class="even">
+<td><code>b</code></td>
+<td>垂直對齊置底部</td>
+<td><code>squeeze</code></td>
+<td>壓縮框架內的空間</td>
+</tr>
+<tr class="odd">
+<td><code>label</code></td>
+<td>設定框架標籤</td>
+<td><code>noframenumbering</code></td>
+<td>禁止此框架顯示頁碼</td>
+</tr>
+<tr class="even">
+<td><code>environment</code></td>
+<td>指定用於生成此框架的 LaTeX 環境</td>
+<td><code>containsverbatim</code></td>
+<td>指定此框架包含 verbatim 環境，需要特殊處理</td>
+</tr>
+<tr class="odd">
+<td><code>allowdisplaybreaks</code></td>
+<td>允許在數學環境中自動分頁</td>
+<td><code>trans</code></td>
+<td>設定過渡效果</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>但許多人卻把「簡報」當成「報告本身」，將一大堆文字貼在簡報上，讓台下的聽眾不知是該聽台上的人報告，還是直接看簡報內容。讀完這篇文章不會教你任何簡報技巧，網路上對於簡報製作技巧的教學文多如牛毛；但是閱讀完這篇文章，你會學到如何用 Beamer 將各種元素簡化。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>维基媒体项目贡献者. (2023a, September 20). Beamer (LaTeX). 维基百科，自由的百科全书. <a href="https://zh.wikipedia.org/wiki/Beamer_(LaTeX)">https://zh.wikipedia.org/wiki/Beamer_(LaTeX)</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>由 Photo: Andreas Praefcke - 自行拍攝, CC BY 3.0, <a href="https://commons.wikimedia.org/w/index.php?curid=715953">https://commons.wikimedia.org/w/index.php?curid=715953</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>語法標示就是對岸所稱的<strong>高亮</strong>，為了方便以下就使用該詞詞彙，並無任何政治目的。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sung2024,
+  author = {Sung, Anthony},
+  title = {LaTeX {教學系列：用} {Beamer} {製作簡報}},
+  date = {2024-08-04},
+  url = {https://yueswater.com/posts/2024-08-04-latex-beamer/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sung2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Sung, Anthony. 2024. <span>“LaTeX 教學系列：用 Beamer 製作簡報.”</span>
+August 4, 2024. <a href="https://yueswater.com/posts/2024-08-04-latex-beamer/">https://yueswater.com/posts/2024-08-04-latex-beamer/</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="xiaolong70701/quarto-blog" data-repo-id="R_kgDOJhS1Eg" data-category="General" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="light">
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright © 2024 Anthony. All rights reserved. See <a href="../copyright.html">statements</a>.</p>
+</div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/">
+      <i class="bi bi-facebook" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:xiaolong70701@gmail.com">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+<script>videojs(video_shortcode_videojs_video1);</script>
+
+
+
+
+</body></html>

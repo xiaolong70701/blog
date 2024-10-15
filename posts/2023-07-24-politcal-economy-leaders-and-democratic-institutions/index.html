@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anthony Sung">
+<meta name="dcterms.date" content="2023-07-24">
+<meta name="description" content="領導者是否重要？又，如何以統計的方式驗證上述問題？">
+
+<title>領導者與民主制度 – Yueswater Blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VLWNL5QXD8"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VLWNL5QXD8', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script> 
+  
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../css/karat.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Yueswater Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../notes.html"> 
+<span class="menu-text">Diary &amp; Notes</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/"> <i class="bi bi-facebook" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/yues_19_water/"> <i class="bi bi-instagram" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#領導者真的重要嗎" id="toc-領導者真的重要嗎" class="nav-link active" data-scroll-target="#領導者真的重要嗎">領導者真的重要嗎？</a>
+  <ul class="collapse">
+  <li><a href="#模型設定" id="toc-模型設定" class="nav-link" data-scroll-target="#模型設定">模型設定</a></li>
+  <li><a href="#理解變異" id="toc-理解變異" class="nav-link" data-scroll-target="#理解變異">理解「變異」</a></li>
+  </ul></li>
+  <li><a href="#論文探討與統計方法介紹" id="toc-論文探討與統計方法介紹" class="nav-link" data-scroll-target="#論文探討與統計方法介紹">論文探討與統計方法介紹</a>
+  <ul class="collapse">
+  <li><a href="#刺殺事件與政治體制" id="toc-刺殺事件與政治體制" class="nav-link" data-scroll-target="#刺殺事件與政治體制">刺殺事件與政治體制</a></li>
+  <li><a href="#統計方法標準誤假設檢定" id="toc-統計方法標準誤假設檢定" class="nav-link" data-scroll-target="#統計方法標準誤假設檢定">統計方法：標準誤假設檢定</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">領導者與民主制度</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">macroeconomics</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    <p>領導者是否重要？又，如何以統計的方式驗證上述問題？</p>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Anthony Sung </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 24, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<blockquote class="blockquote">
+“<em>The historians, from an old habit of acknowledging divine intervention in human affairs, look for the cause of events in the expression of the will of someone endowed with power, but that supposition is not confirmed either by reason or by experience.</em>”
+<p style="text-align:right;">
+——Leo Tolstoy
+</p>
+</blockquote>
+<blockquote class="blockquote">
+“<em>There is no number two, three, or four <span class="math inline">\(\cdots\)</span> There is only a number one: that’s me and I do not share my decisions.</em>”
+<p style="text-align:right;">
+——Felix Houphouet-Boigny, President of Cote D’Ivoire (1960-1993)
+</p>
+</blockquote>
+<section id="領導者真的重要嗎" class="level2">
+<h2 class="anchored" data-anchor-id="領導者真的重要嗎">領導者真的重要嗎？</h2>
+<p>為何領導者在一個政治體制內是重要的？領導者在人類歷史上扮演重要的角色，從部落時期的酋長，到歐洲封建時期的領主、華夏文化的皇帝，乃至於當今社會的總統、總理等，這些都是領導者。</p>
+<p>有人說領導者之所以重要，是因為領導者可以作出決定(make decisions)、制定政策(make policies)、簽署法案(sign laws)等，但是這些答案都並未回答到上述的問題。如果從政治學的角度觀之，我們可以說領導者的重要性仰賴於其可以「安內攘外」——內部作為制衡的角色，外部作為主權的象徵，避免外患入侵國家。</p>
+<section id="模型設定" class="level3">
+<h3 class="anchored" data-anchor-id="模型設定">模型設定</h3>
+<p>為了檢證領導者是否重要，實證上我們可以在領導者這個變項上做出一些變動，端看這些改變是否會影響到政治或經濟表現(political or economic outcome)。</p>
+<p>因此，我們會需要以下的變數幫助我們釐清上述問題。</p>
+<ul>
+<li>「表現」變數：學理上我們稱之為被解釋變數(dependent variable)，因為這是我們想要探討的結果。經濟成長指標即是一個很好的變數，我們可以透過 GDP 平減指數作為變數。</li>
+<li>「解釋」變數：解釋變數(independent variable)也就是用來解釋表現的變數，例如我們可以在領導者這個變數上動一些手腳，多半都是統計上的處理方式。</li>
+</ul>
+<p>統計學上我們可以將上述的關係寫成數學的形式： <span class="math display">\[
+\mathbf{y} = \mathbf{x}\boldsymbol\beta + \boldsymbol\varepsilon
+\]</span> 其中 <span class="math inline">\(\mathbf{y}\)</span> 即是被解釋變數，<span class="math inline">\(\mathbf{x}\)</span> 為解釋變數，<span class="math inline">\(\boldsymbol\beta\)</span> 為係數(coefficient)，而 <span class="math inline">\(\boldsymbol\varepsilon\)</span> 則是一些無法解釋、沒辦法觀察到的因素。</p>
+</section>
+<section id="理解變異" class="level3">
+<h3 class="anchored" data-anchor-id="理解變異">理解「變異」</h3>
+<p>通常我們會要求解釋變數具有變動，否則如果這些變數永遠都停留在原本的位置，就無法繼續深入研究這些變數對於政治或經濟表現有何影響。</p>
+<p>回到原本的議題，我們現在將領導者的定義縮小範圍，僅聚焦在民主國家的「總統」(president)上。根據實證研究，總統在經濟表現極差的時候，多半會在選舉中慘敗。</p>
+</section>
+</section>
+<section id="論文探討與統計方法介紹" class="level2">
+<h2 class="anchored" data-anchor-id="論文探討與統計方法介紹">論文探討與統計方法介紹</h2>
+<p>Ben Olken 針對其文章 <a href="https://www.aeaweb.org/articles?id=10.1257/mac.1.2.55">“<em>Hit or Miss? The Effect of Assassinations on Institutions and War</em>”</a> 進行導讀。其核心概念是試圖找出一個「乾淨」（外生）的領導者變異；也就是說，其是一種看似像是隨機實驗的變異。這些變異通常被稱為「自然實驗」(natural experiment)。</p>
+<p>在這些研究中，學者們關注的是特定事件（如刺殺）或歷史時期對領導者的變動是否可以被視為一種不受人為影響的變化，而且能夠為研究領導者對社會、政治和經濟影響的因果關係提供更為客觀的證據。</p>
+<p>「刺殺」(assassination)提供了一種類似於隨機實驗的方式來改變領導者：未遂的刺殺作為成功刺殺的對照組。例如，比較 John F. Kennedy 的刺殺與對 Ronald Reagan 的刺殺企圖。子彈奪去了 JFK 的生命，而差幾吋的距離讓里根得以倖免於難。</p>
+<p>透過研究刺殺事件，我們或許可以找到一個具有隨機性的變動，進而探討在領導者變更時，對於社會和政治的影響。成功和失敗的刺殺案例，將形成一個有趣的比較，幫助我們了解領導者的重要性以及他們所扮演的角色對於國家穩定和經濟發展的影響。</p>
+<section id="刺殺事件與政治體制" class="level3">
+<h3 class="anchored" data-anchor-id="刺殺事件與政治體制">刺殺事件與政治體制</h3>
+<p>為了了解更換領導人是否有所影響，我們對刺殺事件i進行估計迴歸分析，表達如下： <span class="math display">\[
+y_i = \beta{SUCCESS_i} + \varepsilon_i
+\]</span></p>
+<p>其中，<span class="math inline">\(y_i\)</span>表被解釋變數，例如刺殺事件前一年到五年後的民主程度變化，<span class="math inline">\(SUCCESS_i\)</span> 表示一個虛擬變量(dummy variable)，若領導人被殺則為 <span class="math inline">\(1\)</span>，若倖存則為 <span class="math inline">\(0\)</span>，即 <span class="math display">\[
+SUCCESS_{i} =
+\begin{cases}
+1, \quad \text{if killed}\\
+0, \quad \text{if survive}
+\end{cases}
+\]</span> <span class="math inline">\(\varepsilon_i\)</span> 表示誤差項，<span class="math inline">\(\beta\)</span> 表示成功刺殺對 <span class="math inline">\(y\)</span> 的平均影響。</p>
+<p>在這個簡單迴歸中，<span class="math inline">\(\hat{\beta}\)</span> 代表了成功刺殺和失敗刺殺時 <span class="math inline">\(y_i\)</span> 的差異，即： <span class="math display">\[
+\hat{\beta} = \mathbb{E}[y | SUCCESS = 1] - \mathbb{E}[y | SUCCESS = 0]
+\]</span> 藉由這樣的分析方法，我們可以評估刺殺事件是否對於影響政治體制產生顯著的效果。</p>
+<section id="統計上的假設" class="level4">
+<h4 class="anchored" data-anchor-id="統計上的假設">統計上的假設</h4>
+<p>在這個理論中一個重要的假設是：</p>
+<p><span class="math display">\[
+y_i = \beta{SUCCESS_i} + \varepsilon_i
+\]</span></p>
+<p>在進行這樣的迴歸分析時，其中一個關鍵假設是誤差項 <span class="math inline">\(\varepsilon\)</span> 和虛擬變量 <span class="math inline">\(SUCCESS\)</span> 之間是不相關的。</p>
+<p>我們可以計算 <span class="math display">\[
+\hat{\beta} = \mathbb{E}[y | SUCCESS = 1] - \mathbb{E}[y | SUCCESS = 0]
+\]</span></p>
+<p>將這個結果中的 <span class="math inline">\(y\)</span> 以 <span class="math inline">\(y_i = \beta{SUCCESS_i} + \varepsilon_i\)</span> 取代，得到</p>
+<p><span class="math display">\[
+\hat{\beta} = \beta + \mathbb{E}[\varepsilon | SUCCESS = 1] - \mathbb{E}[\varepsilon | SUCCESS = 0]
+\]</span> 因此，我們需要假設 <span class="math inline">\(\mathbb{E}[\varepsilon | SUCCESS = 1] = \mathbb{E}[\varepsilon | SUCCESS = 0]\)</span>，即 <span class="math inline">\(\varepsilon\)</span> 與 <span class="math inline">\(SUCCESS\)</span> 無相關。</p>
+<p>這個假設的重要性在於，其確保了估計結果的一致性和有效性。如果誤差項與虛擬變量之間存在相關性，那麼迴歸結果可能會出現偏誤，使得我們無法正確地衡量成功刺殺對因變數 <span class="math inline">\(y\)</span> 的影響。</p>
+</section>
+<section id="實務上的解釋" class="level4">
+<h4 class="anchored" data-anchor-id="實務上的解釋">實務上的解釋</h4>
+<p><span class="math display">\[
+y_i = \beta_{SUCCESS_i} + \varepsilon_i
+\]</span></p>
+<p>假設 <span class="math inline">\(y\)</span> 是一個代表「在刺殺事件前一年和事件後間成為民主國家」的變數。在這種情況下，<span class="math inline">\(\varepsilon\)</span> 和 <span class="math inline">\(SUCCESS\)</span> 不相關的意思是：這表示刺殺事件的成功與否不會因為該國本來就會轉變成民主國家而更有可能發生。</p>
+<p>舉例來說，在伊拉克戰爭前夕，美國試圖刺殺 Saddam Hussein。假設美國非常努力地試圖刺殺 Hussein，因為他們知道如果刺殺失敗，他們將會發動戰爭將他剷除。</p>
+<p>但我們怎麼知道 <span class="math inline">\(\varepsilon\)</span> 和 <span class="math inline">\(SUCCESS\)</span> 是不相關的？答案是：我們無法直接檢查。這是一個假設。不過我們可以嘗試思考其他可能的推論。特別是，我們可以檢查我們認為與 <span class="math inline">\(y_i\)</span> 相關的其他變數是否與 <span class="math inline">\(SUCCESS_i\)</span> 不相關，這可以幫助我們在某種程度上確認識別性假設是否合理。</p>
+</section>
+<section id="控制變數" class="level4">
+<h4 class="anchored" data-anchor-id="控制變數">控制變數</h4>
+<p>Olken 發現使用槍支進行刺殺的成功機率比使用炸彈更高：使用槍支需要更加專注的刺客，因為開槍被抓到的風險比安置炸彈更高。因此，也許在本來刺殺事件後國家更有可能轉變成民主國家的情況下，更容易使用槍支。</p>
+<p>如果上述的假設是肯定且正確的，我們可以對槍支這個變數進行控制： <span class="math display">\[
+y_i = \beta{SUCCESS_i} + \gamma{GUN} + \varepsilon_i
+\]</span></p>
+<p>現在的假設是，在我們考慮是否使用槍支的情況下，誤差項 <span class="math inline">\(\varepsilon\)</span> 與成功與否 <span class="math inline">\(SUCCESS\)</span> 是不相關的。例如，我們比較使用槍支的成功事件與使用槍支的失敗事件之間的影響，以及沒有使用槍支的成功事件與沒有使用槍支的失敗事件之間的影響。這樣的控制變數方法可以幫助我們在某種程度上確保研究結果的準確性，並排除因槍支使用造成的偏誤。</p>
+<p>我們認為已經很好地隔離了問題的源頭，即槍支使用更容易成功，並且可能與 <span class="math inline">\(y\)</span> 相關，控制變數是有幫助的。這可以幫助我們排除槍支使用對結果的影響，並確保研究結果的準確性。但是一般而言，在研究設計中，沒有任何東西可以取代創造虛擬隨機性的良好研究設計——即知道變異來自哪裡，並且可以根據統計原則評估假設是否與結果無關。</p>
+<p>假設我們將成功的刺殺年份與所有其他年份的所有國家進行比較。這樣的比較並不是一個好的方法。原因是，這種比較並沒有創造出真正的隨機性或對照組。在這種情況下，可能存在許多與刺殺和民主化之間相關的因素，這會導致我們無法確定是否僅僅是刺殺對民主化的影響。</p>
+<p>綜上，我們在研究時應該努力設計良好的實驗或隨機對照試驗，或者使用其他控制方法，確保所得結果的可靠性和有效性。</p>
+<p>在這個研究中，我們限定在「強烈的刺殺意圖」，即槍支開火、炸彈爆炸等情況下進行分析。我們進行迴歸分析如下：</p>
+<p><span class="math display">\[
+y_i = \beta{SUCCESS_i} + \gamma{WEAPON_i} + \varepsilon_i
+\]</span></p>
+<p>其中 <span class="math inline">\(WEAPON_i\)</span> 是數個虛擬變數，分別代表不同的武器類型。</p>
+<p>該研究主要研究國家民主程度的變化，使用 <a href="https://www.systemicpeace.org/polityproject.html">Polity 資料集</a>將所有國家自 1875 年以來歸類為專制（設定為 <span class="math inline">\(0\)</span>）或民主（設定為 <span class="math inline">\(1\)</span>）。觀察是否有變化以及是否存在正向關係。</p>
+<p>另外，我們使用 A<a href="http://ksgleditsch.com/archigos.html">rchigos 資料集</a>觀察領導人的過渡，將其歸類為常規（選舉）或非常規（政變），然後看在接下來的 20 年中，有多少百分比的領導人過渡是常規的。</p>
+<p>同樣，我們觀察衝突的變化，使用 <a href="https://correlatesofwar.org/data-sets/">COW 資料集</a>分類每年死亡人數超過 <span class="math inline">\(1000\)</span> 人的衝突，以及 <a href="https://www.prio.org/Data/">PRIO 資料集</a>分類每年死亡人數在 <span class="math inline">\(25\)</span> 至 <span class="math inline">\(1000\)</span> 人之間的衝突。</p>
+</section>
+</section>
+<section id="統計方法標準誤假設檢定" class="level3">
+<h3 class="anchored" data-anchor-id="統計方法標準誤假設檢定">統計方法：標準誤假設檢定</h3>
+<p>在估計上述迴歸方程式時，除了估計 <span class="math inline">\(\hat{\beta}\)</span> 之外，我們還需要知道估計結果的精確程度。因此，我們透過計算 <span class="math inline">\(\hat{\beta}\)</span> 的標準誤，記為 <span class="math inline">\(\sigma\)</span>，檢證精確程度。</p>
+<p>標準誤差(standard error)是我們對 <span class="math inline">\(\hat{\beta}\)</span> 估計值周圍的標準偏差。換句話說，假設我們重新運行了 <span class="math inline">\(100\)</span> 次實驗，並每次收集數據，<span class="math inline">\(\hat{\beta}\)</span> 的標準誤差反映了這 <span class="math inline">\(100\)</span> 次估計結果的標準差。</p>
+<section id="hatbeta-的分佈" class="level4">
+<h4 class="anchored" data-anchor-id="hatbeta-的分佈"><span class="math inline">\(\hat{\beta}\)</span> 的分佈</h4>
+<p>假設我們有一個以 <span class="math inline">\(\hat{\beta}\)</span> 為中心，標準誤差為 <span class="math inline">\(\sigma\)</span> 的常態分配，即 <span class="math display">\[
+\boldsymbol{\hat{\beta}} \sim N(\pmb{\beta}, (\mathbf{X}^T\mathbf{X})^{-1}\sigma^2)
+\]</span> #### 假設檢定</p>
+<p>一個統計檢定的形式如下： 假設我有一個虛無假設(hypothesis testing)，即 <span class="math inline">\(H_{0}:\beta = \beta_0\)</span>。進行檢證的方式是，假設真實情況是 <span class="math inline">\(\beta = \beta_0\)</span>，且標準誤差為 <span class="math inline">\(\sigma\)</span>，那麼已知 <span class="math inline">\(\hat{\beta}\)</span> 的分佈下，即可透過假設檢定驗證<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。如果我們能夠拒絕 <span class="math inline">\(\hat{\beta} = 0\)</span>，我們就說 <span class="math inline">\(\hat{\beta}\)</span> 在統計上顯著。</p>
+<p>其中，我們將 <span class="math inline">\(\beta^* = \beta_0\)</span> 給定我們的估計 <span class="math inline">\(\hat{\beta}\)</span> 的機率定義為顯著水準。通常我們使用 <span class="math inline">\(5\%\)</span>的顯著水準，但有時也使用 <span class="math inline">\(1\%\)</span> 或 <span class="math inline">\(10\%\)</span>。在大多數情況下，如果</p>
+<ul>
+<li><p><span class="math inline">\(\hat{\beta} &gt; 1.96\sigma\)</span>，我們可以在 <span class="math inline">\(5\%\)</span> 的水準上拒絕虛無假設</p></li>
+<li><p><span class="math inline">\(\hat{\beta} &gt; 1.65\sigma\)</span>，我們可以在 <span class="math inline">\(10\%\)</span>的水準上拒絕虛無假設。</p></li>
+</ul>
+</section>
+<section id="信賴區間" class="level4">
+<h4 class="anchored" data-anchor-id="信賴區間">信賴區間</h4>
+<p>信賴區間是在顯著水準上無法拒絕的虛無假設的範圍，通常是 <span class="math display">\[
+[\hat{\beta} - 1.96\sigma, \hat{\beta} + 1.96\sigma]
+\]</span></p>
+
+
+</section>
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>這裡就不贅述，就假設已經知道如何檢定。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sung2023,
+  author = {Sung, Anthony},
+  title = {領導者與民主制度},
+  date = {2023-07-24},
+  url = {https://yueswater-blog.netlify.app/posts/2023-07-24-politcal-economy-leaders-and-democratic-institutions/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sung2023" class="csl-entry quarto-appendix-citeas" role="listitem">
+Sung, Anthony. 2023. <span>“領導者與民主制度.”</span> July 24, 2023. <a href="https://yueswater-blog.netlify.app/posts/2023-07-24-politcal-economy-leaders-and-democratic-institutions/">https://yueswater-blog.netlify.app/posts/2023-07-24-politcal-economy-leaders-and-democratic-institutions/</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="xiaolong70701/quarto-blog" data-repo-id="R_kgDOJhS1Eg" data-category="General" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="light">
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright © 2024 Anthony. All rights reserved. See <a href="../copyright.html">statements</a>.</p>
+</div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/">
+      <i class="bi bi-facebook" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:xiaolong70701@gmail.com">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

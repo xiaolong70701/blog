@@ -1,0 +1,2752 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anthony Sung">
+<meta name="dcterms.date" content="2024-07-05">
+<meta name="description" content="用最簡單、明瞭的方式進行 LaTeX 數學排版">
+
+<title>LaTeX 教學系列：數學排版 – Yueswater Blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VLWNL5QXD8"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VLWNL5QXD8', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script> 
+  
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../css/karat.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Yueswater Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../notes.html"> 
+<span class="menu-text">Diary &amp; Notes</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/"> <i class="bi bi-facebook" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/yues_19_water/"> <i class="bi bi-instagram" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#數學排版的起手式" id="toc-數學排版的起手式" class="nav-link active" data-scroll-target="#數學排版的起手式">數學排版的起手式</a>
+  <ul class="collapse">
+  <li><a href="#行內與行間公式" id="toc-行內與行間公式" class="nav-link" data-scroll-target="#行內與行間公式">行內與行間公式</a></li>
+  <li><a href="#希臘字母" id="toc-希臘字母" class="nav-link" data-scroll-target="#希臘字母">希臘字母</a></li>
+  <li><a href="#特殊形式" id="toc-特殊形式" class="nav-link" data-scroll-target="#特殊形式">特殊形式</a></li>
+  <li><a href="#運算判斷與其他符號" id="toc-運算判斷與其他符號" class="nav-link" data-scroll-target="#運算判斷與其他符號">運算、判斷與其他符號</a></li>
+  <li><a href="#箭頭" id="toc-箭頭" class="nav-link" data-scroll-target="#箭頭">箭頭</a></li>
+  <li><a href="#數學排版小技巧" id="toc-數學排版小技巧" class="nav-link" data-scroll-target="#數學排版小技巧">數學排版小技巧</a></li>
+  </ul></li>
+  <li><a href="#花枝招展的數學進階設定" id="toc-花枝招展的數學進階設定" class="nav-link" data-scroll-target="#花枝招展的數學進階設定">花枝招展的數學：進階設定</a>
+  <ul class="collapse">
+  <li><a href="#數學函數" id="toc-數學函數" class="nav-link" data-scroll-target="#數學函數">數學函數</a></li>
+  <li><a href="#常用數學排版" id="toc-常用數學排版" class="nav-link" data-scroll-target="#常用數學排版">常用數學排版</a>
+  <ul class="collapse">
+  <li><a href="#分數" id="toc-分數" class="nav-link" data-scroll-target="#分數">分數</a></li>
+  <li><a href="#根號" id="toc-根號" class="nav-link" data-scroll-target="#根號">根號</a></li>
+  <li><a href="#數學中的空白" id="toc-數學中的空白" class="nav-link" data-scroll-target="#數學中的空白">數學中的空白</a></li>
+  <li><a href="#數學中的文本" id="toc-數學中的文本" class="nav-link" data-scroll-target="#數學中的文本">數學中的文本</a></li>
+  <li><a href="#堆積符號與上下劃線" id="toc-堆積符號與上下劃線" class="nav-link" data-scroll-target="#堆積符號與上下劃線">堆積符號與上下劃線</a></li>
+  <li><a href="#括號" id="toc-括號" class="nav-link" data-scroll-target="#括號">括號</a></li>
+  <li><a href="#不同大小的括號指令" id="toc-不同大小的括號指令" class="nav-link" data-scroll-target="#不同大小的括號指令">不同大小的括號指令</a></li>
+  <li><a href="#省略號" id="toc-省略號" class="nav-link" data-scroll-target="#省略號">省略號</a></li>
+  <li><a href="#sec-align" id="toc-sec-align" class="nav-link" data-scroll-target="#sec-align">對齊</a></li>
+  <li><a href="#矩陣" id="toc-矩陣" class="nav-link" data-scroll-target="#矩陣">矩陣</a></li>
+  <li><a href="#分段函數與聯立方程式" id="toc-分段函數與聯立方程式" class="nav-link" data-scroll-target="#分段函數與聯立方程式">分段函數與聯立方程式</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#方程式" id="toc-方程式" class="nav-link" data-scroll-target="#方程式">方程式</a>
+  <ul class="collapse">
+  <li><a href="#多個方程式對齊" id="toc-多個方程式對齊" class="nav-link" data-scroll-target="#多個方程式對齊">多個方程式對齊</a></li>
+  <li><a href="#長方程式" id="toc-長方程式" class="nav-link" data-scroll-target="#長方程式">長方程式</a></li>
+  <li><a href="#方程式置中" id="toc-方程式置中" class="nav-link" data-scroll-target="#方程式置中">方程式置中</a></li>
+  </ul></li>
+  <li><a href="#數學環境6" id="toc-數學環境6" class="nav-link" data-scroll-target="#數學環境6">數學環境</a>
+  <ul class="collapse">
+  <li><a href="#帶編號數學環境" id="toc-帶編號數學環境" class="nav-link" data-scroll-target="#帶編號數學環境">帶編號數學環境</a></li>
+  <li><a href="#無編號數學環境" id="toc-無編號數學環境" class="nav-link" data-scroll-target="#無編號數學環境">無編號數學環境</a></li>
+  <li><a href="#定義環境設定" id="toc-定義環境設定" class="nav-link" data-scroll-target="#定義環境設定">定義環境設定</a></li>
+  <li><a href="#證明環境" id="toc-證明環境" class="nav-link" data-scroll-target="#證明環境">證明環境</a></li>
+  </ul></li>
+  <li><a href="#數學字體設定" id="toc-數學字體設定" class="nav-link" data-scroll-target="#數學字體設定">數學字體設定</a>
+  <ul class="collapse">
+  <li><a href="#常用數學字體" id="toc-常用數學字體" class="nav-link" data-scroll-target="#常用數學字體">常用數學字體</a></li>
+  <li><a href="#自定義數學字體" id="toc-自定義數學字體" class="nav-link" data-scroll-target="#自定義數學字體">自定義數學字體</a>
+  <ul class="collapse">
+  <li><a href="#使用-newpxtext-與-newpxmath" id="toc-使用-newpxtext-與-newpxmath" class="nav-link" data-scroll-target="#使用-newpxtext-與-newpxmath">使用 <code>newpxtext</code> 與 <code>newpxmath</code></a></li>
+  <li><a href="#使用-mathspec-或-fontspec" id="toc-使用-mathspec-或-fontspec" class="nav-link" data-scroll-target="#使用-mathspec-或-fontspec">使用 <code>mathspec</code> 或 <code>fontspec</code></a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#小結" id="toc-小結" class="nav-link" data-scroll-target="#小結">小結</a>
+  <ul class="collapse">
+  <li><a href="#小試身手" id="toc-小試身手" class="nav-link" data-scroll-target="#小試身手">小試身手</a></li>
+  <li><a href="#排版偷吃步mathpix-snipping" id="toc-排版偷吃步mathpix-snipping" class="nav-link" data-scroll-target="#排版偷吃步mathpix-snipping">排版偷吃步：Mathpix Snipping</a>
+  <ul class="collapse">
+  <li><a href="#如何下載-mathpix-snipping" id="toc-如何下載-mathpix-snipping" class="nav-link" data-scroll-target="#如何下載-mathpix-snipping">如何下載 Mathpix Snipping</a></li>
+  <li><a href="#如何使用-mathpix-snipping" id="toc-如何使用-mathpix-snipping" class="nav-link" data-scroll-target="#如何使用-mathpix-snipping">如何使用 Mathpix Snipping</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">LaTeX 教學系列：數學排版</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">latex</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    <p>用最簡單、明瞭的方式進行 LaTeX 數學排版</p>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Anthony Sung </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 5, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style id="ace-dawn">.ace-dawn .ace_gutter {background: #ebebeb;color: #333}.ace-dawn .ace_print-margin {width: 1px;background: #e8e8e8}.ace-dawn {background-color: #F9F9F9;color: #080808}.ace-dawn .ace_cursor {color: #000000}.ace-dawn .ace_marker-layer .ace_selection {background: rgba(39, 95, 255, 0.30)}.ace-dawn.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px #F9F9F9;}.ace-dawn .ace_marker-layer .ace_step {background: rgb(255, 255, 0)}.ace-dawn .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgba(75, 75, 126, 0.50)}.ace-dawn .ace_marker-layer .ace_active-line {background: rgba(36, 99, 180, 0.12)}.ace-dawn .ace_gutter-active-line {background-color : #dcdcdc}.ace-dawn .ace_marker-layer .ace_selected-word {border: 1px solid rgba(39, 95, 255, 0.30)}.ace-dawn .ace_invisible {color: rgba(75, 75, 126, 0.50)}.ace-dawn .ace_keyword,.ace-dawn .ace_meta {color: #794938}.ace-dawn .ace_constant,.ace-dawn .ace_constant.ace_character,.ace-dawn .ace_constant.ace_character.ace_escape,.ace-dawn .ace_constant.ace_other {color: #811F24}.ace-dawn .ace_invalid.ace_illegal {text-decoration: underline;font-style: italic;color: #F8F8F8;background-color: #B52A1D}.ace-dawn .ace_invalid.ace_deprecated {text-decoration: underline;font-style: italic;color: #B52A1D}.ace-dawn .ace_support {color: #691C97}.ace-dawn .ace_support.ace_constant {color: #B4371F}.ace-dawn .ace_fold {background-color: #794938;border-color: #080808}.ace-dawn .ace_list,.ace-dawn .ace_markup.ace_list,.ace-dawn .ace_support.ace_function {color: #693A17}.ace-dawn .ace_storage {font-style: italic;color: #A71D5D}.ace-dawn .ace_string {color: #0B6125}.ace-dawn .ace_string.ace_regexp {color: #CF5628}.ace-dawn .ace_comment {font-style: italic;color: #5A525F}.ace-dawn .ace_heading,.ace-dawn .ace_markup.ace_heading {color: #19356D}.ace-dawn .ace_variable {color: #234A97}.ace-dawn .ace_indent-guide {background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEklEQVQImWNgYGBgYLh/5+x/AAizA4hxNNsZAAAAAElFTkSuQmCC) right repeat-y}
+/*# sourceURL=ace/css/ace-dawn */</style>
+<style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style>
+<style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: blue;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}
+/*# sourceURL=ace/css/ace-tm */</style>
+<style id="ace_editor.css">.ace_br1 {border-top-left-radius    : 3px;}.ace_br2 {border-top-right-radius   : 3px;}.ace_br3 {border-top-left-radius    : 3px; border-top-right-radius:    3px;}.ace_br4 {border-bottom-right-radius: 3px;}.ace_br5 {border-top-left-radius    : 3px; border-bottom-right-radius: 3px;}.ace_br6 {border-top-right-radius   : 3px; border-bottom-right-radius: 3px;}.ace_br7 {border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px;}.ace_br8 {border-bottom-left-radius : 3px;}.ace_br9 {border-top-left-radius    : 3px; border-bottom-left-radius:  3px;}.ace_br10{border-top-right-radius   : 3px; border-bottom-left-radius:  3px;}.ace_br11{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-left-radius:  3px;}.ace_br12{border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br13{border-top-left-radius    : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br14{border-top-right-radius   : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br15{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;}.ace_editor {position: relative;overflow: hidden;padding: 0;font: 12px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;direction: ltr;text-align: left;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;cursor: text;}.ace_content {position: absolute;box-sizing: border-box;min-width: 100%;contain: style size layout;font-variant-ligatures: no-common-ligatures;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;contain: style size layout;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {position: absolute;top: 0;left: 0;right: 0;padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {contain: strict;position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;contain: strict;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;white-space: pre!important;}.ace_text-input.ace_composition {background: transparent;color: inherit;z-index: 1000;opacity: 1;}.ace_composition_placeholder { color: transparent }.ace_composition_marker { border-bottom: 1px solid;position: absolute;border-radius: 0;margin-top: 1px;}[ace_nocontext=true] {transform: none!important;filter: none!important;clip-path: none!important;mask : none!important;contain: none!important;perspective: none!important;mix-blend-mode: initial!important;z-index: auto;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;word-wrap: normal;white-space: pre;height: 100%;width: 100%;box-sizing: border-box;pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;height: 1000000px;contain: style size layout;}.ace_text-layer {font: inherit !important;position: absolute;height: 1000000px;width: 1000000px;contain: style size layout;}.ace_text-layer > .ace_line, .ace_text-layer > .ace_line_group {contain: style size layout;position: absolute;top: 0;left: 0;right: 0;}.ace_hidpi .ace_text-layer,.ace_hidpi .ace_gutter-layer,.ace_hidpi .ace_content,.ace_hidpi .ace_gutter {contain: strict;will-change: transform;}.ace_hidpi .ace_text-layer > .ace_line, .ace_hidpi .ace_text-layer > .ace_line_group {contain: strict;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;box-sizing: border-box;border-left: 2px solid;transform: translatez(0);}.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_hasPlaceholder .ace_hidden-cursors .ace_cursor {opacity: 0;}.ace_smooth-blinking .ace_cursor {transition: opacity 0.18s;}.ace_animate-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: step-end;animation-name: blink-ace-animate;animation-iteration-count: infinite;}.ace_animate-blinking.ace_smooth-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: ease-in-out;animation-name: blink-ace-animate-smooth;}@keyframes blink-ace-animate {from, to { opacity: 1; }60% { opacity: 0; }}@keyframes blink-ace-animate-smooth {from, to { opacity: 1; }45% { opacity: 1; }60% { opacity: 0; }85% { opacity: 0; }}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_error_bracket {position: absolute;border-bottom: 1px solid #DE5555;border-radius: 0;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;box-sizing: border-box;}.ace_line .ace_fold {box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(114, 113, 113, 0.05);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_inline_button {
+    border: 2px solid black; /* Add border */
+    display: inline-block;
+    margin: -1px 8px;
+    padding: 10px 20px; /* Adjust padding for better appearance */
+    pointer-events: auto;
+    cursor: pointer;
+    border-radius: 20px; /* Rounded corners */
+    background-color: white; /* Set background color */
+    color: black; /* Set text color */
+    text-align: center; /* Center text */
+    font-size: 16px; /* Adjust font size */
+    transition: background 0.3s, border-color 0.3s; /* Add transition for hover effects */
+}
+
+.ace_inline_button:hover {
+    border-color: gray;
+    background: rgba(200, 200, 200, 0.2);
+    pointer-events: auto;
+    border-radius: 20px; /* Maintain rounded corners */
+}
+.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}.ace_mobile-menu {position: absolute;line-height: 1.5;border-radius: 4px;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;background: white;box-shadow: 1px 3px 2px grey;border: 1px solid #dcdcdc;color: black;}.ace_dark > .ace_mobile-menu {background: #333;color: #ccc;box-shadow: 1px 3px 2px grey;border: 1px solid #444;}.ace_mobile-button {padding: 2px;cursor: pointer;overflow: hidden;}.ace_mobile-button:hover {background-color: #eee;opacity:1;}.ace_mobile-button:active {background-color: #ddd;}.ace_placeholder {font-family: arial;transform: scale(0.9);transform-origin: left;white-space: pre;opacity: 0.7;margin: 0 10px;}
+/*# sourceURL=ace/css/ace_editor.css */</style>
+<script src="./src/ace.min.js"></script>
+<style type="text/css" media="screen">
+  .ace_editor {
+  border: 1px solid lightgray;
+  margin-bottom: 1px !important;
+  width: 100%;
+  }
+  div.spacer {
+  margin-top:16px;
+  }
+</style>
+<script src="./src/runlatex.js"></script>
+<style>
+  body {margin:auto; max-width: 100em;}
+  div.h {background-color: #F5F5FF;margin: .5em 0;}
+  pre {background-color: #EEE;margin:0;padding: .5em;}
+  .llbutton {
+      border-radius: 12px;
+  }
+</style>
+<script src="./src/theme-dawn.js"></script>
+<script src="./src/mode-latex.js"></script>
+<style>
+    .answer {
+        display: none;
+        color: black;
+        margin-top: 10px;
+    }
+    .question {
+        cursor: pointer;
+        color: black;
+        background-color: white;
+        border: none;
+        padding: 2px 7px;
+        text-decoration: none;
+        font-size: 14px;
+        border-radius: 50px;
+    }
+    .question:hover {
+        background-color: white;
+    }
+</style>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+    #latex-input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    #preview {
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+</style>
+
+<p>前幾篇的教學著重在如何建立一份 LaTeX 文件，並且使用套件設定版面、文字樣式、邊界等。不過，到目前為止，我們尚未接觸到 LaTeX 最厲害的部分：數學排版。</p>
+<p>排版在諸多領域都可以見到它的影子，例如活動文宣、計畫書、書籍、網頁等，無一不需要精心的排版設計。而在學術領域當中，排版是讓知識傳遞給讀者重要的媒介之一，因為學術論文的排版需要遵循嚴格的格式要求，包括頁邊距、字體大小、行距、引用格式等，目的是確保論文在學術期刊或會議上的一致性和可讀性。</p>
+<blockquote class="blockquote">
+<p>為什麼要學數學排版呢？</p>
+</blockquote>
+<p>誠如上述所言，不同領域的學術排版有不同的規定，常說「隔行如隔山」，例如人文社會的排版與理工領域就大相徑庭。理工領域的排版十分著重數學——模型設定、模擬結果…等都需要數學的輔助。當我們使用 Word 排版時常常會達不到意想的效果，且 Word 內建的 LaTeX 功能不太友善。正是因為 LaTeX 是針對專業數學所設計的排版軟體，因此透過 LaTeX 具有的數學排版系統能夠達到最佳效果。因此，在這篇使用 LaTeX 進行數學排版的文章中，你會學到：</p>
+<ul>
+<li>如何進入數學排版環境</li>
+<li>數學排版技巧</li>
+<li>數學字體設定</li>
+</ul>
+<p>文章的最後也會提供讀者練習題，可以嘗試用這篇文章的內容嘗試看看！</p>
+<section id="數學排版的起手式" class="level1">
+<h1>數學排版的起手式</h1>
+<p>在正式進入 LaTeX 的數學排版教學之前，我們需要知道一件事：TeX 系統僅提供最基本的排版功能，因此如果需要其他額外的設定，就需要套件的輔助。</p>
+<p>一般來說，LaTeX 最常見的數學相關套件有<code>amsmath</code>、<code>amssymb</code>、<code>amsfonts</code>、<code>amsthm</code>，這四個套件是由美國數學學會（American Mathematical Society, AMS）所開發和維護的。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 89%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>套件名稱</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>amsmath</code></td>
+<td>拓展數學環境和指令，包括對齊的方程組、多行方程、分段函數、矩陣環境等</td>
+</tr>
+<tr class="even">
+<td><code>amssymb</code></td>
+<td>提供 LaTeX 的數學符號庫，包含黑體字母、花體字母和其他特殊符號，用於表示集合、邏輯運算符等數學符號</td>
+</tr>
+<tr class="odd">
+<td><code>amsfonts</code></td>
+<td>提供專門的數學字體，使我們可以使用更多樣化的字體來排版數學公式</td>
+</tr>
+<tr class="even">
+<td><code>amsthm</code></td>
+<td>拓展定理環境的功能，讓定理、引理、命題等數學結構的排版更加美觀</td>
+</tr>
+</tbody>
+</table>
+<section id="行內與行間公式" class="level2">
+<h2 class="anchored" data-anchor-id="行內與行間公式">行內與行間公式</h2>
+<p>LaTeX 進入數學模式的方式有兩種。第一種是行內的數學模式（inline math mode），適合用於<strong>段落中</strong>的簡單數學表達式，也就是與普通文本混合排版。行內數學模式的表示方法是將數學指令包裹在 <code>$...$</code>、<code>\(...\)</code> 或 <code>\begin{math}...\end{math}</code>中。例如：<code>$a^{2} + b^{2} = c^{2}$</code> 會在行內顯示 <span class="math inline">\(a^{2} + b^{2} = c^{2}\)</span>。這三種模式都是等價的，不過較推薦 <code>$...$</code> 的方式。</p>
+<p>另一種方式是行間的數學模式（display math mode），適合用於需要獨立顯示的方程或較複雜的數學公式。行間數學模式可以通過以下兩種方式之一來實現：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 41%">
+<col style="width: 58%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>LaTeX 語法</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\begin{displaymath}...\end{displaymath}</code></td>
+<td>不帶編號的行間公式數學環境</td>
+</tr>
+<tr class="even">
+<td><code>\[ ... \]</code></td>
+<td>displaymath 環境的簡化形式</td>
+</tr>
+<tr class="odd">
+<td><code>$$ ... $$</code></td>
+<td>與上面的行間數學環境等價，但可用 <code>\eqno</code> 或 <code>\leqno</code> 人工編號</td>
+</tr>
+<tr class="even">
+<td><code>\begin{equation}...\end{equation}</code></td>
+<td><strong>自動編號</strong>的行間公式數學環境</td>
+</tr>
+</tbody>
+</table>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入數學套件
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Math}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+The Pythagorean theorem states that in a right-angled triangle, the square of the hypotenuse equals the sum of the squares of the other two sides: $a^2 + b^2 = c^2$.
+
+The mass-energy equivalence is described by the famous equation
+
+$$
+    E=mc^{2}
+$$
+
+discovered in 1905 by Albert Einstein. 
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="希臘字母" class="level2">
+<h2 class="anchored" data-anchor-id="希臘字母">希臘字母</h2>
+<p>數學、工程、物理、化學等理工領域中，最常使用的符號即是希臘字母，通常希臘字母被用於表示變數。LaTeX 的希臘字母輸入十分簡單，只要在進入數學模式後，參考下表即可輸出希臘字母。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 26%">
+<col style="width: 23%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>字母</th>
+<th>指令</th>
+<th>字母</th>
+<th>指令</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\alpha\)</span> / <span class="math inline">\(A\)</span></td>
+<td><code>\alpha</code> / <code>A</code></td>
+<td><span class="math inline">\(\nu\)</span> / <span class="math inline">\(N\)</span></td>
+<td><code>\nu</code> / <code>N</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\beta\)</span> / <span class="math inline">\(B\)</span></td>
+<td><code>\beta</code> / <code>B</code></td>
+<td><span class="math inline">\(\xi\)</span> / <span class="math inline">\(\Xi\)</span></td>
+<td><code>\xi</code> / <code>\Xi</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\gamma\)</span> / <span class="math inline">\(\Gamma\)</span></td>
+<td><code>\gamma</code> / <code>\Gamma</code></td>
+<td><span class="math inline">\(\omicron\)</span> / <span class="math inline">\(O\)</span></td>
+<td><code>\omicron</code> / <code>O</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\delta\)</span> / <span class="math inline">\(\Delta\)</span></td>
+<td><code>\delta</code> / <code>\Delta</code></td>
+<td><span class="math inline">\(\pi\)</span> / <span class="math inline">\(\Pi\)</span></td>
+<td><code>\pi</code> / <code>\Pi</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\epsilon\)</span> / <span class="math inline">\(\varepsilon\)</span> / <span class="math inline">\(E\)</span></td>
+<td><code>\epsilon</code> / <code>\varepsilon</code> / <code>E</code></td>
+<td><span class="math inline">\(\rho\)</span> / <span class="math inline">\(\varrho\)</span> / <span class="math inline">\(P\)</span></td>
+<td><code>\rho</code> / <code>\varrho</code> / <code>P</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\zeta\)</span> / <span class="math inline">\(Z\)</span></td>
+<td><code>\zeta</code> / <code>Z</code></td>
+<td><span class="math inline">\(\sigma\)</span> / <span class="math inline">\(\Sigma\)</span></td>
+<td><code>\sigma</code> / <code>\Sigma</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\eta\)</span> / <span class="math inline">\(H\)</span></td>
+<td><code>\eta</code> / <code>H</code></td>
+<td><span class="math inline">\(\tau\)</span> / <span class="math inline">\(T\)</span></td>
+<td><code>\tau</code> / <code>T</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\theta\)</span> / <span class="math inline">\(\vartheta\)</span> / <span class="math inline">\(\Theta\)</span></td>
+<td><code>\theta</code> / <code>\vartheta</code> / <code>\Theta</code></td>
+<td><span class="math inline">\(\upsilon\)</span> / <span class="math inline">\(\Upsilon\)</span></td>
+<td><code>\upsilon</code> / <code>\Upsilon</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\iota\)</span> / <span class="math inline">\(I\)</span></td>
+<td><code>\iota</code> / <code>I</code></td>
+<td><span class="math inline">\(\phi\)</span> / <span class="math inline">\(\varphi\)</span> / <span class="math inline">\(\Phi\)</span></td>
+<td><code>\phi</code> / <code>\varphi</code> / <code>\Phi</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\kappa\)</span> / <span class="math inline">\(K\)</span></td>
+<td><code>\kappa</code> / <code>K</code></td>
+<td><span class="math inline">\(\chi\)</span> / <span class="math inline">\(X\)</span></td>
+<td><code>\chi</code> / <code>X</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\lambda\)</span> / <span class="math inline">\(\Lambda\)</span></td>
+<td><code>\lambda</code> / <code>\Lambda</code></td>
+<td><span class="math inline">\(\psi\)</span> / <span class="math inline">\(\Psi\)</span></td>
+<td><code>\psi</code> / <code>\Psi</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mu\)</span> / <span class="math inline">\(M\)</span></td>
+<td><code>\mu</code> / <code>M</code></td>
+<td><span class="math inline">\(\omega\)</span> / <span class="math inline">\(\Omega\)</span></td>
+<td><code>\omega</code> / <code>\Omega</code></td>
+</tr>
+</tbody>
+</table>
+<p>注意到希臘字母在 LaTeX 中有一些變體，多半以 <code>\var...</code> 開頭，這些變體通常是為了滿足不同排版需求或數學表達習慣而設計的。例如原本的 <span class="math inline">\(\epsilon\)</span> 與變體的 <span class="math inline">\(\varepsilon\)</span>、原本的 <span class="math inline">\(\theta\)</span> 與變體的 <span class="math inline">\(\vartheta\)</span> 等。不同的變體字母在不同的數學上下文中可能看起來更美觀或更適合。例如，某些數學文獻中可能更偏好使用 <span class="math inline">\(\varphi\)</span> 而不是 <span class="math inline">\(\phi\)</span>，認為這樣更美觀或更易讀。<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</section>
+<section id="特殊形式" class="level2">
+<h2 class="anchored" data-anchor-id="特殊形式">特殊形式</h2>
+<p>所謂特殊形式，以統計學而言，一般來說母體平均值我們念作 bar <span class="math inline">\(X\)</span>，寫法就是在 <span class="math inline">\(X\)</span> 上面畫上一槓；或是樣本估計值我們念作 hat <span class="math inline">\(x\)</span>，寫法則是在 <span class="math inline">\(x\)</span> 上面畫上一個倒 v，但是要如何呈現呢？進入數學環境後，我們可以使用反斜線開啟指令，接著將需要調整的符號加入到花括號內中，即可得到期望的結果。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 15%">
+<col style="width: 17%">
+<col style="width: 15%">
+<col style="width: 17%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>結果</th>
+<th>指令</th>
+<th>結果</th>
+<th>指令</th>
+<th>結果</th>
+<th>指令</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\bar{x}\)</span></td>
+<td><code>\bar{x}</code></td>
+<td><span class="math inline">\(\acute{\eta}\)</span></td>
+<td><code>\acute{\eta}</code></td>
+<td><span class="math inline">\(\check{a}\)</span></td>
+<td><code>\check{a}</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\grave{\eta}\)</span></td>
+<td><code>\grave{\eta}</code></td>
+<td><span class="math inline">\(\breve{a}\)</span></td>
+<td><code>\breve{a}</code></td>
+<td><span class="math inline">\(\ddot{y}\)</span></td>
+<td><code>\ddot{y}</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\dot{x}\)</span></td>
+<td><code>\dot{x}</code></td>
+<td><span class="math inline">\(\hat{x}\)</span></td>
+<td><code>\hat{x}</code></td>
+<td><span class="math inline">\(\tilde{\theta}\)</span></td>
+<td><code>\tilde{\theta}</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\vec{a}\)</span></td>
+<td><code>\vec{a}</code></td>
+<td><span class="math inline">\(\overline{x}\)</span></td>
+<td><code>\overline{x}</code></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="運算判斷與其他符號" class="level2">
+<h2 class="anchored" data-anchor-id="運算判斷與其他符號">運算、判斷與其他符號</h2>
+<p>生活中常見的運算符號，例如四則運算符號（加減乘除），輸入十分簡單，只要打上對應的符號即可。不過，數學中仍有其他運算與判斷符號，請見下表。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>結果</th>
+<th>指令</th>
+<th>結果</th>
+<th>指令</th>
+<th>結果</th>
+<th>指令</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(+\)</span></td>
+<td><code>+</code></td>
+<td><span class="math inline">\(\pm\)</span></td>
+<td><code>\pm</code></td>
+<td><span class="math inline">\(\geq\)</span></td>
+<td><code>\geq</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(-\)</span></td>
+<td><code>-</code></td>
+<td><span class="math inline">\(\mp\)</span></td>
+<td><code>\mp</code></td>
+<td><span class="math inline">\(\leq\)</span></td>
+<td><code>\leq</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(*\)</span> / <span class="math inline">\(\times\)</span></td>
+<td><code>*</code> / <code>\times</code></td>
+<td><span class="math inline">\(\cdot\)</span></td>
+<td><code>\cdot</code></td>
+<td><span class="math inline">\(\prec\)</span></td>
+<td><code>\prec</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(/\)</span></td>
+<td><code>/</code></td>
+<td><span class="math inline">\(\cdots\)</span></td>
+<td><code>\cdots</code></td>
+<td><span class="math inline">\(\succ\)</span></td>
+<td><code>\succ</code></td>
+</tr>
+</tbody>
+</table>
+<p>如果要使用上標（supscript）與下標（subscript），可以使用<code>^</code>和<code>_</code>符號。上標需要在變數後加上 ^，然後將上標內容包裹在花括號 <code>{}</code>中，例如<code>x^{2}</code>會顯示為 <span class="math inline">\(x^{2}\)</span>。同理，下標則在變數後加上<code>_</code>，然後將下標內容包裹在花括號中，例如<code>x_{1}</code>會顯示為 <span class="math inline">\(x_{1}\)</span>。</p>
+</section>
+<section id="箭頭" class="level2">
+<h2 class="anchored" data-anchor-id="箭頭">箭頭</h2>
+<p>箭頭是人類文明有史以來最偉大的發明之一。自從史前時代起，箭頭形狀的的工具（如矛、槍等）被用作狩獵和戰鬥的工具，在現代社會則廣泛地應用在交通標誌、數學符號、設計和電腦圖形界面等領域，成為指示方向和動作的重要工具。</p>
+<p>在數學中，箭頭符號被廣泛應用於表示向量、映射、變換和極限等概念。例如幾何和物理學中，箭頭表示向量的方向和大小，而在代數和微積分中，箭頭則用於表示函數的映射和變換，如從一個集合到另一個集合的映射。或是在極限運算中，箭頭表示變數趨近於某一特定值的過程。此外，箭頭更被應用在邏輯推理和證明中，表示命題之間的推導關係，例如 <span class="math inline">\(A\)</span> 推得 <span class="math inline">\(B\)</span> 可以寫成 <span class="math inline">\(A \rightarrow B\)</span>。在 LaTeX 中，有許多不同種類的箭頭符號，用於表示各種數學和邏輯操作。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>箭頭類型</th>
+<th>Command</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>右箭頭</td>
+<td><code>\rightarrow</code></td>
+<td><span class="math inline">\(\rightarrow\)</span></td>
+</tr>
+<tr class="even">
+<td>左箭頭</td>
+<td><code>\leftarrow</code></td>
+<td><span class="math inline">\(\leftarrow\)</span></td>
+</tr>
+<tr class="odd">
+<td>上箭頭</td>
+<td><code>\uparrow</code></td>
+<td><span class="math inline">\(\uparrow\)</span></td>
+</tr>
+<tr class="even">
+<td>下箭頭</td>
+<td><code>\downarrow</code></td>
+<td><span class="math inline">\(\downarrow\)</span></td>
+</tr>
+<tr class="odd">
+<td>右雙箭頭</td>
+<td><code>\Rightarrow</code></td>
+<td><span class="math inline">\(\Rightarrow\)</span></td>
+</tr>
+<tr class="even">
+<td>左雙箭頭</td>
+<td><code>\Leftarrow</code></td>
+<td><span class="math inline">\(\Leftarrow\)</span></td>
+</tr>
+<tr class="odd">
+<td>上雙箭頭</td>
+<td><code>\Uparrow</code></td>
+<td><span class="math inline">\(\Uparrow\)</span></td>
+</tr>
+<tr class="even">
+<td>下雙箭頭</td>
+<td><code>\Downarrow</code></td>
+<td><span class="math inline">\(\Downarrow\)</span></td>
+</tr>
+<tr class="odd">
+<td>右魚叉</td>
+<td><code>\rightharpoonup</code></td>
+<td><span class="math inline">\(\rightharpoonup\)</span></td>
+</tr>
+<tr class="even">
+<td>左魚叉</td>
+<td><code>\leftharpoonup</code></td>
+<td><span class="math inline">\(\leftharpoonup\)</span></td>
+</tr>
+<tr class="odd">
+<td>右下魚叉</td>
+<td><code>\rightharpoondown</code></td>
+<td><span class="math inline">\(\rightharpoondown\)</span></td>
+</tr>
+<tr class="even">
+<td>左下魚叉</td>
+<td><code>\leftharpoondown</code></td>
+<td><span class="math inline">\(\leftharpoondown\)</span></td>
+</tr>
+<tr class="odd">
+<td>長右箭頭</td>
+<td><code>\longrightarrow</code></td>
+<td><span class="math inline">\(\longrightarrow\)</span></td>
+</tr>
+<tr class="even">
+<td>長左箭頭</td>
+<td><code>\longleftarrow</code></td>
+<td><span class="math inline">\(\longleftarrow\)</span></td>
+</tr>
+<tr class="odd">
+<td>右鉤箭頭</td>
+<td><code>\hookrightarrow</code></td>
+<td><span class="math inline">\(\hookrightarrow\)</span></td>
+</tr>
+<tr class="even">
+<td>左鉤箭頭</td>
+<td><code>\hookleftarrow</code></td>
+<td><span class="math inline">\(\hookleftarrow\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+到底該用 rightarrow 還是 to？
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>在 LaTeX 中，應該使用 <code>\to</code>（<span class="math inline">\(\to\)</span>）還是 <code>\rightarrow</code>（<span class="math inline">\(\rightarrow\)</span>）取決於需求與上下文。雖然這兩個指令能夠產生類似的字符，但 <code>\to</code> 更加簡潔，且程度較短，並且在表達極限時語義更明確，因此通常建議在極限運算中使用 <code>\to</code>。例如 <code>\lim_{x \to \infty} f(x)</code> <span class="math display">\[
+\lim_{x \to \infty} f(x)
+\]</span></p>
+<p>而 <code>\rightarrow</code> 則可以在其他需要更加明確顯示方向的情況下使用。</p>
+</div>
+</div>
+</section>
+<section id="數學排版小技巧" class="level2">
+<h2 class="anchored" data-anchor-id="數學排版小技巧">數學排版小技巧</h2>
+<p>事實上，如果你有仔細看一下上面的內容，並且嘗試看看如何使用數學排版指令，不難發現這些指令<strong>毋需死記硬背</strong>，只要你熟悉一些簡單的數學英文，就可以在短時間內上手。<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>如果你想要知道更多數學排版指令，可以參閱<a href="https://www.cmor-faculty.rice.edu/~heinken/latex/symbols.pdf">這份文件</a>，裡面的指令大致上可以應付論文內大部分的符號。</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+範例：一元二次方程式的公式解
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>我們利用一元二次方程式的公式解來做說明，作為台灣的學生，能夠朗朗上口地背誦出「<strong>2a分之負b正負根號b平方減4ac</strong>」想必不是一件困難的事，那麼要如何用 LaTeX 表達呢？</p>
+<p><span class="math display">\[
+x = \frac{-b\pm\sqrt{b^2 - 4ac}}{2a}
+\]</span></p>
+<p>分數的部分我們使用<code>\frac{}{}</code>來表示，第一個括號裡面放分子，第二個括號裡面放分母。正負我們用<code>\pm</code>，根號用<code>\sqrt{}</code>。程式碼如下：</p>
+</div>
+</div>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入數學套件
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Math}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+The quadratic equation solution formula is given by:
+$$
+    x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+$$
+
+\end{document}
+</div></div></div></div></pre>
+<p>第二個需要注意到的地方是，在先前的文章提過，如果要使用某個指令，要將欲作用的內容放在花括號內。在這邊重申的原因是當我們在使用上標與下標時，多半會忘記使用花括號，導致上標與下標內容無法正確顯示。如 <span class="math inline">\(a_{21}\)</span> 的正確寫法是 <code>a_{21}</code>，如果忘記放在花括號內，即 <code>a_21</code>，就會顯示 <span class="math inline">\(a_21\)</span>，只有 <span class="math inline">\(2\)</span> 變成下標。因此，在練習時就需要養成良好的習慣，<strong>將欲作用的內容放在花括號內</strong>。</p>
+</section>
+</section>
+<section id="花枝招展的數學進階設定" class="level1">
+<h1>花枝招展的數學：進階設定</h1>
+<p>簡單了解 LaTeX 的數學排版後，接下來我們就要真正進入到數學排版設定的環節。由於數學套件所提供的功能有限，或是排版需求複雜，因此有必要了解如何進行一些進階設定。</p>
+<section id="數學函數" class="level2">
+<h2 class="anchored" data-anchor-id="數學函數">數學函數</h2>
+<p>數學中常見的函數都是 LaTeX 內建的，毋需載入套件，如三角函數、指數函數、對數函數等，都是直接輸入函數名稱即可，例如正弦函數（sine）即使用 <code>\sin{}</code>，輸出結果為 <span class="math inline">\(\sin{x}\)</span>。</p>
+<p>但是假設我們需要定義一個新的函數名稱，就需要使用 <code>amsmath</code> 套件的協助。在前言區載入套件後，我們即可使用 <code>\DeclareMathOperator{\函數名指令}{函數名}</code> 或 <code>\DeclareMathOperator*{\函數名指令}{函數名}</code> 自定義函數名稱。不帶星號的 <code>\DeclareMathOperator</code> 指令：用於普通函數名的定義。例如，定義一個名為 <code>\foo</code> 的函數名，對應的顯示效果是 <span class="math inline">\(\text{foo}\)</span>。 帶星號的 <code>\DeclareMathOperator*</code> 指令：用於處理帶上下角標的函數名。在處理角標時，可根據需要將上下角標放置在函數名的正上方或正下方。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入數學套件
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+
+% 使用自定義的數學運算符
+\DeclareMathOperator{\foo}{foo}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Math}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% 使用自定義的數學運算符
+$$
+\foo x 
+$$
+
+\end{document}
+</div></div></div></div></pre>
+<p>如果不想提前定義函數名時，可以直接在公式中使用 <code>\operatorname{函數名}</code> 或 <code>\operatorname*{函數名}</code>。這樣的設定方式較為彈性，也不必擔心忘記函數名稱。例如統計學的變異數符號為 <span class="math inline">\(\operatorname{var}\)</span> 或 <span class="math inline">\(\operatorname{Var}\)</span>，可以使用 <code>\operatorname{var}</code> 或 <code>\operatorname{Var}</code> 處理。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入數學套件
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+
+% 使用自定義的數學運算符
+\DeclareMathOperator{\foo}{foo}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Math}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% 使用自定義的數學運算符
+$$
+\operatorname{var}(x) = \sigma^{2} = E[(X - \mu)^{2}]
+$$
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="常用數學排版" class="level2">
+<h2 class="anchored" data-anchor-id="常用數學排版">常用數學排版</h2>
+<p>接下來介紹一些常用的數學排版技巧。上面我們已經提過角標的設定，在這邊簡單複習一下，如果要使用上標，則需在變數後面加上 <code>^{...}</code>，下標則是在變數後加上 <code>_{...}</code>。如果需要多層的角標，則需要分開設定。例如 <span class="math inline">\(x_{1}^{2}\)</span> 的寫法是 <code>x_{1}^{2}</code>。<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<section id="分數" class="level3">
+<h3 class="anchored" data-anchor-id="分數">分數</h3>
+<p>LaTeX提供了多種方式來創建分數，其中最常用的是 <code>\frac</code> 和 <code>\dfrac</code> 指令。使用 <code>\frac</code> 指令可以創建一個標準的分數，指令是 <code>\frac{分子}{分母}</code>。例如 <code>\frac{a}{b}</code> 會顯示為 <span class="math inline">\(\frac{a}{b}\)</span>，分數會根據周圍的文本自動調整大小。而使用 <code>\dfrac</code> 指令則可以<strong>強制分數以顯示樣式呈現</strong>，即使在行內數學模式中也是如此，其指令同樣為 <code>\dfrac{分子}{分母}</code>。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 39%">
+<col style="width: 52%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>指令</th>
+<th>用途</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\frac</code></td>
+<td>用於行內或行間數學模式中，自動調整分數的大小以適應上下文。</td>
+<td>行內模式中的分數會比較小，以保持文本的整體高度。</td>
+</tr>
+<tr class="even">
+<td><code>\dfrac</code></td>
+<td>始終以顯示樣式呈現分數，不論是在行內還是行間模式中。</td>
+<td>使得分數看起來更大、更明顯，適合於展示重要的公式或需要清楚表達的情況。</td>
+</tr>
+</tbody>
+</table>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入數學套件
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Math}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+Inline fraction: $\frac{a}{b}$ and $\dfrac{a}{b}$
+
+Display fraction:
+$$
+    \frac{a}{b}
+$$
+and
+$$
+    \dfrac{a}{b}
+$$
+
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="根號" class="level3">
+<h3 class="anchored" data-anchor-id="根號">根號</h3>
+<p>LaTeX 中根號的最基本的根號表示方法是使用 <code>\sqrt{...}</code>，會顯示一個二次根，。例如 <code>\sqrt{x+y}</code> 會顯示為 <span class="math inline">\(\sqrt{x+y}\)</span>。此外，如果需要表示更高次的根號，可以使用帶參數的 <code>\sqrt[n]{...}</code> 指令，例如 <code>\sqrt[4]{x+y}</code> 會顯示為 <span class="math inline">\(\sqrt[4]{x+y}\)</span>。</p>
+<p>此外，根號符號是可以嵌套使用的，代表使用者可以在根號內部再置入一個根號。例如 <code>\sqrt{\sqrt{a}+\sqrt{b}}</code>，結果為 <span class="math inline">\(\sqrt{\sqrt{a}+\sqrt{b}}\)</span>。</p>
+<p>注意到在一些情況下，不同的根號符號會出現高度不一致的情況，這會導致公式顯示無法對齊，<del>十分礙眼</del>。為了解決這個問題，可以使用 <code>\mathstrut</code> 指令。<code>\mathstrut</code> 是一個與圓括號同高但沒有寬度的數學支柱，它可以幫助調整公式的垂直對齊。例如，<code>\sqrt{a\mathstrut}+\sqrt{b\mathstrut}</code> 會顯示為 ( + )，這樣可以確保兩個根號符號在同一水平線上。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入數學套件
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Math}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+基本的二次根號：$\sqrt{x+y}$
+
+高次根號：$\sqrt[4]{x+y}$
+
+嵌套的根號：$\sqrt{\sqrt{a}+\sqrt{b}}$
+
+調整根號高度：$\sqrt{a\mathstrut}+\sqrt{b\mathstrut}$
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="數學中的空白" class="level3">
+<h3 class="anchored" data-anchor-id="數學中的空白">數學中的空白</h3>
+<p>在 LaTeX 的數學模式中，適當插入空白間隔是十分重要的，從而提高數學公式的可讀性和美觀度。LaTeX 提供了多種指令來插入不同大小的空白間隔：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 28%">
+<col style="width: 46%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>名稱</th>
+<th>指令</th>
+<th>範例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>默認間隔</td>
+<td></td>
+<td><span class="math inline">\(abc \rightarrow\leftarrow abc\)</span></td>
+</tr>
+<tr class="even">
+<td>細間隔</td>
+<td><code>\,</code></td>
+<td><span class="math inline">\(abc \rightarrow\,\leftarrow abc\)</span></td>
+</tr>
+<tr class="odd">
+<td>負細間隔</td>
+<td><code>\!</code></td>
+<td><span class="math inline">\(abc \rightarrow\!\leftarrow abc\)</span></td>
+</tr>
+<tr class="even">
+<td>中等間隔</td>
+<td><code>\:</code></td>
+<td><span class="math inline">\(abc \rightarrow\:\leftarrow abc\)</span></td>
+</tr>
+<tr class="odd">
+<td>大間隔</td>
+<td><code>\;</code></td>
+<td><span class="math inline">\(abc \rightarrow\;\leftarrow abc\)</span></td>
+</tr>
+<tr class="even">
+<td>0.5em 間隔</td>
+<td><code>\enspace</code></td>
+<td><span class="math inline">\(abc \rightarrow\enspace\leftarrow abc\)</span></td>
+</tr>
+<tr class="odd">
+<td>1em 間隔</td>
+<td><code>\quad</code></td>
+<td><span class="math inline">\(abc \rightarrow\quad\leftarrow abc\)</span></td>
+</tr>
+<tr class="even">
+<td>2em 間隔</td>
+<td><code>\qquad</code></td>
+<td><span class="math inline">\(abc \rightarrow\qquad\leftarrow abc\)</span></td>
+</tr>
+<tr class="odd">
+<td>自定義間隔</td>
+<td><code>\hspace{3em}</code></td>
+<td><span class="math inline">\(abc \rightarrow\hspace{3em}\leftarrow abc\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="數學中的文本" class="level3">
+<h3 class="anchored" data-anchor-id="數學中的文本">數學中的文本</h3>
+<p>如果文件中的數學模式需要使用文本，我們必須按照以下步驟進行處理。首先，如果是英文文本，則不用特別進行設定即可操作（除非有特殊字體需求）；如果是中文文本，則需要載入中文相關套件與字體，如果不會或忘記的讀者可以參考<a href="https://xiaolong70701.github.io/blog/posts/2024-06-24-latex-setting/">這篇文章</a>。</p>
+<p>載入套件並設定完字體後，便可以在數學模式中插入文本，例如：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入數學套件
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Math}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% 數學模式英文文本範例
+$$
+    x^2 + y^2 = z^2, \text{where } x, y, z \text{ are real numbers}.
+$$
+
+% 數學模式中文文本範例
+$$
+    x^2 + y^2 = z^2 \text{，其中 } x, y, z \text{ 是實數}
+$$
+
+\end{document}
+</div></div></div></div></pre>
+<p>注意到在文本內，如果我們沒有空格，則顯示結果也不會有空格。因此，為了美觀，如果在文本與文本之夾有數學符號，則會在文本前面或後面加上空格，使數字與文本之間留有適當距離。</p>
+</section>
+<section id="堆積符號與上下劃線" class="level3">
+<h3 class="anchored" data-anchor-id="堆積符號與上下劃線">堆積符號與上下劃線</h3>
+<p>有時作者需要在數學公式內標示出重要內容時，會使用括號將特定範圍以括號或在符號上加入文字等做出標記，在 LaTeX 當中我們以堆積符號（stackrel）與上下劃線達到上述目的。這些功能的寫法分別為</p>
+<ul>
+<li>堆積符號：<code>\stackrel{堆疊文字}{欲堆疊符號}</code></li>
+<li>上下劃線：<code>\overline{...}</code> 或 <code>\underline{...}</code></li>
+<li>上下括號：<code>\overbrace{表達式}^{標註}</code> 或 <code>\underbrace{表達式}_{標註}</code></li>
+</ul>
+<p>舉例來說，數學中我們有許多方式表達「定義為」，例如 <code>\equiv</code>（<span class="math inline">\(\equiv\)</span>）、<code>:=</code>（<span class="math inline">\(:=\)</span>）這兩個常見的寫法。不過，我們也可以將此寫法改成在等號上加上 def，也就是 <code>\stackrel{\mathrm{def}}{=}</code>，排版結果為 <span class="math inline">\(\stackrel{\mathrm{def}}{=}\)</span>。</p>
+</section>
+<section id="括號" class="level3">
+<h3 class="anchored" data-anchor-id="括號">括號</h3>
+<p>日常生活中，括號無處不在。無論是在撰寫數學公式、化學方程式，還是在撰寫程式碼或書寫筆記時，都會使用到各種括號。括號在組織和區分重要資訊的面向上有至關重要的功能。同樣地，在 LaTeX 中，括號也扮演著重要的角色。由以下表格可以了解不同類型的括號如何處理。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 38%">
+<col style="width: 22%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>指令</th>
+<th>說明</th>
+<th>排版結果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\left( ... \right)</code></td>
+<td>圓括號</td>
+<td><span class="math display">\[ \left( a + b \right) \]</span></td>
+</tr>
+<tr class="even">
+<td><code>\left[ ... \right]</code></td>
+<td>方括號</td>
+<td><span class="math display">\[ \left[ a + b \right] \]</span></td>
+</tr>
+<tr class="odd">
+<td><code>\left\{ ... \right\}</code></td>
+<td>大括號</td>
+<td><span class="math display">\[ \left\{ a + b \right\} \]</span></td>
+</tr>
+<tr class="even">
+<td><code>\left| ... \right|</code></td>
+<td>絕對值括號</td>
+<td><span class="math display">\[ \left| a + b \right| \]</span></td>
+</tr>
+<tr class="odd">
+<td><code>\left\| ... \right\|</code></td>
+<td>雙竪線括號</td>
+<td><span class="math display">\[ \left\| a + b \right\| \]</span></td>
+</tr>
+<tr class="even">
+<td><code>\left\langle ... \right\rangle</code></td>
+<td>尖括號</td>
+<td><span class="math display">\[ \left\langle a + b \right\rangle \]</span></td>
+</tr>
+<tr class="odd">
+<td><code>\left\lfloor ... \right\rfloor</code></td>
+<td>下取整括號</td>
+<td><span class="math display">\[ \left\lfloor a + b \right\rfloor \]</span></td>
+</tr>
+<tr class="even">
+<td><code>\left\lceil ... \right\rceil</code></td>
+<td>上取整括號</td>
+<td><span class="math display">\[ \left\lceil a + b \right\lceil \]</span></td>
+</tr>
+<tr class="odd">
+<td><code>\left( ... \right.</code></td>
+<td>左圓括號右不閉</td>
+<td><span class="math display">\[ \left( a + b \right. \]</span></td>
+</tr>
+<tr class="even">
+<td><code>\left. ... \right)</code></td>
+<td>右圓括號左不閉</td>
+<td><span class="math display">\[ \left. a + b \right) \]</span></td>
+</tr>
+</tbody>
+</table>
+<p>不過，在 LaTeX 的數學模式中，括號的大小是根據其所包含的內容自動調整的。但有時為了更好的排版效果，需要手動調整括號的大小。LaTeX 對此提供了一系列指令來改變括號的大小，使得括號能夠正確包圍內容。</p>
+<p>在 LaTeX 的數學模式中，括號的大小是根據其所包含的內容自動調整的。但有時，為了更好的排版效果，我們需要手動調整括號的大小。LaTeX 提供了一系列指令來改變括號的大小，這些指令通常用於在公式中括號內的內容較大或較複雜的情況下，使得括號能夠正確包圍內容。</p>
+</section>
+<section id="不同大小的括號指令" class="level3">
+<h3 class="anchored" data-anchor-id="不同大小的括號指令">不同大小的括號指令</h3>
+<p>這些指令包括 <code>\bigl</code>、<code>\Bigl</code>、<code>\biggl</code> 和 <code>\Biggl</code> 等，用於指定不同大小的左括號；相應的右括號則使用 <code>\bigr</code>、<code>\Bigr</code>、<code>\biggr</code> 和 <code>\Biggr</code>。</p>
+<ul>
+<li><code>\bigl</code> 和 <code>\bigr</code>：生成較小的括號，適合較小的表達式。</li>
+<li><code>\Bigl</code> 和 <code>\Bigr</code>：生成中等大小的括號，適合中等複雜的表達式。</li>
+<li><code>\biggl</code> 和 <code>\biggr</code>：生成較大的括號，適合更複雜或更長的表達式。</li>
+<li><code>\Biggl</code> 和 <code>\Biggr</code>：生成最大的括號，適合非常複雜或非常長的表達式。</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>大小類型</th>
+<th>左括號指令</th>
+<th>右括號指令</th>
+<th>排版結果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>小括號</td>
+<td><code>\bigl( a + b \bigr)</code></td>
+<td><code>\bigl( a + b \bigr)</code></td>
+<td><span class="math display">\[ \bigl( a + b \bigr) \]</span></td>
+</tr>
+<tr class="even">
+<td>中等括號</td>
+<td><code>\Bigl( a + b \Bigr)</code></td>
+<td><code>\Bigl( a + b \Bigr)</code></td>
+<td><span class="math display">\[ \Bigl( a + b \Bigr) \]</span></td>
+</tr>
+<tr class="odd">
+<td>大括號</td>
+<td><code>\biggl( a + b \biggr)</code></td>
+<td><code>\biggl( a + b \biggr)</code></td>
+<td><span class="math display">\[ \biggl( a + b \biggr) \]</span></td>
+</tr>
+<tr class="even">
+<td>最大括號</td>
+<td><code>\Biggl( a + b \Biggr)</code></td>
+<td><code>\Biggl( a + b \Biggr)</code></td>
+<td><span class="math display">\[ \Biggl( a + b \Biggr) \]</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="省略號" class="level3">
+<h3 class="anchored" data-anchor-id="省略號">省略號</h3>
+<p>在行文時，有時候為了方便，我們會使用省略號（中文稱作刪節號）來表達省略的部分，讓文章內容或數學公式看起來不那麼複雜，讓讀者著重在作者想要強調的重點。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 35%">
+<col style="width: 46%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>指令</th>
+<th>說明</th>
+<th>排版結果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\cdots</code></td>
+<td>中間點省略號</td>
+<td><span class="math display">\[ a_1 + a_2 + \cdots + a_n \]</span></td>
+</tr>
+<tr class="even">
+<td><code>\dots</code></td>
+<td>自動選擇適合的省略號樣式</td>
+<td><span class="math display">\[ 1, 2, \dots, 10 \]</span></td>
+</tr>
+<tr class="odd">
+<td><code>\ldots</code></td>
+<td>基線上的點省略號</td>
+<td><span class="math display">\[ a_1, a_2, \ldots, a_n \]</span></td>
+</tr>
+<tr class="even">
+<td><code>\vdots</code></td>
+<td>垂直排列的點省略號</td>
+<td><span class="math display">\[ \begin{pmatrix} a_1 &amp; b_1 \\ \vdots &amp; \vdots \\ a_n &amp; b_n \end{pmatrix} \]</span></td>
+</tr>
+<tr class="odd">
+<td><code>\ddots</code></td>
+<td>對角線排列的點省略號</td>
+<td><span class="math display">\[ \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\ a_{21} &amp; \ddots &amp; \ddots &amp; \vdots \\ \vdots &amp; \ddots &amp; \ddots &amp; a_{n-1,n} \\ a_{n1} &amp; \cdots &amp; a_{n,n-1} &amp; a_{nn} \end{pmatrix} \]</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sec-align" class="level3">
+<h3 class="anchored" data-anchor-id="sec-align">對齊</h3>
+<p>接下來就是 LaTeX 最精彩也是最厲害的功能之一。在數學中，我們時常碰到需要「分段」的函數，或是需要寫下最適化問題、聯立方程式，又或是將公式看起來更加整齊，我們便需要使用 LaTeX 的數學模式中的對齊功能。<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<p>首先，在 LaTeX 中，任何與<strong>對齊</strong>有關的環境、設定，多半都離不開 <code>&amp;</code> 符號。在 LaTeX 中，對齊數學公式通常使用 <code>align</code> 環境，可以由以下例子來了解 <code>align</code> 環境的使用方式。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入數學套件
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Math}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% 等號 = 前後的表達式將被對齊
+\begin{align}
+    a + b &amp;= c \\
+    d + e &amp;= f + g \\
+    h &amp;= i + j
+\end{align}
+
+% 對齊不止一個符號
+\begin{align}
+    a_1 &amp;+ b_1 &amp;= c_1 \\
+    a_2 &amp;+ b_2 &amp;= c_2 + d_2 \\
+    a_3 &amp;+ b_3 + c_3 &amp;= d_3
+\end{align}
+
+\end{document}
+</div></div></div></div></pre>
+<p>在上面的例子中，可以看出如果要針對某一個特定的符號進行對齊，使用方式是將 <code>&amp;</code> 放在該符號前面。另外需要注意到的一點是，使用 <code>align</code> 環境會依照順序產生編號，如果不想要編號的話，則使用 <code>align*</code> 或 <code>aligned</code> 環境即可。</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+align* 與 aligned 的差別<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>align*</code> 是一個不帶編號的顯示數學環境，適用於獨立顯示的數學公式。它會將公式<strong>居中排列</strong>；<code>aligned</code> 環境也是用於數學環境中的多行對齊環境，但是<strong>它不會自行進入數學模式</strong>，因此需要嵌套在如 <code>equation</code> 或 <code>gather</code> 等其他數學環境中使用。此外，<code>aligned</code> 環境的寬度只取決於其內容多寡，因此不會占滿整行。</p>
+</div>
+</div>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入數學套件
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Math}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\hrule
+\begin{align*}
+q       &amp;=CV          \\
+        &amp;=3e-20x1000  \\
+        &amp;=3e-17
+\end{align*}
+\hrule
+
+\bigskip
+
+\hrule
+$$
+\begin{aligned}
+q       &amp;=CV          \\
+        &amp;=3e-20x1000  \\
+        &amp;=3e-17
+\end{aligned}
+$$
+\hrule
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="矩陣" class="level3">
+<h3 class="anchored" data-anchor-id="矩陣">矩陣</h3>
+<p>在 LaTeX 數學模式中，矩陣是經常使用的數學結構，特別是在線性代數、數值分析和物理學等領域。常見的矩陣環境包括 <code>bmatrix</code>、<code>pmatrix</code> 和 <code>vmatrix</code>，這些環境分別用於創建不同樣式的矩陣。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 52%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>矩陣類型</th>
+<th>指令</th>
+<th>排版結果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>方括號矩陣</td>
+<td><code>\begin{bmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{bmatrix}</code></td>
+<td><span class="math display">\[\begin{bmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{bmatrix}\]</span></td>
+</tr>
+<tr class="even">
+<td>圓括號矩陣</td>
+<td><code>\begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}</code></td>
+<td><span class="math display">\[\begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\]</span></td>
+</tr>
+<tr class="odd">
+<td>竪線矩陣</td>
+<td><code>\begin{vmatrix} x &amp; y \\ z &amp; w \end{vmatrix}</code></td>
+<td><span class="math display">\[\begin{vmatrix} x &amp; y \\ z &amp; w \end{vmatrix}\]</span></td>
+</tr>
+<tr class="even">
+<td>無邊框矩陣</td>
+<td><code>\begin{matrix} 1 &amp; 0 \\ 0 &amp; 1 \end{matrix}</code></td>
+<td><span class="math display">\[\begin{matrix} 1 &amp; 0 \\ 0 &amp; 1 \end{matrix}\]</span></td>
+</tr>
+<tr class="odd">
+<td>行內小矩陣</td>
+<td><code>\left( \begin{smallmatrix} a &amp; b \\ c &amp; d \end{smallmatrix} \right)</code></td>
+<td><span class="math display">\[\left( \begin{smallmatrix} a &amp; b \\ c &amp; d \end{smallmatrix} \right)\]</span></td>
+</tr>
+</tbody>
+</table>
+<p>從上面的表格可以看出，用 LaTeX 寫出矩陣的通式為</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="er">矩</span>陣環境}</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>矩陣元素 &amp; 矩陣元素 <span class="fu">\\</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>矩陣元素 &amp; 矩陣元素</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="er">矩</span>陣環境}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>矩陣元素當然可以不只一個，只要版面足夠，想要有多少就有多少。</p>
+</section>
+<section id="分段函數與聯立方程式" class="level3">
+<h3 class="anchored" data-anchor-id="分段函數與聯立方程式">分段函數與聯立方程式</h3>
+<p>分段函數與聯立方程式在數學中是最常見的表達式之一。在 LaTeX 中，我們使用 <code>cases</code> 環境來輸出分段函數與聯立方程式或其他類似結構的公式。我們直接由下面的例子來說明：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入數學套件
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Math}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% 分段函數
+$$
+f(x) = 
+\begin{cases} 
+    x^2 &amp; \text{if } x &lt; 0 \\
+    x + 1 &amp; \text{if } x \geq 0 
+\end{cases}
+$$
+
+% 聯立方程式
+$$
+\begin{cases}
+    2x + 3y = 5 \\
+    x - y = 1
+\end{cases}
+$$
+
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+</section>
+</section>
+<section id="方程式" class="level1">
+<h1>方程式</h1>
+<p>無論是在數學、物理、化學，抑或是經濟學，方程式扮演了十分重要的角色。在 LaTeX 中，撰寫單個方程式最常用的環境是 <code>equation</code> 環境，該環境會依照順序，<strong>自動為每個方程式添加編號</strong>，並將方程式置中顯示。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入數學套件
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Math}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+Euler's identity is the equality 
+\begin{equation}
+    e^{i\pi} + 1 = 0
+\end{equation}
+
+\end{document}
+</div></div></div></div></pre>
+<section id="多個方程式對齊" class="level2">
+<h2 class="anchored" data-anchor-id="多個方程式對齊">多個方程式對齊</h2>
+<p>多個方程式的對齊請參見本文 <a href="#sec-align" class="quarto-xref">Section&nbsp;2.2.9</a> 對於對齊的討論。</p>
+</section>
+<section id="長方程式" class="level2">
+<h2 class="anchored" data-anchor-id="長方程式">長方程式</h2>
+<p>對於特別長的方程式，可以使用 <code>split</code> 環境來將方程式分成多行並對齊。例如：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入數學套件
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Math}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{equation}
+\begin{split}
+    a + b + c + d + e + f + g + h + i + j + k + l \\
+    = m + n + o + p + q + r + s + t + u + v + w + x + y + z
+\end{split}
+\end{equation}
+
+\end{document}
+</div></div></div></div></pre>
+<p>上述寫法會將長方程式分成兩行顯示，並在等號處對齊，整體而言還是作為一個方程式並給予編號。</p>
+</section>
+<section id="方程式置中" class="level2">
+<h2 class="anchored" data-anchor-id="方程式置中">方程式置中</h2>
+<p>除了 <code>equation</code> 環境，還可以使用 <code>gather</code> 環境來置中多個方程式，且每個方程式會分開顯示並獨立編號。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入數學套件
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Math}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{gather}
+    a + b = c \\
+    d + e = f \\
+    g + h = i
+\end{gather}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+</section>
+<section id="數學環境6" class="level1">
+<h1>數學環境<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></h1>
+<p>處理定理、證明、引理等數學環境是學術排版中的一個重要的部分。<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>LaTeX 提供了強大的套件 <code>amsthm</code> 來應對各種類型的數學環境。在介紹如何使用數學環境設定之前，我們需要知道，在數學相關的文件中，除非是教科書，否則如果僅有一個段落，就無須將數學環境進行編號。因此，以下的討論將會針對帶編號與無編號的數學環境進行說明。</p>
+<section id="帶編號數學環境" class="level2">
+<h2 class="anchored" data-anchor-id="帶編號數學環境">帶編號數學環境</h2>
+<p>帶編號的數學環境最簡單的使用方式是在前言區加入 <code>\newtheorem{數學環境}{顯示名稱}</code>。例如 <code>\newtheorem{theorem}{Theorem}</code>，就是允許使用者在進入 <code>theorem</code> 環境後，顯示名稱為 Theorem。<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>底下直接透過實例說明：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入數學套件
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+
+% 設定帶編號數學環境
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Math}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+Theorems can easily be defined:
+
+% 使用 theorem 環境
+\begin{theorem}
+Let $f$ be a function whose derivative exists in every point, then $f$ is a continuous function.
+\end{theorem}
+
+% 為 theorem 環境命名
+\begin{theorem}[Pythagorean theorem]
+\label{pythagorean}
+This is a theorem about right triangles and can be summarised in the next equation 
+$$
+x^{2} + y^{2} = z^{2}
+$$
+\end{theorem}
+
+% 使用 corollary 環境
+\begin{corollary}
+There's no right rectangle whose sides measure 3cm, 4cm, and 6cm.
+\end{corollary}
+
+% 使用 lemma 環境
+\begin{lemma}
+Given two line segments whose lengths are $a$ and $b$ respectively there is a real number $r$ such that $b=ra$.
+\end{lemma}
+
+\end{document}
+</div></div></div></div></pre>
+<p>前言區中的三個設定，分別建立 Theorem、Corollary 與 Lemma 三個環境，並且注意到其各自有不同的設定：</p>
+<ul>
+<li><code>\newtheorem{theorem}{Theorem}[section]</code>：具有額外的參數<code>[section]</code>，使定理計數器在每個新章節重新開始</li>
+<li><code>\newtheorem{corollary}{Corollary}[theorem]</code>：創建了一個名為 corollary 的環境，這個新環境的計數器將在每次使用新定理環境時重置</li>
+<li><code>\newtheorem{lemma}[theorem]{Lemma}</code>：創建了一個名為 lemma 的新環境，但它使用與定理環境相同的計數器</li>
+</ul>
+</section>
+<section id="無編號數學環境" class="level2">
+<h2 class="anchored" data-anchor-id="無編號數學環境">無編號數學環境</h2>
+<p>有時候我們可以使用無編號的數學環境，在文件中加入備註（remark）、評論（comment）或例子（example）。我們必須使用 <code>amsthm</code> 進行設定。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入數學套件
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+
+% 設定無編號數學環境
+\newtheorem*{remark}{Remark}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Math}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+Unnumbered theorem-like environments are also possible.
+
+\begin{remark}
+This statement is true, I guess.
+\end{remark}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="定義環境設定" class="level2">
+<h2 class="anchored" data-anchor-id="定義環境設定">定義環境設定</h2>
+<p>在撰寫數學相關文件時，我們需要區分不同的數學環境（例如，定義和定理），有助於讀者輕鬆辨別以及理解不同的內容。同樣地，<code>amsthm</code> 套件提供指令，可以幫助你為不同的數學環境設置特定的格式，從而使文件更具有專業性。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入數學套件
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+
+% 設定數學環境
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Math}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+Unnumbered theorem-like environments are also possible.
+
+% 使用 remark 環境
+\begin{remark}
+This statement is true, I guess.
+\end{remark}
+
+And the next is a somewhat informal definition
+
+% 使用 definition 環境，並為其命名
+\begin{definition}[Fibration]
+A fibration is a mapping between two topological spaces that has the homotopy lifting property for every space $X$.
+\end{definition}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="證明環境" class="level2">
+<h2 class="anchored" data-anchor-id="證明環境">證明環境</h2>
+<p>證明環境的使用十分簡單，只要載入 <code>amsthm</code> 套件後，在文件內使用 <code>proof</code> 環境即可。注意到使用證明環境後，在右下角會有<strong>證明完畢</strong>（<em>quod erat demonstrandum</em>, QED）的符號，如果想要更改符號，則我們可以在前言區或文件內使用 <code>\renewcommand\qedsymbol{欲顯示的 QED 符號}</code>，在前言區是直接修改整份文件的 QED 符號，如果在文件內，則是分別設定 QED 符號。下面是一個實際使用的例子：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入數學套件
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+
+% 設定數學環境
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Math}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+Unnumbered theorem-like environments are also possible.
+
+% 使用 lemma 環境
+\begin{lemma}
+Given two line segments whose lengths are $a$ and $b$ respectively there is a real number $r$ such that $b=ra$.
+\end{lemma}
+
+% 修改 QED 符號為 ◾
+\renewcommand\qedsymbol{$\blacksquare$}
+
+% 使用證明環境，QED 符號為 ◾
+\begin{proof}
+To prove it by contradiction try and assume that the statement is false, proceed from there and at some point you will arrive to a contradiction.
+\end{proof}
+
+% 修改 QED 符號為 QED
+\renewcommand\qedsymbol{QED}
+
+% 使用證明環境，QED 符號為 QED
+\begin{proof}
+To prove it by contradiction try and assume that the statement is false, proceed from there and at some point you will arrive to a contradiction.
+\end{proof}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+</section>
+<section id="數學字體設定" class="level1">
+<h1>數學字體設定</h1>
+<p>前面的文章提到過，使用者可以透過套件，在前言區修改字型，或是更改文本的主要語言。有些數學元素需要使用特定風格的字體來排版。習慣上實數會用黑板粗體字體來表示，即 <span class="math inline">\(\mathbb{R}\)</span>，拓撲空間則使用書法字體來表示，即 <span class="math inline">\(\mathcal{T}\)</span>。因此，本小節將介紹數學字體如何設定，以及如何改變數學字體的風格。</p>
+<section id="常用數學字體" class="level2">
+<h2 class="anchored" data-anchor-id="常用數學字體">常用數學字體</h2>
+<p>LaTeX 中，數學公式的字體樣式多樣。誠如上述所言，使用者可以根據不同的需求、場景等來選擇合適的字體。以下表格展示了各種常用數學字體的種類、所需套件、使用指令以及排版範例：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 20%">
+<col style="width: 25%">
+<col style="width: 31%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>字體種類</th>
+<th>所需套件</th>
+<th>指令</th>
+<th>範例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>默認斜體</td>
+<td>無</td>
+<td><code>$y = mx + b$</code></td>
+<td><span class="math inline">\(y = mx + b\)</span></td>
+</tr>
+<tr class="even">
+<td>粗體</td>
+<td>無</td>
+<td><code>$\mathbf{A}$</code></td>
+<td><span class="math inline">\(\mathbf{A}\)</span></td>
+</tr>
+<tr class="odd">
+<td>打字機字體</td>
+<td>無</td>
+<td><code>$\mathtt{ABC}$</code></td>
+<td><span class="math inline">\(\mathtt{ABC}\)</span></td>
+</tr>
+<tr class="even">
+<td>無襯線字體</td>
+<td>無</td>
+<td><code>$\mathsf{ABC}$</code></td>
+<td><span class="math inline">\(\mathsf{ABC}\)</span></td>
+</tr>
+<tr class="odd">
+<td>黑板粗體</td>
+<td><code>amssymb</code></td>
+<td><code>$\mathbb{R}$</code></td>
+<td><span class="math inline">\(\mathbb{R}\)</span></td>
+</tr>
+<tr class="even">
+<td>花體大寫</td>
+<td><code>amsmath</code></td>
+<td><code>$\mathcal{F}$</code></td>
+<td><span class="math inline">\(\mathcal{F}\)</span></td>
+</tr>
+<tr class="odd">
+<td>花體小寫</td>
+<td><code>mathrsfs</code></td>
+<td><code>$\mathscr{L}$</code></td>
+<td><span class="math inline">\(\mathscr{L}\)</span></td>
+</tr>
+<tr class="even">
+<td>哥特體</td>
+<td><code>amssymb</code></td>
+<td><code>$\mathfrak{ABC}$</code></td>
+<td><span class="math inline">\(\mathfrak{ABC}\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="自定義數學字體" class="level2">
+<h2 class="anchored" data-anchor-id="自定義數學字體">自定義數學字體</h2>
+<p>我們常常看到很多學術論文使用的字體會像是這樣：</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="number.png" class="img-fluid figure-img" style="width:65.0%" data-fig.align="center"></p>
+<figcaption>圖 1：LaTeX Oldstyle 數學字體</figcaption>
+</figure>
+</div>
+<p>我們稱之為<a href="https://www.fonts.com/content/learning/fontology/level-3/numbers/oldstyle-figures">舊式數字</a>。在 LaTeX 中設置舊式數字的方法有多種，具體步驟根據所使用的字體和套件不同而有所差異。</p>
+<section id="使用-newpxtext-與-newpxmath" class="level3">
+<h3 class="anchored" data-anchor-id="使用-newpxtext-與-newpxmath">使用 <code>newpxtext</code> 與 <code>newpxmath</code></h3>
+<p><code>newpx</code> 套件是基於 <code>pxfonts</code> 套件的修正與增強版本，並拆分為兩個部分：<code>newpxtext</code> 和 <code>newpxmath</code>。使用者可以透過 <code>proportional</code> 和 <code>osf</code> 這兩個選項，設置比例字體和舊式數字。<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入數學套件
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+
+% 載入 newpx 套件的兩個部分
+\usepackage{newpxtext}
+\usepackage{newpxmath}
+
+% 設定數學字體風格
+\useosf
+\AtBeginDocument{\DeclareSymbolFont{operators}{OT1}{\rmdefault}{m}{n}}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Math}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+This is an example with oldstyle figures: 1234567890.
+
+$$
+\pi=\sum_{k=0}^{\infty}\left[\frac{1}{16^k}\left(\frac{4}{8 k+1}-\frac{2}{8 k+4}-\frac{1}{8 k+5}-\frac{1}{8 k+6}\right)\right]
+$$
+
+\end{document}
+</div></div></div></div></pre>
+<p>關於設定數學字體風格的兩段程式碼解釋如下：</p>
+<ul>
+<li><code>\useosf</code>：用於啟用 oldstyle 數字。OSF 代表 “Old Style Figures”。這個指令會設置文本和數學模式中的數字為舊式數字（這些數字具有上升和下降部分，比較適合於正文中使用）。</li>
+<li><code>\AtBeginDocument{...}</code>：表示在文件開始時執行括號內的命令</li>
+<li><code>\DeclareSymbolFont</code>：<code>\DeclareSymbolFont</code> 用於定義新的數學符號字體家族，在此它用來重新定義運算符號的字體家族。
+<ul>
+<li><code>operators</code>：這是字體家族的名稱，這裡指的是數學中的運算符號</li>
+<li><code>OT1</code>：這是字體編碼，OT1 是最常用的 TeX 字體編碼</li>
+<li><code>\rmdefault</code>：代表當前文件使用的默認羅馬字體系列</li>
+<li><code>m</code>：這是字體系列的形狀，<code>m</code> 代表普通（medium）字重</li>
+<li><code>n</code>：這是字體的形狀，<code>n</code> 代表普通形狀（normal shape）</li>
+</ul></li>
+</ul>
+</section>
+<section id="使用-mathspec-或-fontspec" class="level3">
+<h3 class="anchored" data-anchor-id="使用-mathspec-或-fontspec">使用 <code>mathspec</code> 或 <code>fontspec</code></h3>
+<p>由於 <code>newpx</code> 提供的舊式數字字型是固定的，如果使用者有特殊需求，則建議使用 <code>mathspec</code> 或 <code>fontspec</code> 這兩個套件。但必須注意，在使用這兩個套件之前，需要用 <code>xeLaTeX</code> 編譯器進行編譯。</p>
+<p>這兩個套件的使用方式十分相似，兩者只要在載入套件後，加上 <code>\setmainfont{字體檔名稱}</code> 後，設定數字風格即可。</p>
+<ul>
+<li><code>mathspec</code> 設定方式：<code>\setmathsfont(Digits)[Numbers=OldStyle]{字體檔名稱}</code>，言下之意就是將主要字體與數學字體分開設定</li>
+<li><code>fontspec</code> 設定方式：<code>\setmainfont[Numbers=OldStyle]{字體檔名稱}</code>。不同於 <code>mathspec</code>，<code>fontspec</code> 可以加上 <code>[Numbers=OldStyle]</code>，額外將數字令為舊式數字。</li>
+</ul>
+<p>筆者較偏好使用 <code>mathspec</code> 套件，以下就以 <code>mathspec</code> 套件的使用方式作為範例：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入數學套件
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定數學字體風格
+\usepackage{mathspec}
+\setmathsfont(Digits)[Numbers=OldStyle]{LinLibertine_R.otf}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Math}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+This is an example with oldstyle figures: 1234567890.
+
+$$
+\pi=\sum_{k=0}^{\infty}\left[\frac{1}{16^k}\left(\frac{4}{8 k+1}-\frac{2}{8 k+4}-\frac{1}{8 k+5}-\frac{1}{8 k+6}\right)\right]
+$$
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+</section>
+</section>
+<section id="小結" class="level1">
+<h1>小結</h1>
+<p>這篇文章主要是透過各種範例與表格，呈現如何在 LaTeX 中使用套件、指令進行數學排版。數學排版對於初學者來講，最困難的並不是指令記不起來，而是如何使用這些套件（至少筆者當初在學習的時候是這樣），畢竟指令有 cheeting sheet，但是套件的使用必須要閱讀官方文件。</p>
+<p>初學者很容易因為不習慣，而出現程式碼前後不一致的習慣，例如角標一開始使用括號將內容包住，但是後面就忘記了。這樣的習慣看似沒什麼，但積少成多，在後面更複雜的設定就會嚴重影響到文件的一致性、可讀性與美感。此外，如果需要進行調整，務必對全文中的相同部分進行統一修改，否則建議使用預設格式，這樣至少不會出現嚴重的格式錯誤。</p>
+<section id="小試身手" class="level2">
+<h2 class="anchored" data-anchor-id="小試身手">小試身手</h2>
+<p>下面的小試身手題目難度由淺至深，你可以使用最下面的即時排版區來檢查答案是否一致。</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+基礎題
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>簡單分數：<span class="math inline">\(\frac{a}{b} = c^{2}\)</span></li>
+<li>平方根與角標：<span class="math inline">\(x = \sqrt{a_{i} + b_{i}}\)</span></li>
+<li>指數函數：<span class="math inline">\(e^{x + y}\)</span></li>
+<li>對數函數：<span class="math inline">\(\log_{b}{x}\)</span></li>
+<li>三角函數與角標：<span class="math inline">\(\sin^{2}{\theta} + \cos^{2}{\theta} = 1\)</span></li>
+<li>極限：<span class="math inline">\(\lim_{x \to \infty}{\frac{1}{x}} = 0\)</span></li>
+<li>求和符號與省略號：<span class="math inline">\(\sum_{i=1}^{n} x_{i} = x_{1} + x_{2} + \cdots + x_{n}\)</span></li>
+<li>不定積分：<span class="math inline">\(\int e^{-x^{2}} \,dx\)</span></li>
+<li>定積分：<span class="math inline">\(\int_{a}^{b} f(x) \, dx\)</span></li>
+<li>絕對值：<span class="math inline">\(\lvert \frac{1}{2}x^{2}\rvert\)</span></li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+進階題
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><span class="math inline">\((a+b)^{n}=\sum_{k=0}^n\binom{n}{k} a^{n-k}b^{k}\)</span></li>
+<li><span class="math inline">\(\frac{d^2 y}{d x^2}+3 \frac{d y}{d x}+2 y=0\)</span></li>
+<li><span class="math inline">\(\mathbf{a} \cdot \mathbf{b}=a_1 b_1+a_2 b_2+a_3 b_3\)</span></li>
+<li><span class="math display">\[\iint_D x^2+y^2 dA\]</span></li>
+<li><span class="math display">\[\begin{cases}
+x^2 &amp; \text{if } x \geq 0 \\
+-x &amp; \text{if } x &lt; 0
+\end{cases}\]</span></li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+魔王題
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><span class="math display">\[
+\begin{aligned}
+\max\;&amp; U(x,y)\\
+\text{subject to}\;&amp; g(x,y) = c\\
+\end{aligned}
+\]</span></li>
+<li><span class="math display">\[
+\begin{aligned}
+&amp;[x] &amp;       \partial_x U &amp;= \lambda \partial_x g(x,y)\\
+&amp;[y] &amp;       \partial_y U &amp;= \lambda \partial_y g(x,y)\\
+&amp;[\lambda] &amp; \quad g(x,y) &amp;= c
+\end{aligned}
+\]</span></li>
+</ol>
+</div>
+</div>
+<textarea id="latex-input" placeholder="Enter LaTeX code here..."></textarea>
+<div id="preview">
+The rendered LaTeX will be displayed here.
+</div>
+<script>
+    document.getElementById('latex-input').addEventListener('input', function() {
+        var input = document.getElementById('latex-input').value;
+        var preview = document.getElementById('preview');
+        preview.innerHTML = '\\[' + input + '\\]';
+        MathJax.typesetPromise([preview]);
+    });
+</script>
+</section>
+<section id="排版偷吃步mathpix-snipping" class="level2">
+<h2 class="anchored" data-anchor-id="排版偷吃步mathpix-snipping">排版偷吃步：Mathpix Snipping</h2>
+<p>事實上有時候一個個輸入 LaTeX 程式碼很麻煩，尤其是當使用者時間緊迫，或是將 LaTeX 作為筆記軟體時，敲代碼反而會浪費時間。</p>
+<blockquote class="blockquote">
+<p>那有偷吃步的方法嗎？</p>
+</blockquote>
+<p>還真的有！這個方法是使用一套利用光學字符識別（OCR）技術，能夠準確地識別和轉換數學符號和公式的軟體 Mathpix Snipping。</p>
+<section id="如何下載-mathpix-snipping" class="level3">
+<h3 class="anchored" data-anchor-id="如何下載-mathpix-snipping">如何下載 Mathpix Snipping</h3>
+<p>要下載 Mathpix Snipping，可以直接到<a href="https://mathpix.com/">Mathpix 官方網站</a>。在網站首頁，您會看到下載連結，並根據使用的系統，選擇相對應的版本下載。Mathpix Snipping 支持多種不同的系統，包括 Windows、macOS、iOS 和 Android。此外，還有適用於網頁的線上版。下載完成後，按照提示安裝軟體。同時，Mathpix 也有提供手機版，只要到 App Store 或 Google Play 商店，輸入 “Mathpix Snipping” 即可下載。</p>
+</section>
+<section id="如何使用-mathpix-snipping" class="level3">
+<h3 class="anchored" data-anchor-id="如何使用-mathpix-snipping">如何使用 Mathpix Snipping</h3>
+<p>安裝完成後，打開 Mathpix Snipping 應用。使用快捷鍵或應用內建的截圖工具來截取螢幕上的數學公式或文本。截取後，Mathpix Snipping 會自動識別內容並生成對應的 LaTeX 程式碼。識別結果將顯示在 Mathpix 的畫面中，可以在上面進行編輯和調整。滿意之後可以將生成的 LaTeX 程式碼複製到剪貼板，貼到 LaTeX 編輯器、Word 文件或其他編輯器中。<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
+
+
+</section>
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>當然，這些變體使用情境需要依照領域的不同而有所調整。切勿因為某個符號長得特別好看，就在不適合的地方使用，這樣反而會本末倒置。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>筆者當初練習的方法是找幾篇有數學符號的論文，搭配文中提及的文件，嘗試復刻排版結果。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>一個特殊的角標例子：在微積分中的導數有兩種寫法，例如 <span class="math inline">\(f'(x)\)</span> 可以寫成 <code>f'(x)</code> 或 <code>f^{\prime}(x)</code>。事實上兩種寫法都正確，端看個人如何運用。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>對齊功能之所以如此重要，除了在數學模式中可以用來進行聯立方程式、矩陣的排版之外，也應用於表格的排版上。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p><em>What is the difference between aligned in displayed mode and starred align?</em>. TeX - LaTeX Stack Exchange. <a href="https://tex.stackexchange.com/questions/95402/what-is-the-difference-between-aligned-in-displayed-mode-and-starred-align">https://tex.stackexchange.com/questions/95402/what-is-the-difference-between-aligned-in-displayed-mode-and-starred-align</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p><em>Theorems and proofs</em>. Overleaf, Online LaTeX Editor. <a href="https://www.overleaf.com/learn/latex/Theorems_and_proofs">https://www.overleaf.com/learn/latex/Theorems_and_proofs</a><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>[基礎數學] 區別引理，定理，系理以及命題. <a href="https://ch-hsieh.blogspot.com/2016/02/blog-post_18.html">https://ch-hsieh.blogspot.com/2016/02/blog-post_18.html</a><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>定理環境名稱與顯示名稱可以自行設定，但是建議不要亂改以免搞混。<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p><em>CTAN: Package newpx</em>. <a href="https://ctan.org/pkg/newpx?lang=en">https://ctan.org/pkg/newpx?lang=en</a><a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>關於 Mathpix Snipping 的使用方法，官方網站有更加詳細的解釋，請參考 <a href="https://mathpix.com/docs">Mathpix Snip Docs</a>，如果是電腦版，請點選<a href="https://mathpix.com/docs/snip/snip-for-desktop">Snip on desktop</a>；如果是手機版，請點選<a href="https://mathpix.com/docs/snip/snip-for-mobile">Snip on mobile</a>。<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sung2024,
+  author = {Sung, Anthony},
+  title = {LaTeX {教學系列：數學排版}},
+  date = {2024-07-05},
+  url = {https://yueswater.com/posts/2024-07-05-latex-math/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sung2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Sung, Anthony. 2024. <span>“LaTeX 教學系列：數學排版.”</span> July 5,
+2024. <a href="https://yueswater.com/posts/2024-07-05-latex-math/">https://yueswater.com/posts/2024-07-05-latex-math/</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="xiaolong70701/quarto-blog" data-repo-id="R_kgDOJhS1Eg" data-category="General" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="light">
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright © 2024 Anthony. All rights reserved. See <a href="../copyright.html">statements</a>.</p>
+</div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/">
+      <i class="bi bi-facebook" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:xiaolong70701@gmail.com">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

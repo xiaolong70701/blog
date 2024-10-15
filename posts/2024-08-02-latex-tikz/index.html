@@ -1,0 +1,3203 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anthony Sung">
+<meta name="dcterms.date" content="2024-08-02">
+<meta name="description" content="利用 TikZ 套件繪製圖形">
+
+<title>LaTeX 教學系列：繪圖小能手 TikZ – Yueswater Blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VLWNL5QXD8"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VLWNL5QXD8', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script> 
+  
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../css/karat.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Yueswater Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../notes.html"> 
+<span class="menu-text">Diary &amp; Notes</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/"> <i class="bi bi-facebook" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/yues_19_water/"> <i class="bi bi-instagram" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#tikz-使用簡介" id="toc-tikz-使用簡介" class="nav-link active" data-scroll-target="#tikz-使用簡介">TikZ 使用簡介</a></li>
+  <li><a href="#基本圖形繪製" id="toc-基本圖形繪製" class="nav-link" data-scroll-target="#基本圖形繪製">基本圖形繪製</a>
+  <ul class="collapse">
+  <li><a href="#點線面" id="toc-點線面" class="nav-link" data-scroll-target="#點線面">點、線、面</a>
+  <ul class="collapse">
+  <li><a href="#點" id="toc-點" class="nav-link" data-scroll-target="#點">點</a></li>
+  <li><a href="#直線" id="toc-直線" class="nav-link" data-scroll-target="#直線">直線</a></li>
+  <li><a href="#封閉圖形" id="toc-封閉圖形" class="nav-link" data-scroll-target="#封閉圖形">封閉圖形</a></li>
+  </ul></li>
+  <li><a href="#圓橢圓弧" id="toc-圓橢圓弧" class="nav-link" data-scroll-target="#圓橢圓弧">圓、橢圓、弧</a></li>
+  <li><a href="#曲線" id="toc-曲線" class="nav-link" data-scroll-target="#曲線">曲線</a>
+  <ul class="collapse">
+  <li><a href="#貝茲曲線" id="toc-貝茲曲線" class="nav-link" data-scroll-target="#貝茲曲線">貝茲曲線</a></li>
+  <li><a href="#拋物線" id="toc-拋物線" class="nav-link" data-scroll-target="#拋物線">拋物線</a></li>
+  <li><a href="#自定義曲線" id="toc-自定義曲線" class="nav-link" data-scroll-target="#自定義曲線">自定義曲線</a></li>
+  </ul></li>
+  <li><a href="#箭頭" id="toc-箭頭" class="nav-link" data-scroll-target="#箭頭">箭頭</a></li>
+  <li><a href="#網格與座標軸" id="toc-網格與座標軸" class="nav-link" data-scroll-target="#網格與座標軸">網格與座標軸</a>
+  <ul class="collapse">
+  <li><a href="#網格" id="toc-網格" class="nav-link" data-scroll-target="#網格">網格</a></li>
+  <li><a href="#繪製座標軸" id="toc-繪製座標軸" class="nav-link" data-scroll-target="#繪製座標軸">繪製座標軸</a></li>
+  <li><a href="#繪製網格與座標軸的注意事項" id="toc-繪製網格與座標軸的注意事項" class="nav-link" data-scroll-target="#繪製網格與座標軸的注意事項">繪製網格與座標軸的注意事項</a></li>
+  </ul></li>
+  <li><a href="#標示點與新增文字" id="toc-標示點與新增文字" class="nav-link" data-scroll-target="#標示點與新增文字">標示點與新增文字</a>
+  <ul class="collapse">
+  <li><a href="#新增標示點" id="toc-新增標示點" class="nav-link" data-scroll-target="#新增標示點">新增標示點</a></li>
+  <li><a href="#新增文字" id="toc-新增文字" class="nav-link" data-scroll-target="#新增文字">新增文字</a></li>
+  <li><a href="#標示點與文字標籤搭配" id="toc-標示點與文字標籤搭配" class="nav-link" data-scroll-target="#標示點與文字標籤搭配">標示點與文字標籤搭配</a></li>
+  </ul></li>
+  <li><a href="#函數圖形" id="toc-函數圖形" class="nav-link" data-scroll-target="#函數圖形">函數圖形</a>
+  <ul class="collapse">
+  <li><a href="#基本概念" id="toc-基本概念" class="nav-link" data-scroll-target="#基本概念">基本概念</a></li>
+  <li><a href="#簡單函數圖形" id="toc-簡單函數圖形" class="nav-link" data-scroll-target="#簡單函數圖形">簡單函數圖形</a></li>
+  <li><a href="#繪製自定義數學函數" id="toc-繪製自定義數學函數" class="nav-link" data-scroll-target="#繪製自定義數學函數">繪製自定義數學函數</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#圖形控制" id="toc-圖形控制" class="nav-link" data-scroll-target="#圖形控制">圖形控制</a>
+  <ul class="collapse">
+  <li><a href="#顏色填充與陰影" id="toc-顏色填充與陰影" class="nav-link" data-scroll-target="#顏色填充與陰影">顏色、填充與陰影</a>
+  <ul class="collapse">
+  <li><a href="#調整透明度" id="toc-調整透明度" class="nav-link" data-scroll-target="#調整透明度">調整透明度</a></li>
+  <li><a href="#顏色漸層" id="toc-顏色漸層" class="nav-link" data-scroll-target="#顏色漸層">顏色漸層</a></li>
+  <li><a href="#樣式填充" id="toc-樣式填充" class="nav-link" data-scroll-target="#樣式填充">樣式填充</a></li>
+  <li><a href="#陰影設定" id="toc-陰影設定" class="nav-link" data-scroll-target="#陰影設定">陰影設定</a></li>
+  </ul></li>
+  <li><a href="#圖形變換" id="toc-圖形變換" class="nav-link" data-scroll-target="#圖形變換">圖形變換</a>
+  <ul class="collapse">
+  <li><a href="#平移變換" id="toc-平移變換" class="nav-link" data-scroll-target="#平移變換">平移變換</a></li>
+  <li><a href="#縮放變換" id="toc-縮放變換" class="nav-link" data-scroll-target="#縮放變換">縮放變換</a></li>
+  <li><a href="#旋轉變換" id="toc-旋轉變換" class="nav-link" data-scroll-target="#旋轉變換">旋轉變換</a></li>
+  <li><a href="#傾斜變換" id="toc-傾斜變換" class="nav-link" data-scroll-target="#傾斜變換">傾斜變換</a></li>
+  </ul></li>
+  <li><a href="#覆蓋圖層" id="toc-覆蓋圖層" class="nav-link" data-scroll-target="#覆蓋圖層">覆蓋圖層</a></li>
+  </ul></li>
+  <li><a href="#進階功能" id="toc-進階功能" class="nav-link" data-scroll-target="#進階功能">進階功能</a>
+  <ul class="collapse">
+  <li><a href="#樣式設定" id="toc-樣式設定" class="nav-link" data-scroll-target="#樣式設定">樣式設定</a></li>
+  <li><a href="#計算功能" id="toc-計算功能" class="nav-link" data-scroll-target="#計算功能">計算功能</a>
+  <ul class="collapse">
+  <li><a href="#不使用任何庫" id="toc-不使用任何庫" class="nav-link" data-scroll-target="#不使用任何庫">不使用任何庫</a></li>
+  <li><a href="#calc-庫" id="toc-calc-庫" class="nav-link" data-scroll-target="#calc-庫">calc 庫</a></li>
+  </ul></li>
+  <li><a href="#流程控制" id="toc-流程控制" class="nav-link" data-scroll-target="#流程控制">流程控制</a></li>
+  <li><a href="#d-與-3d-繪圖" id="toc-d-與-3d-繪圖" class="nav-link" data-scroll-target="#d-與-3d-繪圖">2D 與 3D 繪圖</a>
+  <ul class="collapse">
+  <li><a href="#d-繪圖" id="toc-d-繪圖" class="nav-link" data-scroll-target="#d-繪圖">2D 繪圖</a></li>
+  <li><a href="#d-繪圖-1" id="toc-d-繪圖-1" class="nav-link" data-scroll-target="#d-繪圖-1">3D 繪圖</a></li>
+  </ul></li>
+  <li><a href="#繪製統計圖表" id="toc-繪製統計圖表" class="nav-link" data-scroll-target="#繪製統計圖表">繪製統計圖表</a>
+  <ul class="collapse">
+  <li><a href="#長條圖" id="toc-長條圖" class="nav-link" data-scroll-target="#長條圖">長條圖</a></li>
+  <li><a href="#折線圖" id="toc-折線圖" class="nav-link" data-scroll-target="#折線圖">折線圖</a></li>
+  <li><a href="#散佈圖" id="toc-散佈圖" class="nav-link" data-scroll-target="#散佈圖">散佈圖</a></li>
+  <li><a href="#圓餅圖" id="toc-圓餅圖" class="nav-link" data-scroll-target="#圓餅圖">圓餅圖</a></li>
+  <li><a href="#匯入-csv-檔案" id="toc-匯入-csv-檔案" class="nav-link" data-scroll-target="#匯入-csv-檔案">匯入 csv 檔案</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">LaTeX 教學系列：繪圖小能手 TikZ</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">latex</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    <p>利用 TikZ 套件繪製圖形</p>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Anthony Sung </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 2, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style id="ace-dawn">.ace-dawn .ace_gutter {background: #ebebeb;color: #333}.ace-dawn .ace_print-margin {width: 1px;background: #e8e8e8}.ace-dawn {background-color: #F9F9F9;color: #080808}.ace-dawn .ace_cursor {color: #000000}.ace-dawn .ace_marker-layer .ace_selection {background: rgba(39, 95, 255, 0.30)}.ace-dawn.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px #F9F9F9;}.ace-dawn .ace_marker-layer .ace_step {background: rgb(255, 255, 0)}.ace-dawn .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgba(75, 75, 126, 0.50)}.ace-dawn .ace_marker-layer .ace_active-line {background: rgba(36, 99, 180, 0.12)}.ace-dawn .ace_gutter-active-line {background-color : #dcdcdc}.ace-dawn .ace_marker-layer .ace_selected-word {border: 1px solid rgba(39, 95, 255, 0.30)}.ace-dawn .ace_invisible {color: rgba(75, 75, 126, 0.50)}.ace-dawn .ace_keyword,.ace-dawn .ace_meta {color: #794938}.ace-dawn .ace_constant,.ace-dawn .ace_constant.ace_character,.ace-dawn .ace_constant.ace_character.ace_escape,.ace-dawn .ace_constant.ace_other {color: #811F24}.ace-dawn .ace_invalid.ace_illegal {text-decoration: underline;font-style: italic;color: #F8F8F8;background-color: #B52A1D}.ace-dawn .ace_invalid.ace_deprecated {text-decoration: underline;font-style: italic;color: #B52A1D}.ace-dawn .ace_support {color: #691C97}.ace-dawn .ace_support.ace_constant {color: #B4371F}.ace-dawn .ace_fold {background-color: #794938;border-color: #080808}.ace-dawn .ace_list,.ace-dawn .ace_markup.ace_list,.ace-dawn .ace_support.ace_function {color: #693A17}.ace-dawn .ace_storage {font-style: italic;color: #A71D5D}.ace-dawn .ace_string {color: #0B6125}.ace-dawn .ace_string.ace_regexp {color: #CF5628}.ace-dawn .ace_comment {font-style: italic;color: #5A525F}.ace-dawn .ace_heading,.ace-dawn .ace_markup.ace_heading {color: #19356D}.ace-dawn .ace_variable {color: #234A97}.ace-dawn .ace_indent-guide {background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEklEQVQImWNgYGBgYLh/5+x/AAizA4hxNNsZAAAAAElFTkSuQmCC) right repeat-y}
+/*# sourceURL=ace/css/ace-dawn */</style>
+<style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style>
+<style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: blue;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}
+/*# sourceURL=ace/css/ace-tm */</style>
+<style id="ace_editor.css">.ace_br1 {border-top-left-radius    : 3px;}.ace_br2 {border-top-right-radius   : 3px;}.ace_br3 {border-top-left-radius    : 3px; border-top-right-radius:    3px;}.ace_br4 {border-bottom-right-radius: 3px;}.ace_br5 {border-top-left-radius    : 3px; border-bottom-right-radius: 3px;}.ace_br6 {border-top-right-radius   : 3px; border-bottom-right-radius: 3px;}.ace_br7 {border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px;}.ace_br8 {border-bottom-left-radius : 3px;}.ace_br9 {border-top-left-radius    : 3px; border-bottom-left-radius:  3px;}.ace_br10{border-top-right-radius   : 3px; border-bottom-left-radius:  3px;}.ace_br11{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-left-radius:  3px;}.ace_br12{border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br13{border-top-left-radius    : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br14{border-top-right-radius   : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br15{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;}.ace_editor {position: relative;overflow: hidden;padding: 0;font: 12px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;direction: ltr;text-align: left;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;cursor: text;}.ace_content {position: absolute;box-sizing: border-box;min-width: 100%;contain: style size layout;font-variant-ligatures: no-common-ligatures;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;contain: style size layout;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {position: absolute;top: 0;left: 0;right: 0;padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {contain: strict;position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;contain: strict;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;white-space: pre!important;}.ace_text-input.ace_composition {background: transparent;color: inherit;z-index: 1000;opacity: 1;}.ace_composition_placeholder { color: transparent }.ace_composition_marker { border-bottom: 1px solid;position: absolute;border-radius: 0;margin-top: 1px;}[ace_nocontext=true] {transform: none!important;filter: none!important;clip-path: none!important;mask : none!important;contain: none!important;perspective: none!important;mix-blend-mode: initial!important;z-index: auto;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;word-wrap: normal;white-space: pre;height: 100%;width: 100%;box-sizing: border-box;pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;height: 1000000px;contain: style size layout;}.ace_text-layer {font: inherit !important;position: absolute;height: 1000000px;width: 1000000px;contain: style size layout;}.ace_text-layer > .ace_line, .ace_text-layer > .ace_line_group {contain: style size layout;position: absolute;top: 0;left: 0;right: 0;}.ace_hidpi .ace_text-layer,.ace_hidpi .ace_gutter-layer,.ace_hidpi .ace_content,.ace_hidpi .ace_gutter {contain: strict;will-change: transform;}.ace_hidpi .ace_text-layer > .ace_line, .ace_hidpi .ace_text-layer > .ace_line_group {contain: strict;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;box-sizing: border-box;border-left: 2px solid;transform: translatez(0);}.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_hasPlaceholder .ace_hidden-cursors .ace_cursor {opacity: 0;}.ace_smooth-blinking .ace_cursor {transition: opacity 0.18s;}.ace_animate-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: step-end;animation-name: blink-ace-animate;animation-iteration-count: infinite;}.ace_animate-blinking.ace_smooth-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: ease-in-out;animation-name: blink-ace-animate-smooth;}@keyframes blink-ace-animate {from, to { opacity: 1; }60% { opacity: 0; }}@keyframes blink-ace-animate-smooth {from, to { opacity: 1; }45% { opacity: 1; }60% { opacity: 0; }85% { opacity: 0; }}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_error_bracket {position: absolute;border-bottom: 1px solid #DE5555;border-radius: 0;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;box-sizing: border-box;}.ace_line .ace_fold {box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(114, 113, 113, 0.05);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_inline_button {
+    border: 2px solid black; /* Add border */
+    display: inline-block;
+    margin: -1px 8px;
+    padding: 10px 20px; /* Adjust padding for better appearance */
+    pointer-events: auto;
+    cursor: pointer;
+    border-radius: 20px; /* Rounded corners */
+    background-color: white; /* Set background color */
+    color: black; /* Set text color */
+    text-align: center; /* Center text */
+    font-size: 16px; /* Adjust font size */
+    transition: background 0.3s, border-color 0.3s; /* Add transition for hover effects */
+}
+
+.ace_inline_button:hover {
+    border-color: gray;
+    background: rgba(200, 200, 200, 0.2);
+    pointer-events: auto;
+    border-radius: 20px; /* Maintain rounded corners */
+}
+.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}.ace_mobile-menu {position: absolute;line-height: 1.5;border-radius: 4px;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;background: white;box-shadow: 1px 3px 2px grey;border: 1px solid #dcdcdc;color: black;}.ace_dark > .ace_mobile-menu {background: #333;color: #ccc;box-shadow: 1px 3px 2px grey;border: 1px solid #444;}.ace_mobile-button {padding: 2px;cursor: pointer;overflow: hidden;}.ace_mobile-button:hover {background-color: #eee;opacity:1;}.ace_mobile-button:active {background-color: #ddd;}.ace_placeholder {font-family: arial;transform: scale(0.9);transform-origin: left;white-space: pre;opacity: 0.7;margin: 0 10px;}
+/*# sourceURL=ace/css/ace_editor.css */</style>
+<script src="./src/ace.min.js"></script>
+<style type="text/css" media="screen">
+  .ace_editor {
+  border: 1px solid lightgray;
+  margin-bottom: 1px !important;
+  width: 100%;
+  }
+  div.spacer {
+  margin-top:16px;
+  }
+</style>
+<script src="./src/runlatex.js"></script>
+<style>
+  body {margin:auto; max-width: 100em;}
+  div.h {background-color: #F5F5FF;margin: .5em 0;}
+  pre {background-color: #EEE;margin:0;padding: .5em;}
+  .llbutton {
+      border-radius: 12px;
+  }
+</style>
+<script src="./src/theme-dawn.js"></script>
+<script src="./src/mode-latex.js"></script>
+<style>
+    .answer {
+        display: none;
+        color: black;
+        margin-top: 10px;
+    }
+    .question {
+        cursor: pointer;
+        color: black;
+        background-color: white;
+        border: none;
+        padding: 2px 7px;
+        text-decoration: none;
+        font-size: 14px;
+        border-radius: 50px;
+    }
+    .question:hover {
+        background-color: white;
+    }
+</style>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+    #latex-input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    #preview {
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+</style>
+
+<p>對於許多人來說，LaTeX 的功能可能就是打打文字、輸出成 PDF，僅此而已；但對於需要大量圖形的文件人而言，LaTeX 的繪圖能力實際上是一個強大而不可或缺的工具。你可以直接在你的文件裡面，用幾行程式碼就繪製出超專業的圖形，不用在 Word 和 PowerPoint、Photoshop 等軟體之間來回切換了。</p>
+<p>TikZ 和 PGF 是 LaTeX 中用於繪圖和建立圖形的強大套件，而這兩個套件密切相關，通常一起使用。</p>
+<p>PGF Graphics Format）是一個基礎套件，為 LaTeX 提供了底層的繪圖指令和功能。它最初的設計是一個通用的繪圖引擎，可在不同的 TeX 編譯器（如 pdfTeX、XeTeX 和 LuaTeX）中使用。PGF 提供了基本的繪圖元素，如線條、形狀、箭頭等，以及一些基本的變換和路徑操作。</p>
+<p>而 TikZ（TikZ ist kein Zeichenprogramm）則是建立在 PGF 之上的高級繪圖工具。TikZ 的名稱是德語「TikZ 不是繪圖軟體」的縮寫，這個幽默的名稱恰好反映了它的設計理念：它並不只是一個獨立的繪圖程式，而是一個集成在 LaTeX 中的繪圖工具。TikZ 提供了一種更直觀、更易於使用的語法，讓使用者能夠更輕鬆地創建複雜的圖形。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 35%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">特性</th>
+<th style="text-align: left;">TikZ</th>
+<th style="text-align: left;">pgf</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">定義</td>
+<td style="text-align: left;">高級繪圖套件</td>
+<td style="text-align: left;">底層繪圖工具</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">使用難度</td>
+<td style="text-align: left;">相對簡單，語法直觀</td>
+<td style="text-align: left;">較為複雜，需要更多技術細節</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">功能範圍</td>
+<td style="text-align: left;">提供豐富的高級功能和拓展繪圖庫</td>
+<td style="text-align: left;">提供基本的繪圖元素和操作</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">靈活性</td>
+<td style="text-align: left;">靈活性高，支持複雜圖形的繪製</td>
+<td style="text-align: left;">靈活性低，主要用於基礎繪圖</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">與 LaTeX 整合</td>
+<td style="text-align: left;">深度整合，可直接在文件中使用</td>
+<td style="text-align: left;">作為底層支持，通常不直接使用</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">適用場景</td>
+<td style="text-align: left;">繪製各種複雜圖形、圖表、示意圖等</td>
+<td style="text-align: left;">開發新的繪圖功能或自定義 TikZ 指令</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">學習曲線</td>
+<td style="text-align: left;">中等，有豐富文件與範例</td>
+<td style="text-align: left;">較陡，需深入理解 TeX 和圖形繪製</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">延伸性</td>
+<td style="text-align: left;">高，有大量的拓展繪圖庫和社群</td>
+<td style="text-align: left;">中等，主要用於底層擴展</td>
+</tr>
+</tbody>
+</table>
+<p>本篇文章將會著重在利用 TikZ 繪製圖形，教會你怎麼用 TikZ 繪製各式各樣的圖形，並且提供豐富的範例。</p>
+<section id="tikz-使用簡介" class="level1">
+<h1>TikZ 使用簡介</h1>
+<p>TikZ 套件繪製圖形的方式有兩種，最簡單也是最直接的方式是將繪圖指令放在 <code>\tikz</code> 指令後面，但是這樣十分容易混淆，也會讓程式碼變得很難看。因此常見的方法是將繪圖指令包在 <code>tikzpicture</code> 環境中，且可以設定不同的選項。</p>
+<p>而通常如果我們只是想要利用 TikZ 來繪製圖形，然後輸出成向量圖形 <code>.svg</code> 檔的話，我們會使用以下方法。首先建立一份 <code>.tex</code> 文件，並使用 <code>standalone</code> 類別。然後將 TikZ 指令放在裡面。例如我們建立一個 <code>example.tex</code> 的文件：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>\documentclass[tikz, border=10pt]{standalone}
+
+\begin{document}
+\begin{tikzpicture}
+    \draw[fill=yellow] (0, 0) circle [radius=2];
+    \draw[fill=black] (-0.5,0.5) ellipse [x radius=0.2, y radius=0.4];
+    \draw[fill=black] (0.5,0.5) ellipse [x radius=0.2, y radius=0.4];
+    \draw[very thick] (-1,-1) arc [start angle=185, end angle=355, x radius=1, y radius=0.5];
+\end{tikzpicture}
+\end{document}
+</div></div></div></div></pre>
+<p>接著有幾種作法，第一種是使用 <code>dvisvgm</code> 生成 SVG 文件：我們需要將剛剛創建的主文件在終端機進行編譯。先使用 <code>pdflatex</code> 進行編譯，確認生成的 PDF 文件無誤：</p>
+<pre><code>pdflatex example.tex</code></pre>
+<p>如果 PDF 文件看起來正確，則使用 <code>latex</code> 指令生成 DVI 文件：</p>
+<pre><code>latex example.tex</code></pre>
+<p>最後使用 <code>dvisvgm</code> 指令將 DVI 文件轉換為 SVG 文件：</p>
+<pre><code>dvisvgm example.dvi</code></pre>
+<p>這樣即可得到 SVG 文件。第二種方法則是安裝 <code>pdf2svg</code> 軟體在電腦中，安裝成功後執行以下程式碼即可：</p>
+<pre><code>pdf2svg &lt;PDF 檔案.pdf&gt; &lt;SVG 檔案.svg&gt;</code></pre>
+<p>或是我們可以使用<a href="https://www.geogebra.org/">GeoGebra</a>來繪製圖形，並且輸出成 TikZ 或 PGF 格式。使用方法直接參考以下影片：</p>
+<iframe width="750" height="485" src="https://www.youtube.com/embed/beUSEBoci5c" title="Generating TikZ Code from GeoGebra for LaTeX Documents &amp; Beamer Presentations" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
+</iframe>
+<p>當然還有其他方法，就是到網路上搜尋 PDF 轉換 SVG 的網站，然後上傳檔案後即可，不過這個方法稍顯複雜，因此建議使用上面三種方式。此外，如果你想要繪製更好看、更高解析度的圖片，可以使用<a href="https://inkscape.org/">Inkscape</a>繪圖，以下 <a href="https://www.youtube.com/playlist?list=PLYSkC12jw658Y34mMAt7ZzCxqHpbeqyy2">YouTube 播放清單</a>有完整教學：</p>
+<iframe width="750" height="315" src="https://www.youtube.com/embed/videoseries?si=gtSCMnC-4ostVttT&amp;list=PLYSkC12jw658Y34mMAt7ZzCxqHpbeqyy2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
+</iframe>
+</section>
+<section id="基本圖形繪製" class="level1">
+<h1>基本圖形繪製</h1>
+<p>上面提到，TikZ 是基於 PGF 而建立的高級繪圖工具，因此許多指令都是延續 PGF 的指令。PGF 最基礎的繪圖指令是：</p>
+<pre><code>\draw[選項] 操作;</code></pre>
+<p>這邊有兩件事必須注意，首先 <code>[]</code> 中的內容可填可不填，完全依照使用者需要繪製何種圖形而決定；第二，如果你曾經學過 C/C++，應該知道每一行程式碼的結尾都需要以 <code>;</code> 表示結束，而 PGF 也一樣。</p>
+<section id="點線面" class="level2">
+<h2 class="anchored" data-anchor-id="點線面">點、線、面</h2>
+<p>學習圖形時，最常聽到的應該是就是點線面這三個元素，因此我們會從這三個元素開始講起。</p>
+<section id="點" class="level3">
+<h3 class="anchored" data-anchor-id="點">點</h3>
+<p>繪製一個點的方法很簡單</p>
+<pre><code>\draw[fill=black] (0, 0) circle (2pt);</code></pre>
+<p>這段程式碼的意思代表使用繪圖指令 <code>\draw</code>，並告訴系統要將該圖形以黑色填滿，接著在座標 <span class="math inline">\((0, 0)\)</span> 的位置繪製一個半徑為 2pt 的圓。看起來就像這樣：</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./dot.svg" class="img-fluid figure-img" style="width:15.0%" data-fig.align="center"></p>
+<figcaption>圖 1：點</figcaption>
+</figure>
+</div>
+<p>如果把選項裡面的填色指令拿掉會發生什麼事？</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./circ.svg" class="img-fluid figure-img" style="width:15.0%" data-fig.align="center"></p>
+<figcaption>圖 2：一個空心圓</figcaption>
+</figure>
+</div>
+<p>它會變成一個空心圓。</p>
+</section>
+<section id="直線" class="level3">
+<h3 class="anchored" data-anchor-id="直線">直線</h3>
+<p>在數學上，我們知道要構成一條直線，需要給定兩點。TikZ 繪製直線的方法也是需要兩點進行連接，語法是 <code>\draw (x1, y1) -- (x2, y2);</code>，其中 <code>(x1, y1)</code> 與 <code>(x2, y2)</code> 分別代表兩點的座標，而 <code>--</code> 則是告訴 TikZ 我們要將兩點連線的指令。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./line.svg" class="img-fluid figure-img" style="width:15.0%" data-fig.align="center"></p>
+<figcaption>圖 3：線段</figcaption>
+</figure>
+</div>
+<p>假設給定兩點 <span class="math inline">\(A\)</span> 與 <span class="math inline">\(B\)</span>，座標分別為 <span class="math inline">\(A(0, 2)\)</span> 與 <span class="math inline">\(B(3, 4)\)</span>，則連接兩點而成的線段 <span class="math inline">\(\overline{AB}\)</span> 的繪製方式為</p>
+<pre><code>\draw (0, 2) -- (3, 4);</code></pre>
+<p>當然，我們可以不只將兩點進行連線，可以連接三個、四個、甚至到 <span class="math inline">\(n\)</span> 個都沒問題。例如：</p>
+<pre><code>\draw (1, 3)--(2, 2)--(4, 5);</code></pre>
+<p>其結果就會是：</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./multiline.svg" class="img-fluid figure-img" style="width:15.0%" data-fig.align="center"></p>
+<figcaption>圖 4：多點連接線段</figcaption>
+</figure>
+</div>
+<p>如果你覺得交接處的地方是直角很醜，想要改成圓角的話，就在選項中加入 <code>rounded corners</code> 即可。</p>
+<pre><code>\draw[rounded corners] (1, 3)--(2, 2)--(4, 5);</code></pre>
+<p>這樣交接處的地方就不會那麼尖銳，變成圓角了（<del>就跟人一樣在社會打滾久了就會變圓滑</del>）。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./multiline_rounded_corner.svg" class="img-fluid figure-img" style="width:15.0%" data-fig.align="center"></p>
+<figcaption>圖 4：多點連接線段（圓角）</figcaption>
+</figure>
+</div>
+</section>
+<section id="封閉圖形" class="level3">
+<h3 class="anchored" data-anchor-id="封閉圖形">封閉圖形</h3>
+<p>如果將三個點用線段連接起來，就會形成一個封閉圖形，或者說一個面<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。繪製一個封閉圖形的方法很簡單，就是以線段連接的方式將三點連接，最後加上起始點的座標。</p>
+<pre><code>\draw (1, 3)--(2, 2)--(4, 5) -- (1, 3);</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./close.svg" class="img-fluid figure-img" style="width:15.0%" data-fig.align="center"></p>
+<figcaption>圖 5：封閉圖形</figcaption>
+</figure>
+</div>
+<p>但是這樣並不是 TikZ 中<strong>合法</strong>繪製封閉圖形的方法，正確的方式應該是使用 <code>cycle</code> 指令，告訴 TikZ 這幾個點需要以「循環」的方式進行連接。</p>
+<pre><code>\draw (1, 3)--(2, 2)--(4, 5) -- cycle;</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cycle.svg" class="img-fluid figure-img" style="width:15.0%" data-fig.align="center"></p>
+<figcaption>圖 6：封閉圖形（使用 <code>cycle</code>）</figcaption>
+</figure>
+</div>
+<p>乍看之下，你可能沒辦法發現差別，但是只要我們將兩張圖並排，並且使用圓角指令，就可以發現差別。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./close_cycle.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 7：封閉圖形比較</figcaption>
+</figure>
+</div>
+<p>左邊的圖是沒有使用 <code>cycle</code> 指令，從最後一個點到初始點的交接處並沒有被調整成圓角；但是有圖則明顯有被調整為圓角。因此，正確繪製一個封閉圖形的方法，<strong>一定要在最後使用 <code>cycle</code> 指令</strong>。</p>
+<p>而繪製矩形的方式就簡單很多了。在 PowerPoint 或其他繪圖軟體中，繪製矩形的方法是用<strong>拉</strong>的，也就是從一個點拉到對角頂點。在 TikZ 中也是利用同樣的方式，給定兩個對角頂點，在中間加上 <code>rectangle</code> 即可。</p>
+<pre><code>\draw (0, 0) rectangle (4, 2);</code></pre>
+<p>此程式碼繪製出給定 <span class="math inline">\((0, 0)\)</span> 與 <span class="math inline">\((4, 2)\)</span> 兩個對角頂點的矩形。同理，我們也可以將這個矩形四個角調整為圓角。</p>
+<pre><code>\draw[rounded corners] (0, 0) rectangle (4, 2);</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./rectangle_rounded_corners.svg" class="img-fluid figure-img" style="width:50.0%" data-fig.align="center"></p>
+<figcaption>圖 8：圓角矩形</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./rectangle.svg" class="img-fluid figure-img" style="width:50.0%" data-fig.align="center"></p>
+<figcaption>圖 9：矩形</figcaption>
+</figure>
+</div>
+<p>不過這時你可能會問：「如何繪製多邊形？」或者「如何繪製正多邊形？」這個問題我們等稍後再回答。</p>
+</section>
+</section>
+<section id="圓橢圓弧" class="level2">
+<h2 class="anchored" data-anchor-id="圓橢圓弧">圓、橢圓、弧</h2>
+<p>相信每個臺灣學生一定有過國中二年級用圓規與直尺進行尺規作圖的痛苦經歷。圓規作圓的步驟是，將圓規的針尖固定在畫紙上作為圓心，然後調整圓規的開口寬度至所需的半徑。接著，保持針尖穩定不動，用另一端的鉛筆沿著圓心均勻旋轉一周，就可以畫出光滑的圓形了。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/IMB_DQj3Fs.gif" class="img-fluid figure-img" style="width:50.0%" data-fig.align="center"></p>
+<figcaption>圖 10：圓規作圖範例<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></figcaption>
+</figure>
+</div>
+<p>因此，從上面的敘述，我們可以知道，畫一個圓只需要兩個要素：圓心與半徑。TikZ 繪製圓的邏輯也是如此，指定圓心位置與半徑就可以了，語法是 <code>\draw (x, y) circle (半徑長度);</code>。舉例來說，我們要繪製一個圓心在 <span class="math inline">\((0, 0)\)</span>、半徑為 1 的圓，就可以用以下程式碼：</p>
+<pre><code>\draw (0, 0) circle (1);</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./circle.svg" class="img-fluid figure-img" style="width:35.0%" data-fig.align="center"></p>
+<figcaption>圖 11：圓形</figcaption>
+</figure>
+</div>
+<p>而繪製橢圓的方法也與圓相似，只要給定橢圓的中心點以及長軸和短軸的長度。然後在繪圖指令中使用 <code>ellipse</code>，將橢圓的長軸和短軸長度寫在中間，用括號括起來，並用 <code>and</code> 隔開即可，這樣就能畫出一個橢圓。</p>
+<pre><code>\draw (0, 0) ellipse (2 and 1);</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./ellipse.svg" class="img-fluid figure-img" style="width:35.0%" data-fig.align="center"></p>
+<figcaption>圖 11：橢圓</figcaption>
+</figure>
+</div>
+<p>繪製圓弧或橢圓弧時，只需使用 <code>arc</code> 指令並提供角度即可。不過，弧分為圓弧與橢圓弧，因此必須特別指定是圓還是橢圓的弧。無論是繪製哪一種弧，都需要指定中心點，然後設定起始角度和終止角度即可，唯一的差別是要指定圓與橢圓，圓弧的語法是 <code>(x, y) arc (起始角度:終止角度:半徑)</code>，橢圓弧則為 <code>(x, y) arc (起始角度:終止角度:長軸長與短軸長)</code>。</p>
+<pre><code>% 繪製圓弧
+\draw (0, 0) arc (0:270:1);
+% 繪製橢圓弧
+\draw (0, 0) arc (0:270:2 and 1);</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./arc.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 12：圓弧與橢圓弧</figcaption>
+</figure>
+</div>
+</section>
+<section id="曲線" class="level2">
+<h2 class="anchored" data-anchor-id="曲線">曲線</h2>
+<p>完成簡單的圖形後，接著就要進到比較複雜一點的圖了。首先我們要介紹曲線。TikZ 提供了多種方法來繪製不同類型的曲線，包括貝茲曲線、拋物線和自定義曲線。</p>
+<section id="貝茲曲線" class="level3">
+<h3 class="anchored" data-anchor-id="貝茲曲線">貝茲曲線</h3>
+<p>貝茲曲線（Bézier curve）是一種數學曲線，由法國工程師皮埃爾·貝茲於 1960 年代開發。貝茲曲線的基本想法是利用控制「點」來定義曲線的「形狀」，通過這些控制點可以生成光滑的曲線。</p>
+<p>貝茲曲線的算法基於線性插值和遞迴方法。給定 <span class="math inline">\(n+1\)</span> 個控制點 <span class="math inline">\(P_{0}, P_{1}, \cdots, P_{n}\)</span>，貝茲曲線可以表示為：</p>
+<p><span class="math display">\[
+B(t) = \sum_{i=0}^{n} \binom{n}{i} (1-t)^{n-i} t^i P_i
+\]</span></p>
+<p>其中， <span class="math inline">\(t\)</span> 是參數，取值範圍為 0 到 1； <span class="math inline">\(\binom{n}{i}\)</span> 是二項式係數，而遞迴計算貝茲曲線的算法稱為 De Casteljau 算法，主要步驟如下：</p>
+<ol type="1">
+<li>將參數 <span class="math inline">\(t\)</span> 取值範圍分為多個小段。</li>
+<li>對每一段進行線性插值計算，生成新的控制點。</li>
+<li>重複上述步驟，直到只剩下一個控制點，該點即為曲線上的點。</li>
+</ol>
+<p>上面這些看了很頭痛的東西參考自<a href="https://zh.wikipedia.org/zh-tw/%E8%B2%9D%E8%8C%B2%E6%9B%B2%E7%B7%9A">維基百科</a>與 ChatGPT 的協助，畢竟筆者不是讀資訊工程的，就不獻醜了。</p>
+<p>我們使用 <code>.. controls ..</code> 指令來繪製貝茲曲線，且需要至少一個控制點。其語法為：</p>
+<pre><code>\draw (起點) .. controls (控制點1) and (控制點2) .. (終點);</code></pre>
+<p>以下給予不同數量控制點的範例：</p>
+<pre><code>% 單個控制點的貝茲曲線
+\draw (0, 0) .. controls (1, 1) .. (2, 0);
+% 多個控制點的貝茲曲線
+\draw (0, 0) .. controls (1, 2) and (3, 2) .. (4, 0);
+% 複合貝茲曲線
+\draw (0, 0) .. controls (1, 2) .. (2, 0) .. controls (3, -2) .. (4, 0);</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./Bézier.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 12：圓弧與橢圓弧</figcaption>
+</figure>
+</div>
+</section>
+<section id="拋物線" class="level3">
+<h3 class="anchored" data-anchor-id="拋物線">拋物線</h3>
+<p>在 TikZ 中，我們使用 <code>parabola</code> 來繪製拋物線，基本的語法結構為：</p>
+<pre><code>\draw (起點) parabola (終點);</code></pre>
+<p>如果想要指定拋物線的頂點，可以使用 <code>parabola bend</code> 指令：</p>
+<pre><code>\draw (起點) parabola bend (頂點) (終點);</code></pre>
+<p>下面是範例程式碼，展示如何使用不同的參數來繪製各種拋物線：</p>
+<pre><code>% 基本拋物線
+\draw (0, 0) parabola (3, 3);
+
+% 指定頂點的拋物線
+\draw (0, 0) parabola bend (1.5, -1) (3, 0);
+
+% 從頂點開始的拋物線
+\draw (1, 2) parabola (2, 0);
+\draw (2, 0) parabola (3, 2);
+
+% 兩段連接的拋物線
+\draw (1, 1) parabola bend (2, 0) (3, 1) parabola bend (4, 2) (5, 1);</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./parabola.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 13：拋物線</figcaption>
+</figure>
+</div>
+</section>
+<section id="自定義曲線" class="level3">
+<h3 class="anchored" data-anchor-id="自定義曲線">自定義曲線</h3>
+<p>自定義曲線主要是通過出射角與入射角的設定來實現的，也就是說指定曲線起點和終點的切線角度，從而控制曲線的形狀。其基本語法為：</p>
+<pre><code>\draw (起點座標) to[out=出射角度, in=入射角度] (終點座標);</code></pre>
+<p>在 TikZ 中，角度是按照數學的標準定義的，例如 <span class="math inline">\(0^{\circ}\)</span> 指向右方、<span class="math inline">\(90^{\circ}\)</span> 指向上方、<span class="math inline">\(180^{\circ}\)</span> 指向左方、<span class="math inline">\(270^{\circ}\)</span>（或 <span class="math inline">\(-90^{\circ}\)</span>）指向下方。以下分別展示四個不同的自定義曲線：</p>
+<pre><code>% 曲線 (a)
+\draw (0, 0) to[out=0, in=180] (4,0);
+
+% 曲線 (b)
+\draw (0,-1) to[out=45, in=135] (4,-1);
+
+% 曲線 (c)
+\draw (0,-2) to[out=90, in=90] (4,-2);
+
+% 曲線 (d)
+\draw (0,-3) to[out=-45, in=-135] (4,-3);</code></pre>
+<p>可以看到如果出射角度為 <span class="math inline">\(0^{\circ}\)</span>，入射角度為 <span class="math inline">\(180^{\circ}\)</span>，事實上就是一條直線。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./self_curve.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 14：自定義曲線</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="箭頭" class="level2">
+<h2 class="anchored" data-anchor-id="箭頭">箭頭</h2>
+<p>箭頭的功能是用來指示方向，生活中隨處都能看到箭頭的存在，最常見的就是路標。此外，箭頭也能夠用來表示趨勢，例如看到 <span class="math inline">\(\uparrow\)</span> 就知道這個量是往上升，<span class="math inline">\(\downarrow\)</span> 則是往下降。</p>
+<p>在 TikZ 中，我們可以利用箭頭來標明方向，讓讀者能夠跟隨箭頭的方向閱讀與理解圖形，而 TikZ 提供了各式各樣的箭頭樣式供我們選擇，利用不同的箭頭樣式，可以用在不同地方。</p>
+<p>TikZ 的內建箭頭有許多種，不過這些箭頭都有一些最基本的概念，就是<strong>方向</strong>。我們先來講最簡單的箭頭表示方式，即是在 <code>\draw</code> 指令的選項中加上 <code>-&gt;</code>、<code>&lt;-</code> 或 <code>&lt;-&gt;</code>。而選擇哪一種則取決於方向。</p>
+<pre><code>% 從 (0, 0) 到 (2, 0)
+\draw[-&gt;] (0, 0) -- (2, 0);
+% 從 (2, 0) 到 (0, 0)
+\draw[&lt;-] (0, 0) -- (2, 0);
+% 雙向箭頭
+\draw[&lt;-] (0, 0) -- (2, 0);</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./basic_arrow.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 15：基本箭頭</figcaption>
+</figure>
+</div>
+<p>不難發現，只要在 <code>-</code> 的前面或後面加上對應方向的大於或小於符號即可。同理，其他的指令也是一樣，以下用表格直接呈現 TikZ 內建的箭頭有哪些：</p>
+<p>這裡是包含指令的 TikZ 內建箭頭列表，以 Markdown 表格呈現：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>箭頭名稱</th>
+<th>指令</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>隱形箭頭</td>
+<td><code>stealth</code></td>
+</tr>
+<tr class="even">
+<td>隱形反向箭頭</td>
+<td><code>stealth reversed;</code></td>
+</tr>
+<tr class="odd">
+<td>指向箭頭</td>
+<td><code>to</code></td>
+</tr>
+<tr class="even">
+<td>指向反向箭頭</td>
+<td><code>-to reversed</code></td>
+</tr>
+<tr class="odd">
+<td>LaTeX 樣式的箭頭</td>
+<td><code>-latex</code></td>
+</tr>
+<tr class="even">
+<td>LaTeX 樣式的反向箭頭</td>
+<td><code>-latex reversed</code></td>
+</tr>
+<tr class="odd">
+<td><code>|-|</code> 樣式箭頭</td>
+<td><code>|</code></td>
+</tr>
+</tbody>
+</table>
+<p>它們的用法如同上面所述，根據想要指示的方向，在 <code>-</code> 前、後或前後同時加上指令即可。</p>
+<p>如果想要繪製其他類型的箭頭，可以使用 <code>arrows.meta</code> 庫。該庫如其名，可以繪製不同類型的箭頭。在載入 <code>TikZ</code> 套件後，我們以下面的程式碼載入該庫：</p>
+<pre><code>\usepackage{tikz}
+\usetikzlibrary{arrows.meta}</code></pre>
+<p>接著就可以透過上面相似的方式繪製箭頭。<a href="https://latexdraw.com/exploring-tikz-arrows/#t-1610685307404">TikZ arrows</a>這個網站專門介紹各種箭頭的繪製方式，筆者在此不贅述（絕對不是因為我懶）。</p>
+</section>
+<section id="網格與座標軸" class="level2">
+<h2 class="anchored" data-anchor-id="網格與座標軸">網格與座標軸</h2>
+<p>繪製網格和座標軸在圖形中扮演著重要角色。網格提供了一個背景參考，幫助讀者定位和測量圖形中的各個元素，尤其適合用在展示連續函數的圖形、資料分佈以及其他需要精確定位的視覺表示。</p>
+<p>此外，座標軸則是圖形中的基本參考系。它們不僅用來清楚告訴讀者每一個數據點的位置，更能提供關鍵的標記，幫助讀者快速理解圖形所代表的數值範圍、趨勢等重要資訊。</p>
+<section id="網格" class="level3">
+<h3 class="anchored" data-anchor-id="網格">網格</h3>
+<p>在 TikZ 中，繪製網格的基本方法是使用 <code>\draw</code> 和 <code>grid</code> 兩個指令相互搭配。基本語法為：</p>
+<pre><code>\draw[step=網格寬度] (x1, y1) grid (x2, y2);</code></pre>
+<p>例如我們定義網格範圍從 <span class="math inline">\((0, 0)\)</span> 到 <span class="math inline">\((7, 7)\)</span>，並將網格寬度設定為 1cm：</p>
+<pre><code>\draw[step=1cm] (0, 0) grid (7, 7);</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./simple_grid.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 16：網格</figcaption>
+</figure>
+</div>
+</section>
+<section id="繪製座標軸" class="level3">
+<h3 class="anchored" data-anchor-id="繪製座標軸">繪製座標軸</h3>
+<p>如果想要繪製座標軸有以下幾種作法。第一種作法是直接繪製 <span class="math inline">\(x\)</span> 軸與 <span class="math inline">\(y\)</span> 軸兩個箭頭。</p>
+<pre><code>% 繪製 $x$ 軸
+\draw[-&gt;] (0, 0) -- (5, 0);
+% 繪製 $y$ 軸
+\draw[-&gt;] (0, 0) -- (0, 5);</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./axis1.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 17：兩個箭頭繪製成的座標軸</figcaption>
+</figure>
+</div>
+<p>如果說想要用一行程式碼解決，則可以參考以下方式：</p>
+<pre><code>\draw[&lt;-&gt;] (0, 5) -- (0, 0) -- (5, 0);</code></pre>
+<p>也可以繪製出一樣的效果。第二種方式則是使用 <code>pgfplots</code> 套件。載入 <code>pgfplots</code> 套件後，我們用 <code>axis</code> 環境繪製，並在選項中進行調整。我們先來看一下最簡單的範例：</p>
+<pre><code>\begin{axis}[
+    axis lines = middle,
+    xlabel = $x$,
+    ylabel = $y$,
+    ]
+\end{axis}</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./axis2.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 18：使用 axis 環境繪製</figcaption>
+</figure>
+</div>
+<p><code>axis</code> 環境預設 <span class="math inline">\(x\)</span> 與 <span class="math inline">\(y\)</span> 兩軸的最大值為 1，且我們可以看到，這個座標軸明顯與我們用兩個箭頭繪製出的<strong>土炮座標軸</strong>有很大的區別：首先，它直接加上箭頭，也不用特別指定；此外，兩軸上都有刻度。以下是 <code>axis</code> 環境可以調整的選項：</p>
+<p>以下是 <code>pgfplots</code> 套件中，<code>axis</code> 環境可以調整的選項及其說明，以 Markdown 表格呈現：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 76%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>選項</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>title</code></td>
+<td>設定座標軸的標題，例如 <code>title={My Plot}</code></td>
+</tr>
+<tr class="even">
+<td><code>xlabel</code></td>
+<td>設定 <span class="math inline">\(x\)</span> 軸標籤，例如 <code>xlabel={x-axis label}</code></td>
+</tr>
+<tr class="odd">
+<td><code>ylabel</code></td>
+<td>設定 <span class="math inline">\(y\)</span> 軸標籤，例如 <code>ylabel={y-axis label}</code></td>
+</tr>
+<tr class="even">
+<td><code>zlabel</code></td>
+<td>設定 <span class="math inline">\(z\)</span> 軸標籤（適用於三維圖），例如 <code>zlabel={z-axis label}</code></td>
+</tr>
+<tr class="odd">
+<td><code>xmin</code>, <code>xmax</code></td>
+<td>設定 <span class="math inline">\(x\)</span> 軸的最小值和最大值，例如 <code>xmin=0, xmax=10</code></td>
+</tr>
+<tr class="even">
+<td><code>ymin</code>, <code>ymax</code></td>
+<td>設定 <span class="math inline">\(y\)</span> 軸的最小值和最大值，例如 <code>ymin=0, ymax=10</code></td>
+</tr>
+<tr class="odd">
+<td><code>zmin</code>, <code>zmax</code></td>
+<td>設定 <span class="math inline">\(z\)</span> 軸的最小值和最大值（適用於三維圖），例如 <code>zmin=0, zmax=10</code></td>
+</tr>
+<tr class="even">
+<td><code>xtick</code>, <code>ytick</code></td>
+<td>設定 <span class="math inline">\(x\)</span> 軸和 <span class="math inline">\(y\)</span> 軸的刻度值，例如 <code>xtick={0,2,...,10}, ytick={0,1,...,5}</code></td>
+</tr>
+<tr class="odd">
+<td><code>ztick</code></td>
+<td>設定 <span class="math inline">\(z\)</span> 軸的刻度值（適用於三維圖），例如 <code>ztick={0,5,10}</code></td>
+</tr>
+<tr class="even">
+<td><code>xticklabel</code></td>
+<td>設定 <span class="math inline">\(x\)</span> 軸刻度標籤，例如 <code>xticklabel={$\pi/2$, $\pi$, $3\pi/2$, $2\pi$}</code></td>
+</tr>
+<tr class="odd">
+<td><code>yticklabel</code></td>
+<td>設定 <span class="math inline">\(y\)</span> 軸刻度標籤，例如 <code>yticklabel={A, B, C, D}</code></td>
+</tr>
+<tr class="even">
+<td><code>zticklabel</code></td>
+<td>設定 <span class="math inline">\(z\)</span> 軸刻度標籤（適用於三維圖），例如 <code>zticklabel={Low, Medium, High}</code></td>
+</tr>
+<tr class="odd">
+<td><code>grid</code></td>
+<td>開啟或關閉網格線，例如 <code>grid=major</code> 或 <code>grid=minor</code></td>
+</tr>
+<tr class="even">
+<td><code>legend</code></td>
+<td>設定圖例位置，例如 <code>legend pos=north east</code></td>
+</tr>
+<tr class="odd">
+<td><code>axis lines</code></td>
+<td>設定座標軸的顏色和樣式，例如 <code>axis lines=middle</code> 或 <code>axis lines=left</code></td>
+</tr>
+<tr class="even">
+<td><code>enlargelimits</code></td>
+<td>設定座標軸的擴展限度，例如 <code>enlargelimits=true</code> 或 <code>enlargelimits=0.1</code></td>
+</tr>
+<tr class="odd">
+<td><code>scale</code></td>
+<td>設定座標軸的縮放，例如 <code>scale=1.5</code></td>
+</tr>
+<tr class="even">
+<td><code>axis on top</code></td>
+<td>設定座標軸顯示在圖形上方，例如 <code>axis on top</code></td>
+</tr>
+<tr class="odd">
+<td><code>axis background</code></td>
+<td>設定座標軸的背景顏色，例如 <code>axis background/.style={fill=blue!10}</code></td>
+</tr>
+<tr class="even">
+<td><code>tick style</code></td>
+<td>設定刻度的樣式，例如 <code>tick style={color=red, thick}</code></td>
+</tr>
+<tr class="odd">
+<td><code>every axis label</code></td>
+<td>設定每個座標軸標籤的樣式，例如 <code>every axis label/.style={font=\small}</code></td>
+</tr>
+<tr class="even">
+<td><code>every tick label</code></td>
+<td>設定每個刻度標籤的樣式，例如 <code>every tick label/.style={font=\tiny}</code></td>
+</tr>
+<tr class="odd">
+<td><code>major grid style</code></td>
+<td>設定主要網格線的樣式，例如 <code>major grid style={dashed, gray}</code></td>
+</tr>
+<tr class="even">
+<td><code>minor grid style</code></td>
+<td>設定次要網格線的樣式，例如 <code>minor grid style={dotted, gray}</code></td>
+</tr>
+<tr class="odd">
+<td><code>xlabel style</code></td>
+<td>設定 <span class="math inline">\(x\)</span> 軸標籤的樣式，例如 <code>xlabel style={font=\bfseries, color=blue}</code></td>
+</tr>
+<tr class="even">
+<td><code>ylabel style</code></td>
+<td>設定 <span class="math inline">\(y\)</span> 軸標籤的樣式，例如 <code>ylabel style={font=\itshape, color=green}</code></td>
+</tr>
+<tr class="odd">
+<td><code>zlabel style</code></td>
+<td>設定 <span class="math inline">\(z\)</span> 軸標籤的樣式（適用於三維圖），例如 <code>zlabel style={font=\ttfamily, color=purple}</code></td>
+</tr>
+<tr class="even">
+<td><code>axis line style</code></td>
+<td>設定座標軸線條的樣式，例如 <code>axis line style={thick, blue}</code></td>
+</tr>
+<tr class="odd">
+<td><code>tick align</code></td>
+<td>設定刻度的對齊方式，例如 <code>tick align=outside</code> 或 <code>tick align=inside</code></td>
+</tr>
+</tbody>
+</table>
+<p>例如以下範例：</p>
+<pre><code>\begin{axis}[
+    axis lines = middle,
+    xlabel = $x$,
+    ylabel = $y$,
+    enlargelimits,
+    every axis x label/.style={
+        at={(ticklabel* cs:1.05)},
+        anchor=west,
+    },
+    every axis y label/.style={
+        at={(ticklabel* cs:1.05)},
+        anchor=south,
+    },
+    xmin = -5,
+    xmax = 5,
+    ymin = -5,
+    ymax = 5,
+    xtick = {-5, -4,..., 5},
+    ytick = {-5, -4,..., 5},
+    tick label style = {font=\tiny},
+    grid = both,
+    grid style = {line width=.1pt, draw=gray!10},
+    major grid style = {line width=.2pt,draw=gray!50},
+    axis line style = {-&gt;},
+    ]
+\end{axis}</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./axis3.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 19：axis 環境範例</figcaption>
+</figure>
+</div>
+</section>
+<section id="繪製網格與座標軸的注意事項" class="level3">
+<h3 class="anchored" data-anchor-id="繪製網格與座標軸的注意事項">繪製網格與座標軸的注意事項</h3>
+<p>用 TikZ 繪製網格和座標軸時，有幾點需要特別注意：</p>
+<ol type="1">
+<li><p>網格與刻度的密度: 網格與刻度太密會讓圖形看起來很擁擠，太稀疏則可能不夠精確。</p></li>
+<li><p>顏色的選擇: 網格和座標軸的顏色不應該太突兀，通常我們會選擇淺灰色或淺藍色會比較合適。</p></li>
+<li><p>座標範圍: 根據你要展示的內容來選擇合適的座標範圍。範圍太大會浪費空間，太小則可能無法完整顯示你想要展示的內容。</p></li>
+<li><p>標籤的大小和位置: 確保軸的標籤不要被其他元素擋住。</p></li>
+</ol>
+</section>
+</section>
+<section id="標示點與新增文字" class="level2">
+<h2 class="anchored" data-anchor-id="標示點與新增文字">標示點與新增文字</h2>
+<p>我們在繪製圖形時，有時需要標示特定的點並新增字說明，從而讓讀者更加清楚地圖形中的關鍵部分。例如，在散佈圖中，我們可以標示出極端值，並附上簡短的文字說明，以便讀者能夠快速識別和理解該點所具有的特殊統計意涵；在折線圖中，我們可以標註出重要的轉折點或峰值，並加入相關的注釋，以解釋這些轉折點可能代表的現象或趨勢。</p>
+<section id="新增標示點" class="level3">
+<h3 class="anchored" data-anchor-id="新增標示點">新增標示點</h3>
+<p>在 TikZ 中，<code>\filldraw</code> 指令可以用於同時填充和描繪出一個形狀。而當我們將其用於標示點時，通常會用作繪製實心圓點。<code>\filldraw</code> 的基本語法為</p>
+<pre><code>\filldraw[選項] (x, y) circle (半徑長度);</code></pre>
+<p>例如，要在座標 <span class="math inline">\((2,3)\)</span> 處繪製一個黑色實心點，可以使用：</p>
+<pre><code>\filldraw (2,3) circle (1pt);</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./point.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 20：在 <span class="math inline">\((2, 3)\)</span> 的標示點</figcaption>
+</figure>
+</div>
+</section>
+<section id="新增文字" class="level3">
+<h3 class="anchored" data-anchor-id="新增文字">新增文字</h3>
+<p>在 TikZ 中，<code>node</code> 是用於新增文字標籤的工具，其基本語法為：</p>
+<pre><code>\node[選項] at (x, y) {文字內容};</code></pre>
+<p>node 這個字的中文可以翻譯成節點，上面這段程式碼的意思是將節點<strong>放置在</strong>特定座標點上，因此使用 <code>at</code>。注意到文字內容可以是簡單的文字，也可以是行內的數學模式，通常來說文字標籤不會超過兩行，因此盡量避免讓文字內容太長而影響閱讀。</p>
+<p>而 <code>\node</code> 的選項包含以下幾個：</p>
+<p>以下是調整後的表格，將每 22 個選項換欄：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 31%">
+<col style="width: 18%">
+<col style="width: 31%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>選項</th>
+<th>說明</th>
+<th>選項</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>anchor</code></td>
+<td>設定節點錨點的位置，例如 <code>north</code>, <code>south east</code> 等等。</td>
+<td><code>text</code></td>
+<td>指定節點中的文字。</td>
+</tr>
+<tr class="even">
+<td><code>at</code></td>
+<td>設定節點的具體位置，通常與 <code>(x, y)</code> 座標配合使用。</td>
+<td><code>text width</code></td>
+<td>設定節點中文字的最大寬度。</td>
+</tr>
+<tr class="odd">
+<td><code>above</code></td>
+<td>在當前位置上方放置節點。</td>
+<td><code>align</code></td>
+<td>設定文字的對齊方式，例如 <code>left</code>, <code>right</code>, <code>center</code>。</td>
+</tr>
+<tr class="even">
+<td><code>below</code></td>
+<td>在當前位置下方放置節點。</td>
+<td><code>font</code></td>
+<td>設定文字的字體和大小。</td>
+</tr>
+<tr class="odd">
+<td><code>left</code></td>
+<td>在當前位置左側放置節點。</td>
+<td><code>draw</code></td>
+<td>繪製節點邊框。</td>
+</tr>
+<tr class="even">
+<td><code>right</code></td>
+<td>在當前位置右側放置節點。</td>
+<td><code>fill</code></td>
+<td>填充節點背景色。</td>
+</tr>
+<tr class="odd">
+<td><code>below left</code></td>
+<td>在當前位置左下方放置節點。</td>
+<td><code>rounded corners</code></td>
+<td>設定節點的邊框為圓角矩形。</td>
+</tr>
+<tr class="even">
+<td><code>below right</code></td>
+<td>在當前位置右下方放置節點。</td>
+<td><code>minimum width</code></td>
+<td>設定節點的最小寬度。</td>
+</tr>
+<tr class="odd">
+<td><code>above left</code></td>
+<td>在當前位置左上方放置節點。</td>
+<td><code>minimum height</code></td>
+<td>設定節點的最小高度。</td>
+</tr>
+<tr class="even">
+<td><code>above right</code></td>
+<td>在當前位置右上方放置節點。</td>
+<td><code>inner sep</code></td>
+<td>設定節點內部與邊框之間的間距。</td>
+</tr>
+<tr class="odd">
+<td><code>circle</code></td>
+<td>將節點設為圓形。</td>
+<td><code>outer sep</code></td>
+<td>設定節點外部與其他對象之間的間距。</td>
+</tr>
+<tr class="even">
+<td><code>rectangle</code></td>
+<td>將節點設為矩形。</td>
+<td><code>opacity</code></td>
+<td>設定節點的透明度。</td>
+</tr>
+<tr class="odd">
+<td><code>text</code></td>
+<td>指定節點中的文字。</td>
+<td><code>node distance</code></td>
+<td>設定節點之間的距離，通常在 <code>matrix</code> 或 <code>graph</code> 環境中使用。</td>
+</tr>
+<tr class="even">
+<td><code>text width</code></td>
+<td>設定節點中文字的最大寬度。</td>
+<td><code>xshift</code></td>
+<td>在 <span class="math inline">\(x\)</span> 軸方向上移動節點的位置。</td>
+</tr>
+<tr class="odd">
+<td><code>align</code></td>
+<td>設定文字的對齊方式，例如 <code>left</code>, <code>right</code>, <code>center</code>。</td>
+<td><code>yshift</code></td>
+<td>在 <span class="math inline">\(y\)</span> 軸方向上移動節點的位置。</td>
+</tr>
+<tr class="even">
+<td><code>font</code></td>
+<td>設定文字的字體和大小。</td>
+<td><code>rotate</code></td>
+<td>旋轉節點一定角度。</td>
+</tr>
+<tr class="odd">
+<td><code>draw</code></td>
+<td>繪製節點邊框。</td>
+<td><code>scale</code></td>
+<td>縮放節點。</td>
+</tr>
+<tr class="even">
+<td><code>fill</code></td>
+<td>填充節點背景色。</td>
+<td><code>label</code></td>
+<td>為節點添加標籤。</td>
+</tr>
+<tr class="odd">
+<td><code>rounded corners</code></td>
+<td>設定節點的邊框為圓角矩形。</td>
+<td><code>name</code></td>
+<td>為節點指令，以便在其他地方引用。</td>
+</tr>
+<tr class="even">
+<td><code>minimum width</code></td>
+<td>設定節點的最小寬度。</td>
+<td><code>pos</code></td>
+<td>設定節點相對於路徑的位置，例如 <code>0.5</code> 表示路徑的中點。</td>
+</tr>
+<tr class="odd">
+<td><code>minimum height</code></td>
+<td>設定節點的最小高度。</td>
+<td><code>inner sep</code></td>
+<td>設定節點內部與文字之間的間距。</td>
+</tr>
+<tr class="even">
+<td><code>inner sep</code></td>
+<td>設定節點內部與邊框之間的間距。</td>
+<td><code>outer sep</code></td>
+<td>設定節點外部與其他對象之間的間距。</td>
+</tr>
+<tr class="odd">
+<td><code>outer sep</code></td>
+<td>設定節點外部與其他對象之間的間距。</td>
+<td><code>node contents</code></td>
+<td>指定節點的內容，通常用於簡化節點定義。</td>
+</tr>
+<tr class="even">
+<td><code>opacity</code></td>
+<td>設定節點的透明度。</td>
+<td><code>fit</code></td>
+<td>使節點適應指定的範圍，通常與 <code>fit</code> 圖形環境配合使用。</td>
+</tr>
+<tr class="odd">
+<td><code>node distance</code></td>
+<td>設定節點之間的距離，通常在 <code>matrix</code> 或 <code>graph</code> 環境中使用。</td>
+<td><code>text depth</code></td>
+<td>設定文字的深度，用於對齊。</td>
+</tr>
+<tr class="even">
+<td><code>xshift</code></td>
+<td>在 <span class="math inline">\(x\)</span> 軸方向上移動節點的位置。</td>
+<td><code>text height</code></td>
+<td>設定文字的高度，用於對齊。</td>
+</tr>
+<tr class="odd">
+<td><code>yshift</code></td>
+<td>在 <span class="math inline">\(y\)</span> 軸方向上移動節點的位置。</td>
+<td><code>overlay</code></td>
+<td>使節點在頁面頂層繪製。</td>
+</tr>
+<tr class="even">
+<td><code>rotate</code></td>
+<td>旋轉節點一定角度。</td>
+<td><code>auto</code></td>
+<td>自動選擇最合適的節點位置，例如對於標籤。</td>
+</tr>
+<tr class="odd">
+<td><code>scale</code></td>
+<td>縮放節點。</td>
+<td><code>anchor base west</code></td>
+<td>設定節點錨點為基線左側。</td>
+</tr>
+<tr class="even">
+<td><code>label</code></td>
+<td>為節點添加標籤。</td>
+<td><code>anchor base east</code></td>
+<td>設定節點錨點為基線右側。</td>
+</tr>
+<tr class="odd">
+<td><code>name</code></td>
+<td>為節點指令，以便在其他地方引用。</td>
+<td><code>sloped</code></td>
+<td>使節點文字沿著路徑傾斜。</td>
+</tr>
+<tr class="even">
+<td><code>pos</code></td>
+<td>設定節點相對於路徑的位置，例如 <code>0.5</code> 表示路徑的中點。</td>
+<td><code>midway</code></td>
+<td>將節點放置在路徑中間。</td>
+</tr>
+<tr class="odd">
+<td><code>inner sep</code></td>
+<td>設定節點內部與文字之間的間距。</td>
+<td><code>near start</code></td>
+<td>將節點放置在路徑的起點附近。</td>
+</tr>
+<tr class="even">
+<td><code>outer sep</code></td>
+<td>設定節點外部與其他對象之間的間距。</td>
+<td><code>near end</code></td>
+<td>將節點放置在路徑的終點附近。</td>
+</tr>
+<tr class="odd">
+<td><code>node contents</code></td>
+<td>指定節點的內容，通常用於簡化節點定義。</td>
+<td><code>fill opacity</code></td>
+<td>設定填充顏色的透明度。</td>
+</tr>
+<tr class="even">
+<td><code>fit</code></td>
+<td>使節點適應指定的範圍，通常與 <code>fit</code> 圖形環境配合使用。</td>
+<td><code>text opacity</code></td>
+<td>設定文字的透明度。</td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./node1.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 21：在 <span class="math inline">\((2, 3)\)</span> 標示字母 A</figcaption>
+</figure>
+</div>
+<p>如果說你想要在繪圖指令後面直接新增文字，方法很簡單，就是在繪圖指令中的點座標後面加上 <code>node[選項] {文字內容}</code> 即可。像是我們不使用 <code>axis</code> 環境製作出來的土炮座標軸，就可以利用此方式，加上 <span class="math inline">\(x\)</span> 軸與 <span class="math inline">\(y\)</span> 軸的標籤，並且標示出原點。</p>
+<pre><code>\draw[&lt;-&gt;] (0, 5) node[anchor=south] {$y$}--(0, 0) node[anchor=north east] {$0$} -- (5, 0) node[anchor=west] {$x$};</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./new_axis.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 22：為座標軸加上標籤</figcaption>
+</figure>
+</div>
+<p>不過這樣的寫法太長了，因此建議使用以下方式：</p>
+<pre><code>\draw[&lt;-&gt;] (0, 5) --(0, 0) -- (5, 0);
+\node[anchor=south] at (0, 5) {$y$};
+\node[anchor=north east] at (0, 0) {$0$};
+\node[anchor=west] at (5, 0) {$x$};</code></pre>
+<p>執行結果仍然是相同的。另外，我們也可以在座標點後面，使用 <code>\includegraphics[選項]{圖片路徑}</code> 來插入圖片。</p>
+</section>
+<section id="標示點與文字標籤搭配" class="level3">
+<h3 class="anchored" data-anchor-id="標示點與文字標籤搭配">標示點與文字標籤搭配</h3>
+<p>當然，我們可以將標示點與文字標籤搭配，也就是直接在標示出來的點旁邊，加上文字標籤，讓讀者更快速知道該點所具有的含義。例如，結合上面兩個程式碼，在 <span class="math inline">\((2, 3)\)</span> 上標點，並將文字 A 的錨點設定在西南方（也就是 <code>south west</code>，文字就會在東北方顯示）。</p>
+<pre><code>\draw[&lt;-&gt;] (0, 5) --(0, 0) -- (5, 0);
+\node[anchor=south] at (0, 5) {$y$};
+\node[anchor=north east] at (0, 0) {$0$};
+\node[anchor=west] at (5, 0) {$x$};
+\filldraw (2,3) circle (1pt);
+\node[anchor=south west] at (2,3) {A$(2, 3)$};</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./point_node.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 23：在 <span class="math inline">\((2, 3)\)</span> 標示字母 A</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="函數圖形" class="level2">
+<h2 class="anchored" data-anchor-id="函數圖形">函數圖形</h2>
+<p>在 TikZ 中繪製函數圖形是一個強大而靈活的功能，它允許我們直觀地展示各種數學函數。無論是簡單的線性函數，還是複雜的三角函數或指數函數，TikZ 都能夠精確地繪製出來。以下我們將深入探討如何在 TikZ 中繪製各種函數圖形。</p>
+<section id="基本概念" class="level3">
+<h3 class="anchored" data-anchor-id="基本概念">基本概念</h3>
+<p>在 TikZ 中繪製函數圖形，主要使用 <code>\draw plot</code> 指令。對於函數圖形，我們通常使用 <code>function</code> 關鍵字來直接定義數學函數，其基本語法如下所示：</p>
+<pre><code>\draw[domain=起始值:結束值] plot(\變數, {函數表達式});</code></pre>
+<p>其中： - <code>domain</code> 指定了 <span class="math inline">\(x\)</span> 軸的範圍 - <code>\變數</code> 可以是 <code>\x</code>，也可以是其他的字母 - <code>函數表達式</code> 則是你想要繪製的函數，必須使用 <code>\變數</code> 設定的值作為變數</p>
+<p>請注意，函數表達式盡量要用 <code>{}</code> 包住，避免影響到其他的指令。</p>
+</section>
+<section id="簡單函數圖形" class="level3">
+<h3 class="anchored" data-anchor-id="簡單函數圖形">簡單函數圖形</h3>
+<p>假設給定函數 <span class="math inline">\(f(x) = 1/x\)</span>，我們想要繪製它，程式碼就是：</p>
+<pre><code>\draw plot(\x, {1/\x});</code></pre>
+<p>但是！如果你直接把這個程式碼拿去執行，一定會報錯。原因是因為我們沒有指定 <span class="math inline">\(x\)</span> 軸的範圍，因此圖形大到無法顯示。所以我們必須指定其值域。而之所以會選用這個函數，是因為我們在選擇值域的時候需要注意，因為有些函數在特定點無法定義，例如此函數在 <span class="math inline">\(x = 0\)</span> 時沒有定義。所以我們需要選擇好一點的值域才能夠顯示。經過調整，筆者將範圍設定在 <span class="math inline">\([0.2, 4.5]\)</span> 之間。</p>
+<pre><code>\draw[domain=0.2:4.5] plot(\x, 1/\x);</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./function1.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 24：函數 <span class="math inline">\(f(x) = 1/x\)</span> 的圖形</figcaption>
+</figure>
+</div>
+<p>不過細心的你應該會發現到，將圖放大後，函數圖形是鋸齒狀的，或是說<strong>不平滑</strong>。為了解決這樣的狀況，我們需要使用 <code>smooth</code> 這個選項，將圖形變平滑。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./function1_smooth.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 25：函數 <span class="math inline">\(f(x) = 1/x\)</span> 的圖形（平滑版）</figcaption>
+</figure>
+</div>
+<p>以下是各種 TikZ 的 <code>plot</code> 指令最常用的數學函數指令：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>函數類型</th>
+<th>函數</th>
+<th>說明</th>
+<th>範例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>基本運算</td>
+<td><code>+</code>, <code>-</code>, <code>*</code>, <code>/</code></td>
+<td>加、減、乘、除</td>
+<td><code>\x+1</code>, <code>2*\x</code></td>
+</tr>
+<tr class="even">
+<td>指數和對數</td>
+<td><code>exp</code>, <code>ln</code>, <code>log10</code></td>
+<td>指數函數、自然對數、常用對數</td>
+<td><code>exp(\x)</code>, <code>ln(\x)</code>, <code>log10(\x)</code></td>
+</tr>
+<tr class="odd">
+<td>三角函數</td>
+<td><code>sin</code>, <code>cos</code>, <code>tan</code></td>
+<td>正弦、餘弦、正切</td>
+<td><code>sin(\x r)</code>, <code>cos(\x r)</code>, <code>tan(\x r)</code></td>
+</tr>
+<tr class="even">
+<td>反三角函數</td>
+<td><code>asin</code>, <code>acos</code>, <code>atan</code></td>
+<td>反正弦、反餘弦、反正切</td>
+<td><code>asin(\x)</code>, <code>acos(\x)</code>, <code>atan(\x)</code></td>
+</tr>
+<tr class="odd">
+<td>雙曲函數</td>
+<td><code>sinh</code>, <code>cosh</code>, <code>tanh</code></td>
+<td>雙曲正弦、雙曲餘弦、雙曲正切</td>
+<td><code>sinh(\x)</code>, <code>cosh(\x)</code>, <code>tanh(\x)</code></td>
+</tr>
+<tr class="even">
+<td>反雙曲函數</td>
+<td><code>asinh</code>, <code>acosh</code>, <code>atanh</code></td>
+<td>反雙曲正弦、反雙曲餘弦、反雙曲正切</td>
+<td><code>asinh(\x)</code>, <code>acosh(\x)</code>, <code>atanh(\x)</code></td>
+</tr>
+<tr class="odd">
+<td>絕對值</td>
+<td><code>abs</code></td>
+<td>絕對值</td>
+<td><code>abs(\x)</code></td>
+</tr>
+<tr class="even">
+<td>最大最小</td>
+<td><code>max</code>, <code>min</code></td>
+<td>最大值、最小值</td>
+<td><code>max(\x,0)</code>, <code>min(\x,1)</code></td>
+</tr>
+<tr class="odd">
+<td>向上取整和向下取整</td>
+<td><code>ceil</code>, <code>floor</code></td>
+<td>向上取整、向下取整</td>
+<td><code>ceil(\x)</code>, <code>floor(\x)</code></td>
+</tr>
+<tr class="even">
+<td>四捨五入</td>
+<td><code>round</code></td>
+<td>四捨五入到最近的整數</td>
+<td><code>round(\x)</code></td>
+</tr>
+<tr class="odd">
+<td>平方根</td>
+<td><code>sqrt</code></td>
+<td>平方根</td>
+<td><code>sqrt(\x)</code></td>
+</tr>
+<tr class="even">
+<td>次方</td>
+<td><code>pow</code></td>
+<td>冪函數</td>
+<td><code>pow(\x,2)</code> (即 <span class="math inline">\(x^{2}\)</span>)</td>
+</tr>
+<tr class="odd">
+<td>模運算</td>
+<td><code>mod</code></td>
+<td>取餘數</td>
+<td><code>mod(\x,2)</code></td>
+</tr>
+<tr class="even">
+<td>符號函數</td>
+<td><code>sign</code></td>
+<td>返回 -1, 0 或 1</td>
+<td><code>sign(\x)</code></td>
+</tr>
+<tr class="odd">
+<td>隨機數</td>
+<td><code>rand</code></td>
+<td>生成 0 到 1 之間的隨機數</td>
+<td><code>rand</code></td>
+</tr>
+<tr class="even">
+<td>條件函數</td>
+<td><code>ifthenelse</code></td>
+<td>條件判斷</td>
+<td><code>ifthenelse(\x&gt;0,\x,-\x)</code></td>
+</tr>
+</tbody>
+</table>
+<p>不過在這些函數時，有幾點必須注意：</p>
+<ol type="1">
+<li><p>對於三角函數，必須加入 <code>r</code> 表示使用弧度（radians），如 <code>sin(\x r)</code>。如果不加上 <code>r</code> 的話，會將 <code>x</code> 解釋為度數，導致圖形被極度壓縮，因為 <span class="math inline">\(360^{\circ}\)</span> 只相當於 <span class="math inline">\(2\pi\)</span> 弧度。</p></li>
+<li><p>某些複雜函數可能需要載入額外的 TikZ 庫或數學庫，這等講到 TikZ 的計算功能時再說。</p></li>
+<li><p>可以使用 <code>declare function</code> 來定義自己的函數。</p></li>
+</ol>
+<p>例如我們想要畫出 <span class="math inline">\(\sin(x)\)</span> 的圖形，可以用以下程式碼：</p>
+<pre><code>\begin{tikzpicture}[domain=0:6.5]
+    \draw[-&gt;] (0, 0) -- (6.5,0) node[right] {$x$};
+    \draw[-&gt;] (0,-1.2) -- (0,4.2) node[above] {$y$};
+    \draw[smooth] plot (\x,{sin(\x r)});
+\end{tikzpicture}</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./sinx.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 26：正弦函數</figcaption>
+</figure>
+</div>
+<p>此範例中，我們可以看到，值域的設定也可以在 <code>tikzpicture</code> 的選項中指定。</p>
+</section>
+<section id="繪製自定義數學函數" class="level3">
+<h3 class="anchored" data-anchor-id="繪製自定義數學函數">繪製自定義數學函數</h3>
+<p>在 TikZ 中，如果想要讓程式碼變得簡潔、乾淨，可以使用 <code>declare function</code> 幫助我們建立自定義函數。其語法為：</p>
+<pre><code>\tikzset{declare function={
+    函數名(參數1, 參數2,...) = 函數定義;
+}}</code></pre>
+<p>例如，我們可以定義一個簡單的二次函數：</p>
+<pre><code>\tikzset{declare function={
+    parabola(\x)=\x*\x;
+}}</code></pre>
+<p>此函數名稱就是 <code>parabola</code>，接著使用這個函數：</p>
+<pre><code>\draw[-&gt;] (-2.5, 0) -- (2.5, 0) node[right] {$x$};
+\draw[-&gt;] (0, -1) -- (0,4.2) node[above] {$y$};
+\draw[domain=-2:2] plot (\x, {parabola(\x)});</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./parabola_fcn.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 26：二次函數</figcaption>
+</figure>
+</div>
+<p>我們也可以在函數中定義多個參數，例如定義函數 <span class="math inline">\(f(x) = ax + b\)</span>：</p>
+<pre><code>\tikzset{declare function={
+    linear_func(\x,\a,\b)=\a*\x+\b;
+}}</code></pre>
+<p>接著使用函數：</p>
+<pre><code>\draw[-&gt;] (0, 0) -- (4, 0) node[right] {$x$};
+\draw[-&gt;] (0, 0) -- (0, 5) node[above] {$y$};
+\draw[domain=0:2] plot (\x, {linear_func(\x, 1.5, 1)}) node[anchor=south west] {$f(x) = 1.5x + 1$};</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./linear_fcn.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 27：線性函數</figcaption>
+</figure>
+</div>
+<p>此外，我們也可以使用條件判斷來定義函數。例如以下定義函數 <span class="math inline">\(f(x) = |x|\)</span>：</p>
+<pre><code>\tikzset{declare function={
+        abs_func(\x)=ifthenelse(\x&lt;0,-\x,\x);
+}}</code></pre>
+<p>用數學表達就是：</p>
+<p><span class="math display">\[
+f(x) =
+\begin{cases}
+-x, \quad&amp;\text{if } x &lt; 0\\
+x,
+\quad&amp;\text{if } x \geq 0
+\end{cases}
+\]</span></p>
+<pre><code>\draw[-&gt;] (-3, 0) -- (3, 0) node[right] {$x$};
+\draw[-&gt;] (0, 0) -- (0, 4) node[above] {$y$};
+\draw[domain=-2:2, smooth] plot ({\x},{abs_func(\x)}) node[anchor=south west] {$f(x) = |x|$};</code></pre>
+</section>
+</section>
+</section>
+<section id="圖形控制" class="level1">
+<h1>圖形控制</h1>
+<p>在接下來的一小節，將介紹如何使用 TikZ 進行圖形的控制和變換操作。</p>
+<section id="顏色填充與陰影" class="level2">
+<h2 class="anchored" data-anchor-id="顏色填充與陰影">顏色、填充與陰影</h2>
+<p>之前在<a href="https://xiaolong70701.github.io/blog/posts/2024-07-10-latex-setting-advanced/#%E9%A1%8F%E8%89%B2">LaTeX 教學系列：進階設定</a>中，有提到顏色如何設定，以及使用 <code>xcolor</code> 根據不同色彩模式定義顏色。</p>
+<p>TikZ 原本就提供了一些基本顏色，如紅、綠、藍、黃、黑、白等。使用這些顏色非常簡單，就是在選項中打上顏色名稱即可。例如我們可以繪製一個藍色的方塊：</p>
+<pre><code>\fill[blue] (0, 0) rectangle (4, 4);</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./blue_square.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 28：藍色矩形</figcaption>
+</figure>
+</div>
+<p>此外，我們也可以使用 <code>\filldraw</code> 指令，其語法為 <code>\filldraw[draw=顏色,fill=顏色]</code>，其中 <code>draw</code> 選項控制外框顏色，<code>fill</code> 則是內部顏色。</p>
+<p>此外，我們也可以使用之前文章學到的混色技巧進行混色，在此就不贅述。</p>
+<section id="調整透明度" class="level3">
+<h3 class="anchored" data-anchor-id="調整透明度">調整透明度</h3>
+<p>如果你想要增加透明度，就在選項中使用 <code>opacity=透明度</code> 即可，其中透明度為介於 0 到 1 的數字。例如我們可以繪製兩個半透明的重疊矩形：</p>
+<pre><code>\fill[red,opacity=0.5] (0, 0) rectangle (1,1);
+\fill[blue,opacity=0.5] (0.5,0.5) rectangle (1.5,1.5);</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./two_square.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 29：兩個半透明的重疊矩形</figcaption>
+</figure>
+</div>
+</section>
+<section id="顏色漸層" class="level3">
+<h3 class="anchored" data-anchor-id="顏色漸層">顏色漸層</h3>
+<p>我們可以設定一個圖形顏色為漸層式，第一種方式是利用 <code>\shade</code> 取代 <code>\draw</code> 指令來繪製圖形，語法為</p>
+<pre><code>\shade[方向 1 color=左側顏色, 方向 2 color=右側顏色] 繪圖指令;</code></pre>
+<p>例如我們繪製一個由左至右從紅色漸層到藍色的長方形：</p>
+<pre><code>\shade[left color=red, right color=blue] (0, 0) rectangle (2,1);</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./color_gradient1.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 30：由左至右從紅色漸層到藍色的長方形</figcaption>
+</figure>
+</div>
+<p>第二種方式則是用 <code>\fill</code> 指令，語法與上述相同：</p>
+<pre><code>\fill[方向 1 color=左側顏色, 方向 2 color=右側顏色] 繪圖指令;</code></pre>
+<p>這次我們繪製一個由上至下從紅色漸層到藍色的長方形：</p>
+<pre><code>\fill[top color=red, bottom color=blue] (0, 0) rectangle (2, 1);</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./color_gradient2.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 31：由上至下從紅色漸層到藍色的長方形</figcaption>
+</figure>
+</div>
+</section>
+<section id="樣式填充" class="level3">
+<h3 class="anchored" data-anchor-id="樣式填充">樣式填充</h3>
+<p>上面我們已經提到可以使用 <code>\fill</code> 指令來填充圖形的顏色，如果想要用其他樣式來填充圖形的話，我們要使用 <code>patterns</code> 庫。首先載入該庫：</p>
+<pre><code>\usetikzlibrary{patterns}</code></pre>
+<p>接著在 <code>\fill</code> 的選項裡面，用 <code>pattern=樣式</code> 來指定填充樣式。以下是參考自<a href="https://tikz.dev/library-patterns">Pattern Library</a>整理出來的樣式：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 25%">
+<col style="width: 35%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>圖案名稱</th>
+<th>描述</th>
+<th>圖案名稱</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>horizontal lines</td>
+<td>水平線條</td>
+<td>checkerboard light gray</td>
+<td>淺灰棋盤格</td>
+</tr>
+<tr class="even">
+<td>vertical lines</td>
+<td>垂直線條</td>
+<td>horizontal lines light gray</td>
+<td>淺灰水平線條</td>
+</tr>
+<tr class="odd">
+<td>north east lines</td>
+<td>東北方向斜線</td>
+<td>horizontal lines gray</td>
+<td>灰色水平線條</td>
+</tr>
+<tr class="even">
+<td>north west lines</td>
+<td>西北方向斜線</td>
+<td>horizontal lines dark gray</td>
+<td>深灰水平線條</td>
+</tr>
+<tr class="odd">
+<td>grid</td>
+<td>網格</td>
+<td>horizontal lines light blue</td>
+<td>淺藍水平線條</td>
+</tr>
+<tr class="even">
+<td>crosshatch</td>
+<td>交叉線條</td>
+<td>horizontal lines dark blue</td>
+<td>深藍水平線條</td>
+</tr>
+<tr class="odd">
+<td>dots</td>
+<td>點狀</td>
+<td>crosshatch dots gray</td>
+<td>灰色交叉點線條</td>
+</tr>
+<tr class="even">
+<td>crosshatch dots</td>
+<td>交叉線條加點</td>
+<td>crosshatch dots light steel blue</td>
+<td>淺鋼藍交叉點線條</td>
+</tr>
+<tr class="odd">
+<td>fivepointed stars</td>
+<td>五角星</td>
+<td>sixpointed stars</td>
+<td>六角星</td>
+</tr>
+<tr class="even">
+<td>bricks</td>
+<td>磚塊</td>
+<td>checkerboard</td>
+<td>棋盤格</td>
+</tr>
+</tbody>
+</table>
+<p>例如我們使用棋盤方格填充：</p>
+<pre><code>\fill[pattern=checkerboard light gray] (0, 0) rectangle (2, 2);</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./grid_dense.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 32：棋盤方格填充正方形</figcaption>
+</figure>
+</div>
+<p>當然，如果你想要用圖片來填充圖形也是沒問題的，不過使用方法稍顯複雜。我們先來看一下程式碼：</p>
+<pre><code>\fill[path picture={
+    \node at (path picture bounding box.center) {
+        \includegraphics[width=.9\textwidth]{kitten.jpg}
+    };
+}] (0, 0) rectangle (3,3);</code></pre>
+<p>這段程式碼需要解釋一下：</p>
+<ul>
+<li><p><code>path picture</code>：該選項允許在填充區域內使用圖片。</p></li>
+<li><p><code>\node at (path picture bounding box.center)</code>：利用此行程式碼建立一個節點，並將其定位在填充區域的中心，而 <code>path picture bounding box.center</code> 指的就是填充區域的中心點）。</p></li>
+<li><p><code>\includegraphics[width=.9\textwidth]{kitten.jpg}</code>：這行程式碼在節點中插入了一張圖片。<code>width=.9\textwidth</code> 表示圖片的寬度設定為當前文本寬度的 90%。<code>kitten.jpg</code> 是圖片文件的名稱，你可以換成自己的圖片文件名稱。</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./kitten.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 33：用貓咪圖片填充正方形<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></figcaption>
+</figure>
+</div>
+</section>
+<section id="陰影設定" class="level3">
+<h3 class="anchored" data-anchor-id="陰影設定">陰影設定</h3>
+<p>陰影可以為圖形增加深度以及立體感，而 TikZ 提供了多種增加陰影的方法。要使用陰影，首先需要載入 <code>shadows</code> 庫：</p>
+<pre><code>\usetikzlibrary{shadows}</code></pre>
+<p>接著就可以為圖形增加陰影。而 <code>shadows</code> 庫總共有三種陰影效果，分別是投影陰影（drop shadow）、copy shadow（複製陰影）與 circular drop shadow（圓形投影陰影）。</p>
+<section id="投影陰影" class="level4">
+<h4 class="anchored" data-anchor-id="投影陰影">投影陰影</h4>
+<p>投影陰影看起來像是物體在一側投射的陰影，通常是向右下方投影。陰影的位置可以調整，以模擬不同方向的光源效果。例如我們可以繪製出兩個相交的圓，並且增加陰影：</p>
+<pre><code>\begin{tikzpicture}[even odd rule]
+    \filldraw [drop shadow,fill=white] (0, 0) circle (.5) (0.5,0) circle (.5);
+\end{tikzpicture}</code></pre>
+<p>注意到此處使用 <code>even odd rule</code> 選項，用於告訴 TikZ 使用<strong>奇偶規則</strong>來填充區域：根據奇偶規則，兩個圓重疊的部分將不會被填充，因為射線會兩次穿過重疊區域的邊界（偶數次），代表它是外部區域。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./two_circ_shaded.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 34：兩重疊圓與陰影</figcaption>
+</figure>
+</div>
+<p>我們也可以自定義陰影的顏色、偏移和模糊程度，使用方法是 <code>drop shadow={選項 1, 選項 2, ...}</code>，這些選項都可以使用上面的內容進行設定。</p>
+</section>
+<section id="複製陰影" class="level4">
+<h4 class="anchored" data-anchor-id="複製陰影">複製陰影</h4>
+<p>複製陰影則是將圖形複製一個偏移位置，並且填充為陰影顏色，這樣就可以創造出一個明確的陰影輪廓，讓圖形顯得更加立體。</p>
+<pre><code>\node[copy shadow,
+      fill=blue!20,
+      draw=blue,
+      thick
+] {Hello World!};</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./copy_shadow.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 34：複製陰影</figcaption>
+</figure>
+</div>
+</section>
+<section id="圓形投影陰影" class="level4">
+<h4 class="anchored" data-anchor-id="圓形投影陰影">圓形投影陰影</h4>
+<p>圓形投影陰影通常是用於圓形或圓角矩形等圖形。陰影圍繞著圖形的周邊，並且具有圓滑的邊緣。</p>
+<pre><code>\node[draw, 
+      circular drop shadow={color=gray!20}
+] {Circular drop shadow};</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./circ_shadow.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 35：圓形投影陰影</figcaption>
+</figure>
+</div>
+</section>
+</section>
+</section>
+<section id="圖形變換" class="level2">
+<h2 class="anchored" data-anchor-id="圖形變換">圖形變換</h2>
+<p>我們可以對圖形進行各種變換操作，例如縮放（scale）、平移（shift）、傾斜（slant）、旋轉（rotate）以及繞特定點旋轉（rotate around）等。需要注意的是，如果同時使用兩個以上的操作，這些操作的順序會影響最終結果。以下我們將以正方形為例，讓我們看看如何對其進行上述變換。</p>
+<p>首先，畫一個正方形：</p>
+<pre><code>\draw (0, 0) rectangle (2, 2);</code></pre>
+<p>接著就可以開始處理這個正方形了。</p>
+<section id="平移變換" class="level3">
+<h3 class="anchored" data-anchor-id="平移變換">平移變換</h3>
+<p>我們在選項中使用 <code>shift={(x, y)}</code> 進行平移變換，言下之意就是將繪圖的頂點平移到指定的座標點上，此例中正方形的頂點是 <span class="math inline">\((0, 0)\)</span>。</p>
+<pre><code>\draw (0, 0) rectangle (2, 2);
+\draw[shift ={(3, 0)}] (0, 0) rectangle (2, 2);
+\draw[shift ={(0, 3)}] (0, 0) rectangle (2, 2);
+\draw[shift ={(0, -3)}] (0, 0) rectangle (2, 2);
+\draw[shift ={(-3, 0)}] (0, 0) rectangle (2, 2);
+\draw[shift ={(3, 3)}] (0, 0) rectangle (2, 2);
+\draw[shift ={(-3, 3)}] (0, 0) rectangle (2, 2);
+\draw[shift ={(3, -3)}] (0, 0) rectangle (2, 2);
+\draw[shift ={(-3, -3)}] (0, 0) rectangle (2, 2);</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./shift_squares.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 36：平移變換</figcaption>
+</figure>
+</div>
+<p>此外，我們可以指定平移方向以及平移的距離，<code>xshift</code> 用來水平平移，而 <code>yshift</code> 則是垂直平移，並於其後加上指定距離，例如 <code>xshift=2pt</code> 就可以將圖形水平移動 2pt。</p>
+<pre><code>\draw (0, 0) rectangle (2, 2);
+\draw[xshift=100pt] (0, 0) rectangle (2, 2);
+\draw[xshift=-100pt] (0, 0) rectangle (2, 2);
+\draw[yshift=100pt] (0, 0) rectangle (2, 2);
+\draw[yshift=-100pt] (0, 0) rectangle (2, 2);</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./xyshift_squares.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 37：水平與垂直平移變換</figcaption>
+</figure>
+</div>
+</section>
+<section id="縮放變換" class="level3">
+<h3 class="anchored" data-anchor-id="縮放變換">縮放變換</h3>
+<p>如果想要將圖形<strong>等比例縮放</strong>，我們使用 <code>scale=a</code> 來處理，其中 <code>a</code> 是縮放 <span class="math inline">\(a\)</span> 倍的意思，若 <span class="math inline">\(a &gt; 1\)</span> 代表放大，<span class="math inline">\(a &lt; 1\)</span> 則是縮小，<span class="math inline">\(a = 1\)</span> 則是維持不變。</p>
+<pre><code>\draw (0, 0) rectangle (2, 2);
+\draw[shift={(3, 0)},scale=1.5] (0, 0) rectangle (2, 2);
+\draw[shift={(-2, 0)},scale=0.5] (0, 0) rectangle (2, 2);</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./scale_squares.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 38：水平與垂直平移變換</figcaption>
+</figure>
+</div>
+<p>同樣地，我們可以進行水平與垂直縮放，使用 <code>xscale=a</code> 與 <code>yscale=a</code></p>
+<pre><code>\draw (0, 0) rectangle (2, 2);
+\draw[xshift=100pt, xscale=1.5] (0, 0) rectangle (2, 2);
+\draw[xshift=-100pt, xscale=0.5] (0, 0) rectangle (2, 2);
+\draw[yshift=100pt, yscale=1.5] (0, 0) rectangle (2, 2);
+\draw[yshift =-100pt, yscale=0.5] (0, 0) rectangle (2, 2);</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./xyscale_squares.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 39：水平與垂直平移變換</figcaption>
+</figure>
+</div>
+</section>
+<section id="旋轉變換" class="level3">
+<h3 class="anchored" data-anchor-id="旋轉變換">旋轉變換</h3>
+<p>旋轉變換使用 <code>rotate=角度</code>，不過需要注意正數代表<strong>逆時針旋轉</strong>，負數才是<strong>順時針旋轉</strong>。如果沒有特別指定的話，就會是以圖形起點作為旋轉點進行旋轉。</p>
+<pre><code>\draw (0,0) rectangle (2,2);
+\draw[xshift=130pt, rotate=45] (0, 0) rectangle (2, 2);</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./rotate.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 40：旋轉變換</figcaption>
+</figure>
+</div>
+<p>如果要進行定點旋轉，則使用 <code>rotate around={角度:{x, y}}</code>，此時就會以 <span class="math inline">\((x, y)\)</span> 為軸進行旋轉。</p>
+<pre><code>\draw (0,0) rectangle (2,2);
+\draw[xshift=100pt, rotate around={45:(2, 2)}] (0, 0) rectangle (2, 2);</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./rotate_fixed.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 41：定點旋轉</figcaption>
+</figure>
+</div>
+</section>
+<section id="傾斜變換" class="level3">
+<h3 class="anchored" data-anchor-id="傾斜變換">傾斜變換</h3>
+<p>傾斜變換的方式僅有水平與垂直傾斜變換，語法為 <code>xslant=a</code> 與 <code>yslant=a</code>，此處的 <code>a</code> 與上面相同。</p>
+<pre><code>\draw (0, 0) rectangle (2, 2);
+\draw[xshift=100pt, xslant=1] (0, 0) rectangle (2, 2);
+\draw[xshift=-100pt, yslant=1] (0, 0) rectangle (2, 2);</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./slant.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 42：傾斜變換</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="覆蓋圖層" class="level2">
+<h2 class="anchored" data-anchor-id="覆蓋圖層">覆蓋圖層</h2>
+<p>圖層（layers）是一種組織和控制圖形與元素顯示順序的方法，在各種繪圖軟體都會出現。使用圖層可以將不同的繪圖元素放在不同的層上，確保重要的元素不會被擋住。圖層的定義和順序設定允許使用者指定哪些元素應該位於頂層（最前面）或底層（最後面）。</p>
+<p>設定圖層的方式，我們首先必須載入 <code>backgrounds</code> 庫：</p>
+<pre><code>\usetikzlibrary{backgrounds}</code></pre>
+<p>接著利用 <code>\pgfdeclarelayer</code> 定義圖層，使用 <code>\pgfsetlayers</code> 設定順序，並在 <code>pgfonlayer</code> 環境中使用圖層。直接看範例：</p>
+<pre><code>\begin{tikzpicture}
+    % 定義圖層
+    \pgfdeclarelayer{background}
+    \pgfdeclarelayer{foreground}
+    % 設定圖層順序為背景➡️主圖層➡️前圖層
+    \pgfsetlayers{background, main, foreground}
+    
+    % 在背景圖層上繪製
+    \begin{pgfonlayer}{background}
+        \draw[fill=blue!20] (0, 0) rectangle (4, 4);
+    \end{pgfonlayer}
+    
+    % 在主圖層上繪製
+    \draw[fill=green!20] (1, 1) rectangle (3, 3);
+    
+    % 在前圖層上繪製
+    \begin{pgfonlayer}{foreground}
+        \draw[fill=red!20] (2, 2) circle (1cm);
+    \end{pgfonlayer}
+\end{tikzpicture}</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./layers.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 43：圖層</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="進階功能" class="level1">
+<h1>進階功能</h1>
+<p>接著就是 TikZ 的一些進階功能。以下文章內容稍微複雜一點，建議等頭腦清醒一點時再閱讀。</p>
+<section id="樣式設定" class="level2">
+<h2 class="anchored" data-anchor-id="樣式設定">樣式設定</h2>
+<p>如果我們想要將特定範圍的 TikZ 圖形進行樣式調整，可以使用 <code>\tikzset</code> 指令來處理。<code>tikzset</code> 指令用來定義繪圖元素的樣式，可以設定顏色、線型、箭頭、節點樣式等。這些樣式定義可以在後續的 TikZ 繪圖指令中使用，保持圖形的統一性，但請注意，如果在前言區或 <code>tikzpicture</code> 環境外面設定，則會變成全域設定，因此使用上請小心擺放位置。</p>
+<p>另外，我們可以使用 <code>/.style</code> 指令，將這些屬性打包成一個指令的樣式，然後在需要的地方使用自己命名的樣式，不必每次都重複設定相同的屬性。樣式設定通常包含在花括號 <code>{}</code> 中，並且可以設定多個屬性，屬性之間用逗號 <code>,</code> 分隔。</p>
+<p>因此，具體來說，<code>\tikzset</code> 的語法如下：</p>
+<pre><code>\tikzset{樣式名稱/.style={樣式 1, 樣式 2, ...}}</code></pre>
+<p>例如我們可以設定以下樣式，並命名為 <code>my style</code>：</p>
+<pre><code>\tikzset{my style/.style={draw=blue, thick, fill=yellow}}</code></pre>
+<p>接著就可以在選項中使用它：</p>
+<pre><code>\draw[my style] (0, 0) rectangle (2, 2);
+\draw[my style] (4, 0) circle (1);</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./tikzset.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 44：圖層</figcaption>
+</figure>
+</div>
+<p>此外我們也可以先分開設定樣式，最後再將這些樣式打包起來：</p>
+<pre><code>\tikzset{
+    base style/.style={draw=black, thick},
+    fill style/.style={fill=green!30},
+    combined style/.style={base style, fill style}
+}</code></pre>
+</section>
+<section id="計算功能" class="level2">
+<h2 class="anchored" data-anchor-id="計算功能">計算功能</h2>
+<p>有時我們可能不確定某些點在哪裡，但是可能知道那個點可以透過何種數學函數求得，此時就可以利用 TikZ 的計算功能來處理。</p>
+<section id="不使用任何庫" class="level3">
+<h3 class="anchored" data-anchor-id="不使用任何庫">不使用任何庫</h3>
+<p>TikZ 可以允許使用者在座標和長度中進行基本的算術運算，如加、減、乘、除。這些運算可以直接在 TikZ 指令中使用，無需載入額外的庫。例如</p>
+<pre><code>\draw (0,0) -- (2+3,4-1);</code></pre>
+<p>這樣就可以繪製出 <span class="math inline">\((0, 0)\)</span> 與 <span class="math inline">\((5, 3)\)</span> 的直線。此外，我們可以使用數學表達式來求出點的位置：</p>
+<pre><code>\draw (0, 0) -- ({2*cos(30)}, {2*sin(30)});</code></pre>
+<p>這樣就可以繪製一條從原點到極座標 <span class="math inline">\((2,30^{\circ})\)</span> 的線段。</p>
+</section>
+<section id="calc-庫" class="level3">
+<h3 class="anchored" data-anchor-id="calc-庫">calc 庫</h3>
+<p><code>calc</code> 庫是 TikZ 的一個強大拓展庫，提供了更多的計算功能，使得在繪圖過程中進行複雜計算變得更加容易。首先我們先載入此庫：</p>
+<pre><code>\usetikzlibrary{calc}</code></pre>
+<p><code>calc</code> 庫最特別的地方在於我們可以為每個座標點<strong>取名字</strong>，我們使用 <code>\coordinate (名稱) at (x, y);</code> 來將 <span class="math inline">\((x, y)\)</span> 指令。此外，我們可以使用各種計算表達式來處理，並需要將表達式放在 <code>$()$</code> 中。</p>
+<section id="座標計算" class="level4">
+<h4 class="anchored" data-anchor-id="座標計算">座標計算</h4>
+<p>假設我們指定兩點 <span class="math inline">\(A(1, 1)\)</span> 與 <span class="math inline">\(B(4, 3)\)</span>，接著我們可以用簡單的計算，繪製出一條從 <span class="math inline">\((3, 3)\)</span> 到 <span class="math inline">\((3, 2)\)</span> 的線段：</p>
+<pre><code>\begin{tikzpicture}
+    \coordinate (A) at (1, 1);
+    \coordinate (B) at (4, 3);
+    \draw ($(A)+(2, 2)$) -- ($(B)-(1, 1)$);
+\end{tikzpicture}</code></pre>
+</section>
+<section id="計算中點" class="level4">
+<h4 class="anchored" data-anchor-id="計算中點">計算中點</h4>
+<p>利用 <code>calc</code> 庫，我們可以計算出兩點之間的中點。例如指定兩點 <span class="math inline">\(A(0, 0)\)</span> 與 <span class="math inline">\(B(4, 4)\)</span>，透過國中的數學知識，就可以輕易算出兩點的中點為 <span class="math inline">\(M(2, 2)\)</span>。而計算中點的方式為</p>
+<pre><code>(A)!0.5!(B)</code></pre>
+<p>意即計算點 <span class="math inline">\(A\)</span> 與點 <span class="math inline">\(B\)</span> 之間一半的距離。以下就是範例程式碼：</p>
+<pre><code>\begin{tikzpicture}
+    \coordinate (A) at (0, 0);
+    \coordinate (B) at (4, 4);
+    \coordinate (M) at ($(A)!0.5!(B)$);
+    \draw (A) -- (B);
+    \fill (M) circle (1pt);
+\end{tikzpicture}</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./midpoint.svg" class="img-fluid figure-img" style="width:40.0%" data-fig.align="center"></p>
+<figcaption>圖 45：利用 <code>calc</code> 庫計算中點</figcaption>
+</figure>
+</div>
+</section>
+</section>
+</section>
+<section id="流程控制" class="level2">
+<h2 class="anchored" data-anchor-id="流程控制">流程控制</h2>
+<p>相信讀到這邊的你應該累了，不只是因為閱讀文字疲累，或許是因為一直不斷標點感到倦怠，因此可能會想要來點簡單輕鬆的方式標點。對於這種重複性標點的工作，TikZ 提供了 <code>foreach</code>，它是一個非常有用的工具，允許使用者重複執行一系列的繪圖指令，對於繪製規則的模式或繪製多個相似的圖形，以及生成數據可視化時特別有用。<code>foreach</code> 可以大大減少程式碼的重複，使得程式碼更加簡潔。</p>
+<p><code>foreach</code> 的基本語法為</p>
+<pre><code>\foreach \變數 in {值列表} {
+    指令
+}</code></pre>
+<p>在這裡，<code>\變數</code> 是一個我們定義的變數名，通常使用單個字母如 <code>\i</code> 或 <code>\x</code>，值列表則是我們想要迭代的值，而指令是我們希望對每個值所執行的 TikZ 指令。</p>
+<p>假設我們想在一條直線上畫五個等距的點。我們可以這樣做：</p>
+<pre><code>\foreach \x in {0, 1, 2, 3, 4}
+{
+    \fill (\x, 0) circle (1pt);
+}</code></pre>
+<p>這段程式碼會在 <span class="math inline">\(x\)</span> 軸上從 0 到 4 的位置畫出五個小圓點。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./five_points.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 46：用 <code>foreach</code> 繪製五個小圓點</figcaption>
+</figure>
+</div>
+<p>而我們也可以指定步長，也就是每一個循環的值之間的公差是多少：</p>
+<pre><code>\foreach \x in {0, 0.5,..., 2}
+{
+    \draw (\x, 0) circle (0.1);
+}</code></pre>
+<p>這樣就可以畫出五個小圓點，<span class="math inline">\(x\)</span> 座標分別為 0、0.5、1、1.5 和 2。<code>foreach</code> 還可以同時使用多個變數，對於在網格繪製或其他複雜結構時非常有用。</p>
+<pre><code>\foreach \x in {0, 1, 2} \foreach \y in {0, 1, 2}
+{
+    \fill (\x, \y) circle (2pt);
+}</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./bit.svg" class="img-fluid figure-img" style="width:50.0%" data-fig.align="center"></p>
+<figcaption>圖 47：用 <code>foreach</code> 繪製點陣</figcaption>
+</figure>
+</div>
+<p>我們可以將 <code>foreach</code> 搭配節點與文字標籤進行使用：</p>
+<pre><code>\foreach \x/\y/\name in {0/0/A, 1/1/B, 2/0/C, 3/1/D, 4/0/E} {
+    \node[draw, circle] (\name) at (\x,\y) {\name};
+}
+
+\foreach \source/\dest in {A/B, B/C, C/D, D/E} {
+    \draw[-&gt;] (\source) -- (\dest);
+}</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./order.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 48：用 <code>foreach</code> 繪製一個順序圖</figcaption>
+</figure>
+</div>
+<p>甚至可以畫出一個時鐘：</p>
+<pre><code>\begin{tikzpicture}[line cap=round,line width=3pt]
+    \filldraw [fill=yellow!80!black] (0,0) circle (2cm);
+
+    \foreach \angle / \label in
+    {0/3, 30/2, 60/1, 90/12, 120/11, 150/10, 180/9,
+     210/8, 240/7, 270/6, 300/5, 330/4}
+    {
+    \draw[line width=1pt] (\angle:1.8cm) -- (\angle:2cm);
+    \draw (\angle:1.4cm) node{\textsf{\label}};
+    }
+    
+    \foreach \angle in {0,90,180,270}
+    \draw[line width=2pt] (\angle:1.6cm) -- (\angle:2cm);
+    
+    \draw (0,0) -- (120:0.8cm); % 時針指向
+    \draw (0,0) -- (90:1cm);    % 分針指向
+\end{tikzpicture}%</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./clock.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 49：用 <code>foreach</code> 繪製的時鐘</figcaption>
+</figure>
+</div>
+</section>
+<section id="d-與-3d-繪圖" class="level2">
+<h2 class="anchored" data-anchor-id="d-與-3d-繪圖">2D 與 3D 繪圖</h2>
+<p>繪製 2D 與 3D 圖形，對於許多領域的使用者而言是一件非常重要的事，尤其是物理、化學、工程等領域。使用 TikZ，不僅可以幫助我們更輕易繪製 2D 與 3D 圖形，更能夠產出精美的成果。</p>
+<section id="d-繪圖" class="level3">
+<h3 class="anchored" data-anchor-id="d-繪圖">2D 繪圖</h3>
+<p>雖然之前我們繪製的圖形都是在平面上作畫，但是還是有其他方法可以繪製 2D 圖形，且更能夠精確控制圖形的外觀與樣式。</p>
+<p>2D 繪圖我們使用 <code>pgfplots</code> 庫，並使用 <code>\addplot</code> 繪製。不過我們先用表格呈現 <code>\addplot</code> 的各種選項：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 28%">
+<col style="width: 21%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>選項名稱</th>
+<th>指令</th>
+<th>選項名稱</th>
+<th>指令</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>顏色</td>
+<td><code>color=&lt;color&gt;</code></td>
+<td>樣本點數量</td>
+<td><code>samples=&lt;number&gt;</code></td>
+</tr>
+<tr class="even">
+<td>標記</td>
+<td><code>mark=&lt;marker&gt;</code></td>
+<td>樣本點數量（<span class="math inline">\(y\)</span> 軸）</td>
+<td><code>samples y=&lt;number&gt;</code></td>
+</tr>
+<tr class="odd">
+<td>平滑曲線</td>
+<td><code>smooth</code></td>
+<td>領域</td>
+<td><code>domain=&lt;range&gt;</code></td>
+</tr>
+<tr class="even">
+<td>粗細</td>
+<td><code>thick</code></td>
+<td>領域（<span class="math inline">\(y\)</span> 軸）</td>
+<td><code>y domain=&lt;range&gt;</code></td>
+</tr>
+<tr class="odd">
+<td>填充</td>
+<td><code>fill=&lt;color&gt;</code></td>
+<td>樣式</td>
+<td><code>style={&lt;style&gt;}</code></td>
+</tr>
+<tr class="even">
+<td>圓圈</td>
+<td><code>circle</code></td>
+<td>顏色映射</td>
+<td><code>colormap/&lt;map&gt;</code></td>
+</tr>
+<tr class="odd">
+<td>只顯示標記</td>
+<td><code>only marks</code></td>
+<td>繪圖名稱</td>
+<td><code>name path=&lt;name&gt;</code></td>
+</tr>
+<tr class="even">
+<td>顏色透明度</td>
+<td><code>opacity=&lt;number&gt;</code></td>
+<td>繪圖名稱（全域）</td>
+<td><code>name path global=&lt;name&gt;</code></td>
+</tr>
+<tr class="odd">
+<td>曲線連接</td>
+<td><code>const plot</code></td>
+<td>參數化繪圖變量名</td>
+<td><code>variable=&lt;name&gt;</code></td>
+</tr>
+<tr class="even">
+<td>擬合</td>
+<td><code>fit</code></td>
+<td>參數化繪圖變量名（<span class="math inline">\(y\)</span> 軸）</td>
+<td><code>variable y=&lt;name&gt;</code></td>
+</tr>
+<tr class="odd">
+<td>填充區域</td>
+<td><code>fill between</code></td>
+<td>圖例條目</td>
+<td><code>legend entries={&lt;entry&gt;}</code></td>
+</tr>
+<tr class="even">
+<td>填充選項</td>
+<td><code>every segment/.style={&lt;style&gt;}</code></td>
+<td>圖例位置</td>
+<td><code>legend pos=&lt;position&gt;</code></td>
+</tr>
+<tr class="odd">
+<td>擬合選項</td>
+<td><code>each nth point={&lt;number&gt;}</code></td>
+<td>圖例對齊</td>
+<td><code>legend cell align=&lt;alignment&gt;</code></td>
+</tr>
+<tr class="even">
+<td>標記位置</td>
+<td><code>mark phase={&lt;number&gt;}</code></td>
+<td>標籤大小樣式</td>
+<td><code>tick label style={&lt;style&gt;}</code></td>
+</tr>
+<tr class="odd">
+<td>路徑名稱</td>
+<td><code>name path={&lt;name&gt;}</code></td>
+<td>填充區域（分割）</td>
+<td><code>split</code></td>
+</tr>
+<tr class="even">
+<td>樣式</td>
+<td><code>style={&lt;style&gt;}</code></td>
+<td>填充透明度</td>
+<td><code>transparent</code></td>
+</tr>
+<tr class="odd">
+<td>極座標系統</td>
+<td><code>polar</code></td>
+<td><span class="math inline">\(z\)</span> 軸緩衝區排序</td>
+<td><code>z buffer=sort</code></td>
+</tr>
+<tr class="even">
+<td>座標系統轉換</td>
+<td><code>data cs=&lt;system&gt;</code></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>下面是一個簡單的例子，展示了如何繪製帶有標記的座標軸：</p>
+<pre><code>\begin{axis}[grid]
+    \addplot[only marks] coordinates {(-3,-2.4) (-2,0.4) (-0.4,0.4) (0.4,-0.4) (2,-0.4) (3,2.4)};
+\end{axis}</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./new_grid.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 50：帶有標記的座標軸</figcaption>
+</figure>
+</div>
+<p>利用 <code>pgfplots</code> 庫，可以對於 <code>axis</code> 環境的選項進行調整，以下是 <code>axis</code> 環境常見的選項：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 22%">
+<col style="width: 27%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>選項名稱</th>
+<th>指令</th>
+<th>選項名稱</th>
+<th>指令</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(x\)</span> 軸最小值</td>
+<td><code>xmin</code></td>
+<td><span class="math inline">\(y\)</span> 軸最小值</td>
+<td><code>ymin</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(x\)</span> 軸最大值</td>
+<td><code>xmax</code></td>
+<td><span class="math inline">\(y\)</span> 軸最大值</td>
+<td><code>ymax</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(z\)</span> 軸最小值</td>
+<td><code>zmin</code></td>
+<td><span class="math inline">\(z\)</span> 軸最大值</td>
+<td><code>zmax</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(x\)</span> 軸刻度距離</td>
+<td><code>xtick distance</code></td>
+<td><span class="math inline">\(y\)</span> 軸刻度距離</td>
+<td><code>ytick distance</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(z\)</span> 軸刻度距離</td>
+<td><code>ztick distance</code></td>
+<td><span class="math inline">\(x\)</span> 軸刻度</td>
+<td><code>xtick</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(y\)</span> 軸刻度</td>
+<td><code>ytick</code></td>
+<td><span class="math inline">\(z\)</span> 軸刻度</td>
+<td><code>ztick</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(x\)</span> 軸刻度標籤</td>
+<td><code>xticklabels</code></td>
+<td><span class="math inline">\(y\)</span> 軸刻度標籤</td>
+<td><code>yticklabels</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(z\)</span> 軸刻度標籤</td>
+<td><code>zticklabels</code></td>
+<td><span class="math inline">\(x\)</span> 軸標籤樣式</td>
+<td><code>tick label style</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(y\)</span> 軸標籤樣式</td>
+<td><code>tick label style</code></td>
+<td><span class="math inline">\(z\)</span> 軸標籤樣式</td>
+<td><code>tick label style</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(x\)</span> 軸標籤</td>
+<td><code>xlabel</code></td>
+<td><span class="math inline">\(y\)</span> 軸標籤</td>
+<td><code>ylabel</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(z\)</span> 軸標籤</td>
+<td><code>zlabel</code></td>
+<td><span class="math inline">\(x\)</span> 軸標籤樣式</td>
+<td><code>xlabel style</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(y\)</span> 軸標籤樣式</td>
+<td><code>ylabel style</code></td>
+<td><span class="math inline">\(z\)</span> 軸標籤樣式</td>
+<td><code>zlabel style</code></td>
+</tr>
+<tr class="odd">
+<td>座標軸樣式</td>
+<td><code>axis line style</code></td>
+<td>網格</td>
+<td><code>grid</code></td>
+</tr>
+<tr class="even">
+<td>網格樣式</td>
+<td><code>grid style</code></td>
+<td>標題</td>
+<td><code>title</code></td>
+</tr>
+<tr class="odd">
+<td>標題樣式</td>
+<td><code>title style</code></td>
+<td>圖例條目</td>
+<td><code>legend entries</code></td>
+</tr>
+<tr class="even">
+<td>圖例位置</td>
+<td><code>legend pos</code></td>
+<td>圖例樣式</td>
+<td><code>legend style</code></td>
+</tr>
+<tr class="odd">
+<td>座標軸線</td>
+<td><code>axis lines</code></td>
+<td>座標系統</td>
+<td><code>trig format plots</code></td>
+</tr>
+<tr class="even">
+<td>圖片大小</td>
+<td><code>width</code></td>
+<td>圖片高度</td>
+<td><code>height</code></td>
+</tr>
+<tr class="odd">
+<td>圖片大小比例</td>
+<td><code>axis equal</code></td>
+<td>繪圖樣式</td>
+<td><code>every axis plot post/.append style</code></td>
+</tr>
+</tbody>
+</table>
+<p>這些選項允許使用者在 <code>pgfplots</code> 的 <code>axis</code> 環境中自定義各種圖形參數。</p>
+<p>我們也可以設定 <code>axis</code> 環境採用中心對齊的座標軸，並繪製一條平滑的三次函數曲線。</p>
+<pre><code>\begin{axis}[axis lines=center]
+    \addplot[thick, samples=80, smooth, domain=-3:3] {(x^3)/5 - x};
+\end{axis}</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cubic_func.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 51：三次函數曲線</figcaption>
+</figure>
+</div>
+</section>
+<section id="d-繪圖-1" class="level3">
+<h3 class="anchored" data-anchor-id="d-繪圖-1">3D 繪圖</h3>
+<p>在科學和工程等領域中，3D 繪圖極為重要。除了使用 pgfplots之外，要繪製高品質、精美的 3D 圖形，需要仰賴 <code>colormaps</code> 庫來使用顏色映射。首先載入該庫：</p>
+<pre><code>\usepgfplotslibrary{colormaps}</code></pre>
+<p>而 3D 繪圖則需要使用 <code>\addplot3</code> 來處理。例如我們可以畫一頂帽子：</p>
+<pre><code>\begin{axis}[
+    hide axis, 
+    colormap/hot2
+    ]
+    \addplot3 [
+    surf, 
+    z buffer=sort, 
+    trig format plots=rad,
+    samples=65, 
+    domain=-pi:pi, 
+    y domain=0:1.25,
+    variable=t, 
+    variable y=r
+    ]
+    ({r*sin(t)}, {r*cos(t)}, {(r^2-1)^2});
+\end{axis}</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./cubic_func.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 52：3D 繪製成的熱力圖帽子</figcaption>
+</figure>
+</div>
+<p>此外，我們也可以用 <code>tikz-3dplot</code> 庫來繪製 3D 圖形：</p>
+<pre><code>\tdplotsetmaincoords{60}{120}
+
+\begin{tikzpicture}[tdplot_main_coords]
+    
+    % draw the main coordinate system
+    \draw[thick,-&gt;] (0,0,0) -- (5,0,0) node[anchor=north east]{$x$};
+    \draw[thick,-&gt;] (0,0,0) -- (0,5,0) node[anchor=north west]{$y$};
+    \draw[thick,-&gt;] (0,0,0) -- (0,0,5) node[anchor=south]{$z$};
+    
+    % draw a cube
+    \draw[thick,blue] (0,0,0) -- (3,0,0) -- (3,3,0) -- (0,3,0) -- cycle;
+    \draw[thick,blue] (0,0,3) -- (3,0,3) -- (3,3,3) -- (0,3,3) -- cycle;
+    \draw[thick,blue] (0,0,0) -- (0,0,3);
+    \draw[thick,blue] (3,0,0) -- (3,0,3);
+    \draw[thick,blue] (3,3,0) -- (3,3,3);
+    \draw[thick,blue] (0,3,0) -- (0,3,3);
+    
+\end{tikzpicture}</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./3daxis.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 53：3D 繪製成的立方體與座標系</figcaption>
+</figure>
+</div>
+<p>其中 <code>\tdplotsetmaincoords</code> 是用來設定 3D 座標系的主視角（main viewing angle），其語法為 <code>\tdplotsetmaincoords{方位角}{俯仰角}</code>。</p>
+<ul>
+<li><p>方位角（Azimuth angle）：水平旋轉角度，以水平面為基準，逆時針方向旋轉。例如，<code>60</code> 度表示從 <span class="math inline">\(x\)</span> 軸正方向開始，逆時針旋轉 60 度。</p></li>
+<li><p>俯仰角（Elevation angle）：垂直旋轉角度，以水平面為基準，向上或向下旋轉。例如，<code>120</code> 度表示從水平面向上旋轉 120 度。</p></li>
+</ul>
+</section>
+</section>
+<section id="繪製統計圖表" class="level2">
+<h2 class="anchored" data-anchor-id="繪製統計圖表">繪製統計圖表</h2>
+<p>請注意，本處所稱的統計圖表，不包含隨機變數的分配圖、拒絕域等圖，而是長條圖、折線圖、散佈圖。如果想要進階的統計圖形的話，請參考<a href="https://texample.net/tikz/examples/">TikZ and PGF examples</a>與<a href="https://tikz.net/gaussians/">Gaussian distributions &amp; statistical tests</a>。</p>
+<p>以下我們均使用 <code>axis</code> 環境來繪製座標軸。</p>
+<section id="長條圖" class="level3">
+<h3 class="anchored" data-anchor-id="長條圖">長條圖</h3>
+<p>長條圖我們使用 <code>ybar</code> 指定要繪製長條圖。</p>
+<pre><code>\begin{axis}[
+    ybar,
+    symbolic x coords={A, B, C, D},
+    xtick=data,
+    ymin=0,
+    ylabel={數值},
+    xlabel={類別},
+    nodes near coords,
+    bar width=20pt,
+    enlarge x limits={abs=0.75cm}
+    ]
+    \addplot coordinates {(A, 10) (B, 20) (C, 30) (D, 40)};
+\end{axis}</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./barplot.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 54：用 TikZ 繪製長條圖</figcaption>
+</figure>
+</div>
+<p>其中</p>
+<ul>
+<li><p><code>symbolic x coords</code> 設定 X 軸的類別標籤。</p></li>
+<li><p><code>xtick=data</code> 告訴 pgfplots 在 X 軸上使用數據中的類別。</p></li>
+<li><p><code>nodes near coords</code> 將數值顯示在長條的頂端。</p></li>
+<li><p><code>bar width</code> 設定長條的寬度。</p></li>
+<li><p><code>enlarge x limits</code> 用於調整 <span class="math inline">\(x\)</span> 軸的邊界，避免長條不會緊貼邊緣。</p></li>
+</ul>
+<p>如果我們想要將 <span class="math inline">\(y\)</span> 軸標籤旋轉的話，只要用 <code>\rotatebox{旋轉角度}{文字}</code> 處理即可。</p>
+</section>
+<section id="折線圖" class="level3">
+<h3 class="anchored" data-anchor-id="折線圖">折線圖</h3>
+<p>折現圖的話就稍微簡單一點，我們直接看程式碼：</p>
+<pre><code>\begin{axis}[
+    xlabel={$x$ 軸標籤},
+    ylabel={$y$ 軸標籤},
+    grid=major,
+    ymin=0,
+    legend pos=north west
+    ]
+    \addplot coordinates {(1,10) (2,20) (3,30) (4,40)};
+    \addlegendentry{數據 1}
+    
+    \addplot coordinates {(1,40) (2,30) (3,20) (4,10)};
+    \addlegendentry{數據 2}
+\end{axis}</code></pre>
+<ul>
+<li><p><code>grid=major</code> 設定主要網格線。</p></li>
+<li><p><code>legend pos</code> 設定圖例的位置。</p></li>
+<li><p><code>\addplot coordinates</code> 用於新增數據點並繪製折線圖。</p></li>
+<li><p><code>\addlegendentry</code> 用於新增圖例。</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./lineplot.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 54：用 TikZ 繪製折線圖</figcaption>
+</figure>
+</div>
+<p>但我們會發現，圖例已經擋住主要的圖了，解決方法是在 <code>legend pos</code> 指定的方位前面加上 <code>outer</code> 即可。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./lineplot2.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 54：用 TikZ 繪製折線圖 2</figcaption>
+</figure>
+</div>
+</section>
+<section id="散佈圖" class="level3">
+<h3 class="anchored" data-anchor-id="散佈圖">散佈圖</h3>
+<p>繪製散佈圖的方式則是設定 <code>only marks</code>，指定只繪製數據點即可。</p>
+<pre><code>\begin{axis}[
+    xlabel={$x$ 軸標籤},
+    ylabel={$y$ 軸標籤},
+    grid=major,
+    ymin=0,
+    legend pos=outer north east
+    ]
+    \addplot[
+    only marks,
+    mark=*,
+    mark options={scale=0.8, fill=blue}
+    ] coordinates {
+        (1, 10) (2, 20) (3, 30) (4, 40)
+        (1, 40) (2, 30) (3, 20) (4, 10)
+    };
+    \addlegendentry{散點數據}
+\end{axis}</code></pre>
+<p>在這個範例中：</p>
+<ul>
+<li><p><code>mark=*</code> 設定數據點的形狀為圓形。</p></li>
+<li><p><code>mark options</code> 用於設定數據點的樣式（例如顏色和大小）。</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./scatterplot.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 55：用 TikZ 繪製散佈圖</figcaption>
+</figure>
+</div>
+</section>
+<section id="圓餅圖" class="level3">
+<h3 class="anchored" data-anchor-id="圓餅圖">圓餅圖</h3>
+<p>繪製圓餅圖，我們需要載入 <code>pgf-pie</code> 庫。接著用 <code>\pie[選項]{數據}</code> 來繪製。直接看程式碼：</p>
+<pre><code>\pie[
+    text=legend,
+    explode=0.1,
+    color={red!30, blue!30, green!30, yellow!30}
+]{
+    20/A,
+    30/B,
+    25/C,
+    25/D
+}</code></pre>
+<p>其中 <code>explode=0.1</code> 是將圓餅圖的餅移出來一點。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./piechart1.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 55：用 TikZ 繪製圓餅圖 1</figcaption>
+</figure>
+</div>
+<p>如果說想要特定某一塊餅特別突出，可以用 <code>explode={}</code> 指定移出的距離，有幾塊餅就要設定幾個。例如：</p>
+<pre><code>\pie[
+    text=legend,
+    explode={0.1, 0.3, 0.1, 0.1},
+    color={red!30, blue!30, green!30, yellow!30}
+]{
+    20/A,
+    30/B,
+    25/C,
+    25/D
+}</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./piechart2.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 56：用 TikZ 繪製圓餅圖 2</figcaption>
+</figure>
+</div>
+</section>
+<section id="匯入-csv-檔案" class="level3">
+<h3 class="anchored" data-anchor-id="匯入-csv-檔案">匯入 csv 檔案</h3>
+<p>如果說我們想要使用 <code>.csv</code> 檔案來繪製圖表，有兩種方式。第一種我們需要使用到 <code>filecontents</code> 套件。首先，在前言區載入此套件：</p>
+<pre><code>\usepackage{filecontents}</code></pre>
+<p>接著在 <code>document</code> 環境開始前，使用 <code>filecontents*</code> 環境將數據貼上。貼上稍微耗時一點，而且如果數據較多，會讓整份 LaTeX 程式碼變得很長，因此不建議使用。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>x</th>
+<th>y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<p>將其貼在 <code>filecontents</code> 環境後，它就會自動存在你的資料夾中：</p>
+<pre><code>\begin{filecontents*}{example.csv}
+    x,y
+    1,2
+    2,4
+    3,6
+    4,8
+    5,10
+\end{filecontents*}</code></pre>
+<p>因為我們儲存的檔案名稱為 <code>example.csv</code>，因此必須使用此檔名。</p>
+<pre><code>\begin{axis}[
+    xlabel={X 軸標籤},
+    ylabel={Y 軸標籤},
+    grid=major,
+    ymin=0,
+    legend pos=north west
+    ]
+    \addplot[
+    only marks,
+    mark=*,
+    mark options={scale=0.8, fill=blue}
+    ] table[col sep=comma, x=x, y=y] {example.csv};
+    \addlegendentry{散點數據}
+\end{axis}</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./plotfromcsv.svg" class="img-fluid figure-img" style="width:70.0%" data-fig.align="center"></p>
+<figcaption>圖 57：匯入 <code>.csv</code> 檔案繪製圖形</figcaption>
+</figure>
+</div>
+<p>第二種方式則是不使用 <code>filecontents*</code> 環境，而是直接在 <code>table[選項] {檔案名稱.csv};</code> 直接載入。</p>
+
+
+</section>
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>在常見的歐幾里德空間（Euclidean Space）成立，但在其他空間可能不是如此。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>By Joho345 - Own work, CC BY-SA 4.0, <a href="https://commons.wikimedia.org/w/index.php?curid=71027521" class="uri">https://commons.wikimedia.org/w/index.php?curid=71027521</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>By Leijurv - Own work, CC BY-SA 4.0, <a href="https://commons.wikimedia.org/w/index.php?curid=90553702" class="uri">https://commons.wikimedia.org/w/index.php?curid=90553702</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sung2024,
+  author = {Sung, Anthony},
+  title = {LaTeX {教學系列：繪圖小能手} {TikZ}},
+  date = {2024-08-02},
+  url = {https://yueswater.com/posts/2024-08-02-latex-tikz/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sung2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Sung, Anthony. 2024. <span>“LaTeX 教學系列：繪圖小能手 TikZ.”</span>
+August 2, 2024. <a href="https://yueswater.com/posts/2024-08-02-latex-tikz/">https://yueswater.com/posts/2024-08-02-latex-tikz/</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="xiaolong70701/quarto-blog" data-repo-id="R_kgDOJhS1Eg" data-category="General" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="light">
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright © 2024 Anthony. All rights reserved. See <a href="../copyright.html">statements</a>.</p>
+</div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/">
+      <i class="bi bi-facebook" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:xiaolong70701@gmail.com">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

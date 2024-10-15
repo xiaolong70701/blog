@@ -1,0 +1,2524 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anthony Sung">
+<meta name="dcterms.date" content="2024-07-31">
+<meta name="description" content="利用 LaTeX 撰寫論文與編寫履歷">
+
+<title>LaTeX 教學系列：論文與履歷 – Yueswater Blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VLWNL5QXD8"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VLWNL5QXD8', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script> 
+  
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../css/karat.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Yueswater Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../notes.html"> 
+<span class="menu-text">Diary &amp; Notes</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/"> <i class="bi bi-facebook" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/yues_19_water/"> <i class="bi bi-instagram" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#論文排版" id="toc-論文排版" class="nav-link active" data-scroll-target="#論文排版">論文排版</a>
+  <ul class="collapse">
+  <li><a href="#論文資料夾架構" id="toc-論文資料夾架構" class="nav-link" data-scroll-target="#論文資料夾架構">論文資料夾架構</a></li>
+  <li><a href="#論文封面頁" id="toc-論文封面頁" class="nav-link" data-scroll-target="#論文封面頁">論文封面頁</a>
+  <ul class="collapse">
+  <li><a href="#論文資訊" id="toc-論文資訊" class="nav-link" data-scroll-target="#論文資訊">論文資訊</a></li>
+  <li><a href="#設定封面英文名稱" id="toc-設定封面英文名稱" class="nav-link" data-scroll-target="#設定封面英文名稱">設定封面英文名稱</a></li>
+  <li><a href="#日期設定" id="toc-日期設定" class="nav-link" data-scroll-target="#日期設定">日期設定</a></li>
+  <li><a href="#生成封面" id="toc-生成封面" class="nav-link" data-scroll-target="#生成封面">生成封面</a></li>
+  </ul></li>
+  <li><a href="#口委審定書符號列表誌謝與摘要" id="toc-口委審定書符號列表誌謝與摘要" class="nav-link" data-scroll-target="#口委審定書符號列表誌謝與摘要">口委審定書、符號列表、誌謝與摘要</a>
+  <ul class="collapse">
+  <li><a href="#口委審定書" id="toc-口委審定書" class="nav-link" data-scroll-target="#口委審定書">口委審定書</a></li>
+  <li><a href="#其餘部分" id="toc-其餘部分" class="nav-link" data-scroll-target="#其餘部分">其餘部分</a></li>
+  </ul></li>
+  <li><a href="#設定中英文" id="toc-設定中英文" class="nav-link" data-scroll-target="#設定中英文">設定中英文</a>
+  <ul class="collapse">
+  <li><a href="#路徑設定" id="toc-路徑設定" class="nav-link" data-scroll-target="#路徑設定">路徑設定</a></li>
+  <li><a href="#設定不同字體組合" id="toc-設定不同字體組合" class="nav-link" data-scroll-target="#設定不同字體組合">設定不同字體組合</a></li>
+  </ul></li>
+  <li><a href="#選項設定" id="toc-選項設定" class="nav-link" data-scroll-target="#選項設定">選項設定</a></li>
+  <li><a href="#浮水印" id="toc-浮水印" class="nav-link" data-scroll-target="#浮水印">浮水印</a></li>
+  <li><a href="#附錄設計" id="toc-附錄設計" class="nav-link" data-scroll-target="#附錄設計">附錄設計</a></li>
+  <li><a href="#加入目錄" id="toc-加入目錄" class="nav-link" data-scroll-target="#加入目錄">加入目錄</a>
+  <ul class="collapse">
+  <li><a href="#定義目錄名稱" id="toc-定義目錄名稱" class="nav-link" data-scroll-target="#定義目錄名稱">定義目錄名稱</a></li>
+  <li><a href="#設定目錄格式" id="toc-設定目錄格式" class="nav-link" data-scroll-target="#設定目錄格式">設定目錄格式</a></li>
+  </ul></li>
+  <li><a href="#參考文獻" id="toc-參考文獻" class="nav-link" data-scroll-target="#參考文獻">參考文獻</a>
+  <ul class="collapse">
+  <li><a href="#使用-bibtex" id="toc-使用-bibtex" class="nav-link" data-scroll-target="#使用-bibtex">使用 BibTeX</a></li>
+  <li><a href="#不使用-bibtex" id="toc-不使用-bibtex" class="nav-link" data-scroll-target="#不使用-bibtex">不使用 BibTeX</a></li>
+  </ul></li>
+  <li><a href="#應用與總結" id="toc-應用與總結" class="nav-link" data-scroll-target="#應用與總結">應用與總結</a></li>
+  </ul></li>
+  <li><a href="#履歷排版" id="toc-履歷排版" class="nav-link" data-scroll-target="#履歷排版">履歷排版</a>
+  <ul class="collapse">
+  <li><a href="#資料夾結構" id="toc-資料夾結構" class="nav-link" data-scroll-target="#資料夾結構">資料夾結構</a></li>
+  <li><a href="#履歷排版設定" id="toc-履歷排版設定" class="nav-link" data-scroll-target="#履歷排版設定">履歷排版設定</a>
+  <ul class="collapse">
+  <li><a href="#外觀設定" id="toc-外觀設定" class="nav-link" data-scroll-target="#外觀設定">外觀設定</a></li>
+  <li><a href="#符號設定" id="toc-符號設定" class="nav-link" data-scroll-target="#符號設定">符號設定</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">LaTeX 教學系列：論文與履歷</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">latex</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    <p>利用 LaTeX 撰寫論文與編寫履歷</p>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Anthony Sung </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 31, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style id="ace-dawn">.ace-dawn .ace_gutter {background: #ebebeb;color: #333}.ace-dawn .ace_print-margin {width: 1px;background: #e8e8e8}.ace-dawn {background-color: #F9F9F9;color: #080808}.ace-dawn .ace_cursor {color: #000000}.ace-dawn .ace_marker-layer .ace_selection {background: rgba(39, 95, 255, 0.30)}.ace-dawn.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px #F9F9F9;}.ace-dawn .ace_marker-layer .ace_step {background: rgb(255, 255, 0)}.ace-dawn .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgba(75, 75, 126, 0.50)}.ace-dawn .ace_marker-layer .ace_active-line {background: rgba(36, 99, 180, 0.12)}.ace-dawn .ace_gutter-active-line {background-color : #dcdcdc}.ace-dawn .ace_marker-layer .ace_selected-word {border: 1px solid rgba(39, 95, 255, 0.30)}.ace-dawn .ace_invisible {color: rgba(75, 75, 126, 0.50)}.ace-dawn .ace_keyword,.ace-dawn .ace_meta {color: #794938}.ace-dawn .ace_constant,.ace-dawn .ace_constant.ace_character,.ace-dawn .ace_constant.ace_character.ace_escape,.ace-dawn .ace_constant.ace_other {color: #811F24}.ace-dawn .ace_invalid.ace_illegal {text-decoration: underline;font-style: italic;color: #F8F8F8;background-color: #B52A1D}.ace-dawn .ace_invalid.ace_deprecated {text-decoration: underline;font-style: italic;color: #B52A1D}.ace-dawn .ace_support {color: #691C97}.ace-dawn .ace_support.ace_constant {color: #B4371F}.ace-dawn .ace_fold {background-color: #794938;border-color: #080808}.ace-dawn .ace_list,.ace-dawn .ace_markup.ace_list,.ace-dawn .ace_support.ace_function {color: #693A17}.ace-dawn .ace_storage {font-style: italic;color: #A71D5D}.ace-dawn .ace_string {color: #0B6125}.ace-dawn .ace_string.ace_regexp {color: #CF5628}.ace-dawn .ace_comment {font-style: italic;color: #5A525F}.ace-dawn .ace_heading,.ace-dawn .ace_markup.ace_heading {color: #19356D}.ace-dawn .ace_variable {color: #234A97}.ace-dawn .ace_indent-guide {background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEklEQVQImWNgYGBgYLh/5+x/AAizA4hxNNsZAAAAAElFTkSuQmCC) right repeat-y}
+/*# sourceURL=ace/css/ace-dawn */</style>
+<style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style>
+<style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: blue;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}
+/*# sourceURL=ace/css/ace-tm */</style>
+<style id="ace_editor.css">.ace_br1 {border-top-left-radius    : 3px;}.ace_br2 {border-top-right-radius   : 3px;}.ace_br3 {border-top-left-radius    : 3px; border-top-right-radius:    3px;}.ace_br4 {border-bottom-right-radius: 3px;}.ace_br5 {border-top-left-radius    : 3px; border-bottom-right-radius: 3px;}.ace_br6 {border-top-right-radius   : 3px; border-bottom-right-radius: 3px;}.ace_br7 {border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px;}.ace_br8 {border-bottom-left-radius : 3px;}.ace_br9 {border-top-left-radius    : 3px; border-bottom-left-radius:  3px;}.ace_br10{border-top-right-radius   : 3px; border-bottom-left-radius:  3px;}.ace_br11{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-left-radius:  3px;}.ace_br12{border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br13{border-top-left-radius    : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br14{border-top-right-radius   : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br15{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;}.ace_editor {position: relative;overflow: hidden;padding: 0;font: 12px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;direction: ltr;text-align: left;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;cursor: text;}.ace_content {position: absolute;box-sizing: border-box;min-width: 100%;contain: style size layout;font-variant-ligatures: no-common-ligatures;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;contain: style size layout;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {position: absolute;top: 0;left: 0;right: 0;padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {contain: strict;position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;contain: strict;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;white-space: pre!important;}.ace_text-input.ace_composition {background: transparent;color: inherit;z-index: 1000;opacity: 1;}.ace_composition_placeholder { color: transparent }.ace_composition_marker { border-bottom: 1px solid;position: absolute;border-radius: 0;margin-top: 1px;}[ace_nocontext=true] {transform: none!important;filter: none!important;clip-path: none!important;mask : none!important;contain: none!important;perspective: none!important;mix-blend-mode: initial!important;z-index: auto;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;word-wrap: normal;white-space: pre;height: 100%;width: 100%;box-sizing: border-box;pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;height: 1000000px;contain: style size layout;}.ace_text-layer {font: inherit !important;position: absolute;height: 1000000px;width: 1000000px;contain: style size layout;}.ace_text-layer > .ace_line, .ace_text-layer > .ace_line_group {contain: style size layout;position: absolute;top: 0;left: 0;right: 0;}.ace_hidpi .ace_text-layer,.ace_hidpi .ace_gutter-layer,.ace_hidpi .ace_content,.ace_hidpi .ace_gutter {contain: strict;will-change: transform;}.ace_hidpi .ace_text-layer > .ace_line, .ace_hidpi .ace_text-layer > .ace_line_group {contain: strict;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;box-sizing: border-box;border-left: 2px solid;transform: translatez(0);}.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_hasPlaceholder .ace_hidden-cursors .ace_cursor {opacity: 0;}.ace_smooth-blinking .ace_cursor {transition: opacity 0.18s;}.ace_animate-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: step-end;animation-name: blink-ace-animate;animation-iteration-count: infinite;}.ace_animate-blinking.ace_smooth-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: ease-in-out;animation-name: blink-ace-animate-smooth;}@keyframes blink-ace-animate {from, to { opacity: 1; }60% { opacity: 0; }}@keyframes blink-ace-animate-smooth {from, to { opacity: 1; }45% { opacity: 1; }60% { opacity: 0; }85% { opacity: 0; }}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_error_bracket {position: absolute;border-bottom: 1px solid #DE5555;border-radius: 0;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;box-sizing: border-box;}.ace_line .ace_fold {box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(114, 113, 113, 0.05);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_inline_button {
+    border: 2px solid black; /* Add border */
+    display: inline-block;
+    margin: -1px 8px;
+    padding: 10px 20px; /* Adjust padding for better appearance */
+    pointer-events: auto;
+    cursor: pointer;
+    border-radius: 20px; /* Rounded corners */
+    background-color: white; /* Set background color */
+    color: black; /* Set text color */
+    text-align: center; /* Center text */
+    font-size: 16px; /* Adjust font size */
+    transition: background 0.3s, border-color 0.3s; /* Add transition for hover effects */
+}
+
+.ace_inline_button:hover {
+    border-color: gray;
+    background: rgba(200, 200, 200, 0.2);
+    pointer-events: auto;
+    border-radius: 20px; /* Maintain rounded corners */
+}
+.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}.ace_mobile-menu {position: absolute;line-height: 1.5;border-radius: 4px;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;background: white;box-shadow: 1px 3px 2px grey;border: 1px solid #dcdcdc;color: black;}.ace_dark > .ace_mobile-menu {background: #333;color: #ccc;box-shadow: 1px 3px 2px grey;border: 1px solid #444;}.ace_mobile-button {padding: 2px;cursor: pointer;overflow: hidden;}.ace_mobile-button:hover {background-color: #eee;opacity:1;}.ace_mobile-button:active {background-color: #ddd;}.ace_placeholder {font-family: arial;transform: scale(0.9);transform-origin: left;white-space: pre;opacity: 0.7;margin: 0 10px;}
+/*# sourceURL=ace/css/ace_editor.css */</style>
+<script src="./src/ace.min.js"></script>
+<style type="text/css" media="screen">
+  .ace_editor {
+  border: 1px solid lightgray;
+  margin-bottom: 1px !important;
+  width: 100%;
+  }
+  div.spacer {
+  margin-top:16px;
+  }
+</style>
+<script src="./src/runlatex.js"></script>
+<style>
+  body {margin:auto; max-width: 100em;}
+  div.h {background-color: #F5F5FF;margin: .5em 0;}
+  pre {background-color: #EEE;margin:0;padding: .5em;}
+  .llbutton {
+      border-radius: 12px;
+  }
+</style>
+<script src="./src/theme-dawn.js"></script>
+<script src="./src/mode-latex.js"></script>
+<style>
+    .answer {
+        display: none;
+        color: black;
+        margin-top: 10px;
+    }
+    .question {
+        cursor: pointer;
+        color: black;
+        background-color: white;
+        border: none;
+        padding: 2px 7px;
+        text-decoration: none;
+        font-size: 14px;
+        border-radius: 50px;
+    }
+    .question:hover {
+        background-color: white;
+    }
+</style>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+    #latex-input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    #preview {
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+</style>
+
+<p>撰寫學術論文時，許多研究生和學者常常面臨文書處理軟體帶來的挑戰，這些問題不單單會嚴重影響寫作效率和品質，更可能會耗費心神。舉例來說，在使用 Word 時，格式設定往往是一大難題。為了符合不同出版刊物的要求，研究者可能需要反覆調整諸如縮排、行距、分頁和引用格式等細節，這不僅耗時，還可能因為頻繁的格式變更而導致內容出錯（也就是俗稱的跑版）。此外，在處理複雜的學術文件時，這類軟體的效能問題也不容忽視。隨著論文篇幅增加，加入大量圖表後，檔案的開啟和編輯速度可能大幅下降，甚至造成系統不穩定。這種情況不僅打斷了思路，還可能造成工作進度的延誤。而學術寫作中的版本控制同樣是一個棘手的問題。在與指導教授或同儕進行多輪修改討論後，追蹤變更和比較不同版本之間的差異往往變得困難重重。這不僅影響了協作效率，也增加了出錯的風險。</p>
+<p>另一個值得注意到的問題是數學公式的處理。在 Word 裡面雖說也可以插入方程式，並用 TeX 語法進行編輯，但是編輯複雜的數學表達式不僅費時費力（有時打法不同於 LaTeX，要打完之後按下 Tab 鍵），最終的呈現效果也常常不盡人意，無法達到專業期刊的水準。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./word_tex.png" class="img-fluid figure-img" style="width:100.0%" data-fig.align="center"></p>
+<figcaption>圖 1：Word 與 LaTeX 數學公式比較</figcaption>
+</figure>
+</div>
+<p>傳統文書處理工具在學術寫作中的種種限制，促使我們思考：是否有更適合學術寫作的替代方案？看過前面幾篇文章的你，應該深感 LaTeX 的好用之處，雖說需要在前面設定很多內容，但是網路這麼發達，只要在搜尋列上面輸入相關文件模板，一定可以找到很多好人分享的內容。</p>
+<p>這篇文章主要提到的內容即是如何用 LaTeX 撰寫學術論文，不過因為各個期刊的要求不一，因此將會以臺灣各大學的碩、博士論文格式作為主軸講解，還望讀者海涵。另外，本篇文章後半部則會講解用 LaTeX 排版論文的技巧與好處。</p>
+<p>由於本篇文章牽涉的內容較為應用，因此會在文末放上一些在 Overleaf 上筆者覺得還不錯的模板，讀者可以前往使用或下載。</p>
+<section id="論文排版" class="level1">
+<h1>論文排版</h1>
+<p>根據臺灣大學圖書館提供的<a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=&amp;cad=rja&amp;uact=8&amp;ved=2ahUKEwjCw6j4iM6HAxXQoa8BHRTgFCMQFnoECBIQAQ&amp;url=https%3A%2F%2Fwww.lib.ntu.edu.tw%2Fimg%2Ftulblog%2FHELP%2FHELP_20221108_LaTeX.pdf&amp;usg=AOvVaw3T-YCmduZORjQcpeEqbQR6&amp;opi=89978449">運用LaTeX寫論文</a>教學檔案指出，一篇好的學位論文，應該至少需要分成以下幾個部分：</p>
+<ul>
+<li>封面（標題、作者）</li>
+<li>致謝</li>
+<li>摘要</li>
+<li>目錄（含圖、表）</li>
+<li>本文（章節）</li>
+<li>附錄</li>
+<li>參考文獻</li>
+</ul>
+<p>不過更細節的格式與規定因各間大學有異，請查明後再開始撰寫，<b style="color: #D11A42;">切勿以本篇作為唯一依據</b>。在上半部的討論中，會以 Overleaf 上的模板<a href="https://www.overleaf.com/latex/templates/national-taiwan-university-thesis-template/hvfybyfxgztt">國立臺灣大學碩博士學位論文 LaTeX 模板</a>作為教學範例，其中部分設定內容需 參考筆者撰寫的<a href="https://xiaolong70701.github.io/blog/posts/2024-07-29-latex-sty-cls/">LaTeX 教學系列：sty 與 cls 檔</a>這篇文章。</p>
+<section id="論文資料夾架構" class="level2">
+<h2 class="anchored" data-anchor-id="論文資料夾架構">論文資料夾架構</h2>
+<p>撰寫論文的過程中，良好的資料夾架構不僅能幫助我們<strong>有條不紊地</strong>整理資料，更能提高撰寫效率，避免重要文件的遺失或混淆<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。依據本文所使用的模板，筆者繪製出以下的樹狀圖供參考：</p>
+<pre><code>% 國立臺灣大學碩博士學位論文 LaTeX 模板
+├── back
+│&nbsp;&nbsp; ├── appendix01.tex
+│&nbsp;&nbsp; ├── appendix02.tex
+│&nbsp;&nbsp; └── references.bib
+├── contents
+│&nbsp;&nbsp; ├── chapter01.tex
+│&nbsp;&nbsp; ├── chapter02.tex
+│&nbsp;&nbsp; ├── chapter03.tex
+│&nbsp;&nbsp; └── chapter04.tex
+├── figures
+│&nbsp;&nbsp; ├── seal.pdf
+│&nbsp;&nbsp; └── seal.svg
+├── fonts
+│&nbsp;&nbsp; ├── chinese
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── BiauKai.ttf
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── Kaiti-Black.ttf
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── Kaiti-Bold.ttf
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── Kaiti.ttf
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── WHZ_Kai-Bold.ttf
+│&nbsp;&nbsp; └── english
+│&nbsp;&nbsp;     ├── Times New Roman-Bold.ttf
+│&nbsp;&nbsp;     ├── Times New Roman-BoldItalic.ttf
+│&nbsp;&nbsp;     ├── Times New Roman-Italic.ttf
+│&nbsp;&nbsp;     └── Times New Roman.ttf
+├── front
+│&nbsp;&nbsp; ├── abstract.tex
+│&nbsp;&nbsp; ├── acknowledgement.tex
+│&nbsp;&nbsp; └── denotation.tex
+├── latexmkrc
+├── main.tex
+├── ntusetup.tex
+└── ntuthesis.cls</code></pre>
+<p>我們可以很清楚的看到，一個好的論文資料夾應該要將論文架構分隔開來，存放在不同的資料夾。而資料夾的名稱也不是隨便亂命名的，通常我們<strong>不會將資料夾名稱命名為中文</strong>，也盡量<strong>不會超過十個字符</strong>。</p>
+<p>從上面的樹狀圖可以看到，我們其實已經講過許多內容。從一開始的<a href="https://xiaolong70701.github.io/blog/posts/2024-06-23-latex-first-doc/">標題頁設定</a>，到<a href="https://xiaolong70701.github.io/blog/posts/2024-06-24-latex-setting/">修改字體</a>、<a href="https://xiaolong70701.github.io/blog/posts/2024-07-08-latex-table-figure/">插入圖片與表格</a>，以及最重要的<a href="https://xiaolong70701.github.io/blog/posts/2024-07-05-latex-math/">數學排版</a>，都在前面的文章提過，如果忘記的話，還煩請讀者回去複習之前的內容。</p>
+<p>本篇文章將著重在討論以下幾個重要部分：</p>
+<ol type="1">
+<li><p>封面頁、摘要等環境設定</p></li>
+<li><p>加入目錄（包含目錄、圖表目錄）</p></li>
+<li><p>論文附錄設計</p></li>
+<li><p>參考文獻</p></li>
+</ol>
+</section>
+<section id="論文封面頁" class="level2">
+<h2 class="anchored" data-anchor-id="論文封面頁">論文封面頁</h2>
+<p>論文的封面頁是整篇論文的<strong>門面</strong>，給人留下第一印象的關鍵。不僅展示了論文的標題和作者資訊，更傳遞了研究的專業性和嚴謹性。一個設計合理、內容完整的封面頁，能夠有效地吸引讀者的注意，並為論文的正式內容鋪設一個專業的基調。</p>
+<p>我們來看一下論文封面頁的範例：</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./論文封面頁.png" class="img-fluid figure-img" style="width:45.0%" data-fig.align="center"></p>
+<figcaption>圖 2：論文封面頁</figcaption>
+</figure>
+</div>
+<p>論文的封面頁可以分為幾個部分：系所名稱、論文名稱、作者姓名、指導教授、發表日期與 DOI 識別碼。以下我們分成兩個部分來講，第一個是論文資訊，第二部分則是日期設定。</p>
+<section id="論文資訊" class="level3">
+<h3 class="anchored" data-anchor-id="論文資訊">論文資訊</h3>
+<p>誠如上述所言，論文資訊是一篇論文最重要的部分，才能夠讓讀者一眼明白這篇論文的內容。這份模板設定了以下鍵值來儲存這些資訊：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 30%">
+<col style="width: 15%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>鍵值</th>
+<th>功能</th>
+<th>鍵值</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>university</code></td>
+<td>中文大學名稱</td>
+<td><code>university*</code></td>
+<td>英文大學名稱</td>
+</tr>
+<tr class="even">
+<td><code>college</code></td>
+<td>中文學院名稱</td>
+<td><code>college*</code></td>
+<td>英文學院名稱</td>
+</tr>
+<tr class="odd">
+<td><code>institute</code></td>
+<td>中文研究所名稱</td>
+<td><code>institute*</code></td>
+<td>英文研究所名稱</td>
+</tr>
+<tr class="even">
+<td><code>title</code></td>
+<td>中文論文標題</td>
+<td><code>title*</code></td>
+<td>英文論文標題</td>
+</tr>
+<tr class="odd">
+<td><code>author</code></td>
+<td>中文作者名稱</td>
+<td><code>author*</code></td>
+<td>英文作者名稱</td>
+</tr>
+<tr class="even">
+<td><code>ID</code></td>
+<td>學號</td>
+<td><code>advisor</code></td>
+<td>中文指導教授名稱</td>
+</tr>
+<tr class="odd">
+<td><code>advisor*</code></td>
+<td>英文指導教授名稱</td>
+<td><code>DOI</code></td>
+<td>DOI 識別碼</td>
+</tr>
+<tr class="even">
+<td><code>keywords</code></td>
+<td>中文關鍵字</td>
+<td><code>keywords*</code></td>
+<td>英文關鍵字</td>
+</tr>
+<tr class="odd">
+<td><code>date</code></td>
+<td>發表日期（預設為當前日期）</td>
+<td><code>oral-date</code></td>
+<td>口試日期（預設為當前日期）</td>
+</tr>
+</tbody>
+</table>
+<p>模板設定的思路如下：由於我們需要將這些資訊儲存起來，否則一個個輸入會十分麻煩，因此我們需要先在類別文件（此模板為 <code>ntuthesis.cls</code> 檔）中設定選項：</p>
+<pre><code>% 設定選項
+\SetupKeyvalOptions{
+  family=ntu,        % 設定家族名稱為 ntu
+  prefix=ntu@,       % 設定前綴字為 ntu@
+  setkeys=\kvsetkeys % 設定鍵值配對處理函數為 \kvsetkeys
+}
+
+% 定義一個新指令 \ntusetup，用來設定 ntu 家族的鍵值配對
+\newcommand{\ntusetup}{
+  \kvsetkeys{ntu}
+}
+
+% 定義一個新指令 \ntu@define@key，用來定義新的鍵
+\newcommand{\ntu@define@key}[1]{
+  \kvsetkeys{ntu@key}{#1}
+}</code></pre>
+<p>接著設定 <code>ntu@key</code> 家族的處理函數：</p>
+<pre><code>% 設定選項
+\SetupKeyvalOptions{
+  family=ntu,       % 設定家族名稱為 ntu
+  prefix=ntu@,      % 設定前綴字為 ntu@
+  setkeys=\kvsetkeys % 設定鍵值配對處理函數為 \kvsetkeys
+}
+
+% 定義一個新指令 \ntusetup，用來設定 ntu 家族的鍵值配對
+\newcommand{\ntusetup}{
+  \kvsetkeys{ntu}
+}
+
+% 定義一個新指令 \ntu@define@key，用來定義新的鍵
+\newcommand{\ntu@define@key}[1]{
+  \kvsetkeys{ntu@key}{#1}
+}
+
+% 設定 ntu@key 家族的處理函數
+\kv@set@family@handler{ntu@key}{%
+  \@namedef{ntu@#1@@name}{#1}% 定義 ntu@#1@@name 為當前鍵的名稱
+  \def\ntu@@default{}% 初始化 ntu@@default 為空
+  \def\ntu@@choices{}% 初始化 ntu@@choices 為空
+
+  % 定義 ntu@value 家族的 name 鍵，將其值存入 ntu@#1@@name
+  \kv@define@key{ntu@value}{name}{%
+    \@namedef{ntu@#1@@name}{##1}%
+  }%
+
+  % 定義 ntu@value 家族的 code 鍵，將其值存入 ntu@#1@@code
+  \kv@define@key{ntu@value}{code}{%
+    \@namedef{ntu@#1@@code}{##1}%
+  }%
+  \@namedef{ntu@#1@@check}{}% 初始化 ntu@#1@@check 為空
+  \@namedef{ntu@#1@@code}{}% 初始化 ntu@#1@@code 為空
+
+  % 定義 ntu@#1@@hook，用來在類別文件結束時執行相關程式碼
+  \@namedef{ntu@#1@@hook}{%
+    \expandafter\ifx\csname\@currname.\@currext-h@@k\endcsname\relax
+      \@nameuse{ntu@#1@@code}%
+    \else
+      \AtEndOfClass{%
+        \@nameuse{ntu@#1@@code}%
+      }%
+    \fi
+  }%
+  ...</code></pre>
+<p>設定完畢後，由於我們可以允許使用者填寫自己的大學、系所名稱、姓名等資訊，因此需要設定如何讓 <code>ntu@value</code> 接收填寫的參數。此外，如果使用者不想要修改參數，想要沿用系統預設的參數，我們也需要設定預設的值為何：</p>
+<pre><code>\kv@define@key{ntu@value}{choices}{%
+  \def\ntu@@choices{##1}% 將傳入的 choices 參數值賦給臨時變數 \ntu@@choices
+  \@namedef{ntu@#1@@reset}{}
+  \@namedef{ntu@#1@@check}{
+    \@ifundefined{% 檢查指令是否未定義
+      ifntu@\@nameuse{ntu@#1@@name}@\@nameuse{ntu@\@nameuse{ntu@#1@@name}}% 檢查 ifntu@&lt;name&gt;@&lt;value&gt; 是否未定義
+    }{
+      \ntu@error{Invalid value "#1 = \@nameuse{ntu@\@nameuse{ntu@#1@@name}}"}% 顯示錯誤資訊，指出無效的值為何
+    }%
+    \@nameuse{ntu@#1@@reset}% 調用 ntu@&lt;key&gt;@@reset 指令
+    \@nameuse{ntu@\@nameuse{ntu@#1@@name}@\@nameuse{ntu@\@nameuse{ntu@#1@@name}}true}% 設定 ntu@&lt;name&gt;@&lt;value&gt; 為 true
+  }%
+}%
+
+% 將傳入的 default 參數值賦給臨時變數 \ntu@@default
+\kv@define@key{ntu@value}{default}{%
+  \def\ntu@@default{##1}
+}%
+
+% 設定 ntu@value 家族的鍵值配對
+\kvsetkeys{ntu@value}{#2}
+\@namedef{ntu@\@nameuse{ntu@#1@@name}}{}
+
+% 定義 ntu@choice 家族的處理函數
+\kv@set@family@handler{ntu@choice}{
+  \ifx\ntu@@default\@empty
+    \def\ntu@@default{##1}% 如果 \ntu@@default 為空，則設定其值
+  \fi
+  \expandafter\newif\csname ifntu@\@nameuse{ntu@#1@@name}@##1\endcsname
+  \expandafter\g@addto@macro\csname ntu@#1@@reset\endcsname{
+    \@nameuse{ntu@\@nameuse{ntu@#1@@name}@##1false}% 將 false 新增到 ntu@&lt;name&gt;@&lt;value&gt;
+  }%
+}%
+
+% 展開並設定 ntu@choice 家族的鍵值配對
+\kvsetkeys@expandafter{ntu@choice}{\ntu@@choices}
+\expandafter\let\csname ntu@\@nameuse{ntu@#1@@name}\endcsname\ntu@@default% 將指令 ntu@&lt;name&gt; 設定為 \ntu@@default 的值
+\expandafter\ifx\csname ntu@\@nameuse{ntu@#1@@name}\endcsname\@empty\else
+  \@nameuse{ntu@#1@@check}% 如果指令 ntu@&lt;name&gt; 不為空，則調用 ntu@&lt;key&gt;@@check
+  \@nameuse{ntu@#1@@hook}% 調用 ntu@&lt;key&gt;@@hook
+\fi
+
+% 定義 ntu 家族的鍵 #1
+\kv@define@key{ntu}{#1}{
+  \@namedef{ntu@\@nameuse{ntu@#1@@name}}{##1}
+  \@nameuse{ntu@#1@@check}% 調用 ntu@&lt;key&gt;@@check
+  \@nameuse{ntu@#1@@hook}% 調用 ntu@&lt;key&gt;@@hook
+}%</code></pre>
+<p>設定完成後，使用者就可以在設定檔案（configuration）中將這些參數一一填入。為了不與主文件混淆，模板新增了一個檔案 <code>ntusetup.tex</code>，將設定資訊放在裡面，並在主文件以 <code>\input{ntusetup}</code> 調用。程式碼如下所示，使用 <code>\ntu@define@key</code> <strong>一次性逐層定義多個指令</strong>，言下之意就是遞迴地將這些選項丟進去鍵值配對。</p>
+<pre><code>\ntu@define@key{
+  university = {
+    default = {國立臺灣大學},
+  },
+  university* = {
+    default = {National Taiwan University},
+    name    = university@en,
+  },
+  college = {
+    default = {工學院},
+  },
+  college* = {
+    default = {College of Engineering},
+    name    = college@en,
+  },
+  institute = {
+    default = {工業工程學研究所},
+  },
+  institute* = {
+    default = {Institute of Industrial Engineering},
+    name    = institute@en,
+  },
+  title = {
+    default = {論文標題},
+  },
+  title* = {
+    default = {Title},
+    name    = title@en,
+  },
+  author = {
+    default = {論文作者},
+  },
+  author* = {
+    default = {Name of author},
+    name    = author@en,
+  },
+  ID = {
+    default = {學號},
+  },
+  advisor = {
+    default = {指導教授},
+  },
+  advisor* = {
+    default = {Name of supervisor},
+    name    = advisor@en,
+  },
+  DOI = {
+    default = {DOI Number},
+  },
+  keywords = {
+    default = {關鍵字},
+  },
+  keywords* = {
+    default = {Keywords},
+    name    = keywords@en,
+  },
+  date = {
+    default = {\the\year-\two@digits{\month}-\two@digits{\day}},
+  },
+  oral-date = {
+    name    = oraldate,
+    default = {\the\year-\two@digits{\month}-\two@digits{\day}},
+  },
+}</code></pre>
+<p>至於為何有兩個名稱相同的參數，但後面跟上星號呢？聰明的你應該猜到了，就是定義英文的名稱。不過再裡面我們可以看到兩個細節：第一，設定英文名稱時，特別使用了 <code>name=arg_name@en</code>；第二，日期設定為 <code>default={\the\year-\two@digits{\month}-\two@digits{\day}}</code>，以下我們一一解釋。</p>
+</section>
+<section id="設定封面英文名稱" class="level3">
+<h3 class="anchored" data-anchor-id="設定封面英文名稱">設定封面英文名稱</h3>
+<p>臺灣的論文資訊大部分都需要提供中英文版本，一方面是為了能夠讓非中文母語使用者也看得懂，另一方面則是提高文獻國際知名度（僅為筆者臆測，需查明）。</p>
+<p>我們先看一下上面對於論文資訊的設定，我們可以看到英文名稱的預設為中文名稱，這點其實很好猜想，既然沒有要求英文，那就用中文吧！英文設定就簡單多了，如果有輸入值，就會將值存入到 <code>arg_name@en</code> 中並取代預設值。</p>
+</section>
+<section id="日期設定" class="level3">
+<h3 class="anchored" data-anchor-id="日期設定">日期設定</h3>
+<p>由於臺灣大部分還是會使用「<a href="https://zh.wikipedia.org/zh-tw/民國紀年">民國紀年</a>」，也就是年份以「中華民國×××年」、「民國×××年」、「民×××」等方式表示。此種紀年方式以 1912 年中華民國建立為元年，因此與西元紀年相差 1911 年，故如果給定西元 <span class="math inline">\(x\)</span> 年，則轉換後會得到民國 <span class="math inline">\(x - 1911\)</span> 年，其中 <span class="math inline">\(x \geq 1912\)</span>（年份必須為非零整數）。</p>
+<p>模板的設定邏輯如下：</p>
+<ol type="1">
+<li><p>首先，將日期字串分解成年、月、日，然後調用格式化指令。</p></li>
+<li><p>將年份格式化為中文數字，並將月份格式化為中文數字，輸出格式為 <code>YYYY 年 MM 月</code>。</p></li>
+<li><p>中文年份顯示部分，將年份轉換為民國年份，並格式化為 <code>民國 YYY 年 MM 月 DD 日</code> 或 <code>民國 YYY 年 MM 月</code>。</p></li>
+<li><p>英文年份顯示部分，則將月份轉換為英文月份名稱，並格式化為 <code>Month, Year</code>，其中 <code>Year</code> 為西元紀年。</p></li>
+</ol>
+<p>綜合上面的設定邏輯，我們可以得到以下的程式碼：</p>
+<pre><code>% 定義指令 \ntu@format@date 拆分字串
+\newcommand{\ntu@format@date}[2]{%
+  \edef\ntu@@date{#2}%
+  \def\ntu@@process@date##1-##2-##3\@nil{%
+    #1{##1}{##2}{##3}%
+  }%
+  \expandafter\ntu@@process@date\ntu@@date\@nil
+}
+
+% 將年份格式化為中文數字
+\newcommand\ntu@date@zh@short[3]{\zhdigits{#1}年\zhnumber{#2}月}
+
+% 將年份格式化為「民國 YYY 年 MM 月 DD 日」
+\newcommand\ntu@date@zh@digit[3]{\the\numexpr#1-1911\relax~年~\number#2~月~\number#3~日}
+
+% 將年份格式化為「民國 YYY 年 MM 月」
+\newcommand\ntu@date@zh@digit@short[3]{\the\numexpr#1-1911\relax~年~\number#2~月}
+
+% 將年份格式化為西元紀年
+\newcommand\ntu@date@en@short[3]{\monthname[#2], #1}</code></pre>
+</section>
+<section id="生成封面" class="level3">
+<h3 class="anchored" data-anchor-id="生成封面">生成封面</h3>
+<p>將上面的資訊整合起來後，就可以生成封面頁了嗎？如果這樣想的話就太天真了，LaTeX 不可能這樣<del>輕易放過你</del>簡單就可以完成。</p>
+<p>設定封面頁我們需要進行版面設定，然後安排這些接收參數的指令在封面頁的位置。版面設定就需要使用到先前學過的眾多知識，包含字體大小設定、版面設定等。在類別文件最前面，我們使用 <code>\newcommand{\ntu@geometry@cover}{top=3cm, bottom=3cm, left=3cm, right=3cm}</code> 將封面頁的版面設定資訊儲存起來。</p>
+<p>設定完成後，建立指令 <code>makecover</code> 用於生成封面頁。根據論文封面頁的設定，我們可以用以下的方式將封面頁的外觀勾勒出來。注意到我們需要將封面頁以 <code>titlepage</code> 環境包住，原因在於論文的類別為 <code>report</code><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。</p>
+<pre><code>\newcommand{\makecover}{
+  \ntu@setgeometry{\ntu@geometry@cover}
+
+  \begin{titlepage}
+    \begin{singlespace}
+      \begin{center}
+        % 中文校系名稱 (18, 27)
+        \fontsize{18}{27}\selectfont
+        \ntu@university\ntu@college\ntu@institute\par
+        \ntu@degree\ntu@type\par
+
+        % 英文系所名稱 (14, 21)
+        \fontsize{14}{21}\selectfont
+        \ntu@institute@en\par
+        \ntu@college@en\par
+
+        % 英文學校名稱 (16, 24)
+        \fontsize{16}{24}\selectfont
+        \ntu@university@en\par
+        \ntu@degree@en~\ntu@type@en\par
+
+        % 中英文論文題目 (18, 27)
+        % 中英文作者姓名 (18, 27)
+        % 中英文指導教授 (18, 27)
+        % 論文撰寫日期   (18, 27)
+        \vfill
+        \fontsize{18}{27}\selectfont
+        \ntu@title\par\ntu@title@en\par
+        \vfill
+        \ntu@author\par\ntu@author@en\par
+        \vfill
+        指導教授: \ntu@advisor~博士\par
+        Advisor: \ntu@advisor@en~Ph.D.\par
+        \vfill
+        中華民國~\ntu@format@date{\ntu@date@zh@digit@short}{\ntu@date}\par
+        \ntu@format@date{\ntu@date@en@short}{\ntu@date}
+      \end{center}
+    \end{singlespace}
+  \end{titlepage}
+
+  % 清除頁碼
+  \clearpage
+  \restoregeometry
+}</code></pre>
+<p>上面的程式碼將使用者在 <code>ntusetup.tex</code> 的值丟進來，並進行排版。注意到在設定時我們使用 <code>\par</code> 指令，這是之前沒有提及的部分。此指令用於建立一個新段落，它會在目前位置插入一個空行，並開啟一個新的段落。此外，版面設定需要使用 <code>geometry</code> 套件，因此在開始上面的程式碼前，我們使用 <code>\RequirePackage{geometry}</code> 將此套件載入。</p>
+</section>
+</section>
+<section id="口委審定書符號列表誌謝與摘要" class="level2">
+<h2 class="anchored" data-anchor-id="口委審定書符號列表誌謝與摘要">口委審定書、符號列表、誌謝與摘要</h2>
+<p>在論文撰寫的過程中，除了封面頁、內文、參考文獻與附錄本身，還有許多重要的組成部分需要特別注意。前面我們已經討論過論文封面頁的製作，接下來我們要深入探討幾個同樣重要的元素：口試委員審定書、符號列表、誌謝詞以及摘要。雖然這些不是論文的主要內容，但在呈現研究成果、傳達作者想法，以及幫助讀者理解論文的方面扮演著不可或缺的角色。</p>
+<p>口試委員審定書是論文正式通過的重要證明，不僅代表了研究成果得到了學術認可，更是<sub>菸酒生</sub>研究生、博士生多年努力的具體肯定。而對於理工科系或需要大量使用到數學的研究生、博士生、研究者而言，符號列表則是為讀者提供了一個快速參考的工具，能大大提高閱讀的效率和理解的準確性。</p>
+<p>誌謝詞讓我們有機會表達對在研究過程中給予幫助和支持的人的感激之情，除了是一種禮貌之外，更是對整個研究過程的回顧和總結。猶如陳之藩《謝天》提到的：</p>
+<blockquote class="blockquote">
+<p>「無論什麼事情，得之於人者太多，出之於己者太少，因為要感謝的人太多了，不如謝天吧！</p>
+</blockquote>
+<p>最後，摘要是各類論文（學位論文、期刊論文等）的濃縮與精華，必須準確而簡潔地呈現研究的核心內容，是吸引讀者繼續深入閱讀的關鍵所在。</p>
+<section id="口委審定書" class="level3">
+<h3 class="anchored" data-anchor-id="口委審定書">口委審定書</h3>
+<p>由於口委審定書有特殊的格式，因此獨立於其他部分講解。一份好的口委審定書應該體現出論文的正式性和重要性。首先，它需要清晰地標示出這是哪一間大學、什麼學位論文的口試委員會審定書。其次，論文的相關資訊，如題目（通常包括中英文）、作者姓名和學號等，都應該清楚地呈現在審定書上。</p>
+<p>審定書的核心內容是一段<strong>正式聲明</strong>，表明該論文已經通過口試委員會的審查並通過。聲明通常會包含具體的口試通過日期，以證明論文的時效性。在審定書的下半部分，最重要的是提供足夠的空間給所有口試委員簽名，通常包括指導教授的簽名欄，以及其他委員的簽名欄。除此之外，還需要有系所主管（通常是所長或系主任）的簽名欄，進一步確認論文的合法性。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./口委審定書.png" class="img-fluid figure-img" style="width:45.0%" data-fig.align="center"></p>
+<figcaption>圖 3：口委審定書</figcaption>
+</figure>
+</div>
+<p>建議口委審定書的頁面需要用到以下知識：版面設定、字體設定，以及表格。直接看程式碼：</p>
+<pre><code>\newcommand{\makeverification}{
+  \clearpage
+  \phantomsection
+  \ntu@setgeometry{\ntu@geometry@main}
+  \pagenumbering{roman}
+  \addcontentsline{toc}{chapter}{\ntu@verificationletter}
+  \begin{singlespace}
+    %  口委審定書標題 (24, 36) (26, 39)
+    %  論文題目 (20, 30)
+    \begin{center}
+      \fontsize{24}{36}\selectfont
+      {\ntu@university}{\ntu@degree}學位{\ntu@type}\par
+      \fontsize{26}{39}\selectfont
+      口試委員會審定書\par
+      \vfill
+      \fontsize{20}{30}\selectfont
+      {\ntu@title}\par
+      {\ntu@title@en}\par
+    \end{center}
+
+    % 口委審定書內容 (16, 24)
+    \vfill
+    \fontsize{16}{24}\selectfont
+    \Eindent
+    本論文係{\ntu@author}君（\ntu@ID）在{\ntu@university}{\ntu@institute}完成之{\ntu@degree}學位{\ntu@type}，於民國{\ntu@format@date{\ntu@date@zh@digit}{\ntu@oraldate}}承下列考試委員審查通過及口試及格，特此證明\par
+  \end{singlespace}
+
+  \begin{doublespace}
+    % 口委簽名表格 (16, 24)
+    \begin{center}
+      \vfill
+      \fontsize{16}{24}\selectfont
+      \begin{tabularx}{\textwidth}{Xl}
+        {\hfill}口試委員：{\hfill}&amp; \rule{11.5cm}{1pt}      \\
+          &amp; \multicolumn{1}{c}{（指導教授）}                \\
+          &amp; \rule{5cm}{1pt}\hspace{1.5cm}\rule{5cm}{1pt}  \\
+          &amp; \rule{5cm}{1pt}\hspace{1.5cm}\rule{5cm}{1pt}  \\
+          &amp; \rule{5cm}{1pt}\hspace{1.5cm}\rule{5cm}{1pt}  \\
+          &amp; \rule{5cm}{1pt}\hspace{1.5cm}\rule{5cm}{1pt}  \\
+        所{\hfill}長：{\hfill}&amp; \rule{9cm}{1pt}
+      \end{tabularx}
+    \end{center}
+  \end{doublespace}
+
+  % 恢復預設板型
+  \restoregeometry
+}</code></pre>
+<p>我們建立 <code>\makeverification</code> 來開啟口委審定書，並且將設定參數放到設定中。</p>
+<p>比較值得注意的是簽名欄的部分，我們使用表格來繪製簽名欄。作法是使用 <code>tabularx</code> 套件，目的是能夠讓表格能夠自動調整寬度。接著簽名欄底線則以 <code>\rule{長度}</code> 繪製，並在兩個簽名底線中間加上空白用於分隔。</p>
+<p>最後注意到：我們使用完畢後，<strong>必須要恢復版面設定的預設值</strong>，否則後面的內容將會延續此設定。</p>
+</section>
+<section id="其餘部分" class="level3">
+<h3 class="anchored" data-anchor-id="其餘部分">其餘部分</h3>
+<p>符號列表、誌謝、摘要的部分設定相似，都是使用 <code>\chapter*</code> 環境來設定。雖然這些部分很重要，但並非論文主要內容，因此使用星號章節來處理，才不會加入到目錄中之後被編號。</p>
+<p>符號列表的部分需要使用到列表，模板中用的是 <code>list</code> 套件。首先定義 <code>denotation</code> 的 LaTeX 環境，並且將其設定為無編號章節與加入標題。</p>
+<pre><code>\newenvironment{denotation}[1][2.5cm]{
+\chapter*{\centering \ntu@denotation}
+\addcontentsline{toc}{chapter}{\ntu@denotation}
+\noindent
+\begin{list}{}{
+  \renewcommand\makelabel[1]{##1\hfill}
+  \setlength{\labelwidth}{#1}                     % 符號欄寬度
+  \setlength{\labelsep}{0.5cm}                    % 標籤與列表文字距離
+  \setlength{\itemindent}{0cm}                    % 標籤縮排
+  \setlength{\leftmargin}{\labelwidth+\labelsep}  % 標籤左邊界
+  \setlength{\rightmargin}{0cm}                   % 標籤右邊界
+  \setlength{\parsep}{0cm}                        % 段落間距
+  \setlength{\itemsep}{18pt}                      % 標籤間距
+  \setlength{\listparindent}{0cm}                 % 段落縮排
+  \setlength{\topsep}{0pt}                        % 標籤與上文距離
+}}{\end{list}}</code></pre>
+<p>摘要環境則分為中文摘要與英文摘要，同樣我們需要加入到目錄中，並且設定為無編號章節：</p>
+<pre><code>% 設定中文摘要環境
+\renewenvironment{abstract}{
+  \fontsize{12}{18}\selectfont
+  \chapter*{\centering \ntu@abstract@zh}
+  \addcontentsline{toc}{chapter}{\ntu@abstract@zh}
+}{
+  \bigbreak
+  \noindent \textbf{\ntu@keyword@zh}
+  \ntu@clist@use{\ntu@keywords}{\ntu@kwsymbol@zh}
+}
+
+% 設定英文摘要環境
+\newenvironment{abstract*}{
+  \fontsize{12}{24}\selectfont
+  \chapter*{\centering \ntu@abstract@en}
+  \addcontentsline{toc}{chapter}{\ntu@abstract@en}
+}{
+  \bigbreak
+  \noindent \textbf{\ntu@keyword@en}
+  \ntu@clist@use{\ntu@keywords@en}{\ntu@kwsymbol@en}
+}</code></pre>
+<p>誌謝環境就稍微簡單一點，因為就是單純將文字放入其中，較前面的設定簡單：</p>
+<pre><code>\newenvironment{acknowledgement}{
+  \chapter*{\centering \ntu@acknowledgement}
+  \addcontentsline{toc}{chapter}{\ntu@acknowledgement}
+  \fontsize{12}{18}\selectfont
+}</code></pre>
+</section>
+</section>
+<section id="設定中英文" class="level2">
+<h2 class="anchored" data-anchor-id="設定中英文">設定中英文</h2>
+<p>之前的文章提到，設定中文（或 CJK 相關語言）都需要使用 <code>fontspec</code> 與 <code>xeCJK</code> 套件，前者用於分開設定英文與其他語言，後者則是專門設定 CJK 語言（也就是中文、日文與韓文三個語言）。因此在文件中我們需要載入它們：</p>
+<pre><code>\RequirePackage{xeCJK}
+\RequirePackage{fontspec}</code></pre>
+<section id="路徑設定" class="level3">
+<h3 class="anchored" data-anchor-id="路徑設定">路徑設定</h3>
+<p>設定不同的語言，通常都需要使用文字檔，否則不同語言無法正確顯示。因此在資料夾中，我們需要建立一個子資料夾存放文字檔，並在子資料夾中分別建立兩個語言的資料夾避免混淆。最後我們需要告訴 LaTeX 我們設定的資料夾路徑為何。</p>
+<pre><code>\newcommand{\ntu@path@font}{./fonts/english/}
+\newcommand{\ntu@path@cjkfont}{./fonts/chinese/}</code></pre>
+<p>透過建立兩個指令 <code>\ntu@path@font</code> 與 <code>\ntu@path@cjkfont</code>，我們分別將中英文的文字檔資料夾指派於其中。</p>
+</section>
+<section id="設定不同字體組合" class="level3">
+<h3 class="anchored" data-anchor-id="設定不同字體組合">設定不同字體組合</h3>
+<p>這份模板十分佛心，直接設定了三種不同的字體組合供使用者選擇，分別是預設值、模板樣式與 Overleaf 版。其設定方法用一般化的方式呈現如下所示：</p>
+<pre><code>\ifthenelse{\equal{\ntu@fontset}{字體組合}}{
+    % 設定字體
+}</code></pre>
+<p>而這三個字體組合使用的字體分別如下表所示：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 25%">
+<col style="width: 24%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>字體組合</th>
+<th><code>default</code></th>
+<th><code>template</code></th>
+<th><code>overleaf</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>主要字體 (mainfont)</td>
+<td>Times New Roman</td>
+<td>Times New Roman</td>
+<td>Times New Roman</td>
+</tr>
+<tr class="even">
+<td>粗體字體 (BoldFont)</td>
+<td>*-Bold</td>
+<td>*-Bold</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>斜體字體 (ItalicFont)</td>
+<td>*-Italic</td>
+<td>*-Italic</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>粗斜體字體 (BoldItalicFont)</td>
+<td>*-BoldItalic</td>
+<td>*-BoldItalic</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>無襯線字體 (sansfont)</td>
+<td></td>
+<td></td>
+<td>Droid Sans</td>
+</tr>
+<tr class="even">
+<td>等寬字體 (monofont)</td>
+<td></td>
+<td></td>
+<td>Courier New</td>
+</tr>
+<tr class="odd">
+<td>中文主要字體 (CJKmainfont)</td>
+<td>BiauKai</td>
+<td>BiauKai</td>
+<td>AR PL KaitiM Big5</td>
+</tr>
+<tr class="even">
+<td>中文粗體字體 (CJKBoldFont)</td>
+<td></td>
+<td>Kaiti-Black</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>中文無襯線字體 (CJKsansfont)</td>
+<td></td>
+<td></td>
+<td>AR PL KaitiM Big5</td>
+</tr>
+<tr class="even">
+<td>中文等寬字體 (CJKmonofont)</td>
+<td></td>
+<td></td>
+<td>AR PL KaitiM Big5</td>
+</tr>
+</tbody>
+</table>
+<p>我們以預設值當作範例講解：</p>
+<pre><code>\ifthenelse{\equal{\ntu@fontset}{default}}{
+  \setmainfont{Times New Roman}[
+    Path = \ntu@path@font ,
+    Extension = .ttf ,
+    BoldFont = *-Bold ,
+    ItalicFont = *-Italic ,
+    BoldItalicFont = *-BoldItalic, ]
+  \setCJKmainfont{BiauKai}[
+    Path = \ntu@path@cjkfont ,
+    Extension = .ttf , ]
+}</code></pre>
+<p>首先，英文部分使用 <code>\setmainfont{}[]</code> 將字體設定為最常見的 Times New Roman，並將路徑（先前設定的 <code>\ntu@path@font</code>）傳遞進去。接著指定字體檔的副檔名為 <code>.ttf</code>，最後設定粗體、斜體、粗斜體的字體以 <code>*</code> 代替 Times New Roman，於其後加上後綴。</p>
+<p>中文部分則是以類似的方式，以 <code>\setCJKmainfont{}[]</code> 設定字體為 BiauKai，並設定路徑與副檔名。</p>
+</section>
+</section>
+<section id="選項設定" class="level2">
+<h2 class="anchored" data-anchor-id="選項設定">選項設定</h2>
+<p>當使用者使用模板時，通常都會有一些預設選項可以選填，例如語言、作者、日期等資訊。因此，我們同樣需要建立一個指令，來接收使用者填寫的參數值為何，並將這些值應用在模板上。</p>
+<p>首先，我們必須設定預設值：</p>
+<pre><code>\DeclareDefaultOption{
+  \PassOptionsToClass{\CurrentOption}{report}
+}
+
+% 處理選項並載入基礎文檔
+\ProcessKeyvalOptions*\relax
+
+% 載入 report 類別
+\LoadClass[a4paper, 12pt]{report}</code></pre>
+<p>這段程式碼的意思代表將沒有被設定過的選項全部傳遞給 <code>report</code> 類別，接著將所有之前定義的選項進行處理，最後載入 <code>report</code> 類別。</p>
+<p>接下來就是設定中英文，此處的中英文設定除了應用於封面頁外，更包含內文的中英文設定。在設定之前，模板先將做了一件事：將內文裡面會用到的各種中英文全部定義成指令，方法為： <code>\newcommand{\ntu@arg_name@zh}{中文翻譯}</code> 與 <code>\newcommand{\ntu@arg_name@en}{英文翻譯}</code>。舉例來說，我們分別設定中文與英文的目錄名稱：</p>
+<pre><code>\newcommand{\ntu@tableofcontents@zh}{目錄}      % 設定中文目錄名稱
+\newcommand{\ntu@tableofcontents@en}{Contents}  % 設定中文目錄名稱</code></pre>
+<p>如此一來，使用者就可在載入類別時，根據選項選填資訊：</p>
+<center>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  A[載入模板] --&gt; B{選擇中英文}
+  B --&gt; C[中文]
+  B --&gt; D[英文]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</center>
+<p>同理，我們也可以設定一些其他資訊，例如碩士、博士等。例如碩士（ 模板中設定為 <code>master</code>）的選項設定為：</p>
+<pre><code>\ifthenelse{\equal{\ntu@degreeset}{master}}{
+  \newcommand{\ntu@degree}{碩士}
+  \newcommand{\ntu@degree@en}{Master}
+  \newcommand{\ntu@type}{論文}
+  \newcommand{\ntu@type@en}{Thesis}
+}</code></pre>
+<p>最後，還需要進行版面設定。版面設定的方式如同前面設定，以定義指令的方式處理。不囉唆我們直接上程式碼：</p>
+<pre><code>\newcommand{\ntu@tocvspace}{1em} % 設定目錄各部分之間的垂直間距為 1em
+\newcommand{\ntu@tocchaptersize@zh}{4.5em} % 設定中文章節標題的寬度為 4.5em
+\newcommand{\ntu@tocchaptersize@en}{5.5em} % 設定英文章節標題的寬度為 5.5em
+
+\newcommand{\ntu@tocsecindent@zh}{1.5em} % 設定中文節標題的縮排為 1.5em
+\newcommand{\ntu@tocsecnumwidth@zh}{3.0em} % 設定中文節標題號碼的寬度為 3.0em
+\newcommand{\ntu@tocsubsecindent@zh}{3.0em} % 設定中文子節標題的縮排為 3.0em
+\newcommand{\ntu@tocsubsecnumwidth@zh}{3.0em} % 設定中文子節標題號碼的寬度為 3.0em
+
+\newcommand{\ntu@tocsecindent@en}{2.5em} % 設定英文節標題的縮排為 2.5em
+\newcommand{\ntu@tocsecnumwidth@en}{3.0em} % 設定英文節標題號碼的寬度為 3.0em
+\newcommand{\ntu@tocsubsecindent@en}{3.0em} % 設定英文子節標題的縮排為 3.0em
+\newcommand{\ntu@tocsubsecnumwidth@en}{3.0em} % 設定英文子節標題號碼的寬度為 3.0em</code></pre>
+<p>這樣就可以將所有需要的版面設定都處理完畢。我們可以看到，這些設定都是針對標題進行處理，主要原因在於中英文的字體有差異，不同語言需要縮排的長度都不相同。</p>
+<p>最後，我們就可以將這些設定透過遞迴的方式定義新指令，以中文為例，如果使用者在載入類別時使用 <code>\documentclass[..., language=chinese, ...]{ntuthesis}</code>，代表其所選擇的是中文：</p>
+<pre><code>\ifthenelse{\equal{\ntu@language}{chinese}}{
+  % 設定中文
+  \newcommand{\ntu@titlechapter}{\ntu@titlechapter@zh}
+  \newcommand{\ntu@titlechaptertoc}{\ntu@titlechaptertoc@zh}
+  \newcommand{\ntu@tocchaptersize}{\ntu@tocchaptersize@zh}
+  \newcommand{\ntu@tocsectionindent}{\ntu@tocsectionindent@zh}
+  \newcommand{\ntu@tocsubsectionindent}{\ntu@tocsubsectionindent@zh}
+  \newcommand{\ntu@acknowledgement}{\ntu@acknowledgement@zh}
+  \newcommand{\ntu@tableofcontents}{\ntu@tableofcontents@zh}
+  \newcommand{\ntu@listoffigures}{\ntu@listoffigures@zh}
+  \newcommand{\ntu@listoftables}{\ntu@listoftables@zh}
+  \newcommand{\ntu@denotation}{\ntu@denotation@zh}
+  \newcommand{\ntu@verificationletter}{\ntu@verificationletter@zh}
+  \newcommand{\ntu@bibliography}{\ntu@bibliography@zh}
+  \newcommand{\ntu@appendix}{\ntu@appendix@zh}
+
+  % 設定單位
+  \newcommand{\ntu@tocsecindent}{\ntu@tocsecindent@zh}
+  \newcommand{\ntu@tocsecnumwidth}{\ntu@tocsecnumwidth@zh}
+  \newcommand{\ntu@tocsubsecindent}{\ntu@tocsubsecindent@zh}
+  \newcommand{\ntu@tocsubsecnumwidth}{\ntu@tocsubsecnumwidth@zh}
+}</code></pre>
+<p>可以看到上面程式碼的設定方式是以<strong>指令定義指令</strong>，一方面可以節省時間，不用一個個打下來（前面已經用指令進行處理），另一方面則是可以確定設定的指令是正確的。</p>
+</section>
+<section id="浮水印" class="level2">
+<h2 class="anchored" data-anchor-id="浮水印">浮水印</h2>
+<p>在學術論文製作中，浮水印（watermark）扮演著不可或缺的角色，其重要性遠超過單純的裝飾功能。浮水印是一種能讓人識別紙上圖案的技術<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>，不僅能夠彰顯文件的來源和歸屬，更是<strong>版權保護</strong>的重要工具。生處在數位時代，浮水印能夠有效防止未經授權的複製和散布<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>，同時提升文件的真實性以及可信度。</p>
+<p>此論文模板設定浮水印的方式很簡單，它使用 <code>tikz</code> 套件進行處理。當然這部分的細節必須留到講解 TikZ 的文章才能講解，現在僅需知道設定方式即可。我們先定義 <code>\makewatermark</code> 這個指令，用來生成浮水印，接著就是使用 <code>tikzpicture</code> 環境處理浮水印圖片：</p>
+<pre><code>\newcommand{\makewatermark}[2]{ % 定義一個新的指令 \makewatermark，接受兩個參數
+  \AddToShipoutPicture{ % 使用 \AddToShipoutPicture 指令，在每頁上新增圖片
+    \put(0,0){ % 在頁面左上角放置內容
+      \parbox[b][\paperheight]{\paperwidth}{ % 新增一個高度為整頁的 parbox
+        \vfill % 在盒子內部填充垂直空間
+        \centering % 內容置中
+        % 開始一個 tikz 圖形環境，記住當前頁面並重疊繪製
+        \begin{tikzpicture}[remember picture, overlay]
+          \coordinate (WM) at ([xshift=-4.325cm, yshift=-4.325cm] current page.north east); % 在當前頁面右上角設定一個坐標，並向左下移動
+          \node [scale=1] at (WM) {\includegraphics[width=3.65cm, height=3.65cm]{#2}}; % 在該坐標處放置一個指定大小的圖形，圖形來源於第二個參數
+          \filldraw [fill=white, opacity=1-\the\numexpr#1] (current page.north east) rectangle (current page.south west); % 繪製一個從右上角到左下角的矩形，顏色為白色，透明度為 1 減去第一個參數的值
+        \end{tikzpicture}
+      \vfill % 在盒子內部填充垂直空間
+}}}}</code></pre>
+<p>最後就是根據載入類別時，使用者設定的選項來決定是否加入浮水印：</p>
+<pre><code>\ifthenelse{\equal{\ntu@watermark}{true}}{
+    \makewatermark{0.25}{figures/seal.pdf}
+    }{}</code></pre>
+<p>上面程式碼使用 <code>\equal</code> 參數，判斷 <code>\ntu@watermark</code> 與 <code>true</code> 是否相等，如果相等就加入浮水印，並設定透明度為 0.25。</p>
+</section>
+<section id="附錄設計" class="level2">
+<h2 class="anchored" data-anchor-id="附錄設計">附錄設計</h2>
+<p>附錄（appendix）指的是對於書籍或文獻主要內容的<strong>補充</strong>，為讀者提供了<strong>基於本文的額外的資訊</strong><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>，這些內容放在本文可能過於冗長或技術性太強。附錄的功能在於補充和拓展論文的本文，使讀者能夠深入了解研究過程、資料來源、計算過程等細節。</p>
+<p>設定目錄的方式很簡單，只要用 <code>\appendix</code> 指令即可。但是，附錄其實是額外的章節，因此需要將其視為章節處理，而通常來說附錄不會出現在編號內，故使用星號章節。</p>
+<pre><code>\renewcommand{\appendix}[2]{
+  \chapter*{\ntu@appendix~{#1}~---~#2}
+  \phantomsection
+  \addcontentsline{toc}{chapter}{\ntu@appendix~{#1}~---~#2}
+  \setcounter{section}{0}
+  \renewcommand{\thechapter}{#1}
+}</code></pre>
+<p>注意到在設定附錄時，我們將 section 的計數器設定為 0 開始，理由是設定完畢後，顯示出來的編號就會是從 1 開始處理。</p>
+</section>
+<section id="加入目錄" class="level2">
+<h2 class="anchored" data-anchor-id="加入目錄">加入目錄</h2>
+<p>目錄（table of contents）存在的目的不僅可以讓讀者快速瀏覽整篇論文的結構和內容，更能夠快速找到特定章節或主題。一份好的論文不僅需要本文的目錄，更需要圖目錄與表目錄，圖目錄與表目錄的功能對於那些有大量圖表的論文而言是必要的，能夠讓讀者在茫茫文字中快速定位圖表的位置在哪。</p>
+<section id="定義目錄名稱" class="level3">
+<h3 class="anchored" data-anchor-id="定義目錄名稱">定義目錄名稱</h3>
+<p>首先，我們要先定義中英文的目錄名稱，這部分在前面小節已經提過，以下僅提供程式碼：</p>
+<pre><code>% 設定中文目錄名稱
+\newcommand{\ntu@tableofcontents@zh}{目錄}
+\newcommand{\ntu@listoffigures@zh}{圖目錄}
+\newcommand{\ntu@listoftables@zh}{表目錄}
+
+% 設定英文目錄名稱
+\newcommand{\ntu@tableofcontents@en}{Contents}
+\newcommand{\ntu@listoffigures@en}{List of Figures}
+\newcommand{\ntu@listoftables@en}{List of Tables}</code></pre>
+</section>
+<section id="設定目錄格式" class="level3">
+<h3 class="anchored" data-anchor-id="設定目錄格式">設定目錄格式</h3>
+<p>設定目錄格式，我們需要使用 <code>titletoc</code> 與 <code>tocloft</code> 兩個套件。目錄必須包含以下幾個要素：</p>
+<ul>
+<li><p>目錄名稱</p></li>
+<li><p>各章節名稱</p></li>
+<li><p>各章節開頭對應的頁碼</p></li>
+</ul>
+<p>請看下圖示例：</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./目錄.png" class="img-fluid figure-img" style="width:55.0%" data-fig.align="center"></p>
+<figcaption>圖 4：目錄</figcaption>
+</figure>
+</div>
+<p>首先，我們先設定 “Page” 這個文字的位置，當然也可以不設定，只是模板中有設定此元素，因此特別說明。</p>
+<pre><code>\addtocontents{toc}         % 修改目錄樣式
+{~\hfill\textbf{Page}\par}  % 在目錄文件中插入自定義內容，這裡是插入“Page”並右對齊
+{}
+{}
+{}</code></pre>
+<p>緊接著就要設定目錄中每一級標題的格式。我們使用 <code>titlesec</code> 套件中的指令 <code>titlecontents</code>，其語法為 <code>\titlecontents{標題名稱}[左間距]{標題格式}{標題內容}{無序號標題}{指引線與頁碼}[下間距]</code>。</p>
+<pre><code>\titlecontents{chapter}[0em]                                % 修改目錄樣式
+{\addvspace{0.5em}\normalsize\bfseries\protect}
+{\fboxrule=0pt\fboxsep=0pt\framebox[\ntu@tocchaptersize][l]{\ntu@titlechaptertoc}}
+{}
+{\hfill\contentspage}</code></pre>
+<p>接著就需要設定目錄中標題之間的間距、標題深度，以及標題的縮排：</p>
+<pre><code>\setlength{\cftbeforesecskip}{8pt} % 修改目錄中節標題的間距，設定為 8pt
+\setlength{\cftbeforesubsecskip}{8pt} % 修改目錄中子節標題的間距，設定為 8pt
+
+\setcounter{tocdepth}{3} % 設定目錄的深度，顯示到子節（3 對應 subsection）
+\setcounter{secnumdepth}{3} % 設定章節編號的深度，編號到子節（3 對應 subsection）
+
+% \cftsetindents{entry}{indent}{numwidth} 的用法
+\cftsetindents{section}{\ntu@tocsecindent}{\ntu@tocsecnumwidth} % 設定目錄中節標題的縮排和編號寬度
+\cftsetindents{subsection}{\ntu@tocsubsecindent}{\ntu@tocsubsecnumwidth} % 設定目錄中子節標題的縮排和編號寬度</code></pre>
+<p>最後就是建立一個生成目錄的指令，以下程式碼較為簡單，因此就不特別講解。</p>
+<pre><code>% 目錄名稱設定與生成
+\renewcommand{\contentsname}{\centerline{\ntu@tableofcontents}} % 重新定義目錄的標題，並志中顯示
+
+\newcommand{\maketableofcontents}{ % 定義一個新指令 \maketableofcontents
+  \cleardoublepage % 插入一個雙面清除頁，確保下一章從奇數頁開始
+  \phantomsection % 新增一個虛擬節點，供超連結引用
+  \addcontentsline{toc}{chapter}{\ntu@tableofcontents} % 將目錄新增到目錄本身
+  \tableofcontents % 生成目錄
+}
+
+% 圖目錄名稱設定與生成
+\renewcommand{\listfigurename}{\centerline{\ntu@listoffigures}} % 重新定義圖目錄的標題，並置中顯示
+
+\newcommand{\makelistoffigures}{ % 定義一個新指令 \makelistoffigures
+  \cleardoublepage % 插入一個雙面清除頁，確保下一章從奇數頁開始
+  \phantomsection % 新增一個虛擬節點，供超連結引用
+  \addcontentsline{toc}{chapter}{\ntu@listoffigures} % 將圖目錄新增到目錄
+  \listoffigures % 生成圖目錄
+}
+
+% 表目錄名稱設定與生成
+\renewcommand{\listtablename}{\centerline{\ntu@listoftables}} % 重新定義表目錄的標題，並置中顯示
+
+\newcommand{\makelistoftables}{ % 定義一個新指令 \makelistoftables
+  \cleardoublepage % 插入一個雙面清除頁，確保下一章從奇數頁開始
+  \phantomsection % 新增一個虛擬節點，供超連結引用
+  \addcontentsline{toc}{chapter}{\ntu@listoftables} % 將表目錄新增到目錄
+  \listoftables % 生成表目錄
+}</code></pre>
+</section>
+</section>
+<section id="參考文獻" class="level2">
+<h2 class="anchored" data-anchor-id="參考文獻">參考文獻</h2>
+<p>世界上許多事情都是拾人牙慧，如牛頓的名言：</p>
+<blockquote class="blockquote">
+<p><em>If I have seen further than others, it is by standing upon the shoulders of giants.</em></p>
+</blockquote>
+<p>引用他人的研究成果與作品都需要註明清楚，否則就是<strong>竊取</strong>他人的知識，在學術界上被<strong>絕對禁止</strong>（任何領域都一樣）。因此，參考文獻就是學術誠信的一種體現，正確引用他人的研究可以避免學術不端行為，並且尊重原作者的智慧財產權。參考文獻的編排應該嚴謹、規範，按照指定的格式進行，以便讀者可以方便地查找和閱讀相關資料。</p>
+<p>LaTeX 中有兩種方式處理參考文獻，分別是使用與不使用 BibTeX。BibTeX 是一套用於管理文獻、產生文獻目錄的格式，其格式為 <code>@參考文獻類別{參考文獻資訊}</code><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>。關於詳細的使用說明，請參考<a href="https://www.ctan.org/pkg/bibtex">官方網站</a>與<a href="http://mirrors.ctan.org/biblio/bibtex/base/btxdoc.pdf">官方文件</a>的解釋。</p>
+<p>下面我們會分別講述使用與不使用 BibTeX 的方式，部分內容參考自<a href="https://segmentfault.com/a/1190000037460406">在LaTeX中如何引用参考文献</a>以及<a href="https://wlzhong.wordpress.com/2016/10/17/latex-%E5%A6%82%E4%BD%95%E5%8A%A0%E5%85%A5-bibliography/">[LaTeX] 如何加入 bibliography</a>這兩篇文章。</p>
+<section id="使用-bibtex" class="level3">
+<h3 class="anchored" data-anchor-id="使用-bibtex">使用 BibTeX</h3>
+<p>使用 BibTeX 首先必須建立一個 <code>.bib</code> 檔案，此檔用來儲存所有的文獻。每個條目都有一個<strong>唯一的鍵值</strong>，用來在 LaTeX 主文件中進行引用。這個文件可以用任何編輯器編寫，連記事本都可以處理，但是必須要將副檔名設定為 <code>.bib</code>。以下是一個範例：</p>
+<pre><code>@article{caldara2022,
+  title={Measuring geopolitical risk},
+  author={Caldara, Dario and Iacoviello, Matteo},
+  journal={American Economic Review},
+  volume={112},
+  number={4},
+  pages={1194--1225},
+  year={2022},
+  publisher={American Economic Association 2014 Broadway, Suite 305, Nashville, TN 37203}
+}</code></pre>
+<p>其中的鍵為 <code>knuth1984tex</code>，值則是下面的各種資訊，包含文獻標題、作者、發表期刊、頁碼等。你可以會想說：「該不會要一個個查詢然後輸入吧？」當然沒那麼麻煩，現在各種文獻資料庫都有提供輸出 BibTeX 格式的按鈕，以最常見的 <a href="https://scholar.google.com/">Google Scholar</a> 為例，進入到搜尋頁面後，搜尋想要的文獻後，在目標文獻下方點擊 “Cite”，左下角有 “BibTeX” 按鈕，點擊後即可進入 Google Scholar 存放 BibTeX 資訊的頁面，全選即可複製。如果上面的文字不夠清楚，可以觀看以下的影片（從 3 分 52 秒開始）較為清晰。</p>
+<center>
+<iframe width="750" height="485" src="https://www.youtube.com/embed/KrwpBTsQz3E" title="Referencing using LaTeX and google scholar | Impport citations from googler scholar | BibTex" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
+</iframe>
+</center>
+<p>如果你選擇使用 EndNote 書目管理系統，可以參考國立臺灣大學圖書館佛心的教學文章<a href="http://tul.blog.ntu.edu.tw/archives/31335">EndNote書目匯出至LaTeX使用</a>。</p>
+<section id="引用參考文獻" class="level4">
+<h4 class="anchored" data-anchor-id="引用參考文獻">引用參考文獻</h4>
+<p>成功建立 <code>.bib</code> 文件後，就可以在主文件引用這些參考文獻。最基本的飲用方式就是在想要引用的地方加上 <code>~\cite{文獻鍵值}</code>，至於為何要在前面加上波浪符 <code>~</code> 呢？原因是使用 <code>\cite</code> 指令後，輸出的參考文獻會直接跟文字黏在一起，除非是在段落的開頭，否則在段落內都需要使用波浪符跟文字分開。</p>
+</section>
+<section id="文內參考文獻顯示" class="level4">
+<h4 class="anchored" data-anchor-id="文內參考文獻顯示">文內參考文獻顯示</h4>
+<p>不過，<code>\cite</code> 指令輸出的格式為 [1]、[2]、[3]，但根據不同的參考文獻，在文章內顯示的格式也要不同。下表是常見的參考文獻格式，不同的參考文獻格式對應的領域也不盡相同，需要依照論文的領域進行使用。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>參考文獻格式</th>
+<th>應用領域</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>APA</td>
+<td>人文、社會科學、教育</td>
+</tr>
+<tr class="even">
+<td>IEEE</td>
+<td>工程、計算機科學、技術</td>
+</tr>
+<tr class="odd">
+<td>Chicago</td>
+<td>歷史、藝術、哲學、人文</td>
+</tr>
+<tr class="even">
+<td>MLA</td>
+<td>文學、語言學、藝術</td>
+</tr>
+<tr class="odd">
+<td>Harvard</td>
+<td>科學、社會科學、商業</td>
+</tr>
+<tr class="even">
+<td>Vancouver</td>
+<td>醫學、生物科學、健康科學</td>
+</tr>
+<tr class="odd">
+<td>ACS</td>
+<td>化學</td>
+</tr>
+<tr class="even">
+<td>AMA</td>
+<td>醫學</td>
+</tr>
+<tr class="odd">
+<td>NLM</td>
+<td>醫學、生物科學</td>
+</tr>
+<tr class="even">
+<td>APS</td>
+<td>物理學</td>
+</tr>
+<tr class="odd">
+<td>Turabian</td>
+<td>人文、社會科學</td>
+</tr>
+<tr class="even">
+<td>AAA</td>
+<td>人類學</td>
+</tr>
+<tr class="odd">
+<td>ASA</td>
+<td>社會學</td>
+</tr>
+<tr class="even">
+<td>Bluebook</td>
+<td>法學</td>
+</tr>
+<tr class="odd">
+<td>AIP</td>
+<td>物理學</td>
+</tr>
+<tr class="even">
+<td>APSA</td>
+<td>政治學</td>
+</tr>
+<tr class="odd">
+<td>CSE</td>
+<td>生物學、環境科學</td>
+</tr>
+<tr class="even">
+<td>JAMA</td>
+<td>醫學</td>
+</tr>
+<tr class="odd">
+<td>Nature</td>
+<td>自然科學</td>
+</tr>
+<tr class="even">
+<td>Science</td>
+<td>科學</td>
+</tr>
+</tbody>
+</table>
+<p>我們使用 <code>natbib</code> 套件，<code>natbib</code> 套件是 LaTeX 用於處理引用文獻的強大套件，特別適合上述需求。該套件支持多種引用樣式，包括 APA、IEEE 和 Chicago 等，並提供多種引用指令，如 <code>\citep</code> 和 <code>\citet</code>，允許在文本中以不同格式引用文獻。<code>natbib</code> 也能與 BibTeX 整合，方便管理和自動生成參考文獻列表。以下是 <code>natbib</code> 套件最常使用的指令、說明與輸出格式：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 33%">
+<col style="width: 41%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>引用格式</th>
+<th>說明</th>
+<th>輸出</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\cite</code></td>
+<td>標準引用，僅顯示引用標籤</td>
+<td>[1]</td>
+</tr>
+<tr class="even">
+<td><code>\citep</code></td>
+<td>圓括號引用，顯示引用標籤</td>
+<td>(Jones et al., 1990)</td>
+</tr>
+<tr class="odd">
+<td><code>\citet</code></td>
+<td>文中引用，顯示作者和年份</td>
+<td>Jones et al.&nbsp;(1990)</td>
+</tr>
+<tr class="even">
+<td><code>\citeauthor</code></td>
+<td>顯示作者名</td>
+<td>Jones et al.</td>
+</tr>
+<tr class="odd">
+<td><code>\citeyear</code></td>
+<td>顯示年份</td>
+<td>1990</td>
+</tr>
+<tr class="even">
+<td><code>\citenum</code></td>
+<td>僅顯示引用標籤，不加括號</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td><code>\citealp</code></td>
+<td>僅顯示作者和年份，不加括號</td>
+<td>Jones et al., 1990</td>
+</tr>
+<tr class="even">
+<td><code>\citealt</code></td>
+<td>顯示作者和年份，不加圓括號</td>
+<td>Jones et al.&nbsp;1990</td>
+</tr>
+<tr class="odd">
+<td><code>\citefull</code></td>
+<td>完整引用，顯示作者、年份、標題</td>
+<td>Jones et al.&nbsp;(1990). The Title</td>
+</tr>
+<tr class="even">
+<td><code>\cite*</code></td>
+<td>標準引用，顯示所有作者</td>
+<td>[1]</td>
+</tr>
+<tr class="odd">
+<td><code>\citep*</code></td>
+<td>圓括號引用，顯示所有作者</td>
+<td>(Jones, Baker, and Williams, 1990)</td>
+</tr>
+<tr class="even">
+<td><code>\citet*</code></td>
+<td>文中引用，顯示所有作者和年份</td>
+<td>Jones, Baker, and Williams (1990)</td>
+</tr>
+<tr class="odd">
+<td><code>\citet[章節]{}</code></td>
+<td>文中引用，帶有章節資訊</td>
+<td>Jones et al.&nbsp;(1990, chap.&nbsp;2)</td>
+</tr>
+<tr class="even">
+<td><code>\citep[頁碼]{}</code></td>
+<td>圓括號引用，帶有頁碼資訊</td>
+<td>(Jones et al., 1990, p.&nbsp;50)</td>
+</tr>
+<tr class="odd">
+<td><code>\citenum[章節]{}</code></td>
+<td>僅顯示引用標籤，不加括號，帶章節資訊</td>
+<td>1, chap.&nbsp;2</td>
+</tr>
+<tr class="even">
+<td><code>\citealt*</code></td>
+<td>顯示所有作者和年份，不加圓括號</td>
+<td>Jones, Baker, and Williams 1990</td>
+</tr>
+<tr class="odd">
+<td><code>\citealp*</code></td>
+<td>僅顯示所有作者和年份，不加括號</td>
+<td>Jones, Baker, and Williams, 1990</td>
+</tr>
+<tr class="even">
+<td><code>\citealp[頁碼]{}</code></td>
+<td>僅顯示作者和年份，不加括號，帶頁碼資訊</td>
+<td>Jones et al., 1990, pg. 32</td>
+</tr>
+<tr class="odd">
+<td><code>\citetext{}</code></td>
+<td>自定義引用文字</td>
+<td>(priv. comm.)</td>
+</tr>
+<tr class="even">
+<td><code>\citealp{jon90,jam91}</code></td>
+<td>多重引用，不加括號</td>
+<td>Jones et al., 1990; James et al., 1991</td>
+</tr>
+</tbody>
+</table>
+<p>以筆者所在的經濟領域為例，經濟領域大部分都使用 APA 格式。首先，我們需要載入 <code>natbib</code> 套件：</p>
+<pre><code>\usepackage[sort&amp;compress]{natbib}</code></pre>
+<p>其中 <code>sort</code> 和 <code>compress</code> 這兩個選項分別用來控制引用文獻的排列和顯示方式。<code>sort</code> 選項會將多個引用按字母順序排序，使引用列表更有序，便於讀者查找。<code>compress</code> 選項則會將相鄰的數字引用壓縮為一個範圍，減少佔用的篇幅，使文中引用看起來更簡潔。</p>
+<pre><code>\bibliographystyle{abbrvnat}
+\setcitestyle{authoryear,
+              open={(},
+              close={)}
+              } </code></pre>
+<p>這兩個指令的作用分別如下：</p>
+<ul>
+<li><p><code>\bibliographystyle{abbrvnat}</code>：該指令適用於簡化的引用格式。文獻列表中的每個引用條目會以縮寫形式顯示作者的名字。例如，“John Doe” 可能會顯示為 “Doe, J.”，此樣式有助於節省空間。</p></li>
+<li><p><code>\setcitestyle{authoryear,open={(},close={)}}</code>：此指令則設定文中引用的樣式，定義了引用文獻在正文中的顯示方式。<code>authoryear</code>：這個選項設定引用格式為 “作者(年份)” 格式，例如 “Smith(2020)”。而 <code>open={(},close={)}</code> 則設定引用的括號樣式。<code>open</code> 設定左括號為 “(”，close 設定右括號為 “)”。這樣，文中的引用會顯示為 “(Smith, 2020)” 的格式。</p></li>
+</ul>
+</section>
+<section id="加入參考文獻" class="level4">
+<h4 class="anchored" data-anchor-id="加入參考文獻">加入參考文獻</h4>
+<p>上面的這些設定沒有辦法在論文最後顯示參考文獻，我們需要使用指令加入參考文獻。在模板中，我們定義了 <code>\refmatter</code> 指令用於設定參考文獻章節的外觀，參考文獻也需要加入目錄中，並且依據語言不同，我們設定參考文獻的名稱：</p>
+<pre><code>\newcommand{\refmatter}{
+  \cleardoublepage
+  \phantomsection
+  \renewcommand{\bibname}{\ntu@bibliography}
+  \addcontentsline{toc}{chapter}{\ntu@bibliography}
+}</code></pre>
+<p>設定完畢後，我們在主文件中加入以下指令：</p>
+<pre><code>\bibliographystyle{參考文獻格式}
+\bibliography{參考文獻.bib}</code></pre>
+<p>第一行用於設定參考文獻格式，例如 APA 格式則使用 <code>apacite</code>，文獻列表中的每個引用條目將會按照 APA 樣式格式化。以下是一些常見的 <code>bibliographystyle</code> 參數及其用途，</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 76%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>參數</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>plain</code></td>
+<td>依照作者姓氏的字母順序排列，適用於多學科的基本樣式</td>
+</tr>
+<tr class="even">
+<td><code>abbrv</code></td>
+<td>類似 <code>plain</code>，但作者名和期刊名縮寫</td>
+</tr>
+<tr class="odd">
+<td><code>unsrt</code></td>
+<td>依照引用出現的順序排列</td>
+</tr>
+<tr class="even">
+<td><code>alpha</code></td>
+<td>作者和年份的程式碼作為標籤</td>
+</tr>
+<tr class="odd">
+<td><code>apalike</code></td>
+<td>APA 樣式的簡化版本，適用於社會科學</td>
+</tr>
+<tr class="even">
+<td><code>ieeetr</code></td>
+<td>IEEE 樣式，適用於工程和技術</td>
+</tr>
+<tr class="odd">
+<td><code>acm</code></td>
+<td>ACM 樣式，適用於計算機科學</td>
+</tr>
+<tr class="even">
+<td><code>siam</code></td>
+<td>SIAM 樣式，適用於應用數學</td>
+</tr>
+<tr class="odd">
+<td><code>abbrvnat</code></td>
+<td><code>natbib</code> 套件的縮寫樣式，適用於各學科</td>
+</tr>
+<tr class="even">
+<td><code>unsrtnat</code></td>
+<td><code>natbib</code> 套件的無序排列樣式，按引用順序排列</td>
+</tr>
+<tr class="odd">
+<td><code>plainnat</code></td>
+<td><code>natbib</code> 套件的基本樣式，按作者姓氏排列</td>
+</tr>
+<tr class="even">
+<td><code>chicago</code></td>
+<td>Chicago 樣式，適用於人文學科</td>
+</tr>
+<tr class="odd">
+<td><code>amsalpha</code></td>
+<td>AMS 樣式，使用作者和年份程式碼作為標籤</td>
+</tr>
+<tr class="even">
+<td><code>amsplain</code></td>
+<td>AMS 樣式的簡化版，按作者姓氏排列</td>
+</tr>
+<tr class="odd">
+<td><code>jtb</code></td>
+<td>適用於生物學期刊</td>
+</tr>
+<tr class="even">
+<td><code>nature</code></td>
+<td>自然雜誌樣式，適用於自然科學</td>
+</tr>
+<tr class="odd">
+<td><code>bibtex</code></td>
+<td>BibTeX 的基本樣式</td>
+</tr>
+<tr class="even">
+<td><code>authordate1</code></td>
+<td>作者-年份樣式 1，適用於社會科學</td>
+</tr>
+<tr class="odd">
+<td><code>authordate2</code></td>
+<td>作者-年份樣式 2，適用於社會科學</td>
+</tr>
+<tr class="even">
+<td><code>authordate3</code></td>
+<td>作者-年份樣式 3，適用於社會科學</td>
+</tr>
+<tr class="odd">
+<td><code>authordate4</code></td>
+<td>作者-年份樣式 4，適用於社會科學</td>
+</tr>
+<tr class="even">
+<td><code>kluwer</code></td>
+<td>Kluwer 樣式，適用於科學和技術</td>
+</tr>
+<tr class="odd">
+<td><code>annotate</code></td>
+<td>包含註釋的樣式</td>
+</tr>
+<tr class="even">
+<td><code>draft</code></td>
+<td>用於草稿的樣式</td>
+</tr>
+<tr class="odd">
+<td><code>phcpc</code></td>
+<td>適用於物理和化學</td>
+</tr>
+<tr class="even">
+<td><code>rsc</code></td>
+<td>適用於皇家化學學會期刊</td>
+</tr>
+<tr class="odd">
+<td><code>dcu</code></td>
+<td>適用於 Dublin City University 樣式</td>
+</tr>
+</tbody>
+</table>
+<p>第二行 <code>\bibliography{參考文獻.bib}</code> 則是指定參考文獻的 <code>.bib</code> 文件的位置。LaTeX 將會從指定的 <code>.bib</code> 文件中讀取文獻條目，並在文檔的參考文獻部分顯示這些條目。筆者建議參考文獻的 <code>.bib</code> 檔案必須額外放在資料夾中，理由同樣是為了避免混淆。</p>
+</section>
+<section id="bibtex-編譯" class="level4">
+<h4 class="anchored" data-anchor-id="bibtex-編譯">BibTeX 編譯</h4>
+<p>加入這些設定後，我們必須將 BibTeX 進行編譯，並生成 <code>.bbl</code> 檔案，LaTeX 才能夠看得懂。因此正確的順序是：</p>
+<center>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph LR
+  A[LaTeX 編譯] --&gt; B[BibTeX 編譯]
+  B --&gt; C[LaTeX 編譯]
+  C --&gt; D[LaTeX 編譯]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</center>
+<p>編譯方法請參考<a href="https://tex.stackexchange.com/questions/156205/how-to-compile-bibtex-with-texstudio">How to compile bibtex with TeXstudio?</a>一文，裡面以 TeXStudio 為例。如果使用 Overleaf，Overleaf 會很好心的幫你處理這些事情，</p>
+</section>
+</section>
+<section id="不使用-bibtex" class="level3">
+<h3 class="anchored" data-anchor-id="不使用-bibtex">不使用 BibTeX</h3>
+<p>如果你不想使用 BibTeX 的話，可以參考以下方式。但筆者強烈建議應該要使用 BibTeX，不要因為過程複雜而拋棄這個好用的東西。</p>
+<p>不使用 BibTeX 的方式是在文末以 <code>thebibliography</code> 將參考文獻條目包住：</p>
+<pre><code>\begin{thebibliography}{參考文獻數量}
+ 
+\bibitem{引用鍵值}
+    % 參考文獻格式，例如：作者名，\emph{文章標題，} 會議或期刊名稱，卷號，頁碼，出版社，出版地，年份。
+ 
+\end{thebibliography}</code></pre>
+<p>其中參考文獻數量這個參數代表條目總數為 <span class="math inline">\(10^{x} - 1\)</span>，<span class="math inline">\(x\)</span> 為填入的正整數。例如，如果最大有 99 篇文獻，則用 <code>{2}</code> 或者 <code>{99}</code>。</p>
+</section>
+</section>
+<section id="應用與總結" class="level2">
+<h2 class="anchored" data-anchor-id="應用與總結">應用與總結</h2>
+<p>終於到了論文排版的尾聲，我們需要將這些設定的內容應用在主文件上。我們可以載入類別文件，並根據提供的選項與指令調整論文需求。</p>
+<pre><code>\documentclass[
+  twoside,
+  openright,
+  degree    = master,               % degree = master | doctor
+  language  = chinese,              % language = chinese | english
+  fontset   = template,             % fontset = default | template | system | overleaf
+  watermark = true,                 % watermark = true | false
+  doi       = true,                 % doi = true | false
+]{ntuthesis}</code></pre>
+<p>接著將各個子資料夾的檔案放到主文件中，我們使用 <code>\input{文件名稱}</code>，如果放在子資料中，請記得指定路徑。最後呈現出來的結果如下所示：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TEX TS-program = xelatex
+% !BIB program = bibtex
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass[
+  twoside,
+  openright,
+  degree    = master,               % degree = master | doctor
+  language  = chinese,              % language = chinese | english
+  fontset   = template,             % fontset = default | template | system | overleaf
+  watermark = true,                 % watermark = true | false
+  doi       = true,                 % doi = true | false
+]{ntuthesis}
+
+\input{ntusetup}
+
+\begin{document}
+
+% 封面與口試審定
+% Cover and Verification Letter
+\makecover                          % 論文封面（Cover）
+\makeverification                   % 口試委員審定書（Verification Letter）
+
+% 致謝與論文摘要
+% Acknowledgement and Abstract
+% \input{front/acknowledgement}       % 致謝（Acknowledgement）
+\input{front/abstract}              % 摘要（Abstract）
+
+% 生成目錄與符號列表
+% Contents of Tables and Denotation
+\maketableofcontents                % 目錄（Table of Contents）
+\makelistoffigures                  % 圖目錄（List of Figures）
+% \makelistoftables                   % 表目錄（List of Tables）
+% \input{front/denotation}            % 符號列表（Denotation）
+
+% 論文內容
+% Contents of Thesis
+\mainmatter
+\input{contents/chapter01}
+% \input{contents/chapter02}
+% \input{contents/chapter03}
+% \input{contents/chapter03}
+% \input{contents/chapter04}
+
+% 參考文獻
+% References
+\refmatter
+\bibliographystyle{apacite}
+\bibliography{./back/references.bib}
+
+% 附錄
+% Appendices
+% \input{back/appendix01}
+% \input{back/appendix02}
+
+\end{document}
+</div></div></div></div></pre>
+<p>如果想要找其他的模板練練手，可以到 Overleaf 上的<a href="https://www.overleaf.com/latex/templates/tagged/thesis">論文模板區</a>搜尋。筆者幫大家整理出放在 Overleaf 上的各大學論文模板，重複的模板就不放上去了：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>大學/類型</th>
+<th>模板連結</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>國立臺灣大學</td>
+<td><a href="https://www.overleaf.com/latex/templates/national-taiwan-university-thesis-template/hvfybyfxgztt">National Taiwan University Thesis Template</a></td>
+</tr>
+<tr class="even">
+<td>國立政治大學</td>
+<td><a href="https://www.overleaf.com/latex/templates/zheng-da-zi-ke-lun-wen-mo-ban/pgknnpbtfnkn">Zheng Da Thesis Template</a></td>
+</tr>
+<tr class="odd">
+<td>國立成功大學</td>
+<td><a href="https://www.overleaf.com/latex/templates/thesis-ncku/kxjxbschhbsn">Thesis NCKU</a></td>
+</tr>
+<tr class="even">
+<td>國立中山大學</td>
+<td><a href="https://www.overleaf.com/latex/templates/guo-li-zhong-shan-da-xue-nsysu-shuo-shi-lun-wen-mo-ban/pjkwmbnnndyd">NSYSU Thesis Template</a></td>
+</tr>
+<tr class="odd">
+<td>國立臺灣科技大學</td>
+<td><a href="https://www.overleaf.com/latex/templates/ntust-thesis-template-1-dot-7-1-english-version/xngjwvkqkrgj">NTUST Thesis Template (English Version)</a></td>
+</tr>
+<tr class="even">
+<td>國立高雄科技大學</td>
+<td><a href="https://www.overleaf.com/latex/templates/nkust-thesis-overleaf/qwdpqjqnztsp">NKUST Thesis Overleaf</a></td>
+</tr>
+<tr class="odd">
+<td>高中生小論文</td>
+<td><a href="https://www.overleaf.com/latex/templates/xiao-lun-wen-zhong-xue-sheng-wang-zhan-essay-writing-website-for-high-school-students/hkdptbyqpzvh">High School Essay Template</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="履歷排版" class="level1">
+<h1>履歷排版</h1>
+<p>經過上面的論文排版的摧殘與洗禮，相信讀到這邊的你應該可以很快上手。不過在開始講解履歷排版之前，必須先聲明以下幾點：</p>
+<ol type="1">
+<li><p><strong>筆者並非履歷排版專家</strong>，有些履歷內容上的細節並不會於文章內討論，請自行上網或尋求專業人士協助。</p></li>
+<li><p>LaTeX 履歷排版多半都是用在學術領域，因此輸出結果較為死板，如果不喜歡的話可以點擊關閉此頁面，左轉到 <a href="https://www.canva.com/">Canva</a>。</p></li>
+</ol>
+<p>由於 Overleaf 上面履歷模板眾多，在<a href="https://www.overleaf.com/latex/templates/tagged/cv">履歷模板區</a> 耐心搜尋一定可以找到中意的模板。因此筆者將以個人偏好的<a href="https://www.overleaf.com/latex/templates/recreating-business-insiders-cv-of-marissa-mayer/gtqfpbwncfvp">Marissa Mayer</a>模板作為範例。</p>
+<section id="資料夾結構" class="level2">
+<h2 class="anchored" data-anchor-id="資料夾結構">資料夾結構</h2>
+<p>此模板的結構如底下的樹狀圖所示：</p>
+<pre><code>.
+├── README.md
+├── Suitcase_High.png
+├── Yacht_High.png
+├── altacv.cls
+├── mmayer-wikipedia-cc-by-2_0.jpg
+├── mmayer.tex
+├── pubs-authoryear.tex
+├── pubs-num.tex
+└── sample.bib</code></pre>
+<p>我們將會講解 <code>altacv.cls</code> 裡面的設定。</p>
+</section>
+<section id="履歷排版設定" class="level2">
+<h2 class="anchored" data-anchor-id="履歷排版設定">履歷排版設定</h2>
+<p>一份好的履歷應該<strong>內容豐富但不冗長</strong>，條理清晰並能夠將重點標示出來，能夠全面展現應聘者的優勢以及潛力。需要包含以下資訊：</p>
+<ul>
+<li><p>聯繫資訊：在履歷的開頭，需要清楚地列出應聘者的姓名、電話號碼、電子郵件等。這些資訊應該易於找到並且格式整潔。此外，應聘者還可以附上個人網站或作品集的連結，展現更多的專業成果。</p></li>
+<li><p>職業目標：簡短的職業目標能夠幫助面試者快速了解應聘者的職業方向和目標，裡面應該強調應聘者的核心技能和價值觀，並解釋為什麼適合該職位。</p></li>
+<li><p>學歷：學歷應該包括應聘者所獲得的學位、畢業的學校名稱以及畢業時間。</p></li>
+<li><p>工作經歷：工作經歷是履歷的核心部分，應該按時間順序列出應聘者的每一段工作經歷，包括公司名稱、職位名稱、工作時間和主要職責。</p></li>
+<li><p>技能：在技能部分，應該列出與應聘職位相關的技術技能和軟技能。</p></li>
+<li><p>專案經驗：如果應聘者有參與過的重要專案，可以在這一部分詳細描述。應該包括專案名稱、時間、描述和應聘者在專案中的角色和貢獻，強調專案帶來的成果和影響，可以增強履歷的說服力。</p></li>
+<li><p>語言能力：語言能力部分應該列出應聘者掌握的語言以及相應的熟練程度。對於需要多語言能力的職位，此部分尤為重要。</p></li>
+</ul>
+<p>以下將會分成兩部分講述：外觀設定與符號設定。</p>
+<section id="外觀設定" class="level3">
+<h3 class="anchored" data-anchor-id="外觀設定">外觀設定</h3>
+<p>在版面設定上，模板使用 <code>geometry</code> 套件，並將邊界設定為 2 公分：</p>
+<pre><code>\RequirePackage[margin=2cm]{geometry}</code></pre>
+<p>注意到此模板分為兩欄，主要原因是可以將履歷變得更加美觀。設定方式使用 <code>minipage</code>：</p>
+<pre><code>\newenvironment{cvcolumn}[1]{\begin{minipage}[t]{#1}\raggedright}{\end{minipage}}</code></pre>
+<p>此外，模板中可能會需要插入照片，因此我們設定左側和右側的照片。程式碼通過定義新長度和指令來實現照片的插入和排列。照片可以設定為正常的矩形格式或者圓形格式。程式碼還提供了便捷的指令來設定照片的大小和位置，並且支援多張照片的排列。程式碼與解釋如下：</p>
+<pre><code>\newlength{\altacv@photos@width} % 定義一個新的長度變數，用於儲存所有照片的總寬度
+\newlength{\altacv@photo@diam@left} % 定義左側照片的直徑
+\newlength{\altacv@photo@diam@right} % 定義右側照片的直徑
+\def\altacv@left@photos{} % 初始化一個指令來儲存左側照片
+\def\altacv@right@photos{} % 初始化一個指令來儲存右側照片
+
+\newcommand{\@makeaphoto}[2]{%
+  \begin{minipage}{#1}% % 開始一個 minipage，寬度為第一個參數指定的值
+    \if@normalphoto
+      \includegraphics[width=\linewidth]{#2} % 插入一張矩形照片，寬度為 minipage 的寬度
+    \else
+      \tikz\path[fill overzoom image={#2}]circle[radius=0.5\linewidth]; % 插入一張圓形照片
+    \fi%
+  \end{minipage}%
+}
+
+\newcommand{\altacv@add@photo@left}[1]{%
+  \appto{\altacv@left@photos}{%
+    \@makeaphoto{\altacv@photo@diam@left}{#1}\hspace{1ex}% % 將照片新增到左側照片指令中，並新增照片之間的間距
+  }%
+  \addtolength{\altacv@photos@width}{\altacv@photo@diam@left}% % 更新總照片寬度
+  \addtolength{\altacv@photos@width}{1ex}% % 新增照片之間的間距
+}
+\newcommand{\altacv@add@photo@right}[1]{%
+  \appto{\altacv@right@photos}{%
+    \@makeaphoto{\altacv@photo@diam@right}{#1}\hspace{1ex}% % 將照片新增到右側照片指令中，並新增照片之間的間距
+  }%
+  \addtolength{\altacv@photos@width}{\altacv@photo@diam@right}% % 更新總照片寬度
+  \addtolength{\altacv@photos@width}{1ex}% % 新增照片之間的間距
+}
+\newcommand{\photoL}[2]{%
+  \setlength{\altacv@photo@diam@left}{#1}% % 設定左側照片的直徑
+  \forcsvlist{\altacv@add@photo@left}{#2}% % 將逗號分隔的文件名列表傳遞給 \altacv@add@photo@left 指令
+}
+\newcommand{\photoR}[2]{%
+  \setlength{\altacv@photo@diam@right}{#1}% % 設定右側照片的直徑
+  \forcsvlist{\altacv@add@photo@right}{#2}% % 將逗號分隔的文件名列表傳遞給 \altacv@add@photo@right 指令
+}
+\let\photo\photoR % 將 \photo 指令設定為 \photoR 的別名，使其默認插入右側照片</code></pre>
+</section>
+<section id="符號設定" class="level3">
+<h3 class="anchored" data-anchor-id="符號設定">符號設定</h3>
+<p>履歷中如果僅用文字呈現，會稍顯無聊與枯燥，因此會適時的加上符號，讓版面變得生動活潑。</p>
+<p>在 LaTeX 中我們使用 <code>fontawesome5</code> 套件。FontAwesome 是一個流行的圖示字體和工具套件，提供了大量的向量圖示，可以輕鬆地插入到文件。FontAwesome 5 是其中的一個版本，它提供了超過 1500 個免費圖示，涵蓋了各種常見的應用場景，如社交媒體圖示等。如果想要查詢特定圖示，可以到<a href="https://fontawesome.com/v5/search">FontAwesome 官方網站</a>查詢；不過 <code>fontawesome5</code> 套件並不是提供所有圖示，請參考<a href="http://mirrors.ctan.org/fonts/fontawesome5/doc/fontawesome5.pdf">官方文件</a>的圖示與指令。</p>
+<p>載入套件之後，就可以使用 <code>fontawesome5</code> 提供的指令來插入各種圖標。例如，插入 GitHub 圖標的指令是 <code>\faGithub</code>。在 <code>altacv.cls</code> 文件中，我們看到了許多符號設定，這些符號主要用於插入電子郵件、地址、電話、個人網站、社交媒體帳號等圖標。程式碼如下：</p>
+<pre><code>\newcommand{\cvItemMarker}{{\small\textbullet}} % 定義項目符號樣式為小型的圓點
+\newcommand{\cvRatingMarker}{\faCircle} % 定義評分符號
+\newcommand{\cvDateMarker}{\faCalendar[regular]} % 定義日期符號
+\newcommand{\cvLocationMarker}{\faMapMarker} % 定義地點符號
+\NewInfoField{email}{\faAt}[mailto:] % 定義電子郵件圖示
+\NewInfoField{mailaddress}{\faEnvelope} % 定義郵寄地址圖示
+\NewInfoField{phone}{\faPhone}[tel:] % 定義電話圖示
+\NewInfoField{homepage}{\faGlobe}[https://] % 定義個人網站圖示
+\NewInfoField{twitter}{\faTwitter}[https://twitter.com/] % 定義 Twitter 圖示
+\NewInfoField{linkedin}{\faLinkedin}[https://linkedin.com/in/] % 定義 LinkedIn 圖示
+\NewInfoField{github}{\faGithub}[https://github.com/] % 定義 GitHub 圖示
+\NewInfoField{orcid}{\faOrcid}[https://orcid.org/] % 定義 Orcid 圖示
+\NewInfoField{location}{\cvLocationMarker} % 定義地點圖示</code></pre>
+<p>透過簡單講解 Marissa Mayer 這份履歷模板，相信你應該可以發揮想像力與美感，製作出一份屬於自己的履歷模板！</p>
+
+
+</section>
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>其實不僅僅是撰寫論文，一般在撰寫文章時，如果有使用到字體檔、圖片檔等，都盡量要將其放置在子資料夾。一方面是為了管理方便，另一方面是避免不同的檔案名稱會相互混淆。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>使用 <code>report</code> 的理由是 <code>article</code> 類別會將文件資訊與內文在同一頁顯示，雖然可以進行調整，但略顯麻煩，直接使用 <code>report</code> 類別較快。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>维基媒体项目贡献者. (2022, December 5). 水印. 维基百科，自由的百科全书. <a href="https://zh.wikipedia.org/wiki/水印">https://zh.wikipedia.org/wiki/水印</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>當然，這種東西只能防君子不防小人，因此才需要 DOI 識別碼的存在。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>請記住：<strong>千萬不要天外飛來一筆</strong>，附錄的內容必須基於本文進行撰寫，而不是想寫什麼就寫什麼。<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>維基媒體專案貢獻者. (2023, August 3). BibTeX. 維基百科，自由的百科全書. <a href="https://zh.wikipedia.org/zh-tw/BibTeX">https://zh.wikipedia.org/zh-tw/BibTeX</a><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sung2024,
+  author = {Sung, Anthony},
+  title = {LaTeX {教學系列：論文與履歷}},
+  date = {2024-07-31},
+  url = {https://yueswater.com/posts/2024-07-31-latex-thesis-cv/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sung2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Sung, Anthony. 2024. <span>“LaTeX 教學系列：論文與履歷.”</span> July 31,
+2024. <a href="https://yueswater.com/posts/2024-07-31-latex-thesis-cv/">https://yueswater.com/posts/2024-07-31-latex-thesis-cv/</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="xiaolong70701/quarto-blog" data-repo-id="R_kgDOJhS1Eg" data-category="General" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="light">
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright © 2024 Anthony. All rights reserved. See <a href="../copyright.html">statements</a>.</p>
+</div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/">
+      <i class="bi bi-facebook" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:xiaolong70701@gmail.com">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

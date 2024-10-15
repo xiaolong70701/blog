@@ -1,0 +1,2524 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anthony Sung">
+<meta name="dcterms.date" content="2024-07-08">
+<meta name="description" content="深入學習 LaTeX 表格與圖片處理技巧，打造專業排版效果！">
+
+<title>LaTeX 教學系列：表格與圖片的處理 – Yueswater Blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VLWNL5QXD8"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VLWNL5QXD8', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script> 
+  
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../css/karat.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Yueswater Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../notes.html"> 
+<span class="menu-text">Diary &amp; Notes</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/"> <i class="bi bi-facebook" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/yues_19_water/"> <i class="bi bi-instagram" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#先備知識" id="toc-先備知識" class="nav-link active" data-scroll-target="#先備知識">先備知識</a>
+  <ul class="collapse">
+  <li><a href="#對齊" id="toc-對齊" class="nav-link" data-scroll-target="#對齊">對齊</a></li>
+  <li><a href="#浮動環境" id="toc-浮動環境" class="nav-link" data-scroll-target="#浮動環境">浮動環境</a></li>
+  </ul></li>
+  <li><a href="#表格" id="toc-表格" class="nav-link" data-scroll-target="#表格">表格</a>
+  <ul class="collapse">
+  <li><a href="#tabular" id="toc-tabular" class="nav-link" data-scroll-target="#tabular">tabular</a>
+  <ul class="collapse">
+  <li><a href="#基本使用" id="toc-基本使用" class="nav-link" data-scroll-target="#基本使用">基本使用</a></li>
+  <li><a href="#建立三線表" id="toc-建立三線表" class="nav-link" data-scroll-target="#建立三線表">建立三線表</a></li>
+  <li><a href="#表格寬度問題" id="toc-表格寬度問題" class="nav-link" data-scroll-target="#表格寬度問題">表格寬度問題</a></li>
+  </ul></li>
+  <li><a href="#tabularx" id="toc-tabularx" class="nav-link" data-scroll-target="#tabularx">tabularx</a></li>
+  <li><a href="#array" id="toc-array" class="nav-link" data-scroll-target="#array">array</a></li>
+  <li><a href="#longtable" id="toc-longtable" class="nav-link" data-scroll-target="#longtable">longtable</a></li>
+  <li><a href="#supertabular" id="toc-supertabular" class="nav-link" data-scroll-target="#supertabular">supertabular</a></li>
+  <li><a href="#threeparttable" id="toc-threeparttable" class="nav-link" data-scroll-target="#threeparttable">threeparttable</a></li>
+  </ul></li>
+  <li><a href="#圖片" id="toc-圖片" class="nav-link" data-scroll-target="#圖片">圖片</a>
+  <ul class="collapse">
+  <li><a href="#插入圖片基本方法" id="toc-插入圖片基本方法" class="nav-link" data-scroll-target="#插入圖片基本方法">插入圖片基本方法</a></li>
+  <li><a href="#不同圖片格式" id="toc-不同圖片格式" class="nav-link" data-scroll-target="#不同圖片格式">不同圖片格式</a>
+  <ul class="collapse">
+  <li><a href="#插入-pdf-文件" id="toc-插入-pdf-文件" class="nav-link" data-scroll-target="#插入-pdf-文件">插入 PDF 文件</a></li>
+  <li><a href="#插入-svg-圖片" id="toc-插入-svg-圖片" class="nav-link" data-scroll-target="#插入-svg-圖片">插入 SVG 圖片</a></li>
+  <li><a href="#插入-eps-圖片" id="toc-插入-eps-圖片" class="nav-link" data-scroll-target="#插入-eps-圖片">插入 EPS 圖片</a></li>
+  </ul></li>
+  <li><a href="#多圖排版技巧並排與子圖的藝術" id="toc-多圖排版技巧並排與子圖的藝術" class="nav-link" data-scroll-target="#多圖排版技巧並排與子圖的藝術">多圖排版技巧：並排與子圖的藝術</a>
+  <ul class="collapse">
+  <li><a href="#兩圖並排共享標題" id="toc-兩圖並排共享標題" class="nav-link" data-scroll-target="#兩圖並排共享標題">兩圖並排，共享標題</a></li>
+  <li><a href="#兩圖並排獨立標題" id="toc-兩圖並排獨立標題" class="nav-link" data-scroll-target="#兩圖並排獨立標題">兩圖並排，獨立標題</a></li>
+  <li><a href="#使用-subfig-套件" id="toc-使用-subfig-套件" class="nav-link" data-scroll-target="#使用-subfig-套件">使用 subfig 套件</a></li>
+  <li><a href="#使用-subcaption-套件" id="toc-使用-subcaption-套件" class="nav-link" data-scroll-target="#使用-subcaption-套件">使用 subcaption 套件</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#小結" id="toc-小結" class="nav-link" data-scroll-target="#小結">小結</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">LaTeX 教學系列：表格與圖片的處理</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">latex</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    <p>深入學習 LaTeX 表格與圖片處理技巧，打造專業排版效果！</p>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Anthony Sung </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 8, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style id="ace-dawn">.ace-dawn .ace_gutter {background: #ebebeb;color: #333}.ace-dawn .ace_print-margin {width: 1px;background: #e8e8e8}.ace-dawn {background-color: #F9F9F9;color: #080808}.ace-dawn .ace_cursor {color: #000000}.ace-dawn .ace_marker-layer .ace_selection {background: rgba(39, 95, 255, 0.30)}.ace-dawn.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px #F9F9F9;}.ace-dawn .ace_marker-layer .ace_step {background: rgb(255, 255, 0)}.ace-dawn .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgba(75, 75, 126, 0.50)}.ace-dawn .ace_marker-layer .ace_active-line {background: rgba(36, 99, 180, 0.12)}.ace-dawn .ace_gutter-active-line {background-color : #dcdcdc}.ace-dawn .ace_marker-layer .ace_selected-word {border: 1px solid rgba(39, 95, 255, 0.30)}.ace-dawn .ace_invisible {color: rgba(75, 75, 126, 0.50)}.ace-dawn .ace_keyword,.ace-dawn .ace_meta {color: #794938}.ace-dawn .ace_constant,.ace-dawn .ace_constant.ace_character,.ace-dawn .ace_constant.ace_character.ace_escape,.ace-dawn .ace_constant.ace_other {color: #811F24}.ace-dawn .ace_invalid.ace_illegal {text-decoration: underline;font-style: italic;color: #F8F8F8;background-color: #B52A1D}.ace-dawn .ace_invalid.ace_deprecated {text-decoration: underline;font-style: italic;color: #B52A1D}.ace-dawn .ace_support {color: #691C97}.ace-dawn .ace_support.ace_constant {color: #B4371F}.ace-dawn .ace_fold {background-color: #794938;border-color: #080808}.ace-dawn .ace_list,.ace-dawn .ace_markup.ace_list,.ace-dawn .ace_support.ace_function {color: #693A17}.ace-dawn .ace_storage {font-style: italic;color: #A71D5D}.ace-dawn .ace_string {color: #0B6125}.ace-dawn .ace_string.ace_regexp {color: #CF5628}.ace-dawn .ace_comment {font-style: italic;color: #5A525F}.ace-dawn .ace_heading,.ace-dawn .ace_markup.ace_heading {color: #19356D}.ace-dawn .ace_variable {color: #234A97}.ace-dawn .ace_indent-guide {background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEklEQVQImWNgYGBgYLh/5+x/AAizA4hxNNsZAAAAAElFTkSuQmCC) right repeat-y}
+/*# sourceURL=ace/css/ace-dawn */</style>
+<style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style>
+<style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: blue;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}
+/*# sourceURL=ace/css/ace-tm */</style>
+<style id="ace_editor.css">.ace_br1 {border-top-left-radius    : 3px;}.ace_br2 {border-top-right-radius   : 3px;}.ace_br3 {border-top-left-radius    : 3px; border-top-right-radius:    3px;}.ace_br4 {border-bottom-right-radius: 3px;}.ace_br5 {border-top-left-radius    : 3px; border-bottom-right-radius: 3px;}.ace_br6 {border-top-right-radius   : 3px; border-bottom-right-radius: 3px;}.ace_br7 {border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px;}.ace_br8 {border-bottom-left-radius : 3px;}.ace_br9 {border-top-left-radius    : 3px; border-bottom-left-radius:  3px;}.ace_br10{border-top-right-radius   : 3px; border-bottom-left-radius:  3px;}.ace_br11{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-left-radius:  3px;}.ace_br12{border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br13{border-top-left-radius    : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br14{border-top-right-radius   : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br15{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;}.ace_editor {position: relative;overflow: hidden;padding: 0;font: 12px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;direction: ltr;text-align: left;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;cursor: text;}.ace_content {position: absolute;box-sizing: border-box;min-width: 100%;contain: style size layout;font-variant-ligatures: no-common-ligatures;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;contain: style size layout;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {position: absolute;top: 0;left: 0;right: 0;padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {contain: strict;position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;contain: strict;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;white-space: pre!important;}.ace_text-input.ace_composition {background: transparent;color: inherit;z-index: 1000;opacity: 1;}.ace_composition_placeholder { color: transparent }.ace_composition_marker { border-bottom: 1px solid;position: absolute;border-radius: 0;margin-top: 1px;}[ace_nocontext=true] {transform: none!important;filter: none!important;clip-path: none!important;mask : none!important;contain: none!important;perspective: none!important;mix-blend-mode: initial!important;z-index: auto;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;word-wrap: normal;white-space: pre;height: 100%;width: 100%;box-sizing: border-box;pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;height: 1000000px;contain: style size layout;}.ace_text-layer {font: inherit !important;position: absolute;height: 1000000px;width: 1000000px;contain: style size layout;}.ace_text-layer > .ace_line, .ace_text-layer > .ace_line_group {contain: style size layout;position: absolute;top: 0;left: 0;right: 0;}.ace_hidpi .ace_text-layer,.ace_hidpi .ace_gutter-layer,.ace_hidpi .ace_content,.ace_hidpi .ace_gutter {contain: strict;will-change: transform;}.ace_hidpi .ace_text-layer > .ace_line, .ace_hidpi .ace_text-layer > .ace_line_group {contain: strict;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;box-sizing: border-box;border-left: 2px solid;transform: translatez(0);}.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_hasPlaceholder .ace_hidden-cursors .ace_cursor {opacity: 0;}.ace_smooth-blinking .ace_cursor {transition: opacity 0.18s;}.ace_animate-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: step-end;animation-name: blink-ace-animate;animation-iteration-count: infinite;}.ace_animate-blinking.ace_smooth-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: ease-in-out;animation-name: blink-ace-animate-smooth;}@keyframes blink-ace-animate {from, to { opacity: 1; }60% { opacity: 0; }}@keyframes blink-ace-animate-smooth {from, to { opacity: 1; }45% { opacity: 1; }60% { opacity: 0; }85% { opacity: 0; }}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_error_bracket {position: absolute;border-bottom: 1px solid #DE5555;border-radius: 0;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;box-sizing: border-box;}.ace_line .ace_fold {box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(114, 113, 113, 0.05);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_inline_button {
+    border: 2px solid black; /* Add border */
+    display: inline-block;
+    margin: -1px 8px;
+    padding: 10px 20px; /* Adjust padding for better appearance */
+    pointer-events: auto;
+    cursor: pointer;
+    border-radius: 20px; /* Rounded corners */
+    background-color: white; /* Set background color */
+    color: black; /* Set text color */
+    text-align: center; /* Center text */
+    font-size: 16px; /* Adjust font size */
+    transition: background 0.3s, border-color 0.3s; /* Add transition for hover effects */
+}
+
+.ace_inline_button:hover {
+    border-color: gray;
+    background: rgba(200, 200, 200, 0.2);
+    pointer-events: auto;
+    border-radius: 20px; /* Maintain rounded corners */
+}
+.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}.ace_mobile-menu {position: absolute;line-height: 1.5;border-radius: 4px;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;background: white;box-shadow: 1px 3px 2px grey;border: 1px solid #dcdcdc;color: black;}.ace_dark > .ace_mobile-menu {background: #333;color: #ccc;box-shadow: 1px 3px 2px grey;border: 1px solid #444;}.ace_mobile-button {padding: 2px;cursor: pointer;overflow: hidden;}.ace_mobile-button:hover {background-color: #eee;opacity:1;}.ace_mobile-button:active {background-color: #ddd;}.ace_placeholder {font-family: arial;transform: scale(0.9);transform-origin: left;white-space: pre;opacity: 0.7;margin: 0 10px;}
+/*# sourceURL=ace/css/ace_editor.css */</style>
+<script src="./src/ace.min.js"></script>
+<style type="text/css" media="screen">
+  .ace_editor {
+  border: 1px solid lightgray;
+  margin-bottom: 1px !important;
+  width: 100%;
+  }
+  div.spacer {
+  margin-top:16px;
+  }
+</style>
+<script src="./src/runlatex.js"></script>
+<style>
+  body {margin:auto; max-width: 100em;}
+  div.h {background-color: #F5F5FF;margin: .5em 0;}
+  pre {background-color: #EEE;margin:0;padding: .5em;}
+  .llbutton {
+      border-radius: 12px;
+  }
+</style>
+<script src="./src/theme-dawn.js"></script>
+<script src="./src/mode-latex.js"></script>
+<style>
+    .answer {
+        display: none;
+        color: black;
+        margin-top: 10px;
+    }
+    .question {
+        cursor: pointer;
+        color: black;
+        background-color: white;
+        border: none;
+        padding: 2px 7px;
+        text-decoration: none;
+        font-size: 14px;
+        border-radius: 50px;
+    }
+    .question:hover {
+        background-color: white;
+    }
+</style>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+    #latex-input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    #preview {
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+</style>
+
+<p>當我們撰寫文件時，表格和圖片是不可或缺的元素。一份全部都是文字、長篇大論的文件，完全不會讓讀者有興趣繼續看下去，就算看下去了，也會興致缺缺；然而，當文字與表格或圖片交錯後，一方面可以將大量的資訊彙整起來，讓讀者快速知道文章的內容，另一方面，表格或圖片可以進行「比較」，讀者可以很快速地將不同資訊進行比對、了解不同模型、想法的差異。</p>
+<p>在這篇文章中，你會學到：</p>
+<ul>
+<li>建立、設定表格</li>
+<li>插入與調整圖片</li>
+</ul>
+<section id="先備知識" class="level1">
+<h1>先備知識</h1>
+<p>表格是一種將資訊或數據整理成行列或更複雜結構的方式，通常用於通訊、研究與數據分析。表格可以出現在印刷品、手寫筆記、電腦軟體、建築裝飾、交通號誌等多種情境中。<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Word 與 LaTeX 在處理表格上有些許的不同。如果你常使用 Word，會發現只要點擊插入後，選擇插入表格，拉出想要的行數與列數即可。如果想要更改表格的樣式，或是更改欄寬、行高，則在版面配置修改即可。這一點 LaTeX 就不如 Word 方便。</p>
+<blockquote class="blockquote">
+<p>這樣還要學 LaTeX 的表格幹嘛？</p>
+</blockquote>
+<p>當然，論方便性，LaTeX 在處理表格上較繁瑣，但論美觀以及專業性而言，LaTeX 遠勝於 Word。比起 Word，LaTeX 更適合處理學術上的表格，例如迴歸分析表、三線表，LaTeX 表現得更好。</p>
+<p>圖片的話，則是 LaTeX 略勝一籌。用過 Word 的你肯定遇到過，插入圖片之後需要調整文繞圖、圖繞文等等；調整完畢之後，可能圖片會在奇怪的位置，甚至跑到文本上面。但是 LaTeX 就不太會面臨這樣的窘境。</p>
+<p>老樣子，在開始介紹如何使用表格與圖片之前，需要複習一下與表格還有圖片相關的內容，以及先備知識。</p>
+<section id="對齊" class="level2">
+<h2 class="anchored" data-anchor-id="對齊">對齊</h2>
+<p>在<a href="https://xiaolong70701.github.io/blog/posts/2024-07-05-latex-math/">LaTeX 教學系列：數學排版</a>中，我們提到對齊大部分都需要使用 <code>&amp;</code> 符號。例如我們想要將 <span class="math inline">\(2x + y = 10\)</span> 與 <span class="math inline">\(5x + 4y = 18\)</span> 這兩條方程式以等號進行對齊，則可以使用以下程式碼：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">aligned</span>}</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    2x + y &amp;= 10<span class="fu">\\</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    5x + 4y &amp;= 18</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">aligned</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>排版結果如下：</p>
+<p><span class="math display">\[
+\begin{aligned}
+    2x + y &amp;= 10\\
+    5x + 4y &amp;= 18
+\end{aligned}
+\]</span></p>
+</section>
+<section id="浮動環境" class="level2">
+<h2 class="anchored" data-anchor-id="浮動環境">浮動環境</h2>
+<p>使用 Word 插入表格或圖片時，很常會遇到表格或圖片過大，導致不合理的分頁。白話來說，表格或圖片斷在不應該斷掉的地方，導致資訊與頁數不連貫。為了避免上述情況，我們需要使用浮動環境。</p>
+<p>所謂浮動環境或浮動體，是一個<strong>無法跨頁</strong>的結構，且具有以下特性：<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<ul>
+<li>是一個容器，包含篇幅較大不適合分割的內容</li>
+<li>具有簡短描述，如圖 1、表 2 …等</li>
+<li>具有編號，用於交叉引用</li>
+</ul>
+<p>在 LaTeX 中，最常使用的浮動環境套件是 <code>float</code> 與 <code>placeins</code>。我們會在下面進行討論，先別操之過急！</p>
+</section>
+</section>
+<section id="表格" class="level1">
+<h1>表格</h1>
+<p>LaTeX 有不同種類的表格，每種種類的表格都需要相應的套件。以下先介紹不同表格環境與所需套件，還有它們對應的使用時機。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 15%">
+<col style="width: 75%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>表格環境</th>
+<th>所需套件</th>
+<th>使用時機</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>tabular</code></td>
+<td>無</td>
+<td>基本表格，適合簡單的表格結構</td>
+</tr>
+<tr class="even">
+<td><code>tabularx</code></td>
+<td><code>tabularx</code></td>
+<td>自動調整列寬以適應整個頁面寬度時使用</td>
+</tr>
+<tr class="odd">
+<td><code>array</code></td>
+<td><code>array</code></td>
+<td>在表格中使用數學模式或自定義列類型時使用</td>
+</tr>
+<tr class="even">
+<td><code>longtable</code></td>
+<td><code>longtable</code></td>
+<td>當表格需要跨頁顯示時使用</td>
+</tr>
+<tr class="odd">
+<td><code>supertabular</code></td>
+<td><code>supertabular</code></td>
+<td>當表格需要跨頁顯示，且希望在每頁重新標題並自動處理標題和腳註時使用</td>
+</tr>
+<tr class="even">
+<td><code>multirow</code></td>
+<td><code>multirow</code></td>
+<td>當需要在表格中合併多行時使用</td>
+</tr>
+<tr class="odd">
+<td><code>colortbl</code></td>
+<td><code>colortbl</code></td>
+<td>當需要在表格中使用顏色時使用</td>
+</tr>
+<tr class="even">
+<td><code>table</code></td>
+<td>無</td>
+<td>當需要將表格作為浮動環境，並可以添加標題和註解時使用</td>
+</tr>
+<tr class="odd">
+<td><code>table*</code></td>
+<td>無</td>
+<td>當需要將表格作為跨欄的浮動環境，並可以添加標題和註解時使用</td>
+</tr>
+<tr class="even">
+<td><code>threeparttable</code></td>
+<td><code>threeparttable</code></td>
+<td>當需要添加註腳，並希望註腳不隨表格一起移動時使用</td>
+</tr>
+</tbody>
+</table>
+<section id="tabular" class="level2">
+<h2 class="anchored" data-anchor-id="tabular">tabular</h2>
+<p>在 LaTeX 中，<code>table</code> 和 <code>tabular</code> 環境的搭配使用是建立表格的常見方法。以下會先介紹如何使用這兩個環境，並講解如何使用這兩個環境建立三線表。</p>
+<section id="基本使用" class="level3">
+<h3 class="anchored" data-anchor-id="基本使用">基本使用</h3>
+<p><code>table</code> 環境主要負責處理表格的浮動位置和標題，避免跑版，而 <code>tabular</code> 環境則定義表格的<strong>實際內容和結構</strong>。</p>
+<ol type="1">
+<li><p>先以 <code>\begin{table}</code> 開始 table 環境，可以使用 <code>\centering</code> 將表格置中。</p></li>
+<li><p>接著使用 <code>\begin{tabular}</code> 開始 <code>tabular</code> 環境，在大括號中定義列的對齊方式，如 <code>{lcc}</code> 表示置左、置中、置中的三列，其中 <code>l</code> 代表置左（left）、<code>c</code> 代表置中、<code>r</code> 代表置右。</p></li>
+<li><p>在 <code>tabular</code> 環境中，使用 <code>&amp;</code> 分隔單元格，以 <code>|</code> 繪製垂直分隔線，並用 <code>\</code> 結束每一行，可以使用 <code>\hline</code> 添加水平分隔線。</p></li>
+<li><p>表格內容完成後，結束 <code>tabular</code> 環境，然後可以使用 <code>\caption{}</code> 添加表格標題，使用 <code>\label{}</code> 為表格添加標籤，以便後續文中的引用。最後結束 table 環境。</p></li>
+</ol>
+<p>一個簡單的表格可能如下所示：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Table}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{table}
+\centering
+    \begin{tabular}{|l|c|c|}
+        \hline
+        姓名 &amp; 年齡 &amp; 職業 \\
+        \hline
+        張三 &amp; 25 &amp; 工程師 \\
+        李四 &amp; 30 &amp; 教師 \\
+        王五 &amp; 28 &amp; 醫生 \\
+    \hline
+    \end{tabular}
+\caption{人員資訊表}
+\label{tab:personnel}
+\end{table}
+
+\end{document}
+</div></div></div></div></pre>
+<p>在上面的例子中，可以看到表格的位置在頁面的最下面，這是因為我們沒有將表格進行固定。這時候我們就需要這篇文章最前面提到的 <code>float</code> 套件。</p>
+<p>使用 <code>float</code> 套件很簡單，只要在前言區載入套件後，在 <code>\begin{table}</code> 後面加上方括號 <code>[]</code>，並在裡面設定如何處理此浮動環境。以下是一些可以調整的位置參數</p>
+<ul>
+<li><code>H</code>：強制將浮動環境放在當前位置（即程式碼所在處）</li>
+<li><code>h</code>: 嘗試將浮動環境放在當前位置</li>
+<li><code>t</code>：允許將浮動環境放在頁面頂部</li>
+<li><code>b</code>：允許將浮動環境放在頁面底部</li>
+<li><code>p</code>：允許將浮動環境放在單獨的浮動頁面上</li>
+<li><code>!</code>：告訴 LaTeX 忽略一些內部參數限制，讓放置浮動環境的規則更加寬鬆</li>
+</ul>
+<p>舉例來說，<code>!htb</code> 的組合代表著 LaTeX 會嘗試以下順序：盡可能在當前位置放置浮動體，如果不行，則嘗試頁面頂部，如果還不行，則嘗試頁面底部。而 <code>!htbp</code> 則多了一個選項，如果前面都不行，最後會考慮將浮動體放在單獨的頁面上。</p>
+<p>底下的程式碼提供一個使用 <code>float</code> 進行浮動環境調整的例子：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入浮動環境套件
+\usepackage{float}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Table}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% 強制將表格置放在程式碼所在處
+\begin{table}[H]
+\centering
+    \begin{tabular}{|l|c|c|}
+        \hline
+        姓名 &amp; 年齡 &amp; 職業 \\
+        \hline
+        張三 &amp; 25 &amp; 工程師 \\
+        李四 &amp; 30 &amp; 教師 \\
+        王五 &amp; 28 &amp; 醫生 \\
+    \hline
+    \end{tabular}
+\caption{人員資訊表}
+\label{tab:personnel}
+\end{table}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="建立三線表" class="level3">
+<h3 class="anchored" data-anchor-id="建立三線表">建立三線表</h3>
+<p>三線表是學術論文和科技文獻中常用的一種表格樣式，它的特點是整個表格**只有三條水平線*（像是這樣 (lll ￣v￣).），因此得名「三線表」。 LaTeX 中建立三線表多半使用 <code>booktabs</code> 套件。以下是一個簡單的例子：<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入浮動環境套件
+\usepackage{float}
+
+% 載入繪製三線表的相關套件
+\usepackage{booktabs}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Table}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% 強制將表格置放在程式碼所在處
+\begin{table}[H]
+\centering
+    \begin{tabular}{lcc}
+    \toprule
+        項目 &amp; 數量 &amp; 單價 \\
+        \midrule
+        蘋果 &amp; 5 &amp; \$2 \\
+        香蕉 &amp; 3 &amp; \$1.5 \\
+        橙子 &amp; 4 &amp; \$1.8 \\
+        \bottomrule
+    \end{tabular}
+\caption{水果價格表}
+\label{tab:fruit_prices}
+\end{table}
+
+\end{document}
+</div></div></div></div></pre>
+<p>其中，三線表的三條線分別有對應的指令：</p>
+<ul>
+<li><code>\toprule</code> 繪製頂部粗線</li>
+<li><code>\midrule</code> 繪製表頭下方的<strong>細線</strong>（請注意，是細線）</li>
+<li><code>\bottomrule</code> 繪製底部粗線</li>
+</ul>
+</section>
+<section id="表格寬度問題" class="level3">
+<h3 class="anchored" data-anchor-id="表格寬度問題">表格寬度問題</h3>
+<p>上面的例子中，可以看到表格的寬度都是固定的，但是如果我們想要調整表格寬度怎麼處理呢？在 tabular 環境中，我們可以使用 <code>p{...}</code>、<code>m{...}</code> 和 <code>b{...}</code> 來調整列的寬度，允許使用者指定固定寬度的列。調整欄位寬度需要載入 <code>array</code> 套件，但此處的 <code>array</code> 套件與後面要介紹的 <code>array</code> 環境無太大關係，請讀者注意。</p>
+<ul>
+<li><code>p{寬度}</code>: 建立一個固定寬度的列，內容從頂部開始垂直對齊。</li>
+<li><code>m{寬度}</code>: 建立一個固定寬度的列，內容垂直置中對齊。</li>
+<li><code>b{寬度}</code>: 建立一個固定寬度的列，內容從底部開始垂直對齊。</li>
+</ul>
+<p>而寬度可以使用任何有效的 LaTeX 長度單位，如 <code>cm</code>、<code>mm</code>、<code>in</code>、<code>em</code> 等。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入浮動環境套件
+\usepackage{float}
+
+% 載入 array 套件
+\usepackage{array}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Table}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% 強制將表格置放在程式碼所在處
+\begin{table}[H]
+\centering
+    \begin{tabular}{|l|p{4cm}|m{3cm}|b{2cm}|}
+        \hline
+        姓名 &amp; 簡介 &amp; 專長 &amp; 評分 \\
+        \hline
+        張三 &amp; 資深軟件工程師，有10年經驗 &amp; Java, Python, C++ &amp; 優秀 \\
+        \hline
+        李四 &amp; 專案經理，善於團隊協調 &amp; 專案管理，溝通技巧 &amp; 良好 \\
+        \hline
+    \end{tabular}
+\caption{人員技能}
+\label{tab:personnel}
+\end{table}
+
+\end{document}
+</div></div></div></div></pre>
+<p>其他更多有關欄位調整的方式，請參考下方表格：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>語法</th>
+<th>功能</th>
+<th>語法</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>p{寬度}</code></td>
+<td>文字折行</td>
+<td><code>\arrayrulewidth=單位長度</code></td>
+<td>調整表格線條粗細</td>
+</tr>
+<tr class="even">
+<td><code>@{文字、符號或指令}</code></td>
+<td>該欄文字套用指令</td>
+<td><code>\tabcolsep=單位長度</code></td>
+<td>調整兩欄位的左右間距</td>
+</tr>
+<tr class="odd">
+<td><code>\multicolumn{欄數}{位置}{文字}</code></td>
+<td>跨欄排版</td>
+<td><code>\doublerulesep=單位長度</code></td>
+<td>調整雙線間距</td>
+</tr>
+<tr class="even">
+<td><code>\cline{a-b}</code></td>
+<td>部份欄位的橫線</td>
+<td><code>\arraystretch</code></td>
+<td>調整表格上下行距</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="tabularx" class="level2">
+<h2 class="anchored" data-anchor-id="tabularx">tabularx</h2>
+<p><code>tabularx</code> 環境是 LaTeX 中的一個強大工具，用於建立寬度固定的表格。與標準的 <code>tabular</code> 環境不同，<code>tabularx</code> 允許使用者<strong>指定表格的總寬度</strong>，並<strong>自動調整列寬以適應這個指定的寬度</strong>，對於建立需要填滿頁面寬度或特定寬度的表格時特別有用。</p>
+<p>此外，<code>tabularx</code> 環境引入了一種新的列類型 <code>X</code>，它會自動擴展以填充可用空間，與 <code>tabular</code> 環境中的 <code>l</code>、<code>c</code>、<code>r</code> 等固定寬度的列類型形成對比，且使用 <code>X</code> 列可以確保表格內容均勻分佈，避免某些列過寬或過窄的問題。以下是一個使用 <code>tabularx</code> 的實際例子：<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入浮動環境套件
+\usepackage{float}
+
+% 載入 tabularx
+\usepackage{tabularx}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Table}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% 強制將表格置放在程式碼所在處
+\begin{table}
+    \centering
+    \begin{tabularx}{\textwidth}{|l|X|X|}
+        \hline
+        姓名 &amp; 職責描述 &amp; 工作成果 \\
+        \hline
+        張三 &amp; 負責項目A的設計和實施，包括系統架構設計和核心模塊開發 &amp; 成功完成項目A的首階段開發，提高了系統效率20\% \\
+        \hline
+        李四 &amp; 管理團隊日常運作，協調各部門資源，制定長期發展策略 &amp; 帶領團隊完成年度目標，員工滿意度提升15\% \\
+        \hline
+    \end{tabularx}
+\caption{員工績效表}
+\label{tab:employee_performance}
+\end{table}
+
+\end{document}
+</div></div></div></div></pre>
+<p>在這個例子中，表格寬度被設置為 <code>\textwidth</code>，即頁面的文本寬度。第一列使用 <code>l</code> 類型保持置左和固定寬度，而後兩列使用 <code>X</code> 類型自動調整寬度以填充剩餘空間。如此一來可以確保較長的文本內容（如職責描述和工作成果）有足夠的空間顯示，同時保持表格整體美觀。</p>
+</section>
+<section id="array" class="level2">
+<h2 class="anchored" data-anchor-id="array">array</h2>
+<p><code>array</code> 環境與 <code>tabular</code> 和 <code>tabularx</code> 環境不同，<code>array</code> 環境專門設計用於數學公式和表達式，通常在 <code>equation</code> 或 <code>$$</code> 數學環境中使用。</p>
+<p><code>array</code> 環境的主要特點是它自動進入數學模式，不需要額外的 <code>$</code> 符號來標記數學內容。此外還提供了更多適合數學排版的列類型，如置中的 <code>c</code>、置左的 <code>l</code> 和置右的 <code>r</code>。</p>
+<p>與 <code>tabular</code> 相比，<code>array</code> 更適合處理數學符號和表達式，但在處理一般文本時不如 <code>tabular</code> 靈活；<code>tabularx</code> 則強調自動調整表格寬度以適應指定的總寬度，這是 <code>array</code> 所不具備的功能。</p>
+<p>以下是一個使用 array 環境的實際例子：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Table}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{equation}
+    \begin{array}{rcl}
+    x + y &amp;=&amp; 10 \\
+    2x - y &amp;=&amp; 5 \\
+    3x + 2y &amp;=&amp; 20
+    \end{array}
+\end{equation}
+
+\end{document}
+</div></div></div></div></pre>
+<p>上述例子建立了一個包含三個方程式的聯立方程組，每個方程式佔一行。此外，<code>array</code> 環境在建立矩陣時特別有用：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Table}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+$$
+\begin{array}{cc|c}
+    1 &amp; 0 &amp; 3 \\
+    0 &amp; 1 &amp; 4
+\end{array}
+$$
+
+\end{document}
+</div></div></div></div></pre>
+<p>此例中建立了一個<strong>增廣矩陣</strong>（augmented matrix）。</p>
+</section>
+<section id="longtable" class="level2">
+<h2 class="anchored" data-anchor-id="longtable">longtable</h2>
+<p>當文章內的表格太長，不足以一頁顯示完畢的話，LaTeX 中的表格如 <code>tabular</code> 與 <code>tabularx</code> 不會自動換頁，而是直接跑到最下面，例如：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入浮動環境套件
+\usepackage{float}
+
+% 載入 array 套件
+\usepackage{array}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Table}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% 強制將表格置放在程式碼所在處
+\begin{table}[H]
+\centering
+    \begin{tabular}{ccc}
+        \hline
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        One &amp; abcdef ghjijklmn &amp; 123.456778 \\
+        \hline
+    \end{tabular}
+\caption{長表格錯誤示範}
+\end{table}
+
+\end{document}
+</div></div></div></div></pre>
+<p>為了處理這樣的問題，我們使用 <code>longtable</code> 環境。<code>longtable</code> 環境是 LaTeX 中用於建立可跨頁的長表格的工具，這是它與 <code>tabular</code> 和 <code>tabularx</code> 最顯著的區別——當表格內容過長無法在單頁內完整顯示時，<code>longtable</code> 能夠<strong>自動將表格分割成多個部分</strong>，並在每頁的表格開頭和結尾添加適當的標題和註腳。</p>
+<p>與 <code>tabular</code> 相比，<code>longtable</code> 提供了更多的控制選項，如設置每頁重複的表頭和表尾。而相較於 <code>tabularx</code>，<code>longtable</code> 不自動調整列寬，但可以處理任意長度的表格內容。</p>
+<p>注意到 <code>longtable</code> 環境需要載入 <code>longtable</code> 套件才能使用，其語法類似於 <code>tabular</code>，但增加了一些特殊指令來定義表格的不同部分。以下是實際操作的範例：<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入浮動環境套件
+\usepackage{float}
+
+% 載入 array 套件
+\usepackage{array}
+
+% 載入 longtable 套件
+\usepackage{longtable}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Table}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{longtable}{|l|p{8cm}|c|}
+\caption{大型軟體開發項目多年進度表}\label{tab:long_project} \\
+
+    \hline
+    \textbf{階段} &amp; \textbf{描述} &amp; \textbf{完成日期} \\
+    \hline
+    \endfirsthead
+
+    \multicolumn{3}{c}{表 \thetable{} -- 續上頁} \\
+    \hline
+    \textbf{階段} &amp; \textbf{描述} &amp; \textbf{完成日期} \\
+    \hline
+    \endhead
+
+    \hline
+    \multicolumn{3}{r}{續下頁} \\
+    \endfoot
+
+    \hline
+    \endlastfoot
+
+    初始規劃 &amp; 制定項目總體規劃，確定主要里程碑 &amp; 2023/01/15 \\
+    \hline
+    需求分析 &amp; 進行詳細的使用者需求調研和分析 &amp; 2023/02/28 \\
+    \hline
+    系統設計 &amp; 完成系統架構設計和詳細設計文檔 &amp; 2023/04/30 \\
+    \hline
+    原型開發 &amp; 開發系統原型，進行初步功能驗證 &amp; 2023/06/15 \\
+    \hline
+    核心開發 - 階段1 &amp; 實現核心功能模塊，包括使用者管理系統 &amp; 2023/08/31 \\
+    \hline
+    核心開發 - 階段2 &amp; 實現數據處理和分析模塊 &amp; 2023/11/30 \\
+    \hline
+    核心開發 - 階段3 &amp; 實現報表生成和可視化模塊 &amp; 2024/02/29 \\
+    \hline
+    整合測試 - 階段1 &amp; 對已完成的模塊進行整合測試 &amp; 2024/04/15 \\
+    \hline
+    使用者界面開發 &amp; 設計和實現使用者界面 &amp; 2024/06/30 \\
+    \hline
+    核心開發 - 階段4 &amp; 實現高級分析和機器學習模塊 &amp; 2024/09/30 \\
+    \hline
+    性能優化 - 階段1 &amp; 對系統進行初步性能測試和優化 &amp; 2024/11/15 \\
+    \hline
+    安全審核 - 階段1 &amp; 進行初步安全審核和漏洞修復 &amp; 2024/12/31 \\
+    \hline
+    Beta測試 &amp; 邀請部分使用者進行Beta測試 &amp; 2025/02/28 \\
+    \hline
+    問題修復 - 階段1 &amp; 根據Beta測試反饋進行問題修復 &amp; 2025/04/15 \\
+    \hline
+    整合測試 - 階段2 &amp; 對整個系統進行全面整合測試 &amp; 2025/06/30 \\
+    \hline
+    性能優化 - 階段2 &amp; 進行深入的性能分析和優化 &amp; 2025/08/31 \\
+    \hline
+    安全審核 - 階段2 &amp; 進行全面的安全審核和滲透測試 &amp; 2025/10/31 \\
+    \hline
+    文檔編寫 &amp; 編寫使用者手冊和技術文檔 &amp; 2025/12/15 \\
+    \hline
+    使用者驗收測試 &amp; 進行最終的使用者驗收測試 &amp; 2026/02/28 \\
+    \hline
+    部署準備 &amp; 準備生產環境，進行部署計劃 &amp; 2026/04/15 \\
+    \hline
+    員工培訓 &amp; 對內部員工進行系統使用培訓 &amp; 2026/05/31 \\
+    \hline
+    系統上線 &amp; 系統正式上線並投入使用 &amp; 2026/07/01 \\
+    \hline
+    運維支持 - 月度1 &amp; 提供首月24/7運維支持 &amp; 2026/07/31 \\
+    \hline
+    運維支持 - 月度2 &amp; 持續提供運維支持和問題修復 &amp; 2026/08/31 \\
+    \hline
+    運維支持 - 月度3 &amp; 持續提供運維支持和問題修復 &amp; 2026/09/30 \\
+    \hline
+    第一次系統更新 &amp; 根據使用者反饋進行首次系統更新 &amp; 2026/10/31 \\
+    \hline
+    運維支持 - 月度4 &amp; 持續提供運維支持和問題修復 &amp; 2026/11/30 \\
+    \hline
+    運維支持 - 月度5 &amp; 持續提供運維支持和問題修復 &amp; 2026/12/31 \\
+    \hline
+    年度系統審核 &amp; 進行首次年度系統全面審核 &amp; 2027/01/31 \\
+    \hline
+    運維支持 - 月度6 &amp; 持續提供運維支持和問題修復 &amp; 2027/02/28 \\
+    \hline
+    功能擴展 - 階段1 &amp; 開始開發新功能模塊 &amp; 2027/04/30 \\
+    \hline
+    運維支持 - 月度7 &amp; 持續提供運維支持和問題修復 &amp; 2027/05/31 \\
+    \hline
+    性能優化 - 年度1 &amp; 進行年度性能優化 &amp; 2027/07/31 \\
+    \hline
+    安全審核 - 年度1 &amp; 進行年度安全審核 &amp; 2027/09/30 \\
+    \hline
+    功能擴展 - 階段2 &amp; 完成新功能模塊開發和測試 &amp; 2027/11/30 \\
+    \hline
+    系統大更新 &amp; 發布包含新功能的系統大更新 &amp; 2028/01/31 \\
+    \hline
+    使用者再培訓 &amp; 針對新功能對使用者進行再培訓 &amp; 2028/03/31 \\
+    \hline
+    運維支持 - 年度2 &amp; 持續提供第二年運維支持 &amp; 2028/07/01 \\
+    \hline
+    系統擴展評估 &amp; 評估系統進一步擴展的可能性 &amp; 2028/09/30 \\
+    \hline
+    長期規劃制定 &amp; 制定未來3-5年的系統發展規劃 &amp; 2028/12/31 \\
+    \hline
+    技術棧更新評估 &amp; 評估是否需要更新系統使用的技術棧 &amp; 2029/03/31 \\
+    \hline
+    大數據整合計劃 &amp; 制定大數據分析整合計劃 &amp; 2029/06/30 \\
+    \hline
+    人工智能功能規劃 &amp; 規劃人工智能功能的引入 &amp; 2029/09/30 \\
+    \hline
+    雲端遷移評估 &amp; 評估將系統遷移到雲端的可能性 &amp; 2029/12/31 \\
+    \hline
+    未來發展路線圖 &amp; 制定未來5年的系統發展路線圖 &amp; 2030/03/31 \\
+    \hline
+    項目總結與回顧 &amp; 對整個長期項目進行總結和經驗回顧 &amp; 2030/06/30 \\
+\end{longtable}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="supertabular" class="level2">
+<h2 class="anchored" data-anchor-id="supertabular">supertabular</h2>
+<p>supertabular 環境是 LaTeX 中用於創建長表格的工具，特別適用於需要跨頁的表格。你可能會想說：「那這與 <code>longtable</code> 有何不同呢？」下面的表格比較 <code>supertabular</code> 與 <code>longtable</code> 兩個環境的差異，或許就能夠知道差在哪了！</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 45%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>特性</th>
+<th>supertabular</th>
+<th>longtable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>工作原理</td>
+<td>逐頁處理表格</td>
+<td>一次性處理整個表格後分頁</td>
+</tr>
+<tr class="even">
+<td>內存使用</td>
+<td>較少</td>
+<td>較多，需保存整個表格</td>
+</tr>
+<tr class="odd">
+<td>浮動環境</td>
+<td>不是浮動體，固定位置</td>
+<td>可作為浮動體使用</td>
+</tr>
+<tr class="even">
+<td>表格寬度</td>
+<td>不同頁面可能有細微差異</td>
+<td>所有頁面保持一致</td>
+</tr>
+<tr class="odd">
+<td>跨頁單元格</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr class="even">
+<td>頁面平衡</td>
+<td>可能在底部留下較大空白</td>
+<td>通常能更好地平衡頁面</td>
+</tr>
+<tr class="odd">
+<td>使用複雜度</td>
+<td>語法相對簡單，易用</td>
+<td>語法較複雜，但有更多控制選項</td>
+</tr>
+<tr class="even">
+<td>適用場景</td>
+<td>較簡單的長表格，內存受限情況</td>
+<td>需要精確控制和複雜格式的長表格</td>
+</tr>
+</tbody>
+</table>
+<p><code>supertabular</code> 的一個主要特點是它允許使用者定義表格的不同部分，如表頭、表尾和延續標記等，使得長表格在跨頁時能保持一致的格式和清晰的結構。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入 supertabular 套件
+\usepackage{supertabular}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Table}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+    \tablefirsthead{\hline 學號 &amp; 姓名 &amp; 科目 &amp; 成績 \\ \hline}
+    \tablehead{\hline \multicolumn{4}{|l|}{續上頁} \\ \hline 學號 &amp; 姓名 &amp; 科目 &amp; 成績 \\ \hline}
+    \tabletail{\hline \multicolumn{4}{|r|}{續下頁} \\ \hline}
+    \tablelasttail{\hline}
+
+    \begin{supertabular}{|c|l|l|c|}
+    001 &amp; 張三 &amp; 數學 &amp; 85 \\
+    002 &amp; 李四 &amp; 物理 &amp; 92 \\
+    003 &amp; 王五 &amp; 化學 &amp; 78 \\
+    004 &amp; 趙六 &amp; 生物 &amp; 88 \\
+    005 &amp; 孫七 &amp; 歷史 &amp; 95 \\
+    006 &amp; 周八 &amp; 地理 &amp; 83 \\
+    007 &amp; 吳九 &amp; 英語 &amp; 91 \\
+    008 &amp; 鄭十 &amp; 美術 &amp; 87 \\
+    009 &amp; 劉一 &amp; 音樂 &amp; 94 \\
+    010 &amp; 陳二 &amp; 體育 &amp; 89 \\
+    011 &amp; 楊三 &amp; 物理 &amp; 86 \\
+    012 &amp; 黃四 &amp; 化學 &amp; 93 \\
+    013 &amp; 趙五 &amp; 生物 &amp; 79 \\
+    014 &amp; 周六 &amp; 歷史 &amp; 90 \\
+    015 &amp; 吳七 &amp; 地理 &amp; 82 \\
+    016 &amp; 鄭八 &amp; 英語 &amp; 96 \\
+    017 &amp; 王九 &amp; 美術 &amp; 84 \\
+    018 &amp; 劉十 &amp; 音樂 &amp; 92 \\
+    019 &amp; 陳一 &amp; 體育 &amp; 88 \\
+    020 &amp; 張二 &amp; 數學 &amp; 91 \\
+    021 &amp; 李三 &amp; 物理 &amp; 87 \\
+    022 &amp; 王四 &amp; 化學 &amp; 94 \\
+    023 &amp; 趙五 &amp; 生物 &amp; 81 \\
+    024 &amp; 孫六 &amp; 歷史 &amp; 89 \\
+    025 &amp; 周七 &amp; 地理 &amp; 93 \\
+    026 &amp; 吳八 &amp; 英語 &amp; 85 \\
+    027 &amp; 鄭九 &amp; 美術 &amp; 90 \\
+    028 &amp; 劉十 &amp; 音樂 &amp; 88 \\
+    029 &amp; 陳一 &amp; 體育 &amp; 95 \\
+    030 &amp; 楊二 &amp; 數學 &amp; 82 \\
+    031 &amp; 黃三 &amp; 物理 &amp; 91 \\
+    032 &amp; 趙四 &amp; 化學 &amp; 86 \\
+    033 &amp; 周五 &amp; 生物 &amp; 93 \\
+    034 &amp; 吳六 &amp; 歷史 &amp; 80 \\
+    035 &amp; 鄭七 &amp; 地理 &amp; 89 \\
+    036 &amp; 王八 &amp; 英語 &amp; 94 \\
+    037 &amp; 劉九 &amp; 美術 &amp; 83 \\
+    038 &amp; 陳十 &amp; 音樂 &amp; 90 \\
+    039 &amp; 張一 &amp; 體育 &amp; 87 \\
+    040 &amp; 李二 &amp; 數學 &amp; 92 \\
+    041 &amp; 王三 &amp; 物理 &amp; 85 \\
+    042 &amp; 趙四 &amp; 化學 &amp; 91 \\
+    043 &amp; 孫五 &amp; 生物 &amp; 84 \\
+    044 &amp; 周六 &amp; 歷史 &amp; 93 \\
+    045 &amp; 吳七 &amp; 地理 &amp; 88 \\
+    046 &amp; 鄭八 &amp; 英語 &amp; 95 \\
+    047 &amp; 劉九 &amp; 美術 &amp; 81 \\
+    048 &amp; 陳十 &amp; 音樂 &amp; 89 \\
+    049 &amp; 楊一 &amp; 體育 &amp; 94 \\
+    050 &amp; 黃二 &amp; 數學 &amp; 86 \\
+    051 &amp; 趙三 &amp; 物理 &amp; 92 \\
+    052 &amp; 周四 &amp; 化學 &amp; 87 \\
+    053 &amp; 吳五 &amp; 生物 &amp; 90 \\
+    054 &amp; 鄭六 &amp; 歷史 &amp; 83 \\
+    055 &amp; 王七 &amp; 地理 &amp; 91 \\
+    056 &amp; 劉八 &amp; 英語 &amp; 88 \\
+    057 &amp; 陳九 &amp; 美術 &amp; 95 \\
+    058 &amp; 張十 &amp; 音樂 &amp; 82 \\
+    059 &amp; 李一 &amp; 體育 &amp; 89 \\
+    060 &amp; 王二 &amp; 數學 &amp; 93 \\
+    \end{supertabular}
+\end{center}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="threeparttable" class="level2">
+<h2 class="anchored" data-anchor-id="threeparttable">threeparttable</h2>
+<p>這個環境看它的名字肯定知道，這是拿來繪製三線表的！如果你這樣想的話，就太小看 <code>threeparttable</code> 了。</p>
+<p><code>threeparttable</code> 環境不僅可以用來製作三線表，它更可以用來建立一個帶有註釋的表格。它的主要特點是能夠將表格主體、表格標題和表格註釋（通常是腳註）結合在一起，形成一個統一的整體。與傳統的 <code>tabular</code> 環境搭配 <code>booktabs</code> 套件使用相比，<code>threeparttable</code> 有以下幾個主要差異：</p>
+<p>當然，我可以為您提供一個 Markdown 表格，展示 threeparttable 和 tabular+booktabs 的主要差別：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>特性</th>
+<th>threeparttable</th>
+<th>tabular +。booktabs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>主要功能</td>
+<td>整合表格、標題和註釋</td>
+<td>創建美觀的表格結構</td>
+</tr>
+<tr class="even">
+<td>註釋處理</td>
+<td>專門設計，易於管理</td>
+<td>需要額外調整</td>
+</tr>
+<tr class="odd">
+<td>寬度控制</td>
+<td>自動調整註釋寬度</td>
+<td>需要手動控制</td>
+</tr>
+<tr class="even">
+<td>浮動環境兼容性</td>
+<td>專為浮動環境設計</td>
+<td>可用於浮動環境，但需額外設定</td>
+</tr>
+</tbody>
+</table>
+<p>以下是一個 threeparttable 的例子<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入浮動環境套件
+\usepackage{float}
+
+% 載入 threeparttable 與 booktabs 套件
+\usepackage{threeparttable}
+\usepackage{booktabs}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Table}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{table}[H]
+\begin{threeparttable}
+  \caption{台灣六都人口統計數據}
+  \begin{tabular}{lrrr}
+    \toprule
+    城市 &amp; 人口（萬）\tnote{a} &amp; 面積（平方公里） &amp; 密度（人/平方公里） \\
+    \midrule
+    臺北市 &amp; 251 &amp; 271.8 &amp; 9242 \\
+    新北市 &amp; 404 &amp; 2052 &amp; 1969 \\
+    桃園市 &amp; 231 &amp; 1220 &amp; 1898 \\
+    臺中市 &amp; 285 &amp; 2214 &amp; 1285 \\
+    臺南市 &amp; 186 &amp; 2191 &amp; 849 \\
+    高雄市 &amp; 274 &amp; 2952 &amp; 927 \\
+    \bottomrule
+  \end{tabular}
+  \begin{tablenotes}
+    \item[a] 取自中華民國內政部資料
+    \item[b] 台北人口密度明顯高於其他城市
+  \end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\end{document}
+</div></div></div></div></pre>
+<p>在這個例子中，我們結合了 threeparttable 和 booktabs 的優點。threeparttable 環境包裹了整個表格結構，包括標題、表格主體和註釋。<code>booktabs</code> 的 <code>\toprule</code>、<code>\midrule</code> 和 <code>\bottomrule</code> 指令就不特別說明，而 <code>\tnote</code> 指令用於在表格中加入註釋，對應的解釋放在 <code>tablenotes</code> 環境中。</p>
+</section>
+</section>
+<section id="圖片" class="level1">
+<h1>圖片</h1>
+<p>不曉得大家是否遇過下列這種情況：在看論文或是自己撰寫論文時，圖片的解析度通常都不夠高，或是圖片會難以放置在正確的位置上甚至隨意跑動。首先，我們可以先就圖片解析度這件事進行討論，如果我們使用的圖片是點陣圖類型的圖檔，例如<code>.bmp</code>、<code>.jpg</code>、<code>.png</code> 和 <code>TIFF</code>，就會像下方上圖所示，圖片邊緣是鋸齒狀的，當讀者放大後便會是一個個的點。但如果圖片是向量圖，例如<code>.svg</code>、<code>eps</code> 或 <code>pdf</code>，圖片的邊緣是平滑的，放大後不會看到鋸齒狀的結構。因此在 LaTeX 中，我們可以多加使用向量圖的解析度，將圖片放置於文件中。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="raster_vector.png" class="img-fluid figure-img" style="width:65.0%" data-fig.align="center"></p>
+<figcaption>圖 1：不同圖檔的結構</figcaption>
+</figure>
+</div>
+<p>另外，針對圖片無法在文件中放置於正確的位置上，我們可以使用表格也同樣使用到的浮動環境來解決這個問題。我們就先來看如何在 LaTeX 中插入圖片吧。</p>
+<section id="插入圖片基本方法" class="level2">
+<h2 class="anchored" data-anchor-id="插入圖片基本方法">插入圖片基本方法</h2>
+<p>LaTeX 插入圖片的過程相對簡單。首先，我們需要在文檔的前言區載入 <code>graphicx</code> 套件，該套件提供了插入和操作圖片的功能。接著，我們可以使用 <code>\includegraphics</code> 指令來插入圖片。通常來說，我們會將圖片放在 <code>figure</code> 環境中，這樣可以更好地控制圖片的位置與浮動環境，同時也可以加入標題與標籤。</p>
+<p>插入圖片時，我們可以調整圖片的大小、旋轉角度等。例如，使用 <code>width</code> 參數可以設置圖片寬度，常用 <code>\textwidth</code> 來指定與文本寬度相關的比例。<code>\centering</code> 指令用於將圖片置中。<code>\caption</code> 用於添加圖片說明，<code>\label</code> 則用於為圖片添加標籤，方便在文中引用。</p>
+<p>關於圖片文件，LaTeX 支援多種常見格式，如 <code>PNG</code>、<code>JPEG</code>、<code>PDF</code> 等。圖片文件通常應該與 <code>.tex</code> 文件放在同一目錄下，或者使用 <code>\graphicspath</code> 指令指定圖片所在的目錄路徑。下面是具體例子：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入浮動環境套件
+\usepackage{float}
+
+% 載入 graphicx 套件
+\usepackage{graphicx}
+\graphicspath{{./images/}}  % 指定圖片目錄
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Figure}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{example-image}
+    \caption{這是一張圖片}
+    \label{fig:example}
+\end{figure}
+
+\end{document}
+</div></div></div></div></pre>
+<p>在上面的例子中，我們將圖片的寬度設定為 0.8 倍的 <code>textwidth</code>，讓圖片不要那麼大張。</p>
+</section>
+<section id="不同圖片格式" class="level2">
+<h2 class="anchored" data-anchor-id="不同圖片格式">不同圖片格式</h2>
+<p>在 LaTeX 中，除了常見的 <code>PNG</code> 和 <code>JPG</code> 格式外，還支持多種高解析度的圖片格式，能夠滿足不同的排版需求，例如 <code>PDF</code>、<code>SVG</code>、<code>EPS</code> 等。這些格式各有其特點，使用時需要搭配對應的 LaTeX 套件以達到最佳的插圖效果。</p>
+<section id="插入-pdf-文件" class="level3">
+<h3 class="anchored" data-anchor-id="插入-pdf-文件">插入 PDF 文件</h3>
+<p>在學術論文、報告或書籍排版中，我們經常需要插入來自其他 PDF 文件的圖表或頁面。LaTeX 中最常用的是 <code>pdfpages</code> 套件，允許我們插入整份 PDF 文件，還能選擇性地只插入特定頁面，甚至可以調整插入頁面的大小和方向。</p>
+<section id="基本用法" class="level4">
+<h4 class="anchored" data-anchor-id="基本用法">基本用法</h4>
+<p>首先，我們需要在 LaTe X文件的前言區載入 <code>pdfpages</code> 套件，接著，在本文的地方可以使用 <code>\includepdf{}</code> 指令插入 <code>PDF</code> 頁面。最基本的用法如下：<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入浮動環境套件
+\usepackage{float}
+
+% 載入 graphicx 套件
+\usepackage{graphicx}
+\graphicspath{{./images/}}  % 指定圖片目錄
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Figure}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{figure}[H]
+    \centering
+    \includepdf[pages={1}]{example.pdf}
+    \caption{插入的PDF頁面}
+    \label{fig:pdf-page}
+\end{figure}
+
+\end{document}
+</div></div></div></div></pre>
+<p>上述程式碼會將名為 <code>example.pdf</code> 的文件的第一頁插入到程式碼所在位置，並加上標題和標籤。</p>
+</section>
+<section id="進階技巧" class="level4">
+<h4 class="anchored" data-anchor-id="進階技巧">進階技巧</h4>
+<p>上面提到 <code>pdfpages</code> 套件可以允許使用者進行額外的設定，以下直接用表格呈現可以設定的參數，並且提供範例與解釋。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>參數</th>
+<th>功能</th>
+<th>範例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>pages</code></td>
+<td>指定要插入的頁面</td>
+<td><code>pages={1,3,5-7}</code></td>
+</tr>
+<tr class="even">
+<td><code>scale</code></td>
+<td>調整插入頁面的大小</td>
+<td><code>scale=0.8</code></td>
+</tr>
+<tr class="odd">
+<td><code>angle</code></td>
+<td>旋轉插入的頁面</td>
+<td><code>angle=90</code></td>
+</tr>
+<tr class="even">
+<td><code>frame</code></td>
+<td>為插入的頁面添加邊框</td>
+<td><code>frame=true</code></td>
+</tr>
+<tr class="odd">
+<td><code>nup</code></td>
+<td>在一頁中排列多個頁面</td>
+<td><code>nup=2x2</code></td>
+</tr>
+<tr class="even">
+<td><code>landscape</code></td>
+<td>設置頁面方向為橫向</td>
+<td><code>landscape=true</code></td>
+</tr>
+<tr class="odd">
+<td><code>width</code></td>
+<td>設置插入頁面的寬度</td>
+<td><code>width=\textwidth</code></td>
+</tr>
+<tr class="even">
+<td><code>height</code></td>
+<td>設置插入頁面的高度</td>
+<td><code>height=0.9\textheight</code></td>
+</tr>
+<tr class="odd">
+<td><code>offset</code></td>
+<td>調整頁面位置</td>
+<td><code>offset=1cm 2cm</code></td>
+</tr>
+<tr class="even">
+<td><code>pagecommand</code></td>
+<td>在每個插入的頁面上執行LaTeX指令</td>
+<td><code>pagecommand={\thispagestyle{empty}}</code></td>
+</tr>
+</tbody>
+</table>
+<p>例如，如果想插入一個 PDF 的第 2 頁，將其縮小到 80%，旋轉 45 度，並加上邊框，可以使用以下指令：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode tex code-with-copy"><code class="sourceCode latex"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\includepdf</span>[pages={2}, scale=0.8, angle=45, frame=true]{example.pdf}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="插入-svg-圖片" class="level3">
+<h3 class="anchored" data-anchor-id="插入-svg-圖片">插入 SVG 圖片</h3>
+<p><code>SVG</code> 格式在多種情況下都十分有用，尤其是在需要<strong>高解析度</strong>或<strong>可縮放圖像</strong>的場景，例如複雜的數學圖表或科學插圖、數據可視化的統計圖表和圖形。SVG 格式的主要優勢在於，它可以無限縮放而不失真，且文件大小通常較小。</p>
+<p>在 LaTeX 中插入 <code>SVG</code> 格式的圖片需要特定的套件和設定，首先，最常用且推薦的方法是使用 <code>svg</code> 套件。這個套件需要搭配 <code>lualatex</code> 或 <code>xelatex</code> 編譯器使用。在前言區中，我們需要載入該套件，載入套件後使用 <code>\includesvg</code> 指令來插入 <code>SVG</code> 圖片。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入浮動環境套件
+\usepackage{float}
+
+% 載入 svg 套件
+\usepackage{svg}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Figure}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.8\textwidth]{example.svg}
+    \caption{SVG 圖片範例}
+    \label{fig:svg-example}
+\end{figure}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="插入-eps-圖片" class="level3">
+<h3 class="anchored" data-anchor-id="插入-eps-圖片">插入 EPS 圖片</h3>
+<p>EPS 是一種向量圖形格式，常用於高品質的印刷、出版，它包含了描述圖像的 <code>PostScript</code> 程式碼，能夠保持圖形在任何解析度下的清晰。</p>
+<p>在 LaTeX 中插入 EPS 圖片主要使用 <code>graphicx</code> 套件。如果使用 <code>pdfLaTeX</code> 編譯器，還需要 <code>epstopdf</code> 套件來自動將 <code>EPS</code> 轉換為 PDF。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入浮動環境套件
+\usepackage{float}
+
+% 載入 graphicx 套件
+\usepackage{graphicx}
+
+% 載入 epstopdf 套件
+\usepackage{epstopdf}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Figure}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{example.eps}
+    \caption{EPS 圖片範例}
+    \label{fig:eps-example}
+\end{figure}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+</section>
+<section id="多圖排版技巧並排與子圖的藝術" class="level2">
+<h2 class="anchored" data-anchor-id="多圖排版技巧並排與子圖的藝術">多圖排版技巧：並排與子圖的藝術</h2>
+<p>前一小節我們提到基本插入圖片的方式。但有時候文件可能不只會有一張圖片，可能還需要並排的需求。因此在這一小節當中，我們會介紹不同的多圖排版技巧。<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
+<section id="兩圖並排共享標題" class="level3">
+<h3 class="anchored" data-anchor-id="兩圖並排共享標題">兩圖並排，共享標題</h3>
+<p>當我們需要並排展示兩張相關的圖片，並為它們提供一個共同的標題時，可以使用 <code>minipage</code> 環境，該環境僅需載入 <code>graphicx</code> 套件即可。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入浮動環境套件
+\usepackage{float}
+
+% 載入 graphicx 套件
+\usepackage{graphicx}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Figure}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{example-image-a}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{example-image-b}
+    \end{minipage}
+    \caption{共同標題}
+    \label{fig:two-images}
+\end{figure}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="兩圖並排獨立標題" class="level3">
+<h3 class="anchored" data-anchor-id="兩圖並排獨立標題">兩圖並排，獨立標題</h3>
+<p>有時，我們則希望並排的兩張圖片各自擁有獨立的標題。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入浮動環境套件
+\usepackage{float}
+
+% 載入 graphicx 套件
+\usepackage{graphicx}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Figure}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{example-image-a}
+        \caption{第一張圖片的標題}
+        \label{fig:image1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{example-image-b}
+        \caption{第二張圖片的標題}
+        \label{fig:image2}
+    \end{minipage}
+\end{figure}
+
+\end{document}
+</div></div></div></div></pre>
+<p>這種方法與前一種類似，但在每個 <code>minipage</code> 環境中都加入了獨立的 <code>\caption</code> 和 <code>\label</code>。如此一來，每張圖片都有自己的標題和引用標籤，使得在本文中分別引用這些圖片變得更加方便。</p>
+</section>
+<section id="使用-subfig-套件" class="level3">
+<h3 class="anchored" data-anchor-id="使用-subfig-套件">使用 subfig 套件</h3>
+<p>假設文件中兩張並排的圖片除了想要有自己的子標題外，還需要一個母標題，顯示出兩張子圖之間的關聯性，那麼就需要 <code>subfig</code> 套件。</p>
+<p>使用 <code>subfig</code> 套件時，我們需要透過 <code>\subfloat</code> 指令為每個子圖加入獨立的標題和標籤，同時保持整體圖片的一致性。此種方法適用於需要展示一系列相關圖片，並希望在本文中單獨引用每個子圖的情況。例如，在展示一個實驗的多個階段的不同步驟時，這種排版方式非常有效率且美觀。</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入浮動環境套件
+\usepackage{float}
+
+% 載入 graphicx 套件
+\usepackage{graphicx}
+
+% 載入 subfig 套件
+\usepackage{subfig}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Figure}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{figure}[H]
+    \centering
+    \subfloat[子圖A的標題]{
+        \includegraphics[width=0.45\textwidth]{example-image-a}
+        \label{fig:subfigA}
+    }
+    \hfill
+    \subfloat[子圖B的標題]{
+        \includegraphics[width=0.45\textwidth]{example-image-b}
+        \label{fig:subfigB}
+    }
+    \caption{使用 subfig 套件的多子圖範例}
+    \label{fig:subfig-example}
+\end{figure}
+
+\end{document}
+</div></div></div></div></pre>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+minipage 與 subfig 在獨立標題的差異
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>比較一下原本使用 <code>minipage</code> 進行兩圖並排且具有獨立標題，以及使用 <code>subfig</code> 套件的結果，可以發現前者的子標題仍是以 “Figure” 開頭，後者則是以 (a)、(b) 開頭。因此，如果欲並排的圖片<strong>具有連貫性</strong>，建議使用 <code>subfig</code> 套件。</p>
+</div>
+</div>
+<p>如果想要多列、多欄的子圖，我們仍可以使用 <code>subfig</code> 套件，道理是一樣的。假設我們想要插入兩列三欄的子圖，則參考以下範例：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入浮動環境套件
+\usepackage{float}
+
+% 載入 graphicx 套件
+\usepackage{graphicx}
+
+% 載入 subfig 套件
+\usepackage{subfig}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Figure}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{figure}[H]
+    \centering
+    \subfloat[子圖A的標題]{
+        \includegraphics[width=0.3\textwidth]{example-image-a}
+        \label{fig:subfigA}
+    }
+    \hfill
+    \subfloat[子圖B的標題]{
+        \includegraphics[width=0.3\textwidth]{example-image-b}
+        \label{fig:subfigB}
+    }
+    \hfill
+    \subfloat[子圖C的標題]{
+        \includegraphics[width=0.3\textwidth]{example-image-c}
+        \label{fig:subfigC}
+    }
+    
+    \vspace{1em} % 在兩列之間添加一些垂直空間
+    
+    \subfloat[子圖D的標題]{
+        \includegraphics[width=0.3\textwidth]{example-image-a}
+        \label{fig:subfigA}
+    }
+    \hfill
+    \subfloat[子圖E的標題]{
+        \includegraphics[width=0.3\textwidth]{example-image-b}
+        \label{fig:subfigB}
+    }
+    \hfill
+    \subfloat[子圖F的標題]{
+        \includegraphics[width=0.3\textwidth]{example-image-c}
+        \label{fig:subfigC}
+    }
+    
+    \caption{使用 subfig 套件的多子圖範例}
+    \label{fig:subfig-example}
+\end{figure}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+<section id="使用-subcaption-套件" class="level3">
+<h3 class="anchored" data-anchor-id="使用-subcaption-套件">使用 subcaption 套件</h3>
+<p><code>subcaption</code> 套件則提供了另一種並排子圖的方法，其語法更接近標準插入 LaTeX 圖片環境。直接看例子：</p>
+<pre id="pre0" class=" ace_editor ace_hidpi ace-dawn" style="height: 192px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; transform: translate(52px, 16px);"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 48px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; transform: translate(0px, 0px); width: 48px;"><div class="ace_scroller" style="line-height: 16px; left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="transform: translate(0px, 0px); width: 1072px; height: 224px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"></div>% !TeX xelatex
+\documentclass{article}
+
+% 載入浮動環境套件
+\usepackage{float}
+
+% 載入 graphicx 套件
+\usepackage{graphicx}
+
+% 載入 subcaption 套件
+\usepackage{subcaption}
+
+% 設定中文字體
+\usepackage{fontspec}
+\usepackage{xeCJK, CJKnumb}
+\setmainfont{FandolSong}
+
+% 設定標題頁資訊
+\title{\LaTeX\ Figure}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{example-image-a}
+        \caption{子圖A的標題}
+        \label{fig:subfigA}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{example-image-b}
+        \caption{子圖B的標題}
+        \label{fig:subfigB}
+    \end{subfigure}
+    \caption{使用 subcaption 套件的多子圖範例}
+    \label{fig:subcaption-example}
+\end{figure}
+
+\end{document}
+</div></div></div></div></pre>
+</section>
+</section>
+</section>
+<section id="小結" class="level1">
+<h1>小結</h1>
+<p>這篇文章介紹的繪製表格與插入圖片應該是大多數學習 LaTeX 的初學者會遇到瓶頸的第一個地方，因此建議閱讀完畢之後，好好地練習一遍，試著從網路上抓取非商用的資料或免費圖片，將本文所提到的內容一個個嘗試、調整看看。從錯誤中不僅能夠學習到不熟悉之處，更可以激盪出新的方法。</p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>維基百科 (2024, June 7). 表格. 維基百科，自由的百科全書. <a href="https://zh.wikipedia.org/wiki/%E8%A1%A8%E6%A0%BC">https://zh.wikipedia.org/wiki/表格</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Huang, L. (2021, December 11). LaTeX 中的浮动体：基础篇. 始终. <a href="https://liam.page/2017/03/11/floats-in-LaTeX-basic/">https://liam.page/2017/03/11/floats-in-LaTeX-basic/</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>請注意到，在這個例子中 <code>\$</code> 符號。因為 <code>$</code> 在 LaTeX 中，<code>$</code> 是「<strong>保留字</strong>」（Reserved Words），因此需要在前面加上 <code>\</code> 才可以變成正確的錢字記號。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>此例中的 <code>\%</code> 與註解 3 同理。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>此例透過 <a href="https://www.anthropic.com/">Anthorpic</a> 生成，因為太多了，筆者無法想到那麼多例子可以寫。<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>資料取自中華民國內政部戶政司全球資訊網提供的<a href="https://www.ris.gov.tw/info-popudata/app/awFastDownload/view">鄉鎮土地面積及人口密度</a><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>由於 TeXLive 無法允許使用者上傳檔案，因此經過編譯後都無法顯示，也包含其他圖片格式的範例。建議可以點擊 “Open in Overleaf”，上傳你的檔案到 Overleaf 進行測試。<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>參考自<a href="https://andy123t.github.io/2020/09/22/LaTeX-Figure/">LaTeX 插图及多图排版</a>。<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sung2024,
+  author = {Sung, Anthony},
+  title = {LaTeX {教學系列：表格與圖片的處理}},
+  date = {2024-07-08},
+  url = {https://yueswater.com/posts/2024-07-08-latex-table-figure/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sung2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Sung, Anthony. 2024. <span>“LaTeX 教學系列：表格與圖片的處理.”</span>
+July 8, 2024. <a href="https://yueswater.com/posts/2024-07-08-latex-table-figure/">https://yueswater.com/posts/2024-07-08-latex-table-figure/</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="xiaolong70701/quarto-blog" data-repo-id="R_kgDOJhS1Eg" data-category="General" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="light">
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright © 2024 Anthony. All rights reserved. See <a href="../copyright.html">statements</a>.</p>
+</div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/xiaolong70701">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.facebook.com/yueswater/">
+      <i class="bi bi-facebook" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:xiaolong70701@gmail.com">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
